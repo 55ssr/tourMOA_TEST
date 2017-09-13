@@ -33,7 +33,11 @@
 
     <definition name="layout2" template="/WEB-INF/config/tiles/layout2.jsp">
 
-        <put-attribute name="title" value="샘플" type="string" />
+        <put-attribute name="title" value="관리자 페이지" type="string" />
+        
+        <put-attribute name="topMenu" value="/WEB-INF/jsp/tiles/admin_topMenu.jsp" />
+
+        <put-attribute name="footer" value="/WEB-INF/jsp/tiles/admin_footer.jsp" />
 
         <put-attribute name="content" />
 
@@ -49,10 +53,10 @@
 
     
 
-<!--     <definition name="/*" extends="layout2">
+	<definition name="*/*" extends="layout2">
 
-        <put-attribute name="content" value="/WEB-INF/jsp/{1}.jsp" />
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/{2}.jsp" />
 
-    </definition> -->
+    </definition>
 
 </tiles-definitions>
