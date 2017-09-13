@@ -36,24 +36,45 @@ ul,li,ol{list-style:none;}
         
         #header_logo{width: 100%; height: 130px;}
         #header_logo h1{float: left; margin : 0 auto;}
-         
-        #header_logo input#search{float: left; width: 400px; height: 30px; margin: 50px;
-        border: 3px solid #6b8eb4; }
+        
+        
+         #searchBox{float: left; width: 400px; height: 40px; margin-top: 50px; margin-left: 200px;
+        border: 3px solid #6b8eb4;}
+       	 #searchBox select.searchCondition{
+          margin-left: 2px;
+          margin-top: 5px;
+          width: 100px;
+          height: 20px;
+          border: 0px;
+       	 }
+       	 #searchBox input.search{
+          border: 0px;
+          width: 250px;
+          height: 20px;
+          
+       	 }
+      	 #searchBox input.searchBox{
+      	 float: right;
+         width: auto;
+         height: 100%;
+         }
         
         #navi{width: 100%; height: 60px; background-color: #6b8eb4; float: left;}
         #navi ul{width: 100%;float: left;}
         #navi ul li{
             float: left;
             width: 130px; 
-            height: 40px;
+            height: 58px;
             display: inline-block;
-            margin: 5px; 
             text-align: center; 
             line-height: 40px;
             font-family: 'Swagger TTF';
             font-size: 16px;
             font-weight: 800;
             color: #000;
+        }
+        #navi ul li:hover{
+        background-color: yellow;
         }
         
         
@@ -63,19 +84,14 @@ ul,li,ol{list-style:none;}
         	min-height : 760px;
         	background-image: url('/images/tp-main/mainbg1.jpg');
         	background-size: 100% 100%;        	
-	    	-webkit-animation-name: banner; /* Safari 4.0 - 8.0 */
-	  	 	-webkit-animation-duration: 10s; /* Safari 4.0 - 8.0 */
+	    	-webkit-animation-name: banner; Safari 4.0 - 8.0
+	  	 	-webkit-animation-duration: 10s; Safari 4.0 - 8.0
 	  		animation-name: banner;
 	 		animation-duration: 7s; animation-iteration-count: infinite;}
 	 		
   	      
-        #rightmenu{ width: 100px; height: 200px; 
-
-        float: right; 
-            
-        }
-        #rightmenu ul{ width: 100px; height: auto; position: fixed; background-color: floralwhite; border:1px solid black; text-align: center;
-}
+        #rightmenu{ width: 100px; height: 200px; float: right; }
+        #rightmenu ul{ width: 100px; height: auto; position: fixed; background-color: floralwhite; border:1px solid black; text-align: center;}
         #rightmenu ul li{width: 100px; height: 50px; border-bottom: 1px solid black; }
         #rightmenu ul li:last-child{border-bottom: 0px; height: 25px;}
         a#moveTopBtn{text-decoration: none; color: black;}
@@ -95,6 +111,7 @@ ul,li,ol{list-style:none;}
         				}
       
    .find{
+   		
         display: inline-block;
         
     }
@@ -105,42 +122,111 @@ ul,li,ol{list-style:none;}
     top: 5px;
     position: relative;
     color: #fff;
-    display: none;
-    min-width: 300px;
+    min-width: 320px;
     padding: 5px 5px;
     text-decoration: none;
-    display: none;
+/*     display: none;*/
     color: #fff;
-    font-size: 12px;
-    height: 400px;
+    font-size: 14px;
+    height: 400px; }
+    .find-content-inside{
+    		margin-left: 20px; 
+    		background-color: black; 
+    		width:80%; 
+    		height: 30px; 
+    		color: #fff; 
+    		margin-bottom: 10px;
+    		margin-top: 10px;
+    		border : 0} 
+	.finder{cursor: pointer; text-align: center; line-height: 25px;}
+	.finder:hover{color: pink;}
         
-}
-.finder{cursor: pointer; text-align: center; line-height: 25px;}
-.finder:hover{color: pink;}
+	.find-content p{margin-left: 20px; width: 300px;}
         
-.find-content p{margin-left: 10px; width: 300px;}
+ 	.airportfind-content {
+		    background-image: url('/images/tp-main/find.png');
+		    right: 150px;
+		    top : 5px; 
+		    position: relative;
+		    color: #fff;
+		    display: none;
+		    min-width: 320px;
+		    height: 400px;
+		    padding: 5px 5px;
+		    text-decoration: none;
+		    display: none;
+		    color: #fff;
+		    font-size: 14px;
+	}
+	.airportfind-content p {margin-left: 20px; }
+	
+	.airportfind-content-inside1{
+    		margin-left: 20px; 
+    		background-color: black; 
+    		width:40%; 
+    		height: 30px; 
+    		color: #fff; 
+    		margin-bottom: 10px;
+    		margin-top: 10px;
+    		border : 0;} 
+    .airportfind-content-inside2{
+    		margin-left: 10px;
+    		text-align:center; 
+    		background-color: black; 
+    		width:40%; 
+    		height: 30px; 
+    		color: #fff; 
+    		margin-bottom: 10px;
+    		margin-top: 10px;
+    		border : 0;}
+	
+	.airportfind-content-inside-people1{
+			margin-left: 20px; 
+    		background-color: black; 
+    		width: 25%; 
+    		height: 30px; 
+    		color: #fff; 
+    		margin-bottom: 10px;
+    		margin-top: 10px;
+    		border : 0;}
+    	
+    .airportfind-content-inside-people2{
+			margin-left: 9px; 
+    		background-color: black; 
+    		width: 25%; 
+    		height: 30px; 
+    		color: #fff; 
+    		margin-bottom: 10px;
+    		margin-top: 10px;
+    		border : 0;}	
+    	
+			
+	
+	.airlineBtn {text-align :center;
+				 font-size : 16px;
+				 margin-left : 20px;
+				 width: 40%; 
+				 height: 50px;
+				 background-color: green;
+				 color : #fff;
+				 border : 0px;
+				 font-weight: bolder;
+				 margin-bottom: 20px; }
+				 
+				 
+	.domesticBtn {text-align :center;
+				 font-size : 16px;
+				 margin-left : 10px;
+				 width: 40%; 
+				 height: 50px;
+				 background-color: gray;
+				 color : #fff;
+				 border : 0px;
+				 font-weight: bolder;
+				 margin-bottom: 20px; }
         
- .airportfind-content {
-    background-image: url('/images/tp-main/find.png');
-    right: 150px;
-    top : 5px; 
-    position: relative;
-    color: #fff;
-    display: none;
-    min-width: 300px;
-    height: 400px;
-    padding: 5px 5px;
-    text-decoration: none;
-    display: none;
-    text-align: center;
-    color: #fff;
-    font-size: 12px;
-    
-        
-}
-        
-.airportfinder{cursor: pointer; text-align: center;  line-height: 25px;}
-        .airportfinder:hover{color: pink;}
+	.airportfinder{cursor: pointer; text-align: center;  line-height: 25px;}
+    .airportfinder:hover{color: pink;}
         
 #quickCloseBtn{cursor: pointer;}
 
