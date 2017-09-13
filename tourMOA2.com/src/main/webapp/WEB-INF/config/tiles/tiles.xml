@@ -36,6 +36,8 @@
         <put-attribute name="title" value="관리자 페이지" type="string" />
         
         <put-attribute name="topMenu" value="/WEB-INF/jsp/tiles/admin_topMenu.jsp" />
+        
+        <put-attribute name="aSide" value="/WEB-INF/jsp/tiles/admin_aSide.jsp" />
 
         <put-attribute name="footer" value="/WEB-INF/jsp/tiles/admin_footer.jsp" />
 
