@@ -10,5 +10,4 @@ public class MainController {
 	public String main() throws Exception{		
 		return "main/main";		
 	}
-	
 }
