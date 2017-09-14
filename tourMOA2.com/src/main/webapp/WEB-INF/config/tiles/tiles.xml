@@ -39,9 +39,31 @@
  
 
     <definition name="main/*" extends="layout1">
-
         <put-attribute name="content" value="/WEB-INF/jsp/main/{1}.jsp" />
-
+    </definition>
+    
+    <definition name="common/*" extends="layout1">
+        <put-attribute name="content" value="/WEB-INF/jsp/common/{1}.jsp" />
+    </definition>
+    
+    <definition name="limited/*" extends="layout1">
+        <put-attribute name="content" value="/WEB-INF/jsp/limited/{1}.jsp" />
+    </definition>
+    
+    <definition name="mypage/*" extends="layout1">
+        <put-attribute name="content" value="/WEB-INF/jsp/mypage/{1}.jsp" />
+    </definition>
+    
+    <definition name="product/*" extends="layout1">
+        <put-attribute name="content" value="/WEB-INF/jsp/product/{1}.jsp" />
+    </definition>
+    
+    <definition name="promotion/*" extends="layout1">
+        <put-attribute name="content" value="/WEB-INF/jsp/promotion/{1}.jsp" />
+    </definition>
+    
+    <definition name="search/*" extends="layout1">
+        <put-attribute name="content" value="/WEB-INF/jsp/search/{1}.jsp" />
     </definition>
 
     
