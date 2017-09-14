@@ -109,6 +109,17 @@ ul,li,ol{list-style:none;}
         				font-weight: 800;
         				color: white;
         				}
+        #quickmenu ul li .searchBtn { 
+        		 text-align :center;
+				 font-size : 16px;
+				 margin-left : 20px;
+				 width: 270px; 
+				 height: 50px;
+				 background-color: #6b8eb4;
+				 color : #fff;
+				 border : 0px;
+				 font-weight: bolder;
+				 margin-bottom: 20px; }
       
    .find{
    		
@@ -129,15 +140,26 @@ ul,li,ol{list-style:none;}
     color: #fff;
     font-size: 14px;
     height: 400px; }
-    .find-content-inside{
+    .find-content-inside1{
     		margin-left: 20px; 
     		background-color: black; 
-    		width:80%; 
+    		width: 270px; 
     		height: 30px; 
     		color: #fff; 
     		margin-bottom: 10px;
     		margin-top: 10px;
     		border : 0} 
+    .find-content-inside2{
+    		margin-left: 20px; 
+    		background-color: black; 
+    		width: 270px; 
+    		height: 30px; 
+    		color: #fff; 
+    		margin-bottom: 25px;
+    		margin-top: 10px;
+    		border : 0} 
+    		
+    		
 	.finder{cursor: pointer; text-align: center; line-height: 25px;}
 	.finder:hover{color: pink;}
         
@@ -170,7 +192,7 @@ ul,li,ol{list-style:none;}
     		margin-top: 10px;
     		border : 0;} 
     .airportfind-content-inside2{
-    		margin-left: 10px;
+    		margin-left: 15px;
     		text-align:center; 
     		background-color: black; 
     		width:40%; 
@@ -191,7 +213,7 @@ ul,li,ol{list-style:none;}
     		border : 0;}
     	
     .airportfind-content-inside-people2{
-			margin-left: 9px; 
+			margin-left: 13px; 
     		background-color: black; 
     		width: 25%; 
     		height: 30px; 
@@ -231,7 +253,7 @@ ul,li,ol{list-style:none;}
 #quickCloseBtn{cursor: pointer;}
 
 #content{width: 1100px; height: auto; margin: 0 auto;}
-#theme_block{width: 1100px; height:350px; }
+#theme_block{width: 1100px; height:350px; border: 1px solid red;}
 #theme_block h2{width:auto; height:35px; float: left; border-bottom:thick double #6b8eb4 }
 #tab_type01 ul{padding-top: 5px; float: left; float:right;}
 #tab_type01 ul li {

@@ -12,14 +12,18 @@
                <p>급이다른 여행을 탐색해 보세요.</p>
                <br>
                <p>상품유형</p>
-               <select class="find-content-inside">
+               <select class="find-content-inside1">
                <option>유형을 선택하세요.</option>
                </select>
                <p>여행지역/호텔명</p>
-               <input class="find-content-inside" type="text" id="" name="" placeholder="여행지역/호텔명을 입력하세요" />
+               <input class="find-content-inside1" type="text" id="" name="" placeholder="여행지역/호텔명을 입력하세요" />
                
                <p>출발일월</p>
-               <p>달력넣기</p>
+               
+               <input class="find-content-inside2" type="text" id="" name="" placeholder="====달력 넣어주세요.====" />
+               
+               <input type="button" class="searchBtn" value="검색하기" />
+               
                </div>
                </li>
                
@@ -91,6 +95,8 @@
                <option  value="9">9명</option>
                </select>
                
+               <input type="button" class="searchBtn" value="검색하기" />
+               
                </div>
                </div>
    
@@ -113,9 +119,11 @@
     </div>
 
 <div id="content">
+	<!-- 컨텐츠 별 크기 -->
 	<div id="theme_block">
+	
 	<h2 class ="tit">
-	<img alt="출발확정" src="">
+	출발확정
 	</h2> 
 	<div id="tab_type01">
 		
@@ -131,5 +139,10 @@
 					<li ><a href="#" class="decoNone"><i class="fa fa-plus" aria-hidden="true"></i> 더보기</a></li>
 		</ul>
 	</div>
+	
+	<div>
+	
+	</div>
+	
  </div>
 </div>
