@@ -68,7 +68,7 @@ ul,li,ol{list-style:none;}
             display: inline-block;
             text-align: center; 
             line-height: 40px;
-            font-family: 'Swagger TTF';
+            /* font-family: 'Swagger TTF'; */
             font-size: 16px;
             font-weight: 800;
             color: #000;
@@ -84,8 +84,8 @@ ul,li,ol{list-style:none;}
         	min-height : 760px;
         	background-image: url('/images/tp-main/mainbg1.jpg');
         	background-size: 100% 100%;        	
-	    	-webkit-animation-name: banner; Safari 4.0 - 8.0
-	  	 	-webkit-animation-duration: 10s; Safari 4.0 - 8.0
+	    	-webkit-animation-name: banner; Safari 4.0 - 8.0;
+	  	 	-webkit-animation-duration: 10s; Safari 4.0 - 8.0;
 	  		animation-name: banner;
 	 		animation-duration: 7s; animation-iteration-count: infinite;}
 	 		
@@ -230,10 +230,23 @@ ul,li,ol{list-style:none;}
         
 #quickCloseBtn{cursor: pointer;}
 
-#content{width: 1100px; height: auto; margin: 0 auto;
-        border: 1px solid red;}
-        
-#start_decide_area{width: 100%; height : 350px; border:0px solid red;}
-.tit{width:100%; height: 40px;border:0px solid red;}
+#content{width: 1100px; height: auto; margin: 0 auto;}
+#theme_block{width: 1100px; height:350px; }
+#theme_block h2{width:auto; height:35px; float: left; border-bottom:thick double #6b8eb4 }
+#tab_type01 ul{padding-top: 5px; float: left; float:right;}
+#tab_type01 ul li {
+				float:left;
+				display:inline;
+				border-left:1px solid #999;
+				font: bold 16px Dotum;
+				padding:0 10px;
+}
+.decoNone{ 
+		   display:inline;
+		   text-decoration: none;
+		   color: gray;
+		   display:block;
+		    }
+
 
 #footer{width: 100%; height: 400px; margin: 0 auto; border: 3px solid gray; background-color: dimgrey}
