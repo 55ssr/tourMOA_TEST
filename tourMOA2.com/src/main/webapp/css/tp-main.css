@@ -241,6 +241,27 @@ ul,li,ol{list-style:none;}
 				font: bold 16px Dotum;
 				padding:0 10px;
 }
+#tab_type01 ul li a:active{ background:#ffb902; color:#fff;}
+
+#tab_type02 {width:1100px; height:50px; margin:5 auto;}
+#tab_type02 ul{width:100%; height:100%; padding-top: 5px; float: left; float:right;}
+#tab_type02 ul li {
+				border-left:0px;
+				border-right:0px;
+				text-align:center;
+				line-height:18px;
+				width:10%;
+				height:46px;
+				float:left;
+				border-top:1px solid #999;
+				border-bottom:1px solid #999;
+				font: bold 13px Dotum;
+				padding:10px 10px;
+}
+
+#tab_type02 ul li:active{ background:#ffb902; color:#fff;}
+
+
 .decoNone{ 
 		   display:inline;
 		   text-decoration: none;
@@ -250,3 +271,19 @@ ul,li,ol{list-style:none;}
 
 
 #footer{width: 100%; height: 400px; margin: 0 auto; border: 3px solid gray; background-color: dimgrey}
+
+
+
+
+
+<!-- -->
+
+	.slide_area { position:relative; display:inline-block; max-width:800px; margin: 0 auto;letter-spacing:-0.06em}
+	.slide_area ul li {max-width:235px;margin:0 15px;}
+	
+	.slide_area1 { float:right;position:relative; display:inline-block; max-width:300px; margin: 0 auto ; letter-spacing:-0.06em }
+	.slide_area1 ul li {max-width:235px;margin:0 25px;}
+	
+	.btn_move { position:relative; right:110px; bottom:50px; font-size:0;  }
+	.btn_move a { display:inline-block; width:20px; height:20px;  background:#ffb902; font-family:verdana; font-size:11px;  color:#999 }
+
