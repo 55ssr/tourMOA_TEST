@@ -38,9 +38,9 @@
 
  
 
-    <definition name="*/*" extends="layout1">
+    <definition name="main/*" extends="layout1">
 
-        <put-attribute name="content" value="/WEB-INF/jsp/{1}/{2}.jsp" />
+        <put-attribute name="content" value="/WEB-INF/jsp/main/{1}.jsp" />
 
     </definition>
 
