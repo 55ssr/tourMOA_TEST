@@ -267,6 +267,7 @@ ul,li,ol{list-style:none;}
 				font: bold 16px Dotum;
 				padding:0 10px;
 }
+#tab_type01 ul li a:active{ background:#ffb902; color:#fff;}
 
 .decoNone{ 
 		   display:inline;
@@ -285,3 +286,5 @@ ul,li,ol{list-style:none;}
 #theme_block2 img:last-child{margin-right: 0px;}
 
 #footer{width: 100%; height: 400px; margin: 0 auto; border: 3px solid gray; background-color: dimgrey}
+
+

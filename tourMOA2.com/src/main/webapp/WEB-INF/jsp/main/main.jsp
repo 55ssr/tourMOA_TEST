@@ -145,10 +145,10 @@
 	
 	<div id="departureConfirmed">  
 	
-	<img alt="TEST" src="/images/RYUTEST/1-2.PNG">
-	<img alt="TEST" src="/images/RYUTEST/1-3.PNG">
-	<img alt="TEST" src="/images/RYUTEST/2-1.PNG">
-	<img alt="TEST" src="/images/RYUTEST/3-1.PNG">
+	<img alt="TEST" src="/images/product/1-2.PNG">
+	<img alt="TEST" src="/images/product/1-3.PNG">
+	<img alt="TEST" src="/images/product/2-1.PNG">
+	<img alt="TEST" src="/images/product/3-1.PNG">
 	
 	</div>
 	
@@ -158,12 +158,12 @@
  <div id="theme_block2">
  <h2>모아TV</h2>
  <br><br>
- <img alt="TEST" src="/images/RYUTEST/1-2.PNG">
+ <img alt="TEST" src="/images/product/1-2.PNG">
  </div>
  <div id="theme_block2">
  <h2>리미티드</h2>
  <br><br>
- <img alt="TEST" src="/images/RYUTEST/1-2.PNG">
+ <img alt="TEST" src="/images/product/1-2.PNG">
  </div>
 </div>
 </div>
