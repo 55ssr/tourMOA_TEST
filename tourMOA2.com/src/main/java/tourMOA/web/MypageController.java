@@ -12,7 +12,7 @@ public class MypageController {
 		return "mypage/main";
 	}
 	
-	/*마이페이지 회원가입*/
+	/*마이페이지 회원가입 1단계*/
 	@RequestMapping("mypage/join.do")
 	public String join() throws Exception{		
 		return "mypage/join";
@@ -29,5 +29,16 @@ public class MypageController {
 	public String findId() throws Exception{		
 		return "mypage/findId";
 	}
-
+	
+	/*마이페이지 회원가입 2단계*/
+	@RequestMapping("mypage/joinStep02.do")
+	public String joinStep02() throws Exception{		
+		return "mypage/joinStep02";
+	}
+	
+	/*마이페이지 세션체크부문*/
+	@RequestMapping("mypage/sessionCheckJSON.do")
+	public String sessionCheckJSON() throws Exception{		
+		return "mypage/joinStep02";
+	}
 }
