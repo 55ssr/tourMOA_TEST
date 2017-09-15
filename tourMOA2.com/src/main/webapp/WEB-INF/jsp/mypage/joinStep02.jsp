@@ -69,7 +69,7 @@
 		<div class="join_step">
 			<span class="h1">본인인증</span>
             <span class="h2"><br />안전한 회원가입을 위해 휴대폰 인증 또는 아이핀(I-PIN) 인증을 진행해 주세요.</span>
-            <span class="h2Desc">㈜투어모아은 “정보통신망 이용촉진 및 정보보호 등에 관한 법률” 제23조의2 주민등록번호의 사용 제한에 의거 고객님의 주민등록번호를 수집 및 이용하지 않습니다.<br />따라서, 대체 인증수단으로 휴대폰 본인확인 서비스(한국모바일인증)와 아이핀 인증 서비스(서울신용평가정보)를 제공하며,<br />본인인증 시 이 업체들에 대한 개인정보의 취급위탁에 동의한 것으로 간주됩니다.</span>
+            <span class="h2Desc">㈜노랑풍선은 “정보통신망 이용촉진 및 정보보호 등에 관한 법률” 제23조의2 주민등록번호의 사용 제한에 의거 고객님의 주민등록번호를 수집 및 이용하지 않습니다.<br />따라서, 대체 인증수단으로 휴대폰 본인확인 서비스(한국모바일인증)와 아이핀 인증 서비스(서울신용평가정보)를 제공하며,<br />본인인증 시 이 업체들에 대한 개인정보의 취급위탁에 동의한 것으로 간주됩니다.</span>
             <div class="cert">
                 <div class="cert_cell">
                     <div class="certDesc">
@@ -81,6 +81,7 @@
                 <div class="cert_ipin">
                     <div class="certDesc">
                         <span class="head">아이핀(I-PIN)으로 인증</span>
+                        <span class="desc">개인 공인인증서를 통해 아이핀(I-PIN) 발급을 원하시면 공공 I-PIN 센터에서 발급하실 수 있습니다.&nbsp;&nbsp;<a href="http://www.gpin.go.kr/center/main/index.gpin?" target="_blank">공공I-PIN 센터 바로가기</a>&nbsp;&nbsp;&gt;<br />아이핀 인증 이용관련 문의: 서울신용평가정보 1577-1006</span>
                     </div>
                     <button type="button" id="btnCertIpin" name="btnCertIpin" >아이핀(I-PIN)으로 인증하기</button>
                 </div>
