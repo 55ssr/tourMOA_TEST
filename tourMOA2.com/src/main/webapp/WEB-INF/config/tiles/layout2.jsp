@@ -13,6 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta charset="UTF-8">
 	
+	<link href="/css/admin/admin.css" rel="stylesheet">
 	<!-- Bootstrap core CSS -->
     <link href="/bootstrap4/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -20,7 +21,7 @@
     <link href="/bootstrap4/docs/4.0/examples/dashboard/dashboard.css" rel="stylesheet">
     
 </head>
-<body>
+<body class="admin_custom">
 	<tiles:insertAttribute name="topMenu" />
 	<tiles:insertAttribute name="aSide" />
 	<tiles:insertAttribute name="content" />

@@ -1,0 +1,19 @@
+@CHARSET "UTF-8";
+.admin_custom input.form-control {
+    width: 100%;
+    margin: .5rem!important;
+    margin-top: 0!important;
+}
+.admin_custom form.form-inline {	
+	margin-bottom: 1rem;
+}
+.admin_custom div.card {
+	margin: 0 .5rem;
+}
+.admin_custom hr {
+	border-top: 1px solid rgba(0,0,0,.05);
+	width: 94%;
+}
+.admin_custom div.card-block dl {
+	margin: 1rem .5rem;
+}
