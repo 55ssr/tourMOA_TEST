@@ -2,7 +2,7 @@
 @import url('common.css');
 
 #wrap #content { position: relative;  display: block !important; width: 100% !important; height: 100%; margin: 0 auto ; }
-#wrap #content.contentSub { position: relative;  display: block !important; width: 1100px !important; height: 100%; margin: 0 auto ; }
+#wrap #content.contentSub { position: relative;  display: block !important; width: 1100px !important; height:100%; margin: 0 auto ; border:1px; }
 #wrap #content input[type="radio"] { cursor: pointer; }
 #wrap #content input[type="checkbox"] { cursor: pointer; }
 
@@ -213,15 +213,15 @@ nav#lnb_mp #one li ul.sub li.on { color: #ffba00; }
 #wrap #content .sec_wrap .sec_dtl table tr td.subject { text-align: left; padding-left: 48px;}
 #wrap #content .sec_wrap .sec_dtl table tr td a { color: #333333; }
 
-#wrap #content .sec_01 { position: relative; height: 100px; }
-.sec_01 .para_01 { float: left; position: relative; width:382px; height: 64px; padding: 22px 0 0 34px; border: 7px solid #00b6ad; }
-.sec_01 .para_01 p { line-height: 42px; font-size: 16px; color: #333333; }
+#wrap #content .sec_01 { position: relative; height: 20px; }
+.sec_01 .para_01 { float: left; position: relative; width:382px; height: 96px; padding: 22px 0 0 34px; border: 7px solid #00b6ad; }
+.sec_01 .para_01 p { line-height: 29px; font-size: 16px; color: #333333; }
 .sec_01 .para_01 span.y_high { font-size: 19px; font-weight: 600; color: #fec300; }
-.sec_01 .para_01 .btnArea { position: absolute; top: 17px; right: 27px; }
+.sec_01 .para_01 .btnArea { position: absolute; top: 15px; right: 10px; }
 .sec_01 .para_01 .btnArea .btn { display: block; width: 91px; height: 24px; line-height: 24px; text-align: center; background: #6a6a6a; font-size: 12px; font-weight: normal; color: #ffffff; margin-bottom: 5px; }
 .sec_01 .para_01 .btnArea .btn a { color: #ffffff; }
 .sec_01 .para_02 { float: left; height: 100px; margin-left: 10px; }
-.sec_01 .para_02 ul > li { float: left; width: 95px; height: 86px;  margin-right: 1px; border: 7px solid #00b6ad; background: #00b6ad; color: #ffffff; }
+.sec_01 .para_02 ul > li { float: left; width: 117px; height: 96px;  margin-right: 1px; border:7px solid #00b6ad; background: #00b6ad; color: #ffffff; }
 .sec_01 .para_02 .last { margin: 0; }
 .sec_01 .para_02 .sel { background: #ffffff; color:#333333; }
 .sec_01 .para_02 ul > li > p { display: table-cell; width: 95px; height: 86px; vertical-align:middle; text-align: center; font-size: 16px; font-weight: 600; line-height:1.4 }
