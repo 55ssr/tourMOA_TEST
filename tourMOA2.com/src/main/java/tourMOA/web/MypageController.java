@@ -59,4 +59,16 @@ public class MypageController {
 	public String selectZipCodeLayer() throws Exception{		
 		return "mypage/joinStep03";
 	}
+	
+	/*마이페이지 회원가입 4단계*/
+	@RequestMapping("mypage/joinStep04.do")
+	public String joinStep04() throws Exception{		
+		return "mypage/joinStep04";
+	}
+	
+	/*마이페이지 회원가입 5단계*/
+	@RequestMapping("mypage/joinStep05.do")
+	public String joinStep05() throws Exception{		
+		return "mypage/joinStep05";
+	}
 }
