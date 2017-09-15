@@ -100,10 +100,9 @@ $(document).ready(function(){
 	});	
 });
 </script>
-<!-- js파일 모음 e -->
-
 <div id="content">
-	<div id="wrap" style="margin-top:100px;">
+<!-- js파일 모음 e -->
+	<div id="wrap">
 		<!--[[ wrap Start ]]-->	
 	<form name="mbrFrm" id="mbrFrm" method="post" action="/mypage/joinStep02.do">
 		<input type="hidden" name="agreeSav" 	value="">
