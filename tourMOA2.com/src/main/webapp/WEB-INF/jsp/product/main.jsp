@@ -37,7 +37,6 @@
 	</div>
 </div>
 <div id="theme_block">
-<br><br><br>
 <h3>금주 지역별 추천상품</h3><br>
 	<div id="tab_type02">
 		<ul>
@@ -55,7 +54,6 @@
 	</div>
 	</div>
 	<div id="theme_block">
-<br><br><br>
 <h3>추천 테마여행</h3><br>
 	<div id="tab_type02">
 		<ul>

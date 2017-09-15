@@ -334,7 +334,7 @@ ul,li,ol{list-style:none;}
 	.slide_area { position:relative; display:inline-block; max-width:800px; margin: 0 auto;letter-spacing:-0.06em}
 	.slide_area ul li {max-width:235px;margin:0 15px;}
 	
-	.slide_area1 { float:right;position:relative; display:inline-block; max-width:300px; margin: 0 auto ; letter-spacing:-0.06em }
+	.slide_area1 { float:right;position:relative; display:inline-block; max-width:290px; letter-spacing:-0.06em }
 	.slide_area1 ul li {max-width:235px;margin:0 25px;}
 	
 	.btn_move { position:relative; right:110px; bottom:50px; font-size:0;  }
