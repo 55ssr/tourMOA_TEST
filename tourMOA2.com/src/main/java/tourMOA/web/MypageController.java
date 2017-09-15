@@ -35,4 +35,10 @@ public class MypageController {
 	public String joinStep02() throws Exception{		
 		return "mypage/joinStep02";
 	}
+	
+	/*마이페이지 세션체크부문*/
+	@RequestMapping("mypage/sessionCheckJSON.do")
+	public String sessionCheckJSON() throws Exception{		
+		return "mypage/joinStep02";
+	}
 }
