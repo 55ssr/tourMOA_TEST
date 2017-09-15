@@ -2,7 +2,7 @@
 <div id="content" style="height:200px;">
 	<ul>
 		<li>
-			search/searchKeyword.do 페이지
+			search/searchPrice.do 페이지
 		</li>
 	</ul>
 </div>

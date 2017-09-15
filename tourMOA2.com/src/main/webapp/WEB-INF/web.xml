@@ -2,9 +2,16 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	id="WebApp_ID" version="2.5">
-	<display-name>egov.sample</display-name>
-    
+	id="WebApp_ID" version="2.5">    
+	<!-- 타일틀 설정 s -->
+	<display-name>tourMOA Project</display-name>
+	<description>tourMOA Project</description>
+	<!-- 타일틀 설정 e -->
+	<!-- 세션설정 s -->
+	<session-config>
+		<session-timeout>0</session-timeout>
+	</session-config>
+	<!-- 세션설정 e -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -16,8 +23,7 @@
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>*.do</url-pattern>
-	</filter-mapping>
-    
+	</filter-mapping>    
 	<filter>
 		<filter-name>HTMLTagFilter</filter-name>
 		<filter-class>egovframework.rte.ptl.mvc.filter.HTMLTagFilter</filter-class>
@@ -50,11 +56,11 @@
 		<servlet-name>action</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
-    
+    <!-- 웹사이트 접속시 보여질 시작페이지 셋팅 s -->
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
-    
+    <!-- 웹사이트 접속시 보여질 시작페이지 셋팅 e -->
 	<login-config>
 		<auth-method>BASIC</auth-method>
 	</login-config>
@@ -70,6 +76,5 @@
 	<error-page>
 		<error-code>500</error-code>
 		<location>/common/error.jsp</location>
-	</error-page>
-    
+	</error-page>    
 </web-app>

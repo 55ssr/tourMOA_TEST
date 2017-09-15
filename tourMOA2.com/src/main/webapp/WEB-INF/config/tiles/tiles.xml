@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <!DOCTYPE tiles-definitions PUBLIC
-
-       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
-
-       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
-
-
-
-
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       
 <tiles-definitions>
-
-
-
 
     <!-- Default Main Template -->
 
@@ -47,17 +38,39 @@
 
  
 
-    <definition name="*/*" extends="layout1">
-
-        <put-attribute name="content" value="/WEB-INF/jsp/{1}/{2}.jsp" />
-
+    <definition name="main/*" extends="layout1">
+        <put-attribute name="content" value="/WEB-INF/jsp/main/{1}.jsp" />
+    </definition>
+    
+    <definition name="common/*" extends="layout1">
+        <put-attribute name="content" value="/WEB-INF/jsp/common/{1}.jsp" />
+    </definition>
+    
+    <definition name="limited/*" extends="layout1">
+        <put-attribute name="content" value="/WEB-INF/jsp/limited/{1}.jsp" />
+    </definition>
+    
+    <definition name="mypage/*" extends="layout1">
+        <put-attribute name="content" value="/WEB-INF/jsp/mypage/{1}.jsp" />
+    </definition>
+    
+    <definition name="product/*" extends="layout1">
+        <put-attribute name="content" value="/WEB-INF/jsp/product/{1}.jsp" />
+    </definition>
+    
+    <definition name="promotion/*" extends="layout1">
+        <put-attribute name="content" value="/WEB-INF/jsp/promotion/{1}.jsp" />
+    </definition>
+    
+    <definition name="search/*" extends="layout1">
+        <put-attribute name="content" value="/WEB-INF/jsp/search/{1}.jsp" />
     </definition>
 
     
 
-	<definition name="*/*" extends="layout2">
+	<definition name="admin/*" extends="layout2">
 
-        <put-attribute name="content" value="/WEB-INF/jsp/admin/{2}.jsp" />
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/{1}.jsp" />
 
     </definition>
 
