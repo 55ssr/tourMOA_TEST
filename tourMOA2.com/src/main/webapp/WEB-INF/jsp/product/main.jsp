@@ -6,14 +6,13 @@
 </div>
 <div id="content">
 <div id="theme_block">
-
-		<div class="btn_move">
-			<span class="btn_prev"></span>
-			<span class="btn_next"></span>
-		</div>
 	
 <div class="slide_area">
 <h3> 출발확정</h3>
+	<div class="btn_move">
+		<span class="btn_prev"></span>
+		<span class="btn_next"></span>
+	</div>
 	<ul class="slide_v4">
 		<li><img src="/images/product/1-1.PNG" alt="slide"></li>
 		<li><img src="/images/product/1-2.PNG" alt="slide"></li>
@@ -25,6 +24,7 @@
 		<li><img src="/images/product/3-2.PNG" alt="slide"></li>
 		<li><img src="/images/product/3-3.PNG" alt="slide"></li>
 	</ul>
+		
 </div>
 
 <div class="slide_area1">
@@ -93,6 +93,56 @@
 				</li>
 			</ul>
 		</div>
+		
+		<div class="cont02">
+			<ul>
+				<li><a href="#">
+					<span class="pic">
+					<img src="/images/product/pic1.png" alt="">
+				</span>
+				<div class="info">
+					<span class="tit">대만</span>
+					<span class="detail">[Best.2개국] 에어마카오로 떠나는 대만+마카오 5일/6일</span>
+					<span class="price">599,000
+					<p>원 ~</p>
+					</span>
+				</div>
+				</a>
+			</li>
+			<li><a href="#">
+					<span class="pic">
+					<img src="/images/product/pic2.png" alt="">
+				</span>
+				<div class="info">
+					<span class="tit">홍콩/마카오</span>
+					<span class="detail">[디즈니랜드+자유이용권] 소호/픽트램체험 홍콩+마카오 2개국 4일</span>
+					<span class="price">679,000
+					<p>원 ~</p>
+					</span>
+				</div>
+				</a>
+			</li>
+			<li><a href="#">
+					<span class="pic">
+					<img src="/images/product/pic3.png" alt="">
+				</span>
+				<div class="info">
+					<span class="tit">홍콩/마카오/심천</span>
+					<span class="detail"> [저녁出/새벽 着] 휴가를 아끼는 홍콩+마카오여행 4일/5일</span>
+					<span class="price">499,000
+					<p>원 ~</p>
+					</span>
+				</div>
+				</a>
+			</li>
+			<li class="last">
+			<a href="#">
+				<img src="/images/product/pic.PNG" alt="">
+			</a>
+			
+			</li>
+			</ul>
+		</div>
 	</div>
 	
 	
@@ -110,6 +160,85 @@
 					<li ><a href="#" class="decoNone">베이비문</a></li>
 					<li ><a href="#" class="decoNone">주말여행</a></li>
 					<li ><a href="#" class="decoNone">자유여행</a></li>
+		</ul>
+	</div>
+	<div class="cont03">
+		<ul>
+			<li>
+				<div class="small">
+					<a href="#">
+					<img src="/images/product/s1.png" alt="">
+					<div class="notiWrap smallWrap">
+	         			<span class="noti" style="">
+	                         <span class="tit">서유럽</span>
+	                         <span class="subtit">8박10일</span>
+	                         <span class="subPay">3,190,000원 ~</span>
+	                     </span>
+	                 </div>
+					</a>
+				</div>
+				<div class="small">
+					<a href="#">
+					<img src="/images/product/s2.png" alt="">
+					<div class="notiWrap smallWrap">
+	         			<span class="noti" style="">
+	                         <span class="tit">베트남</span>
+	                         <span class="subtit">3박4일</span>
+	                         <span class="subPay">1,099,000원 ~</span>
+	                     </span>
+	                 </div>
+					</a>
+				</div>
+				 <div class="large">
+         			<a href="#">
+	               	 <img src="/images/product/s4.png" alt="">
+			               	 <div class="notiWrap largeWrap">
+	         			<span class="noti" style="">
+	                         <span class="tit">서유럽</span>
+	                         <span class="subtit">8박10일</span>
+	                         <span class="subPay">3,590,000원 ~</span>
+	                     </span>
+	                 </div>
+                 </a>
+             </div>
+				<div class="large">
+         			<a href="#">
+	               	 <img src="/images/product/s3.png" alt="">
+			               	 <div class="notiWrap largeWrap">
+	         			<span class="noti" style="">
+	                         <span class="tit">서유럽</span>
+	                         <span class="subtit">6박8일</span>
+	                         <span class="subPay">2,790,000원 ~</span>
+	                     </span>
+	                 </div>
+                 </a>
+             	</div>
+				<div class="small">
+					<a href="#">
+					<img src="/images/product/s2.png" alt="">
+					<div class="notiWrap smallWrap">
+	         			<span class="noti" style="">
+	                         <span class="tit">사이판</span>
+	                         <span class="subtit">4박5일</span>
+	                         <span class="subPay">699,000원 ~</span>
+	                     </span>
+	                 </div>
+					</a>
+				</div>
+				<div class="small">
+					<a href="#">
+					<img src="/images/product/s2.png" alt="">
+					<div class="notiWrap smallWrap">
+	         			<span class="noti" style="">
+	                         <span class="tit">훗카이도</span>
+	                         <span class="subtit">3박4일</span>
+	                         <span class="subPay">729,000원 ~</span>
+	                     </span>
+	                 </div>
+					</a>
+				</div>
+				
+			</li>
 		</ul>
 	</div>
 </div>

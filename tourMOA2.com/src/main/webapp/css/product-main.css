@@ -4,16 +4,8 @@
 #theme_block{width: 1100px; height:auto; display: inline-block; margin-top: 20px; margin-bottom: 30px;}
 #theme_block h2{width:auto; height:auto; float: left; }
 
-#tab_type01 ul{padding-top: 5px; float:right; } 
 
-#tab_type01 ul li {
-				float:left;
-				display:inline;
-				border-left:1px solid #999;
-				font: bold 16px Dotum;
-				padding:0 10px;
-}
-#tab_type01 ul li a:active{ background:#ffb902; color:#fff;}
+#tab_type02 ul li a:active{ background:#ffb902; color:#fff;}
 
 #theme_block .cont2 {
 	    position: relative;
@@ -103,8 +95,8 @@
 	display:block;
     position: relative !important;
     color: #f2312c !important;
-    font: bold 18px Dotum;
-    margin: 15px 0 0 0;
+    font: bold 17px Dotum;
+    margin: 10px 0 0 0;
     letter-spacing: -1px !important;
 }
 .price p {
@@ -119,6 +111,163 @@
 }
 #theme_block .cont2 ul .left.left02 {
    	 background: url(/images/product/02_rightbg.png) no-repeat;
+}
+
+#theme_block .cont02 {
+    position: relative;
+    width: 1100px;
+    margin: 25px auto 0;
+    padding: 0;
+}
+
+#theme_block .cont02 ul {
+    display: block;
+    width: 100%;
+    height: 331px;
+    overflow: hidden;
+    margin-left: 5px;
+}
+#theme_block .cont02 ul li {
+    position: relative;
+    float: left;
+    width: 280px;
+    height: 100%;
+    border: 0;
+    line-height: 0;
+}
+
+#theme_block .cont02 ul li span.pic {
+    display: block;
+    width: 260px;
+    height: 186px;
+    overflow: hidden;
+}
+#theme_block .cont02 ul li div.info {
+    display: inline-block;
+    width: 260px;
+    height: 105px;
+    padding: 11px;
+    border: 1px solid #e0e0e0;
+    border-top: none;
+    background: #fff;
+}
+#theme_block .cont02 ul li div.info span {
+    display: block;
+    width: 100%;
+    line-height: 1.4;
+}
+#theme_block .cont02 ul li div.info span.tit {
+    overflow: hidden;
+   	margin: 0 0 5px 0;
+    font: bold 14px Dotum;
+    color: #303030;
+    font-family: 'NanumBold';
+}
+#theme_block .cont02 ul li div.info span.detail {
+    height: 38px;
+    overflow: hidden;
+    margin-bottom: 2px;
+    font-size: 12px;
+    color: #777777;
+}
+
+#theme_block .cont02 ul li.last {
+    position: relative;
+    margin-right: 0;
+    width: 260px;
+    height: 325px;
+    overflow: hidden;
+}
+#theme_block .cont02 ul li.last a img {
+    width: 90%;
+    height: auto;
+}
+.cont03 {
+    position: relative;
+    width: 1100px;
+    margin: 30px auto;
+}
+#theme_block .cont03 {
+    position: relative;
+    width: 1100px;
+    height: 420px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+#theme_block .cont03 ul {
+    width: 100%;
+    height: 100%;
+}
+
+#theme_block .cont03 ul li {
+	margin:10px auto;
+	width:100%;
+    position: relative;
+    height: 100%;
+}
+#theme_block .cont03 ul li div.small {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 210px;
+    display: -webkit-inline-box;
+    
+}
+#theme_block .cont03 ul li div.large {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 550px;
+    height: 210px;
+    display: -webkit-inline-box;
+  
+}
+#theme_block .cont03 ul li div.large img {
+    width: 115%;
+    height: auto;
+}
+#theme_block .cont03 ul li div.small img {
+    width: 110%;
+    height: 214px;
+}
+#theme_block .cont03 ul li div div.notiWrap {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 125px;
+    height: auto;
+    text-align: center;
+    background: url(/images/product/sub1.png) repeat;
+}
+#theme_block .cont03 ul li div.small div.info {
+    position: absolute;
+    top: 200px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: url(/images/detail/caption_bg.png) repeat;
+    z-index: 1;
+    display: none;
+}
+
+#theme_block .cont03 ul li div div.notiWrap span.noti span {
+    display: block;
+    font-size: 14px;
+    color: #333333;
+    font-family: 'NanumBold';
+    line-height: 1.2;
+}
+#theme_block .cont03 ul li div div.notiWrap span.noti {
+    display: inline-block;
+    padding: 12px 5px;
+    z-index: 1;
+}
+#theme_block .cont03 ul li div div.notiWrap span.noti span.subPay {
+    margin: 1px 0 0 0;
+    font-size: 12px;
+    color: #f2312c;
 }
 
 #tab_type02 {width:1100px; height:50px; margin:5 auto;}
@@ -174,5 +323,5 @@
 .slide_area1 { float:right;position:relative; display:inline-block; max-width:290px; letter-spacing:-0.06em }
 .slide_area1 ul li {max-width:235px;margin:0 25px;}
 	
-.btn_move { position:relative; right:110px; bottom:50px; font-size:0;  }
-.btn_move a { display:inline-block; width:20px; height:20px;  background:#ffb902; font-family:verdana; font-size:11px;  color:#999 }
+.btn_move { position:relative; left:720px; bottom:10px; font-size:0; }
+.btn_move a { float:left; width:20px; height:20px;  background:#ffb902; font-family:verdana; font-size:11px;  color:#999 }
