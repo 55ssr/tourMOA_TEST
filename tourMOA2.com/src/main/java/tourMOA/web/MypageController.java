@@ -24,10 +24,16 @@ public class MypageController {
 		return "mypage/login";
 	}
 	
-	/*마이페이지 아이디/비밀번호 찾기*/
+	/*마이페이지 아이디 찾기*/
 	@RequestMapping("mypage/findId.do")
 	public String findId() throws Exception{		
 		return "mypage/findId";
+	}
+	
+	/*마이페이지 비밀번호 찾기*/
+	@RequestMapping("mypage/findPw.do")
+	public String findPw() throws Exception{		
+		return "mypage/findPw";
 	}
 	
 	/*마이페이지 회원가입 2단계*/
