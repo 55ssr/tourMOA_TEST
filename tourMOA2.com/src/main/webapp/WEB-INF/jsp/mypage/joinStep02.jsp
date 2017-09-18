@@ -38,7 +38,7 @@
 <script src="//code.jquery.com/jquery-1.11.0.js"></script>
 
 <div id="content">
-	<div id="wrap" style="margin-top:100px;">
+	<div id="wrap">
 	<section id="content" class="contentSub">
 		<!--[[ content Start ]]-->
 		<div class="tit join_tit" title="회원가입">
@@ -74,7 +74,8 @@
                 <div class="cert_cell">
                     <div class="certDesc">
                         <span class="head">휴대폰으로 인증</span>
-                        <span class="desc">본인 명의의 휴대폰으로만 인증이 가능하며, 휴대폰이 본인 명의가 아닐 시에는 아이핀을 이용해주세요.<br />휴대폰 인증 이용관련 문의: 한국모바일인증 02-2033-8500</span>
+                        <span class="desc">본인 명의의 휴대폰으로만 인증이 가능하며, 휴대폰이 본인 명의가 아닐 시에는 아이핀을 이용해주세요.<br />휴대폰 인증 이용관련 문의: 한국모바일인증 02-2033-8500 <br/> 
+                        	<font style="color:#ff5500; font-size:12px; letter-spacing:-1px;">팝업창을 띄워서 회원의 성명과 전화번호만 받고, 정규표현식을 이용하여 성명 전화번호 매칭만 시키고 값을 다음페이지에 넘겨주는 것 까지만 하자~!</font></span>
                     </div>
                     <button type="button" id="btnCertCell" name="btnCertCell" >휴대폰으로 인증하기</button>
                 </div>

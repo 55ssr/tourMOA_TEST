@@ -54,7 +54,7 @@
 <script src="/js/naverLogin_implicit-1.0.2.js"></script>
 <script type="text/javascript" src="/js/jquery.easing.1.3.min.js"></script>
 <script type="text/javascript" src="/js/jquery.sliderkit.1.9.2.pack.js"></script>
-
+<!-- 메인베너영역 -->
 <script type="text/javascript">
 	$(document).ready(function(){
 		popRecommendStr(); // 추천검색어 호출
@@ -88,18 +88,13 @@
 	function fnMenuSelect() {
 	    //여행내역
 	    
+	    //관심내역    
 	    
-	    //관심내역
+	    //참여내역	    
 	    
+	    //추가결제수단	    
 	    
-	    //참여내역
-	    
-	    
-	    //추가결제수단
-	    
-	    
-	    //개인정보
-	    
+	    //개인정보	    
 	}
 	
 	$( document ).ready(function() {
@@ -167,17 +162,18 @@
                  </div>
              </div>
              <div class="para_02">
-                 <ul> 
-                     <li class=""><p>여행상품<br />예약내역<br /><a href="/mypage/reserveList.do">0</a>건</p></li>                        
-                   	 <li><p>해외항공권<br />예약내역<br /><a href="#"  onclick="airMenuSubmit('http://air.ybtour.co.kr/air/b2c/AIR/AAA/AIRAAALST0100000010.k1?KSESID=air:b2c:SELK138AN:AA024::00&domintgubun=I','_self'); return false;">0</a>건</p></li>
-                     <li><p>국내항공권<br />예약내역<br /><a href="#"  onclick="airMenuSubmit('http://air.ybtour.co.kr/air/b2c/AIR/AAA/AIRAAALST0100000010.k1?KSESID=air:b2c:SELK138AN:AA024::00&domintgubun=D','_self'); return false;" >0</a>건</p></li>
-                     <li class=""><p>관심상품<br /><a href="/mypage/wishList.do">0</a>건</p></li>
-                     <li class=""><p>상담문의<br /><a href="/mypage/inquiryList.do">0</a>건</p></li>
-                     <li class="last"><p>여행이야기<br /><a href="/mypage/myPostList.do">0</a>건</p></li>                       
-                 </ul>
-             </div>
-         </div><!--[[ 메인상단 End ]]-->
-    </section>
+                <ul> 
+                    <li class=""><p>여행상품<br />예약내역<br /><a href="/mypage/reserveList.do">0</a>건</p></li>                        
+                  	<li><p>해외항공권<br />예약내역<br /><a href="#"  onclick="airMenuSubmit('http://air.ybtour.co.kr/air/b2c/AIR/AAA/AIRAAALST0100000010.k1?KSESID=air:b2c:SELK138AN:AA024::00&domintgubun=I','_self'); return false;">0</a>건</p></li>
+                    <li><p>국내항공권<br />예약내역<br /><a href="#"  onclick="airMenuSubmit('http://air.ybtour.co.kr/air/b2c/AIR/AAA/AIRAAALST0100000010.k1?KSESID=air:b2c:SELK138AN:AA024::00&domintgubun=D','_self'); return false;" >0</a>건</p></li>
+                    <li class=""><p>관심상품<br /><a href="/mypage/wishList.do">0</a>건</p></li>
+                    <li class=""><p>상담문의<br /><a href="/mypage/inquiryList.do">0</a>건</p></li>
+                    <li class="last"><p>여행이야기<br /><a href="/mypage/myPostList.do">0</a>건</p></li>                       
+                </ul>
+            </div>
+        </div><!--[[ 메인상단 End ]]-->
+   </section>
+   <!-- 팝업스크립트 -->
    <script type="text/javascript" >
 		function modalPopup(url){
 		
@@ -228,171 +224,26 @@
 				}
 		}
 	</script>
-    <section id="content" class="contentSub"><!--[[ content Start ]]-->
-		<!-- 팝업 s -->
-		<div class="post_pop" style='display:block;''>           		 
-		     <img src="https://cimgcdn.ybtour.co.kr/promotion/banner/mpg_banner.jpg" alt="여행상품 결제할때 최대 7만원 더~ 혜택 받는 방법? " usemap="#Map" />  
-		     <map name="Map" id="Map">
-				<area shape="rect" coords="26,409,379,452" href="/promotion/event/2016/1122_ev_lottecard/" title="이벤트 자세히보기"/>
-			</map>  
-		    <!-- a href="#no" class="ev_close"><img src="/images/common/layer_close.png" alt="닫기" /></a -->		     		
-		    <div class="btnarea_f">
-				<div class="checkbox">
-					<input type="checkbox" name="chkMpgPopup" id="chkMpgPopup" title="체크" onclick="todayChk(this);">
-					<label for="chkMpgPopup">오늘 하루 보지 않기</label>
-				</div>
-				<button type="button" class="btnBlack post" id='btnPopClose' title="확인">확인</button>
+    <section id="content" class="contentSub">
+    <!--[[ content Start ]]-->
+   	<div class="tit myinfo_tit" title="풍선머니"></div>
+	<div class="passBox">
+		<div class="cont_area">
+			<span>고객님의 소중한 개인정보를 보호하기 위해</span>
+			<span>비밀번호를 다시 한번 확인합니다.</span>        
+		<form name="frm" id="frm" method="post" action="/mypage/selectPwReaffirmProc.do">
+			<div class="cont_l">
+				<span class="pass_tit">아이디</span><span class="cont">아이디표시</span>
+				<span class="pass_tit"><label for="txtpass">비밀번호</label></span>
+				<span class="cont"><input type="password" id="custPw" name="custPw"></span>
 			</div>
-		</div>         
-		<!--  // 팝업 e -->           
-        <script type="text/javascript">
-			function setCookie(name, value, expiredays){
-				/* $.cookie(name, value, { expires: expiredays , path : '/' }); */
-				var todayDate = new Date(); 
-				 todayDate.setDate(todayDate.getDate() + expiredays); 
-				 document.cookie = name + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";"
-			}
-		
-			function todayChk(){
-				 setCookie('ybtourPopup_MPG', 'done', 1); 
-				 $(".post_pop").hide();
-			}
-			/* function todayChk(obj){
-				var id = obj.id; 
-			
-				if(document.getElementById(id).checked) {
-					setCookie('ybtourPopup_MPG', 'Y' , 1);
-				}else{
-					setCookie('ybtourPopup_MPG', '' , -1);
-				}
-			} */
-
-		   $(document).ready(function() {
-			   $(".ev_close, #btnPopClose").click(function() {
-				   $(".post_pop").hide(); 
-			   }); 			   
-		   });
-			var cookieData = document.cookie;
-			if(cookieData.indexOf("ybtourPopup_MPG=done")<0){
-				$(".post_pop").show();
-			}else{
-				$(".post_pop").hide();
-			}
-        </script>         
-        <div class="sec_wrap">
-        <!--[[ 최근예약내역 Start ]]-->  
-            <div class="sec_tit sec_02_tit">(총<span class="mint14">0</span>건)</div>
-            	<button class="sec_t_btn" style="right: 80px;" onclick="airMenuSubmit('http://air.ybtour.co.kr/air/b2c/AIR/AAA/AIRAAALST0100000010.k1?KSESID=air:b2c:SELK138AN:AA024::00','_self'); return false;"; type="button">항공권예약내역 확인</button>
-                <button type="button" onclick="window.location.href='/mypage/reserveList.do'" class="sec_t_btn">전체보기</button>
-                <div class="sec_dtl sec_02">
-               	<form name="frmRerv"  id="frmRerv"  method="post">
-                    <input type="hidden" name="rervFlag"  id="rervFlag"  value="" />
-                    <input type="hidden" name="nonCustYn"  id="nonCustYn"  value="N" />
-                    <input type="hidden" name="rervNo"  id="rervNo"  value="" />                    
-                    <table>
-                        <caption>나의 최근 예약 내역</caption>
-		                <colgroup>
-		                    <col style="width: 90px;">
-		                    <col style="width: 330px;">
-		                    <col style="width: 90px;">
-		                    <col style="width: 60px;">
-		                    <col style="width: 120px;">
-		                    <col style="width: 120px;">
-		                    <col style="width: 130px;">
-		                    <col style="width: 140px;">
-		                    <col style="width: 140px;"> 
-		                </colgroup>
-		                <tbody>
-			                <tr>
-				                <th scope="col">예약일자</th>
-				                <th scope="col">상품명</th>
-				                <th scope="col">출발일</th>
-				                <th scope="col">인원</th>
-				                <th scope="col">총금액</th>
-				                <th scope="col">남은금액</th>
-				                <th scope="col">진행상황</th>
-				                <th scope="col">면세점 교환번호</th>
-				                <th scope="col">선불카드 교환권</th>
-			                </tr>
-			                <tr>
-								<td colspan="9" >예약(취소)하신 여행 내역이 없습니다. 거품없는 여행 투어모아과 즐거운 여행을 함께하세요.</td>     
-							</tr>      
-				     	</tbody>
-                    </table>
-                </form>
-            </div>
-        </div>
-        <!--[[ 최근예약내역 End ]]-->
-                
-        <div class="sec_wrap">
-        	<!--[[ 관심상품 Start ]]-->
-            <div class="sec_tit sec_03_tit">(총<span class="mint14">0</span>건)</div>
-            	<button type="button" class="sec_t_btn" onclick="window.location.href='/mypage/wishList.do'">전체보기</button>
-            <div class="sec_dtl sec_03">
-                <div class="prod_wrap">
-					<ul class="noData">
-		            	<li><span>등록된 관심상품이 없습니다.</span></li>
-		            </ul>
-			    </div>
+			<div class="cont_r">
+				<button type="submit" id="btnOK">확인</button>
 			</div>
-        </div><!--[[ 관심상품 End ]]-->
-        <div class="sec_wrap ">
-        <!--[[ 나의 문의내역 Start ]]-->
-            <div class="sec_tit sec_05_tit">(총<span class="mint14">0</span>건)</div>
-                <button type="button" class="sec_t_btn" onclick="window.location.href='/mypage/inquiryList.do'">전체보기</button>
-                <div class="sec_dtl sec_05">
-                    <table>
-                        <caption>나의 문의내역</caption>
-                        <colgroup>
-                            <col style="width: 149px;">
-                            <col style="width: 613px;">
-                            <col style="width: 184px;">
-                            <col style="width: 154px;">
-                        </colgroup>
-                        <tbody>
-	                        <tr>
-	                            <th scope="col">문의구분</th>
-	                            <th scope="col">제목</th>
-	                            <th scope="col">등록일</th>
-	                            <th scope="col">답변유무</th>
-	                        </tr>                        
-	                        <tr>
-			                    <td headers="제목" colspan="4">문의하신 상담 내역이 없습니다.</td>
-			                </tr>
-                    	</tbody>
-                    </table>
-            	</div>
-        	</div><!--[[ 나의 문의내역 End ]]-->
-        	<div class="sec_wrap" style="margin-bottom:20px;">
-        		<!--[[ 나의 커뮤니티내역 Start ]]-->
-	            <div class="sec_tit sec_06_tit">(총<span class="mint14">0</span>건)</div>
-	                <button type="button" class="sec_t_btn" onclick="window.location.href='/mypage/myPostList.do'">전체보기</button>
-	                <div class="sec_dtl sec_06">
-	                    <table>
-	                        <caption>나의 커뮤니티내역</caption>
-	                        <colgroup>
-	                            <col style="width: 149px;">
-	                            <col style="width: 613px;">
-	                            <col style="width: 184px;">
-	                            <col style="width: 154px;">
-	                        </colgroup>
-	                        <tbody>
-		                        <tr>
-		                            <th scope="col">여행이야기구분</th>
-		                            <th scope="col">제목</th>
-		                            <th scope="col">등록일</th>
-		                            <th scope="col">조회수</th>
-		                        </tr>	                        
-							</tbody>
-	                    </table>
-	            	</div>
-        		</div>
-       			<!--[[ 나의 커뮤니티내역 End ]]-->
-        		<div class="sec_wrap none">
-        			이벤트참여내역 부분<!--[[ 나의 이벤트참여 내역 Start ]]-->
-        		</div>        		
-        		<!--[[ 나의 이벤트참여 내역 End ]]-->        
-   		</section><!--[[ content End ]]-->    
+		</form>
+		</div>
+	</div>
+    </section><!--[[ content End ]]-->    
     
     <script>
     $(document).ready(function(){
@@ -536,82 +387,4 @@
 		}
     </script>
 </div><!--[[ wrap End ]]-->
-
-<!-- 2014.04.02 푸터 구글 스크립트 추가 --></body>
-<!-- AceCounter Log Gathering Script -->
-<!-- This script is for AceCounter START -->
-<script language='javascript'>
-var _ag = ck_age('19750101'); // 로그인 사용자 나이
-var _id = 'xxxxx'; // 로그인 사용자 아이디
-
-var _mr = ''; // 로그인 사용자 결혼여부 ( 'single' , 'married')
-if('Y' == 'N' || 'Y' == ''){
-	_mr = 'single';
-}else{
-	_mr ='married';
-}
-var _gd = ''; // 로그인사용자 성별 ('man' , 'woman')
-if('M' =='F'){
-	_gd = 'woman';
-}else{
-	_gd = 'man';
-}
-var _ud1 = '1'; // 로그인 사용자 회원등급 (‘1’, ‘2’)
-
-// var_ag = '<?=$age?>'; // 로그인 사용자 나이
-// var_id = '<?=$id?>'; // 로그인 사용자 아이디
-// var_mr = '<?=$married?>'; // 로그인 사용자 결혼여부 ( 'single' , 'married')
-// var_gd = '<?=$gender?>'; // 로그인 사용자 성별 ('man' , 'woman')
-// var_ud1 = '<?=$membergrade?>'; // 로그인 사용자 회원등급 (‘1’, ‘2’)
-
-function ck_age(birthDt) { 
-  var year=parseInt(new Date().getFullYear());
-  var ck=parseInt(birthDt.substr(0,4)); 
-  return (year-ck)+1; // 우리나라 나이 표시 +1 더함 
-}
-</script>
-<!-- AceCounter END -->
-
-<!-- AceCounter Log Gathering Script V.7.5.2013010701 -->
-<script language='javascript'>
-	var _AceGID=(function(){var Inf=['gtp1.acecounter.com','8080','AM3A34627437260','AW','0','NaPm,Ncisy','ALL','0']; var _CI=(!_AceGID)?[]:_AceGID.val;var _N=0;var _T=new Image(0,0);if(_CI.join('.').indexOf(Inf[3])<0){ _T.src =( location.protocol=="https:"?"https://"+Inf[0]:"http://"+Inf[0]+":"+Inf[1]) +'/?cookie'; _CI.push(Inf);  _N=_CI.length; } return {o: _N,val:_CI}; })();
-	var _AceCounter=(function(){var G=_AceGID;if(G.o!=0){var _A=G.val[G.o-1];var _G=( _A[0]).substr(0,_A[0].indexOf('.'));var _C=(_A[7]!='0')?(_A[2]):_A[3];	var _U=( _A[5]).replace(/\,/g,'_');var _S=((['<scr','ipt','type="text/javascr','ipt"></scr','ipt>']).join('')).replace('tt','t src="'+location.protocol+ '//cr.acecounter.com/Web/AceCounter_'+_C+'.js?gc='+_A[2]+'&py='+_A[4]+'&gd='+_G+'&gp='+_A[1]+'&up='+_U+'&rd='+(new Date().getTime())+'" t');document.writeln(_S); return _S;} })();
-</script>
-<noscript><img src='http://gtp1.acecounter.com:8080/?uid=AM3A34627437260&je=n&' border='0' width='0' height='0' alt=''></noscript>	
-<!-- AceCounter Log Gathering Script End --> 
-
-<!-- AceClick script 추가  -->
-<!-- AceClick WebSite Gathering Script V0.9.20131114 -->
-<script language='javascript'>
-	if(typeof(AMRS_GC)=='undefined'){
-	 	var AMRS_O=[];var AMRS_CK = new Image();var AMRS_GC='AG5A385326230';var AMRS_GD='mrsg.aceclick.co.kr';var AMRS_GP='8080';var AMRS_TI=(new Date()).getTime();
-	 	var AMRS_PR = location.protocol=="https:"?"https://"+AMRS_GD+":843":"http://"+AMRS_GD+":"+AMRS_GP; AMRS_CK.src = AMRS_PR+'/?cookie'; 
-	 	if(typeof(Array.prototype.push)!='undefined'){ AMRS_O.push(AMRS_CK);}
-	 	document.writeln("<scr"+"ipt type='text/Javascript' src='"+location.protocol+"//mrss.aceclick.co.kr/aceclick.js?rt="+AMRS_TI+"'></scr"+"ipt>");
-	}
-</script>
-<!-- AceClick WebSite Gathering Script End V0.9.20131114 -->
-<!-- AceCounter Log Gathering Script -->
-<!-- Emforce ROI General Tag Start -->
-<script type="text/javascript" src="/js/general_gd.js"></script>
-<!-- Emforce ROI General Tag End -->
-
-<script>
-/* Facebook 앱등록 스크립트 */
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '604430829738046',
-      xfbml      : true,
-      version    : 'v2.7'
-    });
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
 </div>
