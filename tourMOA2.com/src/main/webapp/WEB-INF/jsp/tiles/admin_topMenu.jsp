@@ -12,10 +12,9 @@
 					기본관리
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-					<a class="dropdown-item" href="#">사이트제목</a>
-					<a class="dropdown-item" href="#">설문조사</a>
-					<a class="dropdown-item" href="#">검색어 관리</a>
-					<a class="dropdown-item" href="#">자동완성</a>
+					<a class="dropdown-item" href="/adminResearchList.do">설문조사</a>
+					<a class="dropdown-item" href="/adminSearch.do">검색어 관리</a>
+					<a class="dropdown-item" href="/adminAutoComplete.do">자동완성</a>
 				</div>
 			</li>
 			<li class="nav-item dropdown">
@@ -23,9 +22,8 @@
 					등록관리
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-					<a class="dropdown-item" href="#">상품 관리</a>
-					<a class="dropdown-item" href="#">상품평 관리</a>
-					<a class="dropdown-item" href="#">문의내역 관리</a>
+					<a class="dropdown-item" href="/adminGoods.do">상품 관리</a>
+					<a class="dropdown-item" href="/adminGoodsComm.do">상품평 관리</a>
 				</div>
 			</li>
 			<li class="nav-item dropdown">
@@ -33,9 +31,8 @@
 				  회원관리
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-					<a class="dropdown-item" href="#">전체회원</a>
-					<a class="dropdown-item" href="#">그룹관리</a>
-					<a class="dropdown-item" href="#">추천인</a>
+					<a class="dropdown-item" href="/adminMember.do">전체회원</a>
+					<a class="dropdown-item" href="/adminGroup.do">그룹관리</a>
 				</div>
 			</li>
 			<li class="nav-item dropdown">
@@ -43,17 +40,18 @@
 				  결제관리
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-					<a class="dropdown-item" href="#">입금전</a>
-					<a class="dropdown-item" href="#">입금완료</a>
-					<a class="dropdown-item" href="#">여행중</a>
-					<a class="dropdown-item" href="#">거래완료</a>
+					<a class="dropdown-item" href="/adminPay.do">입금전</a>
+					<a class="dropdown-item" href="/adminPay.do">입금완료</a>
+					<a class="dropdown-item" href="/adminPay.do">여행중</a>
+					<a class="dropdown-item" href="/adminPay.do">거래완료</a>
 				</div>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">게시판 관리</a>
+				<a class="nav-link" href="/adminAllBoard.do">게시판 관리</a>
 			</li>
 		</ul>
 	</div>
+	<a class="btn btn-bd-yellow d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/main.do">투어모아</a>
 </nav>
 
 
