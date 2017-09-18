@@ -1,5 +1,5 @@
 @CHARSET "UTF-8";
-.admin_custom input.form-control {
+.admin_custom nav input.form-control {
     width: 100%;
     margin: .5rem!important;
     margin-top: 0!important;
@@ -17,3 +17,5 @@
 .admin_custom div.card-block dl {
 	margin: 1rem .5rem;
 }
+
+table td[class*=col-],table th[class*=col-]{position:static;display:table-cell;float:none}
