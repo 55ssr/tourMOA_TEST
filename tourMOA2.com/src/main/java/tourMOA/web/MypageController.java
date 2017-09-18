@@ -71,4 +71,16 @@ public class MypageController {
 	public String joinStep05() throws Exception{		
 		return "mypage/joinStep05";
 	}
+	
+	/*마이페이지 회원정보 수정1단계*/
+	@RequestMapping("mypage/accountPwReaffirm.do")
+	public String accountPwReaffirm() throws Exception{		
+		return "mypage/accountPwReaffirm";
+	}
+	
+	/*마이페이지 회원정보 수정 상세페이지단계*/
+	@RequestMapping("mypage/accountDetailUpdate.do")
+	public String accountDetailUpdate() throws Exception{		
+		return "mypage/accountDetailUpdate";
+	}
 }
