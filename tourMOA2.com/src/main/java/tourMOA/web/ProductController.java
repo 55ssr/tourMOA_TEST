@@ -5,10 +5,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class ProductController {
-	/*상품 메인페이지*/
-	@RequestMapping("product/main.do")
-	public String main() throws Exception{		
-		return "product/main";		
+	/*상품 해외패키지페이지*/
+	@RequestMapping("product/detail1.do")
+	public String detail1() throws Exception{		
+		return "product/detail1";		
+	}
+	
+	/*상품 자유여행페이지*/
+	@RequestMapping("product/detail2.do")
+	public String detail2() throws Exception{		
+		return "product/detail2";		
 	}
 	
 	/*기업단체문의*/
