@@ -138,6 +138,18 @@ nav#lnb_mp #one li ul.sub li.on { color: #ffba00; }
 #wrap #content table.cat_area th.on { background: #42454c; color: #ffffff; border: 1px solid #42454c; }
 #wrap #content table.cat_area th.on a { color: #ffffff; }
 
+/* 마이페이지 카테고리영역 */
+#wrap #content table.cat { width: 100%; height: 50px; table-layout: fixed; margin-bottom: 40px; }
+#wrap #content table.cat td { height: 48px; border: 1px solid #dddddd; border-collapse: collapse; text-align: center; font-size: 15px; color: #333333; vertical-align: middle; cursor: pointer; }
+#wrap #content table.cat td a { color: #333333 }
+#wrap #content table.cat td.on { background: #42454c; color: #ffffff; border: 1px solid #42454c; }
+#wrap #content table.cat td.on a { color: #ffffff; }
+
+#wrap #content table.cat th { height: 48px; border: 1px solid #dddddd; border-collapse: collapse; text-align: center; font-size: 15px; color: #333333; vertical-align: middle; cursor: pointer; }
+#wrap #content table.cat th a { color: #333333 }
+#wrap #content table.cat th.on { background: #42454c; color: #ffffff; border: 1px solid #42454c; }
+#wrap #content table.cat th.on a { color: #ffffff; }
+
 
 /* 게시판 리스트 */
 #wrap #content .board_area{ position: relative; display: block; width: 100%; margin: 0 0 35px 0; }
