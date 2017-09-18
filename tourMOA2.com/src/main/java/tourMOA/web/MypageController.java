@@ -83,4 +83,10 @@ public class MypageController {
 	public String accountDetailUpdate() throws Exception{		
 		return "mypage/accountDetailUpdate";
 	}
+	
+	/*마이페이지 비회원 예약코드 출력*/
+	@RequestMapping("mypage/selectCodeList.do")
+	public String selectCodeList() throws Exception{		
+		return "mypage/login";
+	}
 }
