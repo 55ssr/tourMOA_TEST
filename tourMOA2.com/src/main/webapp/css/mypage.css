@@ -138,7 +138,7 @@ nav#lnb_mp #one li ul.sub li.on { color: #ffba00; }
 #wrap #content table.cat_area th.on { background: #42454c; color: #ffffff; border: 1px solid #42454c; }
 #wrap #content table.cat_area th.on a { color: #ffffff; }
 
-/* 마이페이지 카테고리영역 */
+/* 마이페이지 아이디 패스워드 찾기  */
 #wrap #content table.cat { width: 100%; height: 50px; table-layout: fixed; margin-bottom: 40px; }
 #wrap #content table.cat td { height: 48px; border: 1px solid #dddddd; border-collapse: collapse; text-align: center; font-size: 15px; color: #333333; vertical-align: middle; cursor: pointer; }
 #wrap #content table.cat td a { color: #333333 }
@@ -226,14 +226,14 @@ nav#lnb_mp #one li ul.sub li.on { color: #ffba00; }
 #wrap #content .sec_wrap .sec_dtl table tr td a { color: #333333; }
 
 #wrap #content .sec_01 { position: relative; height: 20px; }
-.sec_01 .para_01 { float: left; position: relative; width:382px; height: 96px; padding: 22px 0 0 34px; border: 7px solid #00b6ad; }
+.sec_01 .para_01 { float: left; position: relative; width:430px; height: 96px; padding: 22px 0 0 34px; border: 7px solid #00b6ad; }
 .sec_01 .para_01 p { line-height: 29px; font-size: 16px; color: #333333; }
 .sec_01 .para_01 span.y_high { font-size: 19px; font-weight: 600; color: #fec300; }
 .sec_01 .para_01 .btnArea { position: absolute; top: 15px; right: 10px; }
 .sec_01 .para_01 .btnArea .btn { display: block; width: 91px; height: 24px; line-height: 24px; text-align: center; background: #6a6a6a; font-size: 12px; font-weight: normal; color: #ffffff; margin-bottom: 5px; }
 .sec_01 .para_01 .btnArea .btn a { color: #ffffff; }
 .sec_01 .para_02 { float: left; height: 100px; margin-left: 10px; }
-.sec_01 .para_02 ul > li { float: left; width: 117px; height: 96px;  margin-right: 1px; border:7px solid #00b6ad; background: #00b6ad; color: #ffffff; }
+.sec_01 .para_02 ul > li { float: left; width: 109px; height: 96px;  margin-right: 1px; border:7px solid #00b6ad; background: #00b6ad; color: #ffffff; }
 .sec_01 .para_02 .last { margin: 0; }
 .sec_01 .para_02 .sel { background: #ffffff; color:#333333; }
 .sec_01 .para_02 ul > li > p { display: table-cell; width: 95px; height: 86px; vertical-align:middle; text-align: center; font-size: 16px; font-weight: 600; line-height:1.4 }
@@ -612,12 +612,12 @@ p.black {display: inline-block !important; padding: 0 0 0 2px !important; color:
 .passChangeBox .cont_area span.cont { width: 440px; height: 40px; line-height: 40px; }
 .passChangeBox .cont_area .txt_wrap_t { display: block; width: 440px; margin: 10px 0 10px 114px; }
 .passChangeBox .cont_area .txt_wrap_b { display: block; width: 440px; margin: 8px 0 0 114px; }
-.passChangeBox .cont_area span.txt { display: block; line-height: 20px; padding-left: 10px; text-align: left; background: url("../images/mypage/tiny_spot.jpg") no-repeat left center;  font-size: 12px; color: #666666; }
-.passChangeBox .cont_area input[type="password"] { width: 432px; padding: 6px 6px 7px 6px ; padding: 7px 6px 8px 6px \9; border: 1px solid #a2a2a2; color: #666666; } 
-.pass_infoBox { position: relative; display: inline-block; width: 1060px; height: 105px; margin-top: 40px; padding: 20px; background-color: #f7f8f9; }
+.passChangeBox .cont_area span.txt { display: block; line-height: 20px; padding-left: 10px; text-align: left; background: url("/images/mypage/tiny_spot.jpg") no-repeat left center;  font-size: 12px; letter-spacing:-1px; color: #666666; }
+.passChangeBox .cont_area input[type="password"] { width: 440px; padding: 6px 6px 7px 6px ; padding: 7px 6px 8px 6px \9; border: 1px solid #a2a2a2; color: #666666; } 
+.pass_infoBox { position: relative; display: inline-block; width: 1100px; height: 140px; margin-top: 40px; padding: 20px; background-color: #f7f8f9; }
 .pass_infoBox .alert { position: absolute; display:block; top: 20px; left: 20px; width: 23px; height: 23px; background-image: url("../images/mypage/icon_alert.jpg"); background-repeat: no-repeat; }
 .pass_infoBox .info_tit { display: block; height: 24px; margin: 0 0 16px 0; line-height: 24px; font-size: 18px; font-weight: 18px; color: #666666; padding-left: 34px; }
-.pass_infoBox .info { display: block; margin-bottom: 8px; font-size: 14px; line-height: 20px; color: #666666; padding-left: 10px; background-image: url("../images/mypage/tiny_spot.jpg"); background-repeat: no-repeat; background-position: left 8px; }
+.pass_infoBox .info { display: block; margin-bottom: 8px; font-size: 14px; line-height: 20px; color: #666666; padding-left: 10px; background-image: url("/images/mypage/tiny_spot.jpg"); background-repeat: no-repeat; background-position: left 8px; }
 
 /* 회원탈퇴 */
 .withdrawBox { display: inline-block; position: relative; width: 1100px; border-top: 1px solid #dee1e2; }
