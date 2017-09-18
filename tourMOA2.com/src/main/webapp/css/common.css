@@ -318,7 +318,8 @@ span.pie.besthotel { width:68px;text-align:center; background:url(../images/comm
 html { background: #fff; overflow-y: scroll; }
 body { position: relative; width: 100%; height: auto; overflow: hidden; }
 html, body { font-size: 16px; color: #5d636f; -webkit-text-size-adjust: none; /* webkit 폰트고정 */ }
-#wrap { position: relative; width: 100%; height: 100%; margin: 0 auto; z-index: 1; }
+#wrap { position: relative; width: 100%; height: 100%; margin: 0 auto; z-index: 1;}
+div#content div#wrap{ margin-top:80px; }
 
 
 /* Header */
