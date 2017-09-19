@@ -382,8 +382,8 @@ input[type="text"].research_box {border:1px solid #666 ; height:30px; width:205p
 #rankWrap ul li span.no.grade { border: 1px solid #e3ae00; font-size: 12px; background: #fec300; color: #fff; }
 #rankWrap ul li span.name { width: 390px; margin: 0 0 0 14px; margin: 1px 0 0 14px \9; cursor: pointer; }
 #rankWrap ul li span.updown { width: 15px; height: 100%; margin: 0 15px; background: url('/images/totSearch_icon01.png') 7px center no-repeat; }
-#rankWrap ul li span.updown.up { background: url('/images/totSearch_icon02.png') 7px center no-repeat; }
-#rankWrap ul li span.updown.down { background: url('/images/totSearch_icon03.png') center center no-repeat; }
+#rankWrap ul li span.updown.up { background: url('/images/totPage/totSearch_icon02.png') 7px center no-repeat; }
+#rankWrap ul li span.updown.down { background: url('/images/totPage/totSearch_icon03.png') center center no-repeat; }
 #rankWrap ul li span.num { color: #999999; }
 #rankWrap ul li span.updown.new {background:url('/images/newPage/ico_search.gif') no-repeat 50% 50%; width:48px}
 #rankWrap ul li span.updown.new+span.num {display:none}
