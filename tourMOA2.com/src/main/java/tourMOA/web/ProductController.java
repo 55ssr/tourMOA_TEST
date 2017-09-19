@@ -28,4 +28,10 @@ public class ProductController {
 	public String locMain() throws Exception{		
 		return "product/locMain";		
 	}
+	/*해당패키지 DETAIL*/
+	@RequestMapping("product/detailPackage.do")
+	public String detailPackage() throws Exception{
+		
+		return "product/detailPackage";
+	}
 }

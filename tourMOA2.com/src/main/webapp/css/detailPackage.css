@@ -1,0 +1,157 @@
+@CHARSET "UTF-8";
+
+#detailPackage_selectlocWrap{width: 100%; height: 50px; margin-top: 60px; position:relative; z-index:1; background-color: #eaeaea; }
+#detailPackage_selectloc{width: 1100px; height: 50px; margin: 0 auto; font-size: 14px; color: #272727; font-family: 'NanumBold'; letter-spacing: -1px;}
+#detailPackage_selectloc label {float: left; display: block; margin: 16px 30px 0 0; font-family: 'NanumBold';}
+#detailPackage_selectloc > select{float: left; width: 190px; margin: 4px 50px 0 0; padding: 10px 10px 11px 10px; line-height: 32px; color: #50555a; font-weight: normal;}
+#detailPackage_selectloc > select option {font-weight: normal; display: block; white-space: pre; min-height: 1.2em; padding: 0px 2px 1px;}
+#detailPackage_selectloc #menuopen{position: relative; float: right; width: 86px; height: 50px; background: #001fbe; cursor: pointer; text-align: center;}
+#detailPackage_selectloc #menuopen input {margin-top: 16px;}
+
+#content #locMapOpen {width: 100%; height: auto; margin-top: -1px; background: #fafafa; border: 1px solid #e7e7e7; border-left: none; border-right: none; display:none;  }
+#locMapOpen .areaBox{position:relative; width: 1100px; height: 100%; margin: 0 auto; padding-bottom: 1px;}
+#locMapOpen .areaBox table{float: left; position: relative; width: 820px; text-align: left; z-index: 1;}
+#locMapOpen .areaBox table tr: first-child th {	border-top: none; padding-top: 10px; background-position: 180px 15px;}
+#locMapOpen .areaBox table th{width: 200px; padding:15px 0 10px 20px; vertical-align: top; background: #68696d url(/images/RYUTEST/area_bul.png) 180px 20px no-repeat; font-size: 15px; color: #fff; text-align: left; border-top: 1px solid #6f7073;}
+#locMapOpen .areaBox table tr th span{display: block; width: 155px; line-height: 1.2;}
+#locMapOpen .areaBox table tr: first-child td{	border-top: none; padding-top: 10px; }
+#locMapOpen .areaBox table tr td {width: 620px; padding: 15px 0 0 0; vertical-align: top; border-top: 1px solid #e7e7e7;}
+#locMapOpen .areaBox table tr td a.on{color:#f8931f; font-family: 'NanumBold';}
+#locMapOpen .areaBox table tr td a{float: left; display: block; width: 175px; margin: 0 0 15px 30px; background: transparent; font-size: 14px; font-weight: normal; letter-spacing: -1px; line-height: }
+#locMapOpen .areaBox .areaNotice{float: right; position: relative; width: 280px; height: auto; margin-top: -1px; overflow: hidden; z-index: 1;}
+#locMapOpen .areaBox .areaNotice .fastBox:first-child{border-top: none;}
+#locMapOpen .areaBox .areaNotice .fastBox{clear: both; float: right; width: 250px; padding: 0 0 10px 0; background: #f5efe9;}
+#locMapOpen .areaBox .areaNotice .fastBox ul{width: 90%; padding: 10px 0 0 15px;}
+#locMapOpen .areaBox .areaNotice .fastBox ul li{font-size: 13px; color: #555555; font-weight: normal; line-height: 1.4;}
+#locMapOpen .areaBox .areaNotice .fastBox ul li.areaNoticeTitle span{float: left; padding-bottom: 3px; margin-right: 5px; font-size: 16px; color: #303030; font-weight: 600; font-family: 'NanumBold';}
+#locMapOpen .areaBox .areaNotice .fastBox ul li.areaNoticeText{clear: both;}
+#locMapOpen .areaBox .areaNotice .fastBox ul li a {color: #555555;}
+#locMapOpen .areaBox .localBg01{display: block; position: absolute; top: 0; left: 0; width: 200px; height: 100%; background: #68696d; z-index: 0; }
+#locMapOpen .areaBox .localBg02{display: block; position: absolute; top: 0; left: 0; width: 200px; height: 100%; background: #68696d; z-index: 0; display: none;}
+#locMapOpen .areaBox .localBg03{display: block; position: absolute; top: 0; right: 0; width: 250px; height: 100%; background: #f5efe9; z-index: 0;}
+#locMapOpen .areaBox .menuclose{clear: both; display: block; width: 100px; height: 20px; margin: 0 auto 20px; background: url(/images/RYUTEST/locMapOpen_close.png)center center no-repeat; border: none;}
+
+#headline{position: relative; width: 100%; margin: 20px auto 0; color: #000; line-height: 1.3; z-index: 999;}
+#headline .headBox{position:relative; left: 0; width: 1100px; margin: 0 auto; background: #fff;}
+#headline .pNum{position:relative; margin: 0 0 15px 0; font-size: 15px; font-weight: 500; letter-spacing: -1px;}
+#headline .pNum span.num{padding:0 0 0 5px; color: #fa6f09; font-weight: 600;} 
+#headline .title{clear:both; width: 100%; font-size: 26px; line-height: 30px; color: #303030; background: #fff; font-family: 'NanumBold'; border-bottom: 1px solid #e6e6e6; padding-bottom: 20px;}
+
+
+#detailWrap{position: relative; width: 1100px; margin: 0 auto;}
+
+#detailWrap #infoWrap{float: left; position: relative; display: inline-block; width: 820px; padding: 0; margin: 0; overflow: hidden;} 
+#infoWrap #basicInfo{position: relative; display: inline-block; width: 100%; padding-bottom: 20px;}
+#basicInfo.subTitle{display: block; font-size: 14px; color: #333333; line-height: 1.4; margin-top: 20px}
+#basicInfo .sns span{ float: left; position:relative; padding:6px 15px; margin: 1px 0 0 2px; border: 1px solid #bfbfbf;}
+#basicInfo .score{float: right; display: inline-block; margin: 20px 0 10px 0; height: 28px; font-size: 13px; line-height: 18px; color: #777777}
+#basicInfo .score span{display: inline-block;}
+#basicInfo .score span.tit{padding:2px 5px 0 10px;}
+#basicInfo .score span.txt{color: #000; font-family: 'NanumExtraBold';}
+#basicInfo .score span.txt.under{text-decoration: underline;}
+#basicInfo .score span.txt a{color: #000; text-indent: -2000000px}
+
+.h36{height: 36px; !important;}
+
+#basicInfo div.basicL{float:left; position: relative; clear: both; width: 48.5%}
+#basicInfo div.basicL .basicL01{position: relative;}
+#basicInfo div.basicL .basicL02 { position: relative; }
+#basicInfo div.basicL ul li{position: relative; display: table; width: 100%;}
+#basicInfo div.basicL ul li.lineBlack{border-bottom: 1px solid #000; background: none;}
+
+#basicInfo ul li{ background: url(/images/RYUTEST/linedot.png) bottom left repeat-x;}
+#basicInfo div.basicL ul li.dvide{margin-bottom: 20px;}
+#basicInfo div.basicL ul li span{display: block;}
+#basicInfo div.basicL ul li span.tit{display: table-cell; width: 78px; background: #e7eaed url(/images/RYUTEST/linedot.png) bottom left repeat-x; vertical-align: middle; text-align: center; font-size: 13px; color: #777777; font-family: 'NanumExtraBold';}
+#basicInfo div.basicL ul li span.tit.noLine{background: #e7eaed;}
+#basicInfo div.basicL ul li span.txt.txt01{margin: 15px 0 0 0; color: #fa6f09;}
+#basicInfo div.basicL ul li span.txt.txt02{margin: 0 0 15px 0;}
+#basicInfo div.basicL ul li span.txt.txt03{margin: 15px 0;}
+#basicInfo div.basicL ul li span.txt.txt04{margin: 15px 0;}
+#basicInfo div.basicL ul li span.txt.txt04 span{float: left; margin-right: 4px; margin-bottom: 1px;}
+#basicInfo div.basicL ul li span.txt.txt04 span.fontOrange{color: #fa6f09;}
+#basicInfo div.basicL ul li span.txt.txt04 span.gray_bar{color: #ddd;}
+#basicInfo div.basicL ul li span.txt.txt05{margin: 15px 0; color: #000000; letter-spacing: -1px;}
+#basicInfo div.basicL ul li span.txt{float: right; width: 95%; padding:0 5px 0 0; margin: 0; font-size: 14px; line-height: 16px; color: #2a2a2a; font-weight: 500;}
+
+
+
+
+#basicInfo div.basicL ul li.dvide { margin-bottom: 20px; }
+#basicInfo ul li.lineBlackTop, #freeInfo ul li.lineBlackTop { border-top: 1px solid #000; }
+#basicInfo div.basicL ul li { position: relative; display: table; width: 100%; }
+#basicInfo div.basicL ul li span { display: block; }
+#basicInfo div.basicL ul li span.gray_bar { color:#ddd}
+#basicInfo div.basicL ul li span.tit { display: table-cell; width: 78px; background: #e7eaed url("/images/detail/linedot.png") bottom left repeat-x; vertical-align: middle; text-align: center; font-size: 13px; color: #777777;   font-family: 'NanumExtraBold'; }
+#basicInfo div.basicL ul li span.tit.noLine { background: #e7eaed; }
+#basicInfo div.basicL ul li span.txt { float: right; width: 95%; padding: 0 5px 0 0; margin: 0; font-size: 14px; line-height:16px; color: #2a2a2a; font-weight: 500; }
+#basicInfo div.basicL ul li span.txt.txt01 { margin: 15px 0 0 0; color: #fa6f09;}
+#basicInfo div.basicL ul li span.txt.txt02 { margin: 0 0 15px 0; }
+#basicInfo div.basicL ul li span.txt.txt03 { margin: 15px 0; }
+#basicInfo div.basicL ul li span.txt.txt03 img { width: 12px; height: 12px; margin-right: 2px; vertical-align: bottom; }
+#basicInfo div.basicL ul li span.txt.txt04 { margin: 15px 0; }
+#basicInfo div.basicL ul li span.txt.txt04 span { float: left; margin-right: 4px; margin-bottom: 1px; }
+#basicInfo div.basicL ul li span.txt.txt04 span.fontOrange { color: #fa6f09; }
+#basicInfo div.basicL ul li span.txt.txt05 { margin: 15px 0; color: #000000; letter-spacing: -1px; }
+#basicInfo div.basicL ul li span.tit.tit06 { background: #e7eaed; }
+#basicInfo div.basicL ul li span.txt.txt06 { float: left; position: relative; height: 100%; padding: 10px 0; background: #e7eaed; vertical-align: middle; text-align: center; font-size: 14px; color: #303030;   font-family: 'NanumExtraBold';}
+#basicInfo div.basicL ul li span.txt.txt06.txt06-1 { width: 22%; margin-left: 9%; }
+#basicInfo div.basicL ul li span.txt.txt06.txt06-2 { width: 40%; }
+#basicInfo div.basicL ul li span.txt.txt06.txt06-3 { width: 25%; }
+#basicInfo div.basicL ul li span.txt.txt06 span { clear: both; display: block; width: 100%; margin-top: 6px; text-align: center; font-size: 10px; color: #999999;   font-family: 'NanumExtraBold'; }
+#basicInfo div.basicL ul li span.txt.txt06 span img { margin-left: 3px; vertical-align: bottom; }
+#basicInfo div.basicL ul li span.txt.txt07 { float: left; width: 33%; padding: 15px 0; color: #2a2a2a;   font-family: 'NanumExtraBold'; text-align: right; }
+#basicInfo div.basicL ul li span.txt.txt08 { float: left; width: 33%; padding: 15px 0; color: #2a2a2a;   font-family: 'NanumExtraBold'; text-align: right; }
+#basicInfo div.basicL ul li span.txt.txt09 { float: left; width: 33%; padding: 15px 0; color: #fa6f09;   font-family: 'NanumExtraBold'; text-align: right; }
+#basicInfo div.basicL ul li span.noti { width: 90%; padding: 0 0 0 24px; margin-top:10px; font-size: 12px; line-height:18px; color: #999999; background: url("/images/detail/icon_circle.png") center left no-repeat; }
+#basicInfo div.basicL ul li.liBg { background: #e7eaed; }
+
+/* 상단 : 우측 기본정보 */
+#basicInfo ul.basicR { float: right; width: 48.5%; overflow: hidden; }
+#basicInfo ul.basicR li { position: relative; width: 100%; padding: 15px 0 15px 0; }
+#basicInfo ul.basicR li span.ico { position: relative; float: left; display: block; height: 28px; padding: 0 0 0 30px; margin: 0 12px 0 0; font-size: 11px; color: #555555; line-height: 2.6; cursor: pointer;  }
+#basicInfo ul.basicR li span.ico a { position: absolute; z-index: 99999; display: block; top: 0; left: 0; width: 100%; height: 100%; background: transparent; font-size:0px; color:transparent !important }
+#basicInfo ul.basicR li span.ico01 { background: url("/images/detail/icon_damdang01.png") center left no-repeat; }
+#basicInfo ul.basicR li span.ico02 { background: url("/images/detail/icon_damdang02.png") center left no-repeat; }
+#basicInfo ul.basicR li span.ico03 { background: url("/images/detail/icon_damdang03.png") center left no-repeat; }
+#basicInfo ul.basicR li span.ico04 { background: url("/images/detail/icon_damdang04.png") center left no-repeat; float: right; margin-right: 0; }
+
+#basicInfo ul.basicR li .damdangWrap { display: block; width: 100%; height: 125px; background: #eff1f3; }
+#basicInfo ul.basicR li .damdangWrap div { float: left; position: relative; margin-top: 24px; font-size: 13px; overflow: hidden; z-index:1;}
+#basicInfo ul.basicR li .damdangWrap div span { display: block; margin-bottom: 8px; word-break: break-all;  font-family: 'NanumExtraBold'; }
+#basicInfo ul.basicR li .damdangWrap div.photo { width: 62px; height: 62px; position:relative; margin:20px; }
+#basicInfo ul.basicR li .damdangWrap div.photo span.bgRbox {position: absolute; top: 0px; background: url("/images/detail/damdang/photobgR.png") center center no-repeat; width: 62px; height: 62px}
+#basicInfo ul.basicR li .damdangWrap div.photo img { width: 62px; height:auto; }
+#basicInfo ul.basicR li .damdangWrap div.title { width: 80px; color: #999999; }
+#basicInfo ul.basicR li .damdangWrap div.contact { width: 160px; color: #555555;   font-family: 'NanumExtraBold'; }
+#basicInfo ul.basicR li span.airTit { display: inline-block; font-size: 13px; color: #999999;   font-family: 'NanumExtraBold'; text-align: right; }
+#basicInfo ul.basicR li span.airTit.airTit00 { width: 23px; }
+#basicInfo ul.basicR li span.airTit.airTit01 { width: 25%; text-align: center; }
+#basicInfo ul.basicR li span.airTit.airTit02 { width: 18%; }
+#basicInfo ul.basicR li span.airTit.airTit03 { width: 24%; }
+#basicInfo ul.basicR li span.airTit.airTit04 { width: 19%; }
+#basicInfo ul.basicR li span.airWrap { display: inline-block; width: 100%; /*height: 100%;*/ padding: 14px 0 5px 0; text-align: right; background: url("/images/RYUTEST/linedot.png") top left repeat-x; }
+#basicInfo ul.basicR li span.airWrap:first-child { margin-top: 0; }
+#basicInfo ul.basicR li span.airWrap .air { float: left; width: 90px; font-size: 13px; color: #2a2a2a; font-weight: 500; text-align: center; }
+#basicInfo ul.basicR li span.airWrap .air.chk { width: 25px; margin-top: -2px; margin-top: -3px \9; clear: both; }
+#basicInfo ul.basicR li span.airWrap .air.air01 { width: 30%; height: 18px; margin-top: -2px; padding: 0 0 0 2px; text-align: left; }
+#basicInfo ul.basicR li span.airWrap .air.air01 label { display: block; width: 90%; margin-top: 2px; padding-left: 22px; }
+#basicInfo ul.basicR li span.airWrap .air.air01.typeAir label { padding-left: 0; }
+#basicInfo ul.basicR li span.airWrap .air.air01.typeShip label { padding-left: 33px; }
+#basicInfo ul.basicR li span.airWrap .air.air01.typeBus { background: url("/images/RYUTEST/icon_bus.png") left center no-repeat; }
+#basicInfo ul.basicR li span.airWrap .air.air01.typeTrain { background: url("/images/RYUTEST/icon_train.png") left center no-repeat; }
+#basicInfo ul.basicR li span.airWrap .air.air01.typeShip { background: url("/images/RYUTEST/icon_ship.png") left center no-repeat; }
+#basicInfo ul.basicR li span.airWrap .air.air02 { width: 13%; padding: 0 0 0 5px; }
+#basicInfo ul.basicR li span.airWrap .air.air03 { width: 25%; text-align: right; font-weight: bold; }
+#basicInfo ul.basicR li span.airWrap .air.air04 { width: 22%; margin: -2px 0 0 0; text-align: right; }
+#basicInfo ul.basicR li span.airWrap .air.air04 .mark { display: inline-block; }
+#basicInfo ul.basicR li .hotel { float: left; clear: both; width: 89%; margin: 6px 0 2px 27px; padding: 0 0 0 16px; font-size: 12px; color: #999999; font-weight: 500; text-align: left; background: transparent url("/images/detail/schedule_icon01.png") left center no-repeat; }
+
+#basicInfo button.btnStartdate { width: 100%; padding: 20px 0; border: 2px solid #777777; background: transparent; font-size: 18px; color: #2a2a2a;   font-family: 'NanumBold'; }
+#basicInfo button.btnReserve   { width: 100%; margin: 10px 0 0 0; padding: 20px 0; border: 2px solid #ffc200; background: #ffc200; font-size: 18px; color: #fff;   font-family: 'NanumBold'; }
+#basicInfo button.btnReserve.reserveEnd { border: 2px solid #acacac; background: #acacac; }
+
+span.tooltip {position: absolute !important; display: none; width: 162px; height: 68px; padding: 30px 0 0 5px; background: url("/images/RYUTEST/tooltip_bg.png") no-repeat; z-index: 99999;}
+span.tooltip span.period { width: 150px; padding: 0 0 0 3px; margin: 0 0 6px 0; text-align: left; font-size: 12px; }
+span.tooltip.asideTip {top:32px; right: -33px; padding: 20px 0 0 15px !important; font-size:14px !important; font-weight:normal !important}
+span.tooltip.asideTip span.price_child { width: 130px !important; padding: 0 0 0 8px !important; margin: 0 0 6px 0 !important; text-align: left; font-size: 12px; color: #303030; background: url("/images/unit/tooltip_dot.png") left center no-repeat; }

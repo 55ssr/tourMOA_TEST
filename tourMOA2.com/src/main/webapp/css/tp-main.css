@@ -3,6 +3,7 @@
 *{margin: 0; padding:0;}
 ul,li,ol{list-style:none;}
 *{transition: 0.5s; box-sizing: border-box;}
+h2{font-weight: bolder;}
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes banner {
 	
@@ -29,7 +30,7 @@ ul,li,ol{list-style:none;}
         
         #header{width: 100%; height: auto; margin: 0 auto;}
         
-        #topmenu{width:100%; height: 40px; background-color: #dbdbdb;}
+        #topmenu{width:100%; height: 40px; background-color: #eaeaea;}
         #topmenu ul{float: right;}
         #topmenu ul li{display: inline-block; margin: 10px; font-size: 13px;}
         /*#topmenu ul li:last-child{margin-right: 250px;}*/
@@ -92,11 +93,11 @@ ul,li,ol{list-style:none;}
   	      
         #rightmenu{ width: 180px; height: 300px; float: right; display: inline-block; }
         #rightmenu ul{ width: 180px; height: auto; position:fixed; background-color: floralwhite; border:1px solid black; text-align: center;}
-        #rightmenu ul li{width: 180px; height: 60px; border-bottom: 1px solid black;  }
+        #rightmenu ul li{width: 180px; height: 40px; border-bottom: 1px solid gray;  }
         #rightmenu ul li:last-child{border-bottom: 0px; height: 30px;}
         
         #rightmenu ul li a{text-decoration: none;
-         font-size: 18px;
+         font-size: 16px;
          font-weight: bold; 
          color: gray; 
          float: left; 
@@ -377,10 +378,11 @@ ul,li,ol{list-style:none;}
 #theme_block2 h2{height: auto;}
 #theme_block2 img{width: 100%; height: 370px; }
 #theme_block2 img:last-child{margin-right: 0px;}
+#theme_block2 #main_qna_icon{margin : 0 auto;}
 
 #event_small_up{width: 50%; display:inline-block;float:left; margin-top: 25px}
-.more_r{float:right; color: gray;}
-.more_r a i{color: gray;}
+#content .more_r{float:right; color: gray;}
+#content .more_r a i{color: gray;  margin-right: 15px;}
 .h_undergtag{margin-right:600px; float:left; height: auto;}
 #theme_block .travle_img{width:250px; height:165px; float: left;}
 #theme_block .travle_talk h3{width:410px; height:auto; margin-right:15px;}
@@ -389,6 +391,11 @@ ul,li,ol{list-style:none;}
 #notice_main_css{float:left;width:50%; height: auto; display: inline-block; margin-top: 20px; margin-bottom: 20px;}
 #notice_main_css label{font-size: 30px; font-weight: bolder; margin-bottom: 20px;}
 #notice_main_css ul li{line-height: 50px; list-style: square; margin-left: 30px;}
+
+#main_qna_icon a{font-size: 10px; color: #666 !important; float: left;}
+#main_qna_icon a img{width: 64px; height: 64px; float: left; margin-right: 25px; margin-bottom: 20px;}
+
 #footer{width: 100%; height: 400px; margin: 0 auto; border: 3px solid gray; background-color: dimgrey}
 
+#content .main_head_font{width: auto; height: auto; float: left;}
 
