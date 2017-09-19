@@ -381,7 +381,7 @@ input[type="text"].research_box {border:1px solid #666 ; height:30px; width:205p
 #rankWrap ul li span.no { clear: both; width: 16px; height: 16px; border: 1px solid #c4c4c4; font-size: 12px; background: #dddddd; color: #666666; text-align: center; }
 #rankWrap ul li span.no.grade { border: 1px solid #e3ae00; font-size: 12px; background: #fec300; color: #fff; }
 #rankWrap ul li span.name { width: 390px; margin: 0 0 0 14px; margin: 1px 0 0 14px \9; cursor: pointer; }
-#rankWrap ul li span.updown { width: 15px; height: 100%; margin: 0 15px; background: url('/images/totSearch_icon01.png') 7px center no-repeat; }
+#rankWrap ul li span.updown { width: 15px; height: 100%; margin: 0 15px; background: url('/images/totPage/totSearch_icon01.png') 7px center no-repeat; }
 #rankWrap ul li span.updown.up { background: url('/images/totPage/totSearch_icon02.png') 7px center no-repeat; }
 #rankWrap ul li span.updown.down { background: url('/images/totPage/totSearch_icon03.png') center center no-repeat; }
 #rankWrap ul li span.num { color: #999999; }
