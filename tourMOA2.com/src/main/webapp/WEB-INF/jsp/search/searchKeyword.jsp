@@ -385,7 +385,7 @@ input[type="text"].research_box {border:1px solid #666 ; height:30px; width:205p
 #rankWrap ul li span.updown.up { background: url('/images/totSearch_icon02.png') 7px center no-repeat; }
 #rankWrap ul li span.updown.down { background: url('/images/totSearch_icon03.png') center center no-repeat; }
 #rankWrap ul li span.num { color: #999999; }
-#rankWrap ul li span.updown.new {background:url(/images/ico_search_new.png) no-repeat 50% 50%; width:48px}
+#rankWrap ul li span.updown.new {background:url('/images/newPage/ico_search.gif') no-repeat 50% 50%; width:48px}
 #rankWrap ul li span.updown.new+span.num {display:none}
 
 .searchBar { margin-top: 0 !important; }
