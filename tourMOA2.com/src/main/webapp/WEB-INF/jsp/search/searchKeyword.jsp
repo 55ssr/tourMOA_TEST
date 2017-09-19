@@ -248,10 +248,10 @@ table{margin:0 auto;}
 /* �듯빀寃��� : �ㅼ썙�쒓��� */
 #searchWrap .tabview.tab01 { text-align: center; }
 #searchWrap .tabview.tab01 span.noti { display: inline-block; width: 550px; margin: 20px auto 20px; font-size: 14px; color: #666666; }
-#searchWrap .tabview.tab01 #keywordSrh { position: relative; width: 550px; height: 36px; margin: 0 auto; border: 2px solid #fec300; }
+#searchWrap .tabview.tab01 #keywordSrh { position: relative; width: 550px; height: 36px; margin: 0 auto; border: 2px solid #fec300; width:554px; height:40px;}
 #searchWrap .tabview.tab01 #keywordSrh > input { float: left; width: 480px; border: none; border: 0; margin: 0 0 0 0; padding: 9px 10px 10px 10px; padding: 9px 10px 9px 10px \9; font-size: 14px; color: #333333; font-weight: 600; }
 #searchWrap .tabview.tab01 #keywordSrh > .divide { float: left; display: block; height: 22px; margin: 7px 1px 0 1px; border-left: 1px solid #d1d1d1; }
-#searchWrap .tabview.tab01 #keywordSrh > .btnTotalSearch { float: left; width: 47px; height: 36px; border: none; background:url("/images/top_search.png") center center no-repeat; }
+#searchWrap .tabview.tab01 #keywordSrh > .btnTotalSearch { float: left; width: 47px; height: 36px; border: none; background:url("/images/searchPage/top_search.png") center center no-repeat; }
 #searchWrap .tabview.tab01 span.keyword { display: inline-block; margin: 0 auto; margin: 14px 0 20px 0; font-size: 13px; color: #999999; text-align: left; }
 #searchWrap .tabview.tab01 span.keyword span { display: inline; padding: 0 8px; background:url("/images/totSearch_bul.png") left center no-repeat; }
 #searchWrap .tabview.tab01 span.keyword span:first-child { background: none; }
@@ -371,7 +371,7 @@ input[type="text"].research_box {border:1px solid #666 ; height:30px; width:205p
 /* 寃��� �� �멸린寃��됱뼱 */
 #rankWrap { width: 1098px; height: 550px; margin: 40px auto 0; border: 1px solid #d6d6d6; overflow: hidden; }
 #rankWrap .tab { float: left; width: 548px; height: 48px; background: #f7f8f9; border-bottom: 1px solid #d6d6d6; font-size: 15px; color: #333333; font-weight: 600; text-align: center; line-height: 3.2; cursor: pointer; }
-#rankWrap .tab:first-child { width: 549px; border-right: 1px solid #d6d6d6; }
+#rankWrap .tab:first-child { width: 549px; }
 #rankWrap ul.tab01 { width: 549px; clear: both; }
 #rankWrap ul.tab02 { width: 547px; border-left: 1px solid #d6d6d6; }
 #rankWrap ul { float: left; width: 540px; height: 100%; }
@@ -392,7 +392,7 @@ input[type="text"].research_box {border:1px solid #666 ; height:30px; width:205p
 
 .ui-datepicker .ui-datepicker-calendar .ui-state-highlight a { width:17px; height:17px; background:url("/images/unit/calendar/calendar_orange.png") center 2px no-repeat; margin:0 auto; text-align:center; color: white;}
 
-
+#query2 {width:500px!important; height:35px;}
 
 </style>
 </head>
@@ -428,15 +428,16 @@ function fn_popup(){
             <div class="tabview tab01 block"><!--[[ 키워드검색 tab01 Start ]]-->
                 <span class="noti">상품번호를 알고 계시다면, 상품번호로 간편하게 검색하세요!</span>
                 <div id="keywordSrh">
-                <a href="/search/searchKeyword.do" onclick="document.forms['searchform'].submit(); return false;"><img src="/images/top_search.png" alt="검색"></a>
+                
                     <input type="text" id="query2" name="query" title="키워드입력" value="" style="ime-mode:active;"    />
                     <input type="hidden" name="product" value="전체상품">                    
                     <span class="divide"></span>
                     <button type="submit" class="btnTotalSearch" title="검색"></button>
+                    <!-- <a href="/search/searchKeyword.do" onclick="document.forms['searchform'].submit(); return false;"><img src="/images/top_search.png" alt="검색"></a> -->
                 </div>
                 <div id="ark2"></div>
                 <div class="relKeywordBox">
-                "추천검색어 |"
+                추천검색어 |
                 <span class="Keyword">
                 <a href="/search/searchKeyword.do?query=보라카이"><span>보라카이</span></a>
                 <a href="/search/searchKeyword.do?query=제주도"><span>제주도</span></a>
@@ -453,8 +454,8 @@ function fn_popup(){
         
         <div class="notiWrapCon">
 	        <div id="rankWrap"><!--[[ 검색 전 인기검색어 rankWrap Start ]]-->
-	            <span class="tab">인기검색어</span><span class="tab">추천검색어</span>
-	            <ul class="rankList tab01">
+	            <span class="tab">인기검색어</span><span class="tab" style="border-left: 1px solid #d6d6d6;width:547px">추천검색어</span>
+	            <ul class="rankList tab01" style="border-left:">
 	            <a href="/search/searchKeyword.do?query=오사카">
 	            <li>
 	            <span class="no grade">1</span>
