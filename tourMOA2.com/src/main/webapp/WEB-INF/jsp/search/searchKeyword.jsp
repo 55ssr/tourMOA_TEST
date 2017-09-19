@@ -454,7 +454,7 @@ function fn_popup(){
         <div class="notiWrapCon">
 	        <div id="rankWrap"><!--[[ 검색 전 인기검색어 rankWrap Start ]]-->
 	            <span class="tab">인기검색어</span><span class="tab">추천검색어</span>
-	            <ul class="rankList tab01"></ul>
+	            <ul class="rankList tab01">
 	            <a href="/search/searchKeyword.do?query=오사카">
 	            <li>
 	            <span class="no grade">1</span>
@@ -535,7 +535,8 @@ function fn_popup(){
 	            <span class="num">0</span>
 	            </li>
 	            </a>
-	            <ul class="rankList tab02"></ul>
+	            </ul>
+	            <ul class="rankList tab02">
 	            <a href="/search/searchKeyword.do?query=보라카이">
 	            <li>
 	            <span class="no grade">1</span>
@@ -616,6 +617,7 @@ function fn_popup(){
 	            <span class="num"></span>
 	            </li>
 	            </a>
+	            </ul>
 	        </div>
 	        <!--[[ 검색 전 인기검색어 rankWrap End ]]-->
         </div>
