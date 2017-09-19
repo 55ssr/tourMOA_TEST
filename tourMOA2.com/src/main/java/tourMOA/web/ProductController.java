@@ -17,6 +17,12 @@ public class ProductController {
 		return "product/detail2";		
 	}
 	
+	/*상품 여행리스트*/
+	@RequestMapping("product/detailList.do")
+	public String detailList() throws Exception{		
+		return "product/detailList";		
+	}
+	
 	/*기업단체문의*/
 	@RequestMapping("product/biztravel.do")
 	public String biztravel() throws Exception{		

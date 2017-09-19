@@ -1,0 +1,197 @@
+@CHARSET "UTF-8";
+
+#regionWrap {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background: #f7f8f9;
+    z-index: 1;
+}
+
+#region {
+    width: 1100px;
+    height: 50px;
+    margin: 0 auto;
+    font-size: 14px;
+    color: #272727;
+    font-family: 'NanumBold';
+    letter-spacing: -1px;
+}
+
+#region label {
+    float: left;
+    display: block;
+    margin: 16px 30px 0 0;
+    font-family: 'NanumBold';
+}
+
+option {
+    font-weight: normal;
+    display: block;
+    white-space: pre;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+}
+
+#theme_block #haedline {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    margin: 30px 0 25px 0;
+}
+#haedline #title {
+    float: left;
+    display: inline-block;
+    width: 79%;
+    font-size: 22px;
+    color: #303030;
+    font-family: 'NanumBold';
+    letter-spacing: -1px;
+    line-height: 1.475em;
+    margin: -6px 0 -10px 0;
+}
+
+#haedline #pNum {
+    float: right;
+    position: relative;
+    display: inline-block;
+    margin: 6px 0 0 0;
+    font-size: 14px;
+    color: #303030;
+    text-align: right;
+}
+
+#haedline #pNum span.num {
+    margin-left: 5px;
+    color: #f8931f;
+}
+
+/* 좌측정보 */
+#theme_block #infoBox { position: relative; height: 358px; border-top: 1px solid #d1d4d6; letter-spacing: -1px; }
+#infoBox .infoTxt { float: left; width: 630px; margin: 16px 0 0 0; }
+#infoBox .infoTxt li { position: relative; display: inline-block; width: 100%; padding: 8px 0 15px 0; border-bottom: 1px solid #d1d4d6;  }
+#infoBox .infoTxt li span { float: left; display: block; font-size: 14px; color: #303030; font-weight: 600; }
+#infoBox .infoTxt li span.tit { width: 115px; margin-top: 4px; }
+#infoBox .infoTxt li span.txt { width: 490px; color: #777777; font-weight: normal; line-height: 15px; }
+#infoBox .infoTxt li span.txt.price { font-size: 16px; color: #303030; font-weight: 600; }
+#infoBox .infoTxt li div.sns { position: absolute; top: 8px; right:1px; display: inline-block; width: 190px; }
+#infoBox .infoTxt li div.sns span { float: left; display: inline-block; margin-left: 10px; }
+
+/*슬라이드 이미지*/
+.infoPhoto {
+    float: right;position: relative; width: 410px;height: 318px;margin: 24px 0 0 0;
+   }
+   
+.infoPhoto .bx-pager-item {
+    font-size: 0;line-height: 0;
+}
+.infoPhoto .bx-pager.bx-default-pager a {
+     float:left;width: 10px;height: 10px;
+     margin: 0 5px;background: #666;border-radius: 5px;
+}
+.infoPhoto .control {position: absolute;top: 305px;left: 0;width: 100%;height: 12px;z-index: 999;}
+.sliderkit .sliderkit-nav-clip {
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+}
+/*예약날짜 선택*/
+.tab_month {border:1px solid #e0e0e0; border-bottom:none; background:#fff;  height:45px; line-height:45px; position: relative; padding:0 45px; text-align:center}
+.tab_month ul {
+    display: table;
+    table-layout: fixed;
+    height: 45px;
+    width: 100%;
+    cursor: pointer;
+}
+.tab_month ul li {    
+			font: bold 15px Dotum;
+			border-right: 1px solid #ccc;
+			display: table-cell;
+		    height: 45px;
+		    text-align: center;
+		    line-height: 38px;
+}
+.tab_month ul li:last-child{border:none;}
+table.tbl_month {
+    border: 1px solid #e0e0e0;border-collapse: collapse;table-layout: fixed;
+    width: 100%;margin-bottom: 13px;
+}
+
+legend, caption {
+    display: none;
+    clear: both;
+}
+
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+tr {
+    display: table-row;}
+table.tbl_month th {font-family: 'Nanum Gothic'; font-weight:normal; background:#f3f3f3}
+table.tbl_month th.sun {color:#f2312c}
+table.tbl_month th.sat {color:#4197d4}
+table.tbl_month td span {
+    color: #b7b7b7;font-weight: normal;font-family: 'Nanum Gothic';}
+    table.tbl_month th, table.tbl_month td {
+    border: 1px solid #e0e0e0;
+    height: 26px;
+    vertical-align: middle;
+    font-size: 14px;
+    text-align: center;
+    font-family: 'NanumBold';
+}
+.infoPhoto .bx-pager-item{width:auto; float:left;}
+.infoPhoto .bx-pager-item:first-child{margin-left: 150px;}
+.infoPhoto .bx-pager-item a{margin-left:15px;}
+
+.departure_block_btn {margin-bottom:13px; overflow:hidden}
+dl.departure_date {}
+dl.departure_date dt {font-size:14px; color:#303030; float:left; line-height:33px; padding-right:8px}
+dl.departure_date dd {font-size:14px; color:#303030; float:left; line-height:33px}
+button.btn_date_del {background:url(/images/product/btn_date_del.png) no-repeat ; width:7px; height:8px; margin-left:5px; border:none; vertical-align:middle}
+button.btn_date_del span {font-size:0; line-height:0; visibility:hidden; }
+
+/*출발일*/ 
+
+ul.pdt_condition {float:right}
+ul.pdt_condition li {float:left; font-size:14px; margin-left:12px; line-height:33px; height:33px}
+ul.pdt_condition li img{vertical-align:middle}
+ul.pdt_condition li span.possible {color:#ffb839; padding-left:5px}
+ul.pdt_condition li span.standby {color:#63bcaa; padding-left:5px}
+ul.pdt_condition li span.pdtclose {color:#a1a1a1; padding-left:5px}
+.btn_condition {border:none; background:#6a6a6a; color:#fff; padding:0 15px; height:33px; line-height:33px }
+
+/*행사 목록*/
+departure_list {margin-bottom:20px}
+.departure_list table { width:100%;  }
+.departure_list thead {border-top:2px solid #555; border-bottom:2px solid #555}
+.departure_list thead th {height:54px; line-height:54px; font-size:14px; color:#303030; text-align:center; }
+.departure_list tbody td {text-align:center; vertical-align:middle; padding:20px 10px; line-height:18px; font-size:14px; color:#303030; height:50px } 
+.departure_list tbody tr:nth-child(2n) {background:#f7f8f9}
+.departure_list tbody td.tit_pdt {text-align:left; }
+.departure_list tbody td.tit_pdt a {color:#303030; }
+.departure_list tbody td.pdt_price {color:#f2312c; font-weight:bold }
+/*유아가격*/
+a.mini_price {display:inline-block; position:relative; }
+a.mini_price:hover ul.child_price {display:block !important;}
+
+a.mini_price ul.child_price {border:1px solid #ccc; no-repeat 0 0 ; width:130px; height:58px; padding:8px 0 0 10px; z-index:1; position:absolute; right:-20px; display:none}
+a.mini_price ul.child_price li {font-size:12px; font-weight:normal; background:url(/images/unit/tooltip_dot.png) no-repeat 0 50%; padding-left:8px; text-align:left; line-height:18px}
+/* 출도착 타임 */
+.depart_time {color:#7c7c7c; display:block; width:100%; font-size:14px}
+.arrive_time {color:#f8931f; display:block; width:100%; font-size:14px}
+
+.departure_other {background:#f7f8f9; font-size:18px; color:#666; text-align:center; height:70px; line-height:70px; margin:40px auto; }
+.departure_other a {color:#666}
+.btn_compare {background:#6a6a6a; color:#fff; font-size:12px; padding:0 8px; height:24px; line-height:24px; border:none} /* 비교 */
+/*예약상태*/
+.condition_booking {color:#f8931f} /* 예약가능 */
+.condition_standby {color:#00b6ad } /* 예약대기 */
+.condition_close {color:#747474 } /* 예약마감 */
+.condition_fix {color:#5eadf1; border:1px solid #5eadf1; display:inline-block; width:60px; height:18px; padding:0 5px; font-size:12px; line-height:17px; margin-top:3px} /* 출발확정 */
+.condition_hurryup {color:#f72323; border:1px solid #f72323; display:inline-block; width:60px; height:18px; padding:0 5px; font-size:12px; line-height:17px; margin-top:3px } /* 마감임박 */
+.condition_other {color:#8560a8; border:1px solid #8560a8; display:inline-block; width:60px; height:18px; padding:0 5px; font-size:12px; line-height:17px; margin-top:3px } /* 별도문의 */
+
