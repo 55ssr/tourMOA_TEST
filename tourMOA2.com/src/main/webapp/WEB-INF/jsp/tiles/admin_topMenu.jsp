@@ -22,8 +22,8 @@
 					등록관리
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-					<a class="dropdown-item" href="/adminGoods.do">상품 관리</a>
-					<a class="dropdown-item" href="/adminGoodsComm.do">상품평 관리</a>
+					<a class="dropdown-item" href="/adminGoodsList.do">상품 관리</a>
+					<a class="dropdown-item" href="/adminGoodsCommList.do">상품평 관리</a>
 				</div>
 			</li>
 			<li class="nav-item dropdown">
@@ -31,8 +31,8 @@
 				  회원관리
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-					<a class="dropdown-item" href="/adminMember.do">전체회원</a>
-					<a class="dropdown-item" href="/adminGroup.do">그룹관리</a>
+					<a class="dropdown-item" href="/adminMemberList.do">전체회원</a>
+					<a class="dropdown-item" href="/adminGroupList.do">그룹관리</a>
 				</div>
 			</li>
 			<li class="nav-item dropdown">
@@ -40,14 +40,14 @@
 				  결제관리
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-					<a class="dropdown-item" href="/adminPay.do">입금전</a>
-					<a class="dropdown-item" href="/adminPay.do">입금완료</a>
-					<a class="dropdown-item" href="/adminPay.do">여행중</a>
-					<a class="dropdown-item" href="/adminPay.do">거래완료</a>
+					<a class="dropdown-item" href="/adminPayList.do">입금전</a>
+					<a class="dropdown-item" href="/adminPayList.do">입금완료</a>
+					<a class="dropdown-item" href="/adminPayList.do">여행중</a>
+					<a class="dropdown-item" href="/adminPayList.do">거래완료</a>
 				</div>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="/adminAllBoard.do">게시판 관리</a>
+				<a class="nav-link" href="/adminAllBoardList.do">게시판 관리</a>
 			</li>
 		</ul>
 	</div>
