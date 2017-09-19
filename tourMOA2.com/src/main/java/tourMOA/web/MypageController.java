@@ -95,4 +95,52 @@ public class MypageController {
 	public String selectCodeList() throws Exception{		
 		return "mypage/login";
 	}
+	
+	/*마이페이지 비회원 예약코드 출력*/
+	@RequestMapping("mypage/reserveList.do")
+	public String reserveList() throws Exception{		
+		return "mypage/reserveList";
+	}
+	
+	/*마이페이지 관심상품 출력*/
+	@RequestMapping("mypage/wishList.do")
+	public String wishList() throws Exception{		
+		return "mypage/wishList";
+	}
+	
+	/*마이페이지 관심상품 출력*/
+	@RequestMapping("mypage/today.do")
+	public String today() throws Exception{		
+		return "mypage/today";
+	}
+	
+	/*마이페이지 상담문의 출력*/
+	@RequestMapping("mypage/inquiryList.do")
+	public String inquiryList() throws Exception{		
+		return "mypage/inquiryList";
+	}
+	
+	/*마이페이지 여행이야기 리스트*/
+	@RequestMapping("mypage/myPostList.do")
+	public String myPostList() throws Exception{		
+		return "mypage/myPostList";
+	}
+	
+	/*마이페이지 비밀번호 변경*/
+	@RequestMapping("mypage/accountPwUpdate.do")
+	public String accountPwUpdate() throws Exception{		
+		return "mypage/accountPwUpdate";
+	}
+	
+	/*마이페이지 비밀번호 변경적용*/
+	@RequestMapping("mypage/accountPwUpdateProc.do")
+	public String accountPwUpdateProc() throws Exception{		
+		return "mypage/accountPwUpdate";
+	}
+	
+	/*마이페이지 여행상품권안내*/
+	@RequestMapping("mypage/giftcardBuy.do")
+	public String giftcardBuy() throws Exception{		
+		return "mypage/giftcardBuy";
+	}
 }

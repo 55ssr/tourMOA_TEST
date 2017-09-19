@@ -944,14 +944,14 @@ td.expandOne a {display:inline-block !important; float:none !important ; width:5
 #bottom #bottomL li span.licence a { color: #d7d7d7; }
 #bottom #bottomM { float: left; width: 350px; overflow: hidden; }
 #bottom #bottomM li { position: relative; padding: 16px 0 13px 0; overflow: hidden;  font-family: 'Nanum Gothic';}
-#bottom #bottomM li span.phone { float: left; display: block; margin-right: 30px; padding-left: 17px; color: #ffba00; font-size: 14px; background:url("../images/bottom_icon01.jpg") left center no-repeat; }
-#bottom #bottomM li span.email { float: left; display: block; padding-left: 17px; font-size: 14px; background:url("../images/bottom_icon02.jpg") left center no-repeat; }
+#bottom #bottomM li span.phone { float: left; display: block; margin-right: 30px; padding-left: 17px; color: #ffba00; font-size: 14px; background:url("/images/footer/bottom_icon01.jpg") left center no-repeat; }
+#bottom #bottomM li span.email { float: left; display: block; padding-left: 17px; font-size: 14px; background:url("/images/footer/bottom_icon02.jpg") left center no-repeat; }
 #bottom #bottomM li span.txt { float: left; display: block; padding-left: 10px; background:url("../images/bottom_icon03.jpg") left center no-repeat; }
 #bottom #bottomM li.copyright { color: #a1a1a1; font-size: 13px; letter-spacing: -1px;  font-family: 'Nanum Gothic';}
 #bottom #bottomR { float: right; width: 265px; }
-#bottom #bottomR li.sns span { position: relative; float: left; display: block; width: 33px; height: 33px; padding: 0; margin-right: 6px; text-align: center; background:url("../images/bottom_snsOff.jpg") no-repeat; }
+#bottom #bottomR li.sns span { position: relative; float: left; display: block; width: 33px; height: 33px; padding: 0; margin-right: 6px; text-align: center; background:url("/images/footer/bottom_snsOff.jpg") no-repeat; }
 #bottom #bottomR li.sns span a { position: absolute; display: block; width: 100%; height: 100%; top: 0; left: 0; background: transparent; }
-#bottom #bottomR li.sns span a:hover { background:url("../images/bottom_snsOn.jpg") no-repeat; }
+#bottom #bottomR li.sns span a:hover { background:url("/images/footer/bottom_snsOn.jpg") no-repeat; }
 #bottom #bottomR li.sns span img { padding: 3px 0 0 0; z-index: 2; }
 #bottom #bottomR li.sns span img.no { padding: 0 0 0 0; z-index: 2;width:17px !important  }
 #bottom #bottomR li.sitelink { position: relative; margin: 94px 0 0 0; padding: 0 0 12px 0; }
@@ -959,7 +959,7 @@ td.expandOne a {display:inline-block !important; float:none !important ; width:5
 #bottom #bottomR li #select_box {position: relative; width: 245px !important; height: 29px !important;  font-family: 'Nanum Gothic';}
 #bottom #bottomR li #select_box select#sites { width: 200px; height: 29px; font-size:13px; min-height: 29px; line-height: 29px; padding: 5px 10px; /*opacity: 0; filter: alpha(opacity=0); /* IE 8 */;  font-family: 'Nanum Gothic'; color:#a1a1a1; background-color:#333; border:1px solid #949494; margin:0; border-right:none; vertical-align:middle; float:left}
 #bottom #bottomR li #select_box span.blinds {background-color:#333 ; position:absolute; top:1px; left:160px; width:40px; height:27px; display:block; z-index:10}
-#bottom #bottomR li #select_box button.btn_gosite {width:42px; height:29px; background:url(../images/btn_sitego.jpg) repeat 0 0; border:none; margin:0; padding:0 ; vertical-align:middle ; float:left}
+#bottom #bottomR li #select_box button.btn_gosite {width:42px; height:29px; background:url(/images/footer/btn_sitego.jpg) repeat 0 0; border:none; margin:0; padding:0 ; vertical-align:middle ; float:left}
 #bottom #bottomR li.copyright { color: #bfbfbf; font-size: 13px; letter-spacing: -1px;  font-family: 'Nanum Gothic';}
 #bottom #mark { overflow:hidden; width: 100%; padding-top: 30px; border-top: 1px solid #484848}
 #bottom #mark li { float:left; width:122px; vertical-align:middle}
