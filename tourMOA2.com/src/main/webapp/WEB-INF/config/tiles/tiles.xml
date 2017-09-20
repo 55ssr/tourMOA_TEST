@@ -65,6 +65,10 @@
     <definition name="search/*" extends="layout1">
         <put-attribute name="content" value="/WEB-INF/jsp/search/{1}.jsp" />
     </definition>
+    
+    <definition name="customer/*" extends="layout1">
+        <put-attribute name="content" value="/WEB-INF/jsp/customer/{1}.jsp" />
+    </definition>
 
     
 

@@ -155,7 +155,7 @@ function loginConfirm(){
                 </div>
                 </form>
             </div>
-        </div>        
+        </div>     
         
         <div class="sec_wrap sec_03">        
         	<!-- 공지사항 -->        

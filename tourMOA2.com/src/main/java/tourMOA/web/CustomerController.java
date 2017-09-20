@@ -1,0 +1,12 @@
+package tourMOA.web;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class CustomerController {
+	@RequestMapping("customer/main.do")
+	public String admin() {
+		return "customer/main";
+	} 
+}

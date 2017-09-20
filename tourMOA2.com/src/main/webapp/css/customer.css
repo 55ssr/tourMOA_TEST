@@ -72,29 +72,29 @@ nav#lnb #one li ul.sub li.on { color: #ffba00; }
 /* 고객센터 메인 */
 .sec_wrap { position: relative; display: block; width: 100%; margin-top: 60px; }
 .sec_wrap span { display: inline-block; font-size: 14px; font-weight: 600; color: #303030; }
-.sec_01 { height: 119px; padding-bottom: 50px; border-bottom: 1px solid #ececec; }
+.sec_01 { height: 179px; padding-bottom: 50px; border-bottom: 1px solid #ececec; }
 .sec_01 .para_01 { position: absolute; top: 0px; left: 0px; line-height: 42px; }
 .sec_01 .para_01 span { display: block; float: left; font-size: 34px; font-weight: 600; }
 .sec_01 .para_01 .gr { clear: both; display: block;  font-size: 34px; font-weight: 600; color: #01b6ad; }
 .sec_01 .para_01 .sm { clear: both; display: block; font-size: 16px; font-weight: normal; letter-spacing: normal; }
 .sec_01 .para_02 { position: absolute; top: 0; left: 550px; }
-.sec_01 .para_02 li { float: left; width: 94px; height: 119px; margin-right: 20px; }
+.sec_01 .para_02 li { float: left; width: 94px; height: 231px; margin-right: 20px; }
 .sec_01 .para_02 li.last { margin-right: 0; }
 
 .sec_02 { height: 190px; padding-top: 53px; background: url("/images/customer/tit_m_faq.png") no-repeat ; }
 .sec_02 .cont_area { position:relative; width: 1100px; height: 190px; font-size: 14px; }
-.sec_02 .cont_area .search_area { width: 100%; height: 40px; margin-top: 40px; padding: 30px 0; background: #f7f8f9; text-align: center; }
+.sec_02 .cont_area .search_area { width: 100%; height: 100px; margin-top: 40px; padding: 30px 0; background: #f7f8f9; text-align: center; }
 .sec_02 .cont_area .search_area span { display: inline-block; margin-right: 20px; font-size: 16px; font-weight: normal; line-height: 40px; color: #303030; }
-.sec_02 .cont_area .search_area input[type="text"] { width: 388px; height: 16px; margin:0 9px 9px 0; padding:10px 0 12px 18px; padding:9px 0 13px 18px \9; font-size: 16px; font-weight: normal; border: 1px solid #dee1e2; vertical-align: top; }
+.sec_02 .cont_area .search_area input[type="text"] { width: 388px; height: 40px; margin:0 9px 9px 0; padding:10px 0 12px 18px; padding:9px 0 13px 18px \9; font-size: 16px; font-weight: normal; border: 1px solid #dee1e2; vertical-align: top; }
 .sec_02 .cont_area .search_area button { width: 91px; height: 40px; border: 2px solid #555555; background: #fff; vertical-align: top; }
 
-.sec_03 { width: 100%; height: 412px; }
+.sec_03 { width: 100%; height: 432px; padding-top:30px; }
 .sec_03 .latest_wrap { position:relative; display: block; float: left; width: 520px; height: 158px; margin: 0 60px 0 0; padding-top: 48px; vertical-align: top; font-size: 14px; font-weight: normal; }
 .sec_03 .latest_wrap a.plus { position: absolute; width: 14px; height: 13px; top: 6px; right: 0; text-indent: -2000000px; }
 .sec_03 .latest_notice { background: url("/images/customer/tit_m_notice.png") no-repeat; }
 .sec_03 .latest_qna { background: url("/images/customer/tit_m_qna.png") no-repeat; margin-right: 0; }
-.sec_03 .latest_guide { background: url("/images/customer/tit_m_guide.png") no-repeat; margin-top : 0; height:258px !important;}
-.sec_03 .latest_praise { background: url("/images/customer/tit_m_praise.png") no-repeat; margin: 0; }
+.sec_03 .latest_guide { background: url("/images/customer/tit_m_guide.png") no-repeat; margin-top : 60px; height:258px !important;}
+.sec_03 .latest_praise { background: url("/images/customer/tit_m_praise.png") no-repeat; margin: 0; margin-top : 60px; }
 .sec_03 .latest_wrap ul li { background: url("/images/customer/rect_s.png") no-repeat left center; padding-left: 12px; line-height: 26px; font-weight: normal;color: #333333;}
 .sec_03 .latest_wrap ul li span.secret { display: inline-block; margin-right: 5px; width: 9px; height: 13px; background: url("/images/customer/icon_secret.png") no-repeat; }
 .sec_03 .latest_wrap ul li a { color: #333333; }
@@ -102,8 +102,8 @@ nav#lnb #one li ul.sub li.on { color: #ffba00; }
 .sec_03 .latest_wrap .guide_img_wrap img { width: 100%; height: auto; }
 .sec_03 .latest_wrap .best_icon { float:left; width: 44px; height: 45px; margin-right: 8px; background: url("/images/customer/icon_best.png"); }
 .sec_03 .latest_wrap .guide_desc { float: left; margin-top: 6px; }
-.sec_03 .latest_wrap .guide_desc li {float:left; position:relative; clear:both; background: none !important;}
-.sec_03 .latest_wrap .guide_desc li .btn_best_t_guide{position:absolute; bottom:0; right:0; display:inline-block; width:115px; height:13px; padding:13px 0 14px 0; border:none; background:#777; font-size:14px; color:#fff; line-height:15px; text-align:center}
+.sec_03 .latest_wrap .guide_desc li {float:left; position:relative; clear:both; background: none !important; margin-bottom:12px;}
+.sec_03 .latest_wrap .guide_desc li .btn_best_t_guide{position:absolute; bottom:0; right:0; display:inline-block; width:115px; height:40px; padding:13px 0 14px 0; border:none; background:#777; font-size:14px; color:#fff; line-height:15px; text-align:center}
 .sec_03 .latest_wrap .guide_desc .guide_tit { float:left; height: 26px ; line-height: 45px; padding-bottom: 10px; font-size: 16px; font-weight: 600; color: #303030; }
 .sec_03 .latest_wrap .guide_desc .guide_comment {display:block; clear: both; width: 300px; height: 98px; margin-bottom:40px; padding-top: 12px; font-size: 14px; font-weight: normal; line-height: 21px !important; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; word-wrap: break-word;}
 .sec_03 span.proc { display: inline-block; width: 77px; color: #999999; }

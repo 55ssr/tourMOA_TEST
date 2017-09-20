@@ -48,12 +48,6 @@ public class CommonController {
 		return "common/siteMap";
 	}
 	
-	/*고객센터 메인*/
-	@RequestMapping("common/main.do")
-	public String main() throws Exception{
-		return "common/main";
-	}
-	
 	/*여행약관*/
 	@RequestMapping("common/travelAgree.do")
 	public String travelAgree() throws Exception{
