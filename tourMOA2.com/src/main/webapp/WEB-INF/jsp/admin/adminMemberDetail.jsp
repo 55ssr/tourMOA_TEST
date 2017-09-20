@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 	<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
-	<h1>회원 등록</h1>
+	<h1>회원 수정</h1>
 	<div class="row justify-content-between mb-3">
 		<div class="col-lg-3">
 		</div>
@@ -82,7 +82,7 @@
 						<div class="input-group mb-2 mb-sm-0">
 							<div class="input-group-addon">@</div>
 							<input type="text" class="form-control" id="inlineFormInputGroup" placeholder="*.com">
-					  </div>
+						</div>
 					</div>
 					<div class="col-auto">
 						<div class="form-check mb-2 mb-sm-0">
@@ -244,7 +244,8 @@
 		<hr class="w-100" />
 		<div class="d-flex justify-content-center">
 			<div class="p-2">
-				<button type="submit" class="btn btn-primary">Submit</button>
+				<button type="submit" class="btn btn-primary">Modify</button>
+				<button type="submit" class="btn btn-danger">Delete</button>
 			</div>
 		</div>
 		

@@ -88,38 +88,23 @@ public class AdminController {
 		return "admin/adminGroupList";
 	}
 	
-	@RequestMapping("/adminGroupWrite.do")
-	public String adminGroupWrite() {
-		return "admin/adminGroupWrite";
-	}
-	
-	@RequestMapping("/adminGroupDetail.do")
-	public String adminGroupDetail() {
-		return "admin/adminGroupDetail";
-	}
-	
 	@RequestMapping("/adminPayList.do")
 	public String adminPayList() {
 		return "admin/adminPayList";
 	}
-	
-	@RequestMapping("/adminPayDetail.do")
-	public String adminPayDetail() {
-		return "admin/adminPayDetail";
-	}
-	
+		
 	@RequestMapping("/adminAllBoardList.do")
 	public String adminAllBoardList() {
 		return "admin/adminAllBoardList";
 	}
 	
-	@RequestMapping("/adminAllBoardWrite.do")
-	public String adminAllBoardWrite() {
-		return "admin/adminAllBoardWrite";
+	@RequestMapping("/adminEstimateList.do")
+	public String adminEstimateList() {
+		return "admin/adminEstimateList";
 	}
 	
-	@RequestMapping("/adminAllBoardDetail.do")
-	public String adminAllBoardDetail() {
-		return "admin/adminAllBoardDetail";
+	@RequestMapping("/adminEstimateDetail.do")
+	public String adminEstimateDetail() {
+		return "admin/adminEstimateDetail";
 	}
 }

@@ -46,8 +46,14 @@
 					<a class="dropdown-item" href="/adminPayList.do">거래완료</a>
 				</div>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/adminAllBoardList.do">게시판 관리</a>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				  게시판 관리
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+					<a class="dropdown-item" href="/adminAllBoardList.do">전체 게시판</a>
+					<a class="dropdown-item" href="/adminEstimateList.do">견적서 관리</a>
+				</div>
 			</li>
 		</ul>
 	</div>
