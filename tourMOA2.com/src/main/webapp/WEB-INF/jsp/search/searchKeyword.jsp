@@ -234,7 +234,7 @@ table{margin:0 auto;}
 
 /* �듯빀寃��� */
 #searchWrap { width: 1100px; margin: 25px auto 0; }
-#searchWrap .title { position: relative; display: table; width: 100%; height: 24px; background:url("/images/title_search.png") no-repeat; }
+#searchWrap .title { position: relative; display: table; width: 100%; height: 33px; background:url("/images/title/title_search.png") no-repeat; }
 #searchWrap .tab { position: relative; width: 1100px; margin: 30px auto 0; }
 #searchWrap .tab ul { width: 1098px; height: 48px; border: 1px solid #dddddd; }
 #searchWrap .tab ul li { position: relative; float: left; height: 48px; line-height: 48px; letter-spacing: -1px; font-size: 15px; color: #0d0d0d; font-weight: 600; text-align: center; background:url("/images/sub/tab_div.png") center right no-repeat; cursor: pointer; }
@@ -255,7 +255,7 @@ table{margin:0 auto;}
 #searchWrap .tabview.tab01 span.keyword { display: inline-block; margin: 0 auto; margin: 14px 0 20px 0; font-size: 13px; color: #999999; text-align: left; }
 #searchWrap .tabview.tab01 span.keyword span { display: inline; padding: 0 8px; background:url("/images/totSearch_bul.png") left center no-repeat; }
 #searchWrap .tabview.tab01 span.keyword span:first-child { background: none; }
-#searchWrap .relKeywordBox {width:700px; padding:14px; margin:0 auto; font-size:13px ; font-weight:600; color:#999;}
+#searchWrap .relKeywordBox {width:700px; height:47px;padding:14px; margin:0 auto; font-size:13px ; font-weight:600; color:#999;}
 #searchWrap .tabview.tab01 span.likekeyword { display: inline-block; margin: 0 auto; margin: 14px 0 20px 0; font-size: 13px; color: #999999; text-align: left; }
 #searchWrap .tabview.tab01 span.likekeyword span { display: inline; padding: 0 8px; background:url("/images/totSearch_bul.png") left center no-repeat; }
 #searchWrap .tabview.tab01 span.likekeyword span:first-child { background: none; }
