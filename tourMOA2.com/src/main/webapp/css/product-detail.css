@@ -1,12 +1,37 @@
 @CHARSET "UTF-8";
 
+/*SUB */
+nav#gnbsub1 {position: relative; width: 1100px; height:55px;}
+nav#gnbsub1 ul { width:100%; height:55px;}
+nav#gnbsub1 ul li { float: left; height: 100%; margin: 0 10px 0 0;}
+nav#gnbsub1 ul li.tit {width:130px; height:60px;}
+nav#gnbsub1 ul li.tit span{display:block; width: 180px; height:65px; background: url("/images/product/detail/tab_title.png")no-repeat;}
+
+nav#gnbsub1 ul li.on { padding: 0; color: #2363d7; border-top: 2px solid #2363d7; height: 50px; top:0px;}
+nav#gnbsub1 ul li.on > a { color: #2363d7;}
+nav#gnbsub1 ul li > a { position: relative; z-index: 99999; display: block; top: 0; left: 0; width: 100%; height: 50px; background: transparent; font-size:0px; color:transparent !important }
+
+nav#gnbsub1 #one {border-top: 1px solid #e6e6e6;border-bottom: 1px solid #e6e6e6; background-color: #f6f6f6;}
+nav#gnbsub1 #one li { float: left; height: 100%; margin: 0 40px 0 0; line-height: 62px; }
+nav#gnbsub1 #one li a { display: block; width: 100%; height: 100%; text-indent: -2000000px; }
+nav#gnbsub1 #one li.sub01 {margin-top:-8px; background:url(/images/product/detail/sub01_off.png) no-repeat left 10px; width: 50px;}
+nav#gnbsub1 #one li.sub01.on {margin-top:-8px; background: url(/images/product/detail/sub01_on.png) no-repeat left 10px;width: 50px;}
+nav#gnbsub1 #one li.sub02 {margin-top:-8px; background: url(/images/product/detail/sub02_off.png) no-repeat left 10px;width: 50px;}
+nav#gnbsub1 #one li.sub02.on {margin-top:-8px;background: url(/images/product/detail/sub02_on.png) no-repeat left 10px;width: 50px;}
+nav#gnbsub1 #one li.sub03 {margin-top:-8px;background: url(/images/product/detail/sub03_off.png) no-repeat left 10px;width: 50px;}
+nav#gnbsub1 #one li.sub03.on {margin-top:-8px;background: url(/images/product/detail/sub03_on.png) no-repeat left 10px;width: 50px;}
+nav#gnbsub1 #one li.sub04 {margin-top:-8px;background: url(/images/product/detail/sub04_off.png) no-repeat left 10px;width: 50px;}
+nav#gnbsub1 #one li.sub04.on {margin-top:-8px;background: url(/images/product/detail/sub04_on.png) no-repeat left 10px;width: 50px;}
+nav#gnbsub1 #one li.sub05 {margin-top:-10px;background: url(/images/product/detail/sub05_off.png) no-repeat left 10px;width: 75px;}
+nav#gnbsub1 #one li.sub05.on {margin-top:-10px;background: url(/images/product/detail/sub05_on.png) no-repeat left 10px;width: 75px;}
+nav#gnbsub1 #one li.sub06 {margin-top:-8px;background: url(/images/product/detail/sub06_off.png) no-repeat left 10px;width: 50px;}
+nav#gnbsub1 #one li.sub06.on {margin-top:-8px;background: url(/images/product/detail/sub06_on.png) no-repeat left 10px;width: 50px;}
+nav#gnbsub1 #one li.sub07 {margin-top:-10px;background: url(/images/product/detail/sub07_off.png) no-repeat left 10px;width: 75px;}
+nav#gnbsub1 #one li.sub07.on {margin-top:-10px;background: url(/images/product/detail/sub07_on.png) no-repeat left 10px;width:75px;}
+
+
 #regionWrap {
-    position: relative;
-    width: 100%;
-    height: 50px;
-    background: #f7f8f9;
-    z-index: 1;
-}
+    position: relative; width: 100%;height: 50px;background: #f7f8f9;z-index: 1;}
 
 #region {
     width: 1100px;
@@ -96,6 +121,8 @@ option {
     margin: 0 auto;
 }
 /*예약날짜 선택*/
+.departure_month {
+    height: auto !important;clear: both;}
 .tab_month {border:1px solid #e0e0e0; border-bottom:none; background:#fff;  height:45px; line-height:45px; position: relative; padding:0 45px; text-align:center}
 .tab_month ul {
     display: table;
