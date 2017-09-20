@@ -6,22 +6,22 @@ ul,li,ol{list-style:none;}
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes banner {
 	
-	0%   {background-image: url('/images/tp-main/mainbg1.jpg');}
+	0%   {background-image: url('/images/tp-main/banner2.png');}
     25%  {background-image: url('/images/tp-main/mainbg2.jpg');}
     50%  {background-image: url('/images/tp-main/mainbg3.jpg');}
-    75%  {background-image: url('/images/tp-main/mainbg1.jpg');}
-    100% {background-image: url('/images/tp-main/mainbg2.jpg');}
+    75%  {background-image: url('/images/tp-main/banner1.PNG');}
+    100% {background-image: url('/images/tp-main/banner2.png');}
     
 }    
 
 /* Standard syntax */
 @keyframes banner {
 	
-    0%   {background-image: url('/images/tp-main/mainbg1.jpg');}
-    25%  {background-image: url('/images/tp-main/mainbg2.jpg');}
+    0%   {background-image: url('/images/tp-main/banner1.PNG');}
+    25%  {background-image: url('/images/tp-main/banner2.png');}
     50%  {background-image: url('/images/tp-main/mainbg3.jpg');}
     75%  {background-image: url('/images/tp-main/mainbg1.jpg');}
-    100% {background-image: url('/images/tp-main/mainbg2.jpg');}
+    100% {background-image: url('/images/tp-main/banner1.PNG');}
     
 }
         #tt{width: 1100px; height: auto; margin: 0 auto; }
@@ -90,13 +90,23 @@ ul,li,ol{list-style:none;}
 	 		animation-duration: 7s; animation-iteration-count: infinite;}
 	 		
   	      
-        #rightmenu{ width: 100px; height: 200px; float: right; }
-        #rightmenu ul{ width: 100px; height: auto; position: fixed; background-color: floralwhite; border:1px solid black; text-align: center;}
-        #rightmenu ul li{width: 100px; height: 50px; border-bottom: 1px solid black; }
-        #rightmenu ul li:last-child{border-bottom: 0px; height: 25px;}
+        #rightmenu{ width: 180px; height: 300px; float: right; display: inline-block; }
+        #rightmenu ul{ width: 180px; height: auto; position:fixed; background-color: floralwhite; border:1px solid black; text-align: center;}
+        #rightmenu ul li{width: 180px; height: 60px; border-bottom: 1px solid black;  }
+        #rightmenu ul li:last-child{border-bottom: 0px; height: 30px;}
+        
+        #rightmenu ul li a{text-decoration: none;
+         font-size: 18px;
+         font-weight: bold; 
+         color: gray; 
+         float: left; 
+         margin-left: 20px;
+         margin: 10px;}
+
+        #rightmenu ul li i{color: gray; margin-right: 10px;}
         a#moveTopBtn{text-decoration: none; color: black;}
         
-        #quickmenu{width: 320px; height: 30px; float: left;}
+        #quickmenu{width: 320px; height: 30px; float: left; }
         #quickmenu ul{width: 320px; height: 30px;
             background-image: url('/images/tp-main/find.png'); font-weight: 900;}
         #quickmenu ul li{color: #fff; font-size: 14px; float: left; }
@@ -109,7 +119,7 @@ ul,li,ol{list-style:none;}
         				font-weight: 800;
         				color: white;
         				}
-        #quickmenu ul li .searchBtn { 
+        #searchBtn { 
         		 text-align :center;
 				 font-size : 16px;
 				 margin-left : 20px;
@@ -160,7 +170,7 @@ ul,li,ol{list-style:none;}
     		border : 0} 
     		
     		
-	.finder{cursor: pointer; text-align: center; line-height: 25px;}
+	.finder{cursor: pointer; text-align: center; line-height: 25px; color: pink;}
 	.finder:hover{color: pink;}
         
 	.find-content p{margin-left: 20px; width: 300px;}
@@ -176,11 +186,12 @@ ul,li,ol{list-style:none;}
 		    height: 400px;
 		    padding: 5px 5px;
 		    text-decoration: none;
-		    display: none;
 		    color: #fff;
 		    font-size: 14px;
 	}
 	.airportfind-content p {margin-left: 20px; }
+	.airportfind-content span:last-child {float:right;margin-right: 10px;}
+	
 	
 	.airportfind-content-inside1{
     		margin-left: 20px; 
@@ -201,7 +212,9 @@ ul,li,ol{list-style:none;}
     		margin-bottom: 10px;
     		margin-top: 10px;
     		border : 0;}
-	
+	.dontknowWhen{
+	display: none;
+	}
 	.airportfind-content-inside-people1{
 			margin-left: 20px; 
     		background-color: black; 
@@ -221,22 +234,79 @@ ul,li,ol{list-style:none;}
     		margin-bottom: 10px;
     		margin-top: 10px;
     		border : 0;}	
+    		
+    		
+ 	.domesticfind-content {
+		    background-image: url('/images/tp-main/find.png');
+		    right: 150px;
+		    top : 5px; 
+		    position: relative;
+		    color: #fff;
+		    display: none;
+		    min-width: 320px;
+		    height: 400px;
+		    padding: 5px 5px;
+		    text-decoration: none;
+		    color: #fff;
+		    font-size: 14px;
+	}
+	.domesticfind-content p {margin-left: 20px; }
+	
+	.domesticfind-content-inside1{
+    		margin-left: 20px; 
+    		background-color: black; 
+    		width:40%; 
+    		height: 30px; 
+    		color: #fff; 
+    		margin-bottom: 10px;
+    		margin-top: 10px;
+    		border : 0;} 
+    .domesticfind-content-inside2{
+    		margin-left: 15px;
+    		text-align:center; 
+    		background-color: black; 
+    		width:40%; 
+    		height: 30px; 
+    		color: #fff; 
+    		margin-bottom: 10px;
+    		margin-top: 10px;
+    		border : 0;}
+	
+	.domesticfind-content-inside-people1{
+			margin-left: 20px; 
+    		background-color: black; 
+    		width: 25%; 
+    		height: 30px; 
+    		color: #fff; 
+    		margin-bottom: 10px;
+    		margin-top: 10px;
+    		border : 0;}
+    	
+    .domesticfind-content-inside-people2{
+			margin-left: 13px; 
+    		background-color: black; 
+    		width: 25%; 
+    		height: 30px; 
+    		color: #fff; 
+    		margin-bottom: 10px;
+    		margin-top: 10px;
+    		border : 0;}	
     	
 			
 	
-	.airlineBtn {text-align :center;
+	.airportfind_airlineBtn {text-align :center;
 				 font-size : 16px;
 				 margin-left : 20px;
 				 width: 40%; 
 				 height: 50px;
 				 background-color: green;
-				 color : #fff;
+				 color : #fff; 
 				 border : 0px;
 				 font-weight: bolder;
 				 margin-bottom: 20px; }
 				 
 				 
-	.domesticBtn {text-align :center;
+	.airportfind_domesticBtn {text-align :center;
 				 font-size : 16px;
 				 margin-left : 10px;
 				 width: 40%; 
@@ -246,6 +316,29 @@ ul,li,ol{list-style:none;}
 				 border : 0px;
 				 font-weight: bolder;
 				 margin-bottom: 20px; }
+				 
+	.domestic_airlineBtn {text-align :center;
+				 font-size : 16px;
+				 margin-left : 20px;
+				 width: 40%; 
+				 height: 50px;
+				 background-color: gray;
+				 color : #fff;
+				 border : 0px;
+				 font-weight: bolder;
+				 margin-bottom: 20px; }
+				 
+				 
+	.domestic_domesticBtn{text-align :center;
+							 font-size : 16px;
+							 margin-left : 10px;
+							 width: 40%; 
+							 height: 50px;
+							 background-color: green;
+							 color : #fff; 
+							 border : 0px;
+							 font-weight: bolder;
+							 margin-bottom: 20px; }
         
 	.airportfinder{cursor: pointer; text-align: center;  line-height: 25px;}
     .airportfinder:hover{color: pink;}
@@ -255,7 +348,7 @@ ul,li,ol{list-style:none;}
 #content{width: 1100px; height: auto; margin: 0 auto;}
 
 
-#theme_block{width: 1100px; height:auto; display: inline-block; margin-top: 20px; margin-bottom: 30px; border:1px solid red;}
+#theme_block{width: 1100px; height:auto; display: inline-block; margin-top: 20px; margin-bottom: 20px;}
 #theme_block h2{width:auto; height:auto; float: left; }
 
 #tab_type01 ul{padding-top: 5px; float:right; } 
@@ -278,13 +371,24 @@ ul,li,ol{list-style:none;}
 		    
 #departureConfirmed{width: 100%; height: auto; float: left; display: inline-block; margin-top: 15px;}
 #departureConfirmed img{margin-right: 5px; width: 265px; height: 370px; }
-#departureConfirmed img:last-child{margin-right: 0px;}
+#departureConfirmed img:last-child{margin-right: 0px;}  
 
-#theme_block2{width: 50%; height: auto; float: left; display: inline-block; margin-top: 15px; border: 1px solid green;}
+#theme_block2{width: 50%; height: auto; float: right; display: inline-block; margin-top: 15px;}
 #theme_block2 h2{height: auto;}
 #theme_block2 img{width: 100%; height: 370px; }
 #theme_block2 img:last-child{margin-right: 0px;}
 
+#event_small_up{width: 50%; display:inline-block;float:left; margin-top: 25px}
+.more_r{float:right; color: gray;}
+.more_r a i{color: gray;}
+.h_undergtag{margin-right:600px; float:left; height: auto;}
+#theme_block .travle_img{width:250px; height:165px; float: left;}
+#theme_block .travle_talk h3{width:410px; height:auto; margin-right:15px;}
+#theme_block .travle_talk:nth-child(1){margin-right:15px;}
+
+#notice_main_css{float:left;width:50%; height: auto; display: inline-block; margin-top: 20px; margin-bottom: 20px;}
+#notice_main_css label{font-size: 30px; font-weight: bolder; margin-bottom: 20px;}
+#notice_main_css ul li{line-height: 50px; list-style: square; margin-left: 30px;}
 #footer{width: 100%; height: 400px; margin: 0 auto; border: 3px solid gray; background-color: dimgrey}
 
 
