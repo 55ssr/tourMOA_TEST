@@ -91,7 +91,7 @@
                 <ul id="bottomL">
                     <li class="tit">INFOMATION<span class="yellow_line"></span></li>
                     <li>
-                        <span class="company">(주)투어모아</span> &nbsp;|&nbsp; 대표자 고재경. 최명일<br />
+                        <span class="company">(주)투어모아</span> &nbsp;|&nbsp; <font style="letter-spacing:-0.1em;">대표자 김국진. 강진규. 류석현. 한수경. 김훈영</font><br />
 					                        본사 사업자등록번호 104-81-64440<br />
 					                        관광사업자등록증번호 제2006-000003호 <br /> 
 					                        통신판매업신고번호 제2008-서울중구-0278<br />
