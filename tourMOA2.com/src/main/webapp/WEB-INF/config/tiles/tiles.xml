@@ -17,7 +17,7 @@
         <put-attribute name="footer" value="/WEB-INF/jsp/tiles/footer.jsp" />
 
         <put-attribute name="content" />
-
+  
     </definition>
 
     
