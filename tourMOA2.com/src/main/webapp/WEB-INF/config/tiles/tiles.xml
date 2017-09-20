@@ -13,6 +13,25 @@
         <put-attribute name="title" value="여행·레저의 힐링파트너 - TourMOA" type="string" />
 
         <put-attribute name="topMenu" value="/WEB-INF/jsp/tiles/topMenu.jsp" />
+        
+        <put-attribute name="topNav" value="/WEB-INF/jsp/tiles/topNav.jsp" />
+
+        <put-attribute name="footer" value="/WEB-INF/jsp/tiles/footer.jsp" />
+
+        <put-attribute name="content" />
+  
+    </definition>
+    
+    
+	<!-- mypage, customer Main Template -->
+	
+    <definition name="layout1Plus" template="/WEB-INF/config/tiles/layout1Plus.jsp">
+
+        <put-attribute name="title" value="여행·레저의 힐링파트너 - TourMOA" type="string" />
+
+        <put-attribute name="topMenu" value="/WEB-INF/jsp/tiles/topMenu.jsp" />
+        
+        <put-attribute name="topNav" value="/WEB-INF/jsp/tiles/topNavPlus.jsp" />
 
         <put-attribute name="footer" value="/WEB-INF/jsp/tiles/footer.jsp" />
 
@@ -20,8 +39,24 @@
   
     </definition>
 
+    <!-- product Template -->
     
+    <definition name="layout1Prod" template="/WEB-INF/config/tiles/layout1Plus.jsp">
 
+        <put-attribute name="title" value="여행·레저의 힐링파트너 - TourMOA" type="string" />
+
+        <put-attribute name="topMenu" value="/WEB-INF/jsp/tiles/topMenu.jsp" />
+        
+        <put-attribute name="topNav" value="/WEB-INF/jsp/tiles/topNavProd.jsp" />
+
+        <put-attribute name="footer" value="/WEB-INF/jsp/tiles/footer.jsp" />
+
+        <put-attribute name="content" />
+  
+    </definition>
+	
+	<!-- Admin Template -->
+	
     <definition name="layout2" template="/WEB-INF/config/tiles/layout2.jsp">
 
         <put-attribute name="title" value="관리자 페이지" type="string" />
@@ -50,11 +85,11 @@
         <put-attribute name="content" value="/WEB-INF/jsp/limited/{1}.jsp" />
     </definition>
     
-    <definition name="mypage/*" extends="layout1">
+    <definition name="mypage/*" extends="layout1Plus">
         <put-attribute name="content" value="/WEB-INF/jsp/mypage/{1}.jsp" />
     </definition>
     
-    <definition name="product/*" extends="layout1">
+    <definition name="product/*" extends="layout1Prod">
         <put-attribute name="content" value="/WEB-INF/jsp/product/{1}.jsp" />
     </definition>
     
@@ -66,7 +101,7 @@
         <put-attribute name="content" value="/WEB-INF/jsp/search/{1}.jsp" />
     </definition>
     
-    <definition name="customer/*" extends="layout1">
+    <definition name="customer/*" extends="layout1Plus">
         <put-attribute name="content" value="/WEB-INF/jsp/customer/{1}.jsp" />
     </definition>
 
