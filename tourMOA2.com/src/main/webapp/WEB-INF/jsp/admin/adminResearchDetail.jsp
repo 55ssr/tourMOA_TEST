@@ -79,8 +79,8 @@
 		
 		<div class="form-group row">
 			<label for="selectUse" class="col-sm-2 col-form-label">사용여부</label>
-			<div class="col-sm-10">
-				<select class="custom-select" id="selectUse">
+			<div class="col-sm-2">
+				<select class="form-control" id="selectUse">
 					<option selected>사용</option>
 					<option value="1">중지</option>
 				</select>
@@ -97,4 +97,4 @@
 		
 	</form>
 	
-    </main>
+	</main>

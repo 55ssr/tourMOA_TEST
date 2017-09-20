@@ -1,10 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div id="wrap">
     <div id="header">
         <div id="topmenu">
@@ -30,23 +24,6 @@
             </div>
         </div>  
         
-        <div id="navi">
-     	   <div id="tt">   
-	            <ul>
-	                <li>해외패키지 </li>
-	                <li>자유여행 </li>
-	                <li>허니문 </li>
-	                <li>골프 </li>
-	                <li>부산/대구출발</li>
-	                <li>해외항공</li>
-	                <li>국내항공</li>
-	                <li>국내여행</li>
-	            </ul>
-            </div>          
-        </div>
-    </div>  
-    <!--header부분--> 
-   
-</div>
+        
 
 
