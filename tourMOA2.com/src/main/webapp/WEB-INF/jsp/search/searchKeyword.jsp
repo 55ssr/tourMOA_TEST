@@ -375,14 +375,14 @@ input[type="text"].research_box {border:1px solid #666 ; height:30px; width:205p
 #rankWrap ul.tab01 { width: 549px; clear: both; }
 #rankWrap ul.tab02 { width: 547px; border-left: 1px solid #d6d6d6; }
 #rankWrap ul { float: left; width: 540px; height: 100%; }
-#rankWrap ul li { position: relative; width: 100%; height: 18px; padding: 0 40px; margin: 10px 0 0 0; }
+#rankWrap ul li { position: relative; width: 100%; height: 18px; padding: 0 40px; margin: 10px 0 0 0; padding-right:0}
 #rankWrap ul li:first-child { margin: 30px 0 0 0; }
 #rankWrap ul li span { float: left; display: block; font-size: 14px; color: #333333; line-height: 1.2; }
 #rankWrap ul li span.no { clear: both; width: 16px; height: 16px; border: 1px solid #c4c4c4; font-size: 12px; background: #dddddd; color: #666666; text-align: center; }
 #rankWrap ul li span.no.grade { border: 1px solid #e3ae00; font-size: 12px; background: #fec300; color: #fff; }
-#rankWrap ul li span.name { width: 390px; margin: 0 0 0 14px; margin: 1px 0 0 14px \9; cursor: pointer; }
-#rankWrap ul li span.updown { width: 15px; height: 100%; margin: 0 15px; background: url('/images/totPage/totSearch_icon01.png') 7px center no-repeat; }
-#rankWrap ul li span.updown.up { background: url('/images/totPage/totSearch_icon02.png') 7px center no-repeat; }
+#rankWrap ul li span.name { width: 385px; margin: 0 0 0 14px; margin: 1px 0 0 14px \9; cursor: pointer; text-align:left}
+#rankWrap ul li span.updown { width: 15px; height: 100%; margin: 0 15px; background: url('/images/totPage/totSearch_icon01.png')  center no-repeat; }
+#rankWrap ul li span.updown.up { background: url('/images/totPage/totSearch_icon02.png') center no-repeat; }
 #rankWrap ul li span.updown.down { background: url('/images/totPage/totSearch_icon03.png') center center no-repeat; }
 #rankWrap ul li span.num { color: #999999; }
 #rankWrap ul li span.updown.new {background:url('/images/newPage/ico_search.gif') no-repeat 50% 50%; width:48px}
@@ -435,7 +435,7 @@ function fn_popup(){
                     <button type="submit" class="btnTotalSearch" title="검색"></button>
                     <!-- <a href="/search/searchKeyword.do" onclick="document.forms['searchform'].submit(); return false;"><img src="/images/top_search.png" alt="검색"></a> -->
                 </div>
-                <div id="ark2"></div>
+                <div id="ark2" ></div>
                 <div class="relKeywordBox">
                 추천검색어 |
                 <span class="Keyword">
