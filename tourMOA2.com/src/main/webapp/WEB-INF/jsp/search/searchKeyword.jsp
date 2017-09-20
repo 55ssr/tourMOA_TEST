@@ -241,7 +241,7 @@ table{margin:0 auto;}
 #searchWrap .tab ul li p { display: inline-block; width: 100%; height: 100%; }
 #searchWrap .tab ul li.t01 { width: 369px; }
 #searchWrap .tab ul li.t02 { width: 364px; }
-#searchWrap .tab ul li.t03 { width: 365px; background: none; }
+#searchWrap .tab ul li.t03 { width: 361px;background: none; }
 #searchWrap .tab ul li a { position: absolute; z-index: 999999; display: block; width: 100%; height: 100%; top:0; left: 0; background: transparent; text-indent: -2000000px; }
 #searchWrap .tab ul li.on { background: #42454c; height: 50px; margin: -1px 0 -1px -1px; padding-left: 1px; color: #fff; }
 #searchWrap .tabview { position: relative; width: 1098px; min-height: 100px; border: 1px solid #dddddd; border-top: none;}
@@ -255,7 +255,7 @@ table{margin:0 auto;}
 #searchWrap .tabview.tab01 span.keyword { display: inline-block; margin: 0 auto; margin: 14px 0 20px 0; font-size: 13px; color: #999999; text-align: left; }
 #searchWrap .tabview.tab01 span.keyword span { display: inline; padding: 0 8px; background:url("/images/totSearch_bul.png") left center no-repeat; }
 #searchWrap .tabview.tab01 span.keyword span:first-child { background: none; }
-#searchWrap .relKeywordBox {width:700px; margin:0 auto; font-size:13px ; font-weight:600; color:#999;}
+#searchWrap .relKeywordBox {width:700px; padding:14px; margin:0 auto; font-size:13px ; font-weight:600; color:#999;}
 #searchWrap .tabview.tab01 span.likekeyword { display: inline-block; margin: 0 auto; margin: 14px 0 20px 0; font-size: 13px; color: #999999; text-align: left; }
 #searchWrap .tabview.tab01 span.likekeyword span { display: inline; padding: 0 8px; background:url("/images/totSearch_bul.png") left center no-repeat; }
 #searchWrap .tabview.tab01 span.likekeyword span:first-child { background: none; }
@@ -385,7 +385,7 @@ input[type="text"].research_box {border:1px solid #666 ; height:30px; width:205p
 #rankWrap ul li span.updown.up { background: url('/images/totPage/totSearch_icon02.png') center no-repeat; }
 #rankWrap ul li span.updown.down { background: url('/images/totPage/totSearch_icon03.png') center center no-repeat; }
 #rankWrap ul li span.num { color: #999999; }
-#rankWrap ul li span.updown.new {background:url('/images/newPage/ico_search.gif') no-repeat 50% 50%; width:48px}
+#rankWrap ul li span.updown.new {background:url('/images/newPage/ico_search_new.png') no-repeat 50% 50%; width:48px}
 #rankWrap ul li span.updown.new+span.num {display:none}
 
 .searchBar { margin-top: 0 !important; }
@@ -416,7 +416,7 @@ function fn_popup(){
                     <a href="/search/searchDate.do" ><li class="t02 ">
                         <p>출발일검색</p>
                     </li></a>
-                    <a href="/search/searchPrice.do" ><li class="t03 on ">
+                    <a href="/search/searchPrice.do" ><li class="t03 ">
                         <p>가격별검색</p>
                     </li></a>
                 </ul>
