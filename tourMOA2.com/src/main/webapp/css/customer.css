@@ -7,7 +7,7 @@
 
 /* LNB */
 nav#lnb { position: relative; width: 1100px; height: 105px; border-bottom: 1px solid #e6e6e6; margin: 0 auto; z-index: 3; }
-nav#lnb ul { width: 100%; height: 52px; }
+nav#lnb ul { width: 100%; height: 54px; }
 nav#lnb ul li { float: left; height: 100%; margin: 0 40px 0 0; line-height: 62px; }
 nav#lnb ul li.tit { width: 144px; height: 54px; margin: 0 170px 0 0; background: url("/images/customer/cs_lnb_bg.png"); background-repeat:no-repeat; }
 nav#lnb ul li.on { color: #ffba00; border-top: 2px solid #01b6ad; line-height: 57px; }
@@ -69,20 +69,20 @@ nav#lnb #one li ul.sub li.sub05_03.on { width: 75px; background: url("/images/cu
 nav#lnb #one li ul.sub li.sub06_01.on { width: 75px; background: url("/images/customer/cs_lnb_06_01__on.png") no-repeat left 22px; }
 nav#lnb #one li ul.sub li.on { color: #ffba00; }
 
-/* 고객센터 메인 */
+/* 고객센터 메인 */nav#lnb ul
 .sec_wrap { position: relative; display: block; width: 100%; margin-top: 60px; }
 .sec_wrap span { display: inline-block; font-size: 14px; font-weight: 600; color: #303030; }
 .sec_01 { height: 179px; padding-bottom: 50px; border-bottom: 1px solid #ececec; }
-.sec_01 .para_01 { position: absolute; top: 0px; left: 0px; line-height: 42px; }
+.sec_01 .para_01 { position: absolute; top: 0px; left: 0px; line-height: 42px; margin-top:30px; }
 .sec_01 .para_01 span { display: block; float: left; font-size: 34px; font-weight: 600; }
 .sec_01 .para_01 .gr { clear: both; display: block;  font-size: 34px; font-weight: 600; color: #01b6ad; }
 .sec_01 .para_01 .sm { clear: both; display: block; font-size: 16px; font-weight: normal; letter-spacing: normal; }
-.sec_01 .para_02 { position: absolute; top: 0; left: 550px; }
+.sec_01 .para_02 { position: absolute; top: 0; left: 550px; margin-top:30px; }
 .sec_01 .para_02 li { float: left; width: 94px; height: 231px; margin-right: 20px; }
 .sec_01 .para_02 li.last { margin-right: 0; }
 
-.sec_02 { height: 190px; padding-top: 53px; background: url("/images/customer/tit_m_faq.png") no-repeat ; }
-.sec_02 .cont_area { position:relative; width: 1100px; height: 190px; font-size: 14px; }
+.sec_02 { height: 190px; padding-top: 53px; background: url("/images/customer/tit_m_faq.png") no-repeat ; margin-top:60px; }
+.sec_02 .cont_area { position:relative; width: 1100px; height: 190px; font-size: 14px;}
 .sec_02 .cont_area .search_area { width: 100%; height: 100px; margin-top: 40px; padding: 30px 0; background: #f7f8f9; text-align: center; }
 .sec_02 .cont_area .search_area span { display: inline-block; margin-right: 20px; font-size: 16px; font-weight: normal; line-height: 40px; color: #303030; }
 .sec_02 .cont_area .search_area input[type="text"] { width: 388px; height: 40px; margin:0 9px 9px 0; padding:10px 0 12px 18px; padding:9px 0 13px 18px \9; font-size: 16px; font-weight: normal; border: 1px solid #dee1e2; vertical-align: top; }
@@ -91,8 +91,8 @@ nav#lnb #one li ul.sub li.on { color: #ffba00; }
 .sec_03 { width: 100%; height: 432px; padding-top:30px; }
 .sec_03 .latest_wrap { position:relative; display: block; float: left; width: 520px; height: 158px; margin: 0 60px 0 0; padding-top: 48px; vertical-align: top; font-size: 14px; font-weight: normal; }
 .sec_03 .latest_wrap a.plus { position: absolute; width: 14px; height: 13px; top: 6px; right: 0; text-indent: -2000000px; }
-.sec_03 .latest_notice { background: url("/images/customer/tit_m_notice.png") no-repeat; }
-.sec_03 .latest_qna { background: url("/images/customer/tit_m_qna.png") no-repeat; margin-right: 0; }
+.sec_03 .latest_notice { background: url("/images/customer/tit_m_notice.png") no-repeat;  margin-top:60px;}
+.sec_03 .latest_qna { background: url("/images/customer/tit_m_qna.png") no-repeat; margin-right: 0;  margin-top:60px;}
 .sec_03 .latest_guide { background: url("/images/customer/tit_m_guide.png") no-repeat; margin-top : 60px; height:258px !important;}
 .sec_03 .latest_praise { background: url("/images/customer/tit_m_praise.png") no-repeat; margin: 0; margin-top : 60px; }
 .sec_03 .latest_wrap ul li { background: url("/images/customer/rect_s.png") no-repeat left center; padding-left: 12px; line-height: 26px; font-weight: normal;color: #333333;}
@@ -865,7 +865,7 @@ ul.multi_select>li>ul>li input{margin:0 8px 0 0;vertical-align:-1px}
 .travel_episode_best .bes_kit{display:none; position:relative; text-align:left}
 .travel_episode_best .bes_kit:after{content:""; display:block; clear:both}
 .travel_episode_best .bes_kit{width:1100px; height:325px}
-.travel_episode_best .bes_kit .sliderkit-nav{position:absolute; left:0; bottom:0; width:960px; padding:0 70px; z-index:10; text-align:center}
+.travel_episode_best .bes_kit .sliderkit-nav{position:absolute; left:0; bottom:0; width:1100px; padding:0 70px; z-index:10; text-align:center}
 .travel_episode_best .sliderkit .sliderkit-nav-clip{position:relative; overflow:hidden; width:960px !important; margin:0 auto}
 .travel_episode_best .sliderkit .sliderkit-btn{z-index:10}
 .travel_episode_best .sliderkit .sliderkit-nav-clip ul{position:relative; left:0; top:0; margin:0; padding:0}
@@ -875,15 +875,15 @@ ul.multi_select>li>ul>li input{margin:0 8px 0 0;vertical-align:-1px}
 .travel_episode_best .sliderkit .sliderkit-nav-clip ul li em{overflow:hidden; text-overflow:ellipsis; display:block; width:248px; padding:22px 0 15px 25px; font-size:13px; color:#333; font-style:normal; white-space:nowrap}
 .travel_episode_best .sliderkit .sliderkit-nav-clip ul li em>span{padding-bottom:10px; font-family:'NanumBold'}
 .travel_episode_best .sliderkit .sliderkit-nav-clip ul li em>span.sub{margin-left:7px; padding-left:12px; background:url("/images/travelInfo/bg_travel_sub.gif") no-repeat left 3px; font-family:'NanumBold'}
-.travel_episode_best .sliderkit .sliderkit-nav-clip ul li .txts{display:block; width:248px; margin-left:25px; padding:15px 0 0 0; font-size:16px; color:#333; line-height:22px; background:url("/images/travelInfo/bg_text_underline.gif") no-repeat left top}
-.travel_episode_best .sliderkit .sliderkit-nav-clip ul li .pic_info{position:absolute; left:15px; top:15px; height:21px; padding:5px 0 0 10px; background:url("/images/travelInfo/bg_best_ico.png") no-repeat left top; text-align:center; color:#fff; font-size:14px}
-.travel_episode_best .sliderkit .sliderkit-nav-clip ul li .pic_info:after{position:absolute; right:-10px; top:0; content:""; display:block; width:10px; height:26px; background:url("/images/travelInfo/bg_best_ico.png") no-repeat right top}
-.travel_episode_best .bes_kit .sliderkit-nav .sliderkit-nav-btn{position:absolute; top:120px; width:30px; height:45px; color:transparent; text-indent:-9999px; background:url("/images/travelInfo/bg_travel_btn.png") no-repeat left top}
-.travel_episode_best .bes_kit .sliderkit-nav .sliderkit-nav-btn>a{display:block; width:30px; height:45px}
-.travel_episode_best .bes_kit .sliderkit-nav .sliderkit-nav-prev{left:20px;background-position:right top}
-.travel_episode_best .bes_kit .sliderkit-nav .sliderkit-nav-prev.sliderkit-btn-disable{background-position:left top}
-.travel_episode_best .bes_kit .sliderkit-nav .sliderkit-nav-next{right:20px;background-position:right bottom}
-.travel_episode_best .bes_kit .sliderkit-nav .sliderkit-nav-next.sliderkit-btn-disable{background-position:left bottom}
+.travel_episode_best .sliderkit .sliderkit-nav-clip ul li .txts{display:block; width:248px; margin-left:25px; padding:15px 0 0 0; font-size:16px; color:#333; line-height:22px; background:url("/images/travelInfo/bg_text_underline.gif") no-repeat left top;}
+.travel_episode_best .sliderkit .sliderkit-nav-clip ul li .pic_info{position:absolute; left:15px; top:15px; height:21px; padding:5px 0 0 10px; background:url("/images/travelInfo/bg_best_ico.png") no-repeat left top; text-align:center; color:#fff; font-size:14px;}
+.travel_episode_best .sliderkit .sliderkit-nav-clip ul li .pic_info:after{position:absolute; right:-10px; top:0; content:""; display:block; width:10px; height:26px; background:url("/images/travelInfo/bg_best_ico.png") no-repeat right top;}
+.travel_episode_best .bes_kit .sliderkit-nav .sliderkit-nav-btn{position:absolute; top:120px; width:30px; height:45px; color:transparent; text-indent:-9999px; background:url("/images/travelInfo/bg_travel_btn.png") no-repeat left top;}
+.travel_episode_best .bes_kit .sliderkit-nav .sliderkit-nav-btn>a{display:block; width:30px; height:45px;}
+.travel_episode_best .bes_kit .sliderkit-nav .sliderkit-nav-prev{left:20px;background-position:right top;}
+.travel_episode_best .bes_kit .sliderkit-nav .sliderkit-nav-prev.sliderkit-btn-disable{background-position:left top;}
+.travel_episode_best .bes_kit .sliderkit-nav .sliderkit-nav-next{right:20px;background-position:right bottom;}
+.travel_episode_best .bes_kit .sliderkit-nav .sliderkit-nav-next.sliderkit-btn-disable{background-position:left bottom;}
 .travel_episode_best .bt_type{position:absolute; right:0; top:-57px}
 
 /*댓글 추가: 2015-10-28*/
