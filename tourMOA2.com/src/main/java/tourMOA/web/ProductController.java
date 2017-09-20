@@ -28,4 +28,15 @@ public class ProductController {
 	public String locMain() throws Exception{		
 		return "product/locMain";		
 	}
+	/*상품 예약리스트페이지*/
+	@RequestMapping("product/detailList.do")
+	public String detailList() throws Exception{		
+		return "product/detailList";		
+	}
+	
+	/*상품 예약페이지*/
+	@RequestMapping("product/detailPackage.do")
+	public String detailPackage() throws Exception{		
+		return "product/detailPackage";		
+	}
 }
