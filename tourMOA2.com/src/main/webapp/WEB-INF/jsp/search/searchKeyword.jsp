@@ -243,11 +243,11 @@ table{margin:0 auto;}
 #searchWrap .tab ul li.t02 { width: 364px; }
 #searchWrap .tab ul li.t03 { width: 361px;background: none; }
 #searchWrap .tab ul li a { position: absolute; z-index: 999999; display: block; width: 100%; height: 100%; top:0; left: 0; background: transparent; text-indent: -2000000px; }
-#searchWrap .tab ul li.on { background: #42454c; height: 50px; margin: -1px 0 -1px -1px; padding-left: 1px; color: #fff; }
+#searchWrap .tab ul li.on { background: #42454c; height: 47px; margin: -1px 0 -1px -1px; padding-left: 1px; color: #fff; }
 #searchWrap .tabview { position: relative; width: 1098px; min-height: 100px; border: 1px solid #dddddd; border-top: none;}
 /* �듯빀寃��� : �ㅼ썙�쒓��� */
 #searchWrap .tabview.tab01 { text-align: center; }
-#searchWrap .tabview.tab01 span.noti { display: inline-block; width: 550px; margin: 20px auto 20px; font-size: 14px; color: #666666; }
+#searchWrap .tabview.tab01 span.noti { display: block; width: 550px; margin: 20px auto 20px; font-size: 14px; color: #666666; }
 #searchWrap .tabview.tab01 #keywordSrh { position: relative; width: 550px; height: 36px; margin: 0 auto; border: 2px solid #fec300; width:554px; height:40px;}
 #searchWrap .tabview.tab01 #keywordSrh > input { float: left; width: 480px; border: none; border: 0; margin: 0 0 0 0; padding: 9px 10px 10px 10px; padding: 9px 10px 9px 10px \9; font-size: 14px; color: #333333; font-weight: 600; }
 #searchWrap .tabview.tab01 #keywordSrh > .divide { float: left; display: block; height: 22px; margin: 7px 1px 0 1px; border-left: 1px solid #d1d1d1; }
@@ -426,7 +426,7 @@ function fn_popup(){
 			<input type="hidden" name="collection" value="">
 			<input type="hidden" name="realQuery" value="" />
             <div class="tabview tab01 block"><!--[[ 키워드검색 tab01 Start ]]-->
-                <span class="noti">상품번호를 알고 계시다면, 상품번호로 간편하게 검색하세요!</span>
+                <span class="noti" >상품번호를 알고 계시다면, 상품번호로 간편하게 검색하세요!</span>
                 <div id="keywordSrh">
                 
                     <input type="text" id="query2" name="query" title="키워드입력" value="" style="ime-mode:active;"    />
