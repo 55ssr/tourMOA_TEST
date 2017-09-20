@@ -11,6 +11,8 @@
 <link rel="stylesheet" type="text/css" href="/css/detailPackage.css">
 <link rel="stylesheet" type="text/css" href="/css/product-main.css">
 <link rel="stylesheet" type="text/css" href="/css/product-detail.css">
+<link rel="stylesheet" href="/css/sliderkit/sliderkit.css">
+<link rel="stylesheet" href="/fp/skin/functional.css">
 <!-- fontAwesome 사이트에 아이콘  -->
 <link rel="stylesheet" type="text/css" href="/css/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
