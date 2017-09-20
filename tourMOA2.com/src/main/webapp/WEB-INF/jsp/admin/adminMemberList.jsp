@@ -54,7 +54,7 @@
 					<td>6</td>
 					<td>관리자</td>
 					<td>
-						<a href="/adminGoodsDetail.do">jnk0105</a>
+						<a href="/adminMemberDetail.do">jnk0105</a>
 					</td>
 					<td>강진규</td>
 					<td>남</td>
@@ -66,7 +66,7 @@
 					<td>5</td>
 					<td>일반인</td>
 					<td>
-						<a href="/adminGoodsDetail.do">kkj</a>
+						<a href="/adminMemberDetail.do">kkj</a>
 					</td>
 					<td>김국진</td>
 					<td>남</td>
@@ -78,7 +78,7 @@
 					<td>4</td>
 					<td>일반인</td>
 					<td>
-						<a href="/adminGoodsDetail.do">jnk0105</a>
+						<a href="/adminMemberDetail.do">jnk0105</a>
 					</td>
 					<td>강진규</td>
 					<td>남</td>
@@ -90,7 +90,7 @@
 					<td>3</td>
 					<td>일반인</td>
 					<td>
-						<a href="/adminGoodsDetail.do">jnk0105</a>
+						<a href="/adminMemberDetail.do">jnk0105</a>
 					</td>
 					<td>강진규</td>
 					<td>남</td>
@@ -102,7 +102,7 @@
 					<td>2</td>
 					<td>일반인</td>
 					<td>
-						<a href="/adminGoodsDetail.do">jnk0105</a>
+						<a href="/adminMemberDetail.do">jnk0105</a>
 					</td>
 					<td>강진규</td>
 					<td>남</td>
@@ -114,7 +114,7 @@
 					<td>1</td>
 					<td>일반인</td>
 					<td>
-						<a href="/adminGoodsDetail.do">jnk0105</a>
+						<a href="/adminMemberDetail.do">jnk0105</a>
 					</td>
 					<td>강진규</td>
 					<td>남</td>
