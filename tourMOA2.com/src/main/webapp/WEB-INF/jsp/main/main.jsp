@@ -5,7 +5,21 @@
 <!-- 홈쇼핑 배너 회전 -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="http://malsup.github.com/jquery.cycle2.js"></script>
-
+ <div id="navi">
+     	   <div id="tt">   
+	            <ul>
+	                <li>해외패키지 </li>
+	                <li>자유여행 </li>
+	                <li>허니문 </li>
+	                <li>골프 </li>
+	                <li>부산/대구출발</li>
+	                <li>해외항공</li>
+	                <li>국내항공</li>
+	                <li>국내여행</li>
+	            </ul>
+            </div>          
+        </div>
+    <!-- header부분  -->
 <div id="main">
       <div id="tt">
        <div id="quickmenu">

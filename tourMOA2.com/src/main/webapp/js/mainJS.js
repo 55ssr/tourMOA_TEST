@@ -1,5 +1,3 @@
-
-
 /* QUICK MENU BTN CLICK FUNC s */
 
   $(document).ready(function(){
