@@ -1,26 +1,43 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<script src="/js/jquery-2.2.2.js"></script>
+<script src="/js/jquery-ui.js"></script>
+<script src="/js/product/jquery.bxslider.js"></script>
+<script src="/js/ui.js" type="text/javascript"></script>
 
-<div style="color:red;border:1px solid red; width:100%; height:100px">product 용 네비 바 심어주세요 <br />jsp/tiles/topNav.jsp</div>
+ <script>
+	function fnMenuSelect() {
 
-<!-- <div id="navi">
-     	   <div id="tt">   
-	            <ul>
-	                <li>해외패키지 </li>
-	                <li>자유여행 </li>
-	                <li>허니문 </li>
-	                <li>골프 </li>
-	                <li>부산/대구출발</li>
-	                <li>해외항공</li>
-	                <li>국내항공</li>
-	                <li>국내여행</li>
-	            </ul>
-            </div>          
-        </div>
-    </div>  
-    header부분 
-   
-</div>
-
-
- -->
+	    
+	}
+	
+	$( document ).ready(function() {
+	    $('#gnbsub1').mouseleave(function(){
+	        setTimeout(function() {
+	            $("#one > li").removeClass('on'); // 1depth 초기화
+	            fnMenuSelect();
+	        }, 2000);
+	    });
+	});
+	</script> 
+	
+	
+<div id="content">
+ <div id="wrap1">
+	<header>
+	
+		<nav id="gnbsub1" data-loc="">
+            <ul id="one">
+            	<li class="tit"><span><a href="/product/detailList.do"></a></span></li>
+	            <li class="sub01"><a href="#">유럽</a></li>
+	            <li class="sub02"><a href="#">동남아</a></li>
+	            <li class="sub03"><a href="#">필리핀/푸켓</a></li>
+	            <li class="sub04"><a href="#">중국</a></li>
+	            <li class="sub05"><a href="#">홍콩/대만</a></li>
+	            <li class="sub06"><a href="#">일본</a></li>
+	            <li class="sub07"><a href="#">괌/사이판</a></li>
+            </ul>
+        </nav>
+    </header>
+ </div> 
+</div>       
