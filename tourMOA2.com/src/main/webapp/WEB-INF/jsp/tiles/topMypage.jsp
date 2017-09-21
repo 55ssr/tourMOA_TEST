@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<div style="color:red;border:1px solid red; width:100%; height:100px">mypage, customer 용 네비 바 심어주세요 <br />jsp/tiles/topNav.jsp</div>
+<div style="color:red;border:1px solid red; width:100%; height:100px">mypage 용 네비 바 심어주세요 <br />jsp/tiles/topMypage.jsp</div>
 
 <!--
 기존꺼임 삭제해도 됨
