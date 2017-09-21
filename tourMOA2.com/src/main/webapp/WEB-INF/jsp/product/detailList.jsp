@@ -19,8 +19,10 @@
 	        }, 2000);
 	    });
 	});
+	</script>
+	<<script type="text/javascript">
 
-/* 	function setAreaDtl(did) {
+ 	function setAreaDtl(did) {
 		var bSelect = false;
 		$('#codeAreaDetail').val("");
 		$('#codeAreaDetail option').hide();
@@ -41,7 +43,7 @@
 	});
 	$( document ).ready(function() {
 		$('#codeArea[data-dtl=Y]') && setAreaDtl('849');
-	}); */
+	}); 
 
 </script> 
 
@@ -71,16 +73,21 @@
 				<option value="342">미동부</option>
 				<option value="348">하와이</option>
 				<option value="306">캐나다</option>
+				<option value="307">중남미</option>
 				<option value="3118">기타</option>
 		  </select>
         <label for="codeAreaDetail">선택된 세부지역</label>
            <select name="product" id="codeAreaDetail" >
            	<option value="상품선택" style="display: none;">상품선택</option>
       		<option value="#" data-pid="49" data-did="235" style="display: block;">LA/라스베가스/샌프란시스코/샌디에고/옐로스톤/그랜드캐년/3대캐년</option>
- 			<option value="#" data-pid="342" data-did="829"  style="display: block;">뉴욕/워싱턴/나이아가라/보스턴/시카고/필라델피아</option>
-			<option value="#" data-pid="348" data-did="917" style="display: block;">오하우섬 일주</option>					    
-			<option value="#" data-pid="306" data-did="7423"  style="display: block;">서부(시애틀/밴쿠버/로키/빅토리아)</option>
-			<option value="#" data-pid="3118" data-did="7159" target="_self" style="display: block;">임직원 전용</option>
+ 			<option value="#" data-pid="342" data-did="829" style="display: block;">뉴욕/워싱턴/나이아가라/보스턴/시카고/필라델피아</option>
+			<option value="#" data-pid="348" data-did="917" style="display: block;">오하우섬 일주</option>		
+			<option value="#" data-pid="348" data-did="918" style="display: block;">오하우섬+이웃섬일주</option>				    
+			<option value="#" data-pid="306" data-did="7423" style="display: block;">서부(시애틀/밴쿠버/로키/빅토리아)</option>
+			<option value="#" data-pid="306" data-did="7424" style="display: block;">동부(토론토/몬트리올/퀘백/나이아가라)</option>
+			<option value="#" data-pid="307" data-did="7424" style="display: block;">단독상품</option>
+			<option value="#" data-pid="307" data-did="7425" style="display: block;">연합상품</option>
+			<option value="#" data-pid="3118" data-did="7159" style="display: block;">임직원 전용</option>
 		</select>
   		 </div>
 	</div>
