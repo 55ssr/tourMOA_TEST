@@ -1266,7 +1266,7 @@ h2.tit_con span.more_r_1 a {padding-left:5px;}
 .layer_body .free_tbl_info th, .layer_body .free_tbl_info td , .layer_body .free_add_txt, .layer_body .free_add_txt li{font-size:13px}
 
 /* input type */
-.input_default {height:17px; border:1px solid #a2a2a2; padding:5px 0 5px 8px; font-size:14px; color:#666; line-height:18px}
+.input_default {height:29px; border:1px solid #a2a2a2; padding:5px 0 5px 8px; font-size:14px; color:#666; line-height:18px}
 .sel_default {height:29px; margin:0; padding:5px 3px 6px 5px; line-height:24px; font-size:14px; vertical-align:middle; border:1px solid #a2a2a2; color:#666}
 textarea.text_default {padding:10px; border:1px solid #a2a2a2; color:#666; font-size:14px}
  
@@ -1298,7 +1298,7 @@ textarea.text_default {padding:10px; border:1px solid #a2a2a2; color:#666; font-
 .tbl_horizontal_type .radio_txt, .tbl_horizontal_type .sub_txt{margin-right:25px; font-size:14px}
 .tbl_horizontal_type .sub_txt.last{margin-right:0}
 .tbl_horizontal_type .input_space{margin-left:10px}
-.tbl_horizontal_type .input_space02{margin-right:10px}
+.tbl_horizontal_type .input_space02{margin-right:10px;}
 .tbl_horizontal_type .input_space03{margin-right:20px}
 .tbl_horizontal_type .input_space04{margin-right:16px}
 .tbl_horizontal_type .space{padding:0 5px}
@@ -1393,11 +1393,11 @@ textarea.text_default {padding:10px; border:1px solid #a2a2a2; color:#666; font-
 .comment_list .btns_modify button{background:#fff; border:0 none; color:#959595}
 
 /* search box */
-.search_box{height:40px; margin-bottom:20px; padding:16px 0; text-align:center; background-color:#f7f8f9}
+.search_box{height:70px; margin-bottom:20px; padding:16px 0; text-align:center; background-color:#f7f8f9;}
 .search_box *{vertical-align:middle}
 .search_box label{padding:0 8px 0 10px; background:url("/images/common/bul_01.gif") no-repeat left center; font-size:14px; color:#333; font-family:'NanumBold'}
 .search_box select, 
-.search_box input[type="text"]{height:27px; padding:5px 3px 6px 5px; border:1px solid #dee1e2; line-height:38px}
+.search_box input[type="text"]{height:40px; padding:5px 3px 6px 5px; border:1px solid #dee1e2; line-height:38px;}
 .search_box select {height:40px}
 .search_box .select_area{display:inline-block; height:40px; margin-right:-25px}
 .search_box .select_area select{margin-right:30px}
