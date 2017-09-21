@@ -2,35 +2,46 @@
 <script src="/js/jquery-2.2.2.js"></script>
 <script src="/js/jquery-ui.js"></script>
 <script src="/js/product/jquery.bxslider.js"></script>
+<script src="/js/ui.js" type="text/javascript"></script>
+
+<script>
+
+	$(document).ready(function () {
+        $("#tab_type03 .tabs > li").each(function () {
+            $(this).click(function () {
+                $(this).addClass('on');            
+                $(this).siblings().removeClass('on');  
+            });
+        });
+    });
+	    
+
+	</script>
 <div id="main">
 </div>
 <div id="content">
 <div id="theme_block">
-<div id="tab_type03">
-	<h3> 자유 영혼들을 위한 지역별 BEST3</h3>
+	<h2 class="tit"><img src="/images/product/best3.png" alt=""></h2>
+	<div id="tab_type03">	
 		<ul class="tabs">
-					<li><a href="#" class="decoNone">유럽|지중해</a></li>
-					<li><a href="#" class="decoNone">동남아</a></li>
-					<li><a href="#" class="decoNone">일본</a></li>
-					<li><a href="#" class="decoNone">중국|홍콩</a></li>
-					<li><a href="#" class="decoNone">호주</a></li>
-					<li><a href="#" class="decoNone">미주|하와이</a></li>
-					<li><a href="#" class="decoNone">몰디브</a></li>
+					<li><a href="#tabs" class="decoNone">유럽|지중해</a></li>
+					<li><a href="#tabs" class="decoNone">동남아</a></li>
+					<li><a href="#tabs" class="decoNone">일본</a></li>
+					<li><a href="#tabs" class="decoNone">중국|홍콩</a></li>
+					<li><a href="#tabs" class="decoNone">호주</a></li>
+					<li><a href="#tabs" class="decoNone">미주|하와이</a></li>
+					<li><a href="#tabs" class="decoNone">몰디브</a></li>
 		</ul>
 	</div>
 		<div class="cont02">
-			<ul>
+			<ul class="u1">
 				<li><a href="#">
 					<span class="pic">
 					<img src="/images/product/de1.png" alt="">
 				</span>
 				<div class="info">
-					<span class="stit">
-					떠나고 싶다고 왜 꿈만 꾸는..
-					</span>
-					<span class="detail1">
-				[진에어] GS홈쇼핑 히트상품 쉐라톤호텔 마카오 자유 ...
-					 </span>
+					<span class="stit">떠나고 싶다고 왜 꿈만 꾸는..</span>
+					<span class="detail1">[진에어] GS홈쇼핑 히트상품 쉐라톤호텔 마카오 자유 ...</span>
 					<span class="price">299,000
 					<p>원 ~</p>
 					</span>
@@ -45,43 +56,39 @@
 				<div class="info">
 				<span class="stit">
 					</span>
-					<span class="detail1">
-						[이지카드/여행책자 등 특전 팡팡!]
-						금요일 밤 대만 자유여행
-					 </span>
+					<span class="detail1">[이지카드/여행책자 등 특전 팡팡!]금요일 밤 대만 자유여행</span>
 					<span class="price">289,000
 					<p>원 ~</p>
-					</span>
+				</span>
 				</div>
 				</a>
 			</li>
-			<li><a href="#">
+				<li><a href="#">
 					<span class="pic">
 					<img src="/images/product/de3.png" alt="">
-				</span>
+					</span>
 				<div class="info">
 					<span class="stit">
 					여유가 있어 여행을 가는게..
 					</span>
-					<span class="detail1">
-						[아시아나]주말을 휴가처럼! 금요일 상해 2박3일
-					 </span>
+					<span class="detail1">[아시아나]주말을 휴가처럼! 금요일 상해 2박3일</span>
 					<span class="price">339,000
-					<p>원 ~</p>
-					</span>
-				</div>
-				</a>
-					</li>
-					</ul>
-		<div class="hot_price">
-			<a href="#"><img src="/images/product/hot1.PNG" alt=""></a>
-			<a href="#"><img src="/images/product/hot2.PNG" alt=""></a>
-		</div>
-			
+					<p>원 ~</p></span>
+				</div></a>
+				</li>
+			</ul>
+			<div class="hot_price">
+				<h2 class="tit"><img src="/images/product/hotprice.png" alt="이번주 hot 특가"></h2>
+			<ul>
+				<li><a href="#"><img src="/images/product/hot1.PNG" alt=""></a></li>
+				<li><a href="#"><img src="/images/product/hot2.PNG" alt=""></a></li>
+			</ul>
 		</div>
 	</div>
+		
+	</div>
 	<div id="theme_block">
-	<h3> 해외 자유여행 레어템!현지투어&티켓패스</h3>
+	<h2 class="tit"><img src="/images/product/pass.png" alt=""></h2>
 	<div id="tab_type04">
 		<ul class="tabs">
 					<li><a href="#" class="decoNone">유럽|지중해</a></li>

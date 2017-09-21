@@ -4,80 +4,19 @@
 <script src="/js/jquery-ui.js"></script>
 <script src="/js/product/jquery.bxslider.js"></script>
 <script src="/js/ui.js" type="text/javascript"></script>
- 
 
-<script type="text/javascript">
-
- 	function setAreaDtl(did) {
-		var bSelect = false;
-		$('#codeAreaDetail').val("");
-		$('#codeAreaDetail option').hide();
-		$('#codeAreaDetail option').each(function(idx, el){
-			if($(el).data('pid') == did) {
-				$(el).show();
-				if($(el).data('did') == '76') {
-					bSelect = true;
-				}
-			}
-		});
-//	 	console.log('val', bSelect);
-		$('#codeAreaDetail').val( bSelect ? $('#codeAreaDetail option[data-did=76]').val() : $('#codeAreaDetail option:eq(0)').val() );
-	}
-	$(document).on('change', '#codeArea[data-dtl=Y]', function(e){
-		setAreaDtl($(this).val());
-		return false;
-	});
-	$( document ).ready(function() {
-		$('#codeArea[data-dtl=Y]') && setAreaDtl('849');
-	}); 
-
-</script> 
+   <script type="text/javascript">
+        $(document).ready(function () {
+            $('.w140').each(function () {
+                $(this).click(function () {
+                    $(this).addClass('on');            
+                    $(this).siblings().removeClass('on');  
+                });
+            });
+        });
+    </script>
 
 <div id="content">
-<!--  <div id="wrap">[[ wrap Start ]]
-	<header>[[ header Start ]]
-	
-		<nav id="gnbsub1" data-loc="">
-            <ul id="one">
-            	<li class="tit"><span><a href="/product/detailList.do"></a></span></li>
-	            <li class="sub01"><a href="#">유럽</a></li>
-	            <li class="sub02"><a href="#">동남아</a></li>
-	            <li class="sub03"><a href="#">필리핀/푸켓</a></li>
-	            <li class="sub04"><a href="#">중국</a></li>
-	            <li class="sub05"><a href="#">홍콩/대만</a></li>
-	            <li class="sub06"><a href="#">일본</a></li>
-	            <li class="sub07"><a href="#">괌/사이판</a></li>
-            </ul>
-        </nav>
-       </header>
-       </div>  -->
-       <div id="region">
-       		<label for="codeArea">선택된 지역</label>
-	        <select name="product" id="codeArea" data-dtl="Y">
-		        <option value="상품선택">상품선택</option>
-		 		<option value="49">미서부</option>
-				<option value="342">미동부</option>
-				<option value="348">하와이</option>
-				<option value="306">캐나다</option>
-				<option value="307">중남미</option>
-				<option value="3118">기타</option>
-		  </select>
-        <label for="codeAreaDetail">선택된 세부지역</label>
-           <select name="product" id="codeAreaDetail" >
-           	<option value="상품선택" style="display: none;">상품선택</option>
-      		<option value="#" data-pid="49" data-did="235" style="display: block;">LA/라스베가스/샌프란시스코/샌디에고/옐로스톤/그랜드캐년/3대캐년</option>
- 			<option value="#" data-pid="342" data-did="829" style="display: block;">뉴욕/워싱턴/나이아가라/보스턴/시카고/필라델피아</option>
-			<option value="#" data-pid="348" data-did="917" style="display: block;">오하우섬 일주</option>		
-			<option value="#" data-pid="348" data-did="918" style="display: block;">오하우섬+이웃섬일주</option>				    
-			<option value="#" data-pid="306" data-did="7423" style="display: block;">서부(시애틀/밴쿠버/로키/빅토리아)</option>
-			<option value="#" data-pid="306" data-did="7424" style="display: block;">동부(토론토/몬트리올/퀘백/나이아가라)</option>
-			<option value="#" data-pid="307" data-did="7424" style="display: block;">단독상품</option>
-			<option value="#" data-pid="307" data-did="7425" style="display: block;">연합상품</option>
-			<option value="#" data-pid="3118" data-did="7159" style="display: block;">임직원 전용</option>
-		</select>
-  		 </div>
-	</div>
-	<section id="content">
 	<div id="theme_block">
 		<div id="haedline">
 			<div id="title">&nbsp;[프리미엄][국내선 항공포함]_스페인/포르투갈 10일[KE]</div>
@@ -109,7 +48,7 @@
 				</ul>
 				</div>
 			</div>
-			<div class="departure_month slider">
+			<div class="departure_month ">
 			<div class="tab_month">
 					<div class="w140" onclick="monthClick('2017','09')" id="div201709">
 						2017.09</div>
@@ -121,7 +60,7 @@
 						2017.12</div>
 					<div class="w140" onclick="monthClick('2018','01')" id="div201801">
 						2018.01</div>
-					<div class="w140 month_on" onclick="monthClick('2018','02')" id="div201802">
+					<div class="w140" onclick="monthClick('2018','02')" id="div201802">
 						2018.02</div>
 					<div class="w140" onclick="monthClick('2018','03')" id="div201803">
 						2018.03</div>
@@ -421,7 +360,9 @@
 					본 화면의 모든 상품가격은 항공운임(항공권) 등이 포함된 총 금액이며, 유류할증료는 유가와 환율에 따라 변동될 수 있습니다.
 			</div>
          </div>
-         </section>
+  </div>
+
+  
          
 	
 	
