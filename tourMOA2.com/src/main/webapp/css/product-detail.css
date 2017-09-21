@@ -7,15 +7,15 @@ nav#gnbsub1 ul li { float: left; height: 100%; margin: 0 10px 0 0;}
 nav#gnbsub1 ul li.tit {width:130px; height:60px;}
 nav#gnbsub1 ul li.tit span{display:block; width: 180px; height:65px; background: url("/images/product/detail/tab_title.png")no-repeat;}
 
-nav#gnbsub1 ul li.on { padding: 0; color: #2363d7; border-top: 2px solid #2363d7; height: 50px; top:0px;}
+nav#gnbsub1 ul li.on { padding: 0; color: #2363d7; border-top: 2px solid #2363d7; height: 30px; top:0px;}
 nav#gnbsub1 ul li.on > a { color: #2363d7;}
 nav#gnbsub1 ul li > a { position: relative; z-index: 99999; display: block; top: 0; left: 0; width: 100%; height: 50px; background: transparent; font-size:0px; color:transparent !important }
 
 nav#gnbsub1 #one {border-top: 1px solid #e6e6e6;border-bottom: 1px solid #e6e6e6; background-color: #f6f6f6;}
 nav#gnbsub1 #one li { float: left; height: 100%; margin: 0 40px 0 0; line-height: 62px; }
-nav#gnbsub1 #one li a { display: block; width: 100%; height: 100%; text-indent: -2000000px; }
-nav#gnbsub1 #one li.sub01 {margin-top:-8px; background:url(/images/product/detail/sub01_off.png) no-repeat left 10px; width: 50px;}
-nav#gnbsub1 #one li.sub01.on {margin-top:-8px; background: url(/images/product/detail/sub01_on.png) no-repeat left 10px;width: 50px;}
+nav#gnbsub1 #one li a {display: block; width: 100%; height: 100%; text-indent: -2000000px; }
+nav#gnbsub1 #one li.sub01 {margin-top:-8px; background:url(/images/product/detail/sub01_off.png) no-repeat  left 10px ; width: 50px;}
+nav#gnbsub1 #one li.sub01.on {margin-top:auto; background: url(/images/product/detail/sub01_on.png) no-repeat  left 2px top 0px;width: 50px;}
 nav#gnbsub1 #one li.sub02 {margin-top:-8px; background: url(/images/product/detail/sub02_off.png) no-repeat left 10px;width: 50px;}
 nav#gnbsub1 #one li.sub02.on {margin-top:-8px;background: url(/images/product/detail/sub02_on.png) no-repeat left 10px;width: 50px;}
 nav#gnbsub1 #one li.sub03 {margin-top:-8px;background: url(/images/product/detail/sub03_off.png) no-repeat left 10px;width: 50px;}
