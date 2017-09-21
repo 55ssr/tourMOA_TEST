@@ -1,13 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator"%>
+<%@ taglib prefix="validator"
+	uri="http://www.springmodules.org/tags/commons-validator"%>
 <div id="content" style="height: 200px;">
-<html>
+	<html>
 <head>
 
 <script type="text/javascript">
@@ -889,7 +891,7 @@ table {
 	width: 174px;
 	margin: 0 0 30px 0;
 	padding: 9px 20px 10px 14px;
-	padding: 9px 20px10px14px\9 !important;
+	padding: 9px20px10px14px\9 !important;
 	border: 1px solid #dddddd;
 	background: #fff url("/images/find_icon02.png") no-repeat 184px center
 		!important;
@@ -1148,6 +1150,7 @@ input[type="text"].research_box {
 	height: 48px;
 	background: #f7f8f9;
 	border-bottom: 1px solid #d6d6d6;
+	border-top: 1px solid #d6d6d6;
 	font-size: 15px;
 	color: #333333;
 	font-weight: 600;
@@ -1271,171 +1274,127 @@ input[type="text"].research_box {
 	height: 35px;
 }
 </style>
-		</head>
-		<script>
+</head>
+<script>
 			function fn_popup() {
 				var url = "/ctgRegPop.do";
 				window.open(url, "ctgReg",
 						"width=500,height=500,resizeble=yes,left=500,top=200");
 			}
 		</script>
-		<body
-			style="text-align: center; margin: 0 auto; display: inline; padding-top: 100px;">
+<body
+	style="text-align: center; margin: 0 auto; display: inline; padding-top: 100px;">
 
-			<section id="content">
-				<!--[[ content Start ]]-->
+	<section id="content">
+		<!--[[ content Start ]]-->
 
-				<div id="searchWrap">
-					<!--[[ 통합검색 searchWrap Start ]]-->
-					<div class="tab">
-						<ul>
-							<a href="/search/searchKeyword.do"><li class="t01 on">
-									<p>키워드검색</p>
-							</li></a>
-							<a href="/search/searchDate.do"><li class="t02 ">
-									<p>출발일검색</p>
-							</li></a>
-							<a href="/search/searchPrice.do"><li class="t03 ">
-									<p>가격별검색</p>
-							</li></a>
-						</ul>
-					</div>
-					<form name="searchforms" id="totalSearch"
-						action="/search/searchKeyword.do" method="POST"
-						onSubmit="resultSearchKeyword(event); return false;">
-						<input type="hidden" name="sort" value=""> <input
-							type="hidden" name="collection" value=""> <input
-							type="hidden" name="realQuery" value="" />
-						<div class="tabview tab01 block">
-							<!--[[ 키워드검색 tab01 Start ]]-->
-							<span class="noti">상품번호를 알고 계시다면, 상품번호로 간편하게 검색하세요!</span>
-							<div id="keywordSrh">
+		<div id="searchWrap">
+			<!--[[ 통합검색 searchWrap Start ]]-->
+			<div class="tab"></div>
 
-								<input type="text" id="query2" name="query" title="키워드입력"
-									value="" style="ime-mode: active;" /> <input type="hidden"
-									name="product" value="전체상품"> <span class="divide"></span>
-								<button type="submit" class="btnTotalSearch" title="검색"></button>
-								<!-- <a href="/search/searchKeyword.do" onclick="document.forms['searchform'].submit(); return false;"><img src="/images/top_search.png" alt="검색"></a> -->
-							</div>
-							<div id="ark2"></div>
-							<div class="relKeywordBox">
-								추천검색어 | <span class="Keyword"> <a
-									href="/search/searchKeyword.do?query=보라카이"><span>보라카이</span></a>
-									<a href="/search/searchKeyword.do?query=제주도"><span>제주도</span></a>
-									<a href="/search/searchKeyword.do?query=대만"><span>대만</span></a>
-									<a href="/search/searchKeyword.do?query=사이판"><span>사이판</span></a>
-									<a href="/search/searchKeyword.do?query=코타키나발루"><span>코타키나발루</span></a>
-									<a href="/search/searchKeyword.do?query=오키나와"><span>오키나와</span></a>
-								</span>
-							</div>
-						</div>
-						<!--[[ 키워드검색 tab01 End ]]-->
-					</form>
+			<!--[[ 키워드검색 tab01 End ]]-->
+			</form>
+		</div>
+		<!--[[ 통합검색 searchWrap End ]]-->
 
-				</div>
-				<!--[[ 통합검색 searchWrap End ]]-->
-
-				<div class="notiWrapCon">
-					<div id="rankWrap">
-						<!--[[ 검색 전 인기검색어 rankWrap Start ]]-->
-						<span class="tab">인기검색어</span><span class="tab"
-							style="border-left: 1px solid #d6d6d6; width: 547px">추천검색어</span>
-						<ul class="rankList tab01" style="border-left:">
-							<a href="/search/searchKeyword.do?query=오사카">
-								<li><span class="no grade">1</span> <span class="name">오사카</span>
-									<span class="updown  new"></span> <span class="num">0</span></li>
-							</a>
-							<a href="/search/searchKeyword.do?query=장가계">
-								<li><span class="no grade">2</span> <span class="name">장가계</span>
-									<span class="updown  new"></span> <span class="num">0</span></li>
-							</a>
-							<a href="/search/searchKeyword.do?query=북해도">
-								<li><span class="no grade">3</span> <span class="name">북해도</span>
-									<span class="updown"></span> <span class="num">0</span></li>
-							</a>
-							<a href="/search/searchKeyword.do?query=다낭">
-								<li><span class="no">4</span> <span class="name">다낭</span>
-									<span class="updown"></span> <span class="num">0</span></li>
-							</a>
-							<a href="/search/searchKeyword.do?query=서유럽">
-								<li><span class="no">5</span> <span class="name">서유럽</span>
-									<span class="updown up"></span> <span class="num">2</span></li>
-							</a>
-							<a href="/search/searchKeyword.do?query=터키">
-								<li><span class="no">6</span> <span class="name">터키</span>
-									<span class="updown"></span> <span class="num">0</span></li>
-							</a>
-							<a href="/search/searchKeyword.do?query=라오스">
-								<li><span class="no">7</span> <span class="name">라오스</span>
-									<span class="updown  new"></span> <span class="num">0</span></li>
-							</a>
-							<a href="/search/searchKeyword.do?query=미서부">
-								<li><span class="no">8</span> <span class="name">미서부</span>
-									<span class="updown down"></span> <span class="num">3</span></li>
-							</a>
-							<a href="/search/searchKeyword.do?query=홍콩">
-								<li><span class="no">9</span> <span class="name">홍콩</span>
-									<span class="updown down"></span> <span class="num">1</span></li>
-							</a>
-							<a href="/search/searchKeyword.do?query=스페인 포르투갈 모로코">
-								<li><span class="no">10</span> <span class="name">스페인
-										포르투갈 모로코</span> <span class="updown  new"></span> <span class="num">0</span>
-							</li>
-							</a>
-						</ul>
-						<ul class="rankList tab02">
-							<a href="/search/searchKeyword.do?query=보라카이">
-								<li><span class="no grade">1</span> <span class="name">보라카이</span>
-									<span class="updown"></span> <span class="num"></span></li>
-							</a>
-							<a href="/search/searchKeyword.do?query=제주도">
-								<li><span class="no grade">2</span> <span class="name">제주도</span>
-									<span class="updown"></span> <span class="num"></span></li>
-							</a>
-							<a href="/search/searchKeyword.do?query=대만">
-								<li><span class="no grade">3</span> <span class="name">대만</span>
-									<span class="updown"></span> <span class="num"></span></li>
-							</a>
-							<a href="/search/searchKeyword.do?query=사이판">
-								<li><span class="no">4</span> <span class="name">사이판</span>
-									<span class="updown"></span> <span class="num"></span></li>
-							</a>
-							<a href="/search/searchKeyword.do?query=코타키나발루">
-								<li><span class="no">5</span> <span class="name">코타키나발루</span>
-									<span class="updown"></span> <span class="num"></span></li>
-							</a>
-							<a href="/search/searchKeyword.do?query=오키나와">
-								<li><span class="no">6</span> <span class="name">오키나와</span>
-									<span class="updown"></span> <span class="num"></span></li>
-							</a>
-							<a href="/search/searchKeyword.do?query=괌">
-								<li><span class="no">7</span> <span class="name">괌</span> <span
-									class="updown"></span> <span class="num"></span></li>
-							</a>
-							<a href="/search/searchKeyword.do?query=몽골">
-								<li><span class="no">8</span> <span class="name">몽골</span>
-									<span class="updown"></span> <span class="num"></span></li>
-							</a>
-							<a href="/search/searchKeyword.do?query=러시아">
-								<li><span class="no">9</span> <span class="name">러시아</span>
-									<span class="updown"></span> <span class="num"></span></li>
-							</a>
-							<a href="/search/searchKeyword.do?query=동유럽">
-								<li><span class="no">10</span> <span class="name">동유럽</span>
-									<span class="updown"></span> <span class="num"></span></li>
-							</a>
-						</ul>
-					</div>
-					<!--[[ 검색 전 인기검색어 rankWrap End ]]-->
-				</div>
-			</section>
-			<!--[[ content End ]]-->
-			<script src="/js/common.js"></script>
-		</body>
-</html>
-</div>
-
-
+		<div class="notiWrapCon">
+			<div id="rankWrap">
+				<!--[[ 검색 전 인기검색어 rankWrap Start ]]-->
+				<span class="tab">인기검색어</span><span class="tab"
+					style="border-left: 1px solid #d6d6d6; width: 547px">추천검색어</span>
+				<ul class="rankList tab01" style="border-left:">
+					<a href="/search/searchKeyword.do?query=오사카">
+						<li><span class="no grade">1</span> <span class="name">오사카</span>
+							<span class="updown  new"></span> <span class="num">0</span></li>
+					</a>
+					<a href="/search/searchKeyword.do?query=장가계">
+						<li><span class="no grade">2</span> <span class="name">장가계</span>
+							<span class="updown  new"></span> <span class="num">0</span></li>
+					</a>
+					<a href="/search/searchKeyword.do?query=북해도">
+						<li><span class="no grade">3</span> <span class="name">북해도</span>
+							<span class="updown"></span> <span class="num">0</span></li>
+					</a>
+					<a href="/search/searchKeyword.do?query=다낭">
+						<li><span class="no">4</span> <span class="name">다낭</span> <span
+							class="updown"></span> <span class="num">0</span></li>
+					</a>
+					<a href="/search/searchKeyword.do?query=서유럽">
+						<li><span class="no">5</span> <span class="name">서유럽</span> <span
+							class="updown up"></span> <span class="num">2</span></li>
+					</a>
+					<a href="/search/searchKeyword.do?query=터키">
+						<li><span class="no">6</span> <span class="name">터키</span> <span
+							class="updown"></span> <span class="num">0</span></li>
+					</a>
+					<a href="/search/searchKeyword.do?query=라오스">
+						<li><span class="no">7</span> <span class="name">라오스</span> <span
+							class="updown  new"></span> <span class="num">0</span></li>
+					</a>
+					<a href="/search/searchKeyword.do?query=미서부">
+						<li><span class="no">8</span> <span class="name">미서부</span> <span
+							class="updown down"></span> <span class="num">3</span></li>
+					</a>
+					<a href="/search/searchKeyword.do?query=홍콩">
+						<li><span class="no">9</span> <span class="name">홍콩</span> <span
+							class="updown down"></span> <span class="num">1</span></li>
+					</a>
+					<a href="/search/searchKeyword.do?query=스페인 포르투갈 모로코">
+						<li><span class="no">10</span> <span class="name">스페인
+								포르투갈 모로코</span> <span class="updown  new"></span> <span class="num">0</span>
+					</li>
+					</a>
+				</ul>
+				<ul class="rankList tab02">
+					<a href="/search/searchKeyword.do?query=보라카이">
+						<li><span class="no grade">1</span> <span class="name">보라카이</span>
+							<span class="updown"></span> <span class="num"></span></li>
+					</a>
+					<a href="/search/searchKeyword.do?query=제주도">
+						<li><span class="no grade">2</span> <span class="name">제주도</span>
+							<span class="updown"></span> <span class="num"></span></li>
+					</a>
+					<a href="/search/searchKeyword.do?query=대만">
+						<li><span class="no grade">3</span> <span class="name">대만</span>
+							<span class="updown"></span> <span class="num"></span></li>
+					</a>
+					<a href="/search/searchKeyword.do?query=사이판">
+						<li><span class="no">4</span> <span class="name">사이판</span> <span
+							class="updown"></span> <span class="num"></span></li>
+					</a>
+					<a href="/search/searchKeyword.do?query=코타키나발루">
+						<li><span class="no">5</span> <span class="name">코타키나발루</span>
+							<span class="updown"></span> <span class="num"></span></li>
+					</a>
+					<a href="/search/searchKeyword.do?query=오키나와">
+						<li><span class="no">6</span> <span class="name">오키나와</span>
+							<span class="updown"></span> <span class="num"></span></li>
+					</a>
+					<a href="/search/searchKeyword.do?query=괌">
+						<li><span class="no">7</span> <span class="name">괌</span> <span
+							class="updown"></span> <span class="num"></span></li>
+					</a>
+					<a href="/search/searchKeyword.do?query=몽골">
+						<li><span class="no">8</span> <span class="name">몽골</span> <span
+							class="updown"></span> <span class="num"></span></li>
+					</a>
+					<a href="/search/searchKeyword.do?query=러시아">
+						<li><span class="no">9</span> <span class="name">러시아</span> <span
+							class="updown"></span> <span class="num"></span></li>
+					</a>
+					<a href="/search/searchKeyword.do?query=동유럽">
+						<li><span class="no">10</span> <span class="name">동유럽</span>
+							<span class="updown"></span> <span class="num"></span></li>
+					</a>
+				</ul>
+			</div>
+			<!--[[ 검색 전 인기검색어 rankWrap End ]]-->
+		</div>
+	</section>
+	<!--[[ content End ]]-->
+	<script src="/js/common.js"></script>
 </body>
-
+	</html>
+</div>
+</body>
 </html>
