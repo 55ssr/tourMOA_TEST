@@ -23,6 +23,6 @@
 </head>
 <body>
 	<tiles:insertAttribute name="topMenu" />
-	<%-- <tiles:insertAttribute name="topNav" /> --%>
+	<tiles:insertAttribute name="topNav" />
 	<tiles:insertAttribute name="content" />
 	<tiles:insertAttribute name="footer" />
