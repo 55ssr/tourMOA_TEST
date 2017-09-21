@@ -13,12 +13,16 @@
 <meta charset="UTF-8">	
 <!-- <link rel="stylesheet" type="text/css" href="http://www.swagger.kr/index.html"> -->
 <link rel="stylesheet" type="text/css" href="/css/tp-main.css">
+<link rel="stylesheet" type="text/css" href="/css/detailPackage.css">
 <link rel="stylesheet" type="text/css" href="/css/product-main.css">
+<link rel="stylesheet" type="text/css" href="/css/product-detail.css">
+<link rel="stylesheet" href="/css/sliderkit/sliderkit.css">
+<link rel="stylesheet" href="/fp/skin/functional.css">
 <!-- fontAwesome 사이트에 아이콘  -->
 <link rel="stylesheet" type="text/css" href="/css/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 	<tiles:insertAttribute name="topMenu" />
-	<tiles:insertAttribute name="topNav" />
+	<%-- <tiles:insertAttribute name="topNav" /> --%>
 	<tiles:insertAttribute name="content" />
 	<tiles:insertAttribute name="footer" />
