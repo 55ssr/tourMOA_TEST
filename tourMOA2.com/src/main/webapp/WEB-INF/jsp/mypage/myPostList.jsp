@@ -1,80 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="cache-control" content="no-cache" />
-	<meta http-equiv="pragma" content="no-cache" />
-	<meta http-equiv="expires" content="-1" />
-	<meta http-equiv="imagetoolbar" content="no" />
-	<meta name="robots" content="noindex,nofollow" />
-	<meta name="subject" content="" />
-	<meta name="description" content="해외패키지, 자유여행, 허니문, 국내여행, 항공권 등 실시간예약">
-	<meta name="keywords" content="" />
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-	<meta name="autocomplete" content="off" >
-	<link rel="stylesheet" type="text/css" href="/search/ark/css/ark.css" media="screen" >
-	<title>노랑풍선 [거품없는 직판여행 NO.1]</title>
-	<link rel="shortcut icon" href="/images/yb.ico" />
-	<script src="/js/common.js"></script>
-	<script src="/js/jquery-1.11.2.min.js"></script>
-	
-	<script src="/js/yb.mobileCheck.js" type="text/javascript"></script>
-	<script type="text/javascript">
-		$(window).on('resize', function() {
-			setMobileViewport();
-		})
-		.on('orientationchange', function(){
-			setMobileViewport();
-	// 		if(window.orientation == 0) {	// Portrait
-	// 		} else {	// Landscape
-	// 		}
-		});
-	
-		//PC링크 클릭에 대한 파라미터
-	   	var strPC = getParameterByName("pc");
-		if(isMobile() && strPC == "Y") {
-			setMobileViewport();
-		}
-	</script>
-
-	<script type="text/javascript">
-		var filter = "win16|win32|win64|mac|macintel";
-		
-		if( navigator.platform ) {
-			if( filter.indexOf(navigator.platform.toLowerCase())<0 ) {
-				goMobileVersion();
-		    }
-		}
-	</script>
-	<link rel="stylesheet" href="/css/jquery-ui.css" /> 
-	<script src="/js/jquery-ui.js"></script>
-	<!--[if lt IE 9]><script src="/js/html5.js"></script><![endif]-->
-	<script src="/js/jquery.cookie.js" type="text/javascript"></script>
-	
-	<script src="/js/ui.js" type="text/javascript"></script>
-	<script type="text/javascript" src="/search/ark/js/beta.fix.js" ></script>
-	<script type="text/javascript" src="/search/ark/js/ark.js" ></script>
 	<link rel="stylesheet" href="/css/mypage.css" />
-    <script src="/js/jquery.simplemodal-1.4.4.js"></script>
-    <script src="/js/jquery.validate.js"></script>
-    <script src="/js/additional-methods.js"></script>
-    <script src="/js/localization/messages_ko.js"></script> 
-    <script src="/js/common.js"></script> 
-    <script type="text/javascript" src="/js/jquery.easing.1.3.min.js"></script>
-    <script type="text/javascript" src="/js/jquery.sliderkit.1.9.2.pack.js"></script>
-	<script src="/js/sessionCheck.js"></script><!-- 새벽 배포이후 빼기로 -->
-	<script src="/js/naverLogin_implicit-1.0.2.js"></script><!-- Facebook Pixel Code --> 
-	<script>
-		!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod? 
-		n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n; 
-		n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0; 
-		t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, 
-		document,'script','//connect.facebook.net/en_US/fbevents.js'); 
-		
-		fbq('init', '1352665691429381'); 
-		fbq('track', "PageView");	
-	</script>
 	<script>
 		function fnMenuSelect() {
 		    //여행내역
@@ -91,8 +16,7 @@
 		    
 		    //개인정보
 		    
-		}
-		
+		}		
 		$( document ).ready(function() {
 		    fnMenuSelect();
 		    $('#lnb').mouseleave(function(){
@@ -169,49 +93,6 @@
 	}
 			
 	</script>
-<div id="content">
-<div id="wrap"><!--[[ wrap Start ]]-->
-	<header><!--[[ header Start ]]-->
-    <nav id="lnb_mp"><!--[[ LNB Start ]]-->
-       <ul id="one">
-           <li class="tit"><span><a href="/mypage/main.do"></a></span></li>
-           <li class="lnb01"><a href="#wrap" >여행내역</a>
-               <ul class="sub sub_1">
-                   <li class="sub01_01"><a href="/mypage/reserveList.do" >여행상품예약</a></li>
-                   <li class="sub01_02"><a href="#"  onclick="airMenuSubmit('http://air.ybtour.co.kr/air/b2c/AIR/AAA/AIRAAALST0100000010.k1?KSESID=air:b2c:SELK138AN:AA024::00&domintgubun=I','_blank'); return false;" >해외항공권 예약내역 </a></li>
-                   <!-- <li class="sub01_02"><a href="http://air.ybtour.co.kr/air/b2c/AIR/AAA/AIRAAALST0100000010.k1?KSESID=air:b2c:SELK138AN:AA024::00" target="_blank">항공권예약</a></li> 개발 -->
-              	   <li class="sub01_03"><a href="#" onclick="airMenuSubmit('http://air.ybtour.co.kr/air/b2c/AIR/AAA/AIRAAALST0100000010.k1?KSESID=air:b2c:SELK138AN:AA024::00&domintgubun=D','_blank'); return false;" >국내항공권 예약내역</a></li>	
-               </ul>
-           </li>
-           <li class="lnb02"><a href="#wrap" >관심내역</a>
-               <ul class="sub sub_2">
-                   <li class="sub02_01"><a href="/mypage/wishList.do" >관심상품</a></li>
-                   <li class="sub02_02"><a href="/mypage/today.do" >오늘 본 상품</a></li>
-               </ul>
-           </li>
-           <li class="lnb03"><a href="#wrap" >참여내역</a>
-               <ul class="sub sub_3">
-                   <li class="sub03_01"><a href="inquiryList.do" >상담문의</a></li>
-                   <li class="sub03_02"><a href="/mypage/myPostList.do" >커뮤니티</a></li>
-                   <li class="sub03_03 none"><a href="/mypage/myEventList.do" >이벤트참여</a></li>
-               </ul>
-           </li>
-           <li class="lnb04"><a href="#wrap" >추가결제수단</a>
-               <ul class="sub sub_4">
-                   <li class="sub04_01"><a href="/mypage/giftcardBuy.do" >여행상품권</a></li>
-               </ul>
-           </li>
-           <li class="lnb05"><a href="#wrap" >개인정보</a>
-               <ul class="sub sub_5">
-                   <li class="sub05_01"><a href="/mypage/accountPwReaffirm.do" >개인정보관리</a></li>
-                   <li class="sub05_02"><a href="/mypage/accountPwUpdate.do" >비밀번호변경</a></li>
-                   <li class="sub05_03"><a href="/mypage/accountWithdrawal.do" >회원탈퇴</a></li>
-               </ul>
-           </li>
-       </ul>
-   </nav><!--[[ LNB End ]]-->
-   </header><!--[[ header End ]]-->   
-   <!-- 로그인, 아이디찾기, 비밀번호 찾기 -->
    <section id="content" class="contentSub"><!--[[ content Start ]]-->
    <div class="sec_wrap sec_01"><!--[[ 메인상단 Start ]]-->
        <div class="para_01">
@@ -458,5 +339,4 @@
         <div class="paraW02"><a href="/customer/episodeList.do">여행이야기 바로가기</a>&nbsp;&gt;</div>
     </div>
 </section>
-</div>
 </div>
