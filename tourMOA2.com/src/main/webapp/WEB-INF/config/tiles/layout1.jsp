@@ -16,6 +16,7 @@
 <link rel="stylesheet" type="text/css" href="/css/detailPackage.css">
 <link rel="stylesheet" type="text/css" href="/css/product-main.css">
 <link rel="stylesheet" type="text/css" href="/css/product-detail.css">
+<link rel="stylesheet" type="text/css" href="/css/search-total.css">
 <link rel="stylesheet" href="/css/sliderkit/sliderkit.css">
 <link rel="stylesheet" href="/fp/skin/functional.css">
 <!-- fontAwesome 사이트에 아이콘  -->
