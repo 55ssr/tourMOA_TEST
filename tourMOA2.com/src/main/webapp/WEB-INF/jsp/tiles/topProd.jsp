@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 
-<div style="color:red;border:1px solid red; width:100%; height:100px">product 용 네비 바 심어주세요 <br />jsp/tiles/topNav.jsp</div>
+<div style="color:red;border:1px solid red; width:100%; height:100px">product 용 네비 바 심어주세요 <br />jsp/tiles/topProd.jsp</div>
 
 <!-- <div id="navi">
      	   <div id="tt">   
