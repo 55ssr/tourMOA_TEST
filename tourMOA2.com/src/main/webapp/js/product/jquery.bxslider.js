@@ -6,6 +6,11 @@
  */
  
 $(document).ready(function(){ 
+	$('.slide_v1').bxSlider({
+		mode: 'horizontal',
+		auto: true,
+		speed: 500,
+	});
 	$('.slide_v4').bxSlider({
 		  mode: 'horizontal',
 		  moveSlides: 1,
@@ -17,9 +22,8 @@ $(document).ready(function(){
 		  maxSlides:1,
 		  pager: false,
 		  nextSelector: '.btn_next',
-			prevSelector: '.btn_prev',
-			nextText: 'Next',
-			prevText: 'Prev'
+		prevSelector: '.btn_prev'
+
 		});
 $('.slide_v5').bxSlider({
 	 mode: 'horizontal',
@@ -32,12 +36,11 @@ $('.slide_v5').bxSlider({
 	 maxSlides:1,
 		pager: false,
 		nextSelector: '.btn_next2',
-		prevSelector: '.btn_prev2',
-		nextText: '>',
-		prevText: '<'
+		prevSelector: '.btn_prev2'
+
 	});
+
 });
- 
  
  
 ;(function($) {
@@ -90,8 +93,8 @@ $('.slide_v5').bxSlider({
  
     // CONTROLS
     controls: true,
-    nextText: 'Next',
-    prevText: 'Prev',
+    nextText: '',
+    prevText: '',
     nextSelector: null,
     prevSelector: null,
     autoControls: false,

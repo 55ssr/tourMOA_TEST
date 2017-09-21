@@ -37,6 +37,7 @@
 				</div>
 				</a>
 			</li>
+			
 			<li><a href="#">
 					<span class="pic">
 					<img src="/images/product/de2.png" alt="">
@@ -71,11 +72,12 @@
 				</div>
 				</a>
 					</li>
+					</ul>
 		<div class="hot_price">
 			<a href="#"><img src="/images/product/hot1.PNG" alt=""></a>
 			<a href="#"><img src="/images/product/hot2.PNG" alt=""></a>
 		</div>
-			</ul>
+			
 		</div>
 	</div>
 	<div id="theme_block">

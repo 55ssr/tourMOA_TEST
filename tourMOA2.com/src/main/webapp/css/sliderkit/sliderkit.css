@@ -1,0 +1,230 @@
+/*---------------------------------
+ *  PLUGIN BASICS
+ *---------------------------------*/
+.sliderkit{display:none;position:relative;overflow:hidden;text-align:left;}
+.sliderkit a,
+.sliderkit a:hover{text-decoration:none;}
+.sliderkit a:focus{/*outline:1px dotted #000;optional*/}
+.sliderkit img{border:0;}
+
+/*---------------------------------
+ *  Navigation
+ *---------------------------------*/
+.sliderkit .sliderkit-nav{z-index:10;position:absolute;text-align:center;}
+
+/* Nav > Clip */
+.sliderkit .sliderkit-nav-clip{position:relative;overflow:hidden;margin:0 auto;}
+.sliderkit .sliderkit-nav-clip ul{position:relative;left:0;top:0;list-style:none;margin:0;padding:0;}
+.sliderkit .sliderkit-nav-clip ul li{float:left;}
+.sliderkit .sliderkit-nav-clip ul li a{display:block;overflow:hidden;}
+
+/*---------------------------------
+ *  Buttons
+ *---------------------------------*/
+.sliderkit .sliderkit-btn{z-index:10;}
+
+/*---------------------------------
+ *  Panels
+ *---------------------------------*/
+.sliderkit .sliderkit-panel{z-index:1;position:absolute;}
+.sliderkit .sliderkit-panel-active{z-index:5;}
+.sliderkit .sliderkit-panel-old{z-index:4;}
+
+/* Panels > Overlay */
+.sliderkit .sliderkit-panel .sliderkit-panel-textbox{position:absolute;z-index:1;}
+.sliderkit .sliderkit-panel .sliderkit-panel-text{position:absolute;z-index:3;top:0;left:0;}
+.sliderkit .sliderkit-panel .sliderkit-panel-overlay{position:absolute;z-index:2;top:0;left:0;}
+
+/*---------------------------------
+ *  Counter
+ *---------------------------------*/
+.sliderkit .sliderkit-count{position:absolute;top:5px;right:5px;z-index:10;padding:5px;color:#fff;background:#000;}
+
+/*---------------------------------
+ *  Loader
+ *---------------------------------*/
+.sliderkit .sliderkit-timer{position:absolute;top:0;left:0;z-index:10;height:3px;background:#ccc;}
+
+/* This code can be reduced and pasted in any other CSS file :
+
+Here is a compact version :
+-------------------------------
+
+.sliderkit{display:none;position:relative;overflow:hidden;text-align:left;}
+.sliderkit a,
+.sliderkit a:hover{text-decoration:none;}
+.sliderkit a:focus{outline:1px dotted #000;}
+.sliderkit img{border:0;}
+.sliderkit .sliderkit-nav{z-index:10;position:absolute;text-align:center;}
+.sliderkit .sliderkit-nav-clip{position:relative;overflow:hidden;margin:0 auto;}
+.sliderkit .sliderkit-nav-clip ul{position:relative;left:0;top:0;list-style:none;margin:0;padding:0;}
+.sliderkit .sliderkit-nav-clip ul li{float:left;}
+.sliderkit .sliderkit-nav-clip ul li a{display:block;overflow:hidden;}
+.sliderkit .sliderkit-btn{z-index:10;}
+.sliderkit .sliderkit-panel{z-index:1;position:absolute;overflow:hidden;}
+.sliderkit .sliderkit-panel-active{z-index:5;}
+.sliderkit .sliderkit-panel-old{z-index:4;}
+.sliderkit .sliderkit-panel .sliderkit-panel-textbox{position:absolute;z-index:1;}
+.sliderkit .sliderkit-panel .sliderkit-panel-text{position:absolute;z-index:3;top:0;left:0;}
+.sliderkit .sliderkit-panel .sliderkit-panel-overlay{position:absolute;z-index:2;top:0;left:0;}
+.sliderkit .sliderkit-count{position:absolute;top:5px;right:5px;z-index:10;padding:5px;color:#fff;background:#000;}
+.sliderkit .sliderkit-timer{position:absolute;top:0;left:0;z-index:10;height:3px;background:#ccc;}
+*/
+
+/*---------------------------------
+ *  Photos gallery > Vertical
+ *---------------------------------*/
+.photosgallery-vertical{width:500px;height:335px;}
+
+/* Nav */
+.photosgallery-vertical .sliderkit-nav{top:0;left:0;height:100%;background:#000;position:relative;}
+.photosgallery-vertical .sliderkit-nav-clip{left:0}
+.photosgallery-vertical .sliderkit-nav-clip ul li{margin:0;padding:0;}
+.photosgallery-vertical .sliderkit-nav-clip ul li a{display:block;width:100%;height:40px;overflow:hidden;}
+.photosgallery-vertical .sliderkit-nav-clip ul li.sliderkit-selected a{padding:0;}
+.photosgallery-vertical .sliderkit-nav-clip ul li img{width:75px;height:50px;margin-bottom:-3px;}
+
+/* Nav buttons */
+.photosgallery-vertical .sliderkit-nav .sliderkit-nav-btn{position:absolute;left:0;}
+.photosgallery-vertical .sliderkit-nav .sliderkit-nav-btn a{display:block;width:95px;height:16px;/*background:transparent url("arrows-v.png") no-repeat center 0;*/}
+.photosgallery-vertical .sliderkit-nav .sliderkit-nav-btn a span{display:none;}
+.photosgallery-vertical .sliderkit-nav .sliderkit-nav-prev{top:25px;}
+.photosgallery-vertical .sliderkit-nav .sliderkit-nav-next{bottom:25px;}
+.photosgallery-vertical .sliderkit-nav .sliderkit-nav-prev a{background-position:center -89px;}
+.photosgallery-vertical .sliderkit-nav .sliderkit-nav-next a{background-position:center -108px;}
+.photosgallery-vertical .sliderkit-nav .sliderkit-nav-prev a:hover,
+.photosgallery-vertical .sliderkit-nav .sliderkit-nav-prev a:focus{background-position:center -126px;}
+.photosgallery-vertical .sliderkit-nav .sliderkit-nav-next a:hover,
+.photosgallery-vertical .sliderkit-nav .sliderkit-nav-next a:focus{background-position:center -145px;}
+
+/* Go Buttons */
+.photosgallery-vertical .sliderkit-go-btn a{width:200px;height:300px;background:#ccc;opacity:.8;}
+.photosgallery-vertical .sliderkit-go-prev{top:0;left:0;}
+.photosgallery-vertical .sliderkit-go-next{top:0;right:0;}
+
+/* Panel */
+.photosgallery-vertical .sliderkit-panel{top:0;left:0;width:500px;height:335px;}
+
+/* Panel > Textbox */
+.photosgallery-vertical .sliderkit-panel .sliderkit-panel-textbox{bottom:0;left:0;height:85px;width:500px;}
+.photosgallery-vertical .sliderkit-panel .sliderkit-panel-text{height:65px;padding:10px 15px 10px 115px;font-size:0.9em;color:#fff;}
+.photosgallery-vertical .sliderkit-panel .sliderkit-panel-text h4{height:auto;margin:0 0 7px;line-height:1.1em;font-size:1.1em;font-weight:bold;border:none;}
+.photosgallery-vertical .sliderkit-panel .sliderkit-panel-overlay{height:85px;width:500px;background:#000;opacity:0.6;}
+
+/*
+ *  PHOTOS SLIDERS
+ *  ------------------------------------------------
+ */
+
+/*---------------------------------
+ *  Photos slider > Minimal
+ *---------------------------------*/
+.photoslider-mini{width:500px;height:335px;}
+
+/* Panels buttons */
+.photoslider-mini .sliderkit-go-btn{position:absolute;top:0;z-index:10;width:50px;height:335px;}
+.photoslider-mini .sliderkit-go-prev{left:0;}
+.photoslider-mini .sliderkit-go-next{right:0;}
+.photoslider-mini .sliderkit-go-btn a{display:block;width:50px;height:335px;opacity:0.6;cursor:pointer;background-color:#fff;background-repeat:no-repeat;background-position:center center;}
+.photoslider-mini .sliderkit-go-prev a{background-image:url("../../404.html");}
+.photoslider-mini .sliderkit-go-next a{background-image:url("../../404.html");}
+.photoslider-mini .sliderkit-btn-disable a{opacity:0/*can be set to any value until 1*/;cursor:default;}
+.photoslider-mini .sliderkit-btn-disable a:hover{cursor:default;}
+.photoslider-mini .sliderkit-go-btn span{display:none;}
+
+/*---------------------------------
+ *  Photos slider > With nav bullets
+ *---------------------------------*/
+.photoslider-bullets{width:500px;height:335px;}
+
+/* Nav */
+.photoslider-bullets .sliderkit-nav{position:absolute;top:10px;right:10px;}
+.photoslider-bullets .sliderkit-nav-clip ul li{float:left;margin:0 1px 0 0;}
+.photoslider-bullets .sliderkit-nav-clip ul li a{width:13px;height:13px;background:transparent url("../../404.html") no-repeat 0 0;}
+.photoslider-bullets .sliderkit-nav-clip ul li.sliderkit-selected a{background:transparent url("../../404.html") no-repeat 0 0;}
+
+/*---------------------------------
+ *  Photos slider > 1 click
+ *---------------------------------*/
+.photoslider-1click{width:500px;height:335px;}
+
+/* Nav */
+.photoslider-1click .sliderkit-nav{position:absolute;bottom:10px;right:10px;}
+.photoslider-1click .sliderkit-nav-clip ul li{float:left;margin:0 1px 0 0;}
+.photoslider-1click .sliderkit-nav-clip ul li a{display:block;padding:2px 6px;color:#fff;background:#000}
+.photoslider-1click .sliderkit-nav-clip ul li.sliderkit-selected a{color:#000;background:#fff;}
+.photoslider-1click .sliderkit-nav-clip ul a:hover{color:#fff;background:#00668d;}
+
+/*---------------------------------
+ *  Photos slider > Vertical
+ *---------------------------------*/
+#photoslider-vertical{width:300px;height:335px;padding-left:200px;}
+
+/* Nav */
+#photoslider-vertical .sliderkit-nav{left:10px;top:99px;width:150px;height:90px;}
+#photoslider-vertical .sliderkit-nav-clip{top:19px;width:150px !important;text-align:center;}
+#photoslider-vertical .sliderkit-nav-clip li{width:150px !important;text-align:center;display:block;color:#090909;font-size:1.2em;text-transform:uppercase;}
+
+/* Buttons */
+#photoslider-vertical .sliderkit-nav-btn{position:absolute;z-index:10;left:110px;width:15px;height:15px;}
+#photoslider-vertical .sliderkit-nav-prev{top:0;}
+#photoslider-vertical .sliderkit-nav-next{top:75px;}
+#photoslider-vertical .sliderkit-nav-btn a{display:block;width:15px;height:15px;cursor:pointer;background:transparent url("../../404.html") no-repeat 0 0;}
+#photoslider-vertical .sliderkit-nav-prev a{background-position:0 0;}
+#photoslider-vertical .sliderkit-nav-next a{background-position:0 -15px;}
+#photoslider-vertical .sliderkit-nav-btn span{display:none;}
+#photoslider-vertical .sliderkit-panels{}
+
+
+
+/* ############################################################################################################################### */
+/* 메인 비쥬얼 재정의 : 상하버튼 */
+/* ############################################################################################################################### */
+#slide > .photosgallery-vertical .sliderkit-nav .sliderkit-nav-btn { position: absolute; left:0;}
+#slide > .photosgallery-vertical .sliderkit-nav .sliderkit-nav-btn a { display: block; width: 40px; height: 40px; }
+#slide > .photosgallery-vertical .sliderkit-nav .sliderkit-nav-btn a span { display: none; }
+#slide > .photosgallery-vertical .sliderkit-nav .sliderkit-nav-prev{ top: 0; left: 0; }
+#slide > .photosgallery-vertical .sliderkit-nav .sliderkit-nav-next { top:0; left: 1060px }
+#slide > .photosgallery-vertical .sliderkit-nav .sliderkit-nav-prev a { background: transparent url("../../404.html") no-repeat 0 0; }
+#slide > .photosgallery-vertical .sliderkit-nav .sliderkit-nav-next a { background: transparent url("../../404.html") no-repeat 0 0; }
+#slide > .photosgallery-vertical .sliderkit-nav .sliderkit-nav-prev a:hover,
+#slide > .photosgallery-vertical .sliderkit-nav .sliderkit-nav-prev a:focus { background: transparent url("../../404.html") no-repeat 0 0;}
+#slide > .photosgallery-vertical .sliderkit-nav .sliderkit-nav-next a:hover,
+#slide > .photosgallery-vertical .sliderkit-nav .sliderkit-nav-next a:focus { background: transparent url("../../404.html") no-repeat 0 0; }
+
+/* ############################################################################################################################### */
+/* 메인 시즌추천테마 재정의 : 상하버튼 */
+/* ############################################################################################################################### */
+.theme03.photosgallery-vertical .sliderkit-nav .sliderkit-nav-btn { position: absolute; left:0; }
+.theme03.photosgallery-vertical .sliderkit-nav .sliderkit-nav-btn a { display: block; width: 24px; height: 24px; }
+.theme03.photosgallery-vertical .sliderkit-nav .sliderkit-nav-btn a span { display: none; }
+.theme03.photosgallery-vertical .sliderkit-nav .sliderkit-nav-prev{ top: 0; left: 21px; }
+.theme03.photosgallery-vertical .sliderkit-nav .sliderkit-nav-next { bottom: 0; left: 23px; }
+.theme03.photosgallery-vertical .sliderkit-nav .sliderkit-nav-prev a { background:transparent url("../../images/RYUTEST/03_arrowup.png") no-repeat center 0; }
+.theme03.photosgallery-vertical .sliderkit-nav .sliderkit-nav-next a { background:transparent url("../../images/RYUTEST/03_arrowdown.png") no-repeat center 0; }
+.theme03.photosgallery-vertical .sliderkit-nav .sliderkit-nav-prev a:hover,
+.theme03.photosgallery-vertical .sliderkit-nav .sliderkit-nav-prev a:focus{background:transparent url("../../images/RYUTEST/03_arrowup.png") no-repeat center 0; }
+.theme03.photosgallery-vertical .sliderkit-nav .sliderkit-nav-next a:hover,
+.theme03.photosgallery-vertical .sliderkit-nav .sliderkit-nav-next a:focus{background:transparent url("../../images/RYUTEST/03_arrowdown.png") no-repeat center 0; }
+
+/* ############################################################################################################################### */
+/* 캐러셀 재정의 */
+/* ############################################################################################################################### */
+/* Nav */
+.photoslider-bullets .sliderkit-nav-clip ul li { float: left; margin: 0 5px 0 0;}
+.photoslider-bullets .sliderkit-nav-clip ul li a { width: 12px; height: 12px; background: transparent url("/images/RYUTEST/ball_off.png") no-repeat 0 0; text-indent: -2000px; }
+.photoslider-bullets .sliderkit-nav-clip ul li.sliderkit-selected a { background: transparent url("/images/RYUTEST/ball_on.png") no-repeat 0 0; }
+
+/* ############################################################################################################################### */
+/* 사진 내 좌우버튼 재정의 */
+/* ############################################################################################################################### */
+/* Panels buttons */
+.photoslider-mini .sliderkit-go-btn { position: absolute; top: 0; z-index: 10; width: 50px; height: 100%; }
+.photoslider-mini .sliderkit-go-prev { left: 0; }
+.photoslider-mini .sliderkit-go-next {right: 0; }
+.photoslider-mini .sliderkit-go-btn a { display: block; width: 50px; height: 100%; opacity: 0.6; background-color: #fff; cursor: pointer; }
+.photoslider-mini .sliderkit-go-prev a { background: transparent url("../../images/RYUTEST/visual_arrowL.png") center center no-repeat; }
+.photoslider-mini .sliderkit-go-next a { background: transparent url("../../images/RYUTEST/visual_arrowR.png") center center no-repeat; }
+.photoslider-mini .sliderkit-btn-disable a { opacity: 0 /*can be set to any value until 1*/; cursor: default; }
+.photoslider-mini .sliderkit-btn-disable a:hover { cursor: default; }
+.photoslider-mini .sliderkit-go-btn span { display: none; }
