@@ -1,5 +1,7 @@
 @CHARSET "UTF-8";
 
+
+div#content div#wrap1 {margin-top: -80px;}
 /*SUB */
 nav#gnbsub1 {position: relative; width: 1100px; height:55px;}
 nav#gnbsub1 ul { width:100%; height:55px;}
@@ -15,7 +17,7 @@ nav#gnbsub1 #one {border-top: 1px solid #e6e6e6;border-bottom: 1px solid #e6e6e6
 nav#gnbsub1 #one li { float: left; height: 100%; margin: 0 40px 0 0; line-height: 62px; }
 nav#gnbsub1 #one li a {display: block; width: 100%; height: 100%; text-indent: -2000000px; }
 nav#gnbsub1 #one li.sub01 {margin-top:-8px; background:url(/images/product/detail/sub01_off.png) no-repeat  left 10px ; width: 50px;}
-nav#gnbsub1 #one li.sub01.on {margin-top:auto; background: url(/images/product/detail/sub01_on.png) no-repeat  left 2px top 0px;width: 50px;}
+nav#gnbsub1 #one li.sub01.on {background: url(/images/product/detail/sub01_on.png) no-repeat  left 2px top 0px;width: 50px;}
 nav#gnbsub1 #one li.sub02 {margin-top:-8px; background: url(/images/product/detail/sub02_off.png) no-repeat left 10px;width: 50px;}
 nav#gnbsub1 #one li.sub02.on {margin-top:-8px;background: url(/images/product/detail/sub02_on.png) no-repeat left 10px;width: 50px;}
 nav#gnbsub1 #one li.sub03 {margin-top:-8px;background: url(/images/product/detail/sub03_off.png) no-repeat left 10px;width: 50px;}

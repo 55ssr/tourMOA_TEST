@@ -4,23 +4,9 @@
 <script src="/js/jquery-ui.js"></script>
 <script src="/js/product/jquery.bxslider.js"></script>
 <script src="/js/ui.js" type="text/javascript"></script>
+ 
 
- <script>
-	function fnMenuSelect() {
-
-	    
-	}
-	
-	$( document ).ready(function() {
-	    $('#gnbsub1').mouseleave(function(){
-	        setTimeout(function() {
-	            $("#one > li").removeClass('on'); // 1depth 초기화
-	            fnMenuSelect();
-	        }, 2000);
-	    });
-	});
-	</script>
-	<<script type="text/javascript">
+<script type="text/javascript">
 
  	function setAreaDtl(did) {
 		var bSelect = false;
@@ -48,8 +34,8 @@
 </script> 
 
 <div id="content">
-<div id="wrap"><!--[[ wrap Start ]]-->
-	<header><!--[[ header Start ]]-->
+<!--  <div id="wrap">[[ wrap Start ]]
+	<header>[[ header Start ]]
 	
 		<nav id="gnbsub1" data-loc="">
             <ul id="one">
@@ -64,7 +50,7 @@
             </ul>
         </nav>
        </header>
-       </div>
+       </div>  -->
        <div id="region">
        		<label for="codeArea">선택된 지역</label>
 	        <select name="product" id="codeArea" data-dtl="Y">
