@@ -1,9 +1,6 @@
 @CHARSET "UTF-8";
 
-*{margin: 0; padding:0;}
-ul,li,ol{list-style:none;}
-*{transition: 0.5s; box-sizing: border-box;}
-h2{font-weight: bolder;}
+
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes banner {
 	
@@ -79,7 +76,7 @@ h2{font-weight: bolder;}
         }
         
         
-        
+          
         #main{width: auto; height:auto;
         	min-width : 1920px;
         	min-height : 760px;
