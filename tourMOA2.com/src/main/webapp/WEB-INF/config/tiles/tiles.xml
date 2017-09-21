@@ -25,7 +25,7 @@
     
 	<!-- mypage, customer Main Template -->
 	
-    <definition name="layout1Plus" template="/WEB-INF/config/tiles/layout1.jsp">
+    <definition name="layout1Plus" template="/WEB-INF/config/tiles/layout1Plus.jsp">
 
         <put-attribute name="title" value="여행·레저의 힐링파트너 - TourMOA" type="string" />
 
@@ -41,13 +41,13 @@
 
     <!-- product Template -->
     
-    <definition name="layout1Prod" template="/WEB-INF/config/tiles/layout1.jsp">
+    <definition name="layout1Prod" template="/WEB-INF/config/tiles/layout1Plus.jsp">
 
         <put-attribute name="title" value="여행·레저의 힐링파트너 - TourMOA" type="string" />
 
         <put-attribute name="topMenu" value="/WEB-INF/jsp/tiles/topMenu.jsp" />
         
-        <put-attribute name="topNav" value="/WEB-INF/jsp/tiles/topProd.jsp" />
+        <put-attribute name="topNav" value="/WEB-INF/jsp/tiles/topNavProd.jsp" />
 
         <put-attribute name="footer" value="/WEB-INF/jsp/tiles/footer.jsp" />
 
