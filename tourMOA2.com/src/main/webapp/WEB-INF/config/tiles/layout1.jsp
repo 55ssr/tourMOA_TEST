@@ -10,7 +10,16 @@
 <html>
 <head>
 <title><tiles:insertAttribute name="title" /></title>
-<meta charset="UTF-8">	
+<meta charset="UTF-8">
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="expires" content="-1" />
+<meta http-equiv="imagetoolbar" content="no" />
+<meta name="robots" content="noindex,nofollow" />
+<meta name="subject" content="" />
+<meta name="description" content="해외패키지, 자유여행, 허니문, 국내여행, 항공권 등 실시간예약">
+<meta name="keywords" content="" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />	
 <!-- <link rel="stylesheet" type="text/css" href="http://www.swagger.kr/index.html"> -->
 <link rel="stylesheet" type="text/css" href="/css/tp-main.css">
 <link rel="stylesheet" type="text/css" href="/css/detailPackage.css">
@@ -20,6 +29,27 @@
 <link rel="stylesheet" href="/fp/skin/functional.css">
 <!-- fontAwesome 사이트에 아이콘  -->
 <link rel="stylesheet" type="text/css" href="/css/font-awesome-4.7.0/css/font-awesome.min.css">
+<!-- Kim Kookjin 추가 s ---
+#######/mypage , /customer 사이트에 필요한 것들 #######
+ -->
+<link rel="stylesheet" href="/css/jquery-ui.css" />
+<link rel="stylesheet" href="/css/sliderkit/sliderkit.css" /> 
+<script src="/js/jquery-1.11.2.min.js"></script>
+<script src="/js/ui.js" type="text/javascript"></script>
+<script src="/js/jquery.cookie.js" type="text/javascript"></script>	
+<script src="/js/jquery.simplemodal-1.4.4.js"></script>
+<script src="/js/jquery.validate.js"></script>
+<script src="/js/additional-methods.js"></script>
+<script src="/js/localization/messages_ko.js"></script> 
+<script src="/js/common.js"></script> 
+<script type="text/javascript" src="/js/jquery.easing.1.3.min.js"></script>
+<script type="text/javascript" src="/js/jquery.sliderkit.1.9.2.pack.js"></script>
+<script src="/js/sessionCheck.js"></script><!-- 새벽 배포이후 빼기로 -->
+<script src="/js/naverLogin_implicit-1.0.2.js"></script>
+<script src="/js/yb.mobileCheck.js" type="text/javascript"></script>
+<script type="text/javascript" src="/js/yb.core.js"></script>
+<script type="text/javascript" src="/js/yb.certification.js"></script>
+<!-- Kim Kookjin 추가 e -->
 </head>
 <body>
 	<tiles:insertAttribute name="topMenu" />
