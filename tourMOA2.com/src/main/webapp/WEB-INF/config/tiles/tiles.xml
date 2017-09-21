@@ -23,31 +23,15 @@
     </definition>
     
     
-	<!-- mypage Main Template -->
+	<!-- mypage, customer Main Template -->
 	
-    <definition name="layout1Mypage" template="/WEB-INF/config/tiles/layout1.jsp">
+    <definition name="layout1Plus" template="/WEB-INF/config/tiles/layout1.jsp">
 
         <put-attribute name="title" value="여행·레저의 힐링파트너 - TourMOA" type="string" />
 
         <put-attribute name="topMenu" value="/WEB-INF/jsp/tiles/topMenu.jsp" />
         
-        <put-attribute name="topNav" value="/WEB-INF/jsp/tiles/topMypage.jsp" />
-
-        <put-attribute name="footer" value="/WEB-INF/jsp/tiles/footer.jsp" />
-
-        <put-attribute name="content" />
-  
-    </definition>
-    
-    <!-- customer Main Template -->
-	
-    <definition name="layout1Customer" template="/WEB-INF/config/tiles/layout1.jsp">
-
-        <put-attribute name="title" value="여행·레저의 힐링파트너 - TourMOA" type="string" />
-
-        <put-attribute name="topMenu" value="/WEB-INF/jsp/tiles/topMenu.jsp" />
-        
-        <put-attribute name="topNav" value="/WEB-INF/jsp/tiles/topCustomer.jsp" />
+        <put-attribute name="topNav" value="/WEB-INF/jsp/tiles/topNavPlus.jsp" />
 
         <put-attribute name="footer" value="/WEB-INF/jsp/tiles/footer.jsp" />
 
@@ -101,7 +85,7 @@
         <put-attribute name="content" value="/WEB-INF/jsp/limited/{1}.jsp" />
     </definition>
     
-    <definition name="mypage/*" extends="layout1Mypage">
+    <definition name="mypage/*" extends="layout1Plus">
         <put-attribute name="content" value="/WEB-INF/jsp/mypage/{1}.jsp" />
     </definition>
     
@@ -117,7 +101,7 @@
         <put-attribute name="content" value="/WEB-INF/jsp/search/{1}.jsp" />
     </definition>
     
-    <definition name="customer/*" extends="layout1Customer">
+    <definition name="customer/*" extends="layout1Plus">
         <put-attribute name="content" value="/WEB-INF/jsp/customer/{1}.jsp" />
     </definition>
 

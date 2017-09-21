@@ -5,7 +5,21 @@
 <!-- 홈쇼핑 배너 회전 -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="http://malsup.github.com/jquery.cycle2.js"></script>
-
+ <div id="navi">
+     	   <div id="tt">   
+	            <ul>
+	                <li>해외패키지 </li>
+	                <li>자유여행 </li>
+	                <li>허니문 </li>
+	                <li>골프 </li>
+	                <li>부산/대구출발</li>
+	                <li>해외항공</li>
+	                <li>국내항공</li>
+	                <li>국내여행</li>
+	            </ul>
+            </div>          
+        </div>
+    <!-- header부분  -->
 <div id="main">
       <div id="tt">
        <div id="quickmenu">
@@ -202,7 +216,8 @@
            
          </div>  
        </div>
-
+       
+<!-- right menu s -->
         <div id="rightmenu">
                 <ul>
                     <li><a href="#"><i class="fa fa-search" aria-hidden="true" style="color: orange;"></i>통합검색</a></li>
@@ -229,16 +244,18 @@
                     </li>
                     <li><a href="#"><i class="fa fa-address-card" aria-hidden="true"></i>예약확인/결제</a></li>
                     <li><a href="#"><i class="fa fa-calculator" aria-hidden="true"></i>결제방법안내</a></li>
-                    <li><a href="#"><i class="fa fa-credit-card-alt" aria-hidden="true"></i>무이자할부</a></li>
+                    <!-- <li><a href="#"><i class="fa fa-credit-card-alt" aria-hidden="true"></i>무이자할부</a></li> -->
                     <li><a href="#"><i class="fa fa-certificate" aria-hidden="true"></i>계좌번호안내</a></li>
                     <li><a href="#"><i class="fa fa-mobile fa-2x" aria-hidden="true"></i>직통전화번호</a></li>
                     <li><a href="#"><i class="fa fa-percent" aria-hidden="true"></i>할인쿠폰</a></li>
                     <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>대리점안내</a></li>
                     <li><a href="#"><i class="fa fa-bullhorn" aria-hidden="true"></i>고객만족도조사</a></li>
-                    <li><a href="#"><i class="fa fa-commenting" aria-hidden="true"></i>카카오톡</a></li>
+                    <!-- <li><a href="#"><i class="fa fa-commenting" aria-hidden="true"></i>카카오톡</a></li> -->
                     <li><a href="#" id="moveTopBtn"><i class="fa fa-arrow-up" aria-hidden="true"></i>TOP</a></li>
                 </ul>
             </div>
+<!-- right menu e -->            
+            
     </div>
 
 <div id="content">
@@ -336,7 +353,7 @@
 <div id="theme_block">
 
 <div id="notice_main_css">
-<h2>공지사항</h2><span class="more_r"><a href="#"><i class="fa fa-plus" aria-hidden="true">더보기</i></a></span>
+<img class="main_head_font" alt="공지사항" src="/images/RYUTEST/main_notice_font.png"><span class="more_r"><a href="#"><i class="fa fa-plus" aria-hidden="true">더보기</i></a></span>
  <br><br>
 <ul class="notice">
 	<li>공지사항1</li>
@@ -347,15 +364,41 @@
 </div>
 
 	<div id="theme_block2">
-		<h2>자주하는 질문</h2><span class="more_r"><i class="fa fa-plus" aria-hidden="true">더보기</i></span>
+		<img class="main_head_font" alt="자주하는 질문" src="/images/RYUTEST/main_qna_font.png"><span class="more_r"><i class="fa fa-plus" aria-hidden="true">더보기</i></span>
 		<br>
 		<br>
-		<img alt="여행상품" src="">
-		<img alt="상품예약" src="">
-		<img alt="상품결제" src="">
-		<img alt="해외항공" src="">
-		<img alt="여행상품권" src="">
-		<img alt="홈페이지" src="">
+		<div id="main_qna_icon">
+		<a href="#">
+		<img alt="여행상품" src="/images/tp-main/ico_faq1.png">
+		<br>
+		여행상품
+		</a>
+		<a href="#">
+		<img alt="상품예약" src="/images/tp-main/ico_faq2.png">
+		<br>
+		상품예약
+		</a>
+		<a href="#">
+		<img alt="상품결제" src="/images/tp-main/ico_faq3.png">
+		<br>
+		상품결제
+		</a>
+		<a href="#">
+		<img alt="해외항공" src="/images/tp-main/ico_faq4.png">
+		<br>
+		해외항공
+		</a>
+		<a href="#">
+		<img alt="여행상품권" src="/images/tp-main/ico_faq5.png">
+		<br>
+		여행상품권
+		</a>
+		<a href="#">
+		<img alt="홈페이지" src="/images/tp-main/ico_faq6.png">
+		<br>
+		홈페이지
+		</a>
+	</div>
 	</div>
 
 </div>
