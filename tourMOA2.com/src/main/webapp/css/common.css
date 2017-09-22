@@ -773,7 +773,7 @@ input:-moz-placeholder { color: #999999; font-size: 13px; font-weight: normal; }
 
 #localWrapOne .areaBox .localBg02 { display: block; position: absolute; top: 0; left: 0; width: 200px; height: 100%; background: #68696d; z-index: 0; display: none; }
 #localWrapOne .areaBox .localBg03 { display: block; position: absolute; top: 0; right: 0; width: 250px; height: 100%; background: #f5efe9; z-index: 0; }
-#localWrapOne .areaBox .menuclose { clear: both; display: block; width: 100px; height: 20px; margin: 0 auto 20px; background: url("/images/region_close.jpg") center center no-repeat; border: none; }
+#localWrapOne .areaBox .menuclose { clear: both; display: block; width: 100px; height: 20px; margin: 0 auto 20px; background: url("/images/productDetail/locMapOpen_close.png") center center no-repeat; border: none; }
 
 #localWrapOne.typeA .areaBox .areaNotice { display: none; }
 #localWrapOne.typeA .areaBox .localBg03 { display: none; }
@@ -875,7 +875,7 @@ td.expandOne a {display:inline-block !important; float:none !important ; width:5
 #region > select { float: left; width: 190px; margin: 4px 50px 0 0; padding: 10px 10px 11px 10px; padding: 10px \9; line-height: 32px; border: 1px solid #dee1e2; font-size: 13px; color: #50555a; font-weight: normal; }
 #region #menuopen { position: relative; float: right; width: 86px; height: 50px; background: #2363d7; cursor: pointer; text-align: center; }
 #region #menuopen input { margin-top: 10px; }
-
+   
 
 
 /* Contents */

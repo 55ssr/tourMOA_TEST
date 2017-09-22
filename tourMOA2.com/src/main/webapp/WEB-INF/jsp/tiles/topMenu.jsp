@@ -13,7 +13,7 @@
         
         <div id="header_logo">
         	<div id="tt">
-            <h1><img src="/images/tp-main/tourMOA.png" alt="로고" width="160px" height="120px"></h1>
+            <h1><a href="/main.do"><img src="/images/tp-main/tourMOA.png" alt="로고" width="160px" height="120px"></a></h1>
             <div id="searchBox">
             <select class="searchCondition">
               <option>전체 상품</option>

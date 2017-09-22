@@ -63,31 +63,15 @@ $(document).ready(function(){
 		$(this).replaceWith('');
 	}); 
 	//이미지 액박처리end
-
-	
 	$("#menuopen").click(function(){
-		$("#locMapOpen").css({display:"block"});
+		$("#detail_wrap").css({display:"none"});
+		$("#localWrapOne").css({display:"inline-block"});
 	});
 	$(".menuclose").click(function(){
-		$("#locMapOpen").css({display:"none"});
+		$("#detail_wrap").css({display:"block"});
+		$("#localWrapOne").css({display:"none"});
 	});
-	$("span.txt06-2>span>img").hover(function(){
-		if(".tip[role='1']"){
-			$(".role02").css({display:"none"});
-			$(".tooltip").css({display:"block",left:"134px", top:"45px"});
-			$(".role01").css({display:"block"});
-		}
-	});
-	$("span.txt06-3>span>img").hover(function(){
-		if(".tip[role='2']"){   
-			$(".role01").css({display:"none"});
-			$(".tooltip").css({display:"block", left:"230px", top:"45px" });
-			$(".role02").css({display:"block"}); 
-		}
-	});
-	$(".tip").mouseleave(function(){
-		$(".tooltip").css({display:"none"});
-	});
+	
 });
 
 </script>
@@ -134,14 +118,14 @@ $(document).ready(function(){
 				<option value="#" data-pid="307" data-did="7425" style="display: block;">연합상품</option>
 				<option value="#" data-pid="3118" data-did="7159" style="display: block;">임직원 전용</option>
 			</select>
-	<div id="menuopen">
-				<input type="image" src="/images/RYUTEST/detailPackage_menuopen_font.png" alt="열기"/>
+			<div id="menuopen">
+						<input type="image" src="/images/RYUTEST/detailPackage_menuopen_font.png" alt="열기"/>
 			</div>
 		 </div>
 	</div>
 <!-- [[detailPackage_selectlocWrap End]]   -->
 	<!-- [[locMapOpen START]] : 펼치기 눌렀을 때 나오는 메뉴   -->
-	<div id="locMapOpen">
+	<div id="localWrapOne" class="typeA" style="display:none">
 		<div class="areaBox">
 			<table>
 				<caption>지역메뉴</caption>

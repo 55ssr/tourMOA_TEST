@@ -8,29 +8,6 @@
 #detailPackage_selectloc #menuopen{position: relative; float: right; width: 86px; height: 50px; background: #001fbe; cursor: pointer; text-align: center;}
 #detailPackage_selectloc #menuopen input {margin-top: 16px;}
 
-#content #locMapOpen {width: 100%; height: auto; margin-top: -1px; background: #fafafa; border: 1px solid #e7e7e7; border-left: none; border-right: none; display:none;  }
-#locMapOpen .areaBox{position:relative; width: 1100px; height: 100%; margin: 0 auto; padding-bottom: 1px;}
-#locMapOpen .areaBox table{float: left; position: relative; width: 820px; text-align: left; z-index: 1;}
-#locMapOpen .areaBox table tr: first-child th {	border-top: none; padding-top: 10px; background-position: 180px 15px;}
-#locMapOpen .areaBox table th{width: 200px; padding:15px 0 10px 20px; vertical-align: top; background: #68696d url(/images/RYUTEST/area_bul.png) 180px 20px no-repeat; font-size: 15px; color: #fff; text-align: left; border-top: 1px solid #6f7073;}
-#locMapOpen .areaBox table tr th span{display: block; width: 155px; line-height: 1.2;}
-#locMapOpen .areaBox table tr: first-child td{	border-top: none; padding-top: 10px; }
-#locMapOpen .areaBox table tr td {width: 620px; padding: 15px 0 0 0; vertical-align: top; border-top: 1px solid #e7e7e7;}
-#locMapOpen .areaBox table tr td a.on{color:#f8931f; font-family: 'NanumBold';}
-#locMapOpen .areaBox table tr td a{float: left; display: block; width: 175px; margin: 0 0 15px 30px; background: transparent; font-size: 14px; font-weight: normal; letter-spacing: -1px; line-height: }
-#locMapOpen .areaBox .areaNotice{float: right; position: relative; width: 280px; height: auto; margin-top: -1px; overflow: hidden; z-index: 1;}
-#locMapOpen .areaBox .areaNotice .fastBox:first-child{border-top: none;}
-#locMapOpen .areaBox .areaNotice .fastBox{clear: both; float: right; width: 250px; padding: 0 0 10px 0; background: #f5efe9;}
-#locMapOpen .areaBox .areaNotice .fastBox ul{width: 90%; padding: 10px 0 0 15px;}
-#locMapOpen .areaBox .areaNotice .fastBox ul li{font-size: 13px; color: #555555; font-weight: normal; line-height: 1.4;}
-#locMapOpen .areaBox .areaNotice .fastBox ul li.areaNoticeTitle span{float: left; padding-bottom: 3px; margin-right: 5px; font-size: 16px; color: #303030; font-weight: 600; font-family: 'NanumBold';}
-#locMapOpen .areaBox .areaNotice .fastBox ul li.areaNoticeText{clear: both;}
-#locMapOpen .areaBox .areaNotice .fastBox ul li a {color: #555555;}
-#locMapOpen .areaBox .localBg01{display: block; position: absolute; top: 0; left: 0; width: 200px; height: 100%; background: #68696d; z-index: 0; }
-#locMapOpen .areaBox .localBg02{display: block; position: absolute; top: 0; left: 0; width: 200px; height: 100%; background: #68696d; z-index: 0; display: none;}
-#locMapOpen .areaBox .localBg03{display: block; position: absolute; top: 0; right: 0; width: 250px; height: 100%; background: #f5efe9; z-index: 0;}
-#locMapOpen .areaBox .menuclose{clear: both; display: block; width: 100px; height: 20px; margin: 0 auto 20px; background: url(/images/RYUTEST/locMapOpen_close.png)center center no-repeat; border: none;}
-
 #headline{position: relative; width: 100%; margin: 20px auto 0; color: #000; line-height: 1.3; z-index: 999;}
 #headline .headBox{position:relative; left: 0; width: 1100px; margin: 0 auto; background: #fff;}
 #headline .pNum{position:relative; margin: 0 0 15px 0; font-size: 15px; font-weight: 500; letter-spacing: -1px;}

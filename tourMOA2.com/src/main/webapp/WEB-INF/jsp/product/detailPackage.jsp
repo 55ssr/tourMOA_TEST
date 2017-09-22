@@ -10,7 +10,25 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
+	
 
+	$("span.txt06-2>span>img").hover(function(){
+		if(".tip[role='1']"){
+			$(".role02").css({display:"none"});
+			$(".tooltip").css({display:"block",left:"134px", top:"45px"});
+			$(".role01").css({display:"block"});
+		}
+	});
+	$("span.txt06-3>span>img").hover(function(){
+		if(".tip[role='2']"){   
+			$(".role01").css({display:"none"});
+			$(".tooltip").css({display:"block", left:"230px", top:"45px" });
+			$(".role02").css({display:"block"}); 
+		}
+	});
+	$(".tip").mouseleave(function(){
+		$(".tooltip").css({display:"none"});
+	});
 	//옵션사항 이미지 없을경우 
 	$("#infoWrap .info05 .cont05 .type03 span.pic img").each(function(){
 		if($(this).attr("src") == "" || $(this).attr("src") == undefined){
@@ -78,7 +96,7 @@ $(document).ready(function() {
 <div id="content">
 
 	<!-- [[locMapOpen START]] : 펼치기 눌렀을 때 나오는 메뉴   -->
-<!-- 	<div id="locMapOpen">
+	<!-- <div id="locMapOpen">
 		<div class="areaBox">
 			<table>
 				<caption>지역메뉴</caption>
