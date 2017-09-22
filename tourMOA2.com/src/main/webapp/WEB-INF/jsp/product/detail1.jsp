@@ -9,7 +9,7 @@
 	
 <div class="slide_area">
 	<div class="btn_move">
-		<h2 class="tit"><img src="/images/product/hotprice.png" alt=""></h2>
+		<h2 class="tit1"><img src="/images/product/hotprice.png" alt=""></h2>
 
 		<span class="btn_prev"></span>
 		<span class="btn_next"></span>
@@ -29,7 +29,7 @@
 </div>
 
 <div class="slide_area1">
-	<h2 class="tit"><img src="/images/product/hotprice.png" alt=""></h2>
+	<h2 class="tit1"><img src="/images/product/hotprice.png" alt=""></h2>
 		<ul class="slide_v5">
 			<li><img src="/images/product/h1.PNG" alt=""></li>
 			<li><img src="/images/product/h2.PNG" alt=""></li>
@@ -39,8 +39,10 @@
 	</div>
 </div>
 <div id="theme_block">
-<h2 class="tit"><img src="/images/product/hotprice.png" alt=""></h2>
-	<div id="tab_type02">
+<h3 class="tit1"><img src="/images/product/hotprice.png" alt="">
+	<span class="more_r_1">항공권포함, 유류할증료 변동가능</span>
+	</h3>
+	<div class="tab_type02">
 		<ul>
 					<li ><a href="#" class="decoNone">유럽</a></li>
 					<li ><a href="#" class="decoNone">동남아</a></li>
@@ -149,7 +151,7 @@
 	
 	<div id="theme_block">
 <h3>추천 테마여행</h3><br>
-	<div id="tab_type02">
+	<div class="tab_type02">
 		<ul>
 					<li ><a href="#" class="decoNone">Blue<br>Lacande</a></li>
 					<li ><a href="#" class="decoNone">관광여행</a></li>
@@ -238,7 +240,6 @@
 	                 </div>
 					</a>
 				</div>
-				
 			</li>
 		</ul>
 	</div>
