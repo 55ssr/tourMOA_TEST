@@ -178,7 +178,7 @@
 					</a>
 				</div>
 				<div class="small">
-					<a href="#">
+					<a href="product/detailList.do">
 					<img src="/images/product/s2.png" alt="">
 					<div class="notiWrap smallWrap">
 	         			<span class="noti" style="">

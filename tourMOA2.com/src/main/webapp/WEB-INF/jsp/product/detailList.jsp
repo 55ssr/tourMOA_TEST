@@ -251,7 +251,7 @@
 					<span class="ico_pink">선착순</span>
 					<!-- <span class="ico_limited ">리미티드세일</span> -->
 					</span>
-				<a href="#">[프리미엄][대한항공직항][국내선 항공포함]_스페인/포르투갈 10일[KE]</a>
+				<a href="product/detailPackage.do">[프리미엄][대한항공직항][국내선 항공포함]_스페인/포르투갈 10일[KE]</a>
 				</td>
 				<td class="pdt_date">8박10일</td>
 				<td class="pdt_price">2,790,000<a href="#none" class="mini_price">&nbsp;<img src="/images/product/detail/tool.png" alt="요금안내">
@@ -279,7 +279,7 @@
 					<span class="ico_pink">선착순</span>
 					<!-- <span class="ico_limited ">리미티드세일</span> -->
 					</span>
-				<a href="#">[프리미엄][대한항공직항][국내선 항공포함]_스페인/포르투갈 10일[KE]</a>
+				<a href="product/detailPackage.do">[프리미엄][대한항공직항][국내선 항공포함]_스페인/포르투갈 10일[KE]</a>
 				</td>
 				<td class="pdt_date">8박10일</td>
 				<td class="pdt_price">2,790,000<a href="#none" class="mini_price">&nbsp;<img src="/images/product/detail/tool.png" alt="요금안내">
@@ -306,7 +306,7 @@
 				<span class="ico_block">
 					<span class="ico_pink">선착순</span>
 					</span>
-				<a href="#">[프리미엄][국내선 항공포함]_스페인/포르투갈 10일[KE]</a>
+				<a href="product/detailPackage.do">[프리미엄][국내선 항공포함]_스페인/포르투갈 10일[KE]</a>
 				</td>
 				<td class="pdt_date">7박9일</td>
 				<td class="pdt_price">2,490,000<a href="#none" class="mini_price">&nbsp;<img src="/images/product/detail/tool.png" alt="요금안내">
