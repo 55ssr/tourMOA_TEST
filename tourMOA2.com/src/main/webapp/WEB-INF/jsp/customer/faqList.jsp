@@ -1,5 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/css/customer.css" />
+    <script>
+function fnMenuSelect() {
+	//공지사항
+	
+	
+	//여행이야기
+	
+	
+	//여행상담
+	 $('.lnb02').addClass('lnb02 on'); $("ul.sub_2").css("display","block");       $('.sub02_01').addClass('sub02_01 on'); $('#one').show();
+	
+	//고객의소리
+	
+	
+	//소비자중심경영
+	
+    
+    //서비스안내
+    
+}
+
+$( document ).ready(function() {
+	fnMenuSelect();
+	$('#lnb').mouseleave(function(){
+        setTimeout(function() {
+        	$("#one > li").removeClass('on'); // 1depth 초기화
+        	$("ul.sub").css("display","none"); // 2depth 사라짐
+        	$("ul.sub > li").removeClass('on'); // 2depth 초기화
+            fnMenuSelect();
+        }, 3000);
+    });
+});
+
+function loginConfirm(){
+	
+	
+			document.location.href='/customer/complaintWrite.do';
+		 
+}
+
+</script>
     <section id="content"><!--[[ content Start ]]-->
         <div class="tit faq_tit" title="자주하는질문"><span class="tit_txt faq_sub">고객님이 많이 문의하시는 질문 및 답변을 모아두었습니다.</span></div>        
         <form name="searchForm" id="searchForm" action="/customer/faqList.do" method="post" onsubmit="return frmSubmit();">
