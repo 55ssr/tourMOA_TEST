@@ -42,6 +42,11 @@ public class CustomerController {
 		return "customer/estimateReq";
 	}
 	
+	@RequestMapping("customer/estimateReqSave.do")
+	public String insertEstimateReq() {
+		return "customer/estimateReqSave";
+	}
+	
 	/*칭찬합시다*/
 	@RequestMapping("customer/praiseList.do")
 	public String praiseList() {
