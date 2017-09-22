@@ -9,14 +9,14 @@ h2.tit span {position:absolute; top:4px; padding-left:15px; font-size:14px; colo
 #theme_block .cont02 ul li span.pic {display: block;width: 260px; height: 186px;overflow: hidden;}
 #theme_block .cont02 ul li {position: relative;float: left;width: 280px; height:100%}
 
-#theme_block .cont02 ul li div.info {display: inline-block;width: 260px;height: 115px;padding: 11px;
+#theme_block .cont02 ul li div.info {display: inline-block;width: 232px;height: 115px;padding: 11px;
     border: 1px solid #e0e0e0;border-top: none;background: #fff;}
 #theme_block .cont02 ul li div.info span {display: block;width: 100%;line-height: 1.4;}
 #theme_block .cont02 ul li div.info span.tit {overflow: hidden;margin: 0 0 5px 0;font: bold 14px Dotum;color: #303030; font-family: 'NanumBold';}
 #theme_block .cont02 ul li div.info span.stit {margin:5px auto;font-size: 12px; color: #c0c0c0;height: 18px;}
 #theme_block .cont02 ul li div.info span.detail {height: 38px;overflow: hidden;margin-bottom: 1px;font-size: 12px;color: #6d6d6d;}
-#theme_block .cont02 ul li.last {position: relative; margin-right: 0; width: 260px;height: 325px;overflow: hidden;}
-#theme_block .cont02 ul li.last a img {width: 90%;height: auto;}
+#theme_block .cont02 ul li.last {position: relative; margin-top:-18px; width: 260px;height: 325px;overflow: hidden;}
+#theme_block .cont02 ul li.last a img {width: 90%;height:100%;}
 
 .hot_price{display:inline-block;width:230px;margin-top:-136px;height:430px;}
 .hot_price h3{font:bold 15px dotum; margin-top:-50px;}
@@ -24,6 +24,8 @@ h2.tit span {position:absolute; top:4px; padding-left:15px; font-size:14px; colo
 .hot_price ul li{width:240px;height:188px; border: 1px solid #e0e0e0;}
 .hot_price img{display:block; margin: 5px 0 0 5px;}
 
+
+/*detail1 마지막 부분*/
 .cont03 {position: relative;width: 1100px;margin: 30px auto;}
 #theme_block .cont03 {position: relative;width: 1100px;height: 420px;margin: 0 auto;overflow: hidden;}
 
@@ -37,11 +39,22 @@ h2.tit span {position:absolute; top:4px; padding-left:15px; font-size:14px; colo
 #theme_block .cont03 ul li div div.notiWrap {position: absolute;top: 15px;left: 15px;width: 125px;height: auto;
     text-align: center;background: url(/images/product/sub1.png) repeat;}
 #theme_block .cont03 ul li div.small div.info {position: absolute;top: 200px;left: 0;width: 100%;height: 100px;
-    background: url(/images/detail/caption_bg.png) repeat;z-index: 1;display: none;}
+    background: url(/images/product/caption_bg.png) repeat;z-index: 1;display: none;}
 #theme_block .cont03 ul li div div.notiWrap span.noti span {display: block;
     font-size: 14px;color: #333333;font-family: 'NanumBold';line-height: 1.2;}
 #theme_block .cont03 ul li div div.notiWrap span.noti {display: inline-block;padding: 12px 5px; z-index: 1;}
 #theme_block .cont03 ul li div div.notiWrap span.noti span.subPay {margin: 1px 0 0 0;font-size: 12px;color: #f2312c;}
+
+#theme_block .cont03 ul li div.large div.info { position: absolute; top: 200px; left: 0; width: 100%; height: 100px; background: url("/images/product/caption_bg.png") repeat; z-index: 1; display: none; }
+#theme_block .cont03 ul li div div.info span { display: inline-block; color: #fff; letter-spacing: -1px; }
+#theme_block .cont03 ul li div div.info span.tit{ margin: 20px 0 0 20px; color: #fff; font-size: 14px; display: none; }
+#theme_block .cont03 ul li div div.info span.subtit { width: 84%; white-space: nowrap; overflow: hidden; margin: 20px 0 0 20px; color: #fff; font-size: 14px; }
+#theme_block .cont03 ul li div div.info span.line { display: block; width: 64px; height: 1px; margin: 10px 0 18px 20px; padding: 0; background: silver; }
+#theme_block .cont03 ul li div div.info span.area { float: left; max-width: 70px; color: #fff; font-size: 12px; padding: 0 6px 0 20px; }
+#theme_block .cont03 ul li div div.info span.period { float: left;  color: silver; font-size: 12px; padding: 0; }
+#theme_block .cont03 ul li div div.info span.price { float: right; margin: -5px 20px 0 0; font-size: 22px; }
+#theme_block .cont03 ul li div div.info span.price p { color: #fff; font-weight: normal !important; }
+
 
 #theme_block .tab_type02 {width:1100px; height:50px; margin:5px auto;}
 #theme_block .tab_type02 ul{ display: table;table-layout: fixed;width:100%; height:100%; padding-top: 5px; float: left; float:right;}
@@ -63,7 +76,7 @@ h2.tit span {position:absolute; top:4px; padding-left:15px; font-size:14px; colo
 #tab_type04 ul.tabs li {display: table-cell; height: 38px;text-align: center;border: 1px solid #e3e3e3;
 		    border-right: 1px solid #f8f8f8;line-height: 38px;background-color: #e3e3e3;}
 
-#tab_type04 ul li a:active{  background-color:#555; color:#fff; border:1px solid #999; border-bottom:1px solid #fff ;  font-family: 'NanumBold';margin-left:1px }
+#tab_type04 ul.tabs li.on a{ background-color: #555; border:1px solid #999; border-bottom:1px solid #fff ;color:#fff !important;margin-left: 1px;}
 
 #theme_block .tab_container {width: 100%;clear: both;margin-top: 20px;height: 270px;}
 #theme_block .tab_container .tour_best {float: left;width: auto;height: 270px;}
@@ -106,17 +119,19 @@ span.btn_pass {display: inline-block; border: 1px solid #ddd;
 
 /*detail1 page*/
 #theme_block .cont2 ul .left { width: 145px; height: 90%;  margin:5px;}
-#theme_block .cont2 ul .left .headline { display: inline-block; padding: 50px 20px 0 23px; font-size: 15px; color: #fff; font-family: 'NanumBold'; line-height: 26px; word-break:break-word; word-wrap:break-word; }
+#theme_block .cont2 ul .left .headline { display: inline-block; padding: 50px 20px 0 23px; font-size: 18px; color: #fff; font-family: 'NanumBold'; line-height: 26px; word-break:break-word; word-wrap:break-word; }
 #theme_block .cont2 ul .left.left01 { background:url("/images/product/02_leftbg.png") no-repeat; }
 #theme_block .cont2 ul .left.left02 { background:url("/images/product/02_rightbg.png") no-repeat; }
 #theme_block .cont2 ul .right { width: 360px; height: 90%;margin-left:20px; }
-#theme_block .cont2 ul .right span { display: inline-block; width: 100%; font-weight: normal; letter-spacing: -1px; }
-#theme_block .cont2 ul .right span.theme1 { margin: 40px 0 4px 0; font: 15px; color: #303030; font-weight: 600; }
-#theme_block .cont2 ul .right span.tit1 { white-space: normal; width: 280px; height: 25px; overflow: hidden; margin: 0 0 20px 0; font: bold 15px Dotum;color: #000000;font-family: 'NanumBold'; }
-#theme_block .cont2 ul .right span.subtit1 {margin: 15px 0 5px 0;display:block;font-size: 12px;color: #2a2a2a;}
-#theme_block .cont2 ul .right span.detail1 {width: 350px;height: 40px;overflow: hidden;margin: 0 0 30px 0;font-size: 13px;color: #777777;line-height: 20px;}
+ #theme_block .cont2 ul .right a{   position: absolute;z-index: 999999;
+    display: inline-block;top: 0;left: 0;width: 93%;height: 100%;background: transparent;}
+#theme_block .cont2 ul .right span { display: inline-block; width: 100%; letter-spacing: -1px; }
+#theme_block .cont2 ul .right span.theme1 { margin:0 0 4px 0; font-size:15px; color: #303030; font-weight: 600; }
+#theme_block .cont2 ul .right span.tit1 { white-space: normal; width:350px; height: 35px; overflow: hidden; margin: 0 0 10px 0; font-size:15px;color: #000000;font-family: 'NanumBold'; }
+#theme_block .cont2 ul .right span.subtit1 {margin: 8px 0 5px 0;font-size: 12px;color: #2a2a2a;}
+#theme_block .cont2 ul .right span.detail1 {width: 350px;height: 40px;overflow: hidden;margin: 0 0 10px 0;font-size: 13px;color: #777777;line-height: 20px;}
+#theme_block .cont2 ul .right span.price { font-size: 20px; }
 #theme_block .cont02 ul li div.info span.detail1 {height: 38px;overflow: hidden;margin-bottom: 1px;font-size: 14px;color: #3a3a3a;}
-#theme_block .cont2 ul .right span.price { font-size: 22px; }
 
 
 #theme_block .cont2 {display: -webkit-box; width: 1100px; margin: 0 auto; padding: 0; }
@@ -130,5 +145,5 @@ span.btn_pass {display: inline-block; border: 1px solid #ddd;
    		 font: bold 17px Dotum;margin: 10px 0 0 0;letter-spacing: -1px !important;}
 .price p {display: inline-block !important; padding: 0 0 0 2px !important;color: #cccccc;font-size:12px;}
 
-#theme_block h3.tit1 span.more_r_1 {right: 0;font-size: 14px;}
+#theme_block h3.tit1 span.more_r_1 {margin-right: 20px; margin-top: 10px;font-size: 13px;float:right;color:#ccc;}
 #theme_block h3.tit1 {position:relative;  margin:15px auto 20px; border-left:3px solid #fec300; height:24px; padding-left:15px; font-size:24px; line-height:1; color:#444; letter-spacing:-0.09em; clear:both}
