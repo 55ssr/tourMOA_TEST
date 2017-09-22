@@ -1,5 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/css/customer.css" />
+    
+<script>
+function fnMenuSelect() {
+	//공지사항
+	$('.lnb01').addClass('lnb01 on'); $("ul.sub_1").css("display","block");    $('.sub01_01').addClass('sub01_01 on'); $('#one').show();
+	
+	//여행이야기
+	
+	
+	//여행상담
+	
+	
+	//고객의소리
+	 
+	
+	//소비자중심경영
+	
+    
+    //서비스안내
+    
+}
+
+$( document ).ready(function() {
+	fnMenuSelect();
+	$('#lnb').mouseleave(function(){
+        setTimeout(function() {
+        	$("#one > li").removeClass('on'); // 1depth 초기화
+        	$("ul.sub").css("display","none"); // 2depth 사라짐
+        	$("ul.sub > li").removeClass('on'); // 2depth 초기화
+            fnMenuSelect();
+        }, 3000);
+    });
+});
+
+function loginConfirm(){
+	
+			document.location.href='/customer/complaintWrite.do';
+		 
+}
+</script>
     <script type="text/javaScript" language="javascript" defer="defer">		
 		$(document).ready(function(){
 			

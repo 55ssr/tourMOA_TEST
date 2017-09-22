@@ -1,5 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/css/customer.css" />  
+<script>
+function fnMenuSelect() {
+	//공지사항
+	
+	
+	//여행이야기
+	$('.lnb06').addClass('lnb06 on'); $("ul.sub_6").css("display","block");    $('.sub06_01').addClass('sub06_01 on'); $('#one').show();
+	
+	//여행상담
+	
+	
+	//고객의소리
+	 
+	
+	//소비자중심경영
+	
+    
+    //서비스안내
+    
+}
+
+$( document ).ready(function() {
+	fnMenuSelect();
+	$('#lnb').mouseleave(function(){
+        setTimeout(function() {
+        	$("#one > li").removeClass('on'); // 1depth 초기화
+        	$("ul.sub").css("display","none"); // 2depth 사라짐
+        	$("ul.sub > li").removeClass('on'); // 2depth 초기화
+            fnMenuSelect();
+        }, 3000);
+    });
+});
+
+function loginConfirm(){
+	
+			document.location.href='/customer/complaintWrite.do';
+		 
+}
+</script>
     <section id="content"><!--[[ content Start ]]-->
 		<div class="tit travel_episode_write"><span class="blind_ir">여행 후기</span></div>
 		<div class="travel_episode_best">
