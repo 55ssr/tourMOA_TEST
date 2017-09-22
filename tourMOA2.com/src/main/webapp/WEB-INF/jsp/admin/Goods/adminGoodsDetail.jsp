@@ -101,10 +101,20 @@
 			<label for="inputDetail" class="col-sm-2 col-form-label">상세정보</label>
 			<div class="col-sm-10">
 				<!-- <textarea class="form-control" id="inputDetail" rows="6"></textarea> -->
+				
+			
+			
+			
+		   
+			
+			
+			
+			
+				
 				<div class="form-control" id="summernote"></div>
 				<script>
 					$('#summernote').summernote({
-						height: 400,
+						height: 300,
 						minHeight: null,
 						maxHeight: null,
 						placeholder: '상세정보',
@@ -113,6 +123,8 @@
 						lang: 'ko-KR'
 					});
 				</script>
+				
+				
 			</div>
 		</div>
 		

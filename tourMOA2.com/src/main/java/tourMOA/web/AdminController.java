@@ -1,10 +1,22 @@
 package tourMOA.web;
 
+import java.util.List;
+
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import tourMOA.service.DefaultListVO;
+import tourMOA.service.GoodsService;
+import tourMOA.service.GoodsVO;
 
 @Controller
 public class AdminController {
+	
+	@Resource(name="goodsService")
+	private GoodsService goodsService;
 	
 	@RequestMapping("/admin.do")
 	public String admin() {
@@ -13,102 +25,106 @@ public class AdminController {
 	
 	@RequestMapping("/adminComDetail.do")
 	public String adminComInfo() {
-		return "admin/adminComDetail";
+		return "admin/ComDetail/adminComDetail";
 	}
 	
 	@RequestMapping("/adminResearchList.do")
 	public String adminResearchList() {
-		return "admin/adminResearchList";
+		return "admin/Research/adminResearchList";
 	}
 	
 	@RequestMapping("/adminResearchWrite.do")
 	public String adminResearchWrite() {
-		return "admin/adminResearchWrite";
+		return "admin/Research/adminResearchWrite";
 	}
 	
 	@RequestMapping("/adminResearchDetail.do")
 	public String adminResearchDetail() {
-		return "admin/adminResearchDetail";
+		return "admin/Research/adminResearchDetail";
 	}
 	
 	
 	@RequestMapping("/adminSearch.do")
 	public String adminSearch() {
-		return "admin/adminSearch";
+		return "admin/Search/adminSearch";
 	}
 	
 	@RequestMapping("/adminAutoComplete.do")
 	public String adminAutoComplete() {
-		return "admin/adminAutoComplete";
+		return "admin/AutoComplete/adminAutoComplete";
 	}
 	
 	@RequestMapping("/adminGoodsList.do")
-	public String adminGoodsList() {
-		return "admin/adminGoodsList";
+	public String adminGoodsList(DefaultListVO vo, Model model) throws Exception{
+		List<?> list = goodsService.selectGoodsList(vo);
+		model.addAttribute("resultList", list);
+		return "admin/Goods/adminGoodsList";
 	}
 	
 	@RequestMapping("/adminGoodsWrite.do")
 	public String adminGoodsWrite() {
-		return "admin/adminGoodsWrite";
+		return "admin/Goods/adminGoodsWrite";
 	}
 	
 	@RequestMapping("/adminGoodsDetail.do")
 	public String adminGoodsDetail() {
-		return "admin/adminGoodsDetail";
+		return "admin/Goods/adminGoodsDetail";
 	}
 	
 	@RequestMapping("/adminGoodsCommList.do")
 	public String adminGoodsCommList() {
-		return "admin/adminGoodsCommList";
+		return "admin/GoodsComm/adminGoodsCommList";
 	}
 	
 	@RequestMapping("/adminGoodsCommWrite.do")
 	public String adminGoodsCommWrite() {
-		return "admin/adminGoodsCommWrite";
+		return "admin/GoodsComm/adminGoodsCommWrite";
 	}
 	
 	@RequestMapping("/adminGoodsCommDetail.do")
 	public String adminGoodsCommDetail() {
-		return "admin/adminGoodsCommDetail";
+		return "admin/GoodsComm/adminGoodsCommDetail";
 	}
 	
 	@RequestMapping("/adminMemberList.do")
 	public String adminMemberList() {
-		return "admin/adminMemberList";
+		return "admin/Member/adminMemberList";
 	}
 	
 	@RequestMapping("/adminMemberWrite.do")
 	public String adminMemberWrite() {
-		return "admin/adminMemberWrite";
+		return "admin/Member/adminMemberWrite";
 	}
 	
 	@RequestMapping("/adminMemberDetail.do")
 	public String adminMemberDetail() {
-		return "admin/adminMemberDetail";
+		return "admin/Member/adminMemberDetail";
 	}
 	
 	@RequestMapping("/adminGroupList.do")
 	public String adminGroupList() {
-		return "admin/adminGroupList";
+		return "admin/Group/adminGroupList";
 	}
 	
 	@RequestMapping("/adminPayList.do")
 	public String adminPayList() {
-		return "admin/adminPayList";
+		return "admin/Pay/adminPayList";
 	}
 		
 	@RequestMapping("/adminAllBoardList.do")
 	public String adminAllBoardList() {
-		return "admin/adminAllBoardList";
+		return "admin/AllBoard/adminAllBoardList";
 	}
 	
 	@RequestMapping("/adminEstimateList.do")
 	public String adminEstimateList() {
-		return "admin/adminEstimateList";
+		return "admin/Estimate/adminEstimateList";
 	}
 	
 	@RequestMapping("/adminEstimateDetail.do")
 	public String adminEstimateDetail() {
-		return "admin/adminEstimateDetail";
+		return "admin/Estimate/adminEstimateDetail";
 	}
 }
+
+
