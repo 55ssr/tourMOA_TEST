@@ -8,8 +8,9 @@
 <div id="theme_block">
 	
 <div class="slide_area">
-<h3> 출발확정</h3>
 	<div class="btn_move">
+		<h2 class="tit"><img src="/images/product/hotprice.png" alt=""></h2>
+
 		<span class="btn_prev"></span>
 		<span class="btn_next"></span>
 	</div>
@@ -28,17 +29,17 @@
 </div>
 
 <div class="slide_area1">
-<h3>홈쇼핑</h3>
-	<ul class="slide_v5">
-		<li><img src="/images/product/h1.PNG" alt=""></li>
-		<li><img src="/images/product/h2.PNG" alt=""></li>
-		<li><img src="/images/product/h3.PNG" alt=""></li>
-		<li><img src="/images/product/h4.PNG" alt=""></li>
-	</ul>
+	<h2 class="tit"><img src="/images/product/hotprice.png" alt=""></h2>
+		<ul class="slide_v5">
+			<li><img src="/images/product/h1.PNG" alt=""></li>
+			<li><img src="/images/product/h2.PNG" alt=""></li>
+			<li><img src="/images/product/h3.PNG" alt=""></li>
+			<li><img src="/images/product/h4.PNG" alt=""></li>
+		</ul>
 	</div>
 </div>
 <div id="theme_block">
-<h3>금주 지역별 추천상품</h3><br>
+<h2 class="tit"><img src="/images/product/hotprice.png" alt=""></h2>
 	<div id="tab_type02">
 		<ul>
 					<li ><a href="#" class="decoNone">유럽</a></li>
@@ -178,7 +179,7 @@
 					</a>
 				</div>
 				<div class="small">
-					<a href="product/detailList.do">
+					<a href="#">
 					<img src="/images/product/s2.png" alt="">
 					<div class="notiWrap smallWrap">
 	         			<span class="noti" style="">
