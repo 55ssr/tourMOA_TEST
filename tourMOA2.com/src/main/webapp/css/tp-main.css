@@ -22,6 +22,13 @@
     100% {background-image: url('/images/tp-main/banner1.PNG');}
     
 }
+		.tab_type01{position:absolute; right: 60px; top:-1px; overflow: hidden; height: auto !important;}
+		.tab_type01>li.on{padding: 0 9px;}
+		.tab_type01>li>a{vertical-align: middle; line-height: 27px; padding: 0 19px; color: #2b2b2b;}
+		.tab_type01>li.on a{ padding: 4px 10px; background-color: #00b6ad; border-radius:15px; color: #fff; font-size: 16px; }
+		.tab_type01>li:first-child{background: 0 none; }
+		.tab_type01>li{float: left; width: auto !important; height: 28px; background: url(/images/tp-main/bg_tab_line.gif) no-repeat left center; }
+		h2.titMain{clear:both; position: relative; width: 1100px; padding-bottom: 13px; margin: 45px auto 20px; background:  url(/images/tp-main/bg_tit.gif) no-repeat 0 100%; font-family: 'Nanum Gothic'; height: 24px; line-height: 1; color: #444; letter-spacing: -0.09em; font-size:23px; font-weight: bolder;}
         #tt{width: 1100px; height: auto; margin: 0 auto; }
         #wrap{width: 100%; height: auto; margin: 0 auto; }
         
@@ -40,21 +47,21 @@
         border: 3px solid #6b8eb4;}
        	 #searchBox select.searchCondition{
           margin-left: 2px;
-          margin-top: 5px;
-          width: 100px;
-          height: 20px;
+          width: 120px;
+          height: 95%;
           border: 0px;
        	 }
        	 #searchBox input.search{
           border: 0px;
           width: 250px;
-          height: 20px;
+          height: 90%;
           
        	 }
-      	 #searchBox input.searchBox{
-      	 float: right;
-         width: auto;
-         height: 100%;
+      	 #searchBox img{
+      		float: right;
+	     	display: block;
+  		 	margin: 9px 0 0 0;
+  		 	width:23px;
          }
         
         #navi{width: 100%; height: 60px; background-color: #6b8eb4; float: left;}
@@ -141,13 +148,14 @@
     top: 5px;
     position: relative;
     color: #fff;
-    min-width: 320px;
+    min-width: 310px;
     padding: 5px 5px;
     text-decoration: none;
 /*     display: none;*/
     color: #fff;
     font-size: 14px;
     height: 400px; }
+  
     .find-content-inside1{
     		margin-left: 20px; 
     		background-color: black; 
@@ -180,7 +188,7 @@
 		    position: relative;
 		    color: #fff;
 		    display: none;
-		    min-width: 320px;
+		    min-width: 310px;
 		    height: 400px;
 		    padding: 5px 5px;
 		    text-decoration: none;
@@ -192,9 +200,10 @@
 	
 	
 	.airportfind-content-inside1{
+			float:left;
     		margin-left: 20px; 
     		background-color: black; 
-    		width:40%; 
+    		width:120px; 
     		height: 30px; 
     		color: #fff; 
     		margin-bottom: 10px;
@@ -204,7 +213,7 @@
     		margin-left: 15px;
     		text-align:center; 
     		background-color: black; 
-    		width:40%; 
+    		width:120px; 
     		height: 30px; 
     		color: #fff; 
     		margin-bottom: 10px;
@@ -214,17 +223,8 @@
 	.dontknowWhen{
 	display: none;
 	}
-	.airportfind-content-inside-people1{
-			margin-left: 20px; 
-    		background-color: black; 
-    		width: 25%; 
-    		height: 30px; 
-    		color: #fff; 
-    		margin-bottom: 10px;
-    		margin-top: 10px;
-    		border : 0;}
-    	
-    .airportfind-content-inside-people2{
+	.kind_of_people{display:inline-block; width:100%}
+	.kind_of_people select{
 			margin-left: 13px; 
     		background-color: black; 
     		width: 25%; 
@@ -232,8 +232,17 @@
     		color: #fff; 
     		margin-bottom: 10px;
     		margin-top: 10px;
-    		border : 0;}	
-    		
+    		border : 0;
+	}
+    .kind_of_people select:first-child{
+    		margin-left: 20px; 
+    		background-color: black; 
+    		width: 25%; 
+    		height: 30px; 
+    		color: #fff; 
+    		margin-bottom: 10px;
+    		margin-top: 10px;
+    		border : 0;}
     		
  	.domesticfind-content {
 		    background-image: url('/images/tp-main/find.png');
@@ -242,7 +251,7 @@
 		    position: relative;
 		    color: #fff;
 		    display: none;
-		    min-width: 320px;
+		    min-width: 310px;
 		    height: 400px;
 		    padding: 5px 5px;
 		    text-decoration: none;
@@ -346,9 +355,9 @@
 
 #content{width: 1100px; height: auto; margin: 0 auto;}
 
-
-#theme_block{width: 1100px; height:auto; display: inline-block; margin-top: 20px; margin-bottom: 20px;}
-#theme_block h2{width:auto; height:auto; float: left; }
+#theme_block a.time_more{right:3px; top: 5px; }
+ a.time_more{position: absolute; display: inline-block; padding-left: 20px; top:12px; right: 90px; background: url(/images/tp-main/06_plus.png) no-repeat 0 50%; font-size: 14px; color: #898989; font-family: 'Nanum Gothic';}
+#theme_block{width: 1100px; position:relative; margin: 0 auto;}
 
 #tab_type01 ul{padding-top: 5px; float:right; } 
 
@@ -373,7 +382,6 @@
 #departureConfirmed img:last-child{margin-right: 0px;}  
 
 #theme_block2{width: 50%; height: auto; float: right; display: inline-block; margin-top: 15px;}
-#theme_block2 h2{height: auto;}
 #theme_block2 img{width: 100%; height: 370px; }
 #theme_block2 img:last-child{margin-right: 0px;}
 #theme_block2 #main_qna_icon{margin : 0 auto;}

@@ -5,7 +5,19 @@
 <!-- 홈쇼핑 배너 회전 -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="http://malsup.github.com/jquery.cycle2.js"></script>
- 
+ <script>
+ $(document).ready(function(){
+	 $(".tab_type01 > li").on('click',function(){
+		var thisTab = this;
+		
+		$('.on').not(thisTab).slideUp(function(){
+			$(this).removeClass('on').fadeIn();
+		});
+		$(thisTab).addClass('on');
+		
+	 });
+ });
+ </script>
 <div id="main">
       <div id="tt">
        <div id="quickmenu">
@@ -47,25 +59,24 @@
                <input type="radio"  value="O" id="air_flightWay" name="air_flightWay"style="margin-left: 20px; margin-bottom: 20px; "/> 편도
                 
                <br>
-               <p>출발</p>
+               <p>출발</p>  
                <select class="airportfind-content-inside1">
                <option>인천/김포</option>
                </select>
                <input type="text" class="airportfind-content-inside2" placeholder="출발일자 선택"/>
-               
-               <p><span>도착 </span> <span><input type="checkbox" id="dontknow" value=""/>귀국일 미지정</span></p>  
+               <br>
+               <p><span>도착 </span> <span><input type="checkbox" id="dontknow" value=""/>귀국일 미지정</span></p>
+               <br>  
                <!-- 클릭 시 모달창이나 팝업창 띄워 검색하기 기능 -->
                <input type="text" class="airportfind-content-inside1" placeholder="도착도시 검색"/>
-               
                <input type="text" class="airportfind-content-inside2 whenyoucome" placeholder="도착일자 선택"/>
-               
                <select class="airportfind-content-inside2 dontknowWhen">
                <option>체류일 선택</option>
                </select>
-               
+               <div class="kind_of_people">
                <p>인원</p>
                <!-- select id 성인 :adult 소아 :child 유아 : baby  -->
-               <select class="airportfind-content-inside-people1" id="adult">
+               <select id="adult">
                <option value="1">성인1명</option>
                <option value="2">성인2명</option>
                <option value="3">성인3명</option>
@@ -78,7 +89,7 @@
                </select>
                
               
-               <select class="airportfind-content-inside-people2" id="child">
+               <select id="child">
                <option  value="0">소아</option>
                <option  value="1">1명</option>
                <option  value="2">2명</option>
@@ -92,7 +103,7 @@
                </select>
                
                
-               <select class="airportfind-content-inside-people2" id="baby">
+               <select id="baby">
                <option  value="0">유아</option>
                <option  value="1">1명</option>
                <option  value="2">2명</option>
@@ -104,6 +115,7 @@
                <option  value="8">8명</option>
                <option  value="9">9명</option>
                </select>
+               </div>
                
                <input type="button" id="searchBtn" name="searchBtn" value="검색하기" />
                
@@ -249,14 +261,14 @@
 	<div id="theme_block">
 	  
 	
-	<h2 class ="tit">
+	<h2 class ="titMain">
 	출발확정
+	<a href="#" class="time_more">더보기</a>
 	</h2> 
 	
-	<div id="tab_type01">
 		
-		<ul>
-					<li ><a href="#" class="decoNone">유럽</a></li>
+		<ul class="tab_type01">  
+					<li class="on"><a href="#" class="decoNone">유럽</a></li>
 					<li ><a href="#" class="decoNone">동남아</a></li>
 					<li ><a href="#" class="decoNone">필리핀/푸켓</a></li>
 					<li ><a href="#" class="decoNone">중국/홍콩/대만</a></li>
@@ -264,9 +276,7 @@
 					<li ><a href="#" class="decoNone">괌/사이판</a></li>
 					<li ><a href="#" class="decoNone">호주/뉴질랜드</a></li>
 					<li ><a href="#" class="decoNone">미주/캐나다</a></li>
-					<li ><a href="#" class="decoNone"><i class="fa fa-plus" aria-hidden="true"></i> 더보기</a></li>
 		</ul>
-	</div>
 	
 	
 	<div id="departureConfirmed">  
@@ -281,21 +291,19 @@
  </div>
  
  <div id="theme_block">
- <div id="theme_block2">
- <h2>모아TV</h2><span class="more_r"><a href="#"><i class="fa fa-plus" aria-hidden="true">더보기</i></a></span>
- <br><br>
- <img alt="TEST" src="/images/product/1-2.PNG">
+	 <div id="theme_block2">
+		<h2 class ="titMain">모아TV</h2><span class="more_r"><a href="#"><i class="fa fa-plus" aria-hidden="true">더보기</i></a></span>
+ 		<img alt="TEST" src="/images/product/1-2.PNG">
  </div>
  <div id="theme_block2">
- <h2>리미티드</h2><span class="more_r"><a href="#"><i class="fa fa-plus" aria-hidden="true">더보기</i></a></span>
- <br><br>
+	<h2 class ="titMain">리미티드</h2><span class="more_r"><a href="#"><i class="fa fa-plus" aria-hidden="true">더보기</i></a></span>
  <img alt="TEST" src="/images/product/1-2.PNG">
  </div>
 </div>
 
 
  <div id="theme_block">
- <h2 class="h_undergtag">홈쇼핑 & 이벤트</h2>
+ <h2 class ="titMain">홈쇼핑 & 이벤트</h2>
  	<div id="event_small_up">
 	<div class="cycle-slideshow">
 	<img alt="홈쇼핑" src="/images/tp-main/event1.png">
@@ -322,7 +330,7 @@
 </div>
 
 <div id="theme_block">
-<h2 class="h_undergtag">베스트 여행후기</h2><span class="more_r"><a href="#"><i class="fa fa-plus" aria-hidden="true">더보기</i></a></span>
+<h2 class ="titMain">베스트 여행후기</h2><span class="more_r"><a href="#"><i class="fa fa-plus" aria-hidden="true">더보기</i></a></span>
  <br><br>
 <div id="event_small_up">
 	<img alt="여행후기사진" src="/images/tp-main/eviza.jpg" class="travle_img">
@@ -339,8 +347,10 @@
 <div id="theme_block">
 
 <div id="notice_main_css">
-<img class="main_head_font" alt="공지사항" src="/images/RYUTEST/main_notice_font.png"><span class="more_r"><a href="#"><i class="fa fa-plus" aria-hidden="true">더보기</i></a></span>
- <br><br>
+<h2 class ="titMain">
+	공지사항
+</h2>
+	<span class="more_r"><a href="#"><i class="fa fa-plus" aria-hidden="true">더보기</i></a></span>
 <ul class="notice">
 	<li>공지사항1</li>
 	<li>공지사항2</li>
@@ -350,7 +360,10 @@
 </div>
 
 	<div id="theme_block2">
-		<img class="main_head_font" alt="자주하는 질문" src="/images/RYUTEST/main_qna_font.png"><span class="more_r"><i class="fa fa-plus" aria-hidden="true">더보기</i></span>
+	<h2 class ="titMain">
+	자주하는 질문
+	</h2>
+		<span class="more_r"><a href="#"><i class="fa fa-plus" aria-hidden="true">더보기</i></a></span>
 		<br>
 		<br>
 		<div id="main_qna_icon">

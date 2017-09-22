@@ -235,7 +235,7 @@ $(document).ready(function() {
 							<li>
 								<span class="tit">이용항공</span>
 								<span class="txt txt03">
-									<img alt="대한항공" src="/images/RYUTEST/KE.png">대한항공
+									<img alt="대한항공" src="/images/productDetail/KE.png">대한항공
 								</span>
 							</li>
 							<li>
@@ -262,8 +262,8 @@ $(document).ready(function() {
                         <li class="lineGray lineBlackTop liBg">
 	                        <span class="tit tit06">이용자구분</span>
 	                        <span class="txt txt06 txt06-1">성인<span>만12세이상</span></span>
-	                        <span class="txt txt06 txt06-2 tip" role="1">아동<span>만12세미만<img src="/images/RYUTEST/icon_question.png" alt="안내" /></span></span>
-	                        <span class="txt txt06 txt06-3 tip" role="2">유아<span>만2세미만<img src="/images/RYUTEST/icon_question.png" alt="안내" /></span></span>
+	                        <span class="txt txt06 txt06-2 tip" role="1">아동<span>만12세미만<img src="/images/productDetail/icon_question.png" alt="안내" /></span></span>
+	                        <span class="txt txt06 txt06-3 tip" role="2">유아<span>만2세미만<img src="/images/productDetail/icon_question.png" alt="안내" /></span></span>
 	                        <span class="tooltip" style="display: none;">
 	                            <span class="period role01" style="display: none;">2005.10.02 ~ 2015.10.01</span>
 	                            <span class="period role02" style="display: none;">2015.10.02 ~ 2017.10.01</span>
@@ -318,7 +318,7 @@ $(document).ready(function() {
 					<li class="lineBlack pd0">
 						<div class="damdangWrap">
 							<div class="photo">
-								<img alt="담당자이름" src="/images/RYUTEST/youngyou.png">
+								<img alt="담당자이름" src="/images/productDetail/youngyou.png">
 							</div>
 							<div class="title">
 								<span>담당자</span>
@@ -387,22 +387,22 @@ $(document).ready(function() {
 								<ul>
 									<li style="width: 190px; height: 120px;" class="sliderkit-selected">
 									<a href="#" rel="nofollow">
-										<img src="/images/RYUTEST/detail_package_slider.jpg" alt="이미지 설명">
+										<img src="/images/productDetail/detail_package_slider.jpg" alt="이미지 설명">
 									</a>
 									</li>
 									<li style="width: 190px; height: 120px;" class="">
 									<a href="#" rel="nofollow">
-										<img src="/images/RYUTEST/spain_detailPackage_slider.png" alt="이미지 설명">
+										<img src="/images/productDetail/spain_detailPackage_slider.png" alt="이미지 설명">
 									</a>
 									</li>
 									<li style="width: 190px; height: 120px;" class="">
 									<a href="#" rel="nofollow">
-										<img src="/images/RYUTEST/spain_detailPackage_slider2.png" alt="이미지 설명">
+										<img src="/images/productDetail/spain_detailPackage_slider2.png" alt="이미지 설명">
 									</a>
 									</li>
 									<li style="width: 190px; height: 120px;" class="">
 									<a href="#" rel="nofollow">
-										<img src="/images/RYUTEST/spain_detailPackage_slider3.png" alt="이미지 설명">
+										<img src="/images/productDetail/spain_detailPackage_slider3.png" alt="이미지 설명">
 									</a>
 									</li>
 								</ul>
@@ -421,16 +421,16 @@ $(document).ready(function() {
 							
 							<div class="sliderkit-panels">
 								<div class="sliderkit-panel" style="display: block;">
-									<img src="/images/RYUTEST/detail_package_slider.jpg" alt="이미지 설명">
+									<img src="/images/productDetail/detail_package_slider.jpg" alt="이미지 설명">
 								</div>
 								<div class="sliderkit-panel" style="display: block;">
-									<img src="/images/RYUTEST/spain_detailPackage_slider.png" alt="이미지 설명">
+									<img src="/images/productDetail/spain_detailPackage_slider.png" alt="이미지 설명">
 								</div>
 								<div class="sliderkit-panel" style="display: block;">
-									<img src="/images/RYUTEST/spain_detailPackage_slider2.png" alt="이미지 설명">
+									<img src="/images/productDetail/spain_detailPackage_slider2.png" alt="이미지 설명">
 								</div>
 								<div class="sliderkit-panel" style="display: block;">
-									<img src="/images/RYUTEST/spain_detailPackage_slider3.png" alt="이미지 설명">
+									<img src="/images/productDetail/spain_detailPackage_slider3.png" alt="이미지 설명">
 								</div>
 							
 							</div>
@@ -446,7 +446,7 @@ $(document).ready(function() {
 							<span class="titlebg"></span>
 						</span>
 						<div class="cont01">
-							<img alt="예약 Process" src="/images/RYUTEST/detailPackage_res_process.png">
+							<img alt="예약 Process" src="/images/productDetail/detailPackage_res_process.png">
 						</div>
 					</div>
 					<!-- [[예약 프로세스 info01_free End]] -->
@@ -461,14 +461,14 @@ $(document).ready(function() {
 						<div class="cont01">
 						<p>&nbsp;</p>
 						<p>
-							<img alt="예약 Process" src="/images/RYUTEST/detail_package_product_1.png">
+							<img alt="예약 Process" src="/images/productDetail/detail_package_product_1.png">
 						</p>
 						<p>&nbsp;</p>
 						<p>
-							<img alt="예약 Process" src="/images/RYUTEST/detail_package_product_2.png">
+							<img alt="예약 Process" src="/images/productDetail/detail_package_product_2.png">
 						</p>
 						<p>
-							<img alt="예약 Process" src="/images/RYUTEST/detail_package_product_3.png">
+							<img alt="예약 Process" src="/images/productDetail/detail_package_product_3.png">
 						</p>
 						</div>
 					</div>
@@ -2475,7 +2475,7 @@ function fnView(obj){
                 		상품
                 	
                 가격 (성인 1인 기준) <button class="btn_calculator" type="button" name="btnCalculator" role-w="550" role-h="600" role-url="/product/calculator.do?evAdtPrice=2790000&amp;evChdPrice=2232000&amp;evInfPrice=558000"></button></span>
-                <span class="pricedetailPackage fontWhite tip" role="3">2,790,000<span>원</span><img src="/images/RYUTEST/icon_questionB.png" alt="안내">
+                <span class="pricedetailPackage fontWhite tip" role="3">2,790,000<span>원</span><img src="/images/productDetail/icon_questionB.png" alt="안내">
 				<span class="tooltip asideTip" style="display: none;">
                 <span class="price_child">아동: 2,232,000</span>
 	                	<span class="price_child">유아: 558,000</span>
@@ -2515,11 +2515,11 @@ function fnView(obj){
                 <div class="seletboxAir">
                     <input type="hidden" name="search_txt" id="search_txt">
                     <span id="inputAir">
-         		    	<img src="/images/RYUTEST/KE.png" alt="아시아나항공">
+         		    	<img src="/images/productDetail/KE.png" alt="아시아나항공">
 	                   			아시아나항공</span>
                     <ul>
                     	<li onclick="goEvent('NCP5208-170922OZ00')" style="background: rgb(249, 251, 251);">
-		                        <img src="/images/RYUTEST/KE.png" alt="아시아나항공">
+		                        <img src="/images/productDetail/KE.png" alt="아시아나항공">
 			                   			<span class="airname">아시아나항공</span>
 	                            <span class="mark"><span class="pie orange">예약가능</span></span>
 		                          	<span class="date">2017년 09/22 (금) 18:40 - OZ272</span>
@@ -2540,17 +2540,17 @@ function fnView(obj){
 		</div>
 
             <div class="aside09">
-                <span class="quick01"><a href="http://www.facebook.com/sharer.php?u=" onclick="fnGoSns(this.href, 'facebook','시애틀+록키완전일주 + 하와이 10일'); return false;"><img src="/images/RYUTEST/quick_icon01.png" alt="페이스북"></a></span>
-                <span class="quick02"><a href="http://twitter.com/home?status=" onclick="fnGoSns(this.href, 'twitter','시애틀+록키완전일주 + 하와이 10일'); return false;"><img src="/images/RYUTEST/quick_icon02.png" alt="트위터"></a></span>
-                <span class="quick04"><a href="#" id="btnKakaoStory" target="_blank"><img src="/images/RYUTEST/quick_icon07.png" alt="카카오스토리"></a></span>
-                <span class="quick03"><a href="#" onclick="fnSendEmail(); return false;"><img src="/images/RYUTEST/quick_icon03.png" alt="상품 추천 메일보내기"></a></span>
-                <span class="quick04"><a href="#clipboard" onclick="fnCopyToClipboard(); return false;"><img src="/images/RYUTEST/quick_icon04.png" alt="링크 복사하기"></a></span>
+                <span class="quick01"><a href="http://www.facebook.com/sharer.php?u=" onclick="fnGoSns(this.href, 'facebook','시애틀+록키완전일주 + 하와이 10일'); return false;"><img src="/images/productDetail/quick_icon01.png" alt="페이스북"></a></span>
+                <span class="quick02"><a href="http://twitter.com/home?status=" onclick="fnGoSns(this.href, 'twitter','시애틀+록키완전일주 + 하와이 10일'); return false;"><img src="/images/productDetail/quick_icon02.png" alt="트위터"></a></span>
+                <span class="quick04"><a href="#" id="btnKakaoStory" target="_blank"><img src="/images/productDetail/quick_icon07.png" alt="카카오스토리"></a></span>
+                <span class="quick03"><a href="#" onclick="fnSendEmail(); return false;"><img src="/images/productDetail/quick_icon03.png" alt="상품 추천 메일보내기"></a></span>
+                <span class="quick04"><a href="#clipboard" onclick="fnCopyToClipboard(); return false;"><img src="/images/productDetail/quick_icon04.png" alt="링크 복사하기"></a></span>
                 <!-- <span class="quick05"><a href="#wish"  onclick="fnSaveWishProc('E','/product/detailPackage.do?menu=pkg&did=7423&evCd=NCP5208-170922OZ00','NCP5208','NCP5208-170922OZ00','false'); return false;"><img src="/images/detail/quick_icon05.png" alt="관심상품 담기" /></a></span> -->
-                <span class="quick06"><a href="#haedline" onclick="fnAllPrint('NCP5208-170922OZ00' ,'N')"><img src="/images/RYUTEST/quick_icon06.png" alt="인쇄하기"></a></span>
+                <span class="quick06"><a href="#haedline" onclick="fnAllPrint('NCP5208-170922OZ00' ,'N')"><img src="/images/productDetail/quick_icon06.png" alt="인쇄하기"></a></span>
             </div>
 
             <div class="asideTop">
-                <a href="#wrap"><img src="/images/RYUTEST/quick_top.png" alt="맨위로"></a>
+                <a href="#wrap"><img src="/images/productDetail/quick_top.png" alt="맨위로"></a>
             </div>
 
         </aside>

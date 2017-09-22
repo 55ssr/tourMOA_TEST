@@ -119,7 +119,7 @@ $(document).ready(function(){
 				<option value="#" data-pid="3118" data-did="7159" style="display: block;">임직원 전용</option>
 			</select>
 			<div id="menuopen">
-						<input type="image" src="/images/RYUTEST/detailPackage_menuopen_font.png" alt="열기"/>
+						<input type="image" src="/images/productDetail/detailPackage_menuopen_font.png" alt="열기"/>
 			</div>
 		 </div>
 	</div>

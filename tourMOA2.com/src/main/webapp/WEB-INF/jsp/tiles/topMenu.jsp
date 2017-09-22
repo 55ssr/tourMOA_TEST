@@ -19,7 +19,7 @@
               <option>전체 상품</option>
             </select>
             <input type="text" class="search" placeholder="search">
-            <input type="button" class="searchBox" value="검색">
+            <a href="#"><img alt="검색" src="/images/customer/top_search.png"></a>
         	</div>
             </div>
         </div>  
