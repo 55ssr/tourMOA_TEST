@@ -35,7 +35,7 @@
 	</div>
 		<div class="cont02">
 			<ul class="u1">
-				<li><a href="product/detailList.do">
+				<li><a href="detailList.do">
 					<span class="pic">
 					<img src="/images/product/de1.png" alt="">
 				</span>
@@ -49,7 +49,7 @@
 				</a>
 			</li>
 			
-			<li><a href="product/detailList.do">
+			<li><a href="detailList.do">
 					<span class="pic">
 					<img src="/images/product/de2.png" alt="">
 				</span>
@@ -63,7 +63,7 @@
 				</div>
 				</a>
 			</li>
-				<li><a href="product/detailList.do">
+				<li><a href="detailList.do">
 					<span class="pic">
 					<img src="/images/product/de3.png" alt="">
 					</span>
@@ -107,7 +107,7 @@
 	<div class="tour_pass">
 			<ul>
 				<li>
-					<a href="product/detailList.do">
+					<a href="detailList.do">
 						<img src="/images/product/de5.PNG" alt="" class="pic1">
 						<div class="box">
 							<p><span class="btn_pass">태국</span></p>
@@ -116,7 +116,7 @@
 					</a>
 					</li>
 					<li>
-					<a href="product/detailList.do"><img src="/images/product/de6.PNG" alt="" class="pic1">
+					<a href="detailList.do"><img src="/images/product/de6.PNG" alt="" class="pic1">
 						<div class="box">
 							<p><span class="btn_pass">필리핀</span></p>
 							<p>[보라카이]스킨 스쿠버</p>
@@ -124,7 +124,7 @@
 					</a>
 					</li>
 					<li>
-					<a href="product/detailList.do"><img src="/images/product/de7.PNG" alt="" class="pic1">
+					<a href="detailList.do"><img src="/images/product/de7.PNG" alt="" class="pic1">
 						<div class="box">
 							<p><span class="btn_pass">베트남</span></p>
 							<p>[다낭] 호이안 투어</p>
@@ -132,7 +132,7 @@
 					</a>
 						</li>
 						<li>
-					<a href="product/detailList.do"><img src="/images/product/de8.PNG" alt="" class="pic1">
+					<a href="detailList.do"><img src="/images/product/de8.PNG" alt="" class="pic1">
 						<div class="box">
 							<p><span class="btn_pass">베트남</span></p>
 							<p>[하노이] 하롱베이 일일투어</p>
