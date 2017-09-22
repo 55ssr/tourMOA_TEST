@@ -1,35 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<div class="promotion_text">
-		<a href="http://www.ybtour.co.kr/promotion/overseas/2017/0914_ev_offseason/" class="color_type2" target="_self">
-		황금연휴에 여행 못가시는 분! 이 날짜는 어떠세요?<span>&gt;</span>
-		</a>
-</div>
-
-	<div id="topBanner"></div>
-<!--[[ topSearch End ]]-->
-<nav id="gnb">
-	<!--[[ GNB Start ]]-->
-	<ul>
-		<li class="gnb01"><a href="/product/main.do?menu=pkg"><span>해외패키지</span></a></li>
-		<li class="gnb02"><a href="/product/main.do?menu=fit"><span>자유여행</span></a></li>
-		<li class="gnb03"><a href="/product/main.do?menu=hym"><span>허니문</span></a></li>
-		<li class="gnb04"><a href="/product/main.do?menu=glf"><span>골프</span></a></li>
-		<li class="gnb05"><a href="/product/main.do?menu=fbd"><span>부산/대구출발</span></a></li>
-		<li class="gnb06"><a href="#"
-			onclick="airMenuSubmit('http://air.ybtour.co.kr/air/b2c/AIR/INT/AIRINTTRP0100100000.k1?KSESID=air:b2c:SELK138AN:AA024::00&domintgubun=I', '');return false;"><span>해외항공</span></a></li>
-		<li class="gnb07"><a href="/product/main.do?menu=dma"><span>국내항공</span></a></li>
-		<li class="gnb08"><a href="/product/main.do?menu=dmt"><span>국내여행</span></a></li>
-		<li><a
-			href="http://www.ybtour.co.kr/promotion/event/2016/1108_ev_holiday/"><img
-				src="/images/gnb/gnb_banner.png" alt=" " /></a></li>
-	</ul>
-</nav>
-<!--[[ GNB End ]]-->
-
-</header>
-<!--[[ header End ]]-->
 <script src="/js/jquery-ui.multidatespicker.js"></script>
 <script src="/js/jquery.number.min.js"></script>
+<script src="/js/jquery-ui.css"></script>
+
 <script>
 	$(document).ready(
 			function() {
@@ -246,7 +219,10 @@
 
 	});
 </script>
-<section id="content"> <!--[[ content Start ]]-->
+<div id ="wrap">
+
+ <!--[[ content Start ]]-->
+<section id="content">
 
 <div id="searchWrap">
 	<!--[[ 통합검색 searchWrap Start ]]-->
@@ -299,16 +275,9 @@
 				</div>
 			</div>
 		</div>
+	
 		<!--[[ 출발일검색 tab02 End ]]-->
 	</form>
-<script>
-			function fn_popup() {
-				var url = "/ctgRegPop.do";
-				window.open(url, "ctgReg",
-						"width=500,height=500,resizeble=yes,left=500,top=200");
-			}
-		</script>
-
 	<section id="content"> <!--[[ content Start ]]-->
 
 	<div id="searchWrap">
@@ -414,4 +383,7 @@
 		<!--[[ 검색 전 인기검색어 rankWrap End ]]-->
 	</div>
 	</section>
+	</div>
+	</section>
+	</div>
 	<!--[[ content End ]]-->
