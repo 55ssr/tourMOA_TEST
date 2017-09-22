@@ -5,7 +5,6 @@
 <script src="/js/ui.js" type="text/javascript"></script>
 
 <script>
-
 	$(document).ready(function () {
         $("#tab_type03 .tabs > li").each(function () {
             $(this).click(function () {
@@ -14,8 +13,16 @@
             });
         });
     });
-	    
-
+	</script>
+	<script>
+	$(document).ready(function () {
+        $("#tab_type04 .tabs > li").each(function () {
+            $(this).click(function () {
+                $(this).addClass('on');            
+                $(this).siblings().removeClass('on');  
+            });
+        });
+    });
 	</script>
 <div id="main">
 </div>
@@ -47,9 +54,9 @@
 					</span>
 				</div>
 				</a>
-			</li>
+				</li>
 			
-			<li><a href="detailList.do">
+				<li><a href="detailList.do">
 					<span class="pic">
 					<img src="/images/product/de2.png" alt="">
 				</span>
@@ -62,7 +69,7 @@
 				</span>
 				</div>
 				</a>
-			</li>
+				</li>
 				<li><a href="detailList.do">
 					<span class="pic">
 					<img src="/images/product/de3.png" alt="">
@@ -83,7 +90,7 @@
 				<li><a href="#"><img src="/images/product/hot1.PNG" alt=""></a></li>
 				<li><a href="#"><img src="/images/product/hot2.PNG" alt=""></a></li>
 			</ul>
-		</div>
+			</div>
 	</div>
 		
 	</div>
@@ -91,19 +98,17 @@
 	<h2 class="tit"><img src="/images/product/pass.png" alt=""></h2>
 	<div id="tab_type04">
 		<ul class="tabs">
-					<li><a href="#" class="decoNone">유럽|지중해</a></li>
-					<li><a href="#" class="decoNone">동남아</a></li>
-					<li><a href="#" class="decoNone">일본</a></li>
-					<li><a href="#" class="decoNone">중국|홍콩</a></li>
-					<li><a href="#" class="decoNone">호주</a></li>
-					<li><a href="#" class="decoNone">미주|하와이</a></li>
+					<li><a href="#tabs" class="decoNone">유럽|지중해</a></li>
+					<li><a href="#tabs" class="decoNone">동남아</a></li>
+					<li><a href="#tabs" class="decoNone">일본</a></li>
+					<li><a href="#tabs" class="decoNone">중국|홍콩</a></li>
+					<li><a href="#tabs" class="decoNone">호주</a></li>
+					<li><a href="#tabs" class="decoNone">미주|하와이</a></li>
 		</ul>
 		</div>
 	<div class="tab_container">
 		<div class="tour_best">
-			<a href="#"><img src="/images/product/de4.PNG" alt="" >
-		</a>
-	
+			<a href="#"><img src="/images/product/de4.PNG" alt="" ></a>
 	<div class="tour_pass">
 			<ul>
 				<li>
@@ -145,7 +150,7 @@
 		</div>
 	</div>
 
-<div id="theme_block">
+		<div id="theme_block">
 				<div class="consult_num">
 					<ul>
 						<li><a href="#"><img src="/images/product/con1.PNG" alt="1:1 맞춤견적 문의하기"></a></li>

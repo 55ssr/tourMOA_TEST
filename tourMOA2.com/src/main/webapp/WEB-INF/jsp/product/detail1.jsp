@@ -2,18 +2,37 @@
 <script src="/js/jquery-2.2.2.js"></script>
 <script src="/js/jquery-ui.js"></script>
 <script src="/js/product/jquery.bxslider.js"></script>
+<script>
+	$(document).ready(function(){
+		$(".cont03 > ul > li > div").each(function(){
+			var tab_index = $(this).index();
+
+			$(this).on('mouseover',function(){
+				$(".cont03 > ul > li > div:eq("+tab_index+") .noti").css("display","none");
+				$(".cont03 > ul > li > div:eq("+tab_index+") .info").stop(false, false).show(0).animate({"top":110},300);
+			});
+
+			$(this).on('mouseleave',function(){
+				$(".cont03 > ul > li > div:eq("+tab_index+") .info").stop(true, false).animate({"top":210},200, function(){
+					$(".cont03 > ul > li > div:eq("+tab_index+") .noti").stop(false, false).fadeIn(400);
+				});
+			});
+		});
+	});
+	
+</script>
+
 <div id="main">
 </div>
 <div id="content">
 <div id="theme_block">
 	
 <div class="slide_area">
-	<div class="btn_move">
-		<h2 class="tit"><img src="/images/product/hotprice.png" alt=""></h2>
-
-		<span class="btn_prev"></span>
-		<span class="btn_next"></span>
-	</div>
+	<h3 class="tit1"><img src="/images/product/tit1.png" alt=""></h3>
+		<div class="btn_move">
+			<span class="btn_prev"></span>
+			<span class="btn_next"></span>
+		</div>
 	<ul class="slide_v4">
 		<li><img src="/images/product/1-1.PNG" alt="slide"></li>
 		<li><img src="/images/product/1-2.PNG" alt="slide"></li>
@@ -29,7 +48,7 @@
 </div>
 
 <div class="slide_area1">
-	<h2 class="tit"><img src="/images/product/hotprice.png" alt=""></h2>
+	<h3 class="tit1"><img src="/images/product/tit2.png" alt=""></h3>
 		<ul class="slide_v5">
 			<li><img src="/images/product/h1.PNG" alt=""></li>
 			<li><img src="/images/product/h2.PNG" alt=""></li>
@@ -39,8 +58,10 @@
 	</div>
 </div>
 <div id="theme_block">
-<h2 class="tit"><img src="/images/product/hotprice.png" alt=""></h2>
-	<div id="tab_type02">
+<h3 class="tit1"><img src="/images/product/tit3.png" alt="">
+	<span class="more_r_1">항공권포함, 유류할증료 변동가능</span>
+	</h3>
+	<div class="tab_type02">
 		<ul>
 					<li ><a href="#" class="decoNone">유럽</a></li>
 					<li ><a href="#" class="decoNone">동남아</a></li>
@@ -148,8 +169,8 @@
 	
 	
 	<div id="theme_block">
-<h3>추천 테마여행</h3><br>
-	<div id="tab_type02">
+<h3 class="tit1"><img src="/images/product/tit4.png" alt=""></h3>
+	<div class="tab_type02">
 		<ul>
 					<li ><a href="#" class="decoNone">Blue<br>Lacande</a></li>
 					<li ><a href="#" class="decoNone">관광여행</a></li>
@@ -176,6 +197,16 @@
 	                         <span class="subPay">3,190,000원 ~</span>
 	                     </span>
 	                 </div>
+	                 <div class="info" style="display: block; top: 210px;">
+	                     <span class="tit"></span>
+	                     <span class="subtit">
+	                     	아이들에게 들려주고 싶은 이야기_동심...
+								 </span>
+	                     <span class="line"></span>
+	                     <span class="area">서유럽</span>
+	                     <span class="period">8박10일</span>
+	                     <span class="price">3,190,000원 ~</span>
+	                 </div>
 					</a>
 				</div>
 				<div class="small">
@@ -187,6 +218,16 @@
 	                         <span class="subtit">3박4일</span>
 	                         <span class="subPay">1,099,000원 ~</span>
 	                     </span>
+	                 </div>
+	                 <div class="info" style="display: block; top: 210px;">
+	                     <span class="tit"></span>
+	                     <span class="subtit">
+	                     	다나아아아앙ㅇ..
+								 </span>
+	                     <span class="line"></span>
+	                     <span class="area">베트남</span>
+	                     <span class="period">3박4일</span>
+	                     <span class="price">1,099,000원 ~</span>
 	                 </div>
 					</a>
 				</div>
@@ -200,6 +241,17 @@
 	                         <span class="subPay">3,590,000원 ~</span>
 	                     </span>
 	                 </div>
+	                 <div class="info" style="display: block; top: 210px;">
+	                     <span class="tit"></span>
+	                     <span class="subtit">
+	                     	서유럽ㅇ..
+								 </span>
+	                     <span class="line"></span>
+	                     <span class="area">서유럽</span>
+	                     <span class="period">8박10일</span>
+	                     <span class="price">3,590,000원 ~</span>
+	                 </div>
+	                 
                  </a>
              </div>
 				<div class="large">
@@ -211,6 +263,16 @@
 	                         <span class="subtit">6박8일</span>
 	                         <span class="subPay">2,790,000원 ~</span>
 	                     </span>
+	                 </div>
+	                 <div class="info" style="display: block; top: 210px;">
+	                     <span class="tit"></span>
+	                     <span class="subtit">
+	                     	산과 호수의 맑은 이야기_스위스일주_...
+								 </span>
+	                     <span class="line"></span>
+	                     <span class="area">서유럽</span>
+	                     <span class="period">6박8일</span>
+	                     <span class="price">2,790,000원 ~</span>
 	                 </div>
                  </a>
              	</div>
@@ -224,6 +286,16 @@
 	                         <span class="subPay">699,000원 ~</span>
 	                     </span>
 	                 </div>
+	                 <div class="info" style="display: block; top: 210px;">
+	                     <span class="tit"></span>
+	                     <span class="subtit">
+	                     	사이판_...
+								 </span>
+	                     <span class="line"></span>
+	                     <span class="area">사이판</span>
+	                     <span class="period">6박5일</span>
+	                     <span class="price">699,000원 ~</span>
+	                 </div>
 					</a>
 				</div>
 				<div class="small">
@@ -236,9 +308,18 @@
 	                         <span class="subPay">729,000원 ~</span>
 	                     </span>
 	                 </div>
+	                 <div class="info" style="display: block; top: 210px;">
+	                     <span class="tit"></span>
+	                     <span class="subtit">
+	                     	온천여행...
+								 </span>
+	                     <span class="line"></span>
+	                     <span class="area">훗카이도</span>
+	                     <span class="period">3박4일</span>
+	                     <span class="price">729,000원 ~</span>
+	                 </div>
 					</a>
 				</div>
-				
 			</li>
 		</ul>
 	</div>
