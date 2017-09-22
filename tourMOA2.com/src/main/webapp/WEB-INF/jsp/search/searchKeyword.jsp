@@ -256,8 +256,9 @@ function fn_popup(){
                 </div>
                 <div id="ark2" ></div>
                 <div class="relKeywordBox">
+                <br>
                 추천검색어 |
-                <span class="Keyword">
+                <span class="keyword">
                 <a href="/search/searchKeyword.do?query=보라카이"><span>보라카이</span></a>
                 <a href="/search/searchKeyword.do?query=제주도"><span>제주도</span></a>
                 <a href="/search/searchKeyword.do?query=대만"><span>대만</span></a>
