@@ -598,7 +598,7 @@ p.review_subtitle+#reviewWrap {margin-top:-30px}
 
 
 /* aside 퀵메뉴 */
-#detailWrap #asideWrap { padding-top: 150px; background: #f0f1f3; font-size: 13px; letter-spacing: -0.5px; font-weight: normal; position: absolute; top: 0; left: 50%; width: 235px; padding: 0 5px 0 20px; margin: 0 0 0 290px; height: 650px; z-index: 999; }
+#detailWrap #asideWrap { padding-top: 150px; background: #f0f1f3; font-size: 13px; letter-spacing: -0.5px; font-weight: normal; top: 0; left: 50%; width: 235px; padding: 0 5px 0 20px; margin: 0 0 0 290px; height: 650px; z-index: 999; }
 #detailWrap .free { background: #fffcf3 !important; }
 /* 태그 */
 #asideWrap div.aside01 { position: absolute; top: 0; left: 0; width: 240px; height: 104px; padding: 19px 0 2px 20px; background: #ffb902; color: #fff; font-weight: normal; }

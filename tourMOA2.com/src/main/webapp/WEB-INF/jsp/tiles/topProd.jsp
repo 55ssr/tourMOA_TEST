@@ -45,8 +45,6 @@
 		$('#codeArea[data-dtl=Y]') && setAreaDtl('849');
 	}); 
 
-</script> 
-<script>
 $(document).ready(function(){
 	
 	//이미지 액박처리start
@@ -64,8 +62,8 @@ $(document).ready(function(){
 	}); 
 	//이미지 액박처리end
 	$("#menuopen").click(function(){
-		$("#detail_wrap").css({display:"none"});
 		$("#localWrapOne").css({display:"inline-block"});
+		$("#detail_wrap").css({display:"none"});
 	});
 	$(".menuclose").click(function(){
 		$("#detail_wrap").css({display:"block"});

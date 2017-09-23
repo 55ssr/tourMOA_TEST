@@ -1,10 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <script src="/js/jquery-2.2.2.js"></script>
 <script src="/js/jquery-ui.js"></script>
 <script src="/js/mainJS.js"></script>
 <!-- 홈쇼핑 배너 회전 -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script src="http://malsup.github.com/jquery.cycle2.js"></script>
+<!-- sliderkit -->
+<script type="text/javascript" src="/js/jquery.sliderkit.1.9.2.pack.js"></script>
  <script>
  $(document).ready(function(){
 	 $(".tab_type01 > li").on('click',function(){
@@ -17,6 +19,36 @@
 		
 	 });
  });
+$(function(){
+		//노랑티비 slide
+		$(".ty_list").sliderkit({
+			auto:true,
+            autospeed:3000,
+            circular:true,
+            mousewheel:false,
+            fastchange:false,
+            shownavitems: 5
+		});
+		$(".yt_list .list>a").on("click", function(e){
+			e.preventDefault();
+			$(this).parent().siblings().removeClass("on");
+			$(this).parent().addClass("on");
+		});
+		//오늘만노랑 slide
+		$(".yellow_tv_new").sliderkit({
+			auto:true,
+            autospeed:3000,
+            circular:true,
+            mousewheel:false,
+            fastchange:false,
+            shownavitems: 5,
+            panelfxbefore : function(){
+            	$(".yellow_tv_new ul li.sliderkit-panel-active .list:first-child").addClass("on");
+            	$(".yellow_tv_new ul li.sliderkit-panel-active .list:nth-child(2)").removeClass("on");
+            }
+		});
+		
+	});
  </script>
 <div id="main">
       <div id="tt">
@@ -256,7 +288,6 @@
             
     </div>
 
-<div id="content">
 	<!-- 컨텐츠 별 크기 -->
 	<div id="theme_block">
 	  
@@ -279,28 +310,269 @@
 		</ul>
 	
 	
-	<div id="departureConfirmed">  
-	
-	<img alt="출발확정여행상품" src="/images/product/1-2.PNG">
-	<img alt="출발확정여행상품" src="/images/product/1-3.PNG">
-	<img alt="출발확정여행상품" src="/images/product/2-1.PNG">
-	<img alt="출발확정여행상품" src="/images/product/3-1.PNG">
-	
-	</div>
+	<ul class="prd_list">
+	<li><a href="/product/unitList.do?menu=pkg&amp;loc=2&amp;pid=3865&amp;did=3870&amp;goodsCd=ATP2024&amp;year=2017&amp;month=10">
+			<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/b2/b207d319b9a7e1db29e010d429b17a1f.tn.410x280.jpg" alt="이미지"></span>
+			<p>
+				[방콕&amp;파타야][$130상당옵션포함] 다~되는 방콕&amp;...</p>
+			<span class="date">
+			10/9,10/10,10/11</span>
+			<span class="price">299,000<span>원~</span></span>
+	</a></li>
+	<li><a href="/product/unitList.do?menu=pkg&amp;loc=2&amp;pid=337&amp;did=315&amp;goodsCd=ACP1024&amp;year=2017&amp;month=10">
+			<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/cd/cda853b2799c287503ec63fd25f6d033.tn.410x280.jpg" alt="이미지"></span>
+			<p>
+				★어서WAT 앙코르WAT★캄보디아/앙코르왓 4일/5일...</p>
+			<span class="date">
+			10/11,10/14,10/15</span>
+			<span class="price">299,000<span>원~</span></span>
+	</a></li>
+	<li><a href="/product/unitList.do?menu=pkg&amp;loc=2&amp;pid=347&amp;did=317&amp;goodsCd=ALP1000&amp;year=2017&amp;month=10">
+			<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/d7/d76f48981bebc87222ec5be7137f4ace.tn.410x280.jpg" alt="이미지"></span>
+			<p>
+				[라오스] 비엔티엔/방비엥+블루라군 3박5일</p>
+			<span class="date">
+			10/9,10/11</span>
+			<span class="price">399,000<span>원~</span></span>
+	</a></li>
+	<li><a href="/product/unitList.do?menu=pkg&amp;loc=2&amp;pid=299&amp;did=3472&amp;goodsCd=AMP1023&amp;year=2017&amp;month=10">
+			<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/b4/b4c754d57595a593a4546fd6709ccadc.tn.410x280.jpg" alt="이미지"></span>
+			<p>
+				코타키나발루*실속 파격 특가*2일자유+시내관광 3박5...</p>
+			<span class="date">
+			10/11,10/12,10/13</span>
+			<span class="price">199,000<span>원~</span></span>
+	</a></li>
+	</ul>
 	
  </div>
  
- <div id="theme_block">
-	 <div id="theme_block2">
-		<h2 class ="titMain">모아TV</h2><span class="more_r"><a href="#"><i class="fa fa-plus" aria-hidden="true">더보기</i></a></span>
- 		<img alt="TEST" src="/images/product/1-2.PNG">
- </div>
- <div id="theme_block2">
-	<h2 class ="titMain">리미티드</h2><span class="more_r"><a href="#"><i class="fa fa-plus" aria-hidden="true">더보기</i></a></span>
- <img alt="TEST" src="/images/product/1-2.PNG">
- </div>
-</div>
-
+ <div class="bg_tv_limit">
+			<div class="tv_limit">
+				<!-- 노랑티비 -->
+				<div class="yb_tv">
+					<h2 class="titMain">
+						모아TV
+						<span class="sub_txt">방송일: 2017.09.22 ~ 2017.09.29</span>
+						<a href="/moaTv/moaTvList.do" class="time_more">더보기</a>
+					</h2>
+					<!-- tv content -->
+					<div class="tv_banner">
+					  <div class="limit_banner">
+						<div class="clear">
+						  <!-- yellow_tv_new -->
+						  <div class="yellow_tv_new sliderkit sliderkit-panels" style="display: block;">					
+								<ul class="yt_list">
+									<li class="panel sliderkit-panel sliderkit-panel-active" style="display: list-item;">
+									<div class="list on">
+											<a href="#">
+											비엔티엔/방비엥+블루라군 5일</a>
+											<div class="tv_view_link">
+												<a href="/yellowTv/yellowTvList.do?ybtvSeq=1100002340">
+													<span class="img"><img src="https://dimgcdn.ybtour.co.kr/TN/13/1376b38c8879fc0343dcaeeca3fd111f.tn.630x410.png" alt=" " id="vimeoImg0"></span>
+													<span class="tit">비엔티엔/방비엥+블루라군 5일</span>
+													<span class="won"><em>349,000</em>원~</span>
+												</a>
+											</div>
+										</div>
+									<div class="list ">
+											<a href="#">
+											부관훼리 타고 떠나는 벳부,유후인,기..
+						                		</a>
+											<div class="tv_view_link">
+												<a href="/yellowTv/yellowTvList.do?ybtvSeq=1100002341">
+													<span class="img"><img src="https://dimgcdn.ybtour.co.kr/TN/c9/c95c5e7b453987ef58dd234ed9b6fc0a.tn.630x410.png" alt=" " id="vimeoImg1"></span>
+													<span class="tit">부관훼리 타고 떠나는 벳부,유후인,기타큐슈 4일</span>
+													<span class="won"><em>199,000</em>원~</span>
+												</a>
+											</div>
+										</div>
+									</li>
+									</ul>	
+								<!-- sliderkit-nav -->
+								<div class="control sliderkit-nav">
+									<div class="ball sliderkit-nav-clip" style="width: 12px; height: 12px;">
+										<ul style="width: 17px;">
+											<li class="sliderkit-selected" style="width: 12px; height: 12px;">
+												<a href="#main02" title="배너">링크</a>
+											</li>
+											</ul>
+									</div>
+								</div>
+								<!-- //sliderkit-nav -->			
+						  </div>
+						  <!-- //yellow_tv_new -->
+						</div>
+					  </div>
+					</div>
+					<!-- //tv content -->
+				</div>
+				<!-- //노랑티비 -->
+				
+				  
+				<!--  오늘만 노랑 -->
+				<div class="today_yellow_area">
+				 	<h2 class="titMain">
+						오늘만 모아
+						<span class="sub_txt">오늘 단 하루 예약 시! 추가 혜택</span>
+						<a href="/todayMoa/todayMoaList.do" class="time_more">더보기</a>
+					</h2>
+					<!-- yellow list -->
+					<div class="tv_list_clfix">
+						<div class="ty_list sliderkit sliderkit-panels" style="height: 350px; display: block;">
+							<ul>
+							<li class="panel sliderkit-panel" style="display: list-item;">
+								<div class="list">
+										<a href="/product/unitList.do?menu=pkg&amp;goodsCd=APP4033">
+											<div class="img"><img src="https://dimgcdn.ybtour.co.kr/TN/c0/c0aa575613671369274e3954492b7f53.tn.410x280.jpg" alt=""></div>
+											<span class="tit">[필리핀/푸켓]세부 발라이리조트+캐리비안호핑투어+ 발마사지 5일 </span>
+											<span class="won"><em>399,000</em>원~</span>
+											<dl>
+												<dt>혜택</dt>
+												<dd>발마사지→스톤마사지로 업그레이드</dd>
+												</dl>
+										</a>
+									</div>
+								<div class="list">
+										<a href="/product/unitList.do?menu=pkg&amp;goodsCd=PAP2022">
+											<div class="img"><img src="https://dimgcdn.ybtour.co.kr/TN/c2/c2f57b101dc5b1acfd3c5f899bebe042.tn.410x280.JPG" alt=""></div>
+											<span class="tit">[호주/뉴질랜드]호주/뉴질랜드 남북섬 10일 </span>
+											<span class="won"><em>2,699,000</em>원~</span>
+											<dl>
+												<dt>혜택</dt>
+												<dd>목베개 증정 (인당 1개)</dd>
+												</dl>
+										</a>
+									</div>
+								</li>
+								<li class="panel sliderkit-panel" style="display: list-item;">
+								<div class="list">
+										<a href="/product/unitList.do?menu=pkg&amp;goodsCd=ATP1049">
+											<div class="img"><img src="https://dimgcdn.ybtour.co.kr/TN/33/3329cb8b9677566d59ca6b81b3b7a320.tn.410x280.jpg" alt=""></div>
+											<span class="tit">[동남아]방콕/파타야 5일 (130불상당 옵션포함)</span>
+											<span class="won"><em>436,000</em>원~</span>
+											<dl>
+												<dt>혜택</dt>
+												<dd>씽크네이쳐 트래블킷 증정(1룸당 1개증정)</dd>
+												</dl>
+										</a>
+									</div>
+								<div class="list">
+										<a href="/product/unitList.do?menu=pkg&amp;goodsCd=CSP1000">
+											<div class="img"><img src="https://dimgcdn.ybtour.co.kr/TN/ae/ae04ceecfecaf09be08c4d82f42585e7.tn.410x280.JPG" alt=""></div>
+											<span class="tit">[중국]계림/양삭/이강유람+관암동굴 5일/6일(+온천)</span>
+											<span class="won"><em>499,000</em>원~</span>
+											<dl>
+												<dt>혜택</dt>
+												<dd>발마사지 옵션 제공 ($20 상당)</dd>
+												</dl>
+										</a>
+									</div>
+								</li>
+								<li class="panel sliderkit-panel" style="display: list-item;">
+								<div class="list">
+										<a href="/product/unitList.do?menu=pkg&amp;goodsCd=EMP5023">
+											<div class="img"><img src="https://dimgcdn.ybtour.co.kr/TN/ac/acf12210b08604abbffee653d372ace3.tn.410x280.jpg" alt=""></div>
+											<span class="tit">[유럽]스페인+포르투칼 10일 (백화점 상품권제공/AY)</span>
+											<span class="won"><em>1,590,000</em>원~</span>
+											<dl>
+												<dt>혜택</dt>
+												<dd>몬세라트 언덕 케이블카 탑승 (30 유로 상당) </dd>
+												</dl>
+										</a>
+									</div>
+								<div class="list">
+										<a href="/product/unitList.do?menu=pkg&amp;goodsCd=PAP1004">
+											<div class="img"><img src="https://dimgcdn.ybtour.co.kr/TN/da/da2b312de4eb0d90c78950feff6fe439.tn.410x280.jpg" alt=""></div>
+											<span class="tit">[호주/뉴질랜드]시드니/포트스테판/울릉공 6일</span>
+											<span class="won"><em>1,299,000</em>원~</span>
+											<dl>
+												<dt>혜택</dt>
+												<dd>오페라하우스 내부관람 포함 (AUD 25 상당)</dd>
+												</dl>
+										</a>
+									</div>
+								</li>
+								<li class="panel sliderkit-panel" style="display: list-item;">
+								<div class="list">
+										<a href="/product/unitList.do?menu=pkg&amp;goodsCd=JHP1004">
+											<div class="img"><img src="https://dimgcdn.ybtour.co.kr/TN/6d/6d3f202a78c938986902527b6691d210.tn.410x280.jpg" alt=""></div>
+											<span class="tit">[일본]도야,죠잔케이,삿포로,오타루,노보리베츠4일 </span>
+											<span class="won"><em>1,199,000</em>원~</span>
+											<dl>
+												<dt>혜택</dt>
+												<dd>북해도 명물 마유 크림 1인당 1개 제공,오타루 오르골당 쿠폰 제공</dd>
+												</dl>
+										</a>
+									</div>
+								<div class="list">
+										<a href="/product/unitList.do?menu=pkg&amp;goodsCd=APP1416">
+											<div class="img"><img src="https://dimgcdn.ybtour.co.kr/TN/a1/a1daafde05720e04f32b98672f0a29c7.tn.410x280.JPG" alt=""></div>
+											<span class="tit">[필리핀/푸켓]보라카이 신규 사보이리조트+세일링보트 5일</span>
+											<span class="won"><em>409,000</em>원~</span>
+											<dl>
+												<dt>혜택</dt>
+												<dd>해변오일마사지 → 전신마사지 업그레이드</dd>
+												</dl>
+										</a>
+									</div>
+								</li>
+								<li class="panel sliderkit-panel" style="display: list-item;">
+								<div class="list">
+										<a href="/product/unitList.do?menu=pkg&amp;goodsCd=KJP1138">
+											<div class="img"><img src="https://dimgcdn.ybtour.co.kr/TN/31/3128c7576c3a571536abf94f74fa50fd.tn.410x280.jpg" alt=""></div>
+											<span class="tit">[국내]제주도 서커스월드+아쿠아플라넷 2박3일(리젠트마린)</span>
+											<span class="won"><em>295,000</em>원~</span>
+											<dl>
+												<dt>혜택</dt>
+												<dd>선착순 스탠다드→슈페리어 객실 업그레이드</dd>
+												</dl>
+										</a>
+									</div>
+								<div class="list">
+										<a href="/product/unitList.do?menu=pkg&amp;goodsCd=CHP1001">
+											<div class="img"><img src="https://dimgcdn.ybtour.co.kr/TN/84/844e695b02b9ba5885c80c48e2b18ed4.tn.410x280.jpg" alt=""></div>
+											<span class="tit">[홍콩/대만]홍콩+반나절자유 3일</span>
+											<span class="won"><em>369,000</em>원~</span>
+											<dl>
+												<dt>혜택</dt>
+												<dd>기화병과 제공 (객실당 1개)</dd>
+												</dl>
+										</a>
+									</div>
+								</li>
+								</ul>
+							<!-- sliderkit-nav -->
+							<div class="control sliderkit-nav">
+								<div class="ball sliderkit-nav-clip" style="width: 80px; height: 12px;">
+									<ul style="width: 85px;">
+										<li class="" style="width: 12px; height: 12px;">
+												<a href="#main02" title="배너">링크</a>
+											</li>
+											<li style="width: 12px; height: 12px;" class="">
+												<a href="#main02" title="배너">링크</a>
+											</li>
+											<li style="width: 12px; height: 12px;" class="sliderkit-selected">
+												<a href="#main02" title="배너">링크</a>
+											</li>
+											<li style="width: 12px; height: 12px;" class="">
+												<a href="#main02" title="배너">링크</a>
+											</li>
+											<li style="width: 12px; height: 12px;" class="">
+												<a href="#main02" title="배너">링크</a>
+											</li>
+											</ul>
+								</div>
+							</div>
+							<!-- //sliderkit-nav -->
+							
+						</div>
+					</div>
+					<!-- //yellow list -->
+				</div>
+				<!-- //오늘만 노랑 -->
+			</div>
+		</div>
 
  <div id="theme_block">
  <h2 class ="titMain">홈쇼핑 & 이벤트</h2>
@@ -330,7 +602,7 @@
 </div>
 
 <div id="theme_block">
-<h2 class ="titMain">베스트 여행후기</h2><span class="more_r"><a href="#"><i class="fa fa-plus" aria-hidden="true">더보기</i></a></span>
+<h2 class ="titMain">베스트 여행후기<a href="#" class="time_more">더보기</a></h2>
  <br><br>
 <div id="event_small_up">
 	<img alt="여행후기사진" src="/images/tp-main/eviza.jpg" class="travle_img">
@@ -349,8 +621,9 @@
 <div id="notice_main_css">
 <h2 class ="titMain">
 	공지사항
+<a href="#" class="time_more">더보기</a>
 </h2>
-	<span class="more_r"><a href="#"><i class="fa fa-plus" aria-hidden="true">더보기</i></a></span>
+	
 <ul class="notice">
 	<li>공지사항1</li>
 	<li>공지사항2</li>
@@ -363,7 +636,7 @@
 	<h2 class ="titMain">
 	자주하는 질문
 	</h2>
-		<span class="more_r"><a href="#"><i class="fa fa-plus" aria-hidden="true">더보기</i></a></span>
+		<span class="time_more"><a href="#"><i class="fa fa-plus" aria-hidden="true">더보기</i></a></span>
 		<br>
 		<br>
 		<div id="main_qna_icon">
@@ -407,4 +680,3 @@
 
 
 
-</div>
