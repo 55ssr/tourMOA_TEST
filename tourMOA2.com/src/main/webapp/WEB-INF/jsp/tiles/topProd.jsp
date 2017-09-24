@@ -63,10 +63,10 @@ $(document).ready(function(){
 	//이미지 액박처리end
 	$("#menuopen").click(function(){
 		$("#localWrapOne").css({display:"inline-block"});
-		$("#detail_wrap").css({display:"none"});
+		$("div#detail_wrap").css({display:"none"});
 	});
 	$(".menuclose").click(function(){
-		$("#detail_wrap").css({display:"block"});
+		$("div#detail_wrap").css({display:"block"});
 		$("#localWrapOne").css({display:"none"});
 	});
 	

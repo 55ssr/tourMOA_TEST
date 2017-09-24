@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <script src="/js/jquery-2.2.2.js"></script>
 <script src="/js/jquery-ui.js"></script>
 <script src="/js/jquery.simplemodal-1.4.4.js"></script>
@@ -8,7 +9,32 @@
 <script src="/js/jquery.sliderkit.1.9.2.pack.js"></script>
 
 <script type="text/javascript">
-
+$(document).ready(function(){
+	
+	//이미지 액박처리start
+	$(".txt.txt03 img").error(function(){
+		$(this).replaceWith('');
+	}); 
+	
+	
+	$(".aside06 .seletboxAir #inputAir img").error(function(){
+		$(this).replaceWith('');
+	}); 
+	
+	$(".aside06 .seletboxAir ul li img").error(function(){
+		$(this).replaceWith('');
+	}); 
+	//이미지 액박처리end
+	$("#menuopen").click(function(){
+		$("#localWrapOne").css({display:"inline-block"});
+		$("div#detail_wrap").css({display:"none"});
+	});
+	$(".menuclose").click(function(){
+		$("div#detail_wrap").css({display:"block"});
+		$("#localWrapOne").css({display:"none"});
+	});
+	
+});
 $(document).ready(function() {
 	
 
@@ -755,7 +781,7 @@ $(document).ready(function() {
 											<div class="dayFood">				                    
 												<span class="food">식사</span>				                        
 												<span class="foodTxt">
-													<img src="/images/detail/schedule_icon02-3.png" alt="석식">
+													<img src="/images/productDetail/schedule_icon02-3.png" alt="석식">
 														<span>한식</span>
 													</span>
 											</div>	
@@ -874,11 +900,11 @@ $(document).ready(function() {
 											<div class="dayFood">				                    
 												<span class="food">식사</span>				                        
 												<span class="foodTxt">
-													<img src="/images/detail/schedule_icon02-1.png" alt="조식">
+													<img src="/images/productDetail/schedule_icon02-1.png" alt="조식">
 														<span>호텔식</span>
-													<img src="/images/detail/schedule_icon02-2.png" alt="중식">
+													<img src="/images/productDetail/schedule_icon02-2.png" alt="중식">
 														<span>한식</span>
-													<img src="/images/detail/schedule_icon02-3.png" alt="석식">
+													<img src="/images/productDetail/schedule_icon02-3.png" alt="석식">
 														<span>현지식</span>
 													</span>
 											</div>	
@@ -1029,11 +1055,11 @@ $(document).ready(function() {
 											<div class="dayFood">				                    
 												<span class="food">식사</span>				                        
 												<span class="foodTxt">
-													<img src="/images/detail/schedule_icon02-1.png" alt="조식">
+													<img src="/images/productDetail/schedule_icon02-1.png" alt="조식">
 														<span>호텔식</span>
-													<img src="/images/detail/schedule_icon02-2.png" alt="중식">
+													<img src="/images/productDetail/schedule_icon02-2.png" alt="중식">
 														<span>현지식</span>
-													<img src="/images/detail/schedule_icon02-3.png" alt="석식">
+													<img src="/images/productDetail/schedule_icon02-3.png" alt="석식">
 														<span>한식</span>
 													</span>
 											</div>	
@@ -1206,11 +1232,11 @@ $(document).ready(function() {
 											<div class="dayFood">				                    
 												<span class="food">식사</span>				                        
 												<span class="foodTxt">
-													<img src="/images/detail/schedule_icon02-1.png" alt="조식">
+													<img src="/images/productDetail/schedule_icon02-1.png" alt="조식">
 														<span>호텔식</span>
-													<img src="/images/detail/schedule_icon02-2.png" alt="중식">
+													<img src="/images/productDetail/schedule_icon02-2.png" alt="중식">
 														<span>현지식</span>
-													<img src="/images/detail/schedule_icon02-3.png" alt="석식">
+													<img src="/images/productDetail/schedule_icon02-3.png" alt="석식">
 														<span>현지식</span>
 													</span>
 											</div>	
@@ -1383,11 +1409,11 @@ $(document).ready(function() {
 											<div class="dayFood">				                    
 												<span class="food">식사</span>				                        
 												<span class="foodTxt">
-													<img src="/images/detail/schedule_icon02-1.png" alt="조식">
+													<img src="/images/productDetail/schedule_icon02-1.png" alt="조식">
 														<span>호텔식</span>
-													<img src="/images/detail/schedule_icon02-2.png" alt="중식">
+													<img src="/images/productDetail/schedule_icon02-2.png" alt="중식">
 														<span>현지식</span>
-													<img src="/images/detail/schedule_icon02-3.png" alt="석식">
+													<img src="/images/productDetail/schedule_icon02-3.png" alt="석식">
 														<span>한식</span>
 													</span>
 											</div>	
@@ -1524,9 +1550,9 @@ $(document).ready(function() {
 											<div class="dayFood">				                    
 												<span class="food">식사</span>				                        
 												<span class="foodTxt">
-													<img src="/images/detail/schedule_icon02-2.png" alt="중식">
+													<img src="/images/productDetail/schedule_icon02-2.png" alt="중식">
 														<span>불포함</span>
-													<img src="/images/detail/schedule_icon02-3.png" alt="석식">
+													<img src="/images/productDetail/schedule_icon02-3.png" alt="석식">
 														<span>한식</span>
 													</span>
 											</div>	
@@ -1634,11 +1660,11 @@ $(document).ready(function() {
 											<div class="dayFood">				                    
 												<span class="food">식사</span>				                        
 												<span class="foodTxt">
-													<img src="/images/detail/schedule_icon02-1.png" alt="조식">
+													<img src="/images/productDetail/schedule_icon02-1.png" alt="조식">
 														<span>호텔식</span>
-													<img src="/images/detail/schedule_icon02-2.png" alt="중식">
+													<img src="/images/productDetail/schedule_icon02-2.png" alt="중식">
 														<span>PCC뷔페</span>
-													<img src="/images/detail/schedule_icon02-3.png" alt="석식">
+													<img src="/images/productDetail/schedule_icon02-3.png" alt="석식">
 														<span>한식</span>
 													</span>
 											</div>	
@@ -1833,11 +1859,11 @@ $(document).ready(function() {
 											<div class="dayFood">				                    
 												<span class="food">식사</span>				                        
 												<span class="foodTxt">
-													<img src="/images/detail/schedule_icon02-1.png" alt="조식">
+													<img src="/images/productDetail/schedule_icon02-1.png" alt="조식">
 														<span>호텔식</span>
-													<img src="/images/detail/schedule_icon02-2.png" alt="중식">
+													<img src="/images/productDetail/schedule_icon02-2.png" alt="중식">
 														<span>불포함</span>
-													<img src="/images/detail/schedule_icon02-3.png" alt="석식">
+													<img src="/images/productDetail/schedule_icon02-3.png" alt="석식">
 														<span>불포함</span>
 													</span>
 											</div>	
