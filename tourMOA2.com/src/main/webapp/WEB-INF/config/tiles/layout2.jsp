@@ -10,6 +10,9 @@
 <html lang="ko">
 <head>
 	<title><tiles:insertAttribute name="title" /></title>
+	
+	<tiles:insertAttribute name="headLink" />
+	
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta charset="UTF-8">
 	
@@ -34,13 +37,6 @@
     
 	<!-- include summer note-ko-KR -->
 	<script src="/js/summernote-ko-KR.js"></script>
-	
-	<!-- 자동완성 기능입니다. 강진규 -->
-	<script type="text/javascript" src="/js/AutoComplete/jquery/lib/jquery.js"></script>
-	<script type="text/javascript" src="/js/AutoComplete/jquery/lib/jquery.bgiframe.min.js"></script>
-	<script type="text/javascript" src="/js/AutoComplete/jquery/lib/ajaxQueue.js"></script>
-	<script type="text/javascript" src="/js/AutoComplete/jquery/jquery.autocomplete.js"></script>
-	<link rel="stylesheet" type="text/css" href="js/AutoComplete/jquery/jquery.autocomplete.css" />
 	
 </head>
 <body class="admin_custom">

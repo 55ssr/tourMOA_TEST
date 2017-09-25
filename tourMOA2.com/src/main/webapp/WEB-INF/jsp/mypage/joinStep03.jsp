@@ -1,4 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%
+	String plusInfo = request.getParameter("plusInfo");
+	String agreeSav = request.getParameter("agreeSav");
+	String agreePrv = request.getParameter("agreePrv");
+	String agreeShr = request.getParameter("agreeShr");
+	String agreeMkt = request.getParameter("agreeMkt");
+	String custStatCd = request.getParameter("custStatCd");
+	String name 	= request.getParameter("name");
+	String phone = request.getParameter("phone");
+%>
 <link rel="stylesheet" href="/css/mypage.css" />
    	<script type="text/javaScript" language="javascript" defer="defer">
 		$(document).ready(function(){	
@@ -580,13 +590,15 @@
 	    <input type="hidden" name="idChk" 		id="idChk" 		    value="N" />
 	    <input type="hidden" name="custCi" 		id="custCi" 	    value="/2d5tE82Nfe9SimLsXI2udw3lcFDpjDPpSnHRyBjporp4MKOvzQzkFbUWGpXNRNrOTkcy7HLPM9BWQrU2bx5DA==" />
 	    <input type="hidden" name="custDi" 		id="custDi" 	    value="MC0GCCqGSIb3DQIJAyEAd8PWVUq+if1c/C40N22vyjJol/EeI5urLtQRV7+FnRc=" />
-	    <input type="hidden" name="agreeSav" 	id="agreeSav" 	    value="Y" />
-	    <input type="hidden" name="agreePrv" 	id="agreePrv" 	    value="Y" />
-	    <input type="hidden" name="agreeMkt" 	id="agreeMkt" 	    value="Y" />
-	    <input type="hidden" name="genderCd" 	id="genderCd" 	    value="M" />
-	    <input type="hidden" name="certDiviCd" 	id="certDiviCd" 	value="M" />
-	    <input type="hidden" name="fdCd"   		id="fdCd"   	    value="D" />
-	    <input type="hidden" name="custStatCd"  id="custStatCd"   	value="J" />      
+	    <input type="hidden" name="plusInfo" 	id="plusInfo"		value="<%=plusInfo%>" />
+	    <input type="hidden" name="agreeSav" 	id="agreeSav" 	    value="<%=agreeSav%>" />
+	    <input type="hidden" name="agreePrv" 	id="agreePrv" 	    value="<%=agreePrv%>" />
+	    <input type="hidden" name="agreePrv" 	id="agreeShr" 	    value="<%=agreeShr%>" />
+	    <input type="hidden" name="agreeMkt" 	id="agreeMkt" 	    value="<%=agreeMkt%>" />
+	    <input type="hidden" name="genderCd" 	id="genderCd" 	    value="" />
+	    <input type="hidden" name="certDiviCd" 	id="certDiviCd" 	value="" />
+	    <input type="hidden" name="fdCd"   		id="fdCd"   	    value="" />
+	    <input type="hidden" name="custStatCd"  id="custStatCd"   	value="<%=custStatCd%>" />      
       	<input type="hidden" name="prtNm"		id="prtNm"			value=""/>
 		<input type="hidden" name="prtCustCi"	id="prtCustCi"		value=""/>
 		<input type="hidden" name="prtCustDi" 	id="prtCustDi"		value=""/>
@@ -627,7 +639,7 @@
 		</tr>
 		<tr>
 			<th scope="row"><label for="custNmKor">성명</label><span class="chk"></span></th>
-			<td><input type="hidden" name="custNmKor" value=""></td>
+			<td><input type="text" name="username" value="<%=name%>" readonly /></td>
 			<th scope="row"><label for="genderCd">성별</label></th>
 			<td>
 				<input type="checkbox" name="genderCdM" id="genderCdM" value="M" ><span class="radio_txt"><label for="genderCdM">남성</label></span>

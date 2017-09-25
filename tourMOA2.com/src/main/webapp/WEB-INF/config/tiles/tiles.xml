@@ -11,7 +11,9 @@
     <definition name="layout1" template="/WEB-INF/config/tiles/layout1.jsp">
 
         <put-attribute name="title" value="여행·레저의 힐링파트너 - TourMOA" type="string" />
-
+		
+		<put-attribute name="headLink" value="/WEB-INF/jsp/tiles/headLink.jsp" />
+		
         <put-attribute name="topMenu" value="/WEB-INF/jsp/tiles/topMenu.jsp" />
         
         <put-attribute name="topNav" value="/WEB-INF/jsp/tiles/topNav.jsp" />
@@ -28,6 +30,8 @@
     <definition name="layout1Mypage" template="/WEB-INF/config/tiles/layout1.jsp">
 
         <put-attribute name="title" value="여행·레저의 힐링파트너 - TourMOA" type="string" />
+        
+        <put-attribute name="headLink" value="/WEB-INF/jsp/tiles/headLink.jsp" />
 
         <put-attribute name="topMenu" value="/WEB-INF/jsp/tiles/topMenu.jsp" />
         
@@ -44,6 +48,8 @@
     <definition name="layout1Customer" template="/WEB-INF/config/tiles/layout1.jsp">
 
         <put-attribute name="title" value="여행·레저의 힐링파트너 - TourMOA" type="string" />
+        
+        <put-attribute name="headLink" value="/WEB-INF/jsp/tiles/headLink.jsp" />
 
         <put-attribute name="topMenu" value="/WEB-INF/jsp/tiles/topMenu.jsp" />
         
@@ -60,6 +66,8 @@
     <definition name="layout1Prod" template="/WEB-INF/config/tiles/layout1.jsp">
 
         <put-attribute name="title" value="여행·레저의 힐링파트너 - TourMOA" type="string" />
+        
+        <put-attribute name="headLink" value="/WEB-INF/jsp/tiles/headLink.jsp" />
 
         <put-attribute name="topMenu" value="/WEB-INF/jsp/tiles/topMenu.jsp" />
         
@@ -76,6 +84,8 @@
     <definition name="layout2" template="/WEB-INF/config/tiles/layout2.jsp">
 
         <put-attribute name="title" value="관리자 페이지" type="string" />
+        
+        <put-attribute name="headLink" value="/WEB-INF/jsp/tiles/adminHeadLink.jsp" />
         
         <put-attribute name="topMenu" value="/WEB-INF/jsp/tiles/admin_topMenu.jsp" />
         
@@ -121,12 +131,14 @@
         <put-attribute name="content" value="/WEB-INF/jsp/customer/{1}.jsp" />
     </definition>
 
-    
-
-	<definition name="admin/*" extends="layout2">
-
+    <!-- Admin Main Template (/admin 폴더) -->
+    <definition name="admin/*" extends="layout2">
         <put-attribute name="content" value="/WEB-INF/jsp/admin/{1}.jsp" />
+    </definition>
 
+	<!-- Admin Template (/admin/* 폴더) -->
+	<definition name="admin/*/*" extends="layout2">
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/{1}/{2}.jsp" />
     </definition>
 
 </tiles-definitions>
