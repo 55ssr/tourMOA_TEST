@@ -89,6 +89,16 @@ $(document).ready(function() {
 		
 	});
 });
+	$(document).ready(function(){
+		
+		$("#btnReserve"),$("#btnReserves").click(function(e){
+			$(".simplemodal-container").dialog("open");
+			e.preventDefault();
+			/* showLoginRsvLayer(encodeURIComponent("/product/reserveStep01.do?")); */
+			
+		});
+		
+	});
 </script>
 
 <div id="wrap">
@@ -279,7 +289,7 @@ $(document).ready(function() {
 					
 					 <li class="lineNone pdt30">
                         <button type="button" name="btnSchedule" role-w="1160" role-h="800" role-url="/product/unitListPop.do?menu=pkg&did=7423&goodsCd=NCP5208" class="btnStartdate" title="다른출발일보기">다른출발일보기</button>
-						<button type="button" name="btnReserve" class="btnReserve" title="예약하기">예약하기</button>
+						<button type="button" name="btnReserve" id="btnReserve" class="btnReserve" title="예약하기">예약하기</button>
                      </li>
 				</ul>
 				<!-- [[상품 상세정보 Start]] 상품의 상세정보 include 된듯 -->
@@ -2438,8 +2448,9 @@ function fnView(obj){
         </aside>
 		
 		
-		
 	
 </div>
 </div>
 </div>
+
+
