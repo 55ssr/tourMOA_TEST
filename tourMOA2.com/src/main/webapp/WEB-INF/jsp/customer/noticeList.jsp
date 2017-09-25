@@ -91,103 +91,13 @@ function loginConfirm(){
 				    <th scope="col">제목</th>
 				    <th scope="col">등록일</th>
                </tr>
+              	<c:forEach var="result" items="${resultList}" varStatus="status">
                <tr >
-				    <td headers="번호" >
-				    	<span class="bul bul_yellow">상시공지</span>
-				    		</td>
-				    <td headers="제목" class="subject">
-				    	<a href="/customer/noticeView.do?noticeNo=20000002801&pageIndex=1&searchCnd=&searchWrd=&searchNoticeCd=" >
-				    		[해외항공][오클랜드공항 송유관 파손으로 인한 안내]</a>
-					</td>
-					<td headers="등록일" >2017-09-20</td>
+				    <td headers="번호" >	<span class="bul bul_yellow">${result.unq}</span></td>
+				    <td headers="제목" class="subject"><a href="#">${result.title}</a></td>
+					<td headers="등록일" >${result.title}</td>
                 </tr>                
-                <tr class="even">
-			    	<td headers="번호" >
-			    		<span class="bul bul_yellow">상시공지</span>
-			    	</td>
-				    <td headers="제목" class="subject">
-				    	<a href="/customer/noticeView.do?noticeNo=20000002703&pageIndex=1&searchCnd=&searchWrd=&searchNoticeCd=" >
-				    		[해외항공][태풍 탈림(Talim)으로 인한 비정상 운항 안내]</a>
-					</td>
-				    <td headers="등록일" >2017-09-12</td>
-                </tr>
-                
-                <tr >
-			    	<td headers="번호" >
-			    		<span class="bul bul_yellow">상시공지</span>
-			    	</td>
-			    	<td headers="제목" class="subject">
-				    	<a href="/customer/noticeView.do?noticeNo=20000002625&pageIndex=1&searchCnd=&searchWrd=&searchNoticeCd=" >
-				    		[해외항공][중국동방항공] 성형, 정형외과 수술 승객 항공기 탑승시 주의사항 안내</a>
-				    </td>
-				    <td headers="등록일" >2017-09-04</td>
-                </tr>                
-                <tr class="even">
-			    	<td headers="번호" >
-			    		<span class="bul bul_yellow">상시공지</span>
-			    	</td>
-			    	<td headers="제목" class="subject">
-				    	<a href="/customer/noticeView.do?noticeNo=20000000122&pageIndex=1&searchCnd=&searchWrd=&searchNoticeCd=" >
-				    		투어모아 본사이전안내</a>
-				    </td>
-				    <td headers="등록일" >2016-04-19</td>
-                </tr>                
-                <tr >
-			    	<td headers="번호" >
-			    		<span class="bul bul_yellow">상시공지</span>
-			    	</td>
-			    	<td headers="제목" class="subject">
-				    	<a href="/customer/noticeView.do?noticeNo=20000000021&pageIndex=1&searchCnd=&searchWrd=&searchNoticeCd=" >
-				    		여행상품 총액표시제 시행</a>
-				    </td>
-				    <td headers="등록일" >2016-02-11</td>
-                </tr>                
-                <tr class="even">
-			    	<td headers="번호" >
-			    		<span class="bul bul_yellow">상시공지</span>
-			    	</td>
-			    	<td headers="제목" class="subject">
-				    	<a href="/customer/noticeView.do?noticeNo=10100000833&pageIndex=1&searchCnd=&searchWrd=&searchNoticeCd=" >
-				    		투어모아 휴면 계정 처리 안내</a>
-				    </td>
-				    <td headers="등록일" >2015-07-17</td>
-                </tr>
-                
-                <tr >
-			    	<td headers="번호" >
-				    	<span class="bul bul_yellow">상시공지</span>
-				    </td>
-			    	<td headers="제목" class="subject">
-			    	<a href="/customer/noticeView.do?noticeNo=10100000788&pageIndex=1&searchCnd=&searchWrd=&searchNoticeCd=" >
-			    		소비자분쟁해결기준 (공정거래위원회 고시 제2014-4호)</a>
-				    </td>
-				    <td headers="등록일" >2014-03-20</td>
-                </tr>                
-                <tr class="even">
-				    <td headers="번호" >	402</td>
-				    <td headers="제목" class="subject">
-				    	<a href="/customer/noticeView.do?noticeNo=20000002803&pageIndex=1&searchCnd=&searchWrd=&searchNoticeCd=" >
-				    		[해외항공][대한항공] 휴스턴 노선 운휴 안내</a>
-				    </td>
-				    <td headers="등록일" >2017-09-20</td>
-                </tr>
-                
-                <tr >
-				    <td headers="번호" >	401</td>
-				    <td headers="제목" class="subject">
-				    	<a href="/customer/noticeView.do?noticeNo=20000002802&pageIndex=1&searchCnd=&searchWrd=&searchNoticeCd=" >
-				    		[해외항공][필리핀항공] 동계스케줄 변경 안내</a>
-				    </td>
-				    <td headers="등록일" >2017-09-20</td>
-                </tr>                
-                <tr class="even">
-			    	<td headers="번호" >400</td>
-				    <td headers="제목" class="subject">
-				    	<a href="/customer/noticeView.do?noticeNo=20000002781&pageIndex=1&searchCnd=&searchWrd=&searchNoticeCd=" >
-				    		[해외항공][중국국제항공] 라싸(LXA) 외 지역 공항 수속 마감 시간 안내</a>
-					</td>
-				    <td headers="등록일" >2017-09-19</td>
-                </tr>                
+                </c:forEach>                
             </tbody>
         </table>
 	    </div><!--[[ board area End ]]-->

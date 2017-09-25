@@ -39,4 +39,11 @@ public class ProductController {
 	public String detailPackage() throws Exception{		
 		return "product/detailPackage";		
 	}
+	/*상품 예약 Step01 로그인 모달 창*/
+	@RequestMapping("product/reserveStep01.do")
+	public String reserveStep01() throws Exception{
+		return "product/reserveStep01";
+	}
+	
+	
 }

@@ -8,29 +8,6 @@
 #detailPackage_selectloc #menuopen{position: relative; float: right; width: 86px; height: 50px; background: #001fbe; cursor: pointer; text-align: center;}
 #detailPackage_selectloc #menuopen input {margin-top: 16px;}
 
-#content #locMapOpen {width: 100%; height: auto; margin-top: -1px; background: #fafafa; border: 1px solid #e7e7e7; border-left: none; border-right: none; display:none;  }
-#locMapOpen .areaBox{position:relative; width: 1100px; height: 100%; margin: 0 auto; padding-bottom: 1px;}
-#locMapOpen .areaBox table{float: left; position: relative; width: 820px; text-align: left; z-index: 1;}
-#locMapOpen .areaBox table tr: first-child th {	border-top: none; padding-top: 10px; background-position: 180px 15px;}
-#locMapOpen .areaBox table th{width: 200px; padding:15px 0 10px 20px; vertical-align: top; background: #68696d url(/images/RYUTEST/area_bul.png) 180px 20px no-repeat; font-size: 15px; color: #fff; text-align: left; border-top: 1px solid #6f7073;}
-#locMapOpen .areaBox table tr th span{display: block; width: 155px; line-height: 1.2;}
-#locMapOpen .areaBox table tr: first-child td{	border-top: none; padding-top: 10px; }
-#locMapOpen .areaBox table tr td {width: 620px; padding: 15px 0 0 0; vertical-align: top; border-top: 1px solid #e7e7e7;}
-#locMapOpen .areaBox table tr td a.on{color:#f8931f; font-family: 'NanumBold';}
-#locMapOpen .areaBox table tr td a{float: left; display: block; width: 175px; margin: 0 0 15px 30px; background: transparent; font-size: 14px; font-weight: normal; letter-spacing: -1px; line-height: }
-#locMapOpen .areaBox .areaNotice{float: right; position: relative; width: 280px; height: auto; margin-top: -1px; overflow: hidden; z-index: 1;}
-#locMapOpen .areaBox .areaNotice .fastBox:first-child{border-top: none;}
-#locMapOpen .areaBox .areaNotice .fastBox{clear: both; float: right; width: 250px; padding: 0 0 10px 0; background: #f5efe9;}
-#locMapOpen .areaBox .areaNotice .fastBox ul{width: 90%; padding: 10px 0 0 15px;}
-#locMapOpen .areaBox .areaNotice .fastBox ul li{font-size: 13px; color: #555555; font-weight: normal; line-height: 1.4;}
-#locMapOpen .areaBox .areaNotice .fastBox ul li.areaNoticeTitle span{float: left; padding-bottom: 3px; margin-right: 5px; font-size: 16px; color: #303030; font-weight: 600; font-family: 'NanumBold';}
-#locMapOpen .areaBox .areaNotice .fastBox ul li.areaNoticeText{clear: both;}
-#locMapOpen .areaBox .areaNotice .fastBox ul li a {color: #555555;}
-#locMapOpen .areaBox .localBg01{display: block; position: absolute; top: 0; left: 0; width: 200px; height: 100%; background: #68696d; z-index: 0; }
-#locMapOpen .areaBox .localBg02{display: block; position: absolute; top: 0; left: 0; width: 200px; height: 100%; background: #68696d; z-index: 0; display: none;}
-#locMapOpen .areaBox .localBg03{display: block; position: absolute; top: 0; right: 0; width: 250px; height: 100%; background: #f5efe9; z-index: 0;}
-#locMapOpen .areaBox .menuclose{clear: both; display: block; width: 100px; height: 20px; margin: 0 auto 20px; background: url(/images/RYUTEST/locMapOpen_close.png)center center no-repeat; border: none;}
-
 #headline{position: relative; width: 100%; margin: 20px auto 0; color: #000; line-height: 1.3; z-index: 999;}
 #headline .headBox{position:relative; left: 0; width: 1100px; margin: 0 auto; background: #fff;}
 #headline .pNum{position:relative; margin: 0 0 15px 0; font-size: 15px; font-weight: 500; letter-spacing: -1px;}
@@ -59,10 +36,10 @@
 #basicInfo div.basicL ul li{position: relative; display: table; width: 100%;}
 #basicInfo div.basicL ul li.lineBlack{border-bottom: 1px solid #000; background: none;}
 
-#basicInfo ul li{ background: url(/images/RYUTEST/linedot.png) bottom left repeat-x;}
+#basicInfo ul li{ background: url(/images/productDetail/linedot.png) bottom left repeat-x;}
 #basicInfo div.basicL ul li.dvide{margin-bottom: 20px;}
 #basicInfo div.basicL ul li span{display: block;}
-#basicInfo div.basicL ul li span.tit{display: table-cell; width: 78px; background: #e7eaed url(/images/RYUTEST/linedot.png) bottom left repeat-x; vertical-align: middle; text-align: center; font-size: 13px; color: #777777; font-family: 'NanumExtraBold';}
+#basicInfo div.basicL ul li span.tit{display: table-cell; width: 78px; background: #e7eaed url(/images/productDetail/linedot.png) bottom left repeat-x; vertical-align: middle; text-align: center; font-size: 13px; color: #777777; font-family: 'NanumExtraBold';}
 #basicInfo div.basicL ul li span.tit.noLine{background: #e7eaed;}
 #basicInfo div.basicL ul li span.txt.txt01{margin: 15px 0 0 0; color: #fa6f09;}
 #basicInfo div.basicL ul li span.txt.txt02{margin: 0 0 15px 0;}
@@ -76,13 +53,12 @@
 
 
 
-
 #basicInfo div.basicL ul li.dvide { margin-bottom: 20px; }
 #basicInfo ul li.lineBlackTop, #freeInfo ul li.lineBlackTop { border-top: 1px solid #000; }
+#basicInfo ul li.lineGray, #freeInfo ul li.lineGray {border-bottom: 1px solid #d1d1d1; background: none;}
 #basicInfo div.basicL ul li { position: relative; display: table; width: 100%; }
 #basicInfo div.basicL ul li span { display: block; }
 #basicInfo div.basicL ul li span.gray_bar { color:#ddd}
-#basicInfo div.basicL ul li span.tit { display: table-cell; width: 78px; background: #e7eaed url("/images/detail/linedot.png") bottom left repeat-x; vertical-align: middle; text-align: center; font-size: 13px; color: #777777;   font-family: 'NanumExtraBold'; }
 #basicInfo div.basicL ul li span.tit.noLine { background: #e7eaed; }
 #basicInfo div.basicL ul li span.txt { float: right; width: 95%; padding: 0 5px 0 0; margin: 0; font-size: 14px; line-height:16px; color: #2a2a2a; font-weight: 500; }
 #basicInfo div.basicL ul li span.txt.txt01 { margin: 15px 0 0 0; color: #fa6f09;}
@@ -103,7 +79,7 @@
 #basicInfo div.basicL ul li span.txt.txt07 { float: left; width: 33%; padding: 15px 0; color: #2a2a2a;   font-family: 'NanumExtraBold'; text-align: right; }
 #basicInfo div.basicL ul li span.txt.txt08 { float: left; width: 33%; padding: 15px 0; color: #2a2a2a;   font-family: 'NanumExtraBold'; text-align: right; }
 #basicInfo div.basicL ul li span.txt.txt09 { float: left; width: 33%; padding: 15px 0; color: #fa6f09;   font-family: 'NanumExtraBold'; text-align: right; }
-#basicInfo div.basicL ul li span.noti { width: 90%; padding: 0 0 0 24px; margin-top:10px; font-size: 12px; line-height:18px; color: #999999; background: url("/images/RYUTEST/icon_circle.png") center left no-repeat; }
+#basicInfo div.basicL ul li span.noti { width: 90%; padding: 0 0 0 24px; margin-top:10px; font-size: 12px; line-height:18px; color: #999999; background: url("/images/productDetail/icon_circle.png") center left no-repeat; }
 #basicInfo div.basicL ul li.liBg { background: #e7eaed; }
 
 /* 상단 : 우측 기본정보 */
@@ -111,16 +87,16 @@
 #basicInfo ul.basicR li { position: relative; width: 100%; padding: 15px 0 15px 0; }
 #basicInfo ul.basicR li span.ico { position: relative; float: left; display: block; height: 28px; padding: 0 0 0 30px; margin: 0 12px 0 0; font-size: 11px; color: #555555; line-height: 2.6; cursor: pointer;  }
 #basicInfo ul.basicR li span.ico a { position: absolute; z-index: 99999; display: block; top: 0; left: 0; width: 100%; height: 100%; background: transparent; font-size:0px; color:transparent !important }
-#basicInfo ul.basicR li span.ico01 { background: url("/images/RYUTEST/icon_damdang01.png") center left no-repeat; }
-#basicInfo ul.basicR li span.ico02 { background: url("/images/RYUTEST/icon_damdang02.png") center left no-repeat; }
-#basicInfo ul.basicR li span.ico03 { background: url("/images/RYUTEST/icon_damdang03.png") center left no-repeat; }
-#basicInfo ul.basicR li span.ico04 { background: url("/images/RYUTEST/icon_damdang04.png") center left no-repeat; float: right; margin-right: 0; }
+#basicInfo ul.basicR li span.ico01 { background: url("/images/productDetail/icon_damdang01.png") center left no-repeat; }
+#basicInfo ul.basicR li span.ico02 { background: url("/images/productDetail/icon_damdang02.png") center left no-repeat; }
+#basicInfo ul.basicR li span.ico03 { background: url("/images/productDetail/icon_damdang03.png") center left no-repeat; }
+#basicInfo ul.basicR li span.ico04 { background: url("/images/productDetail/icon_damdang04.png") center left no-repeat; float: right; margin-right: 0; }
 
 #basicInfo ul.basicR li .damdangWrap { display: block; width: 100%; height: 125px; background: #eff1f3; }
 #basicInfo ul.basicR li .damdangWrap div { float: left; position: relative; margin-top: 24px; font-size: 13px; overflow: hidden; z-index:1;}
 #basicInfo ul.basicR li .damdangWrap div span { display: block; margin-bottom: 8px; word-break: break-all;  font-family: 'NanumExtraBold'; }
 #basicInfo ul.basicR li .damdangWrap div.photo { width: 62px; height: 62px; position:relative; margin:20px; }
-#basicInfo ul.basicR li .damdangWrap div.photo span.bgRbox {position: absolute; top: 0px; background: url("/images/detail/damdang/photobgR.png") center center no-repeat; width: 62px; height: 62px}
+#basicInfo ul.basicR li .damdangWrap div.photo span.bgRbox {position: absolute; top: 0px; background: url("/images/productDetail/damdang/photobgR.png") center center no-repeat; width: 62px; height: 62px}
 #basicInfo ul.basicR li .damdangWrap div.photo img { width: 62px; height:auto; }
 #basicInfo ul.basicR li .damdangWrap div.title { width: 80px; color: #999999; }
 #basicInfo ul.basicR li .damdangWrap div.contact { width: 160px; color: #555555;   font-family: 'NanumExtraBold'; }
@@ -130,7 +106,7 @@
 #basicInfo ul.basicR li span.airTit.airTit02 { width: 18%; }
 #basicInfo ul.basicR li span.airTit.airTit03 { width: 24%; }
 #basicInfo ul.basicR li span.airTit.airTit04 { width: 19%; }
-#basicInfo ul.basicR li span.airWrap { display: inline-block; width: 100%; /*height: 100%;*/ padding: 14px 0 5px 0; text-align: right; background: url("/images/RYUTEST/linedot.png") top left repeat-x; }
+#basicInfo ul.basicR li span.airWrap { display: inline-block; width: 100%; /*height: 100%;*/ padding: 14px 0 5px 0; text-align: right; background: url("/images/productDetail/linedot.png") top left repeat-x; }
 #basicInfo ul.basicR li span.airWrap:first-child { margin-top: 0; }
 #basicInfo ul.basicR li span.airWrap .air { float: left; width: 90px; font-size: 13px; color: #2a2a2a; font-weight: 500; text-align: center; }
 #basicInfo ul.basicR li span.airWrap .air.chk { width: 25px; margin-top: -2px; margin-top: -3px \9; clear: both; }
@@ -138,26 +114,26 @@
 #basicInfo ul.basicR li span.airWrap .air.air01 label { display: block; width: 90%; margin-top: 2px; padding-left: 22px; }
 #basicInfo ul.basicR li span.airWrap .air.air01.typeAir label { padding-left: 0; }
 #basicInfo ul.basicR li span.airWrap .air.air01.typeShip label { padding-left: 33px; }
-#basicInfo ul.basicR li span.airWrap .air.air01.typeBus { background: url("/images/RYUTEST/icon_bus.png") left center no-repeat; }
-#basicInfo ul.basicR li span.airWrap .air.air01.typeTrain { background: url("/images/RYUTEST/icon_train.png") left center no-repeat; }
-#basicInfo ul.basicR li span.airWrap .air.air01.typeShip { background: url("/images/RYUTEST/icon_ship.png") left center no-repeat; }
+#basicInfo ul.basicR li span.airWrap .air.air01.typeBus { background: url("/images/productDetail/icon_bus.png") left center no-repeat; }
+#basicInfo ul.basicR li span.airWrap .air.air01.typeTrain { background: url("/images/productDetail/icon_train.png") left center no-repeat; }
+#basicInfo ul.basicR li span.airWrap .air.air01.typeShip { background: url("/images/productDetail/icon_ship.png") left center no-repeat; }
 #basicInfo ul.basicR li span.airWrap .air.air02 { width: 13%; padding: 0 0 0 5px; }
 #basicInfo ul.basicR li span.airWrap .air.air03 { width: 25%; text-align: right; font-weight: bold; }
 #basicInfo ul.basicR li span.airWrap .air.air04 { width: 22%; margin: -2px 0 0 0; text-align: right; }
 #basicInfo ul.basicR li span.airWrap .air.air04 .mark { display: inline-block; }
-#basicInfo ul.basicR li .hotel { float: left; clear: both; width: 89%; margin: 6px 0 2px 27px; padding: 0 0 0 16px; font-size: 12px; color: #999999; font-weight: 500; text-align: left; background: transparent url("/images/RYUTEST/schedule_icon01.png") left center no-repeat; }
+#basicInfo ul.basicR li .hotel { float: left; clear: both; width: 89%; margin: 6px 0 2px 27px; padding: 0 0 0 16px; font-size: 12px; color: #999999; font-weight: 500; text-align: left; background: transparent url("/images/productDetail/schedule_icon01.png") left center no-repeat; }
 
 #basicInfo button.btnStartdate { width: 100%; padding: 20px 0; border: 2px solid #777777; background: transparent; font-size: 18px; color: #2a2a2a;   font-family: 'NanumBold'; }
 #basicInfo button.btnReserve   { width: 100%; margin: 10px 0 0 0; padding: 20px 0; border: 2px solid #ffc200; background: #ffc200; font-size: 18px; color: #fff;   font-family: 'NanumBold'; }
 #basicInfo button.btnReserve.reserveEnd { border: 2px solid #acacac; background: #acacac; }
 .air.air03.price1{position: relative !important; color:  #f2312c !important; font-weight: 600 !important;}
 .air.air03.price1 p, .txt.txt09.price1 p, .aside06 .price1 p{display: inline-block !important; padding:0 0 0 1px; font-size: .9em !important; color: #000;}
-span.tooltip {position: absolute !important; width: 162px; height: 68px; padding: 30px 0 0 5px; background: url("/images/RYUTEST/tooltip_bg.png") no-repeat; z-index: 99999; display: none;}
+span.tooltip {position: absolute !important; width: 162px; height: 68px; padding: 30px 0 0 5px; background: url("/images/productDetail/tooltip_bg.png") no-repeat; z-index: 99999; display: none;}
 span.tooltip span.period { width: 150px; padding: 0 0 0 3px; margin: 0 0 6px 0; text-align: left; font-size: 12px; }
 span.tooltip.asideTip {top:32px; right: -33px; padding: 20px 0 0 15px !important; font-size:14px !important; font-weight:normal !important}
-span.tooltip.asideTip span.price_child { width: 130px !important; padding: 0 0 0 8px !important; margin: 0 0 6px 0 !important; text-align: left; font-size: 12px; color: #303030; background: url("/images/RYUTEST/tooltip_dot.png") left center no-repeat; }
+span.tooltip.asideTip span.price_child { width: 130px !important; padding: 0 0 0 8px !important; margin: 0 0 6px 0 !important; text-align: left; font-size: 12px; color: #303030; background: url("/images/productDetail/tooltip_dot.png") left center no-repeat; }
 span.pie{float: left; display: inline-block;height: 18px; font-size: 12px; color: #ffffff; line-height: 1.4; z-index: 1;}
-span.pie.orange1{width: 65px; text-align: center; background: url(/images/RYUTEST/sprite_tag.png) -83px -38px no-repeat;}
+span.pie.orange1{width: 65px; text-align: center; background: url(/images/productDetail/sprite_tag.png) -83px -38px no-repeat;}
 
 /* 슬라이드 */
 #slideWrap { clear: both; padding-top:0;}
@@ -171,8 +147,8 @@ span.pie.orange1{width: 65px; text-align: center; background: url(/images/RYUTES
 #slideWrap .sliderkit .sliderkit-nav-clip ul li { width: 100%; height: 120px; }
 #slideWrap .sliderkit .sliderkit-nav-clip ul li a { width: 100%; height: 110px; padding: 0; margin-left: 11px; overflow: hidden; }
 #slideWrap .sliderkit .sliderkit-nav-clip ul li a img { width: 100%; height: auto; }
-#slideWrap .photosgallery-vertical .sliderkit-nav .sliderkit-nav-prev { top: 0; left: 10px; width: 100%; height: 20px; cursor: pointer; background: url("/images/RYUTEST/slider_arrowUp.png") no-repeat; }
-#slideWrap .photosgallery-vertical .sliderkit-nav .sliderkit-nav-next { bottom: 0; left: 10px; width: 100%; height: 20px; cursor: pointer; background: url("/images/RYUTEST/slider_arrowDown.png") no-repeat; }
+#slideWrap .photosgallery-vertical .sliderkit-nav .sliderkit-nav-prev { top: 0; left: 10px; width: 100%; height: 20px; cursor: pointer; background: url("/images/productDetail/slider_arrowUp.png") no-repeat; }
+#slideWrap .photosgallery-vertical .sliderkit-nav .sliderkit-nav-next { bottom: 0; left: 10px; width: 100%; height: 20px; cursor: pointer; background: url("/images/productDetail/slider_arrowDown.png") no-repeat; }
 #slideWrap .photosgallery-vertical .sliderkit-nav-clip { top: 30px; left: 0; }
 #slideWrap .sliderkit-selected a { border: 1px solid #bdbdbd !important; width: 178px !important; height: 108px !important; }
 
@@ -194,9 +170,9 @@ span.pie.orange1{width: 65px; text-align: center; background: url(/images/RYUTES
 .info01_free .cont01 { position: relative; width: 820px; height: 206px; background: #f7f8f9; }
 .info01_free .cont01 .info { float: left; width: 750px; height: 189px; margin: 25px 0 0 22px; }
 .info01_free .cont01 .info .txt { display: inline-block; padding: 6px 0 10px 40px; font-size: 14px; color: #333333; line-height: 1.5; }
-.info01_free .cont01 .info .txt.txt01 { background: url("/images/detail/reserveInfo01.png") left top no-repeat; }
-.info01_free .cont01 .info .txt.txt02 { background: url("/images/detail/reserveInfo02.png") left top no-repeat; }
-.info01_free .cont01 .info .txt.txt03 { background: url("/images/detail/reserveInfo03.png") left top no-repeat; }
+.info01_free .cont01 .info .txt.txt01 { background: url("/images/productDetail/reserveInfo01.png") left top no-repeat; }
+.info01_free .cont01 .info .txt.txt02 { background: url("/images/productDetail/reserveInfo02.png") left top no-repeat; }
+.info01_free .cont01 .info .txt.txt03 { background: url("/images/productDetail/reserveInfo03.png") left top no-repeat; }
 .info01_free .cont01 .info .txt p { display: inline-block; color: #fa6f09; }
 
 /* 중간 : 상품특전 */
@@ -235,7 +211,7 @@ span.pie.orange1{width: 65px; text-align: center; background: url(/images/RYUTES
 .type03 tr th.th01 { text-align: left; }
 .type03 tr th.th04 { text-align: left; padding-left: 65px; }
 .type03 tr th span { display: inline-block; padding: 0 20px; }
-.type03 tr td {line-height: 1.45; background: url("/images/detail/linedot.png") bottom left repeat-x; text-align: center; vertical-align: middle; }
+.type03 tr td {line-height: 1.45; background: url("/images/productDetail/linedot.png") bottom left repeat-x; text-align: center; vertical-align: middle; }
 .type03 tr.lineNone td { background: none; }
 .type03 tr td.td01 { text-align: left; }
 .type03 tr td.td04 { text-align: left; padding-left:10px;}
@@ -260,7 +236,7 @@ span.pie.orange1{width: 65px; text-align: center; background: url(/images/RYUTES
 .type03_1 tr th.th03 { width: 100px; }
 .type03_1 tr th.th04 { width: 163px; text-align: left; padding-left: 65px; }
 .type03_1 tr th span { display: inline-block; padding: 0 20px; }
-.type03_1 tr td {line-height: 1.45; background: url("/images/detail/linedot.png") bottom left repeat-x; text-align: center; vertical-align: middle; }
+.type03_1 tr td {line-height: 1.45; background: url("/images/productDetail/linedot.png") bottom left repeat-x; text-align: center; vertical-align: middle; }
 .type03_1 tr.lineNone td { background: none; padding-bottom: 16px; }
 .type03_1 tr td.td01 { width: 346px; text-align: left; }
 .type03_1 tr td.td02 { width: 146px; }
@@ -274,7 +250,7 @@ span.pie.orange1{width: 65px; text-align: center; background: url(/images/RYUTES
 .type03_1 tr td span.txt { clear: both; display: block; }
 .type03_1 tr td span p.orange { display: inline-block; color: #fa6f09; }
 
-.tyTxt {padding:15px 20px; color:#fa6f09; background: url("/images/detail/linedot.png") left bottom repeat-x;}
+.tyTxt {padding:15px 20px; color:#fa6f09; background: url("/images/productDetail/linedot.png") left bottom repeat-x;}
 .ListInfo {width:350px; padding:15px 0 15px 18px !important; }
 .ListInfo span {display:block; float:left; }
 .addresstxt {clear:both; display:block; width:325px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; word-wrap:normal; }
@@ -316,7 +292,7 @@ span.pie.orange1{width: 65px; text-align: center; background: url(/images/RYUTES
 .type04 tr th.th01 { width: 110px; text-align: left; padding-left: 30px; }
 .type04 tr th.th02 { width: 600px; text-align: center; padding-right: 80px; }
 .type04 tr th span { display: inline-block; }
-.type04 tr td { position: relative; padding: 15px 0 15px 0; line-height: 1.45; background: url("/images/detail/linedot.png") bottom left repeat-x; vertical-align: middle; }
+.type04 tr td { position: relative; padding: 15px 0 15px 0; line-height: 1.45; background: url("/images/productDetail/linedot.png") bottom left repeat-x; vertical-align: middle; }
 .type04 tr.lineNone td { background: none; padding-bottom: 16px; }
 .type04 tr td.td01 { width: 110px; padding-left: 30px; }
 .type04 tr td.td02 { width: 680px; }
@@ -345,7 +321,7 @@ span.pie.orange1{width: 65px; text-align: center; background: url(/images/RYUTES
 #dateWrap .dateSlider .slideWrap { position: relative; float: left; width: 370px; height: 36px; overflow: hidden; }
 #dateWrap .dateSlider .slideWrap .slide { position: absolute; top: 0; left: 0; display: block; width: 3000px; height: 36px; }
 #dateWrap .dateSlider .slideWrap .slide span { display: block; float: left; width: 36px; height: 36px; margin-left: 10px; text-align: center; line-height: 2.5; background: none; cursor: pointer; }
-#dateWrap .dateSlider .slideWrap .slide span.on { background: url("/images/detail/schedule_on.png") center center no-repeat; color: #fff; }
+#dateWrap .dateSlider .slideWrap .slide span.on { background: url("/images/productDetail/schedule_on.png") center center no-repeat; color: #fff; }
 #dateWrap .dateSlider button { border: none; width: 36px; height: 36px; background: none; font-size: 24px; color: #999999; font-weight: 600; }
 #dateWrap .dateSlider button.off { color: #ececec; }
 #dateWrap .dateSlider button.prev { float: left; margin-right: 10px; }
@@ -367,15 +343,15 @@ span.pie.orange1{width: 65px; text-align: center; background: url(/images/RYUTES
 #daily .dayTitle span.dayTxt p { display: table-cell; width: 100%; height: 56px; vertical-align: middle; line-height: 1.4; }
 #daily .dayTitle > select { float: right; width: 200px; margin: 10px 20px 15px 0; padding: 8px 10px 9px; padding: 8px 10px \9; line-height: 30px; border: 1px solid #dee1e2; font-size: 13px; color: #777777; }
 
-#daily .dayArea { height: 40px; background: url("/images/detail/linedot.png") bottom left repeat-x; border: 1px solid #d1d4d6; border-bottom: none; }
-#daily .dayArea span.areaName { background: transparent url("/images/detail/schedule_bul01.png") left top no-repeat; }
+#daily .dayArea { height: 40px; background: url("/images/productDetail/linedot.png") bottom left repeat-x; border: 1px solid #d1d4d6; border-bottom: none; }
+#daily .dayArea span.areaName { background: transparent url("/images/productDetail/schedule_bul01.png") left top no-repeat; }
 #daily .dayArea span { float: left; display: block; margin: 10px 0 0 20px; padding: 2px 0 0 20px; font-size: 16px; color: #303030; font-weight: 600; }
 #daily .dayArea span.bar {margin:10px 5px 0 !important; padding:2px 0 0 0 !important;} 
 #daily .dayArea span.userName {margin:10px 0 0 0 !important; padding:2px 0 0 0 !important;} 
 
 
 #daily .dayInfo { display: inline-block; width: calc(100% - 2px); min-width: 818px; padding: 15px 0 0 0; margin-bottom: -4px ; border: 1px solid #dee1e2; border-top: none; border-bottom: none; }
-#daily .dayInfo span.time { clear: both; float: left; display: inline-block; min-width: 45px; margin: 0 0 15px 25px; padding: 0 0 0 15px; font-size: 16px; color: #fa6f09; font-weight: 600; background: transparent url("/images/detail/schedule_bul02.png") left center no-repeat; }
+#daily .dayInfo span.time { clear: both; float: left; display: inline-block; min-width: 45px; margin: 0 0 15px 25px; padding: 0 0 0 15px; font-size: 16px; color: #fa6f09; font-weight: 600; background: transparent url("/images/productDetail/schedule_bul02.png") left center no-repeat; }
 #daily .dayInfo span.timeTxt { float: left; display: block; width: 80%; /*min-height: 25px; */margin: -5px 0 5px 40px; font-size: 16px; color: #fa6f09; font-weight: 600; line-height: 1.575; }
 #daily .dayInfo span.timeTxtSub { clear: both; display: block; width: 90.3%; margin: 0 10px 15px 40px; font-size: 13px; color: #303030; font-weight: 500; line-height: 1.575; }
 
@@ -383,7 +359,7 @@ span.pie.orange1{width: 65px; text-align: center; background: url(/images/RYUTES
 #daily .dayInfo div.infoTxt.infoType01 span.tit { float:left; clear: both; display: inline-block; margin:0 0 13px 0; font-size: 14px; color: #303030; font-weight: 700; }
 #daily .dayInfo div.infoTxt.infoType01 span.tit span { float: left; display: inline-block; }
 #daily .dayInfo div.infoTxt.infoType01 span.tit p { float: left; display: inline-block; margin: 0 8px; font-size: 14px; color: #303030; font-weight: 100; }
-#daily .dayInfo div.infoTxt.infoType01 span.dot { text-align: left; float:left; clear: both; display: block; margin: 0 0 0 0; padding: 0 0 0 11px; line-height: 1.8; background: url("/images/detail/dot.png") left 10px no-repeat; }
+#daily .dayInfo div.infoTxt.infoType01 span.dot { text-align: left; float:left; clear: both; display: block; margin: 0 0 0 0; padding: 0 0 0 11px; line-height: 1.8; background: url("/images/productDetail/dot.png") left 10px no-repeat; }
 #daily .dayInfo div.infoTxt.infoType01 span.pic { clear: both; display: block; float: left; margin: 0 62px 0 0; padding: 0 0 0 0; }
 
 
@@ -422,7 +398,7 @@ div.infoTxt.template .infoBody .picWrap span.txtBoxB { display:inline-block; wid
 div.infoTxt.template .infoFoot { display: inline-block; margin: 6px 0 0 0; line-height: 1.4; font-size: 13px; color: #777777; font-weight: 500; margin-bottom:40px; }
 div.infoTxt.template .infoFoot p { display: inline-block; color: #fa6f09; }
 div.infoTxt.template .refer { width:calc(100% - 37px); clear: both; display: inline-block; padding: 17px 19px 20px 19px; background: #f9fbfb; font-size: 14px; font-weight: normal; line-height: 1.475; }
-div.infoTxt.template .refer .referTit { display: block; padding: 3px 14px 0 24px; margin-top: -2px; color: #555555; background: url("/images/detail/icon_circle.png") center left no-repeat; }
+div.infoTxt.template .refer .referTit { display: block; padding: 3px 14px 0 24px; margin-top: -2px; color: #555555; background: url("/images/productDetail/icon_circle.png") center left no-repeat; }
 div.infoTxt.template .refer .referTxt { display: block; padding: 0 14px 0 24px; width: 662px; font-size: 13px; color: #000; font-weight: 500; }
 
 #daily .dayInfo div.infoTxt.infoType03 { position: relative; clear: both; width: calc(100% - 2px); height: 420px; margin: 20px auto; overflow: hidden; }
@@ -435,13 +411,13 @@ div.infoTxt.template .refer .referTxt { display: block; padding: 0 14px 0 24px; 
 #daily .dayInfo div.ending img { width: 100%; height: auto; margin: 0; }
 
 #daily .dayStay { min-height: 40px; border: 1px solid #d1d4d6; border-bottom: none; position:relative; margin-top:-4px;}
-#daily .dayStay span.stay { float: left; display: block; margin: 13px 0 0 20px; padding: 0 0 0 20px; font-size: 16px; color: #303030; font-weight: 600; background: transparent url("/images/detail/schedule_icon01.png") left center no-repeat; }
+#daily .dayStay span.stay { float: left; display: block; margin: 13px 0 0 20px; padding: 0 0 0 20px; font-size: 16px; color: #303030; font-weight: 600; background: transparent url("/images/productDetail/schedule_icon01.png") left center no-repeat; }
 #daily .dayStay span.stayTxt { float: left; display: block; margin: 13px 10px 0 35px; font-size: 14px; }
 #daily .dayStay span.stayTxt a.link {width:100% !important; position:relative; text-decoration:underline; color:#01b6b1;}
 #daily .dayStay span.stayBigo { display: block; padding: 13px 50px 15px 105px; font-size: 14px; line-height: 1.3; }
 #daily .dayStay span.stayBigo2 { clear:both; display: block; padding: 13px 15px 15px 105px; font-size: 14px; line-height: 1.3; }
 #daily .dayFood { height: 40px; border: 1px solid #d1d4d6; border-bottom: none; }
-#daily .dayFood span.food { float: left; display: block; margin: 13px 0 0 20px; padding: 0 0 0 20px; font-size: 16px; color: #303030; font-weight: 600; background: transparent url("/images/detail/schedule_icon02.png") left center no-repeat; }
+#daily .dayFood span.food { float: left; display: block; margin: 13px 0 0 20px; padding: 0 0 0 20px; font-size: 16px; color: #303030; font-weight: 600; background: transparent url("/images/productDetail/schedule_icon02.png") left center no-repeat; }
 #daily .dayFood span.foodTxt { float: left; display: block; margin: 13px 0 0 35px; font-size: 14px; }
 #daily .dayFood span.foodTxt span { padding-right: 20px; }
 #daily .dayFood span.foodTxt img { vertical-align: middle; margin: -2px 7px 0 0; }
@@ -475,7 +451,7 @@ div.infoTxt.template .refer .referTxt { display: block; padding: 0 14px 0 24px; 
 #etcWrap .etc span.titB { clear: both; display: block; margin: 0 0 0 0; font-size: 20px; color: #333333; font-weight: 600; }
 #etcWrap .etc span.tit { clear: both; display: block; margin: 0 0 0 0; font-size: 14px; color: #333333; font-weight: 600; }
 #etcWrap .etc span.tit p { display: inline-block; color: #fa6f09; }
-#etcWrap .etc span.dot { clear: both; display: block; margin: 22px 0 2px 0; padding: 0 0 0 13px; font-size: 14px; color: #333333; font-weight: 600; background: url("/images/detail/dot.png") left 8px no-repeat; }
+#etcWrap .etc span.dot { clear: both; display: block; margin: 22px 0 2px 0; padding: 0 0 0 13px; font-size: 14px; color: #333333; font-weight: 600; background: url("/images/productDetail/dot.png") left 8px no-repeat; }
 #etcWrap .etc span.txt { clear: both; display: block; margin: 0 0 0 0; padding: 0 0 0 12px; color: #666666; }
 #etcWrap .etc span.txt.silver { color: #999999; }
 #etcWrap .etc span.txt p.black { display: inline-block; color: #333333; }
@@ -512,7 +488,7 @@ div.infoTxt.template .refer .referTxt { display: block; padding: 0 14px 0 24px; 
 
 #weatherWrap div.clock { float: left; width: 24.5%; border-right: 1px solid #e8e9e9; font-size: 14px; color: #2a2a2a; font-weight: 500; text-align: center; }
 #weatherWrap div.clock span { display: block; }
-#weatherWrap div.clock span.subject { height: 30px; text-align: center; line-height: 2.2; background: url("/images/detail/weather_bg.png") repeat; }
+#weatherWrap div.clock span.subject { height: 30px; text-align: center; line-height: 2.2; background: url("/images/productDetail/weather_bg.png") repeat; }
 #weatherWrap div.clock span.tit { margin: 40px 0 0 0; font-size: 15px; color: #63bcaa; font-weight: 600; }
 #weatherWrap div.clock span.time { margin: 8px 0 0 0; font-size: 20px; color: #303030; font-weight: normal; }
 #weatherWrap div.clock span.time span { display: inline-block; }
@@ -521,7 +497,7 @@ div.infoTxt.template .refer .referTxt { display: block; padding: 0 14px 0 24px; 
 
 #weatherWrap div.weather { float: left; width: 75.3%; font-size: 14px; color: #2a2a2a; font-weight: 500; text-align: center; }
 #weatherWrap div.weather span { display: block; }
-#weatherWrap div.weather span.subject { height: 30px; text-align: center; line-height: 2.2; background: url("/images/detail/weather_bg.png") repeat; }
+#weatherWrap div.weather span.subject { height: 30px; text-align: center; line-height: 2.2; background: url("/images/productDetail/weather_bg.png") repeat; }
 #weatherWrap div.weather .slide { position: relative; float: left; width: 450px; height: 136px; overflow: hidden; }
 #weatherWrap div.weather .slide ul { position: absolute; left: 0; display: inline-block; width: 3000px; height: 136px; }
 #weatherWrap div.weather .slide ul li { float: left; width: 150px; display: inline-block; }
@@ -531,8 +507,8 @@ div.infoTxt.template .refer .referTxt { display: block; padding: 0 14px 0 24px; 
 #weatherWrap div.weather .slide ul li span.txt { margin: 0 0 3px 0; color: #777777; font-weight: normal; }
 #weatherWrap div.weather .slide ul li span.txt p.symbol { display: inline-block; font-size: 16px; font-weight: 500; }
 #weatherWrap div.weather button { float: left; border: none; width: 36px; height: 36px; }
-#weatherWrap div.weather button.prev { float: left; margin: 55px 0 0 0; background: transparent url("/images/detail/weather_arrowL.png") center center no-repeat; }
-#weatherWrap div.weather button.next { float: right; margin: 55px 0 0 0; background: transparent url("/images/detail/weather_arrowR.png") center center no-repeat; }
+#weatherWrap div.weather button.prev { float: left; margin: 55px 0 0 0; background: transparent url("/images/productDetail/weather_arrowL.png") center center no-repeat; }
+#weatherWrap div.weather button.next { float: right; margin: 55px 0 0 0; background: transparent url("/images/productDetail/weather_arrowR.png") center center no-repeat; }
 
 
 
@@ -585,9 +561,9 @@ p.review_subtitle+#reviewWrap {margin-top:-30px}
 #viewWrap .board_view ul.starBox { line-height: 1; }
 #viewWrap .board_view ul.starBox li { float: left; display: block; width: 25%; border-top: 1px solid #e0e0e0; text-align: center; }
 #viewWrap .board_view ul.starBox li span.tit { display: block; margin: 50px 0 10px 0; font-size: 14px; color: #666666; }
-#viewWrap .board_view ul.starBox li span.star { display: inline-block; width: 15px; height: 14px; background: url("/images/detail/star.png") center center no-repeat; }
+#viewWrap .board_view ul.starBox li span.star { display: inline-block; width: 15px; height: 14px; background: url("/images/productDetail/star.png") center center no-repeat; }
 #viewWrap .board_view ul.starBox li span.star:first-child {  }
-#viewWrap .board_view ul.starBox li span.star.on { background: url("/images/detail/starOn.png") center center no-repeat; }
+#viewWrap .board_view ul.starBox li span.star.on { background: url("/images/productDetail/starOn.png") center center no-repeat; }
 #viewWrap .board_view ul.starBox li span.starCnt { display: block; margin: 30px 0 50px 0; font-size: 26px; color: #333333; }
 #viewWrap .board_view ul.starBox li span.starCnt.off { font-size: 20px; }
 #viewWrap .board_view ul.starBox { display: none; }
@@ -608,11 +584,11 @@ p.review_subtitle+#reviewWrap {margin-top:-30px}
 #writeWrap table td input[type="radio"] { cursor: pointer; }
 #writeWrap table td label { position: relative; display: inline-block; margin: 0 20px 0 0; padding: 0 0 0 3px; }
 #writeWrap table td label span { display: block; height: 14px; }
-#writeWrap table td label span.star_5 { background: url("/images/detail/star_5.png") left center no-repeat; width: 83px; }
-#writeWrap table td label span.star_4 { background: url("/images/detail/star_4.png") left center no-repeat; width: 66px; }
-#writeWrap table td label span.star_3 { background: url("/images/detail/star_3.png") left center no-repeat; width: 49px; }
-#writeWrap table td label span.star_2 { background: url("/images/detail/star_2.png") left center no-repeat; width: 32px; }
-#writeWrap table td label span.star_1 { background: url("/images/detail/star_1.png") left center no-repeat; width: 15px; }
+#writeWrap table td label span.star_5 { background: url("/images/productDetail/star_5.png") left center no-repeat; width: 83px; }
+#writeWrap table td label span.star_4 { background: url("/images/productDetail/star_4.png") left center no-repeat; width: 66px; }
+#writeWrap table td label span.star_3 { background: url("/images/productDetail/star_3.png") left center no-repeat; width: 49px; }
+#writeWrap table td label span.star_2 { background: url("/images/productDetail/star_2.png") left center no-repeat; width: 32px; }
+#writeWrap table td label span.star_1 { background: url("/images/productDetail/star_1.png") left center no-repeat; width: 15px; }
 #writeWrap table td label span.star_0 { position: absolute; top: -14px; top: -12px \9; left: 0; width: 60px; }
 /* 버튼 */
 #reviewWrap div.btnarea { position: relative; width: 100%; height: 40px; text-align: right; }
@@ -622,22 +598,23 @@ p.review_subtitle+#reviewWrap {margin-top:-30px}
 
 
 /* aside 퀵메뉴 */
-#detailWrap #asideWrap { padding-top: 150px; background: #f0f1f3; font-size: 13px; letter-spacing: -0.5px; font-weight: normal; }
+#detailWrap #asideWrap { padding-top: 150px; background: #f0f1f3; font-size: 13px; letter-spacing: -0.5px; font-weight: normal; top: 0; left: 50%; width: 235px; padding: 0 5px 0 20px; margin: 0 0 0 290px; height: 650px; z-index: 999; }
 #detailWrap .free { background: #fffcf3 !important; }
 /* 태그 */
 #asideWrap div.aside01 { position: absolute; top: 0; left: 0; width: 240px; height: 104px; padding: 19px 0 2px 20px; background: #ffb902; color: #fff; font-weight: normal; }
 #asideWrap div.aside01 span { display: inline-block; position:relative }
-#asideWrap div.aside01 span.tit {font-size:15px; width: 44px; background: url("/images/detail/aside_div.png") center right no-repeat; }
+#asideWrap div.aside01 span.tit {font-size:15px; width: 44px; background: url("/images/productDetail/aside_div.png") center right no-repeat; }
 #asideWrap div.aside01 span.name { font-size:15px; margin: 0 6px 0 7px; }
 #asideWrap div.aside01 span.phone { font-size:15px; }
 #asideWrap div.aside01 span.info { font-size:14px; clear: both; margin: 21px 0 6px 0; }
 #asideWrap div.aside01 span.info img { vertical-align: middle; margin-left: 5px; }
-#asideWrap div.aside01 span.price { clear: both; font-size: 33px; font-weight: 600; position:relative;  }
-#asideWrap div.aside01 span.price img { vertical-align: bottom; margin-left: 5px; }
-#asideWrap div.aside01 .btn_calculator {background:url(/images/content/btn/btn_calculator.png) no-repeat ; width:56px; height:19px; border:none; padding:0; margin:0 ; vertical-align:middle} /* 계산기 추가 */
+#asideWrap div.aside01 span.pricedetailPackage { clear: both; font-size: 33px; font-weight: 600; position:relative;  }
+#asideWrap div.aside01 span.pricedetailPackage span{ font-size: .8em; padding-left: 3px; }
+#asideWrap div.aside01 span.pricedetailPackage img { vertical-align: bottom; margin-left: 5px; }
+#asideWrap div.aside01 .btn_calculator {background:url(/images/productDetail/btn_calculator.png) no-repeat ; width:56px; height:19px; border:none; padding:0; margin:0 ; vertical-align:middle} /* 계산기 추가 */
 /* 상품명 */
-#asideWrap div.aside02 { position: relative; width: 100%; }
-#asideWrap div.aside02 span { display: block; }
+#asideWrap div.aside02 { position: relative; width: 100%; margin-top:150px;}
+#asideWrap div.aside02 span { display: inline-block; }
 #asideWrap div.aside02 span.tit { margin: 0 4px 5px 0; color: #303030; font-family: 'NanumBold'; }
 #asideWrap div.aside02 span.pNum { position: absolute; top: 0; left: 55px; display: inline-block; width: 200px; color: #999999;  font-family: 'NanumBold'; }
 #asideWrap div.aside02 span.pNum .num { display: inline-block; color: #fa6f09;   font-family: 'NanumExtraBold'; }
@@ -669,7 +646,7 @@ p.review_subtitle+#reviewWrap {margin-top:-30px}
 #asideWrap div.aside06 span.tit { margin: 0 0 10px 0; width: 90%; color: #303030;  font-family: 'NanumBold'; }
 /* 항공 DIV셀렉트박스 */
 #asideWrap div.aside06 div.seletboxAir { position: relative; display: inline-block; width: 219px; min-height: 36px; margin: 0; padding: 0; cursor: pointer; z-index: 99999; }
-#asideWrap div.aside06 div.seletboxAir span#inputAir { position: relative; width: 205px; height: 24px; margin: 0; padding: 10px 0 0 12px; border: 1px solid #dee1e2; color: #777777; background: #fff url("/images/detail/icon_selectbox.png") 200px center no-repeat; }
+#asideWrap div.aside06 div.seletboxAir span#inputAir { position: relative; width: 205px; height: 24px; margin: 0; padding: 10px 0 0 12px; border: 1px solid #dee1e2; color: #777777; background: #fff url("/images/productDetail/icon_selectbox.png") 200px center no-repeat; }
 #asideWrap div.aside06 div.seletboxAir span#inputAir img { float: left; width: 12px; margin: 1px 5px 0 0; vertical-align: middle; }
 #asideWrap div.aside06 div.seletboxAir ul { position: absolute; top: 35px; left: 0; width: 217px; border: 1px solid #dee1e2; border-top: none; background: #fff; z-index: 99999; display: none; }
 #asideWrap div.aside06 div.seletboxAir ul li { position: relative; display:block; width: 205px; padding: 10px 0 15px 12px; z-index: 9999; }
@@ -692,7 +669,7 @@ p.review_subtitle+#reviewWrap {margin-top:-30px}
 #asideWrap div.aside08 .btns #btnReserves{width:220px; margin-top:12px}
 /* 링크 */
 #asideWrap div.aside09 { position: absolute; top: 643px; left: 0; width: 100%; height: 40px; background: #999999; }
-#asideWrap div.aside09 span { float: left; display: inline-block; height: 100%; background: url("/images/detail/quick_div.png") right center no-repeat; }
+#asideWrap div.aside09 span { float: left; display: inline-block; height: 100%; background: url("/images/productDetail/quick_div.png") right center no-repeat; }
 #asideWrap div.aside09 span.quick01 { width: 45px; text-align: center; }
 #asideWrap div.aside09 span.quick01 img { margin: 10px 0 0 12px; }
 #asideWrap div.aside09 span.quick02 { width: 41px; text-align: center; }
@@ -713,7 +690,7 @@ p.review_subtitle+#reviewWrap {margin-top:-30px}
 #asideWrap div.aside011 span { display: block; }
 #asideWrap div.aside011 span.tit { margin: 0 0 10px 0; width: 90%; color: #303030; font-weight: 700; }
 #asideWrap div.aside011 div.seletboxOption { position: relative; display: inline-block; width: 219px; min-height: 36px; margin: 0; padding: 0; cursor: pointer; z-index: 9999; }
-#asideWrap div.aside011 div.seletboxOption span#inputOption { position: relative; width: 205px; height: 24px; margin: 0; padding: 10px 0 0 12px; border: 1px solid #dee1e2; color: #777777; background: #fff url("/images/detail/icon_selectbox.png") 200px center no-repeat; }
+#asideWrap div.aside011 div.seletboxOption span#inputOption { position: relative; width: 205px; height: 24px; margin: 0; padding: 10px 0 0 12px; border: 1px solid #dee1e2; color: #777777; background: #fff url("/images/productDetail/icon_selectbox.png") 200px center no-repeat; }
 #asideWrap div.aside011 div.seletboxOption ul { position: absolute; top: 35px; left: 0; width: 217px; border: 1px solid #dee1e2; border-top: none; background: #fff; z-index: 9999; display: none; }
 #asideWrap div.aside011 div.seletboxOption ul li { position: relative; width: 205px; height: 18px; padding: 0 0 10px 12px; z-index: 999; }
 #asideWrap div.aside011 div.seletboxOption ul li img { float: left; margin-right: 5px; }
@@ -776,8 +753,8 @@ p.won { display: inline-block !important; padding: 0 0 0 1px; color: #000; font-
 #erpView > #detailWrap { width: 100% !important; }
 #erpView > #detailWrap #infoWrap { width: 100% !important; }
 #erpView > #detailWrap #infoWrap #basicInfo span.sns { margin:0 0 17px 0;}
-#erpView > #detailWrap #infoWrap #basicInfo span.sns #erpEmail { width: 80px; height: 32px; border: 0px; padding: 0px; margin: 0px; background: url("/images/detail/emailBtn.png") center left no-repeat;}
-#erpView > #detailWrap #infoWrap #basicInfo span.sns #erpPrint { width: 80px; height: 32px; border: 0px; padding: 0px; margin: 0px; margin-left: 10px; background: url("/images/detail/printBtn.png") center left no-repeat;}
+#erpView > #detailWrap #infoWrap #basicInfo span.sns #erpEmail { width: 80px; height: 32px; border: 0px; padding: 0px; margin: 0px; background: url("/images/productDetail/emailBtn.png") center left no-repeat;}
+#erpView > #detailWrap #infoWrap #basicInfo span.sns #erpPrint { width: 80px; height: 32px; border: 0px; padding: 0px; margin: 0px; margin-left: 10px; background: url("/images/productDetail/printBtn.png") center left no-repeat;}
 #erpView > #detailWrap #infoWrap #basicInfo span.sns #erpEmail a{ z-index: 99999; width:100%; height:100%; text-indent: -20000px; display: block; background: transparent;position: absolute;}
 #erpView > #detailWrap #infoWrap #basicInfo span.sns #erpPrint a{ z-index: 99999; width:100%; height:100%; text-indent: -20000px; display: block; background: transparent;position: absolute;}
 #erpView > #detailWrap #infoWrap #basicInfo span.sns #mngInfo { border: none; padding: 10px 0 10px 10px; font-weight: 600; width: 600px; }
@@ -856,7 +833,7 @@ p.won { display: inline-block !important; padding: 0 0 0 1px; color: #000; font-
 .tabview.etcTab .etcInfo span.titB { clear: both; display: block; margin: 0 0 0 0; font-size: 20px; color: #333333; font-weight: 600; }
 .tabview.etcTab .etcInfo span.tit { clear: both; display: block; margin: 0 0 0 0; font-size: 14px; color: #333333; font-weight: 600; }
 .tabview.etcTab .etcInfo span.tit p { display: inline-block; color: #fa6f09; }
-.tabview.etcTab .etcInfo span.dot { clear: both; display: block; margin: 22px 0 2px 0; padding: 0 0 0 13px; font-size: 14px; color: #333333; font-weight: 600; background: url("/images/detail/dot.png") left 8px no-repeat; }
+.tabview.etcTab .etcInfo span.dot { clear: both; display: block; margin: 22px 0 2px 0; padding: 0 0 0 13px; font-size: 14px; color: #333333; font-weight: 600; background: url("/images/productDetail/dot.png") left 8px no-repeat; }
 .tabview.etcTab .etcInfo span.txt { clear: both; display: block; margin: 0 0 0 0; padding: 0 0 0 12px; color: #666666; }
 .tabview.etcTab .etcInfo span.txt.silver { color: #999999; }
 .tabview.etcTab .etcInfo span.txt p.black { display: inline-block; color: #333333; }
@@ -893,7 +870,7 @@ div.infoTxt.template .refer .referTxt { width: 550px !important; padding-right: 
 
 /* yb프리미엄 header 추가 css- 프리미엄 상세페이지에 사용 */
 /* Header */
-#wrap header { position: relative; display: inline-block; width: 100%; height: auto; z-index: 2; }
+#wrap header { position: relative; /* display: inline-block; */ width: 100%; height: auto; z-index: 2; }
 
 /* Skip Nav */
 #wrap header #skipNavi{position: absolute; width: 100%; height: 0; }
@@ -978,7 +955,7 @@ div.infoTxt.template .refer .referTxt { width: 550px !important; padding-right: 
 .option_wing {width:260px;  height:690px ; position:absolute; right:0 }
 .option_wing .result_memo {width:220px; height:85px; padding:20px; background-color:#ffb902; }
 .option_wing .result_memo p.name {color:#fff; font-size:15px}
-.option_wing .result_memo p.name span.dt {padding-right:5px; display:inline-block; background: url("/images/detail/aside_div.png") 100% 4px no-repeat }
+.option_wing .result_memo p.name span.dt {padding-right:5px; display:inline-block; background: url("/images/productDetail/aside_div.png") 100% 4px no-repeat }
 .option_wing .result_memo .price {font-size:36px; color:#fff;   font-family: 'NanumBold'; line-height:1; position:relative}
 .option_wing .result_memo .price span.info {font-size:14px; line-height:1;letter-spacing: -0.05em;}
 .option_wing .result_memo .price span.won {font-size:24px}
@@ -1015,7 +992,7 @@ div.infoTxt.template .refer .referTxt { width: 550px !important; padding-right: 
 
 .sns_group {width:100%; height:40px; background-color:#999}
 .sns_group ul {display:table; table-layout:fixed; width:260px}
-.sns_group li {line-height:40px; display:table-cell; text-align:center;  background: url("/images/detail/quick_div.png") 0 50% no-repeat; }
+.sns_group li {line-height:40px; display:table-cell; text-align:center;  background: url("/images/productDetail/quick_div.png") 0 50% no-repeat; }
 .sns_group li:first-child {background-image:none} 
 a.goto_top {display:block; width:100%; text-align:center; margin-top:40px}
 
@@ -1102,7 +1079,7 @@ div.infoTxt.template .infoBody .picWrap span.txtBox	{width:30% !important; }
 
 /* 오늘만 노랑 */
 .today_norang_area{clear:both; height:97px; padding:0 0 0 188px; margin:68px 0 40px 0; border-top:1px solid #000; border-right:1px solid #d5d5d5; border-bottom:1px solid #d5d5d5; background-image:url("/images/product/img_today_norang.gif"); background-repeat:no-repeat; background-position:left top}
-.today_norang_area p{width:602px; padding:18px 0 12px 0; font-size:14px; color:#333; font-family:'NanumBold'; background:url("/images/detail/linedot.png") repeat-x left bottom}
+.today_norang_area p{width:602px; padding:18px 0 12px 0; font-size:14px; color:#333; font-family:'NanumBold'; background:url("/images/productDetail/linedot.png") repeat-x left bottom}
 .today_norang_area p span{padding-left:8px; font-size:12px; color:#777}
 .today_norang_area dl{overflow:hidden; margin:12px 0 0 0}
 .today_norang_area dl dt{float:left; padding:0 7px; font-size:13px; color:#fa6f09; border:1px solid #fa6f09; line-height:20px; font-family:'NanumBold'}
@@ -1119,4 +1096,20 @@ div.infoTxt.template .infoBody .picWrap span.txtBox	{width:30% !important; }
 .excellent_prd_info p { font-size:14px; color:#333; line-height:18px }
 .excellent_prd_info a { position:absolute; bottom:15px; right:20px; display:inline-block; padding:0 15px; background-color:#777; font-size:13px; text-align:center; line-height:40px; color:#fff }
 .excellent_prd_info+.today_norang_area { margin-top:0 }
+
+.startDate_calendar_wrap { margin-bottom:8px; padding:20px 0 0 0 }
+.free03.startDate_calendar { width:1056px !important; margin:0 auto !important; border:0 none !important }
+#freeInfo .free03.startDate_calendar .calendarWrap .calendar { width:324px; height:224px; margin-left:10px; border:1px solid #dee1e2 }
+#freeInfo .free03.startDate_calendar .calendarWrap .calendar .yyyymm{ padding:10px 0; margin:0 !important; background-color:#f7f8f9; border-bottom:1px solid #dee1e2; font-size:16px; color:#333; text-align:center }
+#freeInfo .free03.startDate_calendar .calendarWrap .calendar .yyyymm .select_bx_st { width:80px; height:16px; margin:0 auto; background-color:#f7f8f9;  }
+#freeInfo .free03.startDate_calendar .calendarWrap .calendar .yyyymm .select_bx_st label { top:0; padding-right:20px; font-size:16px; color:#333; letter-spacing:0; background:url("/images/common/ico_select.png") no-repeat right center }
+#freeInfo .free03.startDate_calendar .calendarWrap .calendar .yyyymm .select_bx_st select { left:10px; top:-12px; padding:0 }
+#freeInfo .free03.startDate_calendar .calendarWrap .calendar:first-child { margin-left:24px }
+#freeInfo .free03.startDate_calendar .calendarWrap .calendar.current_month .yyyymm{ font-size:18px; color:#fa6f09 }
+#freeInfo .free03.startDate_calendar .calendarWrap .calendar table.calendar_body { width:290px }
+#freeInfo .free03.startDate_calendar > button.calendar_prev { top:80px; left:-10px; background:url("/images/detail/arrowL_off_v2.png") center center no-repeat }
+#freeInfo .free03.startDate_calendar > button.calendar_next { top:80px; right:0; background:url("/images/detail/arrowR_off_v2.png") center center no-repeat }
+#freeInfo .free03.startDate_calendar > button.calendar_prev.on { background:url("/images/detail/arrowL_on_v2.png") center center no-repeat }
+#freeInfo .free03.startDate_calendar > button.calendar_next.on { background:url("/images/detail/arrowR_on_v2.png") center center no-repeat }
+
 
