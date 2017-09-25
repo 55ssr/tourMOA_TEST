@@ -1,4 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 	<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
 	<h1>상품 관리</h1>
 	<div class="row justify-content-between mb-3">
@@ -59,6 +66,23 @@
 				</tr>
 			</thead>
 			<tbody>
+			
+			<c:forEach var="rs" items="${resultList}">
+				<tr>
+					<td>6</td>
+					<td>${rs.title}</td>
+					<td>
+						<a href="/adminGoodsDetail.do">서유럽 9박 10일</a>
+					</td>
+					<td>유럽</td>
+					<td>런던</td>
+					<td>100,0000~120,0000</td>
+					<td>2017.11.12</td>
+					<td>2017.12.13</td>
+					<td>사용</td>
+				</tr>
+			</c:forEach>
+				
 				<tr>
 					<td>6</td>
 					<td>자유여행</td>
