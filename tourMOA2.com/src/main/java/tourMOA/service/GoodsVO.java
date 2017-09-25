@@ -14,8 +14,77 @@ public class GoodsVO {
 	private String gubun;
 	private String nation;
 	private String period;
+	private String period1;
+	private String period2;
 	private String schd;
 	private String title;
+	private String location;
+	private int priceCh;
+	private int priceIn;
+	private String via;
+	private String vias;
+	private String use;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public String getPeriod1() {
+		return period1;
+	}
+	public void setPeriod1(String period1) {
+		this.period1 = period1;
+	}
+	public String getPeriod2() {
+		return period2;
+	}
+	public void setPeriod2(String period2) {
+		this.period2 = period2;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	public int getPriceCh() {
+		return priceCh;
+	}
+	public void setPriceCh(int priceCh) {
+		this.priceCh = priceCh;
+	}
+	public int getPriceIn() {
+		return priceIn;
+	}
+	public void setPriceIn(int priceIn) {
+		this.priceIn = priceIn;
+	}
+	public String getVia() {
+		return via;
+	}
+	public void setVia(String via) {
+		this.via = via;
+	}
+	public String getVias() {
+		return vias;
+	}
+	public void setVias(String vias) {
+		this.vias = vias;
+	}
+	public String getUse() {
+		return use;
+	}
+	public void setUse(String use) {
+		this.use = use;
+	}
 	public int getUnq() {
 		return unq;
 	}
