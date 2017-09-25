@@ -14,7 +14,7 @@
 
 			$(this).on('mouseleave',function(){
 				$(".cont03 > ul > li > div:eq("+tab_index+") .info").stop(true, false).animate({"top":210},200, function(){
-					$(".cont03 > ul > li > div:eq("+tab_index+") .noti").stop(false, false).fadeIn(400);
+					$(".cont03 > ul > li > div:eq("+tab_index+") .noti").stop(false, false).fadeIn(400).hide(0);
 				});
 			});
 		});
@@ -324,4 +324,4 @@
 		</ul>
 	</div>
 </div>
-</div>
+	</div>
