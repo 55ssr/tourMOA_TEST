@@ -189,5 +189,16 @@ CREATE TABLE ticket
 );
 
 
-
+--공지사항 2017-09-25--
+CREATE TABLE notice
+(
+	unq number NOT NULL,
+	gubun varchar2(50) NOT NULL,
+	title varchar2(100) NOT NULL,
+	content varchar2(4000) NOT NULL,
+	hit number NOT NULL,
+	rdate timestamp NOT NULL,
+	upddate timestamp,
+	PRIMARY KEY (unq)
+);
 

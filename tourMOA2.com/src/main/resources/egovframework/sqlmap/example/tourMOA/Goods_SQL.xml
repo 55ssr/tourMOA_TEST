@@ -4,7 +4,7 @@
 <sqlMap namespace="Goods">
 
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
-	<typeAlias  alias="goodsVO" type="tourMOA.service.GoodsVO"/>
+	
 	
 	<select id="goodsDAO.selectGoodsList" resultClass="egovMap">
 		SELECT * FROM goods
