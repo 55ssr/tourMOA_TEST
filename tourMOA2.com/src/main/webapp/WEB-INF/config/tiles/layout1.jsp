@@ -10,6 +10,10 @@
 <html>
 <head>
 <title><tiles:insertAttribute name="title" /></title>
+
+<!-- js, css 링크 파일 모아 주세요  "/WEB-INF/jsp/tiles/headLink.jsp" -->
+<tiles:insertAttribute name="headLink" />
+
 <meta charset="UTF-8">
 <meta http-equiv="cache-control" content="no-cache" />
 <meta http-equiv="pragma" content="no-cache" />

@@ -9,7 +9,7 @@ function fnMenuSelect() {
 	
 	
 	//여행상담
-	
+	$('.lnb02').addClass('lnb02 on'); $("ul.sub_2").css("display","block");       $('.sub02_02').addClass('sub02_02 on'); $('#one').show();
 	
 	//고객의소리
 	
