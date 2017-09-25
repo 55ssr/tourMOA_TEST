@@ -354,7 +354,7 @@
         
 #quickCloseBtn{cursor: pointer;}
 
-#content{width: 1100px; height: auto; margin: 0 auto;}
+#content_main{width: 1100px; height: auto; margin: 0 auto;}
 
 #theme_block a.time_more{right:3px; top: 5px; }
 h2.titMain > a.time_more{right: 3px;}
