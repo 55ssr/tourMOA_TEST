@@ -53,7 +53,6 @@
     //해외항공권 눌렀을 때 항공권 버튼 
     
     $("#airlineBtn").click(function(){
-    	alert("해외항공권");
     	$(".airportfind-content").show();
     	$(".domesticfind-content").hide();
     	
@@ -63,7 +62,6 @@
     
     $("#domesticBtn").click(function(){
     		
-    		alert("국내항공권");
     		$(".domesticfind-content").show();
     		$(".airportfind-content").hide();
     	
@@ -72,7 +70,6 @@
     //국내항공권 눌렀을 때 항공권 버튼 
     
     $(".domestic_airlineBtn").click(function(){
-    	alert("해외항공권");
     	$(".airportfind-content").show();
     	$(".domesticfind-content").hide();
     	
@@ -81,7 +78,6 @@
     
     
     $(".domestic_domesticBtn").click(function(){
-    	alert("국내항공권");
     	$(".domesticfind-content").show();
     	$(".airportfind-content").hide();
     	
@@ -110,7 +106,6 @@ $(function(){
 	$("#dontknow").click(function(){
 		
 		var checkConfirm = $("input:checkbox[id='dontknow']").is(":checked");
-		alert(checkConfirm);
 		if(checkConfirm==true){
 			$(".whenyoucome").hide();
 			$(".dontknowWhen").show();
@@ -122,4 +117,5 @@ $(function(){
 	});
 });
 
-//datepicker
+
+
