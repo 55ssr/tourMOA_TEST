@@ -12,6 +12,7 @@
 					기본관리
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+					<a class="dropdown-item" href="/adminComDetail.do">회사정보 관리</a>
 					<a class="dropdown-item" href="/adminResearchList.do">설문조사</a>
 					<a class="dropdown-item" href="/adminSearch.do">검색어 관리</a>
 					<a class="dropdown-item" href="/adminAutoComplete.do">자동완성</a>

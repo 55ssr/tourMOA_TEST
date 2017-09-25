@@ -11,6 +11,10 @@ public class AdminController {
 		return "admin/admin";
 	}
 	
+	@RequestMapping("/adminComDetail.do")
+	public String adminComInfo() {
+		return "admin/adminComDetail";
+	}
 	
 	@RequestMapping("/adminResearchList.do")
 	public String adminResearchList() {

@@ -133,7 +133,7 @@ nav#lnb #one li ul.sub li.on { color: #ffba00; }
 
 /* 고객센터 타이틀 */
 #content .tit { position: relative; display: table; width: 1100px; height: 24px; margin: 50px 0 25px 0; }
-#content .tit_txt { position: absolute; display: block; width: 600px; margin-top: 9px; font-size: 14px; font-weight: normal; color: #999999; }
+#content .tit_txt { position: absolute; display: block; width: 700px; margin-top: 9px; font-size: 14px; font-weight: normal; color: #999999; }
 
 #content .notice_tit { background: url("/images/customer/tit_notice.png") no-repeat ; }
 #content .faq_tit { background: url("/images/customer/tit_faq.png") no-repeat ; }
@@ -419,8 +419,8 @@ span.score_highlight { color: #01b6ad; }
 .infoBox .empNo_off { width: 27px; height: 27px; margin:0 7px 0 0; border: 1px solid #e0e0e0; background: #ffffff; vertical-align: middle; }
 
 /* BEST 여행도우미 */
-.best_guide_tab{overflow:hidden; margin-bottom:20px}
-.best_guide_tab>li>a{display:block; float:left; width:50%; height:32px; padding-top:16px; border:1px solid #ddd; text-align:center; color:#111; line-height:1.2; font-size:15px}
+.best_guide_tab{overflow:hidden; margin-bottom:20px; height:50px;}
+.best_guide_tab>li>a{display:block; float:left; width:50%; height:50px; padding-top:16px; border:1px solid #ddd; text-align:center; color:#111; line-height:1.2; font-size:15px}
 .best_guide_tab>li>a.active{margin-left:-4px; background-color:#42454c; border-color:#42454c; color:#fff; font-family: 'NanumBold';}
 .best_guide_contens{display:none}
 .best_guide_contens.active{display:block}
@@ -557,7 +557,7 @@ button.btn_ccmp {position:absolute; right:0; border:none; background:#42454c; fo
 
 .prize_body .prize_bann { position: absolute; top: 0; left: 304px; width: 380px; height: 164px; }
 .prize_body .prize_desc { position: absolute; top: 250px; left: 0; width: 680px; height: 104px; }
-.prize_body .prize_bann span.btnDtl { display:block; width: 67px; margin-top: 36px; padding: 9px 26px; border: none; background: #777777; font-size: 14px; color: #ffffff; cursor: pointer;}
+.prize_body .prize_bann span.btnDtl { display:block; width: 120px; margin-top: 36px; padding: 9px 26px; border: none; background: #777777; font-size: 14px; color: #ffffff; cursor: pointer;}
 .prize_body .prize_bann span.btnDtl a { color: #ffffff; }
 
 .prize_body .prize_desc.prize8 {width:100%}

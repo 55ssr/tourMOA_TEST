@@ -1,8 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-	
+<script>
+	var availableTags = [
+	                     	'가가가',
+	                     	'가나다',
+	                     	'강진규',
+	                     	'김국진',
+	                     	'한수경',
+	                     	'류석현',
+	                     	'김훈영',
+	                     	'김제헌',
+	                     	'서정훈',
+	                     	'조황섭',
+	                     ];
+</script>
+<script>
+	$(document).ready(function() {
+		$("#searchbox").autocomplete(availableTags,{
+			matchContains: true,
+			selectFirst: false
+		});
+	});
+</script>
+
 <nav class="col-sm-3 col-md-2 d-none d-sm-block bg-light sidebar">
 	<form class="form-inline mt-2 mt-md-0">
-		<input class="form-control mr-sm-2" type="text" placeholder="메뉴검색" aria-label="Search">
+		<input class="form-control mr-sm-2" id="searchbox" type="text" placeholder="메뉴검색" aria-label="Search">
 	</form>
 	<hr />
 	<div class="card">
