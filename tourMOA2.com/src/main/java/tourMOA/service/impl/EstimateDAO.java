@@ -1,5 +1,10 @@
 package tourMOA.service.impl;
 
-public class EstimateDAO {
+import org.springframework.stereotype.Repository;
+
+import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
+
+@Repository("estimateDAO")
+public class EstimateDAO extends EgovAbstractDAO{
 
 }
