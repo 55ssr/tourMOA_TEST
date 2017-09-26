@@ -26,30 +26,29 @@
 				return false;
 			}
 			
-			var form = new FormData(document.getElementById("frm"));	
 			
 			/* var gender = $(":input:radio[id=gender]:checked").val(); */
 			
-			var param = "title="+$("#title").val()
-				/* param +="&name="+$("#name").val()
-				param +="&pwd="+$("#pwd").val()
-				param +="&gender="+gender
-				param +="&birthday="+$("#birthday").val()
-				param +="&phone="+$("#phone").val()
-				param +="&postnum="+$("#postnum").val()
-				param +="&addr1="+$("#addr1").val()
-				param +="&addr2="+$("#addr2").val() */;
+			var param = "gubun="+$("#gubun").val()
+				param +="&code="+$("#code").val()
+				param +="&title="+$("#title").val()
+				param +="&location="+$("#location").val()
+				param +="&city="+$("#city").val()
+				param +="&schd="+$("#schd").val()
+				param +="&airline="+$("#airline").val()
+				param +="&price="+$("#price").val();
 			
-			alert(param);
+			
 			
 			var form = new FormData(document.getElementById("frm"));
+			
+			
 			$.ajax({
-				type: 'POST',
-				data: $("#frm").serialize(),
+				type: "POST",
+				data: param,
 				url: "<c:url value='/adminGoodsWriteSave.do' />",
 				dataType: "json",
 				processData: false,
-				contentType: false,
 				success: function (data) {
 					if(data.result == "ok") {
 						alert("저장됐습니다.");
@@ -71,6 +70,7 @@
 			<label for="inputGoodsType" class="col-sm-2 col-form-label">상품구분</label>
 			<div class="col-sm-2">
 				<select class="form-control" name="gubun" id="gubun">
+					<option value="">-선택-</option>
 					<option value="자유여행">자유여행</option>
 					<option value="해외패키지">해외패키지</option>
 				</select>
@@ -94,7 +94,8 @@
 		<div class="form-group row">
 			<label for="inputLocation" class="col-sm-2 col-form-label">지역</label>
 			<div class="col-sm-2">
-				<select class="form-control" name="loction" id="location">
+				<select class="form-control" name="location" id="location">
+					<option value="">-선택-</option>
 					<option value="서유럽">서유럽</option>
 					<option value="동유럽">동유럽</option>
 					<option value="동남아">동남아</option>
@@ -108,6 +109,7 @@
 			<label for="inputLocation" class="col-sm-2 col-form-label">국가</label>
 			<div class="col-sm-2">
 				<select class="form-control" name="nation" id="nation">
+					<option value="">-선택-</option>
 					<option value="영국">영국</option>
 					<option value="프랑스">프랑스</option>
 					<option value="이탈리아">이탈리아</option>
@@ -150,7 +152,7 @@
 			<label for="priceAdult" class="col-sm-2 col-form-label">비용</label>
 			
 			<div class="col-sm-3 input-group">
-				<input type="text" name="priceAd" id="priceAd" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="성인가">
+				<input type="text" name="price" id="price" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="성인가">
 				<span class="input-group-addon">￦</span>
 			</div>
 			

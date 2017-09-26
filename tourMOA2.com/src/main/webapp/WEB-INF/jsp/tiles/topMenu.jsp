@@ -4,8 +4,9 @@
         <div id="topmenu">
           <div id="tt">
            <ul>
-               <li>로그인</li>
-               <li>회원가입</li>
+				<li><a href="/admin.do">어드민</a></li>
+				<li><a href="/login.do">로그인</a></li>
+				<li><a href="/join.do">회원가입</a></li>
            </ul>
           </div>  
         </div>  

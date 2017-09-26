@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import tourMOA.service.DefaultListVO;
 import tourMOA.service.GoodsService;
@@ -20,6 +21,10 @@ public class AdminController {
 	
 	@Resource(name="goodsService")
 	private GoodsService goodsService;
+
+	/** MappingJackson2JsonView */
+	@Resource(name = "jsonView")
+	protected MappingJackson2JsonView jsonView;
 	
 	@RequestMapping("/admin.do")
 	public String admin() {
@@ -70,9 +75,9 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/adminGoodsWriteSave.do")
-	@ResponseBody public Map<String, Object> insertGoods(GoodsVO vo) throws Exception {
+	@ResponseBody public Map<String, String> insertGoods(GoodsVO vo) throws Exception {
 		String result = "";
-		HashMap<String, Object> map = new HashMap<String, Object>();
+		HashMap<String, String> map = new HashMap<String, String>();
 		System.out.println("vo ======================== " + vo.getTitle());
 		result = goodsService.insertGoods(vo);
 		if(result == null) result = "ok";

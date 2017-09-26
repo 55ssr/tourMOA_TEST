@@ -25,6 +25,7 @@
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 					<a class="dropdown-item" href="/adminGoodsList.do">상품 관리</a>
 					<a class="dropdown-item" href="/adminGoodsCommList.do">상품평 관리</a>
+					<a class="dropdown-item" href="/adminCtgList.do">카테고리 관리</a>
 				</div>
 			</li>
 			<li class="nav-item dropdown">
