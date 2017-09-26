@@ -155,7 +155,5 @@ public class MemberVO {
 	}
 	public void setAgree2(String agree2) {
 		this.agree2 = agree2;
-	}
-
-	
+	}	
 }

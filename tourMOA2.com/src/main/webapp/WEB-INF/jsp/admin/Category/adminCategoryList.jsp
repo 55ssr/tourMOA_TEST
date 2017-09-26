@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" 		uri="http://java.sun.com/jsp/jstl/functions" %>
-
-
+<%@ taglib prefix="c"    uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" 	 uri="http://java.sun.com/jsp/jstl/functions" %>
+<!-- LIST 자바스크립트 s-->
 <script>
 function fn_popup(){
 	var f = document.listFrm;
@@ -41,28 +40,62 @@ function fn_detail(cd) {
 	f.method = "post";
 	f.submit();
 }
-
 </script>
+<!-- LIST 자바스크립트 e-->
+<!-- Write 자바스크립트 s-->
+<script>
+function fn_save() {
+		
+		if($("[id='ctgcd']").val() == "") {
+			alert("카테고리 코드를 입력해주세요.");
+			return false;
+		}
+		if($("[id='ctgnm']").val() == "") {
+			alert("카테고리 명을 입력해주세요.");
+			return false;
+		}
+		var form = new FormData(document.getElementById('frm'));
+		$.ajax({
+			type: 'POST',
+			data: form,
+			url: "<c:url value='/adminCategoryWrite.do' />",
+			dataType: "json",
+			
+			processData: false,
+			contentType: false, 
+			
+			success: function (data) {
+				if(data.result == "ok") {
+					alert("분류에 등록 됬습니다.");
+					window.location.reload();
+					opener.window.location.reload();
+				} else {
+					alert("분류에 등록 실패");
+				}
+			},
+			error: function (error) {
+				alert("error : " + error);
+			}
+		});
+}
+</script>
+<!-- Write 자바스크립트 e-->	
 	<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
-	<h1>카테고리 관리</h1>
-	
+	<h1>그룹 관리</h1>
+	<!-- 카테고리 리스트 s-->
 	<div class="table-responsive">
 		<form name="listFrm" id="listFrm">
 		<input type="hidden" name="ctgcd" id="ctgcd"/>
 		<table style="width:100%;">
 			<tr>
 				<td align="left">
-				검색 :	<select name="srchContn" style="height:25px;">
+			검색 :  <select name="srchContn" style="height:25px;">
 						<option value="hctgcd" <c:if test="${srchContn == 'hctgcd'}">selected</c:if>>분류코드</option>
 						<option value="ctgnm" <c:if test="${srchContn == 'ctgnm'}">selected</c:if>>분류이름</option>
 						<option value="use" <c:if test="${srchContn == 'use'}">selected</c:if>>사용여부</option>
 					</select> 
 					<input type="text" name="srchKeywd" value="${srchKeywd}"  style="height:20px;"/>
 					<input type="submit" value="검색" style="height:26px;"/>
-				</td>
-				<td align="right">
-					<input type="button" value="목록" onclick="location.href='/adminCategoryList.do'"/>
-					<input type="button" value="카테고리등록" onclick="fn_popup()">
 				</td>
 			</tr>
 		</table>
@@ -77,7 +110,7 @@ function fn_detail(cd) {
 				<col style="width:10%;"></col>
 			</colgroup>
 			<thead>				
-				<tr>
+				<tr>										
 					<th>#</th>
 					<th>분류</th>
 					<th>코드</th>
@@ -110,25 +143,57 @@ function fn_detail(cd) {
 				</tr>
 				</c:forEach>
 			</tbody>
-		</table>
-	</div>	
-	<nav aria-label="Page navigation example">
-		<ul class="pagination justify-content-center">
-			<li class="page-item disabled">
-				<a class="page-link" href="#" tabindex="-1" aria-label="Previous">
-					<span aria-hidden="true">&laquo;</span>
-					<span class="sr-only">Previous</span>
-				</a>
-			</li>
-			<li class="page-item"><a class="page-link" href="#">1</a></li>
-			<li class="page-item"><a class="page-link" href="#">2</a></li>
-			<li class="page-item"><a class="page-link" href="#">3</a></li>
-			<li class="page-item">
-				<a class="page-link" href="#" aria-label="Next">
-					<span aria-hidden="true">&raquo;</span>
-					<span class="sr-only">Next</span>
-				</a>
-			</li>
-		</ul>
-	</nav>
-    </main>
+		</table>		
+	</div>
+	<!-- 카테고리 리스트 e-->
+	
+	<!-- 카테고리 등록 s-->
+	<c:if test="${fn:length(hctgcd) == 1}">
+		<c:set var="level" value="대분류" />
+	</c:if>
+	<c:if test="${fn:length(hctgcd) == 3}">
+		<c:set var="level" value="중분류" />
+	</c:if>
+	<c:if test="${fn:length(hctgcd) == 5}">
+		<c:set var="level" value="소분류" />
+	</c:if>	
+	<div class="card">
+		<div class="card-header">
+			그룹 추가
+		</div>
+		<div class="card-block">
+			<form name="frm" id="frm" target="">
+			<input type="hidden" name="hctgcd" id="hctgcd" value="${hctgcd}"/>
+			<input type="hidden" name="ctgcd" id="ctgcd" value="${ctgcd}"/>			
+			<table class="table table-hover">
+				<tr>
+					<td>카테고리 분류</td>
+					<td>카테고리 코드</td>
+					<td>카테고리 명</td>
+					<td>설명</td>
+					<td>사용유무</td>
+				</tr>
+				<tr>
+					<td>${level}</td>					
+					<td>${ctgcd}</td>
+					<td>
+						<div class="input-group mb-2 mb-sm-0">
+							<input type="text" class="form-control" name="ctgnm" id="ctgnm" placeholder="카테고리 명">
+						</div>
+					</td>
+					<td>
+						<button type="button" class="btn btn-primary" onclick="fn_save()">저장</button>
+					</td>
+					<td>
+						<select name="use" id="use">
+							<option value="Y">사용</option>
+							<option value="N">미사용</option>
+						</select>
+					</td>
+				</tr>
+			</table>			
+			</form>			
+		</div>
+	</div>
+	<!-- 카테고리 등록 e-->
+	</main>

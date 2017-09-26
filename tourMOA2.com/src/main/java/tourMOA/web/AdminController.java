@@ -11,12 +11,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import tourMOA.service.CategoryService;
+import tourMOA.service.CategoryVO;
 import tourMOA.service.DefaultListVO;
 import tourMOA.service.GoodsService;
 import tourMOA.service.GoodsVO;
 
 @Controller
 public class AdminController {
+	
+	/** categoryService */
+	/* categoryService 서비스를 사용하기 위해 선언함
+	 * impl에서의 이름과 동일*/
+	@Resource(name = "categoryService")
+	private CategoryService categoryService;
 	
 	@Resource(name="goodsService")
 	private GoodsService goodsService;
@@ -143,18 +151,50 @@ public class AdminController {
 	
 	/*카테고리 리스트 VIEW*/
 	@RequestMapping("/adminCategoryList.do")
-	public String adminCategoryList() {
+	public String selectCategoryList(DefaultListVO vo, Model model) throws Exception {
+		
+		System.out.println("test");
+		if(	vo.getSrchContn() == null 
+			|| vo.getSrchContn().equals("")
+			|| vo.getSrchKeywd() == null 
+			|| vo.getSrchKeywd().equals("") ) {
+			
+			vo.setSrchContn("hctgcd");
+			vo.setSrchKeywd("0");
+		}
+
+		List<?> list = categoryService.selectCategoryList(vo);
+
+		model.addAttribute("srchContn",vo.getSrchContn());
+		model.addAttribute("srchKeywd",vo.getSrchKeywd());
+		model.addAttribute("rslist", list);
+			
 		return "admin/Category/adminCategoryList";
 	}
+	
 	/*카테고리 등록 VIEW*/
 	@RequestMapping("/adminCategoryWrite.do")
-	public String adminCategoryWrite() {
-		return "admin/Category/adminCategoryWrite";
-	}
+	@ResponseBody public Map<String, String> insertCtg( CategoryVO vo) 
+            throws Exception {
+		
+		String result="";
+		int cnt = 0;
+		Map<String, String> map = new HashMap<String, String>();
+		
+		result = categoryService.insertCategory(vo);
+		if(result == null) {
+			result = "ok";
+		}
+		map.put("result", result);
+		return map;
+	}	
+	
 	/*카테고리 수정 VIEW*/
 	@RequestMapping("/adminCategoryMod.do")
 	public String adminCategoryMod() {
 		return "admin/Category/adminCategoryMod";
-	} 
+	}
+	
+	
 }
 

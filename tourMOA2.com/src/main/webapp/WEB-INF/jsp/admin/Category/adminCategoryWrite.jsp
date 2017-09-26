@@ -70,7 +70,7 @@ function fn_save() {
 </table>
 <form name="frm" id="frm" target="">
 <input type="hidden" name="hctgcd" id="hctgcd" value="${hctgcd}"/>
-<input type="hidden" name="hctgcd" id="ctgcd" value="${ctgcd}"/>
+<input type="hidden" name="ctgcd" id="ctgcd" value="${ctgcd}"/>
 <table border="1" style="width:98%">
 	<caption>카테고리 등록</caption>
 	<colgroup>

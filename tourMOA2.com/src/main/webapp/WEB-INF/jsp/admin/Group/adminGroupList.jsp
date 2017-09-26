@@ -46,8 +46,7 @@
 				</tr>
 			</tbody>
 		</table>
-	</div>
-	
+	</div>	
 	<div class="card">
 		<div class="card-header">
 			그룹 추가
