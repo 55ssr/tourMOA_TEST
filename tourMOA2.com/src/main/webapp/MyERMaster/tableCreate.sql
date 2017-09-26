@@ -187,6 +187,20 @@ CREATE TABLE ticket
 	PRIMARY KEY (unq)
 );
 
-
-
-
+	-- goods 테이블 지역 추가
+	ALTER TABLE goods ADD(location varchar(20));
+	-- goods 테이블 아동가 추가
+	ALTER TABLE goods ADD(priceCh number);
+	-- goods 테이블 유아가 추가
+	ALTER TABLE goods ADD(priceIn number);
+	-- goods 테이블 "1박" 추가
+	ALTER TABLE goods ADD(period1 varchar2(20));
+	-- goods 테이블 "2일" 추가
+	ALTER TABLE goods ADD(period2 varchar2(20));
+	-- goods 테이블 경유여부 추가
+	ALTER TABLE goods ADD(via char(1));
+	-- goods 테이블 경유지들 추가
+	ALTER TABLE goods ADD(vias varchar(50));
+	-- goods 테이블 사용여부 추가
+	ALTER TABLE goods ADD(use char(1));
+	

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+	
+<sqlMap namespace="Notice">
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="searchVO" type="egovframework.example.sample.service.SampleDefaultVO"/>
+	<typeAlias  alias="noticeVO" type="tourMOA.service.NoticeVO"/>
+	
+	<select id="noticeDAO.selectNoticeList" resultClass="egovMap">
+		SELECT * FROM notice
+	</select>
+	
+	<insert id="noticeDAO.insertNotice">
+		INSERT INTO notice 
+			( unq
+			  , gubun
+			  , title
+			  , content
+			  , hit
+			  , rdate
+			  , all_view )
+		VALUES ( reboard_unq.nextval
+			  , #gubun#
+			  , #title#
+			  , #content#
+			  , sysdate
+			  , #all_view# )
+	</insert>
+</sqlMap>

@@ -1,14 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
 
-<sqlMap namespace="Goods">
+<sqlMap namespace="GoodsSpace">
 
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
-	<typeAlias  alias="goodsVO" type="tourMOA.service.GoodsVO"/>
+	<typeAlias  alias="goodsVO" type="ezen.service.GoodsVO"/>
 	
 	<select id="goodsDAO.selectGoodsList" resultClass="egovMap">
 		SELECT * FROM goods
 	</select>
+	
+	<insert id="goodsDAO.insertGoods">
+		INSERT INTO goods (	unq,
+							title,
+							gubun,
+							location,
+							nation,
+							city,
+							price,
+							priceCh,
+							priceIn,
+							sdate,
+							edate,
+							period,
+							period1,
+							period2,
+							via,
+							vias,
+							use,
+							schd,
+							detail1,
+							detail2,
+							airline,
+							person,
+							code
+							) 
+		VALUES (SEQ_goods_unq.nextval,
+				'$title$',
+				#gubun#,
+				#location#,
+				#nation#,
+				#city#,
+				#price#,
+				#priceCh#,
+				#priceIn#,
+				#sdate#,
+				#edate#,
+				#period#,
+				#period1#,
+				#period2#,
+				#via#,
+				#vias#,
+				#use#,
+				#schd#,
+				#detail1#,
+				#detail2#,
+				#airline#,
+				#person#,
+				#code#
+				)
+	</insert>
+	
+	
+	<!-- 
+	
+	+ location
+	
+	+ priceCh
+	+ priceIn
+			
+	period -> period1, 2
+	
+	+ via 직항경유
+	+ vias 경유지
+	
+	+ use
+	
+	
+	ALTER TABLE goods ADD(priceCh number);
+	ALTER TABLE goods ADD(priceIn number);
+	ALTER TABLE goods ADD(period1 varchar2(20));
+	ALTER TABLE goods ADD(period2 varchar2(20));
+	
+	ALTER TABLE goods ADD(via char(1));
+	ALTER TABLE goods ADD(vias varchar(50));
+	
+	ALTER TABLE goods ADD(use char(1));
+
+	
+	
+	 -->
+	<!-- 
+	unq number NOT NULL,
+	title varchar2(100),
+	gubun varchar2(20),
+	nation varchar2(20),
+	city varchar2(20),
+	price number,
+	sdate date,
+	edate date,
+	period varchar2(20),
+	schd varchar2(50),
+	detail1 varchar2(4000),
+	detail2 varchar2(4000),
+	airline varchar2(50),
+	person number,
+	code varchar2(50),
+	PRIMARY KEY (unq) -->
+	
+	
+	
+	
+	
 	
 	<!-- <insert id="ctgDAO.insertCtg">
 		INSERT INTO category (

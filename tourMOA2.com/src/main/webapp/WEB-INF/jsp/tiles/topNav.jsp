@@ -1,14 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-<div style="color:red;border:1px solid red; width:100%; height:100px">main 용 네비 바 심어주세요 <br />jsp/tiles/topNav.jsp</div>
-
-<!--
-기존꺼임 삭제해도 됨
  <div id="navi">
      	   <div id="tt">   
 	            <ul>
-	                <li>해외패키지 </li>
-	                <li>자유여행 </li>
+	                <a href="/product/detail1.do"><li>해외패키지</li></a>
+	                <a href="/product/detail2.do"><li>자유여행 </li></a>
 	                <li>허니문 </li>
 	                <li>골프 </li>
 	                <li>부산/대구출발</li>
@@ -19,8 +14,5 @@
             </div>          
         </div>
     </div>  
-    header부분 
-   
 </div>
 
- -->

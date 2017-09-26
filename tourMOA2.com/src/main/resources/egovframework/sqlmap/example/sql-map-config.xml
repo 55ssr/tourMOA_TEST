@@ -4,5 +4,6 @@
 <sqlMapConfig>
 	<sqlMap resource="egovframework/sqlmap/example/sample/EgovSample_Sample_SQL.xml"/>
 	<sqlMap resource="egovframework/sqlmap/example/tourMOA/Goods_SQL.xml"/>
+	<sqlMap resource="egovframework/sqlmap/example/tourMOA/Notice_SQL.xml"/>
 	<sqlMap resource="egovframework/sqlmap/example/tourMOA/Member_SQL.xml"/>
 </sqlMapConfig>

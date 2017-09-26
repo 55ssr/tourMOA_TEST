@@ -16,4 +16,8 @@ public class GoodsDAO extends EgovAbstractDAO{
 		return list("goodsDAO.selectGoodsList", vo);
 	}
 
+	public String insertGoods(GoodsVO vo) {
+		return (String) insert("goodsDAO.insertGoods", vo);
+	}
+
 }

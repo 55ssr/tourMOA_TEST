@@ -1,11 +1,24 @@
 package tourMOA.web;
 
+import java.util.List;
+
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import egovframework.example.sample.service.SampleDefaultVO;
+import tourMOA.service.NoticeService;
+import tourMOA.service.NoticeVO;
 
 @Controller
 public class CustomerController {
+	@Resource(name = "noticeService")
+	private NoticeService noticeService;
 	
+
 	/*고객센터 메인페이지*/
 	@RequestMapping("customer/main.do")
 	public String admin() {
@@ -14,8 +27,27 @@ public class CustomerController {
 	
 	/*공지사항리스트*/
 	@RequestMapping("customer/noticeList.do")
-	public String noticeList() {
+	public String selectNoticeList(@ModelAttribute("searchVO")SampleDefaultVO searchVO,Model model) throws Exception {
+		
+		List<?> list = noticeService.selectNoticeList(searchVO);
+		
+		model.addAttribute("resultList",list);
+		
 		return "customer/noticeList";
+	}
+	
+	/*공지사항 작성 화면*/
+	@RequestMapping("customer/noticeWrite.do")
+	public String noticeWrite() {
+		return "customer/noticeWrite";
+	} 
+	
+	@RequestMapping("/noticeSave.do")
+	public String insertNotice(NoticeVO vo) throws Exception {
+		
+		noticeService.insertNotice(vo);
+		
+		return "redirect:/noticeList.do";
 	}
 	
 	/*여행후기*/
