@@ -6,7 +6,7 @@
 <script>
 function fn_popup(){
 	var f = document.listFrm;
-	var url = "/CategoryRegPopup.do";
+	var url = "/adminCategoryWrite.do";
 	
 	window.open(url,"ctgReg","width=500,height=300,resizable=yes,left=500,top=200");
 
@@ -18,7 +18,7 @@ function fn_popup(){
 
 function fn_list(cd) {
 	var f = document.listFrm;
-	var url = "/CategoryList.do";
+	var url = "/adminCategoryList.do";
 
 	f.srchContn.value = "hctgcd";
 	f.srchKeywd.value = cd;
@@ -31,7 +31,7 @@ function fn_list(cd) {
 
 function fn_detail(cd) {
 	var f = document.listFrm;
-	var url = "/CategoryModPopup.do";
+	var url = "/adminCategoryMod.do";
 
 	window.open(url,"ctgReg","width=500,height=300,resizable=yes,left=500,top=200");
 
@@ -61,7 +61,7 @@ function fn_detail(cd) {
 					<input type="submit" value="검색" style="height:26px;"/>
 				</td>
 				<td align="right">
-					<input type="button" value="목록" onclick="location.href='/ctgList.do'"/>
+					<input type="button" value="목록" onclick="location.href='/adminCategoryList.do'"/>
 					<input type="button" value="카테고리등록" onclick="fn_popup()">
 				</td>
 			</tr>

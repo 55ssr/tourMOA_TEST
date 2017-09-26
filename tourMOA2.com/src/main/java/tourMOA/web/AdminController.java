@@ -142,19 +142,19 @@ public class AdminController {
 	}
 	
 	/*카테고리 리스트 VIEW*/
-	@RequestMapping("/CategoryList.do")
-	public String CategoryList() {
-		return "admin/Category/CategoryList";
+	@RequestMapping("/adminCategoryList.do")
+	public String adminCategoryList() {
+		return "admin/Category/adminCategoryList";
 	}
 	/*카테고리 등록 VIEW*/
-	@RequestMapping("/CategoryRegPopup.do")
-	public String CategoryRegPopup() {
-		return "admin/Category/CategoryRegPopup";
+	@RequestMapping("/adminCategoryWrite.do")
+	public String adminCategoryWrite() {
+		return "admin/Category/adminCategoryWrite";
 	}
-	/*카테고리 리스트 VIEW*/
-	@RequestMapping("/CategoryModPopup.do")
-	public String CategoryModPopup() {
-		return "admin/Category/CategoryModPopup";
+	/*카테고리 수정 VIEW*/
+	@RequestMapping("/adminCategoryMod.do")
+	public String adminCategoryMod() {
+		return "admin/Category/adminCategoryMod";
 	} 
 }
 
