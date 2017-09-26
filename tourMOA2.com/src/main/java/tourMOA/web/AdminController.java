@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import tourMOA.service.DefaultListVO;
 import tourMOA.service.GoodsService;
@@ -21,10 +20,6 @@ public class AdminController {
 	
 	@Resource(name="goodsService")
 	private GoodsService goodsService;
-
-	/** MappingJackson2JsonView */
-	@Resource(name = "jsonView")
-	protected MappingJackson2JsonView jsonView;
 	
 	@RequestMapping("/admin.do")
 	public String admin() {
@@ -75,9 +70,9 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/adminGoodsWriteSave.do")
-	@ResponseBody public Map<String, String> insertGoods(GoodsVO vo) throws Exception {
+	@ResponseBody public Map<String, Object> insertGoods(GoodsVO vo) throws Exception {
 		String result = "";
-		HashMap<String, String> map = new HashMap<String, String>();
+		HashMap<String, Object> map = new HashMap<String, Object>();
 		System.out.println("vo ======================== " + vo.getTitle());
 		result = goodsService.insertGoods(vo);
 		if(result == null) result = "ok";
@@ -145,6 +140,21 @@ public class AdminController {
 	public String adminEstimateDetail() {
 		return "admin/Estimate/adminEstimateDetail";
 	}
+	
+	/*카테고리 리스트 VIEW*/
+	@RequestMapping("/CategoryList.do")
+	public String CategoryList() {
+		return "admin/Category/CategoryList";
+	}
+	/*카테고리 등록 VIEW*/
+	@RequestMapping("/CategoryRegPopup.do")
+	public String CategoryRegPopup() {
+		return "admin/Category/CategoryRegPopup";
+	}
+	/*카테고리 리스트 VIEW*/
+	@RequestMapping("/CategoryModPopup.do")
+	public String CategoryModPopup() {
+		return "admin/Category/CategoryModPopup";
+	} 
 }
-
 
