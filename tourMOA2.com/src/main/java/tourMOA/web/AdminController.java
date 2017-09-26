@@ -155,7 +155,7 @@ public class AdminController {
 	@RequestMapping("/CategoryModPopup.do")
 	public String CategoryModPopup() {
 		return "admin/Category/CategoryModPopup";
-	}
+	} 
 }
 
 
