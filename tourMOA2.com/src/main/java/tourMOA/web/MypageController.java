@@ -1,11 +1,29 @@
 package tourMOA.web;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
+
+import tourMOA.service.MemberService;
+import tourMOA.service.MemberVO;
 
 @Controller
 public class MypageController {
 	
+	/** MappingJackson2JsonView */
+	@Resource(name = "jsonView")
+	protected MappingJackson2JsonView jsonView;
+	
+	@Resource(name ="memberService")
+	private MemberService memberService; 
 	/*마이페이지 메인*/
 	@RequestMapping("mypage/main.do")
 	public String main() throws Exception{		
@@ -38,15 +56,21 @@ public class MypageController {
 	
 	/*마이페이지 회원가입 2단계*/
 	@RequestMapping("mypage/joinStep02.do")
-	public String joinStep02() throws Exception{		
+	public String joinStep02() throws Exception{	
+		
 		return "mypage/joinStep02";
 	}
 	
 	/*마이페이지 회원가입 3단계*/
 	@RequestMapping("mypage/joinStep03.do")
-	public String joinStep03() throws Exception{		
+	public String selectjoinStep03(@RequestParam("name") String name,Model model) throws Exception{		
+		
+		MemberVO vo = memberService.selectjoinStep03(name);	                                 
+		model.addAttribute("vo",vo);
+		
 		return "mypage/joinStep03";
 	}
+	
 	
 	/*마이페이지 세션체크부문*/
 	@RequestMapping("mypage/sessionCheckJSON.do")
@@ -55,9 +79,19 @@ public class MypageController {
 	}
 	
 	/*마이페이지 아이디 중복확인 부문*/
-	@RequestMapping("mypage/selectCustIdDuplication.do")
-	public String selectCustIdDuplication() throws Exception{		
-		return "mypage/joinStep03";
+	@RequestMapping(value = "/mypage/selectCustIdDuplication.do")
+	@ResponseBody public Map<String, Object> selectCustIdDuplication(MemberVO vo) 
+			throws Exception {
+		int cnt = 0;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		System.out.println("=====member controller====" + vo.getId());
+		
+		cnt = memberService.selectCustIdDuplication(vo);
+		
+		map.put("cnt", cnt);
+
+		return map;
 	}
 	
 	/*마이페이지 우편번호 찾기 부문*/

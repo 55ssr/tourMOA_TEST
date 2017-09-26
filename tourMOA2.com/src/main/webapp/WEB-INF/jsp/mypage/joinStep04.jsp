@@ -110,6 +110,3 @@
 	</div>
     </section><!--[[ content End ]]-->
 	</form>
-</div><!--[[ wrap End ]]-->
-</div>
-

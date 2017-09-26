@@ -116,7 +116,6 @@ CREATE TABLE member
 	PRIMARY KEY (unq)
 );
 
-
 CREATE TABLE point
 (
 	unq number NOT NULL,

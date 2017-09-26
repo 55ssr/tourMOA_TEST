@@ -1,4 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator"%>
 <%
 	String plusInfo = request.getParameter("plusInfo");
 	String agreeSav = request.getParameter("agreeSav");
@@ -6,7 +13,7 @@
 	String agreeShr = request.getParameter("agreeShr");
 	String agreeMkt = request.getParameter("agreeMkt");
 	String custStatCd = request.getParameter("custStatCd");
-	String name 	= request.getParameter("name");
+	String name = request.getParameter("name");
 	String phone = request.getParameter("phone");
 %>
 <link rel="stylesheet" href="/css/mypage.css" />
@@ -14,60 +21,48 @@
 		$(document).ready(function(){	
 	
 		// 좌우 방향키, 백스페이스, delete , tab키에 대한 예외	
-		$("#custId").keydown(function(event) {		
+		$("#id").keydown(function(event) {		
 			if(event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 37 || event.keyCode ==39 || event.keyCode == 46 ) return;
 			//$(this).val($(this).val().replace(/[\ㄱ-ㅎ ㅏ-ㅣ 가-힣] /g , '' ));
 		});
-		
-		//아이디가 바뀌면
-		$("#custId").change(function(){
-			$("input:hidden[name='idChk']").val("N")
-		});
-		
 		//중복체크
 		$("#btnDup").click(function(){
-	
-			var custId = $("#custId").val();
-	
-			if(custId == ""){
-				alert("아이디를 입력하세요");
-				$("#custId").focus();
-				return;
+			
+			if($("#id").val() == "") {
+				alert("아이디를 입력해주세요.");
+				$("#id").focus();
+				return false;
 			}
 					
-			if (custId.search(/\s/g) != -1) {
+		 	/*  if (id.search(/\s/g) != -1) {
 				alert("아이디에 공백은 입력 불가합니다. ");
 				return false;
 			}
 	
-			if(custId.search(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힝]/) != -1){
+			if(id.search(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힝]/) != -1){
 				alert("한글은 아이디로 입력 불가합니다. \n \n 영문과 숫자로 10자이내로 신청해 주세요");
-				$("#custId").val("");
-				$("#custId").focus();
+				$("#id").val("");
+				$("#id").focus();
 				return;
-			}
-	
+			} */  
+				 var param ="id="+$("#id").val();
+				alert(param); 
 			$.ajax({
-				  type:"POST"	
-				, url:"/mypage/selectCustIdDuplication.do"
-				, data:{
-				      "custId"   : custId
-				}
+				  type:'POST'
+				, url:"<c:url value='/mypage/selectCustIdDuplication.do'/>"
+				, data:param
 				, dataType: 'JSON'
-				, async: false
 			   
-				, success:function(jsonResult) {
-					if(jsonResult == 0){
+				, success:function(data) {
+					if(data.cnt == 0){
+						alert("사용할 수 있는 아이디입니다.");
 						$("#idSpan").css({color:"#2F9D27"});
-						$("#idSpan").html("사용할 수 있는 아이디입니다.");
 						$("input:hidden[name='idChk']").val("Y")
 					}else{
 						$("#idSpan").css({color:"#ff0000"});
 						$("#idSpan").html("사용할 수 없는 아이디입니다.");
 						$("input:hidden[name='idChk']").val("N")
 					}
-					
-					
 				}
 				, error: function() {
 					//alert('Loading Error! ');
@@ -76,59 +71,42 @@
 		   });
 		});
 		
-		/* 비밀번호 보안등급 체크 : 위험, 안전, 강력(S)
-	 	$("#custPw1").keyup(function(){
-	        
-		var pwCheck = /^.*(?=.{8,16})(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).*$/;
-			
-			patten = eval("pwCheck");
-	 		if ($(this).val().length > 0 ){
-	 			if(!patten.test( $(this).val() )){
-	 				$("#passSpan").css({color:"#ff0000"});
-	 				$("#passSpan").html("8~16자리 영문 (소/대문자), 숫자 3종류를 조합한 최소 8자리 이상으로 사용해 주세요.");
-	 				$("#custPassChk").val("N");
-	 			} else {
-	 				$("#passSpan").css({color:"#2F9D27"});
-	 				$("#passSpan").html("사용 가능한 비밀번호 입니다.");
-	 	        	$("#custPassChk").val("Y");
-	 			}
-	 		} else {
-	 			$("#passSpan").html("");
-	 		}		
-	 	}); */
-		$("#custPw1").focusout(function(){
+		
+		$("#pwd").focusout(function(){
 			var cnt = 0;
 			var format1 = /[0-9]/;
-		    if(format1.test($("#custPw1").val())){
+		    if(format1.test($("#pwd").val())){
 		    	cnt ++ ;
 	// 	    	alert('숫자');
 		    }
 		    var format2 = /[a-z]/;
-		    if(format2.test($("#custPw1").val())){
+		    if(format2.test($("#pwd").val())){
 		    	cnt ++ ;
 	// 	    	alert('소문자');
 		    }
 		    var format3 = /[A-Z]/;
-		    if(format3.test($("#custPw1").val())){
+		    if(format3.test($("#pwd").val())){
 		    	cnt ++ ;
 	// 	    	alert('대문자');
 		    }
 		    var format4 = /[~?!@#$%<>^&*\()\-=+_\’\:\;\.\,\"\'\[\]\{\}\/\|\`]/gi;
-		    if(format4.test($("#custPw1").val())){
+		    if(format4.test($("#pwd").val())){
 		    	cnt ++ ;
 	// 	    	alert('특수문자');
 		    }
 		    
-			if(cnt < 3 || $(this).val().length < 8 || $(this).val().length > 16){
+		    if(cnt < 3 || $(this).val().length < 8 || $(this).val().length > 16){
 				$("#passSpan").css({color:"#ff0000"});
-				$("#passSpan").html("8~16자리 영문 (소/대문자), 숫자, 특수문자 중 3종류를 조합한 최소 8자리 이상으로 사용해 주세요.");
+				$("#passSpan").keyup("8~16자리 영문 (소/대문자), 숫자, 특수문자 중 3종류를 조합한 최소 8자리 이상으로 사용해 주세요.");
 				$("#custPassChk").val("N");
 			} else {
 				$("#passSpan").css({color:"#2F9D27"});
-				$("#passSpan").html("사용 가능한 비밀번호 입니다.");
+				$("#passSpan").keyup("사용 가능한 비밀번호 입니다.");
 	        	$("#custPassChk").val("Y");
 			}
 		});
+
+		
 		
 		// domain을 select로 선택
 		$("#email3").change(function(){
@@ -142,33 +120,20 @@
 		});
 	
 		//성별 선택 여부
-		$("#genderCdM").click(function(){
+		$("#gender").click(function(){
 			var gender = this.checked;
 			
 			if(gender) { 
-				$("#genderCdF").removeAttr("checked"); 
-				$("#genderCd").val("M");
+				$("#gender").removeAttr("checked"); 
+				$("#gender").val("M");
 			}else{ 
-				var genderF = document.getElementById("genderCdF").checked;
+				var genderF = document.getElementById("gender").checked;
 				if(genderF == false){
-					$("#genderCd").val("");	
+					$("#gender").val("");	
 				}
 			}		
 		});
 	
-		$("#genderCdF").click(function(){
-			var gender = this.checked;
-			
-			if(gender) { 
-				$("#genderCdM").removeAttr("checked"); 
-				$("#genderCd").val("F");
-			}else{ 
-				var genderM = document.getElementById("genderCdM").checked;
-				if(genderM == false){
-					$("#genderCd").val("");	
-				}
-			}		
-		});
 		
 		//이메일 수신여부
 		/* $("#emailYnY").click(function(){
@@ -231,39 +196,7 @@
 		}); */
 		
 		//결혼여부
-		$("#marryYnY").click(function(){
-			var marry = this.checked;
-			
-			if(marry) { 
-				$("#marryDiv").css("display","block"); 
-				$("#marryYnN").removeAttr("checked"); 
-				$("#marryYn").val("Y");
-			}else{ 
-				$("#marryDiv").css("display","none");
-				var marryN = document.getElementById("marryYnN").checked;
-				if(marryN == false){
-					$("#marryYn").val("");	
-				}
-			}		
-		});
 	
-		$("#marryYnN").click(function(){
-			var marry = this.checked;
-			
-			if(marry) { 
-				$("#marryDiv").css("display","none"); 
-				$("#marryYnY").removeAttr("checked"); 
-				$("#marryYn").val("N");
-			}else{ 
-				
-				var marryY = document.getElementById("marryYnY").checked;
-				if(marryY == false){
-					$("#marryYn").val("");	
-				}else if(marryY == true){
-					$("#marryDiv").css("display","block");
-				}
-			}		
-		});
 		
 		$("#mbrFrm").validate({
 			
@@ -280,10 +213,10 @@
 					$("input:hidden[name='email']").val(email);
 				}
 				
-				if (($("input:text[name='custId']").val()).search(/\s/g) != -1) {
+			/* 	if (($("input:text[name='id']").val()).search(/\s/g) != -1) {
 					alert("아이디에 공백은 입력 불가합니다. ");
 					return false;
-				}
+				} */
 	
 				if($("input:hidden[name='idChk']").val() == "N"){
 					alert("아이디 중복 체크를 해주세요");
@@ -294,8 +227,10 @@
 					alert("8~16자리 영문 (소/대문자), 숫자, 특수문자 중 3종류를 조합한 최소 8자리 이상으로 사용해 주세요.");
 					return false;
 				}
+			}
+		});
 				
-				//결혼기념일
+		/* 		//결혼기념일
 				var marryYear = $("#marryYear option:selected").val();
 				var marryMonth = $("#marryMonth option:selected").val();
 				var marryDay = $("#marryDay option:selected").val();
@@ -306,9 +241,9 @@
 				var marryDt = marryYear + marryMonth + marryDay;
 				
 				$("input:hidden[name='marryDt']").val(marryDt);
-				
+				 */
 				//패스워드
-				$("input:hidden[name='custPassEnc']").val( $("input:password[name='custPw1']").val() );
+				$("input:hidden[name='custPassEnc']").val( $("input:password[name='pwd']").val() );
 				
 				//휴대전화
 				if("" != ""){
@@ -325,239 +260,23 @@
 				}
 				
 				
-				var result = confirm("회원으로 가입 하시겠습니까?");
+				/* var result = confirm("회원으로 가입 하시겠습니까?"); */
 				
 				if(result){
 					return true;
 				}else{
 					return false;
 				}
-			}
-			,rules: {	
-					  
-				  //아이디
-				  custId : "required"
-				
-				  //비밀번호
-				, custPw1 : "required"
-				  //비밀번호 확인
-				, custPw2 : {
-						 required: true
-					   , equalTo: "#custPw1"
-				}
-				
-				  //성명
-				, custNmKor : "required"
-				
-			      //성별
-				, genderCd : "required"
-				
-				  //email1
-				, email1 : "required"
-				
-				  //email2
-				, email2 : "required"			
-				
-				
-				  //휴대전화1
-				, mobileTel1 : {
-					 	 required: true
-					   , number: true
-					   
-				}
-				
-				  //휴대전화2
-				, mobileTel2 : {
-				 	 	 required: true
-					   , number: true
-					   , rangelength: [3, 4]
-				}
-				
-				  //휴대전화3
-				, mobileTel3 : {
-				 	 	 required: true
-					   , number: true
-					   , rangelength: [3, 4]
-				}
-				  
-				  //자택전화1
-				, homeTel1 : {
-				 	 	 required: false
-					   , number: true				  
-				}
-				  
-				  //자택전화2
-				, homeTel2 : {
-				 	 	 required: false
-					   , number: true
-					   , rangelength: [3, 4]
-				}
-				  
-				  //자택전화3
-				, homeTel3 : {
-				 	 	 required: false
-					   , number: true
-					   , rangelength: [3, 4]
-				}
-				  
-				  //우편번호
-				, zipCd : {
-			 	 	 required: false
-				   , number: true
-				   , maxlength: 6
-				}
-				  
-				  //주소
-				, custAddr : {
-			 	 	 required: false
-				   , maxlength: 100
-				}
-				  
-				  //상세주소
-				, custAddrDetail : {
-			 	 	 required: false
-				   , maxlength: 100
-				}  
-				  
-				
-				  //생년월일1
-				, birthYear : "required"
-				
-				  //생년월일2
-				, birthMonth : "required"
-				
-				  //생년월일3
-				, birthDay : "required"
-				
-				 //결혼여부
-				, marryYn : "required"
-				
-				 //결혼여부
-				, marryYear : {
-			 	 	 required: function(element) {
-					 	        return $("input:radio[name='marryYn']:checked").val() == "Y";
-					 	      }			   
-				} 
-				  
-				, marryMonth : {
-			 	 	 required: function(element) {
-			 	 				return $("input:radio[name='marryYn']:checked").val() == "Y";
-					 	      }			   
-				} 
-				
-				, marryDay : {
-			 	 	 required: function(element) {
-			 	 				return $("input:radio[name='marryYn']:checked").val() == "Y";
-					 	      }			   
-				}  
-			}
-			, messages:{
-				custId : "아이디를  입력하세요"
 	
-					  //비밀번호
-					, custPw1 : {
-							 required: "비밀번호를 입력하세요"
-					}
-					  //비밀번호 확인
-					, custPw2 : {
-							 required: "비밀번호 확인을 입력하세요"
-						   , equalTo: "비밀번호와 같은 값을 입력해 주세요"
-					}
-	
-					  //성명
-					, custNmKor : "이름를 입력하세요"
-	
-					  //성별
-					, genderCd : "성별을 선택하세요"
-	
-					  //email1
-					, email1 : "이메일을 입력하세요"
-	
-					  //email2
-					, email2 : "이메일을 입력하세요"
-	
-	
-	
-					  //휴대전화1
-					, mobileTel1 : {
-							 required: "휴대전화 앞자리를 입력하세요"
-						   , number: "숫자만 가능합니다"
-						   
-					}
-	
-					  //휴대전화2
-					, mobileTel2 : {
-							 required: "휴대전화 가운데자리를 입력하세요"
-						   , number: "숫자만 가능합니다"
-						   , rangelength: "3~4자만 가능합니다"
-					}
-	
-					  //휴대전화3
-					, mobileTel3 : {
-							 required: "휴대전화 끝자리를 입력하세요"
-						   , number: "숫자만 가능합니다"
-						   , rangelength: "3~4자만 가능합니다"
-					}
-					  
-					  //자택전화1
-					, homeTel1 : {
-							  number: "숫자만 가능합니다"				  
-					}
-					  
-					  //자택전화2
-					, homeTel2 : {
-							 number: "숫자만 가능합니다"
-						   , rangelength: "3~4자만 가능합니다"
-					}
-					  
-					  //자택전화3
-					, homeTel3 : {
-							 number: "숫자만 가능합니다"
-						   , rangelength: "3~4자만 가능합니다"
-					}
-					  
-					  //우편번호
-					, zipCd : {
-						 number: "숫자만 가능합니다"
-					   , maxlength: "6자리 이하만 가능합니다"
-					}
-					  
-					  //주소
-					, custAddr : {
-						 maxlength: "100자리 이하만 가능합니다"
-					}
-					  
-					  //상세주소
-					, custAddrDetail : {
-						 maxlength: "100자리 이하만 가능합니다"
-					}				  
-	
-					  //생년월일1
-					, birthYear : "년도를 선택하세요"
-	
-					  //생년월일2
-					, birthMonth : "월을 선택하세요"
-	
-					  //생년월일3
-					, birthDay : "일자를 선택하세요"
-	
-					 //결혼여부
-					, marryYn : "결혼여부를 선택하세요"
-	
-					 //결혼여부
-					, marryYear : "년도를 선택하세요"
-					  
-					, marryMonth : "월을 선택하세요"
-	
-					, marryDay : "일자를 선택하세요"			
-			}
-		});		
 		
 		//취소
 		$("#btncancel").click(function(){
 			$(location).attr("href","/mypage/join.do");
-		});	
-	});	
+		});
+		
+	});
+		
+		
 	</script>
 <section id="content" class="contentSub">
 	<!--[[ content Start ]]-->
@@ -588,8 +307,8 @@
 	    <input type="hidden" name="mobileTel" 	id="mobileTel" 	    value="" />
 	    <input type="hidden" name="homeTel" 	id="homeTel" 	    value="" />
 	    <input type="hidden" name="idChk" 		id="idChk" 		    value="N" />
-	    <input type="hidden" name="custCi" 		id="custCi" 	    value="/2d5tE82Nfe9SimLsXI2udw3lcFDpjDPpSnHRyBjporp4MKOvzQzkFbUWGpXNRNrOTkcy7HLPM9BWQrU2bx5DA==" />
-	    <input type="hidden" name="custDi" 		id="custDi" 	    value="MC0GCCqGSIb3DQIJAyEAd8PWVUq+if1c/C40N22vyjJol/EeI5urLtQRV7+FnRc=" />
+	    <input type="hidden" name="custCi" 		id="custCi" 	    value="" />
+	    <input type="hidden" name="custDi" 		id="custDi" 	    value="" />
 	    <input type="hidden" name="plusInfo" 	id="plusInfo"		value="<%=plusInfo%>" />
 	    <input type="hidden" name="agreeSav" 	id="agreeSav" 	    value="<%=agreeSav%>" />
 	    <input type="hidden" name="agreePrv" 	id="agreePrv" 	    value="<%=agreePrv%>" />
@@ -618,28 +337,29 @@
 	<caption>가입정보입력</caption>
 	<tbody>
 		<tr>
-			<th scope="row"><label for="custId">아이디</label><span class="chk"></span></th>
+			<th scope="row"><label for="id">아이디</label><span class="chk"></span></th>
 			<td colspan="3">
-				<input type="text" name="custId" id="custId" maxlength="20">
+				<input type="text" name="id" id="id" maxlength="20">
 				<button type="button" name="btnDup" id="btnDup" class="btnChk">중복 확인</button>
 			</td>
 		</tr>
 		<tr>
-			<th scope="row"><label for="custPw1">비밀번호</label><span class="chk"></span></th>
-			<td colspan="3"><input type="password" name="custPw1" id="custPw1" maxlength="20">
+			<th scope="row"><label for="pwd">비밀번호</label><span class="chk"></span></th>
+			<td colspan="3"><input type="password" name="pwd" id="pwd" maxlength="20" ><div id="passSpan"></div>
+			
 				<span class="regDesc">· 영문(소/대문자), 숫자,특수문자 중 3종류를 조합하여 8~16자리로 사용하시기 바랍니다. <br />
 				· 비밀번호 입력 시 우측 보안등급을 참조하여 안전한 비밀번호를 사용하시기 바랍니다.</span>
 			</td>
 		</tr>
 		<tr>
-			<th scope="row"><label for="custPw2">비밀번호 확인</label><span class="chk"></span></th>
-			<td colspan="3"><input type="password" name="custPw2" id="custPw2" maxlength="20">
+			<th scope="row"><label for="pwd2">비밀번호 확인</label><span class="chk"></span></th>
+			<td colspan="3"><input type="password" name="pwd2" id="pwd2" maxlength="20">
 				<span class="regDesc">· 재확인을 위해서입력하신비밀번호를 다시한번 입력해주세요.</span>
 			</td>
 		</tr>
 		<tr>
-			<th scope="row"><label for="custNmKor">성명</label><span class="chk"></span></th>
-			<td><input type="text" name="username" value="<%=name%>" readonly /></td>
+			<th scope="row"><label for="name">성명</label><span class="chk"></span></th>
+			<td><input type="text"  name="name" id="name" value="${name}" readonly /></td>
 			<th scope="row"><label for="genderCd">성별</label></th>
 			<td>
 				<input type="checkbox" name="genderCdM" id="genderCdM" value="M" ><span class="radio_txt"><label for="genderCdM">남성</label></span>
@@ -1062,5 +782,4 @@
 	    </div>  
 	</form>
 	</section>
-	</div>
-</div>
+	

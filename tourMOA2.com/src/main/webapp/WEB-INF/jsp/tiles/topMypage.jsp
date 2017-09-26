@@ -205,7 +205,7 @@ function fn_submit(){
 					<input type="hidden" name="agreeMkt" 	value="<%=agreeMkt%>" />
 					<input type="hidden" name="custStatCd"  value="<%=custStatCd%>" />		
                     <div class="input01">
-                        <span class="sbj mgb10"><label for="custId">성명</label></span><span class="cont mgb10"><input type="text" id="name" name="name" value="" maxlength="20"></span>
+                        <span class="sbj mgb10"><label for="name">성명</label></span><span class="cont mgb10"><input type="text" id="name" name="name" value="" maxlength="20"></span>
                     	<span class="sbj"><label for="custPassEnc">전화번호</label></span><span class="cont">
                     		<input type="text" name="phone"  id="phone" value="" placeholder="핸드폰 번호 입력" maxlength="13" onKeyDown="mphon(this);" onKeyUp="mphon(this);">
                     	</span>
