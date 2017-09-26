@@ -140,6 +140,22 @@ public class AdminController {
 	public String adminEstimateDetail() {
 		return "admin/Estimate/adminEstimateDetail";
 	}
+	
+	/*카테고리 리스트 VIEW*/
+	@RequestMapping("/CategoryList.do")
+	public String CategoryList() {
+		return "admin/Category/CategoryList";
+	}
+	/*카테고리 등록 VIEW*/
+	@RequestMapping("/CategoryRegPopup.do")
+	public String CategoryRegPopup() {
+		return "admin/Category/CategoryRegPopup";
+	}
+	/*카테고리 리스트 VIEW*/
+	@RequestMapping("/CategoryModPopup.do")
+	public String CategoryModPopup() {
+		return "admin/Category/CategoryModPopup";
+	}
 }
 
 
