@@ -24,9 +24,23 @@ public class CategoryServiceImpl  extends EgovAbstractServiceImpl implements Cat
 		return list;
 	}		
 		
-		
 	@Override
 	public String insertCategory(CategoryVO vo) throws Exception {
 		return categoryDAO.insertCategory(vo);
+	}	
+
+	@Override
+	public int selectCategoryCdCnt(String cd) throws Exception {		
+		return categoryDAO.selectCategoryCdCnt(cd);
+	}
+
+	@Override
+	public String selectCategoryCdMax(String cd) throws Exception {		
+		return categoryDAO.selectCategoryCdMax(cd);
+	}
+
+	@Override
+	public CategoryVO selectCategoryDetail(CategoryVO vo) throws Exception {		
+		return categoryDAO.selectCategoryDetail(vo);
 	}	
 }

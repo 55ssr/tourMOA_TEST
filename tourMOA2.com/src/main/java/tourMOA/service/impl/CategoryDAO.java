@@ -18,5 +18,17 @@ public class CategoryDAO extends EgovAbstractDAO {
 
 	public String insertCategory(CategoryVO vo) {
 		return (String) insert("categoryDAO.insertCategory",vo);
+	}	
+
+	public int selectCategoryCdCnt(String cd) {
+		return (int) select("categoryDAO.selectCategoryCdCnt",cd);
+	}
+
+	public String selectCategoryCdMax(String cd) {		
+		return (String) select("categoryDAO.selectCategoryCdMax",cd);
+	}
+
+	public CategoryVO selectCategoryDetail(CategoryVO vo) {		
+		return (CategoryVO) select("categoryDAO.selectCategoryDetail",vo);
 	}
 }
