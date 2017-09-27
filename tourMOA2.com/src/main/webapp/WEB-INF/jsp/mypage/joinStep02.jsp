@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/css/mypage.css" />
+
 	<!--[[ content Start ]]-->
 	<section id="content" class="contentSub">		
 		<div class="tit join_tit" title="회원가입">
