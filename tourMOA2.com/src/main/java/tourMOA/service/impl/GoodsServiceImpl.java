@@ -27,4 +27,9 @@ public class GoodsServiceImpl extends EgovAbstractServiceImpl implements GoodsSe
 		return goodsDAO.insertGoods(vo);
 	}
 
+	@Override
+	public int selectGoodsTotal(DefaultListVO searchVO) throws Exception {
+		return goodsDAO.selectGoodsTotal(searchVO);
+	}
+
 }
