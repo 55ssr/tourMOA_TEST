@@ -3,7 +3,6 @@ package tourMOA.service.impl;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import tourMOA.service.MemberService;
@@ -21,9 +20,9 @@ public class MemberServiceImpl extends EgovAbstractServiceImpl implements Member
 	}
 
 	@Override
-	public MemberVO selectjoinStep03(String name) {
-		return memberDAO.selectjoinStep03(name);
+	public String insertMemberJoin(MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return memberDAO.insertMemberJoin(vo); 
 	}
-
 	
 }

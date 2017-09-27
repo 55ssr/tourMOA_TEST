@@ -1,4 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator"%>
 <%
 	String plusInfo = request.getParameter("plusInfo");
 	String agreeSav = request.getParameter("agreeSav");
@@ -6,6 +13,8 @@
 	String agreeShr = request.getParameter("agreeShr");
 	String agreeMkt = request.getParameter("agreeMkt");
 	String custStatCd = request.getParameter("custStatCd");
+	String name = request.getParameter("name");
+	String phone = request.getParameter("phone");
 %>
 <style>
 #mask {  
@@ -122,7 +131,7 @@ function PhonNumStr( str ){
          if(str.substring(0,2)=="02"){
              DataForm = "$1-$2"; 
              RegPhonNum = /([0-9]{2})([0-9]+)/; 
-         } else {
+         } else {  
              DataForm = "$1-$2"; 
              RegPhonNum = /([0-9]{3})([0-9]+)/; 
          }
@@ -176,11 +185,11 @@ function PhonNumStr( str ){
 
 function fn_submit(){	
 	var f = document.frmJoinPop;
+	var name=f.name.value;
 	if(f.name.value=""){
 		alert("이름을 입력해 주세요.");
 		return;
 	}
-	
 	$('#mask, .window').hide();
 	f.submit();
 }
@@ -197,20 +206,21 @@ function fn_submit(){
     <div class="layer_body">
         <div class="loginBox_01">
             <div class="box_top">
-                <form name="frmJoinPop" id="frmJoinPop" method="post" action="joinStep03.do">
+                <form name="frmJoinPop" id="frmJoinPop" method="post" action="/mypage/joinStep03.do">
                 	<input type="hidden" name="plusInfo" 	value="<%=plusInfo%>" />
 					<input type="hidden" name="agreeSav" 	value="<%=agreeSav%>" />
 					<input type="hidden" name="agreePrv" 	value="<%=agreePrv%>" />
 					<input type="hidden" name="agreeShr" 	value="<%=agreeShr%>" />
 					<input type="hidden" name="agreeMkt" 	value="<%=agreeMkt%>" />
-					<input type="hidden" name="custStatCd"  value="<%=custStatCd%>" />		
+					<input type="hidden" name="custStatCd"  value="<%=custStatCd%>" />			
                     <div class="input01">
                         <span class="sbj mgb10"><label for="name">성명</label></span><span class="cont mgb10"><input type="text" id="name" name="name" value="" maxlength="20"></span>
                     	<span class="sbj"><label for="custPassEnc">전화번호</label></span><span class="cont">
                     		<input type="text" name="phone"  id="phone" value="" placeholder="핸드폰 번호 입력" maxlength="13" onKeyDown="mphon(this);" onKeyUp="mphon(this);">
                     	</span>
                     </div>
-                    <div class="input02"><button type="button" onclick="fn_submit()">인증확인</button></div>
+                    <div class="input02">
+                    <button type="button" onclick="fn_submit()">인증확인</button></div>
                 	<!-- <span class="chk"><input type="checkbox" id="chkSave" name="chkSave"><label for="chkSave">아이디저장</label></span> -->
                 </form>
             </div>
