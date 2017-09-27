@@ -6,7 +6,7 @@
 	<typeAlias alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="categoryVO" type="tourMOA.service.CategoryVO"/>
 	
-	<insert id="categoryDAO.insertCategory">
+	<!-- <insert id="categoryDAO.insertCategory">
 		INSERT INTO category (
 				ctgcd,
 				ctgnm,
@@ -22,33 +22,32 @@
 				sysdate,
 				sysdate
 			)
-	</insert>
+	</insert> -->
 	
 	<select id="categoryDAO.selectCategoryList" resultClass="egovMap">
-		SELECT	ctgcd,
+			SELECT 
+				ctgcd,
 				ctgnm,
-				use,
-				regdate
-		FROM 
-			category
-		WHERE
-			1 = 1
-			<isNotNull property="ctgcd">
-				<isNotEmpty property="ctgcd">
-					AND ctgcd LIKE #ctgcd# || '%'
-					AND length(ctgcd) = length(#ctgcd#)+2
-				</isNotEmpty>
+				SUBSTR(SYS_CONNECT_BY_PATH(ctgnm, '>'),1) Path,
+				use
+	 		FROM  
+	 			category 
+	    	WHERE
+    			1 = 1
+    		<isNotNull property="srchContn">
+    			<isNotNull property="srchKeywd">
+	    			<isEqual property="srchContn" compareValue="hctgcd">
+	    				AND hctgcd = #srchKeywd#
+	    			</isEqual>
+	    			<isEqual property="srchContn" compareValue="ctgnm">
+	    				AND ctgnm LIKE '%' || #srchKeywd# || '%' 
+	    			</isEqual>
+	    			<isEqual property="srchContn" compareValue="use">
+	    				AND use = #use#
+	    			</isEqual>
+	    		</isNotNull>
 			</isNotNull>
-			
-			<isNotNull property="ctgnm">
-				<isNotEmpty property="ctgnm">
-					AND ctgnm LIKE '%' || #ctgnm# || '%'
-				</isNotEmpty>
-			</isNotNull>			
-			<isNotNull property="use">
-				<isNotEmpty property="use">
-					AND use = #use#
-				</isNotEmpty>
-			</isNotNull>			
+			START WITH hctgcd = '0'
+ 			CONNECT BY PRIOR ctgcd=hctgcd
 	</select>
 </sqlMap>
