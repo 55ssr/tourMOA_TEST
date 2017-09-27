@@ -46,120 +46,276 @@ public class DefaultListVO implements Serializable {
 	private String nexCd = "";
 	
 	/** 검색조건 */
-	//private String searchCondition = ""; // 너무김
+	private String searchCondition = "";
 	private String srchContn = "";
 	
 	/** 검색Keyword */
-	//private String searchKeyword = "";
+	private String searchKeyword = "";
 	private String srchKeywd = ""; 
 	
 	/** 검색사용여부 */
-	//private String searchUseYn = "";
+	private String searchUseYn = "";
 	private String srchUseYn = "";
 
 	/** 현재페이지 */
-	//private int pageIndex = 1;
+	private int pageIndex = 1;
 	private int pgIdx = 1;
 
 	/** 페이지갯수 */
-	//private int pageUnit = 10;
+	private int pageUnit = 10;
 	private int pgUnit = 10;
 
 	/** 페이지사이즈 */
-	//private int pageSize = 10;
+	private int pageSize = 10;
 	private int pgSiz= 10;
 	
 	/** firstIndex */
-	//private int firstIndex = 1;
+	private int firstIndex = 1;
 	private int fstIdx = 1;
 
 	/** lastIndex */
-	//private int lastIndex = 1;
+	private int lastIndex = 1;
 	private int lstIdx = 1;
 
 	/** recordCountPerPage */
-	//private int recordCountPerPage = 10;
+	private int recordCountPerPage = 10;
 	private int rcordCntPg = 10;
+
+	
 
 	public String getNexCd() {
 		return nexCd;
 	}
 
+
+
 	public void setNexCd(String nexCd) {
 		this.nexCd = nexCd;
 	}
+
+
+
+	public String getSearchCondition() {
+		return searchCondition;
+	}
+
+
+
+	public void setSearchCondition(String searchCondition) {
+		this.searchCondition = searchCondition;
+	}
+
+
 
 	public String getSrchContn() {
 		return srchContn;
 	}
 
+
+
 	public void setSrchContn(String srchContn) {
 		this.srchContn = srchContn;
 	}
+
+
+
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+
+
+
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
+
+
 
 	public String getSrchKeywd() {
 		return srchKeywd;
 	}
 
+
+
 	public void setSrchKeywd(String srchKeywd) {
 		this.srchKeywd = srchKeywd;
 	}
-	
+
+
+
+	public String getSearchUseYn() {
+		return searchUseYn;
+	}
+
+
+
+	public void setSearchUseYn(String searchUseYn) {
+		this.searchUseYn = searchUseYn;
+	}
+
+
+
 	public String getSrchUseYn() {
 		return srchUseYn;
 	}
+
+
 
 	public void setSrchUseYn(String srchUseYn) {
 		this.srchUseYn = srchUseYn;
 	}
 
+
+
+	public int getPageIndex() {
+		return pageIndex;
+	}
+
+
+
+	public void setPageIndex(int pageIndex) {
+		this.pageIndex = pageIndex;
+	}
+
+
+
 	public int getPgIdx() {
 		return pgIdx;
 	}
+
+
 
 	public void setPgIdx(int pgIdx) {
 		this.pgIdx = pgIdx;
 	}
 
+
+
+	public int getPageUnit() {
+		return pageUnit;
+	}
+
+
+
+	public void setPageUnit(int pageUnit) {
+		this.pageUnit = pageUnit;
+	}
+
+
+
 	public int getPgUnit() {
 		return pgUnit;
 	}
+
+
 
 	public void setPgUnit(int pgUnit) {
 		this.pgUnit = pgUnit;
 	}
 
+
+
+	public int getPageSize() {
+		return pageSize;
+	}
+
+
+
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
+
+
+
 	public int getPgSiz() {
 		return pgSiz;
 	}
+
+
 
 	public void setPgSiz(int pgSiz) {
 		this.pgSiz = pgSiz;
 	}
 
+
+
+	public int getFirstIndex() {
+		return firstIndex;
+	}
+
+
+
+	public void setFirstIndex(int firstIndex) {
+		this.firstIndex = firstIndex;
+	}
+
+
+
 	public int getFstIdx() {
 		return fstIdx;
 	}
+
+
 
 	public void setFstIdx(int fstIdx) {
 		this.fstIdx = fstIdx;
 	}
 
+
+
+	public int getLastIndex() {
+		return lastIndex;
+	}
+
+
+
+	public void setLastIndex(int lastIndex) {
+		this.lastIndex = lastIndex;
+	}
+
+
+
 	public int getLstIdx() {
 		return lstIdx;
 	}
+
+
 
 	public void setLstIdx(int lstIdx) {
 		this.lstIdx = lstIdx;
 	}
 
+
+
+	public int getRecordCountPerPage() {
+		return recordCountPerPage;
+	}
+
+
+
+	public void setRecordCountPerPage(int recordCountPerPage) {
+		this.recordCountPerPage = recordCountPerPage;
+	}
+
+
+
 	public int getRcordCntPg() {
 		return rcordCntPg;
 	}
 
+
+
 	public void setRcordCntPg(int rcordCntPg) {
 		this.rcordCntPg = rcordCntPg;
 	}
+
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
 
 	@Override
 	public String toString() {

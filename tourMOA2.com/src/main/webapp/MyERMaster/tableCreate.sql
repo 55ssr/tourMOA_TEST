@@ -203,4 +203,5 @@ CREATE TABLE ticket
 	ALTER TABLE goods ADD(vias varchar(50));
 	-- goods 테이블 사용여부 추가
 	ALTER TABLE goods ADD(use char(1));
-	
+	-- city 컬럼 바이트 수 증가
+	ALTER TABLE goods MODIFY (city varchar(100))

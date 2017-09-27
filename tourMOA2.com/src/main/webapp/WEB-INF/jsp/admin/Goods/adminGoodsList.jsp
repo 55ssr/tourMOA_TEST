@@ -26,22 +26,41 @@
 					</select>
 				</div>
 				<div class="col-lg-6">
-					<div class="input-group">
-						<div class="input-group-btn">
-							<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							선택
-							</button>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">상품명</a>
-								<a class="dropdown-item" href="#">지역</a>
-								<a class="dropdown-item" href="#">날짜</a>
-			        		</div>
+					<script>
+					function fn_select(e) {
+						if (e == "T") {
+							$("#frm #selectTitle").attr("selected", true);
+							$("#frm #selectCity").removeAttr("selected");
+							$("#selectedCond").text("상품명");
+						}
+						if (e == "C") {
+							$("#frm #selectCity").attr("selected", true);
+							$("#frm #selectTitle").removeAttr("selected");
+							$("#selectedCond").text("도시");
+						}
+					}
+					</script>
+					<form name="frm" id="frm" action="/adminGoodsList.do">
+						<select name="searchCondition" style="display:none">
+							<option id="selectTitle" value="title"></option>
+							<option id="selectCity" value="city"></option>
+						</select>
+						<div class="input-group">
+							<div class="input-group-btn">
+								<button type="button" id="selectedCond" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								선택
+								</button>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="#" onclick="fn_select('T')">상품명</a>
+									<a class="dropdown-item" href="#" onclick="fn_select('C')">도시</a>
+				        		</div>
+				      		</div>
+							<input type="text" name="searchKeyword" class="form-control" aria-label="Text input with dropdown button">
+							<span class="input-group-btn">
+								<button class="btn btn-secondary" type="submit">검색</button>
+							</span>
 			      		</div>
-						<input type="text" class="form-control" aria-label="Text input with dropdown button">
-						<span class="input-group-btn">
-							<button class="btn btn-secondary" type="button">Go!</button>
-						</span>
-			      	</div>
+			      	</form>
 				</div>
 			</div>
 		</div>
@@ -58,109 +77,36 @@
 					<th>구분</th>
 					<th>상품명</th>
 					<th>지역</th>
+					<th>국가</th>
 					<th>도시</th>
 					<th>비용</th>
 					<th>출발일</th>
 					<th>도착일</th>
 					<th>사용여부</th>
+					<th>등록일</th>
 				</tr>
 			</thead>
 			<tbody>
 			
 			<c:forEach var="rs" items="${resultList}">
 				<tr>
-					<td>6</td>
-					<td>${rs.title}</td>
+					<td>${number}</td>
+					<td>${rs.gubun}</td>
 					<td>
-						<a href="/adminGoodsDetail.do">서유럽 9박 10일</a>
+						<a href="/adminGoodsDetail.do">${rs.title}</a>
 					</td>
-					<td>유럽</td>
-					<td>런던</td>
-					<td>100,0000~120,0000</td>
-					<td>2017.11.12</td>
-					<td>2017.12.13</td>
-					<td>사용</td>
+					<td>${rs.location}</td>
+					<td>${rs.nation}</td>
+					<td>${rs.city}</td>
+					<td>${rs.price}</td>
+					<td>${rs.sdate}</td>
+					<td>${rs.edate}</td>
+					<td>${rs.use}</td>
+					<td>${fn:substring(rs.rdate,0,10)}</td>
 				</tr>
+				<c:set var="number" value="${number-1}" />
 			</c:forEach>
-				
-				<tr>
-					<td>6</td>
-					<td>자유여행</td>
-					<td>
-						<a href="/adminGoodsDetail.do">서유럽 9박 10일</a>
-					</td>
-					<td>유럽</td>
-					<td>런던</td>
-					<td>100,0000~120,0000</td>
-					<td>2017.11.12</td>
-					<td>2017.12.13</td>
-					<td>사용</td>
-				</tr>
-				<tr>
-					<td>5</td>
-					<td>패키지</td>
-					<td>
-						<a href="/adminGoodsDetail.do">베트남 일주</a>
-					</td>
-					<td>동남아</td>
-					<td>다낭, 하노이</td>
-					<td>40,0000~70,0000</td>
-					<td>2017.10.12</td>
-					<td>2017.11.13</td>
-					<td>중지</td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>자유여행</td>
-					<td>
-						<a href="/adminGoodsDetail.do">서유럽 9박 10일</a>
-					</td>
-					<td>유럽</td>
-					<td>런던</td>
-					<td>100,0000~120,0000</td>
-					<td>2017.11.12</td>
-					<td>2017.11.13</td>
-					<td>사용</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>자유여행</td>
-					<td>
-						<a href="/adminGoodsDetail.do">서유럽 9박 10일</a>
-					</td>
-					<td>유럽</td>
-					<td>런던</td>
-					<td>100,0000~120,0000</td>
-					<td>2017.11.12</td>
-					<td>2017.11.13</td>
-					<td>사용</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>자유여행</td>
-					<td>
-						<a href="/adminGoodsDetail.do">서유럽 9박 10일</a>
-					</td>
-					<td>유럽</td>
-					<td>런던</td>
-					<td>100,0000~120,0000</td>
-					<td>2017.11.12</td>
-					<td>2017.11.13</td>
-					<td>사용</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>자유여행</td>
-					<td>
-						<a href="/adminGoodsDetail.do">서유럽 9박 10일</a>
-					</td>
-					<td>유럽</td>
-					<td>런던</td>
-					<td>100,0000~120,0000</td>
-					<td>2017.11.12</td>
-					<td>2017.11.13</td>
-					<td>사용</td>
-				</tr>
+			
 			</tbody>
 		</table>
 	</div>
@@ -184,4 +130,51 @@
 			</li>
 		</ul>
 	</nav>
+	
+	
+	
+	
+	
+	<nav aria-label="Page navigation example">
+		<ul class="pagination justify-content-center">
+		<c:if test="${before == 0}">
+			<li class="page-item disabled">
+				<a class="page-link" href="#" tabindex="-1" aria-label="Previous">
+					<span aria-hidden="true">&laquo;</span>
+					<span class="sr-only">Previous</span>
+				</a>
+			</li>
+		</c:if>
+		<c:if test="${before > 0}"> 
+			<li class="page-item">
+				<a class="page-link" href="memberList.do?pageIndex=${firstPage-1}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}" tabindex="-1" aria-label="Previous">
+					<span aria-hidden="true">&laquo;</span>
+					<span class="sr-only">Previous</span>
+				</a>
+			</li>
+		</c:if>
+		
+		<c:forEach var="i" begin="${firstPage}" end="${lastPage}">
+			<c:if test="${i <= totalPage}">
+				<c:if test="${i == searchVO.pageIndex}">${i}&nbsp;</c:if>
+				<c:if test="${i != searchVO.pageIndex}">
+					<li class="page-item"><a class="page-link" href="#">1</a></li>
+				<a href="memberList.do?pageIndex=${i}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}">${i}</a>&nbsp;
+				</c:if>
+			</c:if>
+		</c:forEach>
+		
+		<c:if test="${next == 0}"><img src="/images/egovframework/cmmn/btn_page_next1.gif" /></c:if>
+		<c:if test="${next > 0}"><a href="memberList.do?pageIndex=${lastPage+1}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}"><img src="/images/egovframework/cmmn/btn_page_next1.gif" /></a></c:if>
+		<a href="memberList.do?pageIndex=${totalPage}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}">
+			<img src="/images/egovframework/cmmn/btn_page_next10.gif" />
+		</a>
+		</ul>
+	</nav>
+	
+	
+	
+	
+	
+	
     </main>

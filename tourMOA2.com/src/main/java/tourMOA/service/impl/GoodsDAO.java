@@ -20,4 +20,8 @@ public class GoodsDAO extends EgovAbstractDAO{
 		return (String) insert("goodsDAO.insertGoods", vo);
 	}
 
+	public int selectGoodsTotal(DefaultListVO searchVO) {
+		return (int) select("goodsDAO.selectGoodsTotal", searchVO);
+	}
+
 }

@@ -5,9 +5,43 @@
 
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="goodsVO" type="ezen.service.GoodsVO"/>
-	
+
 	<select id="goodsDAO.selectGoodsList" resultClass="egovMap">
-		SELECT * FROM goods
+		SELECT b.* FROM (
+			SELECT 
+				rownum rn, a.* FROM (
+							SELECT	  unq
+									, gubun
+									, title
+									, location
+									, nation
+									, city
+									, price
+									, TO_CHAR(sdate, 'yyyy-mm-dd') sdate
+									, TO_CHAR(edate, 'yyyy-mm-dd') edate
+									, DECODE(use,'Y',('사용'),('중지')) use
+									, rdate
+							FROM 
+									goods
+									
+							WHERE
+									1=1 
+									
+							<isNotNull property="searchCondition">
+								<isNotEmpty property="searchCondition">
+									AND $searchCondition$ LIKE '%' || #searchKeyword# || '%' 	
+								</isNotEmpty>
+							</isNotNull>		
+									
+							ORDER BY rdate DESC
+									) a
+						) b
+		WHERE 
+				rn >= #firstIndex# AND rn <![CDATA[<=]]> #lastIndex#
+	</select>
+	
+	<select id="goodsDAO.selectGoodsTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM goods
 	</select>
 	
 	<insert id="goodsDAO.insertGoods">
@@ -18,8 +52,8 @@
 							nation,
 							city,
 							price,
-							priceCh,
-							priceIn,
+							pricech,
+							pricein,
 							sdate,
 							edate,
 							period,
@@ -33,31 +67,33 @@
 							detail2,
 							airline,
 							person,
-							code
+							code,
+							rdate
 							) 
 		VALUES (SEQ_goods_unq.nextval,
 				'$title$',
-				#gubun#,
-				#location#,
-				#nation#,
-				#city#,
-				#price#,
-				#priceCh#,
-				#priceIn#,
-				#sdate#,
-				#edate#,
-				#period#,
-				#period1#,
-				#period2#,
-				#via#,
-				#vias#,
-				#use#,
-				#schd#,
-				#detail1#,
-				#detail2#,
-				#airline#,
-				#person#,
-				#code#
+				'$gubun$',
+				'$location$',
+				'$nation$',
+				'$city$',
+				'$price$',
+				'$pricech$',
+				'$pricein$',
+				'$sdate$',
+				'$edate$',
+				'$period$',
+				'$period1$',
+				'$period2$',
+				'$via$',
+				'$vias$',
+				'$use$',
+				'$schd$',
+				'$detail1$',
+				'$detail2$',
+				'$airline$',
+				'$person$',
+				'$code$',
+				sysdate
 				)
 	</insert>
 	

@@ -15,14 +15,34 @@
 			<button type="button" class="w-100 btn btn-primary" onclick="location.href='/adminGoodsList.do'">목록</button>
 		</div>
 	</div>
-	<script>
+	
+	<script> //도시 추가 인풋창 누적 하기	
+	$(document).ready(function(){
+	    $("input#addCity").keydown(function (key) {
+	        if(key.keyCode == 13){//키가 13이면 실행 (엔터는 13)
+	        	fn_add();
+	        }
+	    });
+	    $("input#viaSelect").keydown(function (key) {
+	        if(key.keyCode == 13){//키가 13이면 실행 (엔터는 13)
+	        	fn_add2();
+	        }
+	    });
+	});
 	function fn_add() {
 		var addCity = document.frm.addCity.value;
 		document.frm.addCity.value = "";
 		if (document.frm.city.value != "") document.frm.city.value += ",";  
 		document.frm.city.value += addCity;
 	}
+	function fn_add2() {
+		var viaSelect = document.frm.viaSelect.value;
+		document.frm.viaSelect.value = "";
+		if (document.frm.vias.value != "") document.frm.vias.value += ",";  
+		document.frm.vias.value += viaSelect;
+	}
 	</script>
+	
 	<script type="text/javascript">
 	$(function(){
 		
@@ -45,19 +65,62 @@
 				return false;
 			}
 			
+			/* price 타입이 number 이므로 "" 이 들어가면 안됨 0이라도 넣어야 함 */
+			if($("#frm #price").val() == "") {
+				alert("비용을 입력해주세요.");
+				$("#frm #price").focus();
+				return false;
+			}
+			if($("#frm #pricech").val() == "") {
+				alert("아동가를 입력해주세요.");
+				$("#frm #pricech").focus();
+				return false;
+			}
+			if($("#frm #pricein").val() == "") {
+				alert("유아가를 입력해주세요.");
+				$("#frm #pricein").focus();
+				return false;
+			}
+			
 			
 			/* var gender = $(":input:radio[id=gender]:checked").val(); */
+			
+			/*
+			price 컬럼에 0 값을 넣기 위해서..
+			if ($("#price").val() == "") {
+				$("#price").val("0");
+			}
+			if ($("#pricech").val() == "") {
+				$("#pricech").val("0");
+			}
+			if ($("#pricein").val() == "") {
+				$("#pricein").val("0");
+			} */
 			
 			var param = "gubun="+$("#gubun").val()
 				param +="&code="+$("#code").val()
 				param +="&title="+$("#title").val()
 				param +="&location="+$("#location").val()
+				param +="&nation="+$("#nation").val()
 				param +="&city="+$("#city").val()
 				param +="&schd="+$("#schd").val()
 				param +="&airline="+$("#airline").val()
-				param +="&price="+$("#price").val();
+				param +="&detail1="+$("#detail1").val()
+				param +="&via="+$("#via").val()
+				param +="&vias="+$("#vias").val()
+				param +="&use="+$("#use").val()
+				param +="&sdate="+$("#sdate").val()
+				param +="&edate="+$("#edate").val()
+				param +="&period="+$("#period").val()
+				param +="&price="+$("#price").val()
+				param +="&pricech="+$("#pricech").val()
+				param +="&pricein="+$("#pricein").val();
 			
+				/* param +="&price="+$("#price").val()
+				param +="&pricech="+$("#pricech").val()
+				param +="&pricein="+$("#pricein").val(); */
 			
+			alert(param);
 			
 			var form = new FormData(document.getElementById("frm"));
 			
@@ -192,14 +255,14 @@
 					
 					<div class="col-auto">
 						<div class="input-group">
-							<input type="text" name="priceCh" id="priceCh" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="아동가">
+							<input type="text" name="pricech" id="pricech" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="아동가">
 							<span class="input-group-addon">￦</span>
 						</div>
 					</div>
 					
 					<div class="col-auto">
 						<div class="input-group">
-							<input type="text" name="priceIn" id="priceIn" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="유아가">
+							<input type="text" name="pricein" id="pricein" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="유아가">
 							<span class="input-group-addon">￦</span>
 						</div>
 					</div>
@@ -219,7 +282,6 @@
 						maxHeight: null,
 						placeholder: '상세정보',
 						tabsize: 2,
-						height: 100,
 						lang: 'ko-KR'
 					});
 				</script>
@@ -292,8 +354,8 @@
 			<label for="selectDirect" class="col-sm-2 col-form-label">직항여부</label>
 			<div class="col-sm-2">
 				<select class="form-control" name="via" id="via">
-					<option value="1">직항</option>
-					<option value="2">경유</option>
+					<option value="Y">직항</option>
+					<option value="N">경유</option>
 				</select>
 			</div>
 			<script>
@@ -301,10 +363,12 @@
 				if ($(this).val() == "1") {
 				 	$("#vias").attr("disabled",true);
 				 	$("#viaSelect").attr("disabled",true);
+				 	$("#viaSelect + button").attr("disabled",true);
 				}
 				if ($(this).val() == "2") {
 				 	$("#vias").removeAttr("disabled");
 				 	$("#viaSelect").removeAttr("disabled");
+				 	$("#viaSelect + button").removeAttr("disabled");
 				}
 			});
 			</script>
@@ -314,7 +378,7 @@
 			<label for="selectWaypoint" class="col-sm-2 col-form-label">경유지</label>
 			<div class="btn-group col-sm-2" role="group" aria-label="First group">
 				<input type="text" class="form-control rounded-0 rounded-left" placeholder="경유지 추가" aria-label="Input group example" aria-describedby="btnGroupAddon2" id="viaSelect" disabled>
-				<button type="button" class="btn btn-primary">+</button>
+				<button type="button" class="btn btn-primary" onclick="fn_add2()" disabled>+</button>
 			</div>	
 		</div>
 				
