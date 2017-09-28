@@ -22,10 +22,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 <script src="/js/jquery.simplemodal-1.4.4.js"></script>
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="jquery.validate.min.js"></script>
-<script type="text/javascript" src="additional-methods.min.js"></script>
-<script type="text/javascript" src="messages_ko.min.js"></script>
+<script type="text/javascript" src="/js/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="/js/jquery.validate.js"></script>
+<script type="text/javascript" src="/js/additional-methods.js"></script>
+<script type="text/javascript" src="/js/messages_ko.js"></script>
 
 
 <!-- DAUM API 주소 찾기 -->
@@ -272,75 +272,293 @@ $(document).ready(function(){
 	//결혼여부
 	
 	
-	/* $("#mbrFrm").validate({
-		
-		submitHandler: function(){
+			$("#mbrFrm").validate({
 			
-			var email = $("#email1").val() + "@" + $("#email2").val() ;
-			
-			var pattern = /^[_a-zA-Z0-9-\.]+@[\.a-zA-Z0-9-]+\.[a-zA-Z]+$/;
-			
-			if(!(pattern.test(email))){
-				alert("이메일 형식이 잘못되었습니다.");
-				return false;
-			}else{
-				$("input:hidden[name='email']").val(email);
+			submitHandler: function(){
+				
+				var email = $("#email1").val() + "@" + $("#email2").val() ;
+				
+				var pattern = /^[_a-zA-Z0-9-\.]+@[\.a-zA-Z0-9-]+\.[a-zA-Z]+$/;
+				
+				if(!(pattern.test(email))){
+					alert("이메일 형식이 잘못되었습니다.");
+					return false;
+				}else{
+					$("input:hidden[name='email']").val(email);
+				}
+				
+				if (($("input:text[name='Id']").val()).search(/\s/g) != -1) {
+					alert("아이디에 공백은 입력 불가합니다. ");
+					return false;
+				}
+	
+				if($("input:hidden[name='idChk']").val() == "N"){
+					alert("아이디 중복 체크를 해주세요");
+					return false;
+				}
+				
+				if($("#custPassChk").val() == "N"){
+					alert("8~16자리 영문 (소/대문자), 숫자, 특수문자 중 3종류를 조합한 최소 8자리 이상으로 사용해 주세요.");
+					return false;
+				}
+				
+				//결혼기념일
+				var marryYear = $("#marryYear option:selected").val();
+				var marryMonth = $("#marryMonth option:selected").val();
+				var marryDay = $("#marryDay option:selected").val();
+	
+				marryMonth = (marryMonth.length == 1) ? "0" + marryMonth : marryMonth;
+				marryDay = (marryDay.length == 1) ? "0" + marryDay : marryDay;
+				
+				var marryDt = marryYear + marryMonth + marryDay;
+				
+				$("input:hidden[name='marryDt']").val(marryDt);
+				
+				//패스워드
+				$("input:hidden[name='custPassEnc']").val( $("input:password[name='custPw1']").val() );
+				
+				//휴대전화
+				if("" != ""){
+					var mobileTel = $("input:hidden[name='mobileTel1']").val() + "-" + $("input:text[name='mobileTel2']").val() + "-" + $("input:text[name='mobileTel3']").val();
+				}else{
+					var mobileTel = $("#mobileTel1 option:selected").val() + "-" + $("input:text[name='mobileTel2']").val() + "-" + $("input:text[name='mobileTel3']").val();
+				}
+				$("input:hidden[name='mobileTel']").val(mobileTel);
+				
+				//자택전화
+				if($("#homeTel1 option:selected").val() != "" && $("input:text[name='homeTel2']").val() != "" && $("input:text[name='homeTel3']").val() != ""){
+					var homeTel = $("#homeTel1 option:selected").val() + "-" + $("input:text[name='homeTel2']").val() + "-" + $("input:text[name='homeTel3']").val();
+					$("input:hidden[name='homeTel']").val(homeTel);
+				}
+				
+				
+				var result = confirm("회원으로 가입 하시겠습니까?");
+				
+				if(result){
+					return true;
+				}else{
+					return false;
+				}
 			}
-			
-			if (($("input:text[name='id']").val()).search(/\s/g) != -1) {
-				alert("아이디에 공백은 입력 불가합니다. ");
-				return false;
-			} 
-
-			if($("input:hidden[name='idChk']").val() == "N"){
-				alert("아이디 중복 체크를 해주세요");
-				return false;
+			,rules: {	
+					  
+				  //아이디
+				  custId : "required"
+				
+				  //비밀번호
+				, custPw1 : "required"
+				  //비밀번호 확인
+				, custPw2 : {
+						 required: true
+					   , equalTo: "#custPw1"
+				}
+				
+				  //성명
+				, custNmKor : "required"
+				
+			      //성별
+				, genderCd : "required"
+				
+				  //email1
+				, email1 : "required"
+				
+				  //email2
+				, email2 : "required"			
+				
+				
+				  //휴대전화1
+				, mobileTel1 : {
+					 	 required: true
+					   , number: true
+					   
+				}
+				
+				  //휴대전화2
+				, mobileTel2 : {
+				 	 	 required: true
+					   , number: true
+					   , rangelength: [3, 4]
+				}
+				
+				  //휴대전화3
+				, mobileTel3 : {
+				 	 	 required: true
+					   , number: true
+					   , rangelength: [3, 4]
+				}
+				  
+				  //자택전화1
+				, homeTel1 : {
+				 	 	 required: false
+					   , number: true				  
+				}
+				  
+				  //자택전화2
+				, homeTel2 : {
+				 	 	 required: false
+					   , number: true
+					   , rangelength: [3, 4]
+				}
+				  
+				  //자택전화3
+				, homeTel3 : {
+				 	 	 required: false
+					   , number: true
+					   , rangelength: [3, 4]
+				}
+				  
+				  //우편번호
+				, zipCd : {
+			 	 	 required: false
+				   , number: true
+				   , maxlength: 6
+				}
+				  
+				  //주소
+				, custAddr : {
+			 	 	 required: false
+				   , maxlength: 100
+				}
+				  
+				  //상세주소
+				, custAddrDetail : {
+			 	 	 required: false
+				   , maxlength: 100
+				}  
+				  
+				
+				  //생년월일1
+				, birthYear : "required"
+				
+				  //생년월일2
+				, birthMonth : "required"
+				
+				  //생년월일3
+				, birthDay : "required"
+				
+				 //결혼여부
+				, marryYn : "required"
+				
+				 //결혼여부
+				, marryYear : {
+			 	 	 required: function(element) {
+					 	        return $("input:radio[name='marryYn']:checked").val() == "Y";
+					 	      }			   
+				} 
+				  
+				, marryMonth : {
+			 	 	 required: function(element) {
+			 	 				return $("input:radio[name='marryYn']:checked").val() == "Y";
+					 	      }			   
+				} 
+				
+				, marryDay : {
+			 	 	 required: function(element) {
+			 	 				return $("input:radio[name='marryYn']:checked").val() == "Y";
+					 	      }			   
+				}  
 			}
-			
-			if($("#custPassChk").val() == "N"){
-				alert("8~16자리 영문 (소/대문자), 숫자, 특수문자 중 3종류를 조합한 최소 8자리 이상으로 사용해 주세요.");
-				return false;
+			, messages:{
+				custId : "아이디를  입력하세요"
+	
+					  //비밀번호
+					, custPw1 : {
+							 required: "비밀번호를 입력하세요"
+					}
+					  //비밀번호 확인
+					, custPw2 : {
+							 required: "비밀번호 확인을 입력하세요"
+						   , equalTo: "비밀번호와 같은 값을 입력해 주세요"
+					}
+	
+					  //성명
+					, custNmKor : "이름를 입력하세요"
+	
+					  //성별
+					, genderCd : "성별을 선택하세요"
+	
+					  //email1
+					, email1 : "이메일을 입력하세요"
+	
+					  //email2
+					, email2 : "이메일을 입력하세요"
+	
+	
+	
+					  //휴대전화1
+					, mobileTel1 : {
+							 required: "휴대전화 앞자리를 입력하세요"
+						   , number: "숫자만 가능합니다"
+						   
+					}
+	
+					  //휴대전화2
+					, mobileTel2 : {
+							 required: "휴대전화 가운데자리를 입력하세요"
+						   , number: "숫자만 가능합니다"
+						   , rangelength: "3~4자만 가능합니다"
+					}
+	
+					  //휴대전화3
+					, mobileTel3 : {
+							 required: "휴대전화 끝자리를 입력하세요"
+						   , number: "숫자만 가능합니다"
+						   , rangelength: "3~4자만 가능합니다"
+					}
+					  
+					  //자택전화1
+					, homeTel1 : {
+							  number: "숫자만 가능합니다"				  
+					}
+					  
+					  //자택전화2
+					, homeTel2 : {
+							 number: "숫자만 가능합니다"
+						   , rangelength: "3~4자만 가능합니다"
+					}
+					  
+					  //자택전화3
+					, homeTel3 : {
+							 number: "숫자만 가능합니다"
+						   , rangelength: "3~4자만 가능합니다"
+					}
+					  
+					  //우편번호
+					, zipCd : {
+						 number: "숫자만 가능합니다"
+					   , maxlength: "6자리 이하만 가능합니다"
+					}
+					  
+					  //주소
+					, custAddr : {
+						 maxlength: "100자리 이하만 가능합니다"
+					}
+					  
+					  //상세주소
+					, custAddrDetail : {
+						 maxlength: "100자리 이하만 가능합니다"
+					}				  
+	
+					  //생년월일1
+					, birthYear : "년도를 선택하세요"
+	
+					  //생년월일2
+					, birthMonth : "월을 선택하세요"
+	
+					  //생년월일3
+					, birthDay : "일자를 선택하세요"
+	
+					 //결혼여부
+					, marryYn : "결혼여부를 선택하세요"
+	
+					 //결혼여부
+					, marryYear : "년도를 선택하세요"
+					  
+					, marryMonth : "월을 선택하세요"
+	
+					, marryDay : "일자를 선택하세요"			
 			}
-		}
-	});  */
-			
-	 		//결혼기념일
-			var marryYear = $("#marryYear option:selected").val();
-			var marryMonth = $("#marryMonth option:selected").val();
-			var marryDay = $("#marryDay option:selected").val();
-
-			marryMonth = (marryMonth.length == 1) ? "0" + marryMonth : marryMonth;
-			marryDay = (marryDay.length == 1) ? "0" + marryDay : marryDay;
-			
-			var marryDt = marryYear + marryMonth + marryDay;
-			
-			$("input:hidden[name='marryDt']").val(marryDt);
-
-			//패스워드
-			$("input:hidden[name='custPassEnc']").val( $("input:password[name='pwd']").val() );
-			
-			//휴대전화
-			if("" != ""){
-				var mobileTel = $("input:hidden[name='mobileTel1']").val() + "-" + $("input:text[name='mobileTel2']").val() + "-" + $("input:text[name='mobileTel3']").val();
-			}else{
-				var mobileTel = $("#mobileTel1 option:selected").val() + "-" + $("input:text[name='mobileTel2']").val() + "-" + $("input:text[name='mobileTel3']").val();
-			}
-			$("input:hidden[name='mobileTel']").val(mobileTel);
-			
-			//자택전화
-			if($("#homeTel1 option:selected").val() != "" && $("input:text[name='homeTel2']").val() != "" && $("input:text[name='homeTel3']").val() != ""){
-				var homeTel = $("#homeTel1 option:selected").val() + "-" + $("input:text[name='homeTel2']").val() + "-" + $("input:text[name='homeTel3']").val();
-				$("input:hidden[name='homeTel']").val(homeTel);
-			}
-			
-			
-			/* var result = confirm("회원으로 가입 하시겠습니까?");
-			
-			if(result){
-				return true;
-			}else{
-				return false;
-			} */
+		});
 			
 	//취소
 	$("#btncancel").click(function(){
