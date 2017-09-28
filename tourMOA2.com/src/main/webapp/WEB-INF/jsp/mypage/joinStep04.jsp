@@ -22,6 +22,10 @@
 			String custId = request.getParameter("custId");
 			String birthDt = request.getParameter("birthDt");
 			String email = request.getParameter("email");
+			String genderCd = request.getParameter("genderCd");
+			String hidPostNum1 = request.getParameter("hidPostNum1");
+			String hidAddr1_1 = request.getParameter("hidAddr1_1");
+			String hidAddr1_2 = request.getParameter("hidAddr1_2");
 
 %>
 <script type="text/javaScript" language="javascript" defer="defer">
@@ -33,6 +37,10 @@
 				param += "&phone="+$("#custphone").val() 
 				param += "&birthday="+$("#birthDt").val() 
 				param += "&email="+$("#email").val()
+				param += "&gender="+$("#genderCd").val()
+				param += "&postnum1="+$("#hidPostNum1").val()
+				param += "&addr1_1="+$("#hidAddr1_1").val()
+				param += "&addr1_2="+$("#hidAddr1_2").val()
 				param += "&agree1="+$("#agreeEss01").val()
 				param += "&agree2="+$("#agreeEss02").val();
 			
@@ -68,7 +76,7 @@
 	<input type="hidden" name="custPassEnc" 	id="custPassEnc" 		value="<%=custPassEnc %>" /><!-- 비밀번호 -->
 	<input type="hidden" name="name" 			id="name" 				value="<%=custNmKor%>" /><!-- 이름 -->
 	<input type="hidden" name="custphone" 		id="custphone" 		    value="<%=custphone%>" /><!-- 이름 -->
-	<input type="hidden" name="genderCd" 		id="genderCd" 			value="" /><!-- 성별 -->
+	<input type="text" 	name="genderCd" 		id="genderCd" 			value="<%=genderCd%>" /><!-- 성별 -->
 	<input type="hidden" name="email" 			id="email" 				value="<%=email%>" /><!-- FULL 이메일 -->
 	<input type="hidden" name="email1" 			id="email1" 			value="" /><!-- 이메일 ID -->
 	<input type="hidden" name="email2" 			id="email2" 			value="" /><!-- 이메일 도메인 -->
@@ -105,6 +113,9 @@
 	<input type="hidden" name="prtRelAdd"		id="prtRelAdd"			value=""/>
 	<input type="hidden" name="agreeEss01" 	id="agreeEss01" 	value="<%=agreeEss01%>" />
     <input type="hidden" name="agreeEss02" 	id="agreeEss02" 	value="<%=agreeEss02%>" />
+    <input type="text" name="hidPostNum1"		id="hidPostNum1"		value="<%=hidPostNum1%>"/>        
+	<input type="text" name="hidAddr1_1"		id="hidAddr1_1"			value="<%=hidAddr1_1%>"/>        
+	<input type="text" name="hidAddr1_2"		id="hidAddr1_2"			value="<%=hidAddr1_2%>"/>    
 <section id="content" class="contentSub">
 	<!--[[ content Start ]]-->
 	<div class="tit join_tit" title="회원가입">

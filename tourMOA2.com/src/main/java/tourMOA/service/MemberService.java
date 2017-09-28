@@ -6,4 +6,8 @@ public interface MemberService {
 	
 	String insertMemberJoin(MemberVO vo)throws Exception;
 
+	int findId(MemberVO vo) throws Exception;
+	
+	int findPwRe(MemberVO vo) throws Exception;
+
 }

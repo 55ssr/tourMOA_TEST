@@ -767,20 +767,29 @@ p.black {display: inline-block !important; padding: 0 0 0 2px !important; color:
 .certWrap { display: inline-block; width: 1100px; border-top: 1px solid #ebedef; border-bottom: 1px solid #ebedef; }
 .certWrap .certType { float: left; width: 549px; text-align: center; border-right: 1px solid #ebedef; background: url("../images/mypage/icon_cell.jpg") no-repeat center 50px ; }
 .certWrap .no-bdr { border: none !important; width: 550px; background: url("../images/mypage/icon_ipin.jpg") no-repeat center 50px ; } 
-.certWrap .certType .txt01 { clear: both; width: 549px; text-align: center; margin-top: 188px; }
-.certWrap .certType .txt01 span { display: block; font-size: 14px; }
-.certWrap .certType .txt01 span.sbj { margin-bottom: 4px; font-weight: 600; color: #333333; }
-.certWrap .certType .txt01 span.txt { line-height: 20px; color: #666666; }
-.certWrap .certType .txt01 span.input { height: 32px; margin-top: 30px; }
-.certWrap .certType .txt01 button { width: 205px; height: 40px; margin: 50px 0 50px 0; border: none; background: #ffc200; font-size: 14px; color: #ffffff; }
-.certWrap .certType .txt01 input[type="text"] { width: 201px; padding: 7px 6px 7px 6px ; padding: 7px 6px 6px 6px \9; border: 1px solid #a2a2a2; color: #666666; }
+.txt01 {clear: both; margin-top:-20px;text-align: left;}
+.txt01 span { display: block; font-size: 13px; width:520px; }
+.txt01 span.sbj { margin-bottom: 4px; font-weight: 600; color: #333333; }
+.txt01 span.txt { line-height: 20px; color: #666666; margin-top:10px;margin-bottom: 20px; }
+.txt01 span.input { height: 32px;}
+.txt01 button { width: 205px; height: 40px; margin: 50px 0 50px 0; border: none; background: #ffc200; font-size: 14px; color: #ffffff; }
+.txt01 input[type="text"] { width: 201px; padding: 7px 6px 7px 6px ; padding: 7px 6px 6px 6px \9; border: 1px solid #a2a2a2; color: #666666; }
 
-.id_block {text-align:center; margin-bottom:40px}
+.id_border{border-top: solid 1px #000;border-bottom: solid 1px #000;}
+.id_block {text-align:left; margin-bottom:25px;margin-top:25px;}
 .id_block h4.tit_find {color:#333; font-size:20px; line-height:26px; margin-bottom:17px; font-family: 'NanumBold';}
-.id_block label {color:#333; font-size:14px; font-family: 'NanumBold'; margin-right:30px}
+.id_block label {color:#333; font-size:14px; font-family: 'NanumBold'; margin-right:57px}
 .id_block input[type="text"] {border:1px solid #a2a2a2; height:29px; width:250px; padding:0 10px}
 .id_block p {font-size:20px; color:#333; font-family: 'NanumBold';  }
 .id_block p span {color:#00b6ad; font-family: 'NanumBold'; }
+
+.id_block1 {text-align:left; margin-bottom:25px;margin-top:25px;}
+.id_block1 h4.tit_find {color:#333; font-size:20px; line-height:26px; margin-bottom:17px; font-family: 'NanumBold';}
+.id_block1 label {color:#333; font-size:14px; font-family: 'NanumBold'; margin-right:30px}
+.id_block1 input[type="text"] {border:1px solid #a2a2a2; height:29px; width:250px; padding:0 10px}
+.id_block1 p {font-size:20px; color:#333; font-family: 'NanumBold';  }
+.id_block1 p span {color:#00b6ad; font-family: 'NanumBold'; }
+
 
 .pw_block {border-top:1px solid #dee1e2; border-bottom:1px solid #dee1e2; padding:39px 0 21px}
 .pw_block .pw_inform {width:630px; margin:auto}
@@ -852,7 +861,7 @@ div.join_step input[type="radio"] { display: inline-block; line-height: 32px; ma
 div.join_step select { float: left; margin-right: 5px; padding: 6px 3px 7px 5px; padding: 6px 3px 7px 5px \9; line-height: 26px; vertical-align: middle; border: 1px solid #a2a2a2; color: #777777; }
 div.join_step span.txt { display: block; float: left; width:13px; height: 32px; margin: 0 5px 0 0; line-height: 32px; vertical-align: middle; text-align:center; }
 div.join_step span.id { display: block; float: left; height: 32px; margin: 0 5px 0 0; line-height: 32px; vertical-align: middle; }
-div.join_step span.chk { display: inline-block; width: 7px; height: 6px; margin-left: 3px; background-image: url("../images/customer/03_bul01.jpg"); background-repeat: no-repeat;  }
+div.join_step span.chk { display: inline-block; width: 7px; height: 6px; margin-left: 3px; background-image: url(/images/customer/03_bul01.png); background-repeat: no-repeat;  }
 div.join_step span.radio_txt { display: inline-block; line-height: 32px; margin-right: 26px; }
 div.join_step .selprefix { width: 100px; }
 div.join_step .selemail { width: 212px; }

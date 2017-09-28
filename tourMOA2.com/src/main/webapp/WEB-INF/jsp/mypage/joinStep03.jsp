@@ -125,6 +125,7 @@ $(document).ready(function(){
 					$("#idSpan").css({color:"#2F9D27"});
 					$("input:hidden[name='idChk']").val("Y")
 				}else{
+					alert("이미 중복 된 아이디입니다.");
 					$("#idSpan").css({color:"#ff0000"});
 					$("#idSpan").html("사용할 수 없는 아이디입니다.");
 					$("input:hidden[name='idChk']").val("N")
@@ -197,16 +198,30 @@ $(document).ready(function(){
 	});
 
 	//성별 선택 여부
-	$("#gender").click(function(){
+	$("#genderCdM").click(function(){
 		var gender = this.checked;
 		
 		if(gender) { 
-			$("#gender").removeAttr("checked"); 
-			$("#gender").val("M");
+			$("#genderCdF").removeAttr("checked"); 
+			$("input:hidden[id=genderCd]").val("M");
 		}else{ 
-			var genderF = document.getElementById("gender").checked;
+			var genderF = document.getElementById("genderCdF").checked;
 			if(genderF == false){
-				$("#gender").val("");	
+				$("#genderCd").val("");	
+			}
+		}		
+	});
+
+	$("#genderCdF").click(function(){
+		var gender = this.checked;
+		
+		if(gender) { 
+			$("#genderCdM").removeAttr("checked"); 
+			$("input:hidden[id=genderCd]").val("F");
+		}else{ 
+			var genderM = document.getElementById("genderCdM").checked;
+			if(genderM == false){
+				$("#genderCd").val("");	
 			}
 		}		
 	});
@@ -575,6 +590,21 @@ $(document).ready(function(){
 		$(location).attr('href',"/mypage/join.do");
 	});
 	$("#btnok").click(function(){
+		
+		if($("#genderCd").val()==""){
+			alert("성별을 선택해주세요");
+			$("#genderCd").focus();
+			return false;
+		}
+		if(!$("#postnum1").val()==""){
+			var address = $("#postnum1").val();
+			var addr1_1 = $("#addr1_1").val();
+			var addr1_2 = $("#addr1_2").val();
+			$("input:hidden[name='hidPostNum1']").val(address);
+			$("input:hidden[name='hidAddr1_1']").val(addr1_1);
+			$("input:hidden[name='hidAddr1_2']").val(addr1_2);
+		}
+			
 		$("#mbrFrm").submit();
 	});
 	
@@ -636,7 +666,9 @@ $(document).ready(function(){
 		<input type="hidden" name="prtRelAdd"	id="prtRelAdd"		value=""/> 
 		<input type="hidden" name="custNmKor"	id="custNmKor"		value="<%=custNmKor%>"/>        
 		<input type="hidden" name="custphone"	id="custphone"		value="<%=custphone%>"/>        
-		<input type="hidden" name="custId"		id="custId"			value=""/>        
+		<input type="hidden" name="hidPostNum1"		id="hidPostNum1"			value=""/>        
+		<input type="hidden" name="hidAddr1_1"		id="hidAddr1_1"			value=""/>        
+		<input type="hidden" name="hidAddr1_2"		id="hidAddr1_2"			value=""/>        
 <div class="join_step">	
 	<!--[[ 정보입력 Start ]]-->
 		<div class="join_step">
@@ -646,7 +678,7 @@ $(document).ready(function(){
 	<caption>가입정보입력</caption>
 	<tbody>
 		<tr>
-			<th scope="row"><label for="id">아이디 <font color="red">*</font></label><span class="chk"></span></th>
+			<th scope="row"><label for="id">아이디 <font color="red">*</font></label><span class="idSpan"></span><span class="chk"></span></th>
 			<td colspan="3">
 				<input type="text" name="id" id="id" maxlength="20">
 				<button type="button" name="btnDup" id="btnDup" class="btnChk">중복 확인</button>

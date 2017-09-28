@@ -24,5 +24,17 @@ public class MemberServiceImpl extends EgovAbstractServiceImpl implements Member
 		// TODO Auto-generated method stub
 		return memberDAO.insertMemberJoin(vo); 
 	}
+
+	@Override
+	public int findId(MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return memberDAO.findId(vo);
+	}
+
+	@Override
+	public int findPwRe(MemberVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return memberDAO.findPwRe(vo);
+	}
 	
 }

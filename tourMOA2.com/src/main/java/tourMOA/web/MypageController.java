@@ -41,8 +41,20 @@ public class MypageController {
 	}
 	
 	/*마이페이지 아이디 찾기*/
+	@RequestMapping(value = "/mypage/findIdRe.do")
+	@ResponseBody public Map<String, Object> findId(MemberVO vo) throws Exception {
+		int cnt = 0;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		cnt = memberService.findId(vo);
+		
+		map.put("cnt", cnt);
+
+		return map;
+	}
+	
 	@RequestMapping("mypage/findId.do")
-	public String findId() throws Exception{		
+	public String findId1() throws Exception{		
 		return "mypage/findId";
 	}
 	
@@ -50,6 +62,17 @@ public class MypageController {
 	@RequestMapping("mypage/findPw.do")
 	public String findPw() throws Exception{		
 		return "mypage/findPw";
+	}
+	@RequestMapping(value = "/mypage/findPwRe.do")
+	@ResponseBody public Map<String, Object> findPwRe(MemberVO vo) throws Exception {
+		int cnt = 0;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		cnt = memberService.findPwRe(vo);
+		
+		map.put("cnt", cnt);
+
+		return map;
 	}
 	
 	/*마이페이지 회원가입 2단계*/
