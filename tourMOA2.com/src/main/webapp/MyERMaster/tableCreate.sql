@@ -187,6 +187,17 @@ CREATE TABLE ticket
 	PRIMARY KEY (unq)
 );
 
+CREATE TABLE NOTICE
+(
+  UNQ       NUMBER                              NOT NULL,
+  GUBUN     VARCHAR2(50 BYTE)                   NOT NULL,
+  TITLE     VARCHAR2(100 BYTE)                  NOT NULL,
+  CONTENT   VARCHAR2(4000 BYTE)                 NOT NULL,
+  HIT       NUMBER                              NOT NULL,
+  RDATE     TIMESTAMP(6)                        NOT NULL,
+  UPDDATE   TIMESTAMP(6),
+  ALL_VIEW  CHAR(1 BYTE)                        NOT NULL
+);
 	-- goods 테이블 지역 추가
 	ALTER TABLE goods ADD(location varchar(20));
 	-- goods 테이블 아동가 추가
@@ -203,4 +214,5 @@ CREATE TABLE ticket
 	ALTER TABLE goods ADD(vias varchar(50));
 	-- goods 테이블 사용여부 추가
 	ALTER TABLE goods ADD(use char(1));
-	
+	-- city 컬럼 바이트 수 증가
+	ALTER TABLE goods MODIFY (city varchar(100))

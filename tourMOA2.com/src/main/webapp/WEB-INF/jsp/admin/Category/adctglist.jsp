@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c"    uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" 	 uri="http://java.sun.com/jsp/jstl/functions" %>
-<!-- LIST 자바스크립트 s-->
+<%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" 		uri="http://java.sun.com/jsp/jstl/functions" %>
 <script>
 function fn_popup(){
-	alert("test");
 	var f = document.listFrm;
 	var url = "/adminCategoryWrite.do";
 	
@@ -13,6 +11,7 @@ function fn_popup(){
 	f.target = "ctgReg";
 	f.action = url;    
 	f.method = "post";
+	f.submit();
 }
 
 function fn_list(cd) {
@@ -40,30 +39,22 @@ function fn_detail(cd) {
 	f.method = "post";
 	f.submit();
 }
-
-</script>
-<!-- LIST 자바스크립트 e-->
-
+</script>	
 	<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
 	<h1>그룹 관리</h1>
 	<!-- 카테고리 리스트 s-->
 	<div class="table-responsive">
-		<form name="listFrm" id="listFrm" action="">
-		<input type="hidden" name="ctgcd" id="ctgcd"/>
+		<form name="listFrm" id="listFrm">
 		<table style="width:100%;">
 			<tr>
 				<td align="left">
-			검색 :  <select name="srchContn" style="height:25px;">
+				검색 :	<select name="srchContn" style="height:25px;">
 						<option value="hctgcd" <c:if test="${srchContn == 'hctgcd'}">selected</c:if>>분류코드</option>
 						<option value="ctgnm" <c:if test="${srchContn == 'ctgnm'}">selected</c:if>>분류이름</option>
 						<option value="use" <c:if test="${srchContn == 'use'}">selected</c:if>>사용여부</option>
 					</select> 
 					<input type="text" name="srchKeywd" value="${srchKeywd}"  style="height:20px;"/>
 					<input type="submit" value="검색" style="height:26px;"/>
-				</td>
-				<td>
-					<input type="button" value="목록" onclick="location.href='/adminCategoryList.do'"/>
-					<input type="button" value="카테고리등록" onclick="fn_popup()">
 				</td>
 			</tr>
 		</table>
@@ -114,9 +105,8 @@ function fn_detail(cd) {
 		</table>		
 	</div>
 	<!-- 카테고리 리스트 e-->
-	
 	<!-- 카테고리 등록 s-->
-	<%-- <c:if test="${fn:length(hctgcd) == 1}">
+	<c:if test="${fn:length(hctgcd) == 1}">
 		<c:set var="level" value="대분류" />
 	</c:if>
 	<c:if test="${fn:length(hctgcd) == 3}">
@@ -130,9 +120,7 @@ function fn_detail(cd) {
 			그룹 추가
 		</div>
 		<div class="card-block">
-			<form name="frm" id="frm" target="">
-			<input type="hidden" name="hctgcd" id="hctgcd" value="${hctgcd}"/>
-			<input type="hidden" name="ctgcd" id="ctgcd" value="${ctgcd}"/>			
+			<form name="frm" id="frm" target="">			
 			<table class="table table-hover">
 				<tr>
 					<td>카테고리 분류</td>
@@ -142,15 +130,15 @@ function fn_detail(cd) {
 					<td>사용유무</td>
 				</tr>
 				<tr>
-					<td>${level}</td>					
+					<td>${level} 등록</td>					
 					<td>${ctgcd}</td>
 					<td>
 						<div class="input-group mb-2 mb-sm-0">
-							<input type="text" class="form-control" name="ctgnm" id="ctgnm" placeholder="카테고리 명">
+							<input type="text" class="form-control" name="ctgnm" id="ctgnm" placeholder="카테고리 번호">
 						</div>
 					</td>
 					<td>
-						<button type="button" class="btn btn-primary" onclick="fn_save()">저장</button>
+						<button type="button" class="btn btn-primary" onclick="location.href='/adminMemberWrite.do'">추가</button>
 					</td>
 					<td>
 						<select name="use" id="use">
@@ -159,9 +147,16 @@ function fn_detail(cd) {
 						</select>
 					</td>
 				</tr>
-			</table>			
+			</table>
+			<table border="0" style="width:98%">
+				<tr>
+					<td align="right">
+						<input type="button" value="저장" onclick="fn_save()"/>
+					</td>
+				</tr>
+			</table>
 			</form>			
 		</div>
-	</div> --%>
+	</div>
 	<!-- 카테고리 등록 e-->
 	</main>

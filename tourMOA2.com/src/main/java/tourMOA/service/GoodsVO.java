@@ -8,6 +8,8 @@ public class GoodsVO {
 	private String nation;
 	private String city;
 	private int price;
+	private int pricech;
+	private int pricein;
 	private String sdate;
 	private String edate;
 	private String period;
@@ -18,13 +20,13 @@ public class GoodsVO {
 	private int person;
 	private String code;
 	private String location;
-	private int priceCh;
-	private int priceIn;
 	private String period1;
 	private String period2;
 	private String via;
 	private String vias;
 	private String use;
+	
+	
 	public int getUnq() {
 		return unq;
 	}
@@ -60,6 +62,18 @@ public class GoodsVO {
 	}
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	public int getPricech() {
+		return pricech;
+	}
+	public void setPricech(int pricech) {
+		this.pricech = pricech;
+	}
+	public int getPricein() {
+		return pricein;
+	}
+	public void setPricein(int pricein) {
+		this.pricein = pricein;
 	}
 	public String getSdate() {
 		return sdate;
@@ -121,18 +135,6 @@ public class GoodsVO {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	public int getPriceCh() {
-		return priceCh;
-	}
-	public void setPriceCh(int priceCh) {
-		this.priceCh = priceCh;
-	}
-	public int getPriceIn() {
-		return priceIn;
-	}
-	public void setPriceIn(int priceIn) {
-		this.priceIn = priceIn;
-	}
 	public String getPeriod1() {
 		return period1;
 	}
@@ -163,12 +165,6 @@ public class GoodsVO {
 	public void setUse(String use) {
 		this.use = use;
 	}
-	
-	
-	
-	
-	
-	
 	
 	
 }

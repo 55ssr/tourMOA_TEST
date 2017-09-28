@@ -15,10 +15,49 @@
 			<button type="button" class="w-100 btn btn-primary" onclick="location.href='/adminGoodsList.do'">목록</button>
 		</div>
 	</div>
+	
+	<script> //도시 추가 인풋창 누적 하기	
+	$(document).ready(function(){
+	    $("input#addCity").keydown(function (key) {
+	        if(key.keyCode == 13){//키가 13이면 실행 (엔터는 13)
+	        	fn_add();
+	        }
+	    });
+	    $("input#viaSelect").keydown(function (key) {
+	        if(key.keyCode == 13){//키가 13이면 실행 (엔터는 13)
+	        	fn_add2();
+	        }
+	    });
+	});
+	function fn_add() {
+		var addCity = document.frm.addCity.value;
+		document.frm.addCity.value = "";
+		if (document.frm.city.value != "") document.frm.city.value += ",";  
+		document.frm.city.value += addCity;
+	}
+	function fn_add2() {
+		var viaSelect = document.frm.viaSelect.value;
+		document.frm.viaSelect.value = "";
+		if (document.frm.vias.value != "") document.frm.vias.value += ",";  
+		document.frm.vias.value += viaSelect;
+	}
+	</script>
+	
 	<script type="text/javascript">
 	$(function(){
 		
 		$("#saveBtn").click(function(){
+			
+			/* 1박 + 2일 = 1박 2일 */
+			var period = $("#period1").val();
+			period += "박 ";
+			period += $("#period2").val();
+			period += "일";
+			$("#period").val(period);
+			
+			/* 에디터의 내용을 hidden textarea 에 담는다 */
+			var detail1 = $(".note-codable + div").html();
+			$("#detail1").text(detail1);
 			
 			if($("#frm #title").val() == "") {
 				alert("제목을 입력해주세요.");
@@ -26,19 +65,62 @@
 				return false;
 			}
 			
+			/* price 타입이 number 이므로 "" 이 들어가면 안됨 0이라도 넣어야 함 */
+			if($("#frm #price").val() == "") {
+				alert("비용을 입력해주세요.");
+				$("#frm #price").focus();
+				return false;
+			}
+			if($("#frm #pricech").val() == "") {
+				alert("아동가를 입력해주세요.");
+				$("#frm #pricech").focus();
+				return false;
+			}
+			if($("#frm #pricein").val() == "") {
+				alert("유아가를 입력해주세요.");
+				$("#frm #pricein").focus();
+				return false;
+			}
+			
 			
 			/* var gender = $(":input:radio[id=gender]:checked").val(); */
+			
+			/*
+			price 컬럼에 0 값을 넣기 위해서..
+			if ($("#price").val() == "") {
+				$("#price").val("0");
+			}
+			if ($("#pricech").val() == "") {
+				$("#pricech").val("0");
+			}
+			if ($("#pricein").val() == "") {
+				$("#pricein").val("0");
+			} */
 			
 			var param = "gubun="+$("#gubun").val()
 				param +="&code="+$("#code").val()
 				param +="&title="+$("#title").val()
 				param +="&location="+$("#location").val()
+				param +="&nation="+$("#nation").val()
 				param +="&city="+$("#city").val()
 				param +="&schd="+$("#schd").val()
 				param +="&airline="+$("#airline").val()
-				param +="&price="+$("#price").val();
+				param +="&detail1="+$("#detail1").val()
+				param +="&via="+$("#via").val()
+				param +="&vias="+$("#vias").val()
+				param +="&use="+$("#use").val()
+				param +="&sdate="+$("#sdate").val()
+				param +="&edate="+$("#edate").val()
+				param +="&period="+$("#period").val()
+				param +="&price="+$("#price").val()
+				param +="&pricech="+$("#pricech").val()
+				param +="&pricein="+$("#pricein").val();
 			
+				/* param +="&price="+$("#price").val()
+				param +="&pricech="+$("#pricech").val()
+				param +="&pricein="+$("#pricein").val(); */
 			
+			alert(param);
 			
 			var form = new FormData(document.getElementById("frm"));
 			
@@ -75,6 +157,10 @@
 					<option value="해외패키지">해외패키지</option>
 				</select>
 			</div>
+			<div class="btn-group col-sm-2" role="group" aria-label="First group">
+				<input type="text" class="form-control rounded-0 rounded-left" placeholder="구분 추가" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+				<button type="button" class="btn btn-primary">+</button>
+			</div>
 		</div>
 		
 		<div class="form-group row">
@@ -103,6 +189,10 @@
 					<option value="미주">미주</option>
 				</select>
 			</div>
+			<div class="btn-group col-sm-2" role="group" aria-label="First group">
+				<input type="text" class="form-control rounded-0 rounded-left" placeholder="지역 추가" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+				<button type="button" class="btn btn-primary">+</button>
+			</div>
 		</div>
 		
 		<div class="form-group row">
@@ -117,13 +207,17 @@
 					<option value="스페인">스페인</option>
 				</select>
 			</div>
+			<div class="btn-group col-sm-2" role="group" aria-label="First group">
+				<input type="text" class="form-control rounded-0 rounded-left" placeholder="국가 추가" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+				<button type="button" class="btn btn-primary">+</button>
+			</div>
 		</div>
 		
 		<div class="form-group row">
 			<label for="inputCity" class="col-sm-2 col-form-label">도시</label>
 			<div class="btn-group col-sm-2" role="group" aria-label="First group">
-				<input type="text" class="form-control rounded-0 rounded-left" placeholder="도시 추가" aria-label="Input group example" aria-describedby="btnGroupAddon2">
-				<button type="button" class="btn btn-primary">+</button>
+				<input type="text" class="form-control rounded-0 rounded-left" id="addCity" placeholder="도시 추가" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+				<button type="button" class="btn btn-primary" onclick="fn_add()">+</button>
 			</div>	
 		</div>
 		
@@ -150,20 +244,29 @@
 		
 		<div class="form-group row">
 			<label for="priceAdult" class="col-sm-2 col-form-label">비용</label>
-			
-			<div class="col-sm-3 input-group">
-				<input type="text" name="price" id="price" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="성인가">
-				<span class="input-group-addon">￦</span>
-			</div>
-			
-			<div class="col-sm-3 input-group">
-				<input type="text" name="priceCh" id="priceCh" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="아동가">
-				<span class="input-group-addon">￦</span>
-			</div>
-			
-			<div class="col-sm-3 input-group">
-				<input type="text" name="priceIn" id="priceIn" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="유아가">
-				<span class="input-group-addon">￦</span>
+			<div class="col-sm-6">
+				<div class="form-row align-items-center">
+					<div class="col-auto">
+						<div class="input-group">
+							<input type="text" name="price" id="price" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="성인가">
+							<span class="input-group-addon">￦</span>
+						</div>
+					</div>
+					
+					<div class="col-auto">
+						<div class="input-group">
+							<input type="text" name="pricech" id="pricech" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="아동가">
+							<span class="input-group-addon">￦</span>
+						</div>
+					</div>
+					
+					<div class="col-auto">
+						<div class="input-group">
+							<input type="text" name="pricein" id="pricein" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="유아가">
+							<span class="input-group-addon">￦</span>
+						</div>
+					</div>
+				</div>
 			</div>
 			
 		</div>
@@ -171,7 +274,6 @@
 		<div class="form-group row">
 			<label for="inputDetail" class="col-sm-2 col-form-label">상세정보</label>
 			<div class="col-sm-10">
-				<!-- <textarea class="form-control" id="inputDetail" rows="6"></textarea> -->
 				<div class="form-control" id="summernote"></div>
 				<script>
 					$('#summernote').summernote({
@@ -180,87 +282,110 @@
 						maxHeight: null,
 						placeholder: '상세정보',
 						tabsize: 2,
-						height: 100,
 						lang: 'ko-KR'
 					});
 				</script>
+				<textarea class="form-control" id="detail1" rows="6" hidden></textarea>
 			</div>
 		</div>
 		
 		<div class="form-group row">
 			<label for="inputTitle" class="col-sm-2 col-form-label">시작일</label>
 			<div class='col-sm-2'>
-				<div class='input-group date' id='datetimepicker2'>
+				<div class='input-group date'>
 					<input type='text' name="sdate" id="sdate" class="form-control" />
-					<span class="input-group-addon">
-						<span class="glyphicon glyphicon-calendar"></span>
-				    </span>
 				</div>
 			</div>
-			<!-- <script type="text/javascript">
-				$(function () {
-					$('#datetimepicker2').datetimepicker({
-						locale: 'ko'
-					});
-				});
-			</script> -->
+				<script>
+			        $('#sdate').datepicker({
+			            uiLibrary: 'bootstrap4',
+			            format: 'yyyy-mm-dd',
+			            iconsLibrary: 'fontawesome'
+			        });
+			    </script>			
 		</div>
 		
 		<div class="form-group row">
 			<label for="inputTitle" class="col-sm-2 col-form-label">종료일</label>
 			<div class='col-sm-2'>
-				<div class='input-group date' id='datetimepicker2'>
+				<div class='input-group date' >
 					<input type='text' name="edate" id="edate" class="form-control" />
-					<span class="input-group-addon">
-						<span class="glyphicon glyphicon-calendar"></span>
-				    </span>
 				</div>
 			</div>
-			<!-- <script type="text/javascript">
-				$(function () {
-					$('#datetimepicker2').datetimepicker({
-						locale: 'ko'
-					});
-				});
-			</script> -->
+			
+				<script>
+			        $('#edate').datepicker({
+			            uiLibrary: 'bootstrap4',
+			            format: 'yyyy-mm-dd',
+			            iconsLibrary: 'fontawesome'
+			        });
+			    </script>
+			    
 		</div>
 		
 		<div class="form-group row">
 			<label for="priceAdult" class="col-sm-2 col-form-label">여행기간</label>
 			
-			<div class="col-sm-3 input-group">
-				<input type="text" name="period1" id="period1" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="성인가">
-				<span class="input-group-addon">박</span>
+			<div class="col-sm-6">
+				<div class="form-row align-items-center">
+					<div class="col-auto">
+						<div class="input-group">
+							<input type="text" name="period1" id="period1" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="1">
+							<span class="input-group-addon">박</span>
+						</div>
+					</div>
+					
+					<div class="col-auto">
+						<div class="input-group">
+							<input type="text" name="period2" id="period2" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="2">
+							<span class="input-group-addon">일</span>
+						</div>
+					</div>
+					
+					<div class="col-auto">
+						<input type="hidden" name="period" id="period" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="(히든)">
+					</div>
+				</div>
 			</div>
 			
-			<div class="col-sm-3 input-group">
-				<input type="text" name="period2" id="period2" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="아동가">
-				<span class="input-group-addon">일</span>
-			</div>
 		</div>
 		
 		<div class="form-group row">
 			<label for="selectDirect" class="col-sm-2 col-form-label">직항여부</label>
 			<div class="col-sm-2">
 				<select class="form-control" name="via" id="via">
-					<option selected>직항</option>
-					<option value="1">경유</option>
+					<option value="Y">직항</option>
+					<option value="N">경유</option>
 				</select>
 			</div>
+			<script>
+			$("#via").on("change", function(){
+				if ($(this).val() == "1") {
+				 	$("#vias").attr("disabled",true);
+				 	$("#viaSelect").attr("disabled",true);
+				 	$("#viaSelect + button").attr("disabled",true);
+				}
+				if ($(this).val() == "2") {
+				 	$("#vias").removeAttr("disabled");
+				 	$("#viaSelect").removeAttr("disabled");
+				 	$("#viaSelect + button").removeAttr("disabled");
+				}
+			});
+			</script>
 		</div>
 		
 		<div class="form-group row">
 			<label for="selectWaypoint" class="col-sm-2 col-form-label">경유지</label>
 			<div class="btn-group col-sm-2" role="group" aria-label="First group">
-				<input type="text" class="form-control rounded-0 rounded-left" placeholder="경유지 추가" aria-label="Input group example" aria-describedby="btnGroupAddon2">
-				<button type="button" class="btn btn-primary">+</button>
+				<input type="text" class="form-control rounded-0 rounded-left" placeholder="경유지 추가" aria-label="Input group example" aria-describedby="btnGroupAddon2" id="viaSelect" disabled>
+				<button type="button" class="btn btn-primary" onclick="fn_add2()" disabled>+</button>
 			</div>	
 		</div>
 				
 		<div class="form-group row">
 			<label for="selectWaypoints" class="col-sm-2 col-form-label"></label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" name="vias" id="vias" placeholder="상해,뭄바이">
+				<input type="text" class="form-control" name="vias" id="vias" placeholder="상해,뭄바이" disabled>
 			</div>
 		</div>
 		
@@ -268,8 +393,8 @@
 			<label for="selectUse" class="col-sm-2 col-form-label">사용여부</label>
 			<div class="col-sm-2">
 				<select class="form-control" name="use" id="use">
-					<option selected>사용</option>
-					<option value="1">중지</option>
+					<option value="Y" selected>사용</option>
+					<option value="N">중지</option>
 				</select>
 			</div>
 		</div>
