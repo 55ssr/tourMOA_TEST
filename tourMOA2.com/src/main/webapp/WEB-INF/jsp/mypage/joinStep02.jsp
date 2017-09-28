@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <%
+	String agreeEss01 = request.getParameter("agreeEss01");
+	String agreeEss02 = request.getParameter("agreeEss02");
 	String plusInfo = request.getParameter("plusInfo");
 	String agreeSav = request.getParameter("agreeSav");
 	String agreePrv = request.getParameter("agreePrv");

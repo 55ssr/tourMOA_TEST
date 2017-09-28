@@ -71,8 +71,8 @@ public class MypageController {
 		
 		String result = "";
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		
-		result=memberService.insertMemberJoin(vo);
+		System.out.println(vo.getId());
+		result = memberService.insertMemberJoin(vo);
 		if(result == null) result = "ok";
 		map.put("result", result);
 		

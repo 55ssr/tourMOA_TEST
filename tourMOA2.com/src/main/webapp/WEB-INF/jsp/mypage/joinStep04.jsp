@@ -1,26 +1,62 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator"%>
 <link rel="stylesheet" href="/css/mypage.css" />
 <%
+			String agreeEss01 = request.getParameter("agreeEss01");
+			String agreeEss02 = request.getParameter("agreeEss02");
 			String plusInfo = request.getParameter("plusInfo");
 			String agreeSav = request.getParameter("agreeSav");
 			String agreePrv = request.getParameter("agreePrv");
 			String agreeShr = request.getParameter("agreeShr");
 			String agreeMkt = request.getParameter("agreeMkt");
 			String custStatCd = request.getParameter("custStatCd");
+			String custPassEnc = request.getParameter("custPassEnc");
 			String custNmKor = request.getParameter("custNmKor");
 			String custphone = request.getParameter("custphone");
+			String custId = request.getParameter("custId");
+			String birthDt = request.getParameter("birthDt");
+			String email = request.getParameter("email");
+
 %>
 <script type="text/javaScript" language="javascript" defer="defer">
 	$(document).ready(function(){			
-		var cnt = 0;			
 		$("#btnok").click(function(){
-			if(cnt == 0){
-				cnt++
-	// 			checkUnload = false;
-				$("#mbrFrm").submit();
-			}else{
-				alert("처리중입니다");
-			}				
+			
+			var param  = "id="+$("#id").val()
+				param += "&name="+$("#name").val()
+				param += "&phone="+$("#custphone").val() 
+				param += "&birthday="+$("#birthDt").val() 
+				param += "&email="+$("#email").val()
+				param += "&agree1="+$("#agreeEss01").val()
+				param += "&agree2="+$("#agreeEss02").val();
+			
+			alert(param);
+			$.ajax({
+				  type:'POST'
+				, url:"<c:url value='/mypage/insertJoinSave.do'/>"
+				, data:param
+				, dataType: 'JSON'
+			   
+				,success:function(data) {
+					if(data.result == "ok"){
+						alert("환영합니다.");
+						location.href = "/main.do";
+					}else{
+						alert("오류가 발생했습니다.");
+						window.reload();
+					}
+				}
+				, error: function() {
+					alert('Loading Error! ');
+				}
+			
+		   });				
 		});			
 		$("#btncancel").click(function(){
 			history.back(-1);
@@ -28,11 +64,12 @@
 	});	
 </script> 
 <form name="mbrFrm" id="mbrFrm" method="post" action="/mypage/joinStep05.do">
-	<input type="hidden" name="custId" 			id="custId" 			value="" /><!-- 아이디 -->
-	<input type="hidden" name="custPassEnc" 	id="custPassEnc" 		value="" /><!-- 비밀번호 -->
-	<input type="hidden" name="custNmKor" 		id="custNmKor" 			value="<%=custNmKor %>" /><!-- 이름 -->
+	<input type="hidden" name="id" 				id="id" 				value="<%=custId %>" /><!-- 아이디 -->
+	<input type="hidden" name="custPassEnc" 	id="custPassEnc" 		value="<%=custPassEnc %>" /><!-- 비밀번호 -->
+	<input type="hidden" name="name" 			id="name" 				value="<%=custNmKor%>" /><!-- 이름 -->
+	<input type="hidden" name="custphone" 		id="custphone" 		    value="<%=custphone%>" /><!-- 이름 -->
 	<input type="hidden" name="genderCd" 		id="genderCd" 			value="" /><!-- 성별 -->
-	<input type="hidden" name="email" 			id="email" 				value="" /><!-- FULL 이메일 -->
+	<input type="hidden" name="email" 			id="email" 				value="<%=email%>" /><!-- FULL 이메일 -->
 	<input type="hidden" name="email1" 			id="email1" 			value="" /><!-- 이메일 ID -->
 	<input type="hidden" name="email2" 			id="email2" 			value="" /><!-- 이메일 도메인 -->
 	<input type="hidden" name="emailYn" 		id="emailYn" 			value="" /><!-- 이메일 수신여부 -->
@@ -43,7 +80,7 @@
 	<input type="hidden" name="custAddr" 		id="custAddr" 			value="" /><!-- 기본주소 -->
 	<input type="hidden" name="custAddrDetail" 	id="custAddrDetail" 	value="" /><!-- 상세주소 -->
 	<input type="hidden" name="jobCd" 			id="jobCd" 				value="" /><!-- 직업코드 -->
-	<input type="hidden" name="birthDt" 		id="birthDt" 			value="" /><!-- 생년월일 -->
+	<input type="hidden" name="birthDt" 		id="birthDt" 			value="<%=birthDt%>" /><!-- 생년월일 -->
 	<input type="hidden" name="marryYn" 		id="marryYn" 			value="" /><!-- 결혼여부 -->
 	<input type="hidden" name="marryDt" 		id="marryDt" 			value="" /><!-- 결혼년월일 -->
 	<input type="hidden" name="agreeSav" 		id="agreeSav" 			value="" /><!-- 개인정보 수집 동의여부 -->
@@ -66,6 +103,8 @@
 	<input type="hidden" name="prtEmail"		id="prtEmail"			value=""/> 
 	<input type="hidden" name="prtRelCd"		id="prtRelCd"			value=""/> 
 	<input type="hidden" name="prtRelAdd"		id="prtRelAdd"			value=""/>
+	<input type="hidden" name="agreeEss01" 	id="agreeEss01" 	value="<%=agreeEss01%>" />
+    <input type="hidden" name="agreeEss02" 	id="agreeEss02" 	value="<%=agreeEss02%>" />
 <section id="content" class="contentSub">
 	<!--[[ content Start ]]-->
 	<div class="tit join_tit" title="회원가입">
@@ -93,23 +132,23 @@
 			<tbody>
 				<tr>
 					<th scope="row">아이디<span class="chk"></span></th>
-					<td>아이디표시</td>
+					<td><%=custId%></td>
 				</tr>
 				<tr>
 					<th scope="row">성명<span class="chk"></span></th>
-					<td><%=custNmKor %></td>
+					<td><%=custNmKor%></td>
 				</tr>
 				<tr>
 					<th scope="row">이메일<span class="chk"></span></th>
-					<td>이메일표시</td>
+					<td><%=email%></td>
 				</tr>
 				<tr>
 					<th scope="row">휴대폰번호<span class="chk"></span></th>
-					<td>휴대번호 표시</td>
+					<td><%=custphone%></td>
 				</tr>
 				<tr>
 					<th scope="row">생년월일</th>
-					<td>생년월일 표시</td> 
+					<td><%=birthDt%></td> 
 				</tr>
 			</tbody>
 		</table>			

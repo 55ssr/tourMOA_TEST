@@ -7,6 +7,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator"%>
 <%
+			String agreeEss01 = request.getParameter("agreeEss01");
+			String agreeEss02 = request.getParameter("agreeEss02");
 			String plusInfo = request.getParameter("plusInfo");
 			String agreeSav = request.getParameter("agreeSav");
 			String agreePrv = request.getParameter("agreePrv");
@@ -176,10 +178,10 @@ $(document).ready(function(){
 		var pwd2 = $("#pwd2").val();
 		if(pwd1 == pwd2){
 			$("#pwdChk").css({color:"#2F9D27"});
-			$("#pwdChk").html("확인되었습니다.");
+			$("#pwdChk").text("확인되었습니다.");
 		}else{
 			$("#pwdChk").css({color:"#ff0000"});
-			$("#pwdChk").html("비밀번호가 다릅니다.")
+			$("#pwdChk").text("비밀번호가 다릅니다.")
 		}
 	});
 	
@@ -287,14 +289,17 @@ $(document).ready(function(){
 					$("input:hidden[name='email']").val(email);
 				}
 				
-				if (($("input:text[name='Id']").val()).search(/\s/g) != -1) {
+				/* if (($("input:text[name='Id']").val()).search(/\s/g) != -1) {
 					alert("아이디에 공백은 입력 불가합니다. ");
 					return false;
-				}
+				} */
 	
 				if($("input:hidden[name='idChk']").val() == "N"){
 					alert("아이디 중복 체크를 해주세요");
 					return false;
+				}else if($("input:hidden[name='idChk']").val() == "Y"){
+					var id = $("#id").val();
+					$("input:hidden[name='custId']").val(id);
 				}
 				
 				if($("#custPassChk").val() == "N"){
@@ -315,7 +320,7 @@ $(document).ready(function(){
 				$("input:hidden[name='marryDt']").val(marryDt);
 				
 				//패스워드
-				$("input:hidden[name='custPassEnc']").val( $("input:password[name='custPw1']").val() );
+				$("input:hidden[name='custPassEnc']").val( $("input:password[name='pwd']").val() );
 				
 				//휴대전화
 				if("" != ""){
@@ -329,6 +334,11 @@ $(document).ready(function(){
 				if($("#homeTel1 option:selected").val() != "" && $("input:text[name='homeTel2']").val() != "" && $("input:text[name='homeTel3']").val() != ""){
 					var homeTel = $("#homeTel1 option:selected").val() + "-" + $("input:text[name='homeTel2']").val() + "-" + $("input:text[name='homeTel3']").val();
 					$("input:hidden[name='homeTel']").val(homeTel);
+				}
+				//생년월일
+				if($("#birthYear option:selected").val() != "" && $("#birthMonth option:selected").val() != "" && $("#birthDay option:selected").val() != ""){
+					var birthDt = $("#birthYear option:selected").val() + "-" + $("#birthMonth option:selected").val() + "-" + $("#birthDay option:selected").val();
+					$("input:hidden[name='birthDt']").val(birthDt);
 				}
 				
 				
@@ -602,6 +612,8 @@ $(document).ready(function(){
 	    <input type="hidden" name="custCi" 		id="custCi" 	    value="" />
 	    <input type="hidden" name="custDi" 		id="custDi" 	    value="" />
 	    <input type="hidden" name="plusInfo" 	id="plusInfo"		value="<%=plusInfo%>" />
+	    <input type="hidden" name="agreeEss01" 	id="agreeEss01" 	value="<%=agreeEss01%>" />
+	    <input type="hidden" name="agreeEss02" 	id="agreeEss02" 	value="<%=agreeEss02%>" />
 	    <input type="hidden" name="agreeSav" 	id="agreeSav" 	    value="<%=agreeSav%>" />
 	    <input type="hidden" name="agreePrv" 	id="agreePrv" 	    value="<%=agreePrv%>" />
 	    <input type="hidden" name="agreePrv" 	id="agreeShr" 	    value="<%=agreeShr%>" />
@@ -624,6 +636,7 @@ $(document).ready(function(){
 		<input type="hidden" name="prtRelAdd"	id="prtRelAdd"		value=""/> 
 		<input type="hidden" name="custNmKor"	id="custNmKor"		value="<%=custNmKor%>"/>        
 		<input type="hidden" name="custphone"	id="custphone"		value="<%=custphone%>"/>        
+		<input type="hidden" name="custId"		id="custId"			value=""/>        
 <div class="join_step">	
 	<!--[[ 정보입력 Start ]]-->
 		<div class="join_step">
@@ -649,7 +662,7 @@ $(document).ready(function(){
 		</tr>
 		<tr>
 			<th scope="row"><label for="pwd2">비밀번호 확인<font color="red">*</font></label><span class="chk"></span></th>
-			<td colspan="3"><input type="password" name="pwd2" id="pwd2" maxlength="20">
+			<td colspan="3"><input type="password" name="pwd2" id="pwd2" maxlength="20"><div id="pwdChk"></div>
 				<span class="regDesc">· 재확인을 위해서입력하신비밀번호를 다시한번 입력해주세요.</span>
 			</td>
 		</tr>
@@ -807,8 +820,8 @@ $(document).ready(function(){
 		<tr>
 			<th scope="row"><label for="marryYn">결혼여부</label></th>
 			<td>
-				<input type="radio" name="marryYn" id="marryYnY" value="Y"  ><span class="radio_txt"><label for="marryYnY">예</label></span>
-				<input type="radio" name="marryYn" id="marryYnN" value="N"  ><span class="radio_txt"><label for="marryYnN">아니오</label></span>
+				<input type="checkbox" name="marryYnY" id="marryYnY" value="Y"  ><span class="radio_txt"><label for="marryYnY">예</label></span>
+				<input type="checkbox" name="marryYnN" id="marryYnN" value="N"  ><span class="radio_txt"><label for="marryYnN">아니오</label></span>
 				<input type="hidden" name="marryYn" id="marryYn" value="" />
 			</td>
 			<th scope="row"><label for="marryYear">결혼기념일</label></th>

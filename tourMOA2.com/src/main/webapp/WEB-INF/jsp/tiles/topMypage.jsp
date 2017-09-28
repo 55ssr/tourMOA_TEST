@@ -8,6 +8,8 @@
 <%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator"%>
 <%
 	String plusInfo = request.getParameter("plusInfo");
+	String agreeEss01 = request.getParameter("agreeEss01");
+	String agreeEss02 = request.getParameter("agreeEss02");
 	String agreeSav = request.getParameter("agreeSav");
 	String agreePrv = request.getParameter("agreePrv");
 	String agreeShr = request.getParameter("agreeShr");
@@ -212,7 +214,9 @@ $(document).ready(function(){
         <div class="loginBox_01">
             <div class="box_top">
                 <form name="frmJoinPop" id="frmJoinPop" method="post" action="/mypage/joinStep03.do">
-                	<input type="text" name="plusInfo" 	value="<%=plusInfo%>" />
+                	<input type="text" name="agreeEss01" 	value="<%=agreeEss01%>" />
+                	<input type="text" name="agreeEss02" 	value="<%=agreeEss02%>" />
+                	<input type="hidden" name="plusInfo" 	value="<%=plusInfo%>" />
 					<input type="hidden" name="agreeSav" 	value="<%=agreeSav%>" />
 					<input type="hidden" name="agreePrv" 	value="<%=agreePrv%>" />
 					<input type="hidden" name="agreeShr" 	value="<%=agreeShr%>" />
