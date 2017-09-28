@@ -13,8 +13,6 @@
 	String agreeShr = request.getParameter("agreeShr");
 	String agreeMkt = request.getParameter("agreeMkt");
 	String custStatCd = request.getParameter("custStatCd");
-	String name = request.getParameter("name");
-	String phone = request.getParameter("phone");
 %>
 <style>
 #mask {  
@@ -92,10 +90,10 @@ $(document).ready(function(){
 	});
 
 	//닫기 버튼을 눌렀을 때
-	$('layer_close').click(function () {  
+	$('.layer_close').click(function () {  
 	    //링크 기본동작은 작동하지 않도록 한다.
-	    e.preventDefault();  
-	    $('#mask, .window').hide();  
+	      $(this).modal("hide");
+	    $('.window').hide();  
 	});       
 
 	//검은 막을 눌렀을 때
@@ -131,7 +129,7 @@ function PhonNumStr( str ){
          if(str.substring(0,2)=="02"){
              DataForm = "$1-$2"; 
              RegPhonNum = /([0-9]{2})([0-9]+)/; 
-         } else {  
+         } else {
              DataForm = "$1-$2"; 
              RegPhonNum = /([0-9]{3})([0-9]+)/; 
          }
@@ -177,24 +175,31 @@ function PhonNumStr( str ){
              RegPhonNum = /([0-9]{3})([0-9]{3})([0-9]+)/;
          }
      }
-     while( RegPhonNum.test(str) ) {  
+     while(RegPhonNum.test(str) ) {  
          str = str.replace(RegPhonNum, DataForm);  
      } 
      return str; 
 } 
-
-function fn_submit(){	
+$(document).ready(function(){
 	var f = document.frmJoinPop;
-	var name=f.name.value;
-	if(f.name.value=""){
-		alert("이름을 입력해 주세요.");
-		return;
-	}
+	$("#testBtn").click(function(){
+		if($("span input#username").val()==''){
+			alert("이름을 입력해 주세요.");
+			return;
+		}
+		if($("span input#phone").val()==''){
+			alert("핸드폰번호를 입력해 주세요.");
+			return;
+		}
+		
+	var custNmKor =$("input:hidden[name='custNmKor']").val($("span input#username").val());
+	var custphone =$("input:hidden[name='custphone']").val($("span input#phone").val());
 	$('#mask, .window').hide();
-	f.submit();
-}
+	$("#frmJoinPop").submit();
+		
+	});
+});
 </script>
-
 <!-- 레이어 팝업 -->
 <div id="mask"></div>
 <div class="window">
@@ -207,20 +212,24 @@ function fn_submit(){
         <div class="loginBox_01">
             <div class="box_top">
                 <form name="frmJoinPop" id="frmJoinPop" method="post" action="/mypage/joinStep03.do">
-                	<input type="hidden" name="plusInfo" 	value="<%=plusInfo%>" />
+                	<input type="text" name="plusInfo" 	value="<%=plusInfo%>" />
 					<input type="hidden" name="agreeSav" 	value="<%=agreeSav%>" />
 					<input type="hidden" name="agreePrv" 	value="<%=agreePrv%>" />
 					<input type="hidden" name="agreeShr" 	value="<%=agreeShr%>" />
 					<input type="hidden" name="agreeMkt" 	value="<%=agreeMkt%>" />
-					<input type="hidden" name="custStatCd"  value="<%=custStatCd%>" />			
+					<input type="hidden" name="custStatCd"  value="<%=custStatCd%>" />		
+					<input type="hidden" name="custNmKor"  value="" />
+					<input type="hidden" name="custphone"  value="" />
                     <div class="input01">
-                        <span class="sbj mgb10"><label for="name">성명</label></span><span class="cont mgb10"><input type="text" id="name" name="name" value="" maxlength="20"></span>
+                        <span class="sbj mgb10"><label for="username">성명</label></span><span class="cont mgb10" >
+                        <!--<input type="text" id="custNmKor" name="custNmKor" maxlength="20"> -->
+                        <input type="text" id="username" name="username" />
+                        </span>
                     	<span class="sbj"><label for="custPassEnc">전화번호</label></span><span class="cont">
                     		<input type="text" name="phone"  id="phone" value="" placeholder="핸드폰 번호 입력" maxlength="13" onKeyDown="mphon(this);" onKeyUp="mphon(this);">
                     	</span>
                     </div>
-                    <div class="input02">
-                    <button type="button" onclick="fn_submit()">인증확인</button></div>
+                    <div class="input02"><button type="button" id="testBtn">인증확인</button></div>
                 	<!-- <span class="chk"><input type="checkbox" id="chkSave" name="chkSave"><label for="chkSave">아이디저장</label></span> -->
                 </form>
             </div>
@@ -247,7 +256,8 @@ function fn_submit(){
         </div>
     </div>
 </div>	
-</div>				
+</div>			
+ 	
 <!-- 레이어팝업 끝 -->
 <div id="wrap"><!--[[ wrap Start ]]-->
 	<header><!--[[ header Start ]]-->
@@ -290,3 +300,5 @@ function fn_submit(){
 	       </ul>
 	   	</nav><!--[[ LNB End ]]-->
    	</header>
+</div>
+   	

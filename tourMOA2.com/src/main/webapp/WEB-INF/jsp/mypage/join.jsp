@@ -17,14 +17,14 @@ $(document).ready(function(){
 			return false;
 		}
 
-		if($("#chk_agree03").prop("checked"))	$("input:hidden[name='agreeSav']").val("Y");
-		else									$("input:hidden[name='agreeSav']").val("N");
-		if($("#chk_agree04").prop("checked"))	$("input:hidden[name='agreePrv']").val("Y");
-		else									$("input:hidden[name='agreePrv']").val("N");
-		if($("#chk_agree05").prop("checked"))	$("input:hidden[name='agreeShr']").val("Y");
-		else									$("input:hidden[name='agreeShr']").val("N");
-		if($("#chk_agree06").prop("checked"))	$("input:hidden[name='agreeMkt']").val("Y");
-		else $("input:hidden[name='agreeMkt']").val("N");
+		if($("#chk_agree03").is(':checked'))	$("input:hidden[name='agreeSav']").val('Y');
+		else									$("input:hidden[name='agreeSav']").val('N');
+		if($("#chk_agree04").prop("checked",true))	$("input:hidden[name='agreePrv']").val("Y");
+		else									$("input:hidden[name='agreePrv']").val('N');
+		if($("#chk_agree05").prop("checked"))	$("input:hidden[name='agreeShr']").val('Y');
+		else									$("input:hidden[name='agreeShr']").val('N');
+		if($("#chk_agree06").prop("checked"))	$("input:hidden[name='agreeMkt']").val('Y');
+		else 									$("input:hidden[name='agreeMkt']").val('N');
 		
 		
 		if(btnId == "child"){

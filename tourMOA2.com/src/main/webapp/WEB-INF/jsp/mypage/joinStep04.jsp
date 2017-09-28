@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/css/mypage.css" />
+<%
+			String plusInfo = request.getParameter("plusInfo");
+			String agreeSav = request.getParameter("agreeSav");
+			String agreePrv = request.getParameter("agreePrv");
+			String agreeShr = request.getParameter("agreeShr");
+			String agreeMkt = request.getParameter("agreeMkt");
+			String custStatCd = request.getParameter("custStatCd");
+			String custNmKor = request.getParameter("custNmKor");
+			String custphone = request.getParameter("custphone");
+%>
 <script type="text/javaScript" language="javascript" defer="defer">
 	$(document).ready(function(){			
 		var cnt = 0;			
@@ -20,7 +30,7 @@
 <form name="mbrFrm" id="mbrFrm" method="post" action="/mypage/joinStep05.do">
 	<input type="hidden" name="custId" 			id="custId" 			value="" /><!-- 아이디 -->
 	<input type="hidden" name="custPassEnc" 	id="custPassEnc" 		value="" /><!-- 비밀번호 -->
-	<input type="hidden" name="custNmKor" 		id="custNmKor" 			value="" /><!-- 이름 -->
+	<input type="hidden" name="custNmKor" 		id="custNmKor" 			value="<%=custNmKor %>" /><!-- 이름 -->
 	<input type="hidden" name="genderCd" 		id="genderCd" 			value="" /><!-- 성별 -->
 	<input type="hidden" name="email" 			id="email" 				value="" /><!-- FULL 이메일 -->
 	<input type="hidden" name="email1" 			id="email1" 			value="" /><!-- 이메일 ID -->
@@ -87,7 +97,7 @@
 				</tr>
 				<tr>
 					<th scope="row">성명<span class="chk"></span></th>
-					<td>이름표시</td>
+					<td><%=custNmKor %></td>
 				</tr>
 				<tr>
 					<th scope="row">이메일<span class="chk"></span></th>

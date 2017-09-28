@@ -13,8 +13,8 @@
 			String agreeShr = request.getParameter("agreeShr");
 			String agreeMkt = request.getParameter("agreeMkt");
 			String custStatCd = request.getParameter("custStatCd");
-			String name = request.getParameter("name");
-			String phone = request.getParameter("phone");
+			String custNmKor = request.getParameter("custNmKor");
+			String custphone = request.getParameter("custphone");
 %>
 <link rel="stylesheet" href="/css/mypage.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -22,6 +22,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 <script src="/js/jquery.simplemodal-1.4.4.js"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="jquery.validate.min.js"></script>
+<script type="text/javascript" src="additional-methods.min.js"></script>
+<script type="text/javascript" src="messages_ko.min.js"></script>
+
 
 <!-- DAUM API 주소 찾기 -->
  <script>
@@ -94,7 +99,7 @@ $(document).ready(function(){
 			return false;
 		}
 				
-	 	/*  if (id.search(/\s/g) != -1) {
+	 /* 	if (id.search(/\s/g) != -1) {
 			alert("아이디에 공백은 입력 불가합니다. ");
 			return false;
 		}
@@ -104,7 +109,7 @@ $(document).ready(function(){
 			$("#id").val("");
 			$("#id").focus();
 			return;
-		} */  
+		}   */
 		var param ="id="+$("#id").val();
 		$.ajax({
 			  type:'POST'
@@ -297,7 +302,7 @@ $(document).ready(function(){
 				return false;
 			}
 		}
-	}); */
+	});  */
 			
 	 		//결혼기념일
 			var marryYear = $("#marryYear option:selected").val();
@@ -329,64 +334,24 @@ $(document).ready(function(){
 			}
 			
 			
-			var result = confirm("회원으로 가입 하시겠습니까?");
+			/* var result = confirm("회원으로 가입 하시겠습니까?");
 			
 			if(result){
 				return true;
 			}else{
 				return false;
-			}
+			} */
 			
 	//취소
 	$("#btncancel").click(function(){
 		$(location).attr('href',"/mypage/join.do");
 	});
+	$("#btnok").click(function(){
+		$("#mbrFrm").submit();
+	});
 	
 });
-		
-		
-		
-$(document).ready(function(){
-	var email = $("#email1").val()+"@"+$("#email2").val();
-	var gender = $("input[type=radio][id=gender]:checked").val();
-	var phone = $("#mobileTel1 option:selected").val()+$("#mobileTel2").val()+$("#mobileTel3").val();
-	var birthday = $("#birthYear").val()+$("#birthMonth").val()+$("#birthDay").val();
-	
-		$("#btnok").click(function(){
-			var param  = "id="+$("#id").val()
-				param += "&pwd="+$("#pwd").val()
-				param += "&name="+$("#name").val()
-				param += "&gender="+gender
-				param += "&email="+email
-				param += "&phone="+phone
-				param += "&birthday="+birthday;
-			alert(param);
-			var loc = "<c:url value='/mypage/insertJoinSave.do'/>"; 
-				$.ajax({
-					type : 'POST',
-					data : param,
-					url : loc,
-					dataType : 'json',
-
-					success : function(data) {
-						
-						if (data.result == "ok") {
-							alert("저장 성공.");
-							location.href = "<c:url value='main/main.do'/>";
-						} else {
-							alert("저장 실패");
-						}
-					},
-					error : function(error) {
-						alert("error : " + error);
-					}
-				});
-
-
-		});
-});
-		
-	</script>
+</script>
 <section id="content" class="contentSub">
 	<!--[[ content Start ]]-->
 	<div class="tit join_tit" title="회원가입">
@@ -407,7 +372,7 @@ $(document).ready(function(){
 			<span class="step_txt">가입완료</span>
 		</div>
 	</div>
-	<form id="mbrFrm" method="post">
+	<form id="mbrFrm" method="post" action="<c:url value='/mypage/joinStep04.do'></c:url>">
 	    <input type="hidden" name="birthDt"		id="birthDt" 		value="" />
 	    <input type="hidden" name="marryDt" 	id="marryDt" 		value="" />
 	    <input type="hidden" name="email" 		id="email" 			value="" />
@@ -431,16 +396,17 @@ $(document).ready(function(){
 		<input type="hidden" name="prtCustCi"	id="prtCustCi"		value=""/>
 		<input type="hidden" name="prtCustDi" 	id="prtCustDi"		value=""/>
 		<input type="hidden" name="prtGenderCd"	id="prtGenderCd"	value=""/>
-		<input type="hidden" name="prtCertDiviCd" id="prtCertDiviCd" value=""/>
+		<input type="hidden" name="prtCertDiviCd" id="prtCertDiviCd"value=""/>
 		<input type="hidden" name="prtFdCd"		id="prtFdCd"		value=""/>
-		<input type="hidden" name="prtCustStatCd" id="prtCustStatCd" value=""/>
+		<input type="hidden" name="prtCustStatCd" id="prtCustStatCd"value=""/>
 		<input type="hidden" name="prtBirthDt"	id="prtBirthDt"		value=""/>
 		<input type="hidden" name="prtMobileTel" id="prtMobileTel"	value=""/> 
 		<input type="hidden" name="prtEmail"	id="prtEmail"		value=""/> 
 		<input type="hidden" name="prtRelCd"	id="prtRelCd"		value=""/> 
 		<input type="hidden" name="prtRelAdd"	id="prtRelAdd"		value=""/> 
-		<input type="hidden" name="name"		id="name"			value="<%=name%>"/>        
-	<div class="join_step">	
+		<input type="hidden" name="custNmKor"	id="custNmKor"		value="<%=custNmKor%>"/>        
+		<input type="hidden" name="custphone"	id="custphone"		value="<%=custphone%>"/>        
+<div class="join_step">	
 	<!--[[ 정보입력 Start ]]-->
 		<div class="join_step">
 	<!--[[ 정보입력 Start ]]-->
@@ -449,14 +415,14 @@ $(document).ready(function(){
 	<caption>가입정보입력</caption>
 	<tbody>
 		<tr>
-			<th scope="row"><label for="id">아이디</label><span class="chk"></span></th>
+			<th scope="row"><label for="id">아이디 <font color="red">*</font></label><span class="chk"></span></th>
 			<td colspan="3">
 				<input type="text" name="id" id="id" maxlength="20">
 				<button type="button" name="btnDup" id="btnDup" class="btnChk">중복 확인</button>
 			</td>
 		</tr>
 		<tr>
-			<th scope="row"><label for="pwd">비밀번호</label><span class="chk"></span></th>
+			<th scope="row"><label for="pwd">비밀번호<font color="red">*</font></label><span class="chk"></span></th>
 			<td colspan="3"><input type="password" name="pwd" id="pwd" maxlength="20" ><div id="passSpan"></div>
 			
 				<span class="regDesc">· 영문(소/대문자), 숫자,특수문자 중 3종류를 조합하여 8~16자리로 사용하시기 바랍니다. <br />
@@ -464,23 +430,23 @@ $(document).ready(function(){
 			</td>
 		</tr>
 		<tr>
-			<th scope="row"><label for="pwd2">비밀번호 확인</label><span class="chk"></span></th>
+			<th scope="row"><label for="pwd2">비밀번호 확인<font color="red">*</font></label><span class="chk"></span></th>
 			<td colspan="3"><input type="password" name="pwd2" id="pwd2" maxlength="20">
 				<span class="regDesc">· 재확인을 위해서입력하신비밀번호를 다시한번 입력해주세요.</span>
 			</td>
 		</tr>
 		<tr>
-			<th scope="row"><label for="name">성명</label><span class="chk"></span></th>
-			<td><input type="hidden" name="custNmKor" value="<%=name%>"><%=name %></td>
+			<th scope="row"><label for="username">성명<font color="red">*</font></label><span class="chk"></span></th>
+			<td><input type="hidden" id="custNmKor" name="custNmKor" value="<%=custNmKor%>"><%=custNmKor %></td>
 
-			<th scope="row"><label for="genderCd">성별</label></th>
+			<th scope="row"><label for="genderCd">성별<font color="red">*</font></label></th>
 			<td>
 				<input type="checkbox" name="genderCdM" id="genderCdM" value="M" ><span class="radio_txt"><label for="genderCdM">남성</label></span>
 				<input type="checkbox" name="genderCdF" id="genderCdF" value="F" ><span class="radio_txt"><label for="genderCdF">여성</label></span>
 			</td>
 		</tr>
 		<tr>
-			<th scope="row"><label for="email1">이메일</label><span class="chk"></span></th>
+			<th scope="row"><label for="email1">이메일<font color="red">*</font></label><span class="chk"></span></th>
 			<td colspan="3">
 				<input type="text" name="email1" id="email1" class="txtemail" maxlength="20">
 				<span class="txt">@</span>
@@ -503,11 +469,12 @@ $(document).ready(function(){
 			</td>
 		</tr>		
 		<tr>
-			<th scope="row"><label for="mobileTel1">휴대폰번호</label><span class="chk"></span></th>
+			<th scope="row"><label for="mobileTel1">휴대폰번호<font color="red">*</font></label><span class="chk"></span></th>
 			<td colspan="3">
-					<input type="text" name="mobiletel1"  class="txtcell" maxlength="3">
-				<span class="txt">-</span><input type="text" name="mobileTel2" id="mobileTel2" value=""  class="txtcell" maxlength="4" title="휴대전화 중간 4자리">
-				<span class="txt">-</span><input type="text" name="mobileTel3" id="mobileTel3" value=""  class="txtcell" maxlength="4" title="휴대전화 마지막 4자리">
+				<c:set var="phoneNum" value="<%=custphone%>" />
+				<input type="text" name="mobiletel1"  class="txtcell" value="${fn:substring(phoneNum,0,3) }" maxlength="3" readonly>
+				<span class="txt">-</span><input type="text" name="mobileTel2" id="mobileTel2" value="${fn:substring(phoneNum,4,8) }"  class="txtcell" maxlength="4" title="휴대전화 중간 4자리" readonly>
+				<span class="txt">-</span><input type="text" name="mobileTel3" id="mobileTel3" value="${fn:substring(phoneNum,9,13) }"  class="txtcell" maxlength="4" title="휴대전화 마지막 4자리" readonly>
 				<div class="sel_area">
 					<input type="radio" name="mobileRcpYn" id="mobileRcpYnY" value="Y"  ><span class="radio_txt"><label for="mobileRcpYnY">수신동의</label></span>
 					<input type="radio" name="mobileRcpYn" id="mobileRcpYnN" value="N" checked="checked" ><span class="radio_txt"><label for="mobileRcpYnN">수신거부</label></span>
@@ -579,7 +546,7 @@ $(document).ready(function(){
 			</td>
 		</tr>	
 		<tr>
-			<th scope="row"><label for="birthYear">생년월일</label><span class="chk"></span></th>
+			<th scope="row"><label for="birthYear">생년월일<font color="red">*</font></label><span class="chk"></span></th>
 			<td colspan="3">
 				<select name="birthYear" id="birthYear" class="selDt">
 					<option value="" selected="selected">선택</option>
@@ -622,8 +589,8 @@ $(document).ready(function(){
 		<tr>
 			<th scope="row"><label for="marryYn">결혼여부</label></th>
 			<td>
-				<input type="checkbox" name="marryYnY" id="marryYnY" value="Y"  ><span class="radio_txt"><label for="marryYnY">예</label></span>
-				<input type="checkbox" name="marryYnN" id="marryYnN" value="N"  ><span class="radio_txt"><label for="marryYnN">아니오</label></span>
+				<input type="radio" name="marryYn" id="marryYnY" value="Y"  ><span class="radio_txt"><label for="marryYnY">예</label></span>
+				<input type="radio" name="marryYn" id="marryYnN" value="N"  ><span class="radio_txt"><label for="marryYnN">아니오</label></span>
 				<input type="hidden" name="marryYn" id="marryYn" value="" />
 			</td>
 			<th scope="row"><label for="marryYear">결혼기념일</label></th>
@@ -668,6 +635,7 @@ $(document).ready(function(){
 			</tr>
 		</tbody>
 		</table>	
+		</div>
 		</div>
 		<!--[[ 정보입력 End ]]-->
 	    <div class="btnarea" style="margin-bottom:40px;">
