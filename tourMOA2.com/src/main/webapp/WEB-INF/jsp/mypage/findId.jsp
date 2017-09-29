@@ -13,9 +13,9 @@
 
 $(document).ready(function(){	
 	$("#btnok").click(function(){
-		if($("#username").val() == ""){
+		if($("#findId").val() == ""){
 			alert("이름을 입력해주세요");
-			$("#username").focus();
+			$("#findId").focus();
 			return;
 		}
 		if($("#email").val() == ""){
@@ -24,7 +24,7 @@ $(document).ready(function(){
 			return;
 		}
 	
-	var param ="name=" + $("#username").val()
+	var param ="name=" + $("#findId").val()
 		param += "&email=" + $("#email").val() ;
 	
 	$.ajax({
@@ -72,7 +72,7 @@ $(document).ready(function(){
 	<div class="id_border">
 		<div class="id_block">
 			<label for="name_check">이름</label>
-			<input type="text" name="username" id="username" placeholder="이름을 입력해주세요" />
+			<input type="text" name="findId" id="findId" placeholder="이름을 입력해주세요" />
 		</div>
 		<div class="id_block1">
 			<label for="email_check">메일주소</label>

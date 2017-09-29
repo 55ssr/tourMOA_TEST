@@ -664,6 +664,7 @@ $(document).ready(function(){
 		<input type="hidden" name="prtEmail"	id="prtEmail"		value=""/> 
 		<input type="hidden" name="prtRelCd"	id="prtRelCd"		value=""/> 
 		<input type="hidden" name="prtRelAdd"	id="prtRelAdd"		value=""/> 
+		<input type="hidden" name="custId"	  	id="custId"			value=""/>        
 		<input type="hidden" name="custNmKor"	id="custNmKor"		value="<%=custNmKor%>"/>        
 		<input type="hidden" name="custphone"	id="custphone"		value="<%=custphone%>"/>        
 		<input type="hidden" name="hidPostNum1"		id="hidPostNum1"			value=""/>        
