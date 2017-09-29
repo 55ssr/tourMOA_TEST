@@ -4,10 +4,11 @@
 <!-- LIST 자바스크립트 s-->
 <script>
 function fn_popup(){
-	var f = document.listFrm;
-	var url = "/adminCategoryWrite.do";
 	
-	alert(f.srchKeywd.value);
+	var f = document.listFrm;
+	var skv = f.srchKeywd.value;
+	alert(skv);
+	var url = "/adminCategoryWrite.do";
 	
 	window.open(url,"ctgReg","width=500,height=300,resizable=yes,left=500,top=200");
 
@@ -16,8 +17,15 @@ function fn_popup(){
 	f.method = "post";
 }
 
+function fn_search(){
+	var f = document.listFrm;
+	var url = "/adminCategoryList.do";
+	f.action = url;
+	f.method="post";
+	f.submit();
+}
+
 function fn_list(cd) {
-	
 	var f = document.listFrm;
 	var url = "/adminCategoryList.do";
 
@@ -26,7 +34,7 @@ function fn_list(cd) {
 
 	f.target = "";
 	f.action = url;    
-	//f.method = "post";
+	f.method = "post";
 	f.submit();
 }
 
@@ -34,11 +42,10 @@ function fn_detail(cd) {
 	var f = document.listFrm;
 	var url = "/adminCategoryMod.do";
 
-	window.open(url,"ctgReg","width=500,height=300,resizable=yes,left=500,top=200");
+	location.href=url;
 
 	f.ctgcd.value = cd;
-	f.action = url; 
-	f.target = "ctgReg";
+	f.action = url;
 	f.method = "post";
 	f.submit();
 }
@@ -50,24 +57,28 @@ function fn_detail(cd) {
 	<h1>카테고리 관리</h1>
 	<!-- 카테고리 리스트 s-->
 	<div class="table-responsive">
-		<form name="listFrm" id="listFrm" method="post">
-		<input type="hidden" name="ctgcd" id="ctgcd"/>
-		<input type="hidden" name="aaa" id="aaa" value="${srchKeywd}"/>
+		<form name="listFrm" id="listFrm" method="post" action="/adminCategoryWrite.do">
+		<input type="hidden" name="ctgcd" id="ctgcd"/>		
 		<table style="width:100%;">
+			<colgroup>
+				<col style="width:50%;"></col>
+				<col style="width:50%;"></col>
+			</colgroup>
 			<tr>
 				<td align="left">
 			검색 :  <select name="srchContn" style="height:25px;">
 						<option value="hctgcd" <c:if test="${srchContn == 'hctgcd'}">selected</c:if>>분류코드</option>
 						<option value="ctgnm" <c:if test="${srchContn == 'ctgnm'}">selected</c:if>>분류이름</option>
 						<option value="use" <c:if test="${srchContn == 'use'}">selected</c:if>>사용여부</option>
-					</select> 
-					<input type="text" name="srchKeywd" value="${srchKeywd}"  style="height:20px;"/>
-					<input type="submit" value="검색" style="height:26px;"/>
-				</td>
-				<td>
-					<input type="button" value="목록" onclick="location.href='/adminCategoryList.do'"/>
-					<input type="button" value="카테고리등록" onclick="fn_popup()"/>
-				</td>
+					</select>
+					<c:if test="${srchKeywd == '0'}">
+						<input type="text" name="srchKeywd" value=""  style="height:26px;"/>
+					</c:if>
+					<c:if test="${srchKeywd != '0'}">
+						<input type="text" name="srchKeywd" value="${srchKeywd}"  style="height:26px;"/>
+					</c:if>
+					<input type="button" value="검색" onclick="fn_search()" style="height:26px;"/>
+				</td>				
 			</tr>
 		</table>		
 		<table class="table table-hover">
@@ -91,6 +102,7 @@ function fn_detail(cd) {
 			</thead>
 			<tbody>
 				<c:forEach var="rs" items="${rslist}" varStatus="status">
+				<input type="hidden" name="ctgnm" id="ctgnm" value="${rs.ctgnm}"/>	
 				<tr>
 					<td>${status.count}</td>
 					<td>
@@ -109,12 +121,54 @@ function fn_detail(cd) {
 						<c:if test="${rs.use == 'Y'}">사용</c:if>
 						<c:if test="${rs.use == 'N'}">미사용</c:if>
 					</td>
-					<td><input type="button" value="수정" onclick="fn_detail('${rs.ctgcd}')" /></td>
+					<td><input type="button" value="수정" onclick="fn_detail('${rs.ctgcd}')"></td>
 				</tr>
-				</c:forEach>
-			</tbody>
+				</c:forEach>				
+			</tbody>			
 		</table>
-		</form>			
+		<table style="margin:0 auto;">
+			<tr>
+				<td>
+					<input type="button" value="목록" onclick="location.href='/adminCategoryList.do'"/>
+					<!-- <input type="button" value="카테고리등록" onclick="fn_popup()"> -->
+					<input type="submit" value="카테고리등록"/>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="6" align="center">
+				<!-- 처음 페이지 부분 -->
+				<c:if test="${before == 0}"><img src="/images/egovframework/cmmn/btn_page_pre10.gif"></c:if>
+				<c:if test="${before > 0}"><a href="adminCategoryList.do?pageIndex=1"><img src="/images/egovframework/cmmn/btn_page_pre10.gif"></a></c:if>
+				<!-- 처음 페이지 부분 --> 
+				<!-- 이전 페이지 부분 -->
+				<c:if test="${before == 0}"><img src="/images/egovframework/cmmn/btn_page_pre1.gif"></c:if>
+				<c:if test="${before > 0}"><a href="adminCategoryList.do?pageIndex=${firstPage-1}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}"><img src="/images/egovframework/cmmn/btn_page_pre1.gif"></a></c:if>
+				<!-- 이전 페이지 부분 끝 -->
+				<!-- 페이징 부분 -->
+				
+				<c:forEach  var="i"  begin="${firstPage}"  end="${lastPage}">			
+					<c:if test="${i<=totalPage}">
+						<c:set var="k" value="${searchVO.pageIndex}"></c:set>
+						<c:choose>
+							<c:when test="${k eq i}"> [<font style="color:red; font-weight:bold; font-size:12px;">${i}</font>] </c:when>
+							<c:when test="${k ne i}"><a href="adminCategoryList.do?pageIndex=${i}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}"> ${i} </a></c:when>
+						</c:choose>
+						<%-- <c:if test="${i==pageIndex}">[${i}]</c:if>
+						<a href="adminCategoryList.do?pageIndex=${i}">${i}</a> --%>
+					</c:if>
+				</c:forEach>
+				<!-- 페이징 부분 끝 -->
+				<!-- 다음 페이지 부분 -->
+				<c:if test="${next == 0}"><img src="/images/egovframework/cmmn/btn_page_next1.gif"></c:if>
+				<c:if test="${next > 0}"><a href="adminCategoryList.do?pageIndex=${lastPage+1}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}"><img src="/images/egovframework/cmmn/btn_page_next1.gif"></a></c:if>	
+				<!-- 다음 페이지 부분 끝 -->
+				<!-- 마지막 페이지 부분 -->
+				<c:if test="${next == 0}"><img src="/images/egovframework/cmmn/btn_page_next10.gif"></c:if>
+				<c:if test="${next > 0}"><a href="adminCategoryList.do?pageIndex=${totalPage}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}"><img src="/images/egovframework/cmmn/btn_page_next10.gif"></a></c:if>
+				<!-- 마지막 페이지 부분 끝 --> 		
+			</tr>
+		</table>
+		</form>		
 	</div>
 	<!-- 카테고리 리스트 e-->
 	

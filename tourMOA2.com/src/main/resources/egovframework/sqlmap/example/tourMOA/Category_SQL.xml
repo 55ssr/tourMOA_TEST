@@ -30,7 +30,8 @@
 	<!-- 카테고리리스트 출력
 	SYS_CONNECT_BY_PATH 는 문자 분리함수 -->	
 	<select id="categoryDAO.selectCategoryList" resultClass="egovMap">
-			SELECT 
+			SELECT
+				hctgcd, 
 				ctgcd,
 				ctgnm,
 				SUBSTR(SYS_CONNECT_BY_PATH(ctgnm, '>'),1) Path,
@@ -65,7 +66,7 @@
 	</select>
 	<!-- 카테고리테이블의 코드의 최대값을 구함 -->
 	<select id="categoryDAO.selectCategoryCdMax" resultClass="java.lang.String">
-		SELECT  nvl(MAX(ctgcd),'0') ctgcd FROM 
+		SELECT nvl(MAX(ctgcd),'0') ctgcd FROM 
 			category 
 		WHERE 
 			hctgcd = '$hctgcd$'
@@ -90,5 +91,32 @@
 			category 
 		WHERE 
 			ctgcd LIKE #ctgcd# || '__'
+	</select>
+	
+	<update id="categoryDAO.updateCategory">
+		UPDATE category 
+			SET
+				ctgnm = '$ctgnm$',
+				comm = '$comm$',
+				use = '$use$',
+				upddate = sysdate
+		WHERE
+			ctgcd = '$ctgcd$'
+	</update>
+	<delete id="categoryDAO.deleteCategory">
+		DELETE 
+			FROM category 
+		WHERE
+			ctgcd = #ctgcd#
+	</delete>
+	<!-- 패이징 -->
+	<select id="categoryDAO.selectCategoryTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM category
+		WHERE 1=1
+	      <isNotNull property="searchCondition">
+	      	<isNotEmpty property="searchCondition">
+	      		AND $searchCondition$ LIKE '%' || #searchKeyword# || '%'
+	      	</isNotEmpty>
+	      </isNotNull>	
 	</select>
 </sqlMap>

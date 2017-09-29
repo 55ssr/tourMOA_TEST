@@ -11,9 +11,47 @@
 			WHERE id = '$id$'
 	</select>
 	
-	<select id="memberDAO.selectjoinStep03" resultClass="java.lang.String">
-		SELECT name FROM member
-		
+	<select id="memberDAO.findId" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM member
+			WHERE name = '$name$' AND email = '$email$'
 	</select>
+	
+	
+	<select id="memberDAO.findPwRe" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM member
+			WHERE id = '$id$' AND email = '$email$'
+	</select>
+	
+	<insert id="memberDAO.insertMemberJoin">
+		INSERT INTO MEMBER (	
+							unq,
+							id,
+							pwd,
+							name,
+							gender,
+							email,
+							phone,
+							postnum1,
+							addr1_1,
+							addr1_2,
+							birthday,
+							agree1,
+							agree2
+						) VALUES (
+							SEQ_MEMBER_UNQ.nextval,
+							'$id$',
+							'test!1234',
+							'$name$',
+							'$gender$',
+							'$email$',
+							'$phone$',
+							'$postnum1$',
+							'$addr1_1$',
+							'$addr1_2$',
+							'$birthday$',
+							'$agree1$',
+							'$agree2$'
+						)
+	</insert>
 	
 </sqlMap>

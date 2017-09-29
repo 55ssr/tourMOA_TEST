@@ -6,9 +6,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
@@ -43,8 +41,20 @@ public class MypageController {
 	}
 	
 	/*마이페이지 아이디 찾기*/
+	@RequestMapping(value = "/mypage/findIdRe.do")
+	@ResponseBody public Map<String, Object> findId(MemberVO vo) throws Exception {
+		int cnt = 0;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		cnt = memberService.findId(vo);
+		
+		map.put("cnt", cnt);
+
+		return map;
+	}
+	
 	@RequestMapping("mypage/findId.do")
-	public String findId() throws Exception{		
+	public String findId1() throws Exception{		
 		return "mypage/findId";
 	}
 	
@@ -52,6 +62,17 @@ public class MypageController {
 	@RequestMapping("mypage/findPw.do")
 	public String findPw() throws Exception{		
 		return "mypage/findPw";
+	}
+	@RequestMapping(value = "/mypage/findPwRe.do")
+	@ResponseBody public Map<String, Object> findPwRe(MemberVO vo) throws Exception {
+		int cnt = 0;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		cnt = memberService.findPwRe(vo);
+		
+		map.put("cnt", cnt);
+
+		return map;
 	}
 	
 	/*마이페이지 회원가입 2단계*/
@@ -63,14 +84,23 @@ public class MypageController {
 	
 	/*마이페이지 회원가입 3단계*/
 	@RequestMapping("mypage/joinStep03.do")
-	public String selectjoinStep03(@RequestParam("name") String name,Model model) throws Exception{		
-		
-		MemberVO vo = memberService.selectjoinStep03(name);	                                 
-		model.addAttribute("vo",vo);
+	public String selectjoinStep03() throws Exception{	
 		
 		return "mypage/joinStep03";
 	}
 	
+	@RequestMapping(value="/mypage/insertJoinSave.do")
+	@ResponseBody public Map<String,Object> insertJoinSave(MemberVO vo) throws Exception{
+		
+		String result = "";
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		System.out.println(vo.getId());
+		result = memberService.insertMemberJoin(vo);
+		if(result == null) result = "ok";
+		map.put("result", result);
+		
+		return map;
+	}
 	
 	/*마이페이지 세션체크부문*/
 	@RequestMapping("mypage/sessionCheckJSON.do")
@@ -84,8 +114,6 @@ public class MypageController {
 			throws Exception {
 		int cnt = 0;
 		HashMap<String, Object> map = new HashMap<String, Object>();
-		
-		System.out.println("=====member controller====" + vo.getId());
 		
 		cnt = memberService.selectCustIdDuplication(vo);
 		

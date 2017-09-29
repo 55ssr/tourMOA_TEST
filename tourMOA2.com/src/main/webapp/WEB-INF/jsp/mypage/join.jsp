@@ -10,21 +10,26 @@ $(document).ready(function(){
 		if(!$("#chk_agree01").prop("checked")){
 			alert("인터넷 회원 약관에 동의하셔야 합니다.");
 			return false;
+		}else {
+			$("input:hidden[name='agreeEss01']").val('Y');	
 		}
 		
 		if(!$("#chk_agree02").prop("checked")){
 			alert("개인정보 수집 및 이용에 동의하셔야 합니다.");
 			return false;
+		}else {
+			$("input:hidden[name='agreeEss02']").val('Y');
 		}
 
-		if($("#chk_agree03").prop("checked"))	$("input:hidden[name='agreeSav']").val("Y");
-		else									$("input:hidden[name='agreeSav']").val("N");
+		
+		if($("#chk_agree03").prop(':checked'))	$("input:hidden[name='agreeSav']").val('Y');
+		else									$("input:hidden[name='agreeSav']").val('N');
 		if($("#chk_agree04").prop("checked"))	$("input:hidden[name='agreePrv']").val("Y");
-		else									$("input:hidden[name='agreePrv']").val("N");
-		if($("#chk_agree05").prop("checked"))	$("input:hidden[name='agreeShr']").val("Y");
-		else									$("input:hidden[name='agreeShr']").val("N");
-		if($("#chk_agree06").prop("checked"))	$("input:hidden[name='agreeMkt']").val("Y");
-		else $("input:hidden[name='agreeMkt']").val("N");
+		else									$("input:hidden[name='agreePrv']").val('N');
+		if($("#chk_agree05").prop("checked"))	$("input:hidden[name='agreeShr']").val('Y');
+		else									$("input:hidden[name='agreeShr']").val('N');
+		if($("#chk_agree06").prop("checked"))	$("input:hidden[name='agreeMkt']").val('Y');
+		else 									$("input:hidden[name='agreeMkt']").val('N');
 		
 		
 		if(btnId == "child"){
@@ -68,6 +73,8 @@ $(document).ready(function(){
 	<div id="wrap">
 		<!--[[ wrap Start ]]-->	
 	<form name="mbrFrm" id="mbrFrm" method="post" action="/mypage/joinStep02.do">
+		<input type="hidden" name="agreeEss01" 	value="">
+		<input type="hidden" name="agreeEss02" 	value="">
 		<input type="hidden" name="agreeSav" 	value="">
 		<input type="hidden" name="agreePrv" 	value="">
 		<input type="hidden" name="agreeShr" 	value="">
