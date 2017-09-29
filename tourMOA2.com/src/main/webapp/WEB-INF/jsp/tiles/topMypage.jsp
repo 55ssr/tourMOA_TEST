@@ -67,7 +67,7 @@
 	    });
 	});
 </script>
-<script src="https://code.jquery.com/jquery-latest.js"></script>
+<%-- <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javaScript" defer="defer">
 function wrapWindowByMask(){
 	//화면의 높이와 너비를 구한다.
@@ -263,7 +263,7 @@ $(document).ready(function(){
     </div>
 </div>	
 </div>			
- 	
+ --%> 	
 <!-- 레이어팝업 끝 -->
 <div id="wrap"><!--[[ wrap Start ]]-->
 	<header><!--[[ header Start ]]-->
