@@ -5,6 +5,7 @@
 
 	<typeAlias alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="categoryVO" type="tourMOA.service.CategoryVO"/>
+	<typeAlias  alias="defaultListVO" type="tourMOA.service.DefaultListVO"/>
 	
 	<!-- 카테고리 Insert -->
 	<insert id="categoryDAO.insertCategory">
@@ -83,5 +84,11 @@
 		WHERE 
 			ctgcd = #ctgcd#
 	</select>
-	
+	<select id="categoryDAO.selectCategoryLowLevlCnt" resultClass="java.lang.Integer">
+		SELECT  
+				COUNT(*) FROM 
+			category 
+		WHERE 
+			ctgcd LIKE #ctgcd# || '__'
+	</select>
 </sqlMap>

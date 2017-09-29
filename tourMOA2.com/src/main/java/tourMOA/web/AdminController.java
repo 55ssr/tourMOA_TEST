@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
@@ -222,7 +223,7 @@ public class AdminController {
 	
 	/*카테고리 등록 VIEW*/
 	@RequestMapping("/adminCategoryWrite.do")
-	public String adminCategoryWrite(DefaultListVO vo,Model model) throws Exception {
+	public String adminCategoryWrite (@RequestParam("aaa") String aaa ,DefaultListVO vo,Model model) throws Exception {
 		
 		System.out.println("test");
 		/*
@@ -231,7 +232,8 @@ public class AdminController {
 		 * ex1) 올바른 경우 : 0(대분류등록) , A01(중분류등록), A0101(소분류등록)
 		 * ex2) 올바르지 않은 경우 : NULL, A1, A101, 그외 기타 
 		 */
-		String hctgcd = vo.getSrchKeywd();
+				
+		String hctgcd = aaa;
 		
 		int cnt = 0;
 		String maxcd = "";

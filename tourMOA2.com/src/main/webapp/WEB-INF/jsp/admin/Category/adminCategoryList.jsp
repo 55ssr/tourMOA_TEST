@@ -4,9 +4,10 @@
 <!-- LIST 자바스크립트 s-->
 <script>
 function fn_popup(){
-	alert("test");
 	var f = document.listFrm;
 	var url = "/adminCategoryWrite.do";
+	
+	alert(f.srchKeywd.value);
 	
 	window.open(url,"ctgReg","width=500,height=300,resizable=yes,left=500,top=200");
 
@@ -16,6 +17,7 @@ function fn_popup(){
 }
 
 function fn_list(cd) {
+	
 	var f = document.listFrm;
 	var url = "/adminCategoryList.do";
 
@@ -24,7 +26,7 @@ function fn_list(cd) {
 
 	f.target = "";
 	f.action = url;    
-	f.method = "post";
+	//f.method = "post";
 	f.submit();
 }
 
@@ -45,11 +47,12 @@ function fn_detail(cd) {
 <!-- LIST 자바스크립트 e-->
 
 	<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
-	<h1>그룹 관리</h1>
+	<h1>카테고리 관리</h1>
 	<!-- 카테고리 리스트 s-->
 	<div class="table-responsive">
-		<form name="listFrm" id="listFrm" action="">
+		<form name="listFrm" id="listFrm" method="post">
 		<input type="hidden" name="ctgcd" id="ctgcd"/>
+		<input type="hidden" name="aaa" id="aaa" value="${srchKeywd}"/>
 		<table style="width:100%;">
 			<tr>
 				<td align="left">
@@ -63,11 +66,10 @@ function fn_detail(cd) {
 				</td>
 				<td>
 					<input type="button" value="목록" onclick="location.href='/adminCategoryList.do'"/>
-					<input type="button" value="카테고리등록" onclick="fn_popup()">
+					<input type="button" value="카테고리등록" onclick="fn_popup()"/>
 				</td>
 			</tr>
-		</table>
-		</form>
+		</table>		
 		<table class="table table-hover">
 			<colgroup>
 				<col style="width:5%;"></col>
@@ -107,11 +109,12 @@ function fn_detail(cd) {
 						<c:if test="${rs.use == 'Y'}">사용</c:if>
 						<c:if test="${rs.use == 'N'}">미사용</c:if>
 					</td>
-					<td><input type="button" value="수정" onclick="fn_detail('${rs.ctgcd}')"></td>
+					<td><input type="button" value="수정" onclick="fn_detail('${rs.ctgcd}')" /></td>
 				</tr>
 				</c:forEach>
 			</tbody>
-		</table>		
+		</table>
+		</form>			
 	</div>
 	<!-- 카테고리 리스트 e-->
 	

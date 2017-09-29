@@ -320,6 +320,5 @@ public class DefaultListVO implements Serializable {
 	@Override
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);
-	}
-
+	}	
 }

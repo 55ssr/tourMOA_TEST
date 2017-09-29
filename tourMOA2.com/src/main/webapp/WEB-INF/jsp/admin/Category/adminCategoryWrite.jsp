@@ -6,12 +6,6 @@
 <%@ taglib prefix="spring" 	uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fn" 		uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<script src="/js/jquery-ui.js"></script>
-</head>
-
 <script>
 function fn_save() {
 		
@@ -81,17 +75,16 @@ function fn_save() {
 
 </script>
 
-<c:if test="${fn:length(hctgcd) == 1}">
-	<c:set var="level" value="대분류" />
-</c:if>
+
 <c:if test="${fn:length(hctgcd) == 3}">
 	<c:set var="level" value="중분류" />
+</c:if>
+<c:if test="${fn:length(hctgcd) == 1}">
+	<c:set var="level" value="대분류" />
 </c:if>
 <c:if test="${fn:length(hctgcd) == 5}">
 	<c:set var="level" value="소분류" />
 </c:if>
-
-<body>
 <table border="0" style="width:98%">
 	<tr>
 		<td align="right">
@@ -140,5 +133,3 @@ function fn_save() {
 	</tr>
 </table>
 </form>
-</body>
-</html>
