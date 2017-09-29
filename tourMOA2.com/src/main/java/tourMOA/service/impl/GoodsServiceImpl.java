@@ -32,4 +32,19 @@ public class GoodsServiceImpl extends EgovAbstractServiceImpl implements GoodsSe
 		return goodsDAO.selectGoodsTotal(searchVO);
 	}
 
+	@Override
+	public GoodsVO selectGoodsDetail(GoodsVO vo) throws Exception {
+		return goodsDAO.selectGoodsDetail(vo);
+	}
+
+	@Override
+	public int updateGoods(GoodsVO vo) throws Exception {
+		return goodsDAO.updateGoods(vo);
+	}
+
+	@Override
+	public int deleteGoods(GoodsVO vo) throws Exception {
+		return goodsDAO.deleteGoods(vo);
+	}
+
 }

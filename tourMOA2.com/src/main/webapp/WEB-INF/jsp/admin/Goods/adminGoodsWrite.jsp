@@ -112,6 +112,8 @@
 				param +="&sdate="+$("#sdate").val()
 				param +="&edate="+$("#edate").val()
 				param +="&period="+$("#period").val()
+				param +="&period="+$("#period1").val()
+				param +="&period="+$("#period2").val()
 				param +="&price="+$("#price").val()
 				param +="&pricech="+$("#pricech").val()
 				param +="&pricein="+$("#pricein").val();
@@ -360,12 +362,12 @@
 			</div>
 			<script>
 			$("#via").on("change", function(){
-				if ($(this).val() == "1") {
+				if ($(this).val() == "Y") {
 				 	$("#vias").attr("disabled",true);
 				 	$("#viaSelect").attr("disabled",true);
 				 	$("#viaSelect + button").attr("disabled",true);
 				}
-				if ($(this).val() == "2") {
+				if ($(this).val() == "N") {
 				 	$("#vias").removeAttr("disabled");
 				 	$("#viaSelect").removeAttr("disabled");
 				 	$("#viaSelect + button").removeAttr("disabled");

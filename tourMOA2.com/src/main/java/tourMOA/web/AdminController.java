@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
@@ -138,10 +139,36 @@ public class AdminController {
 		return map;
 	}
 	
+	
 	@RequestMapping("/adminGoodsDetail.do")
-	public String adminGoodsDetail() {
+	public String adminGoodsDetail(@RequestParam("unq") int unq, GoodsVO vo,Model model) throws Exception{
+		vo = goodsService.selectGoodsDetail(vo);
+		model.addAttribute("vo", vo);
 		return "admin/Goods/adminGoodsDetail";
 	}
+	
+	
+	@RequestMapping(value = "/adminGoodsUpdate.do")
+	@ResponseBody public Map<String, Object> adminGoodsUpdate(GoodsVO vo) throws Exception {
+		int cnt = 0;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		System.out.println("detail ===============" + vo.getDetail1());
+		cnt = goodsService.updateGoods(vo);
+		map.put("cnt",cnt);
+		return map;
+	}
+	
+	@RequestMapping(value = "/adminGoodsDelete.do")
+	@ResponseBody public Map<String, Object> adminGoodsDelete(GoodsVO vo) throws Exception {
+		int cnt = 0;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		cnt = goodsService.deleteGoods(vo);
+		map.put("cnt", cnt);
+		return map;
+	}
+	
+	
+	
 	
 	@RequestMapping("/adminGoodsCommList.do")
 	public String adminGoodsCommList() {
