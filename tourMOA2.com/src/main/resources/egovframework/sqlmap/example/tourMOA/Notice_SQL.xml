@@ -3,12 +3,7 @@
 
 <sqlMap namespace="Notice">
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
-	<typeAlias  alias="searchVO" type="egovframework.example.sample.service.SampleDefaultVO"/>
 	<typeAlias  alias="noticeVO" type="tourMOA.service.NoticeVO"/>
-	
-	<select id="noticeDAO.selectNoticeList" resultClass="egovMap">
-		SELECT * FROM notice
-	</select>
 	
 	<insert id="noticeDAO.insertNotice">
 		INSERT INTO notice 
@@ -19,11 +14,48 @@
 			  , hit
 			  , rdate
 			  , all_view )
-		VALUES ( reboard_unq.nextval
+		VALUES ( SEQ_notice_unq.nextval
 			  , #gubun#
 			  , #title#
 			  , #content#
+			  , '0'
 			  , sysdate
 			  , #all_view# )
 	</insert>
+	
+	<select id="noticeDAO.selectNoticeList" resultClass="egovMap">
+		SELECT b.* FROM (
+			SELECT 
+				rownum rn, a.* FROM (
+							SELECT	  unq
+									, gubun
+									, title
+									, content
+									, hit
+									, rdate
+									, DECODE(all_view,'Y',('사용'),('중지')) allview
+									, upddate 
+							FROM 
+									notice
+									
+							WHERE
+									1=1 
+									
+							<isNotNull property="searchCondition">
+								<isNotEmpty property="searchCondition">
+									AND $searchCondition$ LIKE '%' || #searchKeyword# || '%' 	
+								</isNotEmpty>
+							</isNotNull>		
+									
+							ORDER BY rdate DESC
+									) a
+						) b
+		WHERE 
+				rn >= #firstIndex# AND rn <![CDATA[<=]]> #lastIndex#
+	</select>
+	
+	<select id="noticeDAO.selectNoticeTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM notice
+	</select>
+	
 </sqlMap>

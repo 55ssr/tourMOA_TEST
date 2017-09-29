@@ -7,6 +7,7 @@ public class NoticeVO {
 	private String content;
 	private int hit;
 	private String rdate;
+	private String all_view;
 	private String upddate;
 	public int getUnq() {
 		return unq;
@@ -44,10 +45,19 @@ public class NoticeVO {
 	public void setRdate(String rdate) {
 		this.rdate = rdate;
 	}
+	public String getAll_view() {
+		return all_view;
+	}
+	public void setAll_view(String all_view) {
+		this.all_view = all_view;
+	}
 	public String getUpddate() {
 		return upddate;
 	}
 	public void setUpddate(String upddate) {
 		this.upddate = upddate;
 	}
+	
+	
+	
 }
