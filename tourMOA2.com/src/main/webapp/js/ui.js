@@ -2042,8 +2042,8 @@ $(document).ready(function() {
 	 */
 
 	window.closeLayer = function() {
-		$("html").css("overflow-y","scroll");
-		window.popLayer.close();
+			$("html").css("overflow-y","scroll");
+			/*(this).popLayer.close();*/
 	}
 	
 	window.showLoginLayer = function(forwardUrl) {

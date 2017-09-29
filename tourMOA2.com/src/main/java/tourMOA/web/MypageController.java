@@ -4,10 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import tourMOA.service.MemberService;
@@ -204,5 +209,27 @@ public class MypageController {
 	@RequestMapping("mypage/giftcardBuy.do")
 	public String giftcardBuy() throws Exception{		
 		return "mypage/giftcardBuy";
+	}
+	/*Login Session*/
+	@RequestMapping("/loginSession.do")
+	@ResponseBody
+	public ModelAndView LoginSession(@ModelAttribute MemberVO vo,HttpSession session,HttpServletRequest request, HttpServletResponse response) throws Exception {
+		boolean result = memberService.loginSession(vo,session);
+		String id = request.getParameter("loginId");
+		String pwd = request.getParameter("loginPwd");
+		ModelAndView mav = new ModelAndView();
+		if(result==true){
+			mav.addObject("msg","success");
+			session.setAttribute("id", id);
+			session.setAttribute("pwd", pwd);
+			/*mav.setViewName("/main.do");*/
+			response.sendRedirect("main.do");
+		}else{
+			mav.setViewName("/main.do");
+			mav.addObject("msg","failure");
+		}
+		System.out.println(mav);
+		
+		return mav;
 	}
 }
