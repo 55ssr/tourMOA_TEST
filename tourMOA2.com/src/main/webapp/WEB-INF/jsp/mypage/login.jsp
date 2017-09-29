@@ -1,4 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator"%>
+<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script src="/js/jquery-2.2.2.js"></script>
+<script src="/js/jquery-ui.js"></script>
 <link rel="stylesheet" href="/css/mypage.css" />	  
    <!-- 로그인, 아이디찾기, 비밀번호 찾기 -->
    <script type="text/javaScript" language="javascript" defer="defer">
@@ -224,11 +234,53 @@
 	}
 
 </script>
+<script type="text/javaScript" defer="defer">
+$(document).ready(function(){
+	$("#loginTopMain").click(function(){
+		if($("input:text[id=mpg_custId]").val()==null){
+			alert("아이디를 입력해주세요.");
+			return false;
+		}
+		if($("input:password[id=mpg_custPassEnc]").val()==null){
+			alert("패스워드를 입력해주세요.");
+			return false;
+		}
+			
+			
+			var param  = "id=" + $("#mpg_custId").val()
+				param += "&pwd=" + $("#mpg_custPassEnc").val();
+		
+			$.ajax({
+				  type:'POST'
+				, url:"<c:url value='/loginSession.do'/>" 
+				, data:param
+				, dataType: 'JSON'
+				,success:function(data) {
+					if(data.msg == "ok"){
+						alert("환영합니다.");
+						location.href="<c:url value='/main.do'/>";
+						
+					}else if(data.msg == "fail"){
+						$("#loginId").val('');
+						$("#loginPwd").val('');
+						alert("아이디 혹은 비밀번호가 다릅니다.");
+						window.reload();
+					}
+				}
+				, error: function(error) {
+					alert('Loading Error! '+error);
+				}
+			
+	  		 });
+		
+	});
+});
+</script>
 <section id="content" class="contentSub"><!--[[ content Start ]]-->
 	<div class="tit login_tit" title="회원로그인"></div>
         <div class="loginWrap">
             <div class="loginBox_01 bdb0">
-				 <form name="frmLogin" id="frmLogin" method="post" action="/mypage/loginProc.do">
+				 <form name="frmLogin" id="frmLogin" method="post">
 					<input type="hidden" name="forwardUrl" id="forwardUrl"  value="https://www.ybtour.co.kr/mypage/reserveList.do"/>
 					<input type="hidden" name="loginFrom" id="loginFrom"  value="YBPC"/>
 	                <span class="login_header">로그인</span>
@@ -236,7 +288,10 @@
 	                    <span class="sbj mgb10"><label for="custId">아이디</label></span><span class="cont mgb10"><input type="text" id="mpg_custId" name="custId" maxlength="20"></span>
 	                    <span class="sbj"><label for="custPassEnc">비밀번호</label></span><span class="cont"><input type="password" id="mpg_custPassEnc" name="custPassEnc" maxlength="20"></span>
 	                </div>
-	                <div class="input02"><button type="submit" name="btnLogin" id="btnLoginMpg">로그인</button></div>
+	                <div class="input02">
+	                <!-- <button type="submit" name="btnLogin" id="btnLoginMpg">로그인</button> -->
+	                <button type="button" name="btnLogin" id="loginTopMain">로그인</button>
+	                </div>
 	                <span class="chk"><input type="checkbox" id="mpg_chkSave" name="chkSave"><label for="chkSave">아이디저장</label></span>
 	                <div class="para">
 	                    <span>회원가입 시 입력하신 회원정보를 통해<br /> 아이디와 비밀번호를 찾으실 수 있습니다.</span>

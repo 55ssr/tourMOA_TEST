@@ -159,8 +159,8 @@ $(document).ready(function(){
         <div class="loginBox_01">
             <div class="box_top">
                 <form name="frmJoinPop" id="frmJoinPop" method="post" action="/mypage/joinStep03.do">
-                	<input type="text" name="agreeEss01" 	value="<%=agreeEss01%>" />
-                	<input type="text" name="agreeEss02" 	value="<%=agreeEss02%>" />
+                	<input type="hidden" name="agreeEss01" 	value="<%=agreeEss01%>" />
+                	<input type="hidden" name="agreeEss02" 	value="<%=agreeEss02%>" />
                 	<input type="hidden" name="plusInfo" 	value="<%=plusInfo%>" />
 					<input type="hidden" name="agreeSav" 	value="<%=agreeSav%>" />
 					<input type="hidden" name="agreePrv" 	value="<%=agreePrv%>" />

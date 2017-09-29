@@ -1,7 +1,5 @@
 package tourMOA.service;
 
-import javax.servlet.http.HttpSession;
-
 public interface MemberService {
 	
 	int selectCustIdDuplication(MemberVO vo) throws Exception;
@@ -12,6 +10,6 @@ public interface MemberService {
 	
 	int findPwRe(MemberVO vo) throws Exception;
 	
-	boolean loginSession(MemberVO vo, HttpSession session) throws Exception;
+	boolean loginSession(MemberVO vo) throws Exception;
 
 }

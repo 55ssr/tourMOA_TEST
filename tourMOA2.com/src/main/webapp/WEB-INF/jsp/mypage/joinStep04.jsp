@@ -44,7 +44,6 @@
 				param += "&agree1="+$("#agreeEss01").val()
 				param += "&agree2="+$("#agreeEss02").val();
 			
-			alert(param);
 			$.ajax({
 				  type:'POST'
 				, url:"<c:url value='/mypage/insertJoinSave.do'/>"
@@ -111,11 +110,11 @@
 	<input type="hidden" name="prtEmail"		id="prtEmail"			value=""/> 
 	<input type="hidden" name="prtRelCd"		id="prtRelCd"			value=""/> 
 	<input type="hidden" name="prtRelAdd"		id="prtRelAdd"			value=""/>
-	<input type="hidden" name="agreeEss01" 	id="agreeEss01" 	value="<%=agreeEss01%>" />
-    <input type="hidden" name="agreeEss02" 	id="agreeEss02" 	value="<%=agreeEss02%>" />
-    <input type="text" name="hidPostNum1"		id="hidPostNum1"		value="<%=hidPostNum1%>"/>        
-	<input type="text" name="hidAddr1_1"		id="hidAddr1_1"			value="<%=hidAddr1_1%>"/>        
-	<input type="text" name="hidAddr1_2"		id="hidAddr1_2"			value="<%=hidAddr1_2%>"/>    
+	<input type="hidden" name="agreeEss01" 		id="agreeEss01" 		value="<%=agreeEss01%>" />
+    <input type="hidden" name="agreeEss02" 		id="agreeEss02" 		value="<%=agreeEss02%>" />
+    <input type="hidden" name="hidPostNum1"		id="hidPostNum1"		value="<%=hidPostNum1%>"/>        
+	<input type="hidden" name="hidAddr1_1"		id="hidAddr1_1"			value="<%=hidAddr1_1%>"/>        
+	<input type="hidden" name="hidAddr1_2"		id="hidAddr1_2"			value="<%=hidAddr1_2%>"/>    
 <section id="content" class="contentSub">
 	<!--[[ content Start ]]-->
 	<div class="tit join_tit" title="회원가입">

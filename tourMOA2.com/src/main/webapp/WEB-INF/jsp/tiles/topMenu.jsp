@@ -10,16 +10,47 @@
 <script src="https://code.jquery.com/jquery-latest.js"></script>
 <script src="/js/jquery-2.2.2.js"></script>
 <script src="/js/jquery-ui.js"></script>
-
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#logoutBtn").click(function(){
+		$.ajax({
+			  type:'POST'
+			, url:"<c:url value='/logOut.do'/>" 
+			,success:function(data) {
+				if(data.result == "ok"){
+					alert("로그아웃 됬습니다.");
+					location.href="<c:url value='/main.do'/>";
+				}else{
+					alert("실패했습니다.");
+				}
+			}
+			, error: function(error) {
+				alert('Loading Error! '+error);
+			}
+		 });
+	});
+});
+</script>
 <div id="wrap">
     <div id="header">
         <div id="topmenu">
           <div id="tt">
-           <ul>
-				<li><a href="/admin.do">어드민</a></li>
-				<li><a href="#" class="loginBtn">로그인</a></li>
-				<li><a href="/mypage/join.do">회원가입</a></li>
-           </ul>
+          <c:choose>
+          	<c:when test="${not empty sessionScope.loginCertification}">
+	          	<ul>
+					<li><a href="/admin.do">어드민</a></li>
+					<li><a href="#" id="logoutBtn">${sessionScope.loginCertification.id}님 환영합니다.[로그아웃]</a></li>
+					<li><a href="/mypage/join.do">회원가입</a></li>
+	           </ul>
+         	</c:when>
+	        <c:otherwise>
+	        	<ul>
+					<li><a href="/admin.do">어드민</a></li>
+					<li><a href="/mypage/login.do">로그인</a></li>
+					<li><a href="/mypage/join.do">회원가입</a></li>
+	           </ul>
+	        </c:otherwise>
+          </c:choose>
           </div>  
         </div>  
         
