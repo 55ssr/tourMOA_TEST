@@ -212,24 +212,20 @@ public class MypageController {
 	}
 	/*Login Session*/
 	@RequestMapping("/loginSession.do")
-	@ResponseBody
-	public ModelAndView LoginSession(@ModelAttribute MemberVO vo,HttpSession session,HttpServletRequest request, HttpServletResponse response) throws Exception {
+	@ResponseBody public Map<String, Object> LoginSession(MemberVO vo,HttpSession session,HttpServletRequest request) throws Exception {
 		boolean result = memberService.loginSession(vo,session);
+		HashMap<String, Object> map = new HashMap<String, Object>();
 		String id = request.getParameter("loginId");
 		String pwd = request.getParameter("loginPwd");
-		ModelAndView mav = new ModelAndView();
 		if(result==true){
-			mav.addObject("msg","success");
+			map.put("msg", "ok");
 			session.setAttribute("id", id);
 			session.setAttribute("pwd", pwd);
 			/*mav.setViewName("/main.do");*/
-			response.sendRedirect("main.do");
 		}else{
-			mav.setViewName("/main.do");
-			mav.addObject("msg","failure");
+			map.put("msg", "fail");
 		}
-		System.out.println(mav);
 		
-		return mav;
+		return map;
 	}
 }

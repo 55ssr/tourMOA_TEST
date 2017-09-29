@@ -8,6 +8,8 @@
 <%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator"%>
 <link rel="stylesheet" href="/css/mypage.css" />
 <script src="https://code.jquery.com/jquery-latest.js"></script>
+<script src="/js/jquery-2.2.2.js"></script>
+<script src="/js/jquery-ui.js"></script>
 
 <div id="wrap">
     <div id="header">
