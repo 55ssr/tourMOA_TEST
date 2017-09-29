@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import tourMOA.service.CategoryService;
 import tourMOA.service.CategoryVO;
 import tourMOA.service.DefaultListVO;
@@ -226,9 +227,8 @@ public class AdminController {
 	
 	/*카테고리 리스트 VIEW*/
 	@RequestMapping("/adminCategoryList.do")
-	public String selectCategoryList(DefaultListVO vo, Model model) throws Exception {
+	public String selectCategoryList(DefaultListVO vo, Model model) throws Exception {		
 		
-		System.out.println("test");
 		if(	vo.getSrchContn() == null 
 			|| vo.getSrchContn().equals("")
 			|| vo.getSrchKeywd() == null 
@@ -249,14 +249,85 @@ public class AdminController {
 	
 	/*카테고리 등록 VIEW*/
 	@RequestMapping("/adminCategoryWrite.do")
-	@ResponseBody public Map<String, String> insertCtg( CategoryVO vo) 
-            throws Exception {
+	public String adminCategoryWrite(DefaultListVO vo,Model model) throws Exception {
+		
+		System.out.println("test");
+		/*
+		 * 변수설명 : 등록하려는 분류(카테고리)의 상위 코드 값
+		 * 아래와 같은 경우의 값이 올 수 있음
+		 * ex1) 올바른 경우 : 0(대분류등록) , A01(중분류등록), A0101(소분류등록)
+		 * ex2) 올바르지 않은 경우 : NULL, A1, A101, 그외 기타 
+		 */
+		String hctgcd = vo.getSrchKeywd();
+		
+		int cnt = 0;
+		String maxcd = "";
+		String ctgcd = "";
+		
+		System.out.println("====== hctgcd : " + hctgcd);
+		
+		/*
+		 * 설명 : hctgcd(상위 레벨 코드) 값 완성
+		 */
+		if(!hctgcd.equals("0")) {
+			cnt = categoryService.selectCategoryCdCnt(hctgcd);
+			
+			// 존재하지 않은 값이 들어왔을 경우 대분류 등록으로 인식 시킴
+			// 즉 정상코드 값이 아닌 다른 ( ex:001,ABC 등등 ) 값이 왔을 경우임
+			if(cnt <= 0) hctgcd = "0";
+		} 
+		
+		/*
+		 * 등록하려는 데이터 코드와 같은 항렬의 max값 가져옴
+		 * 예) 0(같은 항렬이 없는 경우), A01 , A0101, A010101
+		 */
+		maxcd = categoryService.selectCategoryCdMax(hctgcd);
+		System.out.println("====== maxCd : " + maxcd);
+		
+		// 같은 항렬이 없는 경우 0을 가져옴
+		if(maxcd.equals("0")) {
+			
+			if(hctgcd.equals("0")) ctgcd = "A01";
+			else ctgcd = hctgcd + "01";
+		
+		} else {
+				// 같은 항렬이 있는 경우 max 값을 가져옴
+				String cd1 = maxcd.substring(0,1);   // A
+				String cd2 = maxcd.substring(1,maxcd.length()); // 0102
+				
+				// 03(x), 3(0) ,0103(x), 103(o)
+				int mycd = Integer.parseInt(cd2) + 1; 
+				
+				System.out.println("====== cd2_1 : " + mycd);
+				
+				int cd2_1Len = Integer.toString(mycd).length();
+				if(cd2_1Len%2 == 1) ctgcd = cd1 +"0"+ mycd;
+				else ctgcd = cd1 + mycd;
+		}
+
+		System.out.println("====== ctgcd : " + ctgcd);
+		
+		model.addAttribute("hctgcd", hctgcd);
+		model.addAttribute("ctgcd", ctgcd);
+		
+		return "admin/Category/adminCategoryWrite";
+	}
+	/*카테고리 저장 부문*/
+	@RequestMapping("/categorySave.do")
+	@ResponseBody public Map<String, String> insertCtg(CategoryVO vo) throws Exception {
+		
 		
 		String result="";
-		int cnt = 0;
-		Map<String, String> map = new HashMap<String, String>();
+		
+		Map<String, String> map = new HashMap<String, String>();		
+		
+		System.out.println("===1" + vo.getCtgcd());
+		//System.out.println("===2" + hctgcd);
 		
 		result = categoryService.insertCategory(vo);
+		
+		System.out.println("==============="+result);
+		
 		if(result == null) {
 			result = "ok";
 		}
@@ -266,10 +337,17 @@ public class AdminController {
 	
 	/*카테고리 수정 VIEW*/
 	@RequestMapping("/adminCategoryMod.do")
-	public String adminCategoryMod() {
+	public String ctgModWrite(CategoryVO vo,Model model) throws Exception {
+		
+		int cnt = categoryService.selectCategoryCdCnt(vo.getCtgcd());
+		
+		if(cnt > 0) {
+			vo = categoryService.selectCategoryDetail(vo);
+		}
+		
+		model.addAttribute("ctgVo", vo);
+		
 		return "admin/Category/adminCategoryMod";
 	}
-	
-	
 }
 

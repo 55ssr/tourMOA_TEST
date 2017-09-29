@@ -1,6 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form"   uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="ui"     uri="http://egovframework.gov/ctl/ui"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <link rel="stylesheet" href="/css/customer.css" />
-    
 <script>
 function fnMenuSelect() {
 	//공지사항
@@ -21,7 +25,6 @@ function fnMenuSelect() {
     //서비스안내
     
 }
-
 $( document ).ready(function() {
 	fnMenuSelect();
 	$('#lnb').mouseleave(function(){
@@ -91,13 +94,24 @@ function loginConfirm(){
 				    <th scope="col">제목</th>
 				    <th scope="col">등록일</th>
                </tr>
+          </table>
+             <table>
               	<c:forEach var="result" items="${resultList}" varStatus="status">
-               <tr >
-				    <td headers="번호" >	<span class="bul bul_yellow">${result.unq}</span></td>
-				    <td headers="제목" class="subject"><a href="#">${result.title}</a></td>
-					<td headers="등록일" >${result.title}</td>
-                </tr>                
-                </c:forEach>                
+               <tr>
+               	<c:if test="${result.allview == '사용'}">
+				    <td headers="번호" ><span class="bul bul_yellow">상시공지</span></td>
+				</c:if>   
+				<c:if test="${result.allview == '중지'}">
+				    <td headers="번호" >${number}</td>
+				</c:if>
+					
+				    <td headers="제목" class="subject">
+				    	<a href="#">${result.title} - ${result.allview}</a>
+				    </td>
+					<td headers="등록일" >${result.rdate}</td>
+					</tr>
+				<c:set var="number" value="${number-1}" />
+                </c:forEach>                                               
             </tbody>
         </table>
 	    </div><!--[[ board area End ]]-->

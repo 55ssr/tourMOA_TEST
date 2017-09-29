@@ -4,6 +4,7 @@
 <!-- LIST 자바스크립트 s-->
 <script>
 function fn_popup(){
+	alert("test");
 	var f = document.listFrm;
 	var url = "/adminCategoryWrite.do";
 	
@@ -12,7 +13,6 @@ function fn_popup(){
 	f.target = "ctgReg";
 	f.action = url;    
 	f.method = "post";
-	f.submit();
 }
 
 function fn_list(cd) {
@@ -40,51 +40,15 @@ function fn_detail(cd) {
 	f.method = "post";
 	f.submit();
 }
+
 </script>
 <!-- LIST 자바스크립트 e-->
-<!-- Write 자바스크립트 s-->
-<script>
-function fn_save() {
-		
-		if($("[id='ctgcd']").val() == "") {
-			alert("카테고리 코드를 입력해주세요.");
-			return false;
-		}
-		if($("[id='ctgnm']").val() == "") {
-			alert("카테고리 명을 입력해주세요.");
-			return false;
-		}
-		var form = new FormData(document.getElementById('frm'));
-		$.ajax({
-			type: 'POST',
-			data: form,
-			url: "<c:url value='/adminCategoryWrite.do' />",
-			dataType: "json",
-			
-			processData: false,
-			contentType: false, 
-			
-			success: function (data) {
-				if(data.result == "ok") {
-					alert("분류에 등록 됬습니다.");
-					window.location.reload();
-					opener.window.location.reload();
-				} else {
-					alert("분류에 등록 실패");
-				}
-			},
-			error: function (error) {
-				alert("error : " + error);
-			}
-		});
-}
-</script>
-<!-- Write 자바스크립트 e-->	
+
 	<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
 	<h1>그룹 관리</h1>
 	<!-- 카테고리 리스트 s-->
 	<div class="table-responsive">
-		<form name="listFrm" id="listFrm">
+		<form name="listFrm" id="listFrm" action="">
 		<input type="hidden" name="ctgcd" id="ctgcd"/>
 		<table style="width:100%;">
 			<tr>
@@ -96,6 +60,10 @@ function fn_save() {
 					</select> 
 					<input type="text" name="srchKeywd" value="${srchKeywd}"  style="height:20px;"/>
 					<input type="submit" value="검색" style="height:26px;"/>
+				</td>
+				<td>
+					<input type="button" value="목록" onclick="location.href='/adminCategoryList.do'"/>
+					<input type="button" value="카테고리등록" onclick="fn_popup()">
 				</td>
 			</tr>
 		</table>
@@ -148,7 +116,7 @@ function fn_save() {
 	<!-- 카테고리 리스트 e-->
 	
 	<!-- 카테고리 등록 s-->
-	<c:if test="${fn:length(hctgcd) == 1}">
+	<%-- <c:if test="${fn:length(hctgcd) == 1}">
 		<c:set var="level" value="대분류" />
 	</c:if>
 	<c:if test="${fn:length(hctgcd) == 3}">
@@ -194,6 +162,6 @@ function fn_save() {
 			</table>			
 			</form>			
 		</div>
-	</div>
+	</div> --%>
 	<!-- 카테고리 등록 e-->
 	</main>

@@ -1,4 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%
+	String agreeEss01 = request.getParameter("agreeEss01");
+	String agreeEss02 = request.getParameter("agreeEss02");
+	String plusInfo = request.getParameter("plusInfo");
+	String agreeSav = request.getParameter("agreeSav");
+	String agreePrv = request.getParameter("agreePrv");
+	String agreeShr = request.getParameter("agreeShr");
+	String agreeMkt = request.getParameter("agreeMkt");
+	String custStatCd = request.getParameter("custStatCd");
+%>
 <link rel="stylesheet" href="/css/mypage.css" />
 	<!--[[ content Start ]]-->
 	<section id="content" class="contentSub">		
@@ -20,13 +30,6 @@
 				<span class="step_txt">가입완료</span>
 			</div>
 		</div>		
-		<form name="frm" id="frm" method="post">
-		<input type="hidden" name="plusInfo" 	value="" />
-		<input type="hidden" name="agreeSav" 	value="" />
-		<input type="hidden" name="agreePrv" 	value="" />
-		<input type="hidden" name="agreeShr" 	value="" />
-		<input type="hidden" name="agreeMkt" 	value="" />
-		<input type="hidden" name="custStatCd"  value="" />			
 		<div class="join_step">
 			<span class="h1">본인인증</span>
             <span class="h2"><br />안전한 회원가입을 위해 휴대폰 인증 또는 아이핀(I-PIN) 인증을 진행해 주세요.</span>
@@ -44,11 +47,10 @@
                 <div class="cert_ipin">
                     <div class="certDesc">
                         <span class="head">아이핀(I-PIN)으로 인증</span>
-                        <span class="desc">개인 공인인증서를 통해 아이핀(I-PIN) 발급을 원하시면 공공 I-PIN 센터에서 발급하실 수 있습니다.&nbsp;&nbsp;<a href="http://www.gpin.go.kr/center/main/index.gpin?" target="_blank">공공I-PIN 센터 바로가기</a>&nbsp;&nbsp;&gt;<br />아이핀 인증 이용관련 문의: 서울신용평가정보 1577-1006</span>
+                        <span class="desc">개인 공인인증서를 통해 아이핀(I-PIN) 발급을 원하시면 공공 I-PIN 센터에서 발급하실 수 있습니다.  <a href="http://www.gpin.go.kr/center/main/index.gpin?" target="_blank">공공I-PIN 센터 바로가기</a>  ><br />아이핀 인증 이용관련 문의: 서울신용평가정보 1577-1006</span>
                     </div>
                     <button type="button" id="btnCertIpin" name="btnCertIpin" >아이핀(I-PIN)으로 인증하기</button>
                 </div>
             </div>
 		</div>
-		</form>
     </section>

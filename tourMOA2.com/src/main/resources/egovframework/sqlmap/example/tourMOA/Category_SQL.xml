@@ -6,24 +6,28 @@
 	<typeAlias alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="categoryVO" type="tourMOA.service.CategoryVO"/>
 	
-	<!-- <insert id="categoryDAO.insertCategory">
+	<!-- 카테고리 Insert -->
+	<insert id="categoryDAO.insertCategory">
 		INSERT INTO category (
 				ctgcd,
 				ctgnm,
 				comm,
 				use,
 				regdate,
-				upddate
+				upddate,
+				hctgcd
 			) VALUES (
-				#ctgcd#,
-				#ctgnm#,
-				#comm#,
-				#use#,
+				'$ctgcd$',
+				'$ctgnm$',
+				'$comm$',
+				'$use$',
 				sysdate,
-				sysdate
+				sysdate,
+				'$hctgcd$'
 			)
-	</insert> -->
-	
+	</insert>
+	<!-- 카테고리리스트 출력
+	SYS_CONNECT_BY_PATH 는 문자 분리함수 -->	
 	<select id="categoryDAO.selectCategoryList" resultClass="egovMap">
 			SELECT 
 				ctgcd,
@@ -50,4 +54,34 @@
 			START WITH hctgcd = '0'
  			CONNECT BY PRIOR ctgcd=hctgcd
 	</select>
+	<!-- 카테고리테이블의 전체 코드 갯수를 구함 -->
+	<select id="categoryDAO.selectCategoryCdCnt" resultClass="java.lang.Integer">
+		SELECT  
+				COUNT(*) FROM 
+			category 
+		WHERE 
+			ctgcd = '$ctgcd$'
+	</select>
+	<!-- 카테고리테이블의 코드의 최대값을 구함 -->
+	<select id="categoryDAO.selectCategoryCdMax" resultClass="java.lang.String">
+		SELECT  nvl(MAX(ctgcd),'0') ctgcd FROM 
+			category 
+		WHERE 
+			hctgcd = '$hctgcd$'
+	</select>
+	<!-- 카테고리 상세보기 -->
+	<select id="categoryDAO.selectCategoryDetail" resultClass="categoryVO">
+		SELECT  ctgcd,
+				ctgnm,
+				comm,
+				use,
+				to_char(regdate,'yyyy-mm-dd') regdate,
+				to_char(upddate,'yyyy-mm-dd') upddate,
+				hctgcd
+		FROM 
+			category 
+		WHERE 
+			ctgcd = #ctgcd#
+	</select>
+	
 </sqlMap>
