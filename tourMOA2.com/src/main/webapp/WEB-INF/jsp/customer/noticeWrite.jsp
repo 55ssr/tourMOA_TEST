@@ -4,6 +4,7 @@
 <%@ taglib prefix="ui"     uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<link rel="stylesheet" href="/css/customer.css" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,18 +25,24 @@ function fn_action(e) {
 		
 		var form = new FormData(document.getElementById('frm'));
 		
+		var param = "title="+$("#title").val()
+			param +="&gubun="+$("#gubun").val()
+			param +="&all_view="+$("#all_view").val()
+			param +="&content="+$("#content").val();
+		
+		alert(param);
+		
 		$.ajax({
 			type: 'POST',
-			data: form,
+			data: param,
 			url: "<c:url value='/noticeSave.do' />",
 			dataType: "json",
 			processData: false,
-			contentType: false,
 			
 			/* 처리되고나서 실행되는부분 */
 			success: function (data){
-				if(data.cnt > 0){
-					location.href = "<c:url value='/noticeList.do'/>";
+				if(data.result = "ok"){
+					location.href = "<c:url value='/customer/noticeList.do'/>";
 					alert("저장되었습니다.");
 				}else{
 					alert("저장에 실패");
@@ -53,8 +60,7 @@ function fn_action(e) {
 </script>
 <body>
 <div class="middle">
-<form name="frm" id="frm" enctype="multipart/form-data">
-<section id="content">
+<form name="frm" id="frm">
 <table width="60%" border="1">
 	<colgroup>
 		<col width="20%"/>
@@ -93,7 +99,6 @@ function fn_action(e) {
 	</tr>
 </table>
 </form>
-</div>
-</section> 
+</div> 
 </body>
 </html>

@@ -24,4 +24,16 @@ public class GoodsDAO extends EgovAbstractDAO{
 		return (int) select("goodsDAO.selectGoodsTotal", searchVO);
 	}
 
+	public GoodsVO selectGoodsDetail(GoodsVO vo) {
+		return (GoodsVO) select("goodsDAO.selectGoodsDetail", vo);
+	}
+
+	public int updateGoods(GoodsVO vo) {
+		return update("goodsDAO.updateGoods", vo);
+	}
+
+	public int deleteGoods(GoodsVO vo) {
+		return delete("goodsDAO.deleteGoods", vo);
+	}
+
 }

@@ -987,7 +987,7 @@ div.join_step div.step05 > div.para02 button { margin-top: 40px; }
 #login_layer { width: 840px; height: 427px; margin: 0 auto; background: #fff; }
 #login_layer .layer_top { width: 840px; height: 70px; background: #ffc200; color: #ffffff; }
 #login_layer .layer_top span.layer_tit { display: block; float: left; margin: 22px 0 0 30px; font-size: 24px; font-weight: 600; }
-#login_layer .layer_top span.layer_close { display: block; float: right; width: 26px; height: 26px; margin: 22px 30px 0 0; background: url("../images/mypage/layer_close.jpg"); cursor: pointer; }
+#login_layer .layer_top span.layer_close { display: block !important; float: right; width: 26px; height: 26px; margin: 22px 30px 0 0; background: url("../images/mypage/layer_close.jpg"); cursor: pointer; }
 #login_layer .layer_body { width: 840px; height: 357px; overflow: hidden; padding-left: 38px; margin: 0 ; }
 #login_layer .loginBox_01 { display: block; float: left; width: 460px; height: 328px; margin-top: 40px; border-bottom: 1px solid #ebedef; }
 #login_layer .loginBox_01 span { display: inline-block; font-size: 14px; color: #555555; }

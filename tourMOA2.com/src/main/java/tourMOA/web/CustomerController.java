@@ -1,6 +1,8 @@
 package tourMOA.web;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -8,8 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import egovframework.example.sample.service.SampleDefaultVO;
+import tourMOA.service.DefaultListVO;
 import tourMOA.service.NoticeService;
 import tourMOA.service.NoticeVO;
 
@@ -27,13 +30,57 @@ public class CustomerController {
 	
 	/*공지사항리스트*/
 	@RequestMapping("customer/noticeList.do")
-	public String selectNoticeList(@ModelAttribute("searchVO")SampleDefaultVO searchVO,Model model) throws Exception {
+	public String selectNoticeList(@ModelAttribute("searchVO") DefaultListVO searchVO,Model model) throws Exception {
 		
-		List<?> list = noticeService.selectNoticeList(searchVO);
+		System.out.println("!");
+		/*1. 한 화면에 출력 할 행 갯수, 한 화면에 출력할 페이지 갯수 */
+		int recordCountPerPage = 10;
+		int pageSize = 5;
 		
-		model.addAttribute("resultList",list);
+		/*2.총 데이터 갯수*/
+		int totalCount = noticeService.selectNoticeTotal(searchVO);
+		
+		/*3. 화면 출력 할 페이지 번호*/
+		int pageIndex = searchVO.getPageIndex();
+		
+		/*4. 화면 출력할 페이징의 시작 번호, 끝 번호*/
+		int firstPage = ((int) Math.floor((pageIndex-1)/pageSize)*pageSize) + 1;
+		int lastPage = firstPage + pageSize - 1;
+		
+		/*5. 화면 출력할 행(데이터)의 시작 번호, 끝 번호*/
+		int firstIndex = (pageIndex-1) * 10 + 1;
+		int lastIndex = firstIndex + (recordCountPerPage - 1);
+		
+		/*6. 총 페이지 갯수*/
+		int totalPage = (int) Math.ceil((double) totalCount / recordCountPerPage);
+		
+		/*7. [이전] / [다음] 처리 할 변수 지정*/
+		int before = 0; // 링크 없음
+		if (firstPage > 1) before = 1;
+		
+		int next = 0; // 링크 없음
+		if (lastPage < totalPage) next = 1;
+		/*8. 행번호*/
+		int number  = totalCount - ((pageIndex-1) * recordCountPerPage);
+		
+		searchVO.setFirstIndex(firstIndex);
+		searchVO.setLastIndex(lastIndex);
+						
+		List<?> noticeList = noticeService.selectNoticeList(searchVO);
+		
+
+		model.addAttribute("totalCount", totalCount);
+		model.addAttribute("firstPage", firstPage);
+		model.addAttribute("lastPage", lastPage);
+		model.addAttribute("totalPage", totalPage);
+		model.addAttribute("before", before);
+		model.addAttribute("next", next);
+		model.addAttribute("number", number);
+		
+		model.addAttribute("resultList", noticeList);
 		
 		return "customer/noticeList";
+		
 	}
 	
 	/*공지사항 작성 화면*/
@@ -43,11 +90,15 @@ public class CustomerController {
 	} 
 	
 	@RequestMapping("/noticeSave.do")
-	public String insertNotice(NoticeVO vo) throws Exception {
+	@ResponseBody public Map<String, Object> insertNotice(NoticeVO vo) throws Exception {
+		String result = "";
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		System.out.println("vo ======================== " + vo.getTitle());
+		result = noticeService.insertNotice(vo);
+		if(result == null) result = "ok";
+		map.put("result", result);
 		
-		noticeService.insertNotice(vo);
-		
-		return "redirect:/noticeList.do";
+		return map;
 	}
 	
 	/*여행후기*/

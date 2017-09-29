@@ -12,18 +12,39 @@
 		<div class="col-lg-6">
 			<div class="row">
 				<div class="col-lg-3">
-					<select class="form-control">
-						<option>자유여행</option>
-						<option>해외패키지</option>
-					</select>
+					<form name="frmGubun" id="frmGubun" action="/adminGoodsList.do">
+						<input type="hidden" name="searchKeyword" />
+						<select name="searchCondition" id="gubunSelect" class="form-control">
+							<option value=""> - 상품 구분 - </option>
+							<option id="자유여행" value="gubun"<c:if test="${param.searchKeyword =='자유여행'}">selected</c:if>>자유여행</option>
+							<option id="해외패키지" value="gubun"<c:if test="${param.searchKeyword =='해외패키지'}">selected</c:if>>해외패키지</option>
+						</select>
+					</form>
+					<script>
+					$("#gubunSelect").on("change", function(){
+						var id = $("#gubunSelect option:selected").attr("id");
+						$("#frmGubun input[name='searchKeyword']").val(id);
+						$("#frmGubun").submit();
+					});
+					</script>
 				</div>
+				
 				<div class="col-lg-3">
-					<select class="form-control">
-						<option>유럽</option>
-						<option>미주</option>
-						<option>동남아</option>
-						<option>일본</option>
-					</select>
+					<form name="frmLocation" id="frmLocation" action="/adminGoodsList.do">
+						<input type="hidden" name="searchKeyword" />
+						<select name="searchCondition" class="form-control" id="locationSelect">
+							<option value=""> - 지역 구분 - </option>
+							<option id="서유럽" value="location"<c:if test="${param.searchKeyword =='서유럽'}">selected</c:if>>서유럽</option>
+							<option id="동남아" value="loaction"<c:if test="${param.searchKeyword =='동남아'}">selected</c:if>>동남아</option>
+						</select>
+					</form>
+					<script>
+					$("#locationSelect").on("change", function(){
+						var id = $("#locationSelect option:selected").attr("id");
+						$("#frmLocation input[name='searchKeyword']").val(id);
+						$("#frmLocation").submit();
+					});
+					</script>
 				</div>
 				<div class="col-lg-6">
 					<script>
@@ -93,7 +114,7 @@
 					<td>${number}</td>
 					<td>${rs.gubun}</td>
 					<td>
-						<a href="/adminGoodsDetail.do">${rs.title}</a>
+						<a href="#" onclick="fn_loc(${rs.unq})">${rs.title}</a>
 					</td>
 					<td>${rs.location}</td>
 					<td>${rs.nation}</td>
@@ -110,31 +131,7 @@
 			</tbody>
 		</table>
 	</div>
-	
-	<nav aria-label="Page navigation example">
-		<ul class="pagination justify-content-center">
-			<li class="page-item disabled">
-				<a class="page-link" href="#" tabindex="-1" aria-label="Previous">
-					<span aria-hidden="true">&laquo;</span>
-					<span class="sr-only">Previous</span>
-				</a>
-			</li>
-			<li class="page-item"><a class="page-link" href="#">1</a></li>
-			<li class="page-item"><a class="page-link" href="#">2</a></li>
-			<li class="page-item"><a class="page-link" href="#">3</a></li>
-			<li class="page-item">
-				<a class="page-link" href="#" aria-label="Next">
-					<span aria-hidden="true">&raquo;</span>
-					<span class="sr-only">Next</span>
-				</a>
-			</li>
-		</ul>
-	</nav>
-	
-	
-	
-	
-	
+		
 	<nav aria-label="Page navigation example">
 		<ul class="pagination justify-content-center">
 		<c:if test="${before == 0}">
@@ -147,7 +144,7 @@
 		</c:if>
 		<c:if test="${before > 0}"> 
 			<li class="page-item">
-				<a class="page-link" href="memberList.do?pageIndex=${firstPage-1}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}" tabindex="-1" aria-label="Previous">
+				<a class="page-link" href="/adminGoodsList.do?pageIndex=${firstPage-1}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}" tabindex="-1" aria-label="Previous">
 					<span aria-hidden="true">&laquo;</span>
 					<span class="sr-only">Previous</span>
 				</a>
@@ -156,25 +153,48 @@
 		
 		<c:forEach var="i" begin="${firstPage}" end="${lastPage}">
 			<c:if test="${i <= totalPage}">
-				<c:if test="${i == searchVO.pageIndex}">${i}&nbsp;</c:if>
+				<c:if test="${i == searchVO.pageIndex}">
+					<li class="page-item disabled"><a class="page-link" href="/adminGoodsList.do?pageIndex=${i}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}">${i}</a></li>
+				</c:if>
 				<c:if test="${i != searchVO.pageIndex}">
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-				<a href="memberList.do?pageIndex=${i}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}">${i}</a>&nbsp;
+					<li class="page-item"><a class="page-link" href="/adminGoodsList.do?pageIndex=${i}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}">${i}</a></li>
 				</c:if>
 			</c:if>
 		</c:forEach>
 		
-		<c:if test="${next == 0}"><img src="/images/egovframework/cmmn/btn_page_next1.gif" /></c:if>
-		<c:if test="${next > 0}"><a href="memberList.do?pageIndex=${lastPage+1}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}"><img src="/images/egovframework/cmmn/btn_page_next1.gif" /></a></c:if>
-		<a href="memberList.do?pageIndex=${totalPage}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}">
-			<img src="/images/egovframework/cmmn/btn_page_next10.gif" />
-		</a>
+		<c:if test="${next == 0}">
+			<li class="page-item disabled">
+				<a class="page-link" href="#" aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+					<span class="sr-only">Next</span>
+				</a>
+			</li>
+		</c:if>
+		<c:if test="${next > 0}">
+			<li class="page-item">
+				<a class="page-link" href="/adminGoodsList.do?pageIndex=${lastPage+1}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}" aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+					<span class="sr-only">Next</span>
+				</a>
+			</li>
+		</c:if>
+			<li class="page-item">
+				<a class="page-link" href="/adminGoodsList.do?pageIndex=${totalPage}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}" aria-label="Next">
+					<span aria-hidden="true">&raquo;&raquo;</span>
+					<span class="sr-only">Next</span>
+				</a>
+			</li>
 		</ul>
 	</nav>
 	
-	
-	
-	
-	
+	<script type="text/javascript">
+	function fn_loc(a) {
+		document.hiddenFrm.unq.value = a;
+		document.hiddenFrm.submit();
+	}
+	</script>
+	<form action="/adminGoodsDetail.do" name="hiddenFrm" method="post">
+		<input type="hidden" name="unq" id="unq" />
+	</form>
 	
     </main>

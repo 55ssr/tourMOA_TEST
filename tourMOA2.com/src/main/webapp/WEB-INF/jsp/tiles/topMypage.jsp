@@ -6,6 +6,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator"%>
+
 <%
 	String plusInfo = request.getParameter("plusInfo");
 	String agreeEss01 = request.getParameter("agreeEss01");
@@ -94,13 +95,14 @@ $(document).ready(function(){
 	//닫기 버튼을 눌렀을 때
 	$('.layer_close').click(function () {  
 	    //링크 기본동작은 작동하지 않도록 한다.
-	      $(this).modal("hide");
+	    $(this).hide(); 
+	    $("#mask").hide();
 	    $('.window').hide();  
 	});       
 
 	//검은 막을 눌렀을 때
 	$('#mask').click(function () {  
-	    $(this).hide();  
+		$(this).hide();  
 	    $('.window').hide();  
 	});	
 	
