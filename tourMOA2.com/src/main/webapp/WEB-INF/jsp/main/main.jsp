@@ -4,8 +4,8 @@
 <script src="/js/mainJS.js"></script>
 <!-- 홈쇼핑 배너 회전 -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script src="http://malsup.github.com/jquery.cycle2.js"></script>
 <!-- sliderkit -->
+<link rel="stylesheet" href="/css/sliderkit/sliderkit.css">
 <script type="text/javascript" src="/js/jquery.sliderkit.1.9.2.pack.js"></script>
  <script>
  $(document).ready(function(){
@@ -34,7 +34,7 @@ $(function(){
 			$(this).parent().siblings().removeClass("on");
 			$(this).parent().addClass("on");
 		});
-		//오늘만노랑 slide
+		//오늘만모아 slide
 		$(".yellow_tv_new").sliderkit({
 			auto:true,
             autospeed:3000,
@@ -47,7 +47,17 @@ $(function(){
             	$(".yellow_tv_new ul li.sliderkit-panel-active .list:nth-child(2)").removeClass("on");
             }
 		});
-		
+		$(".photoslider-bullets").sliderkit({
+			auto:true,
+            autospeed:3000,
+            circular:true,
+            mousewheel:false,
+            fastchange:false,
+            shownavitems: 5
+		});
+
+	
+
 	});
  </script>
 <div id="main">
@@ -361,9 +371,9 @@ $(function(){
 					  <div class="limit_banner">
 						<div class="clear">
 						  <!-- yellow_tv_new -->
-						  <div class="yellow_tv_new sliderkit sliderkit-panels" style="display: block;">					
+						  <div class="yellow_tv_new sliderkit sliderkit-panels">					
 								<ul class="yt_list">
-									<li class="panel sliderkit-panel sliderkit-panel-active" style="display: list-item;">
+									<li class="panel sliderkit-panel ">
 									<div class="list on">
 											<a href="#">
 											비엔티엔/방비엥+블루라군 5일</a>
@@ -419,9 +429,9 @@ $(function(){
 					</h2>
 					<!-- yellow list -->
 					<div class="tv_list_clfix">
-						<div class="ty_list sliderkit sliderkit-panels" style="height: 350px; display: block;">
+						<div class="ty_list sliderkit sliderkit-panels">
 							<ul>
-							<li class="panel sliderkit-panel" style="display: list-item;">
+							<li class="panel sliderkit-panel">
 								<div class="list">
 										<a href="/product/unitList.do?menu=pkg&amp;goodsCd=APP4033">
 											<div class="img"><img src="https://dimgcdn.ybtour.co.kr/TN/c0/c0aa575613671369274e3954492b7f53.tn.410x280.jpg" alt=""></div>
@@ -445,7 +455,7 @@ $(function(){
 										</a>
 									</div>
 								</li>
-								<li class="panel sliderkit-panel" style="display: list-item;">
+								<li class="panel sliderkit-panel">
 								<div class="list">
 										<a href="/product/unitList.do?menu=pkg&amp;goodsCd=ATP1049">
 											<div class="img"><img src="https://dimgcdn.ybtour.co.kr/TN/33/3329cb8b9677566d59ca6b81b3b7a320.tn.410x280.jpg" alt=""></div>
@@ -469,7 +479,7 @@ $(function(){
 										</a>
 									</div>
 								</li>
-								<li class="panel sliderkit-panel" style="display: list-item;">
+								<li class="panel sliderkit-panel" >
 								<div class="list">
 										<a href="/product/unitList.do?menu=pkg&amp;goodsCd=EMP5023">
 											<div class="img"><img src="https://dimgcdn.ybtour.co.kr/TN/ac/acf12210b08604abbffee653d372ace3.tn.410x280.jpg" alt=""></div>
@@ -493,7 +503,7 @@ $(function(){
 										</a>
 									</div>
 								</li>
-								<li class="panel sliderkit-panel" style="display: list-item;">
+								<li class="panel sliderkit-panel" >
 								<div class="list">
 										<a href="/product/unitList.do?menu=pkg&amp;goodsCd=JHP1004">
 											<div class="img"><img src="https://dimgcdn.ybtour.co.kr/TN/6d/6d3f202a78c938986902527b6691d210.tn.410x280.jpg" alt=""></div>
@@ -517,7 +527,7 @@ $(function(){
 										</a>
 									</div>
 								</li>
-								<li class="panel sliderkit-panel" style="display: list-item;">
+								<li class="panel sliderkit-panel" >
 								<div class="list">
 										<a href="/product/unitList.do?menu=pkg&amp;goodsCd=KJP1138">
 											<div class="img"><img src="https://dimgcdn.ybtour.co.kr/TN/31/3128c7576c3a571536abf94f74fa50fd.tn.410x280.jpg" alt=""></div>
@@ -574,109 +584,444 @@ $(function(){
 			</div>
 		</div>
 
- <div id="theme_block">
- <h2 class ="titMain">홈쇼핑 & 이벤트</h2>
- 	<div id="event_small_up">
-	<div class="cycle-slideshow">
-	<img alt="홈쇼핑" src="/images/tp-main/event1.png">
-	<img alt="홈쇼핑" src="/images/tp-main/event2.png">
-	<img alt="홈쇼핑" src="/images/tp-main/event3.png">
-	<img alt="홈쇼핑" src="/images/tp-main/event4.png">
-	</div>
-	</div>
-	 
-	<div id="event_small_up">
-	<div class="cycle-slideshow">
-	<img alt="홈쇼핑" src="/images/tp-main/event_small_up1.png">
-	<img alt="홈쇼핑" src="/images/tp-main/event_small_up2.PNG">
-	</div>
-	</div>
-	
-	<div id="event_small_up">  
-	<div class="cycle-slideshow">
-	<img alt="홈쇼핑" src="/images/tp-main/event_small_up3.PNG">
-	<img alt="홈쇼핑" src="/images/tp-main/event_small_up4.PNG">
-	</div>
-	</div>
-	
-</div>
+ 		<div id="theme_blockMain">
+ 			<h2 class ="titMain">홈쇼핑 & 이벤트</h2>
+			<div class="cont02 eve_block">
 
-<div id="theme_block">
-<h2 class ="titMain">베스트 여행후기<a href="#" class="time_more">더보기</a></h2>
- <br><br>
-<div id="event_small_up">
-	<img alt="여행후기사진" src="/images/tp-main/eviza.jpg" class="travle_img">
-	<h3 class="travle_talk">===여행후기 제목 들어갈곳===</h3>
-	<p>===여행후기 글 들어갈곳=====</p>
-</div>
-<div id="event_small_up">
-	<img alt="여행후기사진" src="/images/tp-main/eviza.jpg" class="travle_img">
-	<h3 class="travle_talk">===여행후기 제목 들어갈곳===</h3>
-	<p>===여행후기 글 들어갈곳=====</p>
-</div>
-</div>
+                <div class="banner banner01 sliderkit photoslider-bullets">
+                
+					<div class="slider sliderkit-panels">
+						<div class="panel sliderkit-panel ">
+							<a href="/promotion/Overseas/2017/0926_gs_PIC_GS/" target="_self">
+							<img src="http://cimg.cdn.ybtour.co.kr/attachHome/HP/HM/201709/201709251659592711501011001016.jpg" alt="괌 PIC 골드 4/5일">
+							</a>
+						</div>
+						<div class="panel sliderkit-panel " >
+							<a href="/promotion/Overseas/2017/0920_eu_india_GS/" target="_self">
+							<img src="http://cimg.cdn.ybtour.co.kr/attachHome/HP/HM/201709/201709191749503501410002001046.jpg" alt="북인도">
+							</a>
+						</div>
+					</div>
+					<div class="control sliderkit-nav">
+						<div class="ball sliderkit-nav-clip" style="width: 29px; height: 12px;">
+						
+							<ul style="width: 34px;">
+								<li class="" style="width: 12px; height: 12px;"><a href="#main02">링크</a></li>
+								<li style="width: 12px; height: 12px;" class=""><a href="#main02">링크</a></li>
+							</ul>
+						</div>
+					</div>
+                </div>
 
-<div id="theme_block">
-
-<div id="notice_main_css">
-<h2 class ="titMain">
-	공지사항
-<a href="#" class="time_more">더보기</a>
-</h2>
-	
-<ul class="notice">
-	<li>공지사항1</li>
-	<li>공지사항2</li>
-	<li>공지사항3</li>
-</ul>
-
-</div>
-
-	<div id="theme_block2">
-	<h2 class ="titMain">
-	자주하는 질문
-	</h2>
-		<span class="time_more"><a href="#"><i class="fa fa-plus" aria-hidden="true">더보기</i></a></span>
-		<br>
-		<br>
-		<div id="main_qna_icon">
-		<a href="#">
-		<img alt="여행상품" src="/images/tp-main/ico_faq1.png">
-		<br>
-		여행상품
-		</a>
-		<a href="#">
-		<img alt="상품예약" src="/images/tp-main/ico_faq2.png">
-		<br>
-		상품예약
-		</a>
-		<a href="#">
-		<img alt="상품결제" src="/images/tp-main/ico_faq3.png">
-		<br>
-		상품결제
-		</a>
-		<a href="#">
-		<img alt="해외항공" src="/images/tp-main/ico_faq4.png">
-		<br>
-		해외항공
-		</a>
-		<a href="#">
-		<img alt="여행상품권" src="/images/tp-main/ico_faq5.png">
-		<br>
-		여행상품권
-		</a>
-		<a href="#">
-		<img alt="홈페이지" src="/images/tp-main/ico_faq6.png">
-		<br>
-		홈페이지
-		</a>
-	</div>
-	</div>
-
-</div>
-
-
-
-
-
-
+                <div class="banner banner02 sliderkit photoslider-bullets" >
+					<div class="slider sliderkit-panels">
+						<div class="panel sliderkit-panel">
+						<span class="pic">
+							<a href="/promotion/event/2017/0809_ev_ybmediheal/" target="_self">
+								<img src="http://cimg.cdn.ybtour.co.kr/attachHome/EM/EB/201708/201708090919018991410003001014.jpg" alt="수분충전 설렘충전 충전책 in 보라카이&amp;세부">
+							</a>
+						</span>
+						<span class="pic">
+							<a href="/promotion/event/2017/0714_ev_solgarhokkaido/" target="_self">
+								<img src="http://cimg.cdn.ybtour.co.kr/attachHome/EM/EB/201707/201707181121087621608003001071.jpg" alt="노랑풍선 X 솔가">
+							</a>
+						</span>
+						</div>
+							<div class="panel sliderkit-panel">	
+							<span class="pic">
+								<a href="/promotion/event/2017/0227_ev_lotteDF" target="_">
+									<img src="http://cimg.cdn.ybtour.co.kr/attachHome/EM/EB/201709/201709011639137591412002001024.jpg" alt="롯데면세점,롯데인터넷면세점">
+								</a>
+							</span>
+						<span class="pic">
+							<a href="https://event.worldroaming.co.kr/ybtour" target="_new">
+								<img src="http://cimg.cdn.ybtour.co.kr/attachHome/EM/EB/201709/201709131025220731102001001025.jpg" alt="포켓와이파이 1대로 최대 10명까지 4G  LTE 데이터로밍 무제한~">
+							</a>
+						</span>
+						</div>
+							<div class="panel sliderkit-panel" >	
+							<span class="pic">
+								<a href="/promotion/event/2016/0125_ev_arex/" target="_self">
+								<img src="http://cimg.cdn.ybtour.co.kr/attachHome/EM/EB/201602/201602191534116281501011001022.jpg" alt="이미지">
+								</a>
+							</span>
+						</div>
+					</div>
+					<div class="control sliderkit-nav">
+						<div class="ball sliderkit-nav-clip" style="width: 46px; height: 12px;">
+							<ul style="width: 51px;">
+								<li class="sliderkit-selected" style="width: 12px; height: 12px;"><a href="#main02">링크</a></li>
+									<li style="width: 12px; height: 12px;" class=""><a href="#main02">링크</a></li>
+									<li style="width: 12px; height: 12px;" class=""><a href="#main02">링크</a></li>
+									</ul>
+						</div>
+					</div>
+                </div>
+            </div>
+		</div>
+		<div id="recTravel" class="theme_blockRecTravel">
+		<script>
+			    $(document).ready(function(){
+			        $(".theme03.photoslider-bullets").sliderkit({
+			            auto:true,
+			            circular:true,
+			            mousewheel:false,
+			            shownavitems: 3,
+			            verticalslide:true,
+			            panelfx:"sliding",
+			            panelfxspeed:1000,
+			            panelfxeasing:"easeOutExpo" // "easeOutExpo", "easeInOutExpo", etc.
+			        });
+			    });
+  	   </script>
+			<h2 class="titMain">테마 추천 쇼핑	</h2>
+			<div class="recommand01">
+				<ul class="tab_type01">
+                	<li class="blue on" role-v="B1"><a href="javascript:;">Blue Lavande</a></li>
+					<li class="" role-v="A6"><a href="javascript:;">관광여행</a></li>
+					<li class="" role-v="A3"><a href="javascript:;">휴양여행</a></li>
+					<li class="" role-v="A2"><a href="javascript:;">효도여행</a></li>
+					<li class="" role-v="S2"><a href="javascript:;">노팁/노옵션/노쇼핑 </a></li>
+					<li class="" role-v="A9"><a href="javascript:;">프리미엄</a></li>
+				</ul>
+				
+				<div class="recslide tab01">
+				 <div class="rec_txt">
+					블루 라방더 : 라벤더 꽃의 색상 (영어 Blue, 불어 Lavande의 합성어). 프로방스의 지중해와 여름 산등성이의 연보라빛 색감에서 따온 노랑풍선의 차별화된 상품 이름입니다.
+				 </div>
+				 <ul class="theme01">
+					    <li>
+					    	<a href="/product/unitList.do?menu=pkg&amp;loc=294&amp;pid=340&amp;did=217&amp;goodsCd=JOP1041">
+					    		<img src="https://dimgcdn.ybtour.co.kr/TN/4f/4fecfedc16dc27718da532dfbd8deed4.tn.410x280.jpg" alt="이미지설명">
+				               	</a>
+					    </li>
+					    <li>
+					        <a href="/product/unitList.do?menu=pkg&amp;loc=294&amp;pid=340&amp;did=217&amp;goodsCd=JOP1041">
+					        <span class="tit">
+								<!--Blue Lavande -->
+								[오사카의품격][프리미엄호텔+롯코산B...
+							</span>
+					        <span class="subtit">	
+					        	▶효도관광안성맞춤 ,2박3일 전일관광,인솔자동행◀</span>
+					        <span class="line"></span>
+					        <span class="area">오사카</span>
+					        <span class="period">2박3일</span>
+					        <span class="price" style="margin: 0 !important">499,000<p>원 ~</p></span>
+					        </a>
+					    </li>
+					</ul>
+					<ul class="theme02">
+					    <li>
+					    	<a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=3701&amp;did=4413&amp;goodsCd=EWP4043">
+					    		<img src="https://dimgcdn.ybtour.co.kr/TN/ec/ecc03c45bc6baac726c70ccbf03f8f30.tn.410x280.jpg" alt="이미지설명">
+				               	</a>
+					    </li>
+					    <li>
+					        <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=3701&amp;did=4413&amp;goodsCd=EWP4043">
+					        <span class="tit">
+								<!--Blue Lavande -->
+								안온한 무채색 노르망디_프랑스 북부일...
+							</span>
+					        <span class="subtit">	
+					        	Blue Lavande (블루 라방더) : 라벤더 꽃의 색상 (영어 Bl...
+									 </span>
+					        <span class="line"></span>
+					        <span class="area">서유럽</span>
+					        <span class="period">7박9일</span>
+					        <span class="price"style="margin: 0 !important">2,802,000<p>원 ~</p></span>
+					        </a>
+					    </li>
+					</ul>
+					<div class="theme03 sliderkit photoslider-bullets" style="display: block;">
+			    		<div class="slider sliderkit-panels">
+			    			<div class="sliderkit-panels-wrapper" style="position: relative; top: -540px;">
+			    				<div class="panel sliderkit-panel" >
+			    				<ul>
+									<li>
+				            			<a href="/product/unitList.do?menu=pkg&amp;loc=453&amp;pid=6565&amp;did=6567&amp;goodsCd=CHP2028">
+				           				<span class="pic">
+				            				<img src="https://dimgcdn.ybtour.co.kr/TN/54/54c48149f079c784bbe0c23a3f8ab434.tn.410x280.jpg" alt="이미지설명">
+				               			</span>
+				            			<span class="tit">
+													<!--Blue Lavande -->
+											[초특급 갤럭시호텔/4명出] 베네시안/윈분수쇼+자유일정포함 마카...
+										 </span>
+							            <span class="line"></span>
+							            <span class="area">홍콩/마카오/심천</span>
+							            <span class="period">2박4일</span>
+							            <span class="price">669,000<p>원 ~</p></span>
+							            </a>
+						    	    </li>
+						
+									<li>
+							            <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=3701&amp;did=4413&amp;goodsCd=EWP4008">
+							            <span class="pic">
+							            	<img src="https://dimgcdn.ybtour.co.kr/TN/27/27b94c5b5fe9b68f09e972e164f1bb98.tn.410x280.jpg" alt="이미지설명">
+							            </span>
+							            <span class="tit">
+												<!--Blue Lavande -->
+												남프랑스에서 시작되는 햇빛 온화한 푸른 지중해 여행_남프랑스+스...
+										</span>
+							            <span class="line"></span>
+							            <span class="area">서유럽</span>
+							            <span class="period">8박10일</span>
+							            <span class="price">3,504,400<p>원 ~</p></span>
+							            </a>
+							        </li>
+						
+									<li>
+							            <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=3701&amp;did=4413&amp;goodsCd=EWP4001">
+								            <span class="pic">
+								            	<img src="https://dimgcdn.ybtour.co.kr/TN/66/66dc3e09421ab3d9c37f3db6e84d48c3.tn.410x280.jpg" alt="이미지설명">
+							               	</span>
+								            <span class="tit">
+													<!--Blue Lavande -->
+													풀향 싱그런 영국의 시골길_영국과 아일랜드,스코틀랜드_10일[맨...
+											</span>
+								            <span class="line"></span>
+								            <span class="area">서유럽</span>
+								            <span class="period">8박10일</span>
+								            <span class="price">2,904,400<p>원 ~</p></span>
+							            </a>
+							        </li>
+									
+								</ul>
+							</div>
+							<div class="panel sliderkit-panel">
+			                  <ul>
+								<li>
+						            <a href="/product/unitList.do?menu=dmt&amp;loc=715&amp;pid=4692&amp;did=4693&amp;goodsCd=KJP3050">
+							            <span class="pic">
+							            	<img src="https://dimgcdn.ybtour.co.kr/TN/e7/e75f755e7194a213a879502a0016403c.tn.410x280.jpg" alt="이미지설명">
+						               	</span>
+							            <span class="tit">
+											<!--Blue Lavande -->
+											[Blooming Days]6성급해비치호텔+렌터카3일</span>
+							            <span class="line"></span>
+							            <span class="area">제주도</span>
+							            <span class="period">2박3일</span>
+							            <span class="price">405,000<p>원 ~</p></span>
+						            </a>
+						        </li>
+								
+						<li>
+				            <a href="/product/unitList.do?menu=pkg&amp;loc=453&amp;pid=4000&amp;did=4002&amp;goodsCd=CHP2011">
+				            <span class="pic">
+				            	<img src="https://dimgcdn.ybtour.co.kr/TN/ab/ab849f8acdec80612c758287bbed5192.tn.410x280.png" alt="이미지설명">
+				               	</span>
+				            <span class="tit">
+								<!--Blue Lavande -->
+								[마카오_쉐라톤호텔/6명 出]마카오/베네시안/윈분수쇼+1일자유포...
+									 </span>
+				            <span class="line"></span>
+				            <span class="area">홍콩/마카오/심천</span>
+				            <span class="period">2박4일</span>
+				            <span class="price">649,000<p>원 ~</p></span>
+				            </a>
+				        </li>
+						
+						<li>
+				            <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=4153&amp;did=4159&amp;goodsCd=EWP4007">
+				            <span class="pic">
+				            	<img src="https://dimgcdn.ybtour.co.kr/TN/66/66cf1fc001244b571f5085a0f6333ee5.tn.410x280.JPG" alt="이미지설명">
+			               	</span>
+				            <span class="tit">
+									<!--Blue Lavande -->
+									지중해 연보라빛 바람을 만나는 프랑스일주10일_몽생미셸/레보드프...
+							</span>
+				            <span class="line"></span>
+				            <span class="area">서유럽</span>
+				            <span class="period">8박10일</span>
+				            <span class="price">3,104,400<p>원 ~</p></span>
+				            </a>
+				        </li>
+						
+						</ul>
+				  </div>
+				  <div class="panel sliderkit-panel" >
+				                        <ul>
+						<li>
+				            <a href="/product/unitList.do?menu=pkg&amp;loc=453&amp;pid=6565&amp;did=6567&amp;goodsCd=CHP2029">
+				            <span class="pic">
+				            	<img src="https://dimgcdn.ybtour.co.kr/TN/71/7198c0447f18beb26913c7abcc85d988.tn.410x280.jpg" alt="이미지설명">
+				               	</span>
+				            <span class="tit">
+							<!--Blue Lavande -->
+								[베네시안숙박/4명出] 1일패키지+자유일정/베네시안+윈분수쇼포함...
+							</span>
+				            <span class="line"></span>
+				            <span class="area">홍콩/마카오/심천</span>
+				            <span class="period">2박4일</span>
+				            <span class="price">679,000<p>원 ~</p></span>
+				            </a>
+				        </li>
+						
+						<li>
+				            <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=3701&amp;did=4203&amp;goodsCd=EWP4013">
+				            <span class="pic">
+				            	<img src="https://dimgcdn.ybtour.co.kr/TN/69/692730f3ede71fbad7d28aea80fa95fa.tn.410x280.jpg" alt="이미지설명">
+				               	</span>
+				            <span class="tit">
+								<!--Blue Lavande -->
+								유럽 작은마을_10일 [산마리노/리히텐슈타인] 내 마음 깊은 곳...
+						    </span>
+				            <span class="line"></span>
+				            <span class="area">서유럽</span>
+				            <span class="period">8박10일</span>
+				            <span class="price">3,004,400<p>원 ~</p></span>
+				            </a>
+				        </li>
+						
+						<li>
+				            <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=3701&amp;did=4203&amp;goodsCd=EWP4012">
+				            <span class="pic">
+				            	<img src="https://dimgcdn.ybtour.co.kr/TN/74/748e7b648f7fc9378793f86b2b79ce8d.tn.410x280.jpg" alt="이미지설명">
+				               	</span>
+				            <span class="tit">
+								<!--Blue Lavande -->
+								유럽 작은마을_9일 [리히텐슈타인/산마리노] 좀 더 천천히 여유...
+							</span>
+				            <span class="line"></span>
+				            <span class="area">서유럽</span>
+				            <span class="period">7박9일</span>
+				            <span class="price">2,804,400<p>원 ~</p></span>
+				            </a>
+				        </li>
+						
+						</ul>
+				    </div>
+                    <div class="panel sliderkit-panel">
+				                        <ul>
+						<li>
+				            <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=3701&amp;did=4413&amp;goodsCd=EWP4011">
+				            <span class="pic">
+				            	<img src="https://dimgcdn.ybtour.co.kr/TN/11/1123d96ba6aa1039fef9bb2b35688644.tn.410x280.jpg" alt="이미지설명">
+				               	</span>
+				            <span class="tit">
+								<!-- Blue Lavande -->
+								유럽 작은마을_10일 [안도라/산마리노/모나코] 푸른빛 지중해의...
+							</span>
+				            <span class="line"></span>
+				            <span class="area">서유럽</span>
+				            <span class="period">8박10일</span>
+				            <span class="price">3,104,400<p>원 ~</p></span>
+				            </a>
+				        </li>
+						
+						<li>
+				            <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=3701&amp;did=4413&amp;goodsCd=EWP4010">
+				            <span class="pic">
+				            	<img src="https://dimgcdn.ybtour.co.kr/TN/f6/f62619bbd01ff75302c6cbbc651aa354.tn.410x280.jpg" alt="이미지설명">
+				               	</span>
+				            <span class="tit">
+									<!--Blue Lavande -->
+									그림과 풍경이 만드는 여행_샤모니 몽블랑/프라이부르크+몽트뢰_남...
+							</span>
+				            <span class="line"></span>
+				            <span class="area">서유럽</span>
+				            <span class="period">8박10일</span>
+				            <span class="price">3,204,400<p>원 ~</p></span>
+				            </a>
+				        </li>
+						
+						<li>
+				            <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=3701&amp;did=4203&amp;goodsCd=EWP4046">
+				            <span class="pic">
+				            	<img src="https://dimgcdn.ybtour.co.kr/TN/a6/a6de77bed20bc9b6c9587310472aff1f.tn.410x280.jpg" alt="이미지설명">
+				            </span>
+				            <span class="tit">
+								<!--Blue Lavande -->
+								프랑스 작은마을_10일_프로방스의 별_초록 빛 물길_남불 해안 ...
+							</span>
+				            <span class="line"></span>
+				            <span class="area">서유럽</span>
+				            <span class="period">8박10일</span>
+				            <span class="price">3,204,400<p>원 ~</p></span>
+				            </a>
+				        </li>
+						
+						</ul>
+									</div>
+									</div>
+				                    
+				                    
+				                    	
+									<div class="control sliderkit-nav">
+							            <div class="arrowup sliderkit-btn sliderkit-go-btn sliderkit-go-prev"><a href="#main03">이전보기</a></div>
+							            <div class="arrowdown sliderkit-btn sliderkit-go-btn sliderkit-go-next"><a href="#main03">다음보기</a></div>
+							        </div>
+							    </div>
+							    <!-- <div class="slider sliderkit-panels"> -->
+							</div>
+				</div>
+			</div>
+		</div>
+		<div class="best_block">
+			<h2 class="titMain">베스트 여행후기
+			<a href="#" class="time_more">더보기</a>
+			</h2>
+			<ul class="review_list">
+				<li><a href="/customer/episodeView.do?travrvNo=20000005619">
+					<img src="http://cimg.cdn.ybtour.co.kr/attachHome/MN/TR/201709/201709141525296081705004002025.jpg" alt=" ★호주,뉴질랜드여행이 아니면 알 수 없는 것들 ★">
+					<h3 class="tit">★호주,뉴질랜드여행이 아니면 알 수 없는 것들 ★</h3>
+					<p>
+						지극히 평범한 삶에서 벗어나고 싶은 욕망과 일상 탈출을 꿈꾸던 그런 날이면 " 열심히 일한 당신 떠나라"하고 부추기지 않아도 문득 어디론가 훌쩍 떠나고픈  욕망에 사로 잡힌다. 어찌 보면 한두번의 여행으론 치유가 되지 않을 열병 같은 것인지도 모르지만 그럼에도 늘 만병통치약처럼 일상탈출을 꿈꾼다.</p>
+				</a></li>
+				
+				<li><a href="/customer/episodeView.do?travrvNo=20000005675">
+					<img src="http://cimg.cdn.ybtour.co.kr/attachHome/MN/TR/201709/201709141525297311705004002098.jpg" alt=" 추억이 깃든 나의 동유럽 여행 일기 ! [김대호 인솔자님 수고하셨어요♡-♡]  ">
+					<h3 class="tit">추억이 깃든 나의 동유럽 여행 일기 ! [김대호 인솔자님 수고하셨어요♡-♡]  </h3>
+					<p>
+						(크로아티아) 자그레브 - 플리트비체 – (슬로베니아) 블레드 – (오스트리아) 짤츠캄머굿 – 짤츠부르크 – (체코) 체스키크롬로프 – 프라하 – (오스트리아) 비엔나 – (헝가리) 부다페스트 발칸반도와 동유럽까지 5개국을 다녀오는 여행을 다녀왔어요. 저는 오랜 시간 우정을 나눈 여고동창 친구와 처음으로 장거리 여행</p>
+				</a></li>
+				
+				</ul>
+		</div>
+		<div class="notice_block_wrap">
+			<div class="info_block">
+			<!-- 공지사항 -->
+			<div class="notice_block"> 
+				<h2 class="titMain">공지사항
+			<a href="#" class="time_more">더보기</a>
+			</h2>
+				<ul class="notice_list">
+					<li>
+							<a href="/customer/noticeView.do?noticeNo=20000002903">
+							[국내선] 아시아나항공 출발임박 특가 안내</a>
+							<span class="date">2017-09-29</span>
+						</li>
+					<li>
+							<a href="/customer/noticeView.do?noticeNo=20000002902">
+							[이스타항공] 10/6, 10/9 인천-홍콩 노선 운항시각 변경 안내</a>
+							<span class="date">2017-09-29</span>
+						</li>
+					<li>
+							<a href="/customer/noticeView.do?noticeNo=20000002901">
+							[홍콩익스프레스항공] 10월 2일 - 7일 운항 취소 안내</a>
+							<span class="date">2017-09-28</span>
+						</li>
+					</ul>
+			</div>
+			<!-- //공지사항-->
+			
+			<!-- 자주하는 질문 -->
+			<div class="faq_block">
+				<h2 class="titMain">자주하는 질문
+			<a href="#" class="time_more">더보기</a>
+			</h2>
+				<ul class="faq_list">
+					<li><a href="/customer/faqList.do?searchCateCd=TPD"><img src="images/tp-main/ico_faq1.png" alt=" "><br>여행상품</a></li>
+					<li><a href="/customer/faqList.do?searchCateCd=PRS"><img src="images/tp-main/ico_faq2.png" alt=" "><br>상품예약</a></li>
+					<li><a href="/customer/faqList.do?searchCateCd=PPT"><img src="images/tp-main/ico_faq3.png" alt=" "><br>상품결제</a></li>
+					<li><a href="/customer/faqList.do?searchCateCd=ATK"><img src="images/tp-main/ico_faq4.png" alt=" "><br>해외항공</a></li>
+					<li><a href="/customer/faqList.do?searchCateCd=TGC"><img src="images/tp-main/ico_faq5.png" alt=" "><br>여행상품권</a></li>
+					<li><a href="/customer/faqList.do?searchCateCd=WEB"><img src="images/tp-main/ico_faq6.png" alt=" "><br>홈페이지</a></li>
+				</ul>
+			</div>
+			<!-- //자주하는 질문 -->
+		</div>
+        </div>
+        <div class="cont09">
+            <span class="txt">본 화면의 모든 상품가격은 항공운임(항공권) 등이 포함된 총 금액이며, 유류할증료는 유가와 환율에 따라 변동될 수 있습니다.</span>
+        </div>
+		
