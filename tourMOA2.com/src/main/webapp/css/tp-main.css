@@ -26,7 +26,7 @@
 		.tab_type01 {height: auto !important;}
 		.tab_type01>li.on{padding: 0 9px;}
 		.tab_type01>li>a{vertical-align: middle; line-height: 27px; padding: 0 19px; color: #2b2b2b;}
-		.tab_type01>li.on a{ padding: 4px 10px; background-color: #00b6ad; border-radius:15px; color: #fff; font-size: 16px; }
+		.tab_type01>li.on a{ padding: 4px 10px; background-color: #DEB84F; border-radius:15px; color: #fff; font-size: 16px; }
 		.tab_type01>li:first-child{background: 0 none; }
 		.tab_type01>li{float: left; width: auto !important; height: 28px; background: url(/images/tp-main/bg_tab_line.gif) no-repeat left center; }
 		h2.titMain{clear:both; position: relative; width: 1100px; padding-bottom: 13px; margin: 45px auto 20px; background:  url(/images/tp-main/bg_tit.gif) no-repeat 0 100%; font-family: 'NanumGothic-Regular'; height: 24px; line-height: 1; color: #444; letter-spacing: -0.09em; font-size:23px; font-weight: bolder;}
@@ -65,7 +65,7 @@
   		 	width:23px;
          }
         
-        #navi{width: 100%; height: 60px; background-color: #12288f; float: left;}
+        #navi{width: 100%; height: 60px; background-color: #004080; float: left;}
         #navi ul{width: 1100px; margin: 0 auto}
         #navi ul li{
             float: left;
@@ -429,8 +429,8 @@ div.yb_tv{float: left; width: 540px;}
 .yellow_tv_new .yt_list .list:FIRST-CHILD{top:0; height: 146px;}
 .yellow_tv_new .yt_list .list:FIRST-CHILD > a{background-color: #fdc45d;}
 .yellow_tv_new .yt_list .list>a{position: relative; float: left; display: block; width: 110px; height: 101px; padding: 44px 40px 0 40px; font-size: 17px; color: #fff; font-family: 'NanumGothic-Bold'; background: #63bcaa url(/images/common_bg_text_line.gif) no-repeat 40px 34px;}
-.yellow_tv_new .yt_list .list.on:FIRST-CHILD .tv_view_link{top:15px;}
-.yellow_tv_new .yt_list .list.on .tv_view_link{display: block; z-index: 5;}
+.yellow_tv_new .yt_list .list.moaon:FIRST-CHILD .tv_view_link{top:15px;}
+.yellow_tv_new .yt_list .list.moaon .tv_view_link{display: block; z-index: 5;}
 .tv_view_link{display: none; position: absolute; right: 17px; top: -131px; width: 316px; background-color:#fff; z-index: 0; }
 .tv_view_link .img{position: relative; display: block; margin-bottom: 18px;}
 .tv_view_link .img, .tv_view_link .img img{overflow: hidden; width: 316px; height: 182px;}
@@ -494,7 +494,14 @@ div#theme_blockMain {width: 1100px; height: 480px; margin: auto; overflow: hidde
 #recTravel {float: left; position: relative; display: inline-block; width: 100%; margin-bottom:30px; }
 #recTravel.theme_blockRecTravel{position: relative;width: 100%; height: 440px; padding: 15px 0; background-color: #f7f7f7;}
 .recommand01{position: relative; width: 1100px; margin: 0 auto;}
-#recTravel.theme_blockRecTravel .tab_type01{position: absolute; right: -10px; top: -58px; }
+#recTravel.theme_blockRecTravel .tab_type02{position: absolute; right: -10px; top: -58px; }
+.tab_type02{overflow:hidden; height:auto !important}
+.tab_type02>li.blue.ck a{background-color:#004080}
+.tab_type02>li{float:left; width:auto !important; height:28px; background:url("/images/tp-main/bg_tab_line.gif") no-repeat left center}
+.tab_type02>li:first-child{background:0 none}
+.tab_type02>li>a{padding:0 19px; color:#2b2b2b; vertical-align:middle; line-height:27px}
+.tab_type02>li.ck{padding:0 9px}
+.tab_type02>li.ck a{padding:4px 10px; background-color:#ffc200; border-radius:15px; color:#fff; font-size:16px}
 .theme_blockRecTravel ul{height: 300px;}
 .theme_blockRecTravel>li.on{padding: 0 9px;}
 .theme_blockRecTravel>li:FIRST-CHILD{background: 0 none;}

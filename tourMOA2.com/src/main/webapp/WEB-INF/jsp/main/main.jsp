@@ -9,7 +9,7 @@
 <script type="text/javascript" src="/js/jquery.sliderkit.1.9.2.pack.js"></script>
  <script>
  $(document).ready(function(){
-	 $(".tab_type01 > li").on('click',function(){
+	 $("div#theme_block ul.tab_type01 > li").on('click',function(){
 		var thisTab = this;
 		
 		$('.on').not(thisTab).slideUp(function(){
@@ -17,6 +17,15 @@
 		});
 		$(thisTab).addClass('on');
 		
+	 });
+	 $("div.recommand01 > .tab_type02 > li").on('click',function(){
+			var thisTab = this;
+			
+			$('.ck').not(thisTab).slideUp(function(){
+				$(this).removeClass('ck').fadeIn();
+			});
+			$(thisTab).addClass('ck');
+			
 	 });
  });
 $(function(){
@@ -31,8 +40,8 @@ $(function(){
 		});
 		$(".yt_list .list>a").on("click", function(e){
 			e.preventDefault();
-			$(this).parent().siblings().removeClass("on");
-			$(this).parent().addClass("on");
+			$(this).parent().siblings().removeClass("moaon");
+			$(this).parent().addClass("moaon");
 		});
 		//오늘만모아 slide
 		$(".yellow_tv_new").sliderkit({
@@ -359,7 +368,7 @@ $(function(){
  
  <div class="bg_tv_limit">
 			<div class="tv_limit">
-				<!-- 노랑티비 -->
+				<!-- 모아티비 -->
 				<div class="yb_tv">
 					<h2 class="titMain">
 						모아TV
@@ -370,11 +379,11 @@ $(function(){
 					<div class="tv_banner">
 					  <div class="limit_banner">
 						<div class="clear">
-						  <!-- yellow_tv_new -->
+						  <!-- MOA_tv_new -->
 						  <div class="yellow_tv_new sliderkit sliderkit-panels">					
 								<ul class="yt_list">
 									<li class="panel sliderkit-panel ">
-									<div class="list on">
+									<div class="list moaon">
 											<a href="#">
 											비엔티엔/방비엥+블루라군 5일</a>
 											<div class="tv_view_link">
@@ -676,13 +685,13 @@ $(function(){
   	   </script>
 			<h2 class="titMain">테마 추천 쇼핑	</h2>
 			<div class="recommand01">
-				<ul class="tab_type01">
-                	<li class="blue on" role-v="B1"><a href="javascript:;">Blue Lavande</a></li>
-					<li class="" role-v="A6"><a href="javascript:;">관광여행</a></li>
-					<li class="" role-v="A3"><a href="javascript:;">휴양여행</a></li>
-					<li class="" role-v="A2"><a href="javascript:;">효도여행</a></li>
-					<li class="" role-v="S2"><a href="javascript:;">노팁/노옵션/노쇼핑 </a></li>
-					<li class="" role-v="A9"><a href="javascript:;">프리미엄</a></li>
+				<ul class="tab_type02">
+                	<li class="blue ck" role-v="B1"><a href="javascript:;">Blue Lavande</a></li>
+					<li class="blue" role-v="A6"><a href="javascript:;">관광여행</a></li>
+					<li class="blue" role-v="A3"><a href="javascript:;">휴양여행</a></li>
+					<li class="blue" role-v="A2"><a href="javascript:;">효도여행</a></li>
+					<li class="blue" role-v="S2"><a href="javascript:;">노팁/노옵션/노쇼핑 </a></li>
+					<li class="blue" role-v="A9"><a href="javascript:;">프리미엄</a></li>
 				</ul>
 				
 				<div class="recslide tab01">
