@@ -89,7 +89,7 @@ $(function(){
                
                <p>출발일월</p>
                
-               <input class="find-content-inside2" type="text" id="" name="" placeholder="====달력 넣어주세요.====" />
+               <input class="find-content-inside2" type="date" id="" name=""/>
                
                <input type="button" id="searchBtn" name="searchBtn" value="검색하기" />
                
@@ -114,13 +114,19 @@ $(function(){
                <select class="airportfind-content-inside1">
                <option>인천/김포</option>
                </select>
-               <input type="text" class="airportfind-content-inside2" placeholder="출발일자 선택"/>
+               <input type="date" class="airportfind-content-inside2" placeholder="출발일자 선택"/>
                <br>
-               <p><span>도착 </span> <span><input type="checkbox" id="dontknow" value=""/>귀국일 미지정</span></p>
+               <p>
+               		<span>도착 </span>
+                	<span>
+                		<input type="checkbox" id="dontknow" value=""/>
+                			귀국일 미지정
+                	</span>
+               </p>
                <br>  
                <!-- 클릭 시 모달창이나 팝업창 띄워 검색하기 기능 -->
                <input type="text" class="airportfind-content-inside1" placeholder="도착도시 검색"/>
-               <input type="text" class="airportfind-content-inside2 whenyoucome" placeholder="도착일자 선택"/>
+               <input type="date" class="airportfind-content-inside2 whenyoucome" placeholder="도착일자 선택"/>
                <select class="airportfind-content-inside2 dontknowWhen">
                <option>체류일 선택</option>
                </select>
@@ -204,13 +210,13 @@ $(function(){
                <option>울산</option>
                <option>군산</option>
                </select>
-               <input type="text" class="domesticfind-content-inside2" placeholder="출발일자 선택"/>
+               <input type="date" class="domesticfind-content-inside2" placeholder="출발일자 선택"/>
                
                <p>도착</p>
                <!-- 클릭 시 모달창이나 팝업창 띄워 검색하기 기능 -->
                <input type="text" class="domesticfind-content-inside1" placeholder="도착도시 검색"/>
                
-               <input type="text" class="domesticfind-content-inside2" placeholder="도착일자 선택"/>
+               <input type="date" class="domesticfind-content-inside2" placeholder="도착일자 선택"/>
                
                <p>인원</p>
                <!-- select id 성인 :adult 소아 :child 유아 : baby  -->

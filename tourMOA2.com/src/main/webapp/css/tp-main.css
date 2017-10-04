@@ -544,7 +544,7 @@ div.rec_txt{height: 14px; font-size: 14px; color: #666; text-align: center; line
 div.best_block {clear:both; width:100%; padding:0 0 30px 0}
 div.best_block h2.tit {margin-top:0}
 div.best_block ul.review_list{overflow:hidden}
-ul.review_list h3.tit { font-family: 'NanumGothic-Regular';;font-size:16px; color:#333; letter-spacing:-0.05em; line-height:1.8; margin-top:8px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width:250px}
+ul.review_list h3.tit { font-family: 'NanumGothic-Regular';font-size:16px; color:#333; letter-spacing:-0.05em; line-height:1.8; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; width:250px}
 ul.review_list {width:1100px; margin:auto}
 ul.review_list li {width:540px; margin-left:20px; float:left;  }
 ul.review_list li:first-child {margin-left:0}
