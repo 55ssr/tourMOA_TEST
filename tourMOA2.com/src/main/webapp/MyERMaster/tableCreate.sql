@@ -199,11 +199,11 @@ CREATE TABLE NOTICE
   ALL_VIEW  CHAR(1 BYTE)                        NOT NULL
 );
 	-- goods 테이블 지역 추가
-	ALTER TABLE goods ADD(location varchar(20));
+	ALTER TABLE goods ADD(location varchar2(20)); --varchar2
 	-- goods 테이블 아동가 추가
-	ALTER TABLE goods ADD(priceCh number);
+	ALTER TABLE goods ADD(pricech number);
 	-- goods 테이블 유아가 추가
-	ALTER TABLE goods ADD(priceIn number);
+	ALTER TABLE goods ADD(pricein number);
 	-- goods 테이블 "1박" 추가
 	ALTER TABLE goods ADD(period1 varchar2(20));
 	-- goods 테이블 "2일" 추가
@@ -211,8 +211,14 @@ CREATE TABLE NOTICE
 	-- goods 테이블 경유여부 추가
 	ALTER TABLE goods ADD(via char(1));
 	-- goods 테이블 경유지들 추가
-	ALTER TABLE goods ADD(vias varchar(50));
+	ALTER TABLE goods ADD(vias varchar2(50)); --varchar2
 	-- goods 테이블 사용여부 추가
 	ALTER TABLE goods ADD(use char(1));
+	-- goods 테이블 rdate 추가
+	ALTER TABLE goods ADD(rdate timestamp); -- add
 	-- city 컬럼 바이트 수 증가
 	ALTER TABLE goods MODIFY (city varchar(100))
+	
+	-- member 테이블 addr1_1, 1_2 바이트 수 증가
+	ALTER TABLE member MODIFY (addr1_1 varchar(100))
+	ALTER TABLE member MODIFY (addr1_2 varchar(100))
