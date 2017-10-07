@@ -140,8 +140,7 @@ span.btn_pass {display: inline-block; border: 1px solid #ddd;
 #theme_block .cont2 ul li span.pic img { width: 100%; height: auto; min-height: 186px; }
 .mgL20 {margin-left: 20px !important;}
 
-.price {display:block;position: relative !important;color: #f2312c !important;
-   		 font: bold 17px Dotum;margin: 10px 0 0 0;letter-spacing: -1px !important;}
+.price {display:block;position: relative !important;color: #f2312c !important; margin: 10px 0 0 0;letter-spacing: -1px !important;}
 .price p {display: inline-block !important; padding: 0 0 0 2px !important;color: #cccccc;font-size:12px;}
 
 #theme_block h3.tit1 span.more_r_1 {margin-right: 20px; margin-top: 10px;font-size: 13px;float:right;color:#ccc;}

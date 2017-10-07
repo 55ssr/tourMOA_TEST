@@ -28,6 +28,12 @@ public class ProductController {
 	public String locMain() throws Exception{		
 		return "product/locMain";		
 	}
+	
+	@RequestMapping("product/locList.do")
+	public String locList() throws Exception{		
+		return "product/locList";		
+	}	
+	
 	/*상품 예약리스트페이지*/
 	@RequestMapping("product/detailList.do")
 	public String detailList() throws Exception{		
