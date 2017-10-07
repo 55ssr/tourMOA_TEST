@@ -54,15 +54,17 @@ $(document).ready(function(){
         </div>  
         
         
-        <div id="header_logo">
-        	<div id="tt">
-            <h1><a href="/main.do"><img src="/images/tp-main/tourMOA.png" alt="로고" width="160px" height="120px"></a></h1>
-            <div id="searchBox">
-            <select class="searchCondition">
-              <option>전체 상품</option>
-            </select>
-            <input type="text" class="search" placeholder="search">
-            <a href="#"><img alt="검색" src="/images/customer/top_search.png"></a>
-        	</div>
-            </div>
-        </div>  
+		<div id="header_logo">
+			<div id="tt">
+				<a href="/main.do">
+					<img src="/images/common/TourMOA_Logo220.png" alt="로고">
+				</a>
+				<div id="searchBox">
+					<select class="searchCondition">
+						<option>전체 상품</option>
+					</select>
+					<input type="text" class="search" placeholder="search">
+					<a href="#"><img alt="검색" src="/images/customer/top_search.png"></a>
+				</div>
+			</div>
+		</div>
