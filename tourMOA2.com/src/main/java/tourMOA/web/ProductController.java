@@ -1,10 +1,21 @@
 package tourMOA.web;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import tourMOA.service.GoodsService;
+import tourMOA.service.GoodsVO;
 
 @Controller
 public class ProductController {
+	
+	@Resource(name = "goodsService")
+	private GoodsService goodsService;
+	
 	/*상품 해외패키지페이지*/
 	@RequestMapping("product/detail1.do")
 	public String detail1() throws Exception{		
@@ -30,10 +41,16 @@ public class ProductController {
 	}
 	
 	@RequestMapping("product/locList.do")
-	public String locList() throws Exception{		
-		return "product/locList";		
-	}	
-	
+	public String locList() throws Exception{
+		return "product/locList";
+	}
+
+	@RequestMapping("product/unitList.do")
+	public String unitList(@RequestParam("code") String code, GoodsVO vo, Model model) throws Exception{
+		vo = goodsService.selectUnitDetail(vo);
+		model.addAttribute("vo", vo);
+		return "product/unitList";
+	}
 	/*상품 예약리스트페이지*/
 	@RequestMapping("product/detailList.do")
 	public String detailList() throws Exception{		
@@ -42,7 +59,9 @@ public class ProductController {
 	
 	/*상품 예약페이지*/
 	@RequestMapping("product/detailPackage.do")
-	public String detailPackage() throws Exception{		
+	public String detailPackage(@RequestParam("unq") int unq, GoodsVO vo, Model model) throws Exception{		
+		vo = goodsService.selectGoodsDetail(vo);
+		model.addAttribute("vo", vo);
 		return "product/detailPackage";		
 	}
 	/*상품 예약 Step01 로그인 모달 창*/

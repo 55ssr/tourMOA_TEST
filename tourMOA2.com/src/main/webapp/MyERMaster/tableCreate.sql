@@ -1,5 +1,4 @@
 
-
 DROP TABLE company CASCADE CONSTRAINTS;
 DROP TABLE estimate CASCADE CONSTRAINTS;
 DROP TABLE goods CASCADE CONSTRAINTS;
@@ -222,3 +221,64 @@ CREATE TABLE NOTICE
 	-- member 테이블 addr1_1, 1_2 바이트 수 증가
 	ALTER TABLE member MODIFY (addr1_1 varchar(100))
 	ALTER TABLE member MODIFY (addr1_2 varchar(100))
+
+	-- goods 테이블 title 컬럼 바이트 수 증가
+	ALTER TABLE goods MODIFY (title varchar(300))
+	-- goods 테이블 schd 컬럼 바이트 수 증가
+	ALTER TABLE goods MODIFY (schd varchar(300))
+	-- goods 테이블 썸네일 추가
+	ALTER TABLE goods ADD(images01 varchar(20))
+	ALTER TABLE goods ADD(images02 varchar(20))
+	ALTER TABLE goods ADD(images03 varchar(20))
+	-- goods 테이블 편명 추가
+	ALTER TABLE goods ADD(fno varchar(20))
+	-- goods 테이블 현지도착시간 추가
+	ALTER TABLE goods ADD(sadate date)
+	-- goods 테이블 한국도착시간 추가
+	ALTER TABLE goods ADD(eadate date)
+	-- goods 테이블 남은 좌석 추가
+	ALTER TABLE goods ADD(rem number)
+	-- goods 테이블 최소 출발 인원 추가
+	ALTER TABLE goods ADD(minp number)
+	-- goods 테이블 유류할증료 추가
+	ALTER TABLE goods ADD(fuel number)
+	
+	-- goods 테이블 데이터 추가
+	INSERT INTO goods (	unq,title,gubun,location,nation,city,price,pricech,pricein,fuel,sdate,sadate,edate,eadate,period,period1,period2,via,vias,use,schd,detail1,detail2,airline,person,rem,minp,code,images01,images02,images03,fno,rdate) 
+		VALUES (SEQ_goods_unq.nextval,
+				'[한폭의그림 이태리] 친퀘테레/오르비에또+로마아울렛포함 이태리완전일주 8일',
+				'해외패키지',
+				'서유럽',
+				'이탈리아',
+				'로마,피렌체,베니스,베로나,몬테카티니,친퀘테레,피사,나폼쏘',
+				'1390000',
+				'1390000',
+				'500000',
+				'85000',
+				'2017-10-13', --수
+				'2017-10-13', --정
+				'2017-11-19', --요
+				'2017-11-19', --함
+				'8박 10일',
+				'8',
+				'10',
+				'N',
+				'',
+				'Y',
+				'인천-로마-피렌체-베니스-베로나-몬테카티니-친퀘테레-피사-로마-나폼쏘-인천',
+				'이탈리아 항공 로마직항 초특가 상품!<br />이탈리아 주요도시 로마부터 국제적인 수상도시 베니스 등 중세시대의 문화를 아우르는 낭만 가득한 이태리여행! 완벽한 하나의 일정으로 진행되는 출발확정이 높은 상품입니다!',
+				'이탈리아 항공 로마직항 초특가 상품!<br />이탈리아 주요도시 로마부터 국제적인 수상도시 베니스 등 중세시대의 문화를 아우르는 낭만 가득한 이태리여행! 완벽한 하나의 일정으로 진행되는 출발확정이 높은 상품입니다!',
+				'알리탈리아항공',
+				'20',
+				'4',
+				'10',
+				'2017IT',
+				'images01.PNG',
+				'images02.PNG',
+				'images03.PNG',
+				'QR863'
+				sysdate
+				)
+				
+	select * from goods
+	delete from goods where unq='24'
