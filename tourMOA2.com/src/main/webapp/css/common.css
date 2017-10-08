@@ -1465,3 +1465,7 @@ ul.banner_top_list li a {display:block; width:100%; height:70px}
 .ico_tv {color:#fff; font-size:12px; display:inline-block; background-color:#ff8a00; border-radius:10px; padding:0 10px}/* 노랑 TV */
 .ico_pre {color:#fff; font-size:12px; display:inline-block; background-color:#00aeef; border-radius:10px; padding:0 10px}/* 선발권 */
 .ico_gold {color:#fff; font-size:12px; display:inline-block; background-color:#efa071; border-radius:10px; padding:0 10px}/* 연휴 */
+
+
+/*********************** 프로젝트 커스텀 스타일 ***********************/
+.commFD {font-weight:600;display:table;background-color:#a12aa1;padding: 6px;color: white!important;}
