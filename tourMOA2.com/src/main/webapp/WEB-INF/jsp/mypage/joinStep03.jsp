@@ -95,9 +95,9 @@ $(document).ready(function(){
 	//중복체크
 	$("#btnDup").click(function(){
 		
-		if($("#id").val() == "") {
+		if($("input:text[id=id]").val() == '') {
 			alert("아이디를 입력해주세요.");
-			$("#id").focus();
+			$("input:text[id=id]").focus();
 			return false;
 		}
 				
@@ -112,7 +112,7 @@ $(document).ready(function(){
 			$("#id").focus();
 			return;
 		}   */
-		var param ="id="+$("#id").val();
+		var param ="id="+$("input:text[id=id]").val();
 		$.ajax({
 			  type:'POST'
 			, url:"<c:url value='/mypage/selectCustIdDuplication.do'/>"
@@ -687,14 +687,14 @@ $(document).ready(function(){
 	<caption>가입정보입력</caption>
 	<tbody>
 		<tr>
-			<th scope="row"><label for="id">아이디 <font color="red">*</font></label><span class="idSpan"></span><span class="chk"></span></th>
+			<th scope="row"><label for="id" style="float: left;">아이디 </label><span class="idSpan"></span><span class="chk"></span></th>
 			<td colspan="3">
 				<input type="text" name="id" id="id" maxlength="20">
 				<button type="button" name="btnDup" id="btnDup" class="btnChk">중복 확인</button>
 			</td>
 		</tr>
 		<tr>
-			<th scope="row"><label for="pwd">비밀번호<font color="red">*</font></label><span class="chk"></span></th>
+			<th scope="row"><label for="pwd">비밀번호</label><span class="chk"></span></th>
 			<td colspan="3"><input type="password" name="pwd" id="pwd" maxlength="20" ><div id="passSpan"></div>
 			
 				<span class="regDesc">· 영문(소/대문자), 숫자,특수문자 중 3종류를 조합하여 8~16자리로 사용하시기 바랍니다. <br />
@@ -702,23 +702,23 @@ $(document).ready(function(){
 			</td>
 		</tr>
 		<tr>
-			<th scope="row"><label for="pwd2">비밀번호 확인<font color="red">*</font></label><span class="chk"></span></th>
+			<th scope="row"><label for="pwd2">비밀번호 확인</label><span class="chk"></span></th>
 			<td colspan="3"><input type="password" name="pwd2" id="pwd2" maxlength="20"><div id="pwdChk"></div>
 				<span class="regDesc">· 재확인을 위해서입력하신비밀번호를 다시한번 입력해주세요.</span>
 			</td>
 		</tr>
 		<tr>
-			<th scope="row"><label for="username">성명<font color="red">*</font></label><span class="chk"></span></th>
+			<th scope="row"><label for="username">성명</label><span class="chk"></span></th>
 			<td><input type="hidden" id="custNmKor" name="custNmKor" value="<%=custNmKor%>"><%=custNmKor %></td>
 
-			<th scope="row"><label for="genderCd">성별<font color="red">*</font></label></th>
+			<th scope="row"><label for="genderCd">성별</label></th>
 			<td>
 				<input type="checkbox" name="genderCdM" id="genderCdM" value="M" ><span class="radio_txt"><label for="genderCdM">남성</label></span>
 				<input type="checkbox" name="genderCdF" id="genderCdF" value="F" ><span class="radio_txt"><label for="genderCdF">여성</label></span>
 			</td>
 		</tr>
 		<tr>
-			<th scope="row"><label for="email1">이메일<font color="red">*</font></label><span class="chk"></span></th>
+			<th scope="row"><label for="email1">이메일</label><span class="chk"></span></th>
 			<td colspan="3">
 				<input type="text" name="email1" id="email1" class="txtemail" maxlength="20">
 				<span class="txt">@</span>
@@ -741,7 +741,7 @@ $(document).ready(function(){
 			</td>
 		</tr>		
 		<tr>
-			<th scope="row"><label for="mobileTel1">휴대폰번호<font color="red">*</font></label><span class="chk"></span></th>
+			<th scope="row"><label for="mobileTel1">휴대폰번호</label><span class="chk"></span></th>
 			<td colspan="3">
 				<c:set var="phoneNum" value="<%=custphone%>" />
 				<input type="text" name="mobiletel1"  class="txtcell" value="${fn:substring(phoneNum,0,3) }" maxlength="3" readonly>
@@ -818,7 +818,7 @@ $(document).ready(function(){
 			</td>
 		</tr>	
 		<tr>
-			<th scope="row"><label for="birthYear">생년월일<font color="red">*</font></label><span class="chk"></span></th>
+			<th scope="row"><label for="birthYear">생년월일</label><span class="chk"></span></th>
 			<td colspan="3">
 				<select name="birthYear" id="birthYear" class="selDt">
 					<option value="" selected="selected">선택</option>
