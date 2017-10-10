@@ -74,8 +74,8 @@
         <div id="bottomWrap"><!--[[ bottomWrap Start ]]-->
             <div id="footmenu"><!--[[ footmenu Start ]]-->
                 <ul>
-                    <li><a href="http://company.TOURMOA.co.kr" >회사소개</a></li>
-                    <li><a href="http://company.TOURMOA.co.kr/info/headOffice.do" >오시는길</a></li>
+                    <li><a href="/company/intro.do" >회사소개</a></li>
+                    <li><a href="/company/headOffice.do" >오시는길</a></li>
                     <li><a href="/common/internetAgree.do" >인터넷회원약관</a></li>
                     <li class="yellow"><a href="/common/privacy.do" >개인정보처리방침</a></li>
                     <li><a href="/common/travelAgree.do" >여행약관</a></li>
