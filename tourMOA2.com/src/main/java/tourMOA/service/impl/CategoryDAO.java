@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import egovframework.example.sample.service.SampleDefaultVO;
 import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
 import tourMOA.service.CategoryVO;
 import tourMOA.service.DefaultListVO;
@@ -30,5 +31,21 @@ public class CategoryDAO extends EgovAbstractDAO {
 
 	public CategoryVO selectCategoryDetail(CategoryVO vo) {		
 		return (CategoryVO) select("categoryDAO.selectCategoryDetail",vo);
+	}
+
+	public int updateCategory(CategoryVO vo) {		
+		return update("categoryDAO.updateCategory",vo);
+	}
+
+	public int selectCategoryLowLevlCnt(String ctgcd) {
+		return (int) select("categoryDAO.selectCategoryLowLevlCnt",ctgcd);
+	}
+
+	public int deleteCategory(CategoryVO vo) {
+		return delete("categoryDAO.deleteCategory",vo);
+	}
+
+	public int selectCategoryTotal(SampleDefaultVO searchVO) {
+		return (int) select("categoryDAO.selectCategoryTotal",searchVO);
 	}
 }

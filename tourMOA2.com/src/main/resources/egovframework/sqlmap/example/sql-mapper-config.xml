@@ -8,5 +8,6 @@
 		<typeAlias alias="sampleVO" type="egovframework.example.sample.service.SampleVO"/>
 		<typeAlias alias="defaultVO" type="tourMOA.service.DefaultListVO"/>
 		<typeAlias alias="memberVO" type="tourMOA.service.MemberVO"/>
+		<typeAlias alias="categoryVO" type="tourMOA.service.CategoryVO"/>
     </typeAliases>
 </configuration>

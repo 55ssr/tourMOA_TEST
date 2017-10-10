@@ -200,20 +200,20 @@ Here is a compact version :
 .theme03.photosgallery-vertical .sliderkit-nav .sliderkit-nav-btn a span { display: none; }
 .theme03.photosgallery-vertical .sliderkit-nav .sliderkit-nav-prev{ top: 0; left: 21px; }
 .theme03.photosgallery-vertical .sliderkit-nav .sliderkit-nav-next { bottom: 0; left: 23px; }
-.theme03.photosgallery-vertical .sliderkit-nav .sliderkit-nav-prev a { background:transparent url("../../images/RYUTEST/03_arrowup.png") no-repeat center 0; }
-.theme03.photosgallery-vertical .sliderkit-nav .sliderkit-nav-next a { background:transparent url("../../images/RYUTEST/03_arrowdown.png") no-repeat center 0; }
+.theme03.photosgallery-vertical .sliderkit-nav .sliderkit-nav-prev a { background:transparent url("../../images/productDetail/03_arrowup.png") no-repeat center 0; }
+.theme03.photosgallery-vertical .sliderkit-nav .sliderkit-nav-next a { background:transparent url("../../images/productDetail/03_arrowdown.png") no-repeat center 0; }
 .theme03.photosgallery-vertical .sliderkit-nav .sliderkit-nav-prev a:hover,
-.theme03.photosgallery-vertical .sliderkit-nav .sliderkit-nav-prev a:focus{background:transparent url("../../images/RYUTEST/03_arrowup.png") no-repeat center 0; }
+.theme03.photosgallery-vertical .sliderkit-nav .sliderkit-nav-prev a:focus{background:transparent url("../../images/productDetail/03_arrowup.png") no-repeat center 0; }
 .theme03.photosgallery-vertical .sliderkit-nav .sliderkit-nav-next a:hover,
-.theme03.photosgallery-vertical .sliderkit-nav .sliderkit-nav-next a:focus{background:transparent url("../../images/RYUTEST/03_arrowdown.png") no-repeat center 0; }
+.theme03.photosgallery-vertical .sliderkit-nav .sliderkit-nav-next a:focus{background:transparent url("../../images/productDetail/03_arrowdown.png") no-repeat center 0; }
 
 /* ############################################################################################################################### */
 /* 캐러셀 재정의 */
 /* ############################################################################################################################### */
 /* Nav */
 .photoslider-bullets .sliderkit-nav-clip ul li { float: left; margin: 0 5px 0 0;}
-.photoslider-bullets .sliderkit-nav-clip ul li a { width: 12px; height: 12px; background: transparent url("/images/RYUTEST/ball_off.png") no-repeat 0 0; text-indent: -2000px; }
-.photoslider-bullets .sliderkit-nav-clip ul li.sliderkit-selected a { background: transparent url("/images/RYUTEST/ball_on.png") no-repeat 0 0; }
+.photoslider-bullets .sliderkit-nav-clip ul li a { width: 12px; height: 12px; background: transparent url("/images/productDetail/ball_off.png") no-repeat 0 0; text-indent: -2000px; }
+.photoslider-bullets .sliderkit-nav-clip ul li.sliderkit-selected a { background: transparent url("/images/productDetail/ball_on.png") no-repeat 0 0; }
 
 /* ############################################################################################################################### */
 /* 사진 내 좌우버튼 재정의 */
@@ -223,8 +223,8 @@ Here is a compact version :
 .photoslider-mini .sliderkit-go-prev { left: 0; }
 .photoslider-mini .sliderkit-go-next {right: 0; }
 .photoslider-mini .sliderkit-go-btn a { display: block; width: 50px; height: 100%; opacity: 0.6; background-color: #fff; cursor: pointer; }
-.photoslider-mini .sliderkit-go-prev a { background: transparent url("../../images/RYUTEST/visual_arrowL.png") center center no-repeat; }
-.photoslider-mini .sliderkit-go-next a { background: transparent url("../../images/RYUTEST/visual_arrowR.png") center center no-repeat; }
+.photoslider-mini .sliderkit-go-prev a { background: transparent url("../../images/productDetail/visual_arrowL.png") center center no-repeat; }
+.photoslider-mini .sliderkit-go-next a { background: transparent url("../../images/productDetail/visual_arrowR.png") center center no-repeat; }
 .photoslider-mini .sliderkit-btn-disable a { opacity: 0 /*can be set to any value until 1*/; cursor: default; }
 .photoslider-mini .sliderkit-btn-disable a:hover { cursor: default; }
 .photoslider-mini .sliderkit-go-btn span { display: none; }

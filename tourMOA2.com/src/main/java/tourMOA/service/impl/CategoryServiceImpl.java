@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import egovframework.example.sample.service.SampleDefaultVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import tourMOA.service.CategoryService;
 import tourMOA.service.CategoryVO;
@@ -42,5 +43,25 @@ public class CategoryServiceImpl  extends EgovAbstractServiceImpl implements Cat
 	@Override
 	public CategoryVO selectCategoryDetail(CategoryVO vo) throws Exception {		
 		return categoryDAO.selectCategoryDetail(vo);
+	}
+
+	@Override
+	public int updateCategory(CategoryVO vo) throws Exception {
+		return categoryDAO.updateCategory(vo);
+	}
+
+	@Override
+	public int selectCategoryLowLevlCnt(String ctgcd) throws Exception {
+		return categoryDAO.selectCategoryLowLevlCnt(ctgcd);
+	}
+
+	@Override
+	public int deleteCategory(CategoryVO vo) throws Exception {
+		return categoryDAO.deleteCategory(vo);
+	}
+
+	@Override
+	public int selectCategoryTotal(SampleDefaultVO searchVO) throws Exception {
+		return categoryDAO.selectCategoryTotal(searchVO);
 	}	
 }

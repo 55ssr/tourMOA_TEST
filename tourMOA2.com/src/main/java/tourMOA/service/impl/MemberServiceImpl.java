@@ -1,7 +1,6 @@
 package tourMOA.service.impl;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
@@ -39,9 +38,9 @@ public class MemberServiceImpl extends EgovAbstractServiceImpl implements Member
 	}
 
 	@Override
-	public boolean loginSession(MemberVO vo, HttpSession session) throws Exception {
+	public boolean loginSession(MemberVO vo) throws Exception {
 		// TODO Auto-generated method stub
-		return memberDAO.loginSession(vo,session);
+		return memberDAO.loginSession(vo);
 	}
 	
 }

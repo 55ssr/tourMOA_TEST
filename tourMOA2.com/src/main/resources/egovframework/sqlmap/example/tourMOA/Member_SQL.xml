@@ -24,7 +24,7 @@
 	
 	<select id="memberDAO.loginSession" resultClass="java.lang.Boolean">
 	
-		SELECT COUNT(*) FROM MEMBER
+		SELECT * FROM MEMBER
 			WHERE id = '$id$' AND pwd = '$pwd$'
 	
 	</select>
@@ -47,7 +47,7 @@
 						) VALUES (
 							SEQ_MEMBER_UNQ.nextval,
 							'$id$',
-							'test!1234',
+							'$pwd$',
 							'$name$',
 							'$gender$',
 							'$email$',

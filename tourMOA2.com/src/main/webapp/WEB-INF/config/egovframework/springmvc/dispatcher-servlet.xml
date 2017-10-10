@@ -13,7 +13,7 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
     </context:component-scan>
     
-    <!-- For Json s 맨 위에 넣을 것 -->
+   	<!-- For Json s 맨 위에 넣을 것 -->
 	<mvc:annotation-driven/>
 	<context:annotation-config/>
 	<bean id="jsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>

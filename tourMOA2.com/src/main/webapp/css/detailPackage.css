@@ -19,7 +19,8 @@
 
 #detailWrap #infoWrap{float: left; position: relative; display: inline-block; width: 820px; padding: 0; margin: 0; overflow: hidden;} 
 #infoWrap #basicInfo{position: relative; display: inline-block; width: 100%; padding-bottom: 20px;}
-#basicInfo.subTitle{display: block; font-size: 14px; color: #333333; line-height: 1.4; margin-top: 20px}
+#basicInfo .subTitle{display: block; font-size: 14px; color: #333333; line-height: 1.4; margin-top: 20px}
+#basicInfo .sns{float: left; display: inline-block; margin: 20px 0 10px 0; height: 28px; font-size: 13px; color: #555555; }
 #basicInfo .sns span{ float: left; position:relative; padding:6px 15px; margin: 1px 0 0 2px; border: 1px solid #bfbfbf;}
 #basicInfo .score{float: right; display: inline-block; margin: 20px 0 10px 0; height: 28px; font-size: 13px; line-height: 18px; color: #777777}
 #basicInfo .score span{display: inline-block;}
@@ -33,12 +34,9 @@
 #basicInfo div.basicL{float:left; position: relative; clear: both; width: 48.5%}
 #basicInfo div.basicL .basicL01{position: relative;}
 #basicInfo div.basicL .basicL02 { position: relative; }
-#basicInfo div.basicL ul li{position: relative; display: table; width: 100%;}
-#basicInfo div.basicL ul li.lineBlack{border-bottom: 1px solid #000; background: none;}
+#basicInfo ul li.lineBlack{border-bottom: 1px solid #000; background: none;}
 
 #basicInfo ul li{ background: url(/images/productDetail/linedot.png) bottom left repeat-x;}
-#basicInfo div.basicL ul li.dvide{margin-bottom: 20px;}
-#basicInfo div.basicL ul li span{display: block;}
 #basicInfo div.basicL ul li span.tit{display: table-cell; width: 78px; background: #e7eaed url(/images/productDetail/linedot.png) bottom left repeat-x; vertical-align: middle; text-align: center; font-size: 13px; color: #777777; font-family: 'NanumExtraBold';}
 #basicInfo div.basicL ul li span.tit.noLine{background: #e7eaed;}
 #basicInfo div.basicL ul li span.txt.txt01{margin: 15px 0 0 0; color: #fa6f09;}
@@ -54,7 +52,7 @@
 
 
 #basicInfo div.basicL ul li.dvide { margin-bottom: 20px; }
-#basicInfo ul li.lineBlackTop, #freeInfo ul li.lineBlackTop { border-top: 1px solid #000; }
+#basicInfo ul li.lineBlackTop, #freeInfo ul li.lineBlackTop {border-top: 1px solid #000;}
 #basicInfo ul li.lineGray, #freeInfo ul li.lineGray {border-bottom: 1px solid #d1d1d1; background: none;}
 #basicInfo div.basicL ul li { position: relative; display: table; width: 100%; }
 #basicInfo div.basicL ul li span { display: block; }

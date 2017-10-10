@@ -10,14 +10,19 @@ public class GoodsVO {
 	private int price;
 	private int pricech;
 	private int pricein;
+	private int fuel;
 	private String sdate;
+	private String sadate;
 	private String edate;
+	private String eadate;
 	private String period;
 	private String schd;
 	private String detail1;
 	private String detail2;
 	private String airline;
 	private int person;
+	private int rem;
+	private int minp;
 	private String code;
 	private String location;
 	private String period1;
@@ -25,8 +30,10 @@ public class GoodsVO {
 	private String via;
 	private String vias;
 	private String use;
-	
-	
+	private String images01;
+	private String images02;
+	private String images03;
+	private String fno;
 	public int getUnq() {
 		return unq;
 	}
@@ -75,17 +82,35 @@ public class GoodsVO {
 	public void setPricein(int pricein) {
 		this.pricein = pricein;
 	}
+	public int getFuel() {
+		return fuel;
+	}
+	public void setFuel(int fuel) {
+		this.fuel = fuel;
+	}
 	public String getSdate() {
 		return sdate;
 	}
 	public void setSdate(String sdate) {
 		this.sdate = sdate;
 	}
+	public String getSadate() {
+		return sadate;
+	}
+	public void setSadate(String sadate) {
+		this.sadate = sadate;
+	}
 	public String getEdate() {
 		return edate;
 	}
 	public void setEdate(String edate) {
 		this.edate = edate;
+	}
+	public String getEadate() {
+		return eadate;
+	}
+	public void setEadate(String eadate) {
+		this.eadate = eadate;
 	}
 	public String getPeriod() {
 		return period;
@@ -122,6 +147,18 @@ public class GoodsVO {
 	}
 	public void setPerson(int person) {
 		this.person = person;
+	}
+	public int getRem() {
+		return rem;
+	}
+	public void setRem(int rem) {
+		this.rem = rem;
+	}
+	public int getMinp() {
+		return minp;
+	}
+	public void setMinp(int minp) {
+		this.minp = minp;
 	}
 	public String getCode() {
 		return code;
@@ -165,6 +202,39 @@ public class GoodsVO {
 	public void setUse(String use) {
 		this.use = use;
 	}
+	public String getImages01() {
+		return images01;
+	}
+	public void setImages01(String images01) {
+		this.images01 = images01;
+	}
+	public String getImages02() {
+		return images02;
+	}
+	public void setImages02(String images02) {
+		this.images02 = images02;
+	}
+	public String getImages03() {
+		return images03;
+	}
+	public void setImages03(String images03) {
+		this.images03 = images03;
+	}
+	public String getFno() {
+		return fno;
+	}
+	public void setFno(String fno) {
+		this.fno = fno;
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

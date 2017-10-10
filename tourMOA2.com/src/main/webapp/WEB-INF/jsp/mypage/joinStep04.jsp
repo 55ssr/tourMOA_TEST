@@ -33,6 +33,7 @@
 		$("#btnok").click(function(){
 			
 			var param  = "id="+$("#id").val()
+				param += "&pwd="+$("#custPassEnc").val()
 				param += "&name="+$("#name").val()
 				param += "&phone="+$("#custphone").val() 
 				param += "&birthday="+$("#birthDt").val() 
@@ -43,8 +44,8 @@
 				param += "&addr1_2="+$("#hidAddr1_2").val()
 				param += "&agree1="+$("#agreeEss01").val()
 				param += "&agree2="+$("#agreeEss02").val();
-			
 			alert(param);
+			
 			$.ajax({
 				  type:'POST'
 				, url:"<c:url value='/mypage/insertJoinSave.do'/>"
@@ -76,7 +77,7 @@
 	<input type="hidden" name="custPassEnc" 	id="custPassEnc" 		value="<%=custPassEnc %>" /><!-- 비밀번호 -->
 	<input type="hidden" name="name" 			id="name" 				value="<%=custNmKor%>" /><!-- 이름 -->
 	<input type="hidden" name="custphone" 		id="custphone" 		    value="<%=custphone%>" /><!-- 이름 -->
-	<input type="text" 	name="genderCd" 		id="genderCd" 			value="<%=genderCd%>" /><!-- 성별 -->
+	<input type="hidden" name="genderCd" 		id="genderCd" 			value="<%=genderCd%>" /><!-- 성별 -->
 	<input type="hidden" name="email" 			id="email" 				value="<%=email%>" /><!-- FULL 이메일 -->
 	<input type="hidden" name="email1" 			id="email1" 			value="" /><!-- 이메일 ID -->
 	<input type="hidden" name="email2" 			id="email2" 			value="" /><!-- 이메일 도메인 -->
@@ -111,11 +112,11 @@
 	<input type="hidden" name="prtEmail"		id="prtEmail"			value=""/> 
 	<input type="hidden" name="prtRelCd"		id="prtRelCd"			value=""/> 
 	<input type="hidden" name="prtRelAdd"		id="prtRelAdd"			value=""/>
-	<input type="hidden" name="agreeEss01" 	id="agreeEss01" 	value="<%=agreeEss01%>" />
-    <input type="hidden" name="agreeEss02" 	id="agreeEss02" 	value="<%=agreeEss02%>" />
-    <input type="text" name="hidPostNum1"		id="hidPostNum1"		value="<%=hidPostNum1%>"/>        
-	<input type="text" name="hidAddr1_1"		id="hidAddr1_1"			value="<%=hidAddr1_1%>"/>        
-	<input type="text" name="hidAddr1_2"		id="hidAddr1_2"			value="<%=hidAddr1_2%>"/>    
+	<input type="hidden" name="agreeEss01" 		id="agreeEss01" 		value="<%=agreeEss01%>" />
+    <input type="hidden" name="agreeEss02" 		id="agreeEss02" 		value="<%=agreeEss02%>" />
+    <input type="hidden" name="hidPostNum1"		id="hidPostNum1"		value="<%=hidPostNum1%>"/>        
+	<input type="hidden" name="hidAddr1_1"		id="hidAddr1_1"			value="<%=hidAddr1_1%>"/>        
+	<input type="hidden" name="hidAddr1_2"		id="hidAddr1_2"			value="<%=hidAddr1_2%>"/>    
 <section id="content" class="contentSub">
 	<!--[[ content Start ]]-->
 	<div class="tit join_tit" title="회원가입">

@@ -1,0 +1,427 @@
+@CHARSET "UTF-8";
+@import url('common.css');
+ 
+/* 타이틀/서브타이틀 정의 */
+.title { position: relative; display: table; width: 1100px; height: 24px; margin: 0 auto; }
+.title01_domestic { background:url("/images/area/title01_domestic.png") no-repeat; }
+.title01_clubmed { background:url("/images/area/title01_clubmed.png") no-repeat; }
+.title01_holy { background:url("/images/area/title01_holy.png") no-repeat; }
+.title01_busan { background:url("/images/area/title01_busan.png") no-repeat; }
+.title01_2 { background:url("/images/area/title01_2.png") no-repeat; }
+.title02 { background:url("/images/area/title02.png") no-repeat; }
+.title02_free { background:url("/images/sub/title01_1_free.png") no-repeat; }
+.title02_honey { background:url("/images/area/title02_honey.png") no-repeat; }
+.title02_clubmed { background:url("/images/area/title02_clubmed.png") no-repeat; }
+.title02_golf { background:url("/images/area/title02_golf.png") no-repeat; }
+.title02_holy { background:url("/images/area/title02_holy.png") no-repeat; }
+.title03 { background:url("/images/area/title03.png") no-repeat; }
+.title03_honey { background:url("/images/area/title02_honey.png") no-repeat; }
+.title03_free { background:url("/images/sub/title01_1_free.png") no-repeat; }
+.title03_clubmed { background:url("/images/area/title03_clubmed.png") no-repeat; }
+.title03_golf { background:url("/images/area/title02_golf.png") no-repeat; }
+.title03_holy { background:url("/images/area/title02_holy.png") no-repeat; }
+.title04 { background:url("/images/area/title04.png") no-repeat; }
+.title04_golf { background:url("/images/area/title04_golf.png") no-repeat; }
+.title05 { background:url("/images/area/title05.png") no-repeat; }
+.title .subtitle { position: absolute; display: block; width: 600px; margin-top: 8px; font-size: 16px; color: #999999; font-weight: normal; }
+
+
+
+/* 유럽추천기획전 and 상품예약문의 */
+#area01 { clear: both; position: relative; display: inline-block; width: 100%; height: 379px; padding: 50px 0 0 0; margin-top: -3px; }
+#area01 .gridbox { position: relative; width: 1100px; height: 379px; margin: 0 auto; padding: 0; }
+
+/* 유럽추천기획전 */
+#area01 .gridbox .gridL { float: left; width: 840px; height: 399px; top: -5px; }
+.title01 { width: 840px; top: 5px; }
+.title .subtitle01 { display: inline-block; margin-left: 30px; }
+
+.gridL .sliderkit-nav .sliderkit-nav-btn { position: absolute; top: -65px; right: 0; display: block; width: 35px; height: 35px; z-index: 999; }
+.gridL .sliderkit-nav .sliderkit-nav-btn.sliderkit-nav-prev.btnL { top: -68px; right: 40px; *right: 50px; background: #ffb902; margin-right: -3px; }
+.gridL .sliderkit-nav .sliderkit-nav-btn.sliderkit-nav-next.btnR { top: -68px; right: 0; *right: 10px; background: #ffb902; }
+.gridL .sliderkit-nav .sliderkit-nav-btn a { display: block; width: 100%; height: 100%; }
+.gridL .sliderkit-nav .sliderkit-nav-btn a img { margin-top: 12px; }
+.gridL .sliderkit-btn.sliderkit-nav-btn.sliderkit-nav-prev.btnL.sliderkit-btn-disable { background: #d1d1d0; }
+.gridL .sliderkit-btn.sliderkit-nav-btn.sliderkit-nav-prev.btnL.sliderkit-btn-disable a { cursor: default; }
+.gridL .sliderkit-btn.sliderkit-nav-btn.sliderkit-nav-next.btnR.sliderkit-btn-disable { background: #d1d1d0; }
+.gridL .sliderkit-btn.sliderkit-nav-btn.sliderkit-nav-next.btnR.sliderkit-btn-disable a { cursor: default; }
+.gridL .sliderkit-nav { width: 820px; margin: 40px 0 0 0; }
+.gridL .sliderkit-nav .cont01.sliderkit-nav-clip { width: 820px !important; height: 330px; margin-top: 2px; }
+.gridL .sliderkit-nav .cont01.sliderkit-nav-clip ul { width: 820px; height: 330px; }
+.gridL .sliderkit-nav .cont01.sliderkit-nav-clip ul li { position: relative; float: left; width: 260px; height: 330px; margin: 0 20px 0 0; overflow: hidden; }
+.gridL .sliderkit-nav .cont01.sliderkit-nav-clip ul li.bannerB { position: relative; float: left; width: 820px !important; height: 330px !important; margin: 0 20px 0 0; overflow: hidden; }
+.gridL .sliderkit-nav .cont01.sliderkit-nav-clip ul li img { width: 100%; height: auto; }
+.gridL .sliderkit-nav .cont01.sliderkit-nav-clip ul li a { position: absolute; z-index: 999999; display: block; width: 100%; height: 100%; top: 0; left: 0; background: transparent; }
+/* 국내추천기획전 */
+.title01_domestic { width: 840px; top: 5px; }
+.title .subtitle01_domestic { padding: 0 0 0 158px; }
+/* 불교추천기획전 */
+.title01_holy { width: 840px; top: 5px; }
+.title .subtitle01_holy { padding: 0 0 0 206px; }
+/* 부산출발 유럽추천기획전 */
+.title01_busan { width: 840px; top: 5px; }
+.title .subtitle01_busan { padding: 0 0 0 296px; }
+
+
+
+/* 상품예약문의 */
+#area01 .gridbox .gridR { float: left; width: 260px; height: 379px; }
+.cont01_2 { position: relative; width: 260px; margin: 40px 0 0 0; }
+.cont01_2 ul { width: 198px; height: 268px; padding: 30px; border: 1px solid #ebedef; background: #f7f8f9; overflow: hidden;  }
+.cont01_2 ul li { font-size: 14px; color: #303030; font-weight: 600; }
+.cont01_2 ul li.cell01 { padding-bottom: 10px; background:url("/images/area/01_icon01.png") no-repeat; }
+.cont01_2 ul li.cell02 { padding-bottom: 10px; background:url("/images/area/01_icon02.png") no-repeat; }
+.cont01_2 ul li.cell02-1 { padding-bottom: 10px; background:url("/images/area/01_icon05.png") no-repeat; }
+.cont01_2 ul li.cell03 { padding-top: 15px; border-top: 1px solid #ebedef; }
+.cont01_2 ul li span { display: block; clear: both; margin: 0 0 0 45px; }
+.cont01_2 ul li span.txt01 { margin-bottom: 11px; }
+.cont01_2 ul li span.txt01.detail { margin-bottom: 7px; }
+.cont01_2 ul li span.txt02 { margin-bottom: 5px; font-size: 12px; color: #777777; font-weight: normal; }
+.cont01_2 ul li span.txt04 { margin-bottom: 10px; font-size: 14px; color: #333333; font-weight: 600; }
+.cont01_2 ul li span.txt05 { margin-bottom: 7px; font-size: 14px; color: #333333; font-weight: 600; }
+.cont01_2 ul li span.txt03 { position: relative; margin: 0 0 15px 0; padding: 0 0 0 12px; color: #2c3139; font-weight: normal; background:url("/images/area/01_icon03.png") center left no-repeat; }
+.cont01_2 ul li span.txt03 span.bul { display: block; position: absolute; top: 3px; right: 0; width: 4px; height: 7px; background:url("/images/area/01_icon04.png") no-repeat; }
+.cont01_2 ul li span.txt03 a { color: #2c3139; padding-right: 30px; }
+.cont01_2 ul li.cell03.pkg { margin-top: 45px; }
+.cont01_2 ul li.cell03.pkg_long { margin-top: 25px; }
+.cont01_2 ul li.cell03.fit {  }
+.cont01_2 ul li.cell03.dmt { margin-top: 55px; }
+.cont01_2 ul li.cell03.hym { margin-top: 10px; }
+.cont01_2 ul li.cell03.glf { margin-top: 25px; }
+.cont01_2 ul li.cell03.crs { margin-top: 80px; }
+.cont01_2 ul li.cell03.hyl { margin-top: 25px; }
+.cont01_2 ul li.cell03.fbd { margin-top: 50px; }
+
+
+
+/* 긴급모객 */
+#area02 { position: relative; display: inline-block; width: 100%; padding: 60px 0 0 0; top:-4px; }
+#area02 .fastWrap.sliderkit { position: relative; display: block; width: 1100px; height: 436px;  margin: 0 auto; }
+
+#area_02 { position: relative; display: inline-block; width: 100%; padding: 60px 0 0 0; top:-4px; }
+#area_02 .fastWrap.sliderkit { position: relative; display: block; width: 1100px; height:362px; margin: 0 auto; }
+
+.fastWrap .title.title02 { top: 8px; }
+.fastWrap .title .subtitle02 { padding: 0 0 0 136px; }
+.fastWrap .title.title02 .noti { position: absolute; right: 115px; top: 11px; color: #a0a0a0; font-size: 13px; }
+
+
+
+.fastWrap .title.title02 span.btnMore { position: absolute; display: block; right: 90px; top: 12px; width: 13px; height: 13px; z-index: 999999; }
+.fastWrap .title.title02 span.btnMore a { position: absolute; z-index: 999999; display: block; width: 100%; height: 100%; top: 0; left: 0; }
+
+.fastWrap .sliderkit-nav { position: absolute; width: 1100px; text-align: left; }
+.fastWrap .sliderkit-nav .sliderkit-nav-btn { position: absolute; top: -65px; right: 0; display: block; width: 35px; height: 35px; z-index: 999; }
+.fastWrap .sliderkit-nav .sliderkit-nav-btn.sliderkit-nav-prev.btnL { top: -24px; right: 40px; background: #ffb902; margin-right: -3px; }
+.fastWrap .sliderkit-nav .sliderkit-nav-btn.sliderkit-nav-next.btnR { top: -24px; right: 0; background: #ffb902; }
+.fastWrap .sliderkit-nav .sliderkit-nav-btn a { display: block; width: 100%; height: 100%; }
+.fastWrap .sliderkit-nav .sliderkit-nav-btn a img { margin-top: 12px; }
+.fastWrap .sliderkit-btn.sliderkit-nav-btn.sliderkit-nav-prev.btnL.sliderkit-btn-disable { background: #d1d1d0; }
+.fastWrap .sliderkit-btn.sliderkit-nav-btn.sliderkit-nav-prev.btnL.sliderkit-btn-disable a { cursor: default; }
+.fastWrap .sliderkit-btn.sliderkit-nav-btn.sliderkit-nav-next.btnR.sliderkit-btn-disable { background: #d1d1d0; }
+.fastWrap .sliderkit-btn.sliderkit-nav-btn.sliderkit-nav-next.btnR.sliderkit-btn-disable a { cursor: default; }
+
+.fastWrap .sliderkit-nav .cont02.sliderkit-nav-clip { position: relative; width: 1100px; height: 366px; margin: 40px 0 0 0 ; } /*수정 */
+.fastWrap .sliderkit-nav .cont02.sliderkit-nav-clip ul { width: 1100px; height: 100%; }
+.fastWrap .sliderkit-nav .cont02.sliderkit-nav-clip ul li { position: relative; float: left; width: 260px; height: 100%; margin-right: 20px; }
+.fastWrap .sliderkit-nav .cont02.sliderkit-nav-clip ul li.last { margin-right: 0; }
+.fastWrap .sliderkit-nav .cont02.sliderkit-nav-clip ul li span.pic { display: block; width: 260px; height: 186px; overflow: hidden; }
+.fastWrap .sliderkit-nav .cont02.sliderkit-nav-clip ul li span.pic img { width: 100%; height: auto; min-height: 186px; }
+.fastWrap .sliderkit-nav .cont02.sliderkit-nav-clip ul li img.ico { position: absolute; top: 177px; left: 25px; width: 17px; height: 9px; }
+.fastWrap .sliderkit-nav .cont02.sliderkit-nav-clip ul li div.info { position: relative; display: inline-block; width: 208px; height: 127px; margin-top: -2px; padding: 25px; border: 1px solid #e0e0e0; border-top: none; overflow: hidden; background: #fff; }
+.fastWrap .sliderkit-nav .cont02.sliderkit-nav-clip ul li div.info span { display: block; z-index: 2; text-align: left; }
+.fastWrap .sliderkit-nav .cont02.sliderkit-nav-clip ul li div.info span.tit { float: left; max-width: 76%; white-space: nowrap; overflow: hidden; margin-right: 10px; font-size: 12px; color: #2a2a2a; font-weight: 600; text-overflow:ellipsis; line-height:1.2}
+.fastWrap .sliderkit-nav .cont02.sliderkit-nav-clip ul li div.info span.period { float: right; font-size: 12px; color: #999999; }
+.fastWrap .sliderkit-nav .cont02.sliderkit-nav-clip ul li div.info span.line { clear: both; float: left; width: 64px; height: 11px; margin-bottom: 7px; border-bottom: 1px solid #4b4b4b; }
+.fastWrap .sliderkit-nav .cont02.sliderkit-nav-clip ul li div.info span.detail { clear: both; height: 40px; margin-bottom: 15px; font-size: 14px; color: #303030; line-height: 20px; overflow: hidden; }
+.fastWrap .sliderkit-nav .cont02.sliderkit-nav-clip ul li div.info span.startdate { clear: both; float: left; margin-bottom: 8px; padding: 1px 0 0 0; font-size: 15px; color: #000000; font-weight: 600; }
+.fastWrap .sliderkit-nav .cont02.sliderkit-nav-clip ul li div.info span.price { float: right; margin-bottom: 8px; font-size: 18px; }
+/* 허니문 : 라스트미닛허니문 */
+.fastWrap .title.title02_honey {}
+.fastWrap .title .subtitle02_honey { padding: 0 0 0 135px; }
+.fastWrap .title.title02_honey .noti { position: absolute; right: 115px; top: 11px; color: #a0a0a0; font-size: 13px; }
+.fastWrap .title.title02_honey span.btnMore { position: absolute; display: block; right: 90px; top: 12px; width: 13px; height: 13px; z-index: 999999; }
+.fastWrap .title.title02_honey span.btnMore a { position: absolute; z-index: 999999; display: block; width: 100%; height: 100%; top: 0; left: 0; }
+/* 골프 : 반짝특가 */
+.fastWrap .title.title02_golf { top: 8px; }
+.fastWrap .title .subtitle02_golf { padding: 0 0 0 138px; }
+.fastWrap .title.title02_golf .noti { position: absolute; right: 115px; top: 11px; color: #a0a0a0; font-size: 13px; }
+.fastWrap .title.title02_golf span.btnMore { position: absolute; display: block; right: 90px; top: 12px; width: 13px; height: 13px; z-index: 999999; }
+.fastWrap .title.title02_golf span.btnMore a { position: absolute; z-index: 999999; display: block; width: 100%; height: 100%; top: 0; left: 0; }
+/* 성지순례 : 성지순례 */
+.fastWrap .title.title02_holy { top: 8px; }
+.fastWrap .title .subtitle02_holy { padding: 0 0 0 136px; }
+.fastWrap .title.title02_holy .noti { position: absolute; right: 115px; top: 11px; color: #a0a0a0; font-size: 13px; }
+.fastWrap .title.title02_holy span.btnMore { position: absolute; display: block; right: 90px; top: 12px; width: 13px; height: 13px; z-index: 999999; }
+.fastWrap .title.title02_holy span.btnMore a { position: absolute; z-index: 999999; display: block; width: 100%; height: 100%; top: 0; left: 0; }
+
+
+
+/* 긴급모객2 */
+#area03 { position: relative; display: inline-block; width: 100%; padding: 60px 0 0 0; margin-top: 5px; margin-bottom: 5px; display: block; top:-8px;}
+#area03 .fastWrap2.sliderkit { position: relative; display: block; width: 1100px; height: 215px; margin: 0 auto; }
+
+.fastWrap2 .title .subtitle03 { padding: 0 0 0 136px; }
+.fastWrap2 .title.title03 .noti { position: absolute; right: 115px; top: 11px; color: #a0a0a0; font-size: 13px; }
+.fastWrap2 .title.title03 span.btnMore { position: absolute; display: block; right: 90px; top: 12px; width: 13px; height: 13px; z-index: 999999; }
+.fastWrap2 .title.title03 span.btnMore a { position: absolute; z-index: 999999; display: block; width: 100%; height: 100%; top: 0; left: 0; }
+
+.fastWrap2 .sliderkit-nav { position: absolute; width: 1100px; text-align: left; }
+.fastWrap2 .sliderkit-nav .sliderkit-nav-btn { position: absolute; top: -65px; right: 0; display: block; width: 35px; height: 35px; z-index: 999; }
+.fastWrap2 .sliderkit-nav .sliderkit-nav-btn.sliderkit-nav-prev.btnL { top: -24px; right: 40px; background: #ffb902; margin-right: -3px; *margin-right: 2px; }
+.fastWrap2 .sliderkit-nav .sliderkit-nav-btn.sliderkit-nav-next.btnR { top: -24px; right: 0; background: #ffb902; }
+.fastWrap2 .sliderkit-nav .sliderkit-nav-btn a { display: block; width: 100%; height: 100%; }
+.fastWrap2 .sliderkit-nav .sliderkit-nav-btn a img { margin-top: 12px; }
+.fastWrap2 .sliderkit-btn.sliderkit-nav-btn.sliderkit-nav-prev.btnL.sliderkit-btn-disable { background: #d1d1d0; }
+.fastWrap2 .sliderkit-btn.sliderkit-nav-btn.sliderkit-nav-prev.btnL.sliderkit-btn-disable a { cursor: default; }
+.fastWrap2 .sliderkit-btn.sliderkit-nav-btn.sliderkit-nav-next.btnR.sliderkit-btn-disable { background: #d1d1d0; }
+.fastWrap2 .sliderkit-btn.sliderkit-nav-btn.sliderkit-nav-next.btnR.sliderkit-btn-disable a { cursor: default; }
+
+.fastWrap2 .sliderkit-nav .cont03.sliderkit-nav-clip { position: relative; float: left; width: 1100px; height: 150px; margin: 40px auto 0; }
+.fastWrap2 .sliderkit-nav .cont03.sliderkit-nav-clip ul { width: 1100px; height: 150px; }
+.fastWrap2 .sliderkit-nav .cont03.sliderkit-nav-clip ul li { position: relative; float: left; width: 540px; height: 150px; margin-right: 20px; }
+.fastWrap2 .sliderkit-nav .cont03.sliderkit-nav-clip ul li:nth-child(add) { margin: 0 !important;}
+.fastWrap2 .sliderkit-nav .cont03.sliderkit-nav-clip ul li div { position: relative; float: left; text-align: left; }
+.fastWrap2 .sliderkit-nav .cont03.sliderkit-nav-clip ul li div.left { width: 129px; height: 148px; border: 1px solid #e0e0e0; border-right: none; }
+.fastWrap2 .sliderkit-nav .cont03.sliderkit-nav-clip ul li div.left.left01 { background: #ededed url("/images/area/03_bg.png") center right no-repeat; }
+.fastWrap2 .sliderkit-nav .cont03.sliderkit-nav-clip ul li div.left.left02 { background: #ededed url("/images/area/03_bg.png") center right no-repeat; }
+.fastWrap2 .sliderkit-nav .cont03.sliderkit-nav-clip ul li div.left span { display: block; margin-left: 20px; }
+.fastWrap2 .sliderkit-nav .cont03.sliderkit-nav-clip ul li div.left span.tit { color: #2a2a2a; font-size: 14px; font-weight: 600; margin-top: 18px; }
+.fastWrap2 .sliderkit-nav .cont03.sliderkit-nav-clip ul li div.left span.line { width: 25px; height: 1px; margin: 10px 0 22px 20px; background: #2a2a2a; }
+.fastWrap2 .sliderkit-nav .cont03.sliderkit-nav-clip ul li div.left span.period { color: #303030; font-size: 12px; }
+.fastWrap2 .sliderkit-nav .cont03.sliderkit-nav-clip ul li div.right { width: 384px; height: 148px; padding-left: 25px; border: 1px solid #e0e0e0; border-left: none; }
+.fastWrap2 .sliderkit-nav .cont03.sliderkit-nav-clip ul li div.right span { display: inline-block; font-size: 18px; color: #000; font-weight: 600; letter-spacing: -1px; }
+.fastWrap2 .sliderkit-nav .cont03.sliderkit-nav-clip ul li div.right span.tit { width: 95%; height: 15px; overflow: hidden; margin: 27px 0 20px 0; font-size: 14px; color: #303030; font-weight: normal; }
+.fastWrap2 .sliderkit-nav .cont03.sliderkit-nav-clip ul li div.right span.date { clear: both; float: left; margin-bottom: 8px; padding: 1px 25px 0 0; font-size: 15px; }
+.fastWrap2 .sliderkit-nav .cont03.sliderkit-nav-clip ul li div.right span.price { float: left; margin-bottom: 8px; width: 230px; }
+/* 허니문 : 라스트미닛허니문 */
+.fastWrap2 .title.title03_honey { }
+.fastWrap2 .title .subtitle03_honey { padding: 0 0 0 233px; }
+.fastWrap2 .title.title03_honey .noti { position: absolute; right: 115px; top: 11px; color: #a0a0a0; font-size: 13px; }
+.fastWrap2 .title.title03_honey span.btnMore { position: absolute; display: block; right: 90px; top: 12px; width: 13px; height: 13px; z-index: 999999; }
+.fastWrap2 .title.title03_honey span.btnMore a { position: absolute; z-index: 999999; display: block; width: 100%; height: 100%; top: 0; left: 0; }
+
+/* 자유: 반짝특가 */
+.fastWrap2 .title .subtitle03_free { padding: 0 0 0 136px; }
+.fastWrap2 .title.title03_free .noti { position: absolute; right: 115px; top: 11px; color: #a0a0a0; font-size: 13px; }
+.fastWrap2 .title.title03_free span.btnMore { position: absolute; display: block; right: 90px; top: 12px; width: 13px; height: 13px; z-index: 999999; }
+.fastWrap2 .title.title03_free span.btnMore a { position: absolute; z-index: 999999; display: block; width: 100%; height: 100%; top: 0; left: 0; }
+
+
+.title .subtitle02_free { padding: 0 0 0 136px; }
+.title.title02_free .noti { position: absolute; right: 115px; top: 11px; color: #a0a0a0; font-size: 13px; }
+.title.title02_free span.btnMore { position: absolute; display: block; right: 90px; top: 12px; width: 13px; height: 13px; z-index: 999999; }
+.title.title02_free span.btnMore a { position: absolute; z-index: 999999; display: block; width: 100%; height: 100%; top: 0; left: 0; }
+
+/* 골프 : 반짝특가 */
+.fastWrap2 .title.title03_golf { top: 8px; }
+.fastWrap2 .title .subtitle03_golf { padding: 0 0 0 138px; }
+.fastWrap2 .title.title03_golf .noti { position: absolute; right: 115px; top: 11px; color: #a0a0a0; font-size: 13px; }
+.fastWrap2 .title.title03_golf span.btnMore { position: absolute; display: block; right: 90px; top: 12px; width: 13px; height: 13px; z-index: 999999; }
+.fastWrap2 .title.title03_golf span.btnMore a { position: absolute; z-index: 999999; display: block; width: 100%; height: 100%; top: 0; left: 0; }
+/* 성지순례 : 성지순례 */
+.fastWrap2 .title.title03_holy { top: 8px; }
+.fastWrap2 .title .subtitle03_holy { padding: 0 0 0 136px; }
+.fastWrap2 .title.title03_holy .noti { position: absolute; right: 115px; top: 11px; color: #a0a0a0; font-size: 13px; }
+.fastWrap2 .title.title03_holy span.btnMore { position: absolute; display: block; right: 90px; top: 12px; width: 13px; height: 13px; z-index: 999999; }
+.fastWrap2 .title.title03_holy span.btnMore a { position: absolute; z-index: 999999; display: block; width: 100%; height: 100%; top: 0; left: 0; }
+
+
+
+/* 위클리추천상품 */
+#area04 { position: relative; display: inline-block; width: 100%; height: 100%; padding: 60px 0 0 0; margin-top: -5px; top:-4px; }
+.title .subtitle04 { padding: 0 0 0 206px; }
+.title.title04 .noti { position: absolute; right: 0; top: 11px; color: #a0a0a0; font-size: 13px; }
+
+.cont04 { position: relative; width: 1100px; margin: 40px auto 0; }
+.cont04 ul { width: 100%; height: 345px; }
+.cont04 ul li { position: relative; float: left; width: 260px; height: 346px; border: 0; margin-right: 20px; }
+.cont04 ul li.left { width: 260px; height: 346px; overflow: hidden; }
+.cont04 ul li.left img { width: 260px; height: auto; }
+.cont04 ul li.left div.info { position: relative; display: inline-block; width: 240px; height: 100%; padding: 10px 25px 0 5px; overflow: hidden; }
+.cont04 ul li.left div.info span { display: block; }
+.cont04 ul li.left div.info span.theme { margin-bottom: 9px; font-size: 14px; color: #777777; letter-spacing: -1px; }
+.cont04 ul li.left div.info span.tit { max-height: 36px; line-height: 1.2; overflow: hidden; margin-bottom: 15px; font-size: 16px; color: #303030; font-weight: 600; }
+.cont04 ul li.left div.info span.detail { height: 80px; overflow: hidden; margin-bottom: 31px; font-size: 14px; color: #777777; line-height: 20px; }
+.cont04 ul li.left div.info span.subtit { margin-bottom: 10px; font-size: 12px; color: #2a2a2a; }
+.cont04 ul li.left div.info span.subdetail { height: 75px; overflow: hidden; margin-bottom: 15px; font-size: 12px; color: #777777; line-height: 19px }
+.cont04 ul li.left div.info span.price { float: left; font-size: 28px; }
+.cont04 ul li.left div.info span.more { float: right; position: relative; padding: 0 8px 0 8px; margin-top: 12px; font-size: 12px; color: #2a2a2a; background:url("/images/area/01_icon04.png") center right no-repeat; }
+.cont04 ul li.left div.info span.more a { position: absolute; z-index: 9999999; display: block; width: 100%; height: 100%; top: 0; left: 0; background: transparent; text-indent: -2000000px; }
+.cont04 ul li.left div.info span.more { display: none; }
+.cont04 ul li.right span.pic { display: block; width: 260px; height: 186px; overflow: hidden; }
+.cont04 ul li.right span.pic img { width: 260px; height: auto; min-height: 186px; }
+.cont04 ul li.right img.ico { position: absolute; top: 177px; left: 25px; width: 17px; height: 9px; }
+.cont04 ul li.right div.info { position: relative; display: inline-block; width: 208px; height: 110px; padding: 25px; border: 1px solid #e0e0e0; border-top: none; overflow: hidden; background: #fff; }
+.cont04 ul li.right div.info span { display: block; z-index: 2; }
+.cont04 ul li.right div.info span.startdate { float: left; padding-right: 5px; font-size: 12px; color: #777777; }
+.cont04 ul li.right div.info span.tit { float: left; max-width: 100%; white-space: nowrap; overflow: hidden; font-size: 12px; line-height:13px; color: #777777; }
+.cont04 ul li.right div.info span.line { clear: both; width: 65px; height: 1px; margin: 17px 0 11px 0; background: #2a2a2a; }
+.cont04 ul li.right div.info span.detail { height: 53px; margin-bottom: 12px; font-size: 14px; color: #303030; line-height: 20px; overflow: hidden; }
+.cont04 ul li.right div.info span.price { font-size: 18px; }
+.cont04 ul li.last { margin-right: 0; }
+/* 골프 : YB골프추천상품 */
+.title.title04_golf { height: 25px; margin-top: -1px; }
+.title .subtitle04_golf { padding: 0 0 0 213px; }
+.title.title04_golf .noti { position: absolute; right: 0; top: 11px; color: #a0a0a0; font-size: 13px; }
+
+
+
+/* 클럽메드소개 */
+#clubmedInfo { position: relative; display: block; width: 100%; height: 100%; margin: 56px 0 0 0; }
+#clubmedInfo .infoBox { width: 1100px; margin: 40px auto 0; }
+#clubmedInfo .infoBox li { float: left; width: 260px; height: 85px; margin-left: 20px; }
+#clubmedInfo .infoBox li:first-child { margin-left: 0; }
+
+#introClubMed  { position: relative; display: block; width: 100%; height: 100%; margin: 40px 0 0 0; }
+#introClubMed:after { content: ""; display: block; clear: both; }
+#introClubMed .introBox { width: 1018px; height: 162px; margin: 40px auto; padding: 40px; border: 1px solid #d1d1d1; background: #fff url("/images/area/clubMed_logo.png") no-repeat 40px 40px;  }
+#introClubMed .introBox span { display: inline-block; }
+#introClubMed .introBox span.introTxt { margin-top: 43px; font-size: 22px; font-weight: 600; color: #333333; }
+#introClubMed .introBox span.introTxt.yl { color: #f8931f; }
+#introClubMed .introBox span.introTxt02 { margin-top: 21px; line-height: 20px; letter-spacing: -0.2px; font-size: 14px; font-weight: normal; color: #777777; }
+
+#introClubMed .tab { position: relative; width: 1100px; margin: 0 auto 30px; font-weight: 600; }
+#introClubMed .tab ul { width: 1098px; height: 48px; border: 1px solid #dddddd; }
+#introClubMed .tab ul li { position: relative; float: left; height: 48px; line-height: 48px; letter-spacing: -1px; font-size: 15px; color: #303030; text-align: center; background:url("/images/sub/tab_div.png") center right no-repeat; cursor: pointer; }
+#introClubMed .tab ul li span { display: inline-block; }
+#introClubMed .tab ul li span p { float: left; display: inline-block; }
+#introClubMed .tab ul li span span.num { float: left; display: inline-block; }
+#introClubMed .tab ul li.t01 { width: 220px; }
+#introClubMed .tab ul li.t02 { width: 220px; }
+#introClubMed .tab ul li.t03 { width: 220px; }
+#introClubMed .tab ul li.t04 { width: 220px; }
+#introClubMed .tab ul li.t05 { width: 218px; background: none; }
+#introClubMed .tab ul li a { position: absolute; z-index: 999999; display: block; width: 100%; height: 100%; top:0; left: 0; background: transparent; text-indent: -2000000px; }
+#introClubMed .tab ul li.on { background: #42454c; height: 50px; margin: -1px 0 -1px -1px; padding-left: 1px; color: #fff; }
+
+#introClubMed .introBox02 { width: 1100px; height: 446px; margin: 0 auto 30px; }
+#introClubMed .introBox02 div.pic { float: left; width: 650px; height: 446px; overflow: hidden; }
+#introClubMed .introBox02 div.pic img { width: 100%; height: auto; min-height: 446px; }
+#introClubMed .introBox02 div.exp { width: 410px; float: right; text-align: left; }
+#introClubMed .introBox02 div.exp span { display: block; }
+#introClubMed .introBox02 div.exp span.txt01 { margin-top: 7px; line-height: 26px; font-size: 20px; font-weight: 600; color: #333333; }
+#introClubMed .introBox02 div.exp span.hyphen { width: 60px; height: 1px; margin: 23px 0; background: #42454c; }
+#introClubMed .introBox02 div.exp span.sbj { float: left; margin-bottom: 34px; font-size: 32px; font-weight: 600; color: #333333; }
+#introClubMed .introBox02 div.exp span.yl { display: inline-block; margin-left: 9px; color: #f8931f; }
+#introClubMed .introBox02 div.exp span.txt02 { clear: both; line-height: 20px; font-size: 16px; font-weight: normal; color: #333333; }
+#introClubMed .introBox02 div.exp span.txt03 { margin-top: 17px; line-height: 20px; letter-spacing: -0.2px; font-size: 14px; font-weight: normal; color: #666666; }
+
+#introClubMed .introBox03 { width: 1100px; margin: 0 auto 12px; }
+#introClubMed .introBox03 ul { display: table; width: 1098px; height: 132px; border: 1px solid #dddddd; }
+#introClubMed .introBox03 ul li { display: table-cell; width: 157px; vertical-align: middle; text-align: center; }
+#introClubMed .introBox03 ul li.last { width: 156px; }
+#introClubMed .introBox03 ul li span { display: block; margin-top: 12px; line-height: 16px; font-size: 12px; font-weight: normal; color: #666666; }
+
+#introClubMed .introBox04 { width: 1100px; height: 216px; margin: 0 auto 30px; padding: 40px 0; background: #f7f8f9; }
+#introClubMed .introBox04 ul { float: left; width: 510px; height: 216px; margin-left: 40px; }
+#introClubMed .introBox04 ul li { min-height: 19px; line-height: 19px; margin-top: 9px; padding-left: 27px; background: url("/images/area/icon_chk.png") no-repeat left top; font-size: 14px; font-weight: normal; color: #666666; }
+#introClubMed .introBox04 ul li:first-child { margin-top: 0; }
+
+#introClubMed .dtlWrap { width: 1098px; margin: 0 auto; }
+#introClubMed .dtlWrap .dtlHead { width: 1020px; height: 83px; padidng: 36px 40px 0; background: #e9d5a2; }
+#introClubMed .dtlWrap .dtlHead span.dtlTit { display: inline-block; font-size: 24px; font-weight: 600; color: #333333; }
+#introClubMed .dtlWrap .dtlHead span.dtlTit_EN { display: inline-block; margin-left: 10px; font-size: 24px; font-weight: normal; color: #333333; }
+#introClubMed .dtlWrap .dtlHead span.subTit { display: block; margin-top: 10px; font-size: 14px; font-weight: normal; color: #666666; }
+#introClubMed .dtlWrap .dtlCont { width: 1098px; padding: 30px 0; text-align: center; border: 1px solid #dddddd; border-top: none; }
+#introClubMed .dtlWrap .dtlCont img.middle { margin-bottom: 26px; }
+
+
+/* 베스트인기상품 */
+#area05 { position: relative; display: inline-block; width: 100%; height: 100%; padding: 60px 0 50px 0; top:-6px; }
+.title .subtitle05 { padding: 0 0 0 206px; }
+.title.title05 .noti { position: absolute; right: 0; top: 11px; color: #a0a0a0; font-size: 13px; }
+
+.cont05 { position: relative; width: 1100px; margin: 40px auto 0; }
+.cont05 ul { width: 100%; height: 310px; margin: 0 0 25px 0; }
+.cont05 ul li { position: relative; float: left; width: 260px; height: 310px; border: 0; margin-right: 20px; overflow: hidden; }
+.cont05 ul li.bg01 { background: #fcfbf9 url("/images/area/05_bg01.png") top center no-repeat }
+.cont05 ul li.bg02 { background: #fcfcfc url("/images/area/05_bg02.png") top center no-repeat }
+.cont05 ul li.last { margin-right: 0; }
+.cont05 ul li span.headline { display: table-cell; vertical-align: middle; width: 260px; height: 55px; line-height: 1.2; padding: 0 10px; text-align: center; font-size: 18px; color: #986f35; font-weight: 600; }
+.cont05 ul li span.more { position: absolute; top: 62px; left: 112px; display: inline-block; font-size: 13px; color: #999999; }
+.cont05 ul li div.info { width: 220px; margin-top: 48px; padding: 0 20px 25px 20px; }
+.cont05 ul li div.info span { display: block; z-index: 2; }
+.cont05 ul li div.info span.tit { height: 40px; margin-bottom: 12px; font-size: 14px; color: #303030; line-height: 20px; overflow: hidden; }
+.cont05 ul li div.info span.tit a { position: absolute; z-index: 999999; display: block; width: 100%; height: 100%; top: 0; left: 0; background: transparent; text-indent: -2000000px; }
+.cont05 ul li div.info span.price { font-size: 18px; }
+.cont05 ul li div.info span.price p { display: inline-block !important; padding: 0 0 0 2px !important; color: #000; font-size: .625em !important; }
+.cont05 ul li div.info span.line { clear: both; width: 100%; height: 1px; margin: 18px 0; background: #e8e8e7; }
+
+
+
+/* 하단 안내 */
+#area06 { position: relative; display: inline-block; width: 100%; height: 100%; padding: 0 0 0 0; }
+.title .subtitle06 { padding: 0 0 0 0; }
+.cont06 { position: relative; width: 1100px; height: 70px; margin: 0 auto; border-top: 1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6; text-align: center; }
+.cont06 .txt { display: inline-block; height: 38px; margin: 17px 0 0 0; padding: 0 0 0 60px; line-height: 37px; color: #666666; font-size: 15px; background:url("/images/sub/05_icon01.png") center left no-repeat; }
+
+
+
+/* 가격 */
+.price { position: relative !important; color: #f2312c !important; font-weight: 600 !important; letter-spacing: -1px !important; }
+.price p { display: inline-block !important; padding: 0 0 0 2px !important; color: #000; font-size: .625em !important; }
+#area05 .cont05 ul li div.info span.price { color: #f2312c !important; }
+
+
+
+
+/* 국내여행 : 기차여행/버스여행 */
+.contants {width:1100px; height:auto; margin:0 auto; padding-top:20px;}
+.title02_01 {background: url('/images/area/title02_01.png') 0 0 no-repeat; top:30px;}
+.nav_snb {float:right; width:140px; }
+.nav_snb div { float:right;}
+h3.titTrv {width:205px; padding-bottom:10px; border-bottom:2px solid #333;}
+h3.titTrv span a {font-size:18px; font-weight:600; color:#333; }
+.titleTrv {float:right; width:260px; }
+.contBox {float:left; width:760px; height:100%; text-align:center; padding-right:0px;}
+.cont01_2Trv {position: relative; width: 260px; margin: 40px 0 0 80px; }
+#area01Trv { clear: both; position: relative; display: inline-block; height: 379px;	}
+#area01Trv .gridboxTrv {position:relative; width:340px !important; height:420px; margin:0 auto; padding:0;}
+#area01Trv .gridboxTrv .nav_snb ul.trvList li {float:left; clear:both; margin-bottom:15px;}
+#area01Trv .gridboxTrv .nav_snb ul.trvList li span {display:block; float:left;}
+#area01Trv .gridboxTrv .nav_snb ul.trvList li .bgbul {width:3px; height:3px; background:#2c3139;margin-right:10px; position:relative; top:5px;}
+#area01Trv .gridboxTrv .nav_snb ul.trvList li a {font-size:14px; color:#2c3139;}
+#area01Trv .gridboxTrv .nav_snb ul.trvList li a:hover, #area01Trv .gridboxTrv .nav_snb ul.trvList li a:active {text-decoration:none; color:#ffc200;}
+#area01Trv .gridboxTrv .trainBtn {width:260px; height:55px; font-size:18px; font-weight:600; color:#fff; border:none; background-color:#ffc200; margin-top:20px;}
+
+/* 크루즈 : 크루즈여행정보 */
+.crs_info { position: relative; width: 1100px; height: 118px; margin: 20px auto 0; }
+.crs_info div { float: left; position: relative; width: 351px; height: 118px; margin-left: 20px; border: 1px solid #ececec; }
+.crs_info div:first-child { margin-left: 0; }
+.crs_info div.submain0601 { background:url("/images/sub/06_img01.png") 35px center no-repeat; }
+.crs_info div.submain0602 { background:url("/images/sub/06_img02.png") 35px center no-repeat; }
+.crs_info div.submain0603 { background:url("/images/sub/06_img03.png") 35px center no-repeat; }
+.crs_info div a { float: right; width: 80%; text-align: right; margin: 53px 30px 0 0; font-size: 18px; color: #333333; font-weight: 600; }
+
+/* 성지순례 */
+#holy01 { position: relative; display: inline-block; width: 100%; padding: 60px 0 0 0; }
+#holy01 .contHoly { position: relative; width: 1100px; margin: 0 auto; }
+#holy01 .contHoly .box { float: left; width: 540px; height: 160px; border-bottom: 1px solid #ececec; }
+#holy01 .contHoly .box span { display: inline-block; margin-left: 176px; }
+#holy01 .contHoly .box span.bulline { display: block; width: 18px; height: 2px; margin-top: 40px; background: #000; }
+#holy01 .contHoly .box span.tit { margin-top: 7px; font-size: 16px; color: #303030; font-weight: 600; }
+#holy01 .contHoly .box span.txt { margin-top: 20px; font-size: 14px; color: #666666; line-height: 1.4; }
+#holy01 .contHoly .box.box01 { margin: 0 20px 0 0; background:url("/images/sub/holy01_icon01.png") 32px center no-repeat; }
+#holy01 .contHoly .box.box02 { margin: 0 0 0 0; background:url("/images/sub/holy01_icon02.png") 32px center no-repeat; }
+#holy01 .contHoly .box.box03 { margin: -1px 20px 0 0; background:url("/images/sub/holy01_icon03.png") 32px center no-repeat; }
+#holy01 .contHoly .box.box04 { margin: -1px 0 0 0; background:url("/images/sub/holy01_icon04.png") 32px center no-repeat; }
+
+#holy01 .tit_box { display: block; width: 1100px; height: 210px; margin: 0 auto; background: url("/images/sub/holy01_bg.png") no-repeat 638px top; border-bottom: 2px solid #000000; font-size: 34px; font-weight: bold; color: #333333; }
+#holy01 .tit_box { height: 227px; background: url("/images/sub/holy01_bg02.png") no-repeat right bottom; }
+#holy01 .tit_box { height: 167px; background: url("/images/sub/holy01_bg03.png") no-repeat right bottom; }
+#holy01 .tit_box { height: 172px; background: url("/images/sub/holy01_bg04.png") no-repeat right bottom; }
+#holy01 .tit_box { height: 193px; background: url("/images/sub/holy01_bg05.png") no-repeat 713px bottom; }
+#holy01 .tit_box span { display: block; padding-top: 15px; font-size: 34px; font-weight: bold; color: #333333; }
+#holy01 .tit_box span.yl { margin-top: 8px; margin-bottom:20px; color: #ffba00; }
+#holy01 .bt_type{font-family:'Nanum Gothic', '나눔고딕', '맑은 고딕', Dotum; font-weight:normal}
+
+#holy02 { position: relative; display: inline-block; width: 100%; padding: 60px 0 3px 0; margin-top: -3px; }
+#holy02 .contHoly { position: relative; width: 1100px; margin: 40px auto 0; }
+#holy02 .contHoly .boxPhone { width: 1090px; height: 77px; margin-top: 30px; border: 5px solid #d1d1d1; font-size: 20px; color: #303030; font-weight: 600; background:url("/images/sub/holy02_icon01.png") 385px 26px no-repeat; }
+#holy02 .contHoly .boxPhone span { display: inline-block; margin-top: 28px; margin-left: 417px; }
+#holy02 .contHoly .boxPhone p { display: inline-block; color: #f8931f; margin-top: 28px; margin-left: 5px; }
+#holy02 .contHoly table { width: 100%; margin-top: 40px; border-top: 2px solid #555555; border-bottom: 2px solid #555555; font-size: 16px; color: #666666; text-align: center; }
+#holy02 .contHoly th { width: 275px; height: 57px; border-left: 1px solid #d1d1d1; background: #f7f8f9; color: #303030; font-weight: 600; vertical-align: middle; }
+#holy02 .contHoly td { width: 275px; height: 57px; border-left: 1px solid #d1d1d1; border-top: 1px solid #d1d1d1; vertical-align: middle; }
+#holy02 .contHoly th:first-child , #holy02 .contHoly td:first-child { border-left: none; }

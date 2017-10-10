@@ -36,4 +36,8 @@ public class GoodsDAO extends EgovAbstractDAO{
 		return delete("goodsDAO.deleteGoods", vo);
 	}
 
+	public GoodsVO selectUnitDetail(GoodsVO vo) {
+		return (GoodsVO) select("goodsDAO.selectUnitDetail", vo);
+	}
+
 }

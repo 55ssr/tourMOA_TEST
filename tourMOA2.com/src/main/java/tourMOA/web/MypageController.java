@@ -1,18 +1,17 @@
 package tourMOA.web;
 
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import tourMOA.service.MemberService;
@@ -212,25 +211,37 @@ public class MypageController {
 	}
 	/*Login Session*/
 	@RequestMapping("/loginSession.do")
-	@ResponseBody
-	public ModelAndView LoginSession(@ModelAttribute MemberVO vo,HttpSession session,HttpServletRequest request, HttpServletResponse response) throws Exception {
-		boolean result = memberService.loginSession(vo,session);
-		String id = request.getParameter("loginId");
-		String pwd = request.getParameter("loginPwd");
-		session = request.getSession();
-		ModelAndView mav = new ModelAndView();
-		if(result==true){
-			mav.addObject("msg","success");
-			session.setAttribute("id", id);
-			session.setAttribute("pwd", pwd);
-			/*mav.setViewName("/main.do");*/
-			response.sendRedirect("main.do");
-		}else{
-			mav.setViewName("/main.do");
-			mav.addObject("msg","failure");
+	@ResponseBody public Map<String, Object> LoginSession(MemberVO vo,HttpServletRequest request) throws Exception {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		boolean result = memberService.loginSession(vo);
+		if(request.getSession().getAttribute("loginCertification")!=null){
+			//로그인 전에 loginCertification라는 세션값이 존재하면 
+			request.getSession().removeAttribute("loginCertification"); //기존값 제거해준다.
 		}
-		System.out.println(mav);
+		//세션 유지 시간 설정 변수 amount
+		int amount = 1;
+		Date sessionLimit = new Date(System.currentTimeMillis()+(1000*amount));
+		if(result==true){
+			map.put("id", vo.getId());
+			map.put("pwd", vo.getPwd());
+			request.getSession().setAttribute("loginCertification", map);
+			/*request.getSession().getMaxInactiveInterval(60);*/
+			map.put("msg", "ok");
+		}else if (result != true){
+			map.put("msg", "fail");
+		}
+		return map;
+	}
+	/*Logout Session*/
+	@RequestMapping(value = "/logOut.do")
+	@ResponseBody public Map<String, Object> logOutAction(
+										MemberVO vo,
+										HttpServletRequest request
+										) throws Exception {
 		
-		return mav;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		request.getSession().setAttribute("loginCertification", null);
+		map.put("result","ok");
+		return map;
 	}
 }

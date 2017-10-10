@@ -10,5 +10,6 @@ public interface GoodsService {
 	GoodsVO selectGoodsDetail(GoodsVO vo) throws Exception;
 	int updateGoods(GoodsVO vo) throws Exception;
 	int deleteGoods(GoodsVO vo) throws Exception;
+	GoodsVO selectUnitDetail(GoodsVO vo) throws Exception;
 	
 }

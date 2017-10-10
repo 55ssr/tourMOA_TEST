@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
+import egovframework.example.sample.service.SampleDefaultVO;
 import tourMOA.service.CategoryService;
 import tourMOA.service.CategoryVO;
 import tourMOA.service.DefaultListVO;
@@ -227,7 +227,33 @@ public class AdminController {
 	
 	/*카테고리 리스트 VIEW*/
 	@RequestMapping("/adminCategoryList.do")
-	public String selectCategoryList(DefaultListVO vo, Model model) throws Exception {		
+	public String selectCategoryList(@ModelAttribute("searchVO")SampleDefaultVO searchVO, DefaultListVO vo, Model model) throws Exception {		
+		int recordCountPerPage = 10;
+ 		int pageSize = 5;
+ 	
+ 		int totalCount = categoryService.selectCategoryTotal(searchVO);
+ 	
+ 		int pageIndex = searchVO.getPageIndex();
+ 	
+ 		int firstPage = ((int) Math.floor((pageIndex-1)/pageSize)*pageSize)+1;	 		
+ 		int lastPage = (firstPage + pageSize)-1;
+ 	
+ 		int firstIndex = (pageIndex-1) * recordCountPerPage + 1;
+ 		int lastIndex = (firstIndex + recordCountPerPage) - 1;
+ 	
+ 		int totalPage = (int) Math.ceil((double)totalCount/recordCountPerPage);
+ 	
+ 		int before = 0;
+ 		if(firstPage > 1) before = 1;
+ 		int next = 0;
+ 		if(lastPage <= totalPage) next = 1;
+	
+	
+ 		int number = totalCount - ((pageIndex-1)*recordCountPerPage);		
+		
+		searchVO.setFirstIndex(firstIndex);
+		searchVO.setLastIndex(lastIndex);
+		
 		
 		if(	vo.getSrchContn() == null 
 			|| vo.getSrchContn().equals("")
@@ -243,13 +269,21 @@ public class AdminController {
 		model.addAttribute("srchContn",vo.getSrchContn());
 		model.addAttribute("srchKeywd",vo.getSrchKeywd());
 		model.addAttribute("rslist", list);
+		
+		model.addAttribute("totalCount",totalCount);
+		model.addAttribute("firstPage",firstPage);
+		model.addAttribute("lastPage",lastPage);
+		model.addAttribute("totalPage",totalPage); 
+		model.addAttribute("before",before);
+		model.addAttribute("next",next);
+		model.addAttribute("number",number);
 			
 		return "admin/Category/adminCategoryList";
 	}
 	
 	/*카테고리 등록 VIEW*/
 	@RequestMapping("/adminCategoryWrite.do")
-	public String adminCategoryWrite(DefaultListVO vo,Model model) throws Exception {
+	public String adminCategoryWrite (DefaultListVO vo,Model model) throws Exception {
 		
 		System.out.println("test");
 		/*
@@ -305,6 +339,7 @@ public class AdminController {
 				else ctgcd = cd1 + mycd;
 		}
 
+		
 		System.out.println("====== ctgcd : " + ctgcd);
 		
 		model.addAttribute("hctgcd", hctgcd);
@@ -348,6 +383,51 @@ public class AdminController {
 		model.addAttribute("ctgVo", vo);
 		
 		return "admin/Category/adminCategoryMod";
+	}
+	
+	/*카테고리 수정 Event*/
+	@RequestMapping("/admincategoryUpd.do")
+	@ResponseBody public Map<String, String> updateCategory(CategoryVO vo) throws Exception {
+		System.out.println("test");
+		String result="";
+		int cnt = 0;
+		
+		System.out.println();
+		
+		Map<String, String> map = new HashMap<String, String>();
+		
+		cnt = categoryService.updateCategory(vo);
+		
+		if(cnt > 0) {
+			result = "ok";
+		}
+		map.put("result", result);
+		return map;
+	}
+	
+	/*카테고리 삭제 Event*/
+	@RequestMapping("/admincategoryDel.do")
+	@ResponseBody public Map<String, String> deleteCategory( CategoryVO vo) 
+            throws Exception {
+		
+		String result="";
+		int cnt = 0;
+		Map<String, String> map = new HashMap<String, String>();
+		
+		cnt = categoryService.selectCategoryLowLevlCnt(vo.getCtgcd());
+		if(cnt > 0) {
+			result = "low";
+		} else {
+			cnt = categoryService.deleteCategory(vo);
+			if(cnt > 0) {
+				result = "ok";
+			} else {
+				result = "re";
+			}
+		}
+
+		map.put("result", result);
+		return map;
 	}
 }
 

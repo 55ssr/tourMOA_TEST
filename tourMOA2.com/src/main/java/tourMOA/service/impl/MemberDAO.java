@@ -1,7 +1,5 @@
 package tourMOA.service.impl;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Repository;
 
 import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
@@ -29,7 +27,7 @@ public class MemberDAO extends EgovAbstractDAO{
 		return (int) select("memberDAO.findPwRe",vo);
 	}
 
-	public boolean loginSession(MemberVO vo, HttpSession session) {
+	public boolean loginSession(MemberVO vo) {
 		// TODO Auto-generated method stub
 		return (boolean) select("memberDAO.loginSession",vo); 
 	}

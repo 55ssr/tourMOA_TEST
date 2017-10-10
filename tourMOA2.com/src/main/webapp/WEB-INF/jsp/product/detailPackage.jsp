@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <script src="/js/jquery-2.2.2.js"></script>
 <script src="/js/jquery-ui.js"></script>
@@ -107,10 +109,11 @@ $(document).ready(function() {
 	<div id="headline">
 		<div class="headBox">
 			<div class="pNum">
-				[상품번호 <span class="num">EWP1038-171001QR00</span>]
+				[상품번호 <span class="num">${vo.code}-171001QR00</span>]
+				<span class="dev_comm">상품의 코드를 유닛과 어떻게 관계 지어야 할지 생각해야함.</span>
 			</div>
 			<div class="title">
-				[황금연휴_특별일정] 옥스퍼드+지베르니+오베르쉬르와즈_영국+프랑스 2개국 7일
+				${vo.title}
 			</div>
 			
 		</div>
@@ -123,7 +126,7 @@ $(document).ready(function() {
 		<div id="infoWrap">
 			<!-- [[상품 기본 정보 Start]] -->
 			<div id="basicInfo">
-				<span class="subTitle">카타르 항공으로 ! 옥스퍼트 관광 포함, 오베르쉬르와즈, 지베르니 관광</span>
+				<span class="subTitle">${vo.detail1}</span>
 				<span class="sns"><a href="#"></a>
 					<span><a href="#coreInfo" onclick="fnSelectCoreInfo(); return false;">여행상품 핵심정보</a></span>
 				</span>
@@ -135,6 +138,7 @@ $(document).ready(function() {
 					<span class="txt under">
 						<a href="#reviewWrap" id="rAvg">0건</a>
 					</span>
+					<span class="dev_comm">평점과 상품평 계산!</span>
 				</span>
 				
 				<div class="basicL">
@@ -142,37 +146,51 @@ $(document).ready(function() {
 						<li class="lineBlack h36"></li>
 							<li>
 								<span class="tit">출발일</span>
-								<span class="txt txt01">한국 출발 2017년 10월 01일(일) 01:25 - QR863</span>
-								<span class="txt txt02">현지 도착 2017년 10월 01일(일) 12:00 </span>
+								<span class="txt txt01">한국 출발 
+									<fmt:parseDate var="parsedDate" value="${vo.sdate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+									<fmt:formatDate value="${parsedDate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
+									 - ${vo.fno}
+								</span>
+								<span class="txt txt02">현지 도착 
+									<fmt:parseDate var="parsedDate" value="${vo.sadate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+									<fmt:formatDate value="${parsedDate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
+								</span>
 							</li>
 							<li>
 								<span class="tit">도착일</span>
-								<span class="txt txt01">현지 출발 2017년 10월 06일(금) 22:25 - QR863</span>
-								<span class="txt txt02">현지 도착 2017년 10월 07일(토) 23:05 </span>
+								<span class="txt txt01">현지 출발 
+									<fmt:parseDate var="parsedDate" value="${vo.edate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+									<fmt:formatDate value="${parsedDate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
+									 - ${vo.fno}
+								</span>
+								<span class="txt txt02">현지 도착 
+									<fmt:parseDate var="parsedDate" value="${vo.eadate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+									<fmt:formatDate value="${parsedDate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
+								</span>
 							</li>
 							<li>
 								<span class="tit">이용항공</span>
 								<span class="txt txt03">
-									<img alt="대한항공" src="/images/productDetail/KE.png">대한항공
+									<img alt="${vo.airline}" src="/images/air/${fn:substring(vo.fno,0,2)}.png">${vo.airline}
 								</span>
 							</li>
 							<li>
 								<span class="tit">예약</span>
 								<span class="txt txt04">
 									<span>예약</span>
-									<span class="fontOrange">24명</span>
+									<span class="fontOrange">${vo.person}명</span>
 									<span class="gray_bar">|</span>
 									<span>남은좌석</span>
-									<span class="fontOrange">7석</span>
+									<span class="fontOrange">${vo.rem}석</span>
 									<span>( 최소 출발 </span>
-									<span class="fontOrange">20명</span>
+									<span class="fontOrange">${vo.minp}명</span>
 									<span>)</span>
 								</span>
 							</li>
 							
 							<li class="lineBlack dvide">  
 								<span class="tit noLine">방문도시</span>
-								<span class="txt txt05">인천-도하-런던(2)-파리(2)-오베르쉬르우아즈-지베르니-파리(1)-도하-인천</span>
+								<span class="txt txt05">${vo.schd}</span>
 							</li>
 					</ul>
 					
@@ -190,21 +208,21 @@ $(document).ready(function() {
 	                    </li>
 	                    <li>
 	                        <span class="tit">기본상품가</span>
-	                        <span class="txt txt07">4,202,000<p class="won">원</p></span>
-	                        <span class="txt txt07">4,202,000<p class="won">원</p></span>
-			                        <span class="txt txt07">500,000<p class="won">원</p></span>	                        	
+	                        <span class="txt txt07"><fmt:formatNumber value="${vo.price-vo.fuel}" groupingUsed="true" /><p class="won">원</p></span>
+	                        <span class="txt txt07"><fmt:formatNumber value="${vo.pricech-vo.fuel}" groupingUsed="true" /><p class="won">원</p></span>
+			                        <span class="txt txt07"><fmt:formatNumber value="${vo.pricein-vo.fuel}" groupingUsed="true" /><p class="won">원</p></span>	                        	
 	                        	</li>
 	                    <li>
 	                        <span class="tit">유류할증료</span>
-	                        <span class="txt txt08">388,000<p class="won">원</p></span>
-	                        <span class="txt txt08">388,000<p class="won">원</p></span>
-			                        <span class="txt txt08">388,000<p class="won">원</p></span>
+	                        <span class="txt txt08"><fmt:formatNumber value="${vo.fuel}" groupingUsed="true" /><p class="won">원</p></span>
+	                        <span class="txt txt08"><fmt:formatNumber value="${vo.fuel}" groupingUsed="true" /><p class="won">원</p></span>
+			                        <span class="txt txt08"><fmt:formatNumber value="${vo.fuel}" groupingUsed="true" /><p class="won">원</p></span>
 	                        	</li>
 	                   	<li class="lineBlack">
 	                        <span class="tit">총상품가격</span>
-	                        <span class="txt txt09 price">4,590,000<p>원</p></span>
-	                     	<span class="txt txt09 price">4,590,000<p>원</p></span>
-									<span class="txt txt09 price">888,000<p>원</p></span>
+	                        <span class="txt txt09 price"><fmt:formatNumber value="${vo.price}" groupingUsed="true" /><p>원</p></span>
+	                     	<span class="txt txt09 price"><fmt:formatNumber value="${vo.pricech}" groupingUsed="true" /><p>원</p></span>
+									<span class="txt txt09 price"><fmt:formatNumber value="${vo.pricein}" groupingUsed="true" /><p>원</p></span>
 								</li>
 	                    <li class="lineNone">
 	                        <span class="noti">유류할증료는 유가와 환율에 따라 변동될 수 있습니다.</span>
@@ -250,6 +268,7 @@ $(document).ready(function() {
 								<span>ZeroU@tourmoa.co.kr</span>
 							</div>
 						</div>
+						<span class="dev_comm">담당자 테이블 만들어서 매칭</span>
 					</li>
 					
 					<li class="lineNone">
@@ -274,9 +293,12 @@ $(document).ready(function() {
 						<span class="air chk">
 							<input type="radio" name="air" id="aircord1" onclick="goEvent('상품코드번호')" checked="checked"/>
 						</span>
-						<span class="air air01 typeAir"><label for="aircord1" onclick="goEvent('NCP5208-170922OZ00')">아시아나항공</label></span>
-                           <span class="air air02">18:40 -</span>
-                           <span class="air air03 price1">2,790,000<p>원</p></span>
+						<span class="air air01 typeAir"><label for="aircord1" onclick="goEvent('NCP5208-170922OZ00')">${vo.airline}</label></span>
+                           <span class="air air02">
+								<fmt:parseDate var="parsedDate" value="${vo.sdate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+								<fmt:formatDate value="${parsedDate}" type="time" pattern="HH:mm"/> -
+                           </span>
+                           <span class="air air03 price1"><fmt:formatNumber value="${vo.price}" groupingUsed="true" /><p>원</p></span>
                            <span class="air air04">
 	                            <!-- class: mint , blue , yellow , pink , gold , green , red , purple -->
 	                            
