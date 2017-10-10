@@ -10,6 +10,7 @@ import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import tourMOA.service.DefaultListVO;
 import tourMOA.service.GoodsService;
 import tourMOA.service.GoodsVO;
+import tourMOA.service.ManagerVO;
 
 @Service("goodsService")
 public class GoodsServiceImpl extends EgovAbstractServiceImpl implements GoodsService {
@@ -50,6 +51,16 @@ public class GoodsServiceImpl extends EgovAbstractServiceImpl implements GoodsSe
 	@Override
 	public GoodsVO selectUnitDetail(GoodsVO vo) throws Exception {
 		return goodsDAO.selectUnitDetail(vo);
+	}
+
+	@Override
+	public List<?> selectDetailImages(GoodsVO vo) throws Exception {
+		return goodsDAO.selectDetailImages(vo);
+	}
+
+	@Override
+	public ManagerVO selectManagerDetail(ManagerVO vo2) throws Exception {
+		return goodsDAO.selectManagerDetail(vo2);
 	}
 
 }

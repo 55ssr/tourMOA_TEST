@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <script src="/js/jquery-2.2.2.js"></script>
 <script src="/js/jquery-ui.js"></script>
@@ -254,7 +255,7 @@ $(document).ready(function() {
 					<li class="lineBlack pd0">
 						<div class="damdangWrap">
 							<div class="photo">
-								<img alt="담당자이름" src="/images/productDetail/youngyou.png">
+								<img alt="담당자이름" src="/images/manager/${vo2.code}.png">
 							</div>
 							<div class="title">
 								<span>담당자</span>
@@ -263,9 +264,9 @@ $(document).ready(function() {
 							</div>
 							
 							<div class="contact">
-								<span>공유</span>
-								<span>010-2151-1465</span>
-								<span>ZeroU@tourmoa.co.kr</span>
+								<span>${vo2.name}</span>
+								<span>${vo2.phone}</span>
+								<span>${vo2.mail}</span>
 							</div>
 						</div>
 						<span class="dev_comm">담당자 테이블 만들어서 매칭</span>
@@ -318,34 +319,22 @@ $(document).ready(function() {
 				
 			</div>
 			<!-- [[상품 기본정보 End]] -->
+				<span class="dev_comm">국가별 디테일 슬라이더 이미지 등록 UI 만들어야 함, 국가2개 이상인 경우를 생각해봐야 함</span>
 				<div id="dtInfo">
 					<!--[[ 슬라이드 slideWrap Start ]]-->
 					<div id="slideWrap">
 						<div class="sliderkit photosgallery-vertical" style="display: block;">
 							<div class="sliderkit-nav">
 								<div class="sliderkit-nav-clip" style="width: 190px; height: 360px; top: 25px; margin: 0px;">
-								<ul>
-									<li style="width: 190px; height: 120px;" class="sliderkit-selected">
-									<a href="#" rel="nofollow">
-										<img src="/images/productDetail/detail_package_slider.jpg" alt="이미지 설명">
-									</a>
-									</li>
-									<li style="width: 190px; height: 120px;" class="">
-									<a href="#" rel="nofollow">
-										<img src="/images/productDetail/spain_detailPackage_slider.png" alt="이미지 설명">
-									</a>
-									</li>
-									<li style="width: 190px; height: 120px;" class="">
-									<a href="#" rel="nofollow">
-										<img src="/images/productDetail/spain_detailPackage_slider2.png" alt="이미지 설명">
-									</a>
-									</li>
-									<li style="width: 190px; height: 120px;" class="">
-									<a href="#" rel="nofollow">
-										<img src="/images/productDetail/spain_detailPackage_slider3.png" alt="이미지 설명">
-									</a>
-									</li>
-								</ul>
+									<ul>
+										<c:forEach var="rs" items="${imgList}">
+											<li style="width: 190px; height: 120px;" class="">
+												<a href="#" rel="nofollow">
+													<img src="/images/nation/${rs.eng}/${rs.imgsm}" alt="이미지 설명">
+												</a>
+											</li>
+										</c:forEach>
+									</ul>
 								</div>
 								<div class="sliderkit-btn sliderkit-nav-btn sliderkit-nav-prev">
 									<a rel="nofollow" href="#" onclick="return false;" title="Previous line">
@@ -360,19 +349,12 @@ $(document).ready(function() {
 							</div>
 							
 							<div class="sliderkit-panels">
-								<div class="sliderkit-panel" style="display: block;">
-									<img src="/images/productDetail/detail_package_slider.jpg" alt="이미지 설명">
-								</div>
-								<div class="sliderkit-panel" style="display: block;">
-									<img src="/images/productDetail/spain_detailPackage_slider.png" alt="이미지 설명">
-								</div>
-								<div class="sliderkit-panel" style="display: block;">
-									<img src="/images/productDetail/spain_detailPackage_slider2.png" alt="이미지 설명">
-								</div>
-								<div class="sliderkit-panel" style="display: block;">
-									<img src="/images/productDetail/spain_detailPackage_slider3.png" alt="이미지 설명">
-								</div>
 							
+								<c:forEach var="rs" items="${imgList}">
+								<div class="sliderkit-panel">
+									<img src="/images/nation/${rs.eng}/${rs.imglg}" alt="이미지 설명">
+								</div>
+								</c:forEach>
 							</div>
 							
 						</div>
@@ -399,17 +381,9 @@ $(document).ready(function() {
 							<span class="titlebg"></span>
 						</span>
 						<div class="cont01">
-						<p>&nbsp;</p>
-						<p>
-							<img alt="예약 Process" src="/images/productDetail/detail_package_product_1.png">
-						</p>
-						<p>&nbsp;</p>
-						<p>
-							<img alt="예약 Process" src="/images/productDetail/detail_package_product_2.png">
-						</p>
-						<p>
-							<img alt="예약 Process" src="/images/productDetail/detail_package_product_3.png">
-						</p>
+						
+						${vo.dinfo}
+						
 						</div>
 					</div>
 					<!--[[ 상품안내 info01 End ]]-->
@@ -424,74 +398,7 @@ $(document).ready(function() {
 							<span class="titlebg"></span>
 						</span>
 						<div class="cont03">
-							<span class="type02 border">
-								<p><span style="color:rgb(0, 0, 0)">
-											▣ 항&nbsp; 공 ▣<br>
-										OZ항공 (아시아나 항공)
-								</span></p>
-								
-								<p>&nbsp;</p>
-								
-								<p><span style="color:rgb(0, 0, 0)"><strong>■&nbsp;출발일에 따라 추가요금이 발생할수도있습니다. 담당자와 상의부탁드립니다■</strong></span></p>
-								
-								<p><br>
-								<span style="color:rgb(0, 0, 0)"><strong>◆ 상품 유의 사항 ◆<br>
-								1. 본 상품은 조기 예약자에 한해서 실시간 특가항공 좌석이 있을경우에 동일한 금액으로 진행가능한 상품입니다.</strong><br>
-								2. 저렴한 항공권이 없을 경우 항공 요금이 추가 될 수 있습니다.<br>
-								3. 항공권 발권이 다소 빠른 상품으로 예약후 3일이내 항공권 발권 진행 됩니다.<br>
-								4. 현지합류 상품으로 가이드와 버스는 구간별로 변경될 수 있습니다.</span></p>
-								
-								<p><span style="color:rgb(0, 0, 0)">&nbsp;&nbsp; (인원이 적을경우 드라이빙 가이드로 진행될수있으며, 인원이 많은경우 버스에 여유좌석이 없을수 있습니다)<br>
-								5. 본 상품은 인솔자가 동행하지 않습니다.</span></p>
-								
-								<p>&nbsp;</p>
-								
-								<p>&nbsp;</p>
-								
-								<p><strong><span style="color:rgb(0, 0, 0)">▣ 미국 국내선 이용시 불포함사항 ▣</span></strong></p>
-								
-								<p><strong><span style="color:rgb(0, 0, 0)">- 미국 국내구간 기내식은 유료입니다.<br>
-								- 미국 국내구간 보딩시 수화물유료 (짐1개 $25, 짐2개 $60 추가 됩니다.)</span></strong></p>
-								
-								<p><br>
-								<span style="color:rgb(0, 0, 0)">▣ 숙&nbsp; 박 ▣<br>
-								전일정 깔끔한 1급호텔<br>
-								본 여행 상품의 숙발시설은 현재 미정입니다. 출발 2일 전까지 유선상으로 연락드리겠습니다.(예상호텔 일정표에 표기)<br>
-								- 현재 나와있는 일정표와 식사, 호텔은 예정서 입니다.<br>
-								현지사정에 의해 호텔, 식사 변경될 수 있으며 관광지 휴관일일경우 다른 관광지로 대체될 수 있습니다.<br>
-								예정일정표와 확정서 내용이 다르더라도 별도의 금액이 환불되지 않습니다. 이점 유념해 주시기 바랍니다.<br>
-								- 본 상품은 2인1실 기준 상품입니다.<br>
-								- 소아요금은 성인2명과 객실을 1개 공유하여 사용하실 때 기준요금 입니다.<br>
-								- 성인1명 소아1명이 객실 1개 사용하실 때 소아요금은 성인요금의 90%로 적용됩니다.</span></p>
-								
-								<p>&nbsp;</p>
-								
-								<p><span style="color:rgb(0, 0, 0)">▣&nbsp;기 타&nbsp;사 항 ▣<br>
-								- 왕복항공료, 항공TAX, 공항세,</span></p>
-								
-								<p><span style="color:rgb(0, 0, 0)">- 유류할증료</span></p>
-								
-								<p><span style="color:rgb(0, 0, 0)">*유류할증료는 국제선 유가 인상에 따라 기간별로 달라 질 수 있으며 갑작스런 변동으로 인하여 추가지불이나 인하 될 수 있음을 사전 고지합니다.<br>
-								- 관광진흥기금<br>
-								- 전일정 차량 및 식사, 호텔<br>
-								- 전 일정 관광지 입장료<br>
-								- 여행자 보험<br>
-								▷ 보험 종류 : 실손 보험<br>
-								의료비를 실손 보상하는 보험에 다수 가입되어 각 보험계약에서 보장하는 금액의 합계가 지급보험금 (의료비)을 초과하였을 경우&nbsp;&nbsp;&nbsp; 보험금은 계약별로 비례분담하여 지급되며, 중복 지급불가합니다.<br>
-								▷ 보험 가입 대상자 (만79세6개월 이상부터는 보험 가입 불가-출발일 기준)<br>
-								- 5천만원 : 만15세 미만<br>
-								- 1억원 : 만15세 이상~만69세6개월 미만<br>
-								- 5천만원 : 만69세6개월 이상~만 79세 6개월 미만<br>
-								★79세6개월 이상, 외국인, 시민권자, 영주권자, 유학생인 경우 개별적으로 보험을 가입하셔야 합니다. (당사 가입 불가)<br>
-								여행자 보험은 질병으로 인한 사망은 해당사항 없으며, 고객 부주의로 인한 분실, 방치는 조건에서 예외, 또한 통화, 유가증권, 신용카드, 여권, 항공권 등 일부 품목은 보험 적용 제외 됩니다. 기타 휴대품 도난시에는 현지 경찰서의 확인서를받아오셔야 합니다.</span></p>
-								
-								<p>&nbsp;</p>
-								
-								<p><a href="http://flyasiana.com/CW/ko/common/pageContent.do?pageId=PC_0413" target="_blank"><img alt="" height="80" src="http://cimg.cdn.ybtour.co.kr/attachHome/img/webImg/2016/2/22/201602221047355430.jpg" width="210"></a>&nbsp;&nbsp;<a href="http://flyasiana.com/CW/ko/common/pageContent.do?pageId=PC_0173" target="_blank"><img alt="" height="80" src="http://cimg.cdn.ybtour.co.kr/attachHome/img/webImg/2016/2/22/201602221047467610.jpg" width="210"></a>&nbsp;<br>
-								<a href="http://kr-keepexploring.canada.travel/"><img alt="" height="80" src="http://cimg.cdn.ybtour.co.kr/attachHome/img/webImg/2017/2/13/201702131521311180.png" width="209"></a>&nbsp;<strong>&nbsp;</strong><a href="http://flyasiana.com/CW/ko/common/pageContent.do?pageId=PC_0146" target="_blank"><img alt="" height="80" src="http://cimg.cdn.ybtour.co.kr/attachHome/img/webImg/2016/2/22/201602221047567520.jpg" width="210"></a></p>
-								
-								<p>&nbsp;</p>
-							</span>
+							${vo.incinfo}
 						</div>
 					</div>
 					
@@ -499,41 +406,7 @@ $(document).ready(function() {
 					<!--[[ 불포함사항 info04 Start ]]-->
 						<span class="titlebar"><span class="title">불포함사항</span><span class="titlebg"></span></span>
 						<div class="cont04">
-							<span class="type02 border">
-								<p><span style="color:rgb(0, 0, 0)">▣ 현지 지불 ▣<br>
-									- 가이드/기사 경비$140을 현지에서 지불해야합니다.(성인,아동 동일합니다.)<br>
-									- 매너팁 : 호텔팁, 포터팁 (매너팁은 소비자의 자율적 선택사항으로 지불여부에 따른 불이익은 없습니다.)<br>
-									&nbsp;<br>
-									★ 팁(TIP) 문화 이해하기<br>
-									한국에서는 다소 생소하지만 아프리카 유럽 북미등 타 나라에서는<br>
-									관습화,생활화 되어있는 팁문화는 여행중 꼭 기억해야할 문화 입니다.<br>
-									여행하는 나라의 문화를 존중하여 보다<br>
-									세련된 여행이 될 수 있도록 하여야 할 것입니다</span></p>
-									
-								<p>&nbsp;</p>
-					
-								<p><span style="color:rgb(0, 0, 0)">▣ 독실 사용료 ▣<br>
-								싱글룸 이용 (2인1실이 기준이기 때문에 독실 사용하시게 될 경우 부과됩니다.)<br>
-								<strong>SINGLE CHARGE&nbsp; : 유선상으로 담당자에게 문의해주세요</strong><br>
-								※ 3인 1실 가능합니다. (성인3명 또는 성인2+소아1명 또는 성인1+소아2명(이 경우는 첫번째소아 90% 두번째소아 80%)</span></p>
-								
-								<p><br>
-								<span style="color:rgb(0, 0, 0)">&nbsp;<br>
-								▣ 무비자 승인 ▣<br>
-								미국 비자를 소지하지 않고, 전자여권으로 무비자 입국 승인을 받아야하는 경우<br>
-								입국 승인 홈페이지에서 징수하는 입국 허가 승인 비용 $14</span></p>
-								
-								<p><span style="color:rgb(0, 0, 0)">반드시 전자여권을 소지 하셔야만 ESTA 신청이 가능하오니, 전자여권이 아니신 분들은 전자여권으로 교체 후 신청이 가능합니다.<br>
-								ESTA 신청하러 가기.</span></p>
-								
-								<p>&nbsp;</p>
-								
-								<p><span style="color:rgb(0, 0, 0)">반드시 전자여권을 소지 하셔야만 ESTA 신청이 가능하오니, 전자여권이 아니신 분들은 전자여권으로 교체 후 신청이 가능합니다.</span></p>
-								
-								<p><span style="color:rgb(0, 0, 0)"><strong>2011년 3윌 이후 이란과 이라크&nbsp; * 수단 * 시리아를 여행 목적으로 방문한 한국인은 미국 입국시 별도의 비자를 발급받아야 합니다 .<br>
-								(ESTA 전자 승인 비자로는 입국 불가 합니다)</strong>
-								</span></p>
-							</span>
+							${vo.nincinfo}
 						</div>
 						</div>
 						
@@ -541,37 +414,12 @@ $(document).ready(function() {
 								<span class="titlebar"><span class="title">참고/전달사항</span><span class="titlebg"></span></span>
 								<div class="cont06">
 									<!--StartFragment-->
-									<p><strong><span style="color:rgb(0, 0, 0)">★ 출발일에 따라 추가요금이 발생할수도있습니다. 담당자와 상의부탁드립니다★</span></strong></p>
-									
-									<p><br>
-									<span style="color:rgb(0, 0, 0)">◆ 상품 유의 사항 ◆<br>
-									1. 본 상품은 조기 예약자에 한해서 실시간 특가항공 좌석이 있을경우에 동일한 금액으로 진행가능한 상품입니다.<br>
-									2. 저렴한 항공권이 없을 경우 항공 요금이 추가 될 수 있습니다.<br>
-									3. 항공권 발권이 다소 빠른 상품으로 예약후 3일이내 항공권 발권 진행 됩니다.<br>
-									4. 현지합류 상품으로 가이드와 버스는 구간별로 변경될 수 있습니다.</span></p>
-									
-									<p><span style="color:rgb(0, 0, 0)">&nbsp;&nbsp; (인원이 적을경우 드라이빙 가이드로 진행될수있으며, 인원이 많은경우 버스에 여유좌석이 없을수 있습니다)<br>
-									5. 본 상품은 인솔자가 동행하지 않습니다.</span></p>
-									
-									<p>&nbsp;</p>
-									
-									<p><span style="color:rgb(0, 0, 0)">★취소료 규정【제 5조 특약 적용】★</span></p>
-									
-									<p><span style="color:rgb(0, 0, 0)">▣ 항공사 자체 규정으로 예약 후 3일 안에 발권을 진행 합니다.<br>
-									발권시 항공사에 이미 항공료를 지불한 상황으로 취소시 항공패널티는 환불이 불가합니다. (국제선300,000원, 국내선전액환불불가)<br>
-									다만, 고객은 여행일정 종료 후 항공관련 취소수수료 부과내역(여행사 인건비 포함)에 대한 증빙을 여행사에 요청할 수 있으며, 여행사는 관련 증빙을 제시하고 취소수수료 규정과 차액이 있는 경우 이를 환급할 수 있습니다.</span></p>
-									
-									<p>&nbsp;</p>
-									
-									<p>&nbsp;</p>
-									
-									<p><span style="color:rgb(0, 0, 0)"><strong>▣ 미국 국내선 이용시 불포함사항 ▣</strong></span></p>
-									
-									<p><span style="color:rgb(0, 0, 0)"><strong>- 미국 국내구간 기내식은 유료입니다.<br>
-									- 미국 국내구간 보딩시 수화물유료 (짐1개 $25, 짐2개 $60 추가 됩니다.)</strong></span></p>
+									${vo.ref}
 								</div>
 						</div>
-						<div id="tabWrap"><!--[[ 탭 tabWrap Start ]]-->
+						<div id="tabWrap">
+						<span class="dev_comm">일정표 만들어야 함</span>
+						<!--[[ 탭 tabWrap Start ]]-->
 						<div class="tab">
 							<ul>
 								<li class="t01 on"><a href="#submain02">일정표</a></li>

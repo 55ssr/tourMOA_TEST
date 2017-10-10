@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
 import tourMOA.service.DefaultListVO;
 import tourMOA.service.GoodsVO;
+import tourMOA.service.ManagerVO;
 
 
 @Repository("goodsDAO")
@@ -38,6 +39,14 @@ public class GoodsDAO extends EgovAbstractDAO{
 
 	public GoodsVO selectUnitDetail(GoodsVO vo) {
 		return (GoodsVO) select("goodsDAO.selectUnitDetail", vo);
+	}
+
+	public List<?> selectDetailImages(GoodsVO vo) {
+		return list("goodsDAO.selectDetailImages", vo);
+	}
+
+	public ManagerVO selectManagerDetail(ManagerVO vo2) {
+		return (ManagerVO) select("goodsDAO.selectManagerDetail", vo2);
 	}
 
 }

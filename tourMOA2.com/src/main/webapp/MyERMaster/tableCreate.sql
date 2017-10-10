@@ -244,7 +244,7 @@ CREATE TABLE NOTICE
 	ALTER TABLE goods ADD(fuel number)
 	
 	-- goods 테이블 데이터 추가
-	INSERT INTO goods (	unq,title,gubun,location,nation,city,price,pricech,pricein,fuel,sdate,sadate,edate,eadate,period,period1,period2,via,vias,use,schd,detail1,detail2,airline,person,rem,minp,code,images01,images02,images03,fno,rdate) 
+	INSERT INTO goods (	unq,title,gubun,location,nation,city,price,pricech,pricein,fuel,sdate,sadate,edate,eadate,period,period1,period2,via,vias,use,schd,dinfo,incinfo,nincinfo,ref,detail1,detail2,airline,person,rem,minp,code,images01,images02,images03,fno,rdate) 
 		VALUES (SEQ_goods_unq.nextval,
 				'[한폭의그림 이태리] 친퀘테레/오르비에또+로마아울렛포함 이태리완전일주 8일',
 				'해외패키지',
@@ -266,6 +266,10 @@ CREATE TABLE NOTICE
 				'',
 				'Y',
 				'인천-로마-피렌체-베니스-베로나-몬테카티니-친퀘테레-피사-로마-나폼쏘-인천',
+				'상품안내(수정요)',
+				'포함사항',
+				'불포함사항',
+				'참고사항',
 				'이탈리아 항공 로마직항 초특가 상품!<br />이탈리아 주요도시 로마부터 국제적인 수상도시 베니스 등 중세시대의 문화를 아우르는 낭만 가득한 이태리여행! 완벽한 하나의 일정으로 진행되는 출발확정이 높은 상품입니다!',
 				'이탈리아 항공 로마직항 초특가 상품!<br />이탈리아 주요도시 로마부터 국제적인 수상도시 베니스 등 중세시대의 문화를 아우르는 낭만 가득한 이태리여행! 완벽한 하나의 일정으로 진행되는 출발확정이 높은 상품입니다!',
 				'알리탈리아항공',
@@ -276,16 +280,53 @@ CREATE TABLE NOTICE
 				'images01.PNG',
 				'images02.PNG',
 				'images03.PNG',
-				'AZ759'
+				'AZ759',
 				sysdate
 				)
 				
 	select * from goods
-	delete from goods where unq='24'
+	TRUNCATE TABLE goods
+	
+	drop table nation
+	TRUNCATE TABLE nation
 	
 	-- nation 테이블 생성
 	CREATE TABLE nation 
 	(
-		nation varchar2(20),
-		images varchar2(50)
+		eng varchar2(20),
+		kor varchar2(20),
+		imgsm varchar2(50),
+		imglg varchar2(50)
 	);
+	
+	-- 국가별 슬라이더 이미지 데이터 등록
+	INSERT INTO nation (eng, kor, imgsm, imglg) VALUES ('italy','이탈리아','img_sm01.jpg','img_lg01.jpg');
+	INSERT INTO nation (eng, kor, imgsm, imglg) VALUES ('italy','이탈리아','img_sm02.jpg','img_lg02.jpg');
+	INSERT INTO nation (eng, kor, imgsm, imglg) VALUES ('italy','이탈리아','img_sm03.jpg','img_lg03.jpg');
+	INSERT INTO nation (eng, kor, imgsm, imglg) VALUES ('italy','이탈리아','img_sm04.jpg','img_lg04.jpg');
+	INSERT INTO nation (eng, kor, imgsm, imglg) VALUES ('italy','이탈리아','img_sm05.jpg','img_lg05.jpg');
+	INSERT INTO nation (eng, kor, imgsm, imglg) VALUES ('italy','이탈리아','img_sm06.jpg','img_lg06.jpg');
+	INSERT INTO nation (eng, kor, imgsm, imglg) VALUES ('spain','스페인','img_sp01.jpg','img_sp01.jpg');
+	
+	
+	-- goods 테이블 상품안내 추가
+	
+	ALTER TABLE goods ADD(dinfo varchar2(4000));
+	ALTER TABLE goods ADD(incinfo varchar2(4000));
+	ALTER TABLE goods ADD(nincinfo varchar2(4000));	
+	ALTER TABLE goods ADD(ref varchar2(4000));	
+	
+	
+	-- 담당자 테이블 생성
+	CREATE TABLE manager
+	(
+		code varchar2(20),
+		name varchar2(20),
+		phone varchar2(20),
+		mail varchar2(20),
+		img varchar2(20)
+	);
+	
+	-- 담당자 등록
+	INSERT INTO manager (code, name, phone, mail, img) VALUES ('eu','공유','010-1111-1111','zeroU@mail.com','img01.jpg')
+	

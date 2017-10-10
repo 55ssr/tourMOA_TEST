@@ -5,6 +5,7 @@
 
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="goodsVO" type="tourMOA.service.GoodsVO"/>
+	<typeAlias  alias="managerVO" type="tourMOA.service.ManagerVO"/>
 
 	<select id="goodsDAO.selectGoodsList" resultClass="egovMap">
 		SELECT b.* FROM (
@@ -130,6 +131,10 @@
 				images02,
 				images03,
 				fno,
+				dinfo,
+				incinfo,
+				nincinfo,
+				ref,
 				code
 		FROM
 			goods
@@ -203,8 +208,16 @@
 		DELETE FROM goods WHERE unq = '$unq$'
 	</delete>
 	
-	<select id="">
-		SELECT g.nation n.images from goods g nation n where g.nation = n.nation
+	<select id="goodsDAO.selectDetailImages" resultClass="egovMap">
+		SELECT imgsm, imglg, eng
+			FROM nation
+			WHERE kor = #nation#
+	</select>
+	
+	<select id="goodsDAO.selectManagerDetail" resultClass="managerVO">
+		SELECT code, name, phone, mail, img
+			FROM manager
+			WHERE code = #code#
 	</select>
 	
 </sqlMap>

@@ -1,5 +1,7 @@
 package tourMOA.web;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import tourMOA.service.GoodsService;
 import tourMOA.service.GoodsVO;
+import tourMOA.service.ManagerVO;
 
 @Controller
 public class ProductController {
@@ -51,6 +54,7 @@ public class ProductController {
 		model.addAttribute("vo", vo);
 		return "product/unitList";
 	}
+	
 	/*상품 예약리스트페이지*/
 	@RequestMapping("product/detailList.do")
 	public String detailList() throws Exception{		
@@ -59,9 +63,21 @@ public class ProductController {
 	
 	/*상품 예약페이지*/
 	@RequestMapping("product/detailPackage.do")
-	public String detailPackage(@RequestParam("unq") int unq, GoodsVO vo, Model model) throws Exception{		
+	public String detailPackage(@RequestParam("unq") int unq, GoodsVO vo, ManagerVO vo2, Model model) throws Exception{
+		
 		vo = goodsService.selectGoodsDetail(vo);
+		System.out.println(vo.getNation());
+		
+		System.out.println(vo.getLocation());
+		vo2.setCode(vo.getLocation());
+		System.out.println(vo2.getCode());
+		vo2 = goodsService.selectManagerDetail(vo2);
+		List<?> imgList = goodsService.selectDetailImages(vo);
+		
 		model.addAttribute("vo", vo);
+		model.addAttribute("vo2", vo2);
+		model.addAttribute("imgList", imgList);
+		
 		return "product/detailPackage";		
 	}
 	/*상품 예약 Step01 로그인 모달 창*/
