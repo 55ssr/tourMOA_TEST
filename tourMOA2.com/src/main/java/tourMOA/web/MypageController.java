@@ -217,6 +217,7 @@ public class MypageController {
 		boolean result = memberService.loginSession(vo,session);
 		String id = request.getParameter("loginId");
 		String pwd = request.getParameter("loginPwd");
+		session = request.getSession();
 		ModelAndView mav = new ModelAndView();
 		if(result==true){
 			mav.addObject("msg","success");

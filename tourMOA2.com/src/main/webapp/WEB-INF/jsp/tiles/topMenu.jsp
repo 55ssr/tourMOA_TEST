@@ -67,7 +67,7 @@ $(document).ready(function(){
 				,success:function(mav) {
 					if(mav.msg == "success"){
 						alert("환영합니다.");
-					}else if(mav.msg == "failure"){
+					}else{
 						$("#loginId").val('');
 						$("#loginPwd").val('');
 						alert("오류가 발생했습니다.");
