@@ -10,7 +10,6 @@
 <script src="/js/jquery-2.2.2.js"></script>
 <script src="/js/jquery-ui.js"></script>
 <script type="text/javascript">
-
 $(document).ready(function(){
 	$("#logoutBtn").click(function(){
 		$.ajax({
@@ -30,6 +29,11 @@ $(document).ready(function(){
 		 });
 	});
 });
+function fn_detail(a) {
+	var f = document.hiddenFrm2;
+	f.id.value = a;
+	f.submit();
+}
 </script>
 <div id="wrap">
     <div id="header">
@@ -39,6 +43,8 @@ $(document).ready(function(){
           	<c:when test="${not empty sessionScope.loginCertification}">
 	          	<ul>
 					<li><a href="/admin.do">어드민</a></li>
+					<li>
+					 <a href="#" onclick="fn_detail('${sessionScope.loginCertification.id}')">&nbsp;정보수정</a></li>
 					<li><a href="#" id="logoutBtn">${sessionScope.loginCertification.id}님 환영합니다.[로그아웃]</a></li>
 					<li><a href="/mypage/join.do">회원가입</a></li>
 	           </ul>
@@ -69,4 +75,6 @@ $(document).ready(function(){
 				</div>
 			</div>
 		</div>
-	
+<form name="hiddenFrm2" method="post" action="<c:url value='mypage/accountDetail.do'/>">
+	<input type="hidden" name="id" id="id"/>
+</form>
