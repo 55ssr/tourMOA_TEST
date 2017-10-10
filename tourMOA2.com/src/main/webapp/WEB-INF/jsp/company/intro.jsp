@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -17,6 +18,7 @@
 
     <!--[if lt IE 9]><script src="/js/html5.js"></script><![endif]-->
     <link rel="stylesheet"   href="/css/company.css" />
+    <script type="text/javascript" src="/js/jquery-1.11.2.min.js"></script>
     <script type="text/javascript"  src="/js/ui_company.js"></script>
     <script type="text/javascript"  src="/js/common.js"></script>
 	<script type="text/javascript"  src="/js/jquery.validate.js"></script>
@@ -156,12 +158,12 @@ function onChangeMenu(pt, pn){
         <div id="top"><!--[[ top Start ]]-->
             <div id="topArea">
                 <ul id="topRight">
-                    <li><a href="http://localhost:8080/"><img src="/images/company/top_R_menu01.png" alt="투어모아 바로가기"></a></li>
+                    <li><a href="localhost:8080/"><img src="/images/company/top_R_menu01.png" alt="투어모아 바로가기"></a></li>
                     <li><span class="dvide"></span></li>
                     <li><a href="/info/headOffice.do"><img src="/images/company/top_R_menu02.png" alt="찾아오시는길"></a></li>
                 </ul>
             </div>
-        </div><!--[[ top End ]]-->  
+        </div><!--[[ top End ]]-->
 
         <div class="top_banner">
             <ul class="tabWrap">
