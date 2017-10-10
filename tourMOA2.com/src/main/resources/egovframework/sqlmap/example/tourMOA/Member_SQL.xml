@@ -29,6 +29,37 @@
 	
 	</select>
 	
+	 <select id="memberDAO.accountDetail" resultClass="MemberVO">
+		SELECT 
+				
+				id,
+				name,
+				gender,
+				email,
+				phone,
+				postnum1,
+				addr1_1,
+				addr1_2,
+				birthday
+		FROM 
+				MEMBER
+		WHERE id = '$id$'
+	</select>
+	<!--  
+	<update id="memberDAO.accountDetailUpdate">
+		UPDATE
+			MEMBER
+		SET
+			gender='$gender$',
+			email='$email$',
+			phone='$phone$',
+			postnum1='$postnum1$',
+			addr1_1='$addr1_1$',
+			addr1_2='$addr1_2$',
+			birthday='$birthday$'
+	    WHERE
+	    	unq = '$unq$'
+	</update> -->
 	<insert id="memberDAO.insertMemberJoin">
 		INSERT INTO MEMBER (	
 							unq,

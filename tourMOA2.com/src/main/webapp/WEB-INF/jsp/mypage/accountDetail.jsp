@@ -97,7 +97,7 @@ $(function() {
 			return false;
 		}
 		
-		var loc = "<c:url value='/mypage/accountUpdate.do' />";
+		var loc = "<c:url value='/mypage/accountDetailUpdate.do' />";
 		var msg = "변경";
 		fn_ajax(loc,msg);
 	});
@@ -311,8 +311,9 @@ $(document).ready(function(){
 </script>
 <section id="content" class="contentSub"><!--[[ content Start ]]-->
 	<div class="tit myinfo_tit" title="회원정보수정"></div>		
-	<form name="mbrFrm" id="mbrFrm" method="post" action="/mypage/accountDetailUpdateProc.do">
-		<input type="hidden" name="webCustNo" i	d="webCustNo" 		value="12016519941" />
+	<form name="mbrFrm" id="mbrFrm" method="post" action="/mypage/accountDetailUpdate.do">
+		<input type="text" name="id" id="id" value="${sessionScope.loginCertification.id}"/>
+		<input type="hidden" name="webCustNo" 	id="webCustNo" 		value="12016519941" />
 		<input type="hidden" name="birthDt" 	id="birthDt" 		value="" />
 		<input type="hidden" name="marryDt" 	id="marryDt" 		value="" />
 		<input type="hidden" name="email" 		id="email" 			value="" />
@@ -332,23 +333,34 @@ $(document).ready(function(){
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><label for="username">성명</label><span class="chk"></span></th>
-					<td>${vo.username}</td>
+					<th scope="row"><label for="name">성명</label><span class="chk"></span></th>
+					<td>${vo.name}</td>
 					<th scope="row"><label for="genderCd">성별</label></th>
-					<td align="left"><input type="radio" name="gender" id="gender" value="M" 
+					<td align="left">
+					<input type="checkbox" name="genderCdM" id="genderCdM" value="M" <c:if test="${vo.gender =='M'}">checked</c:if>>
+					     <span class="radio_txt"><label for="genderCdM">남성</label></span>
+				<input type="checkbox" name="genderCdF" id="genderCdF" value="F" <c:if test="${vo.gender =='F'}">checked</c:if>>
+						<span class="radio_txt"><label for="genderCdF">여성</label></span>
+					
+					<%-- <input type="radio" name="gender" id="gender" value="M" 
 						<c:if test="${vo.gender =='M'}">checked</c:if>
 					     >남
-						<input type="radio" name="gender" id="gender" value="F"
-						<c:if test="${vo.gender =='F'}">checked</c:if>
-						>여
+						<input type="radio" name="gender" id="gender" value="F" --%>
+						
 					</td>
 				</tr>
 				<tr>
+				
 					<th scope="row"><label for="email1">이메일</label><span class="chk"></span></th>
 					<td colspan="3">
-						<input type="text" name="email1" id="email1" class="txtemail" value="${vo.email1}" maxlength="20" value="메일주소">
+					<c:set var="email" value="${vo.email}"/>
+					<c:set var="emails" value="${fn:split(email,'@')}"/>
+					 <c:forEach var="s" items="${emails}"> 
+
+						<input type="text" name="email1" id="email1" class="txtemail" value="${s}" maxlength="20" value="메일주소">
 						<span class="txt">@</span>
-						<input type="text" name="email2" id="email2" class="txtemail" value="${vo.email2}" maxlength="20" value="선택된메일" title="이메일서버">
+						<input type="text" name="email2" id="email2" class="txtemail" value="" maxlength="20" value="선택된메일" title="이메일서버">
+					</c:forEach>
 						<select name="email3" id="email3" class="selemail" title="이메일서버선택">
 							<option  value="0">직접입력</option>
 							<option value="naver.com">네이버</option>
@@ -359,6 +371,7 @@ $(document).ready(function(){
 							<option value="hotmail.com" >핫메일</option>
 							<option value="yahoo.com" >야후</option>
 							<option value="9">선택하세요</option>
+							
 						</select>		
 						<div class="sel_area">
 							<input type="radio" name="emailYnY" id="emailYnY" value="Y"  ><span class="radio_txt"><label for="emailYnY">수신동의</label></span>
@@ -371,9 +384,10 @@ $(document).ready(function(){
 				<tr>
 					<th scope="row"><label for="mobileTel1">휴대폰번호</label><span class="chk"></span></th>
 					<td colspan="3">
-					<input type="text" name="mobiletel1"  class="txtcell" maxlength="3">
-						<span class="txt">-</span><input type="text" name="mobileTel2" id="mobileTel2" class="txtcell" maxlength="4" value=""  title="휴대폰 중간 4자리">
-						<span class="txt">-</span><input type="text" name="mobileTel3" id="mobileTel3" class="txtcell" maxlength="4" value=""  title="휴대폰 마지막 4자리">
+					<c:set var="phoneNum" value="${vo.phone}"/>
+					<input type="text" name="mobiletel1"  class="txtcell" maxlength="3"value="${fn:substring(phoneNum,0,3) }">
+						<span class="txt">-</span><input type="text" name="mobileTel2" id="mobileTel2" class="txtcell" maxlength="4" value="${fn:substring(phoneNum,4,8) }"  title="휴대폰 중간 4자리">
+						<span class="txt">-</span><input type="text" name="mobileTel3" id="mobileTel3" class="txtcell" maxlength="4" value="${fn:substring(phoneNum,9,13) }"  title="휴대폰 마지막 4자리">
 						<div class="sel_area">
 							<input type="radio" name="mobileRcpYnY" id="mobileRcpYnY" value="Y"  ><span class="radio_txt"><label for="mobileRcpYnY">수신동의</label></span>
 							<input type="radio" name="mobileRcpYnN" id="mobileRcpYnN" value="N" checked="checked" ><span class="radio_txt"><label for="mobileRcpYnN">수신거부</label></span>
@@ -405,8 +419,8 @@ $(document).ready(function(){
 							<option value="064"  >064 (제주)</option>
 							<option value="070"  >070 (인터넷)</option>
 						</select>
-						<span class="txt">-</span><input type="text" name="homeTel2" id="homeTel2" value="${vo.homeTel2}" class="txtcell" maxlength="4" value="" title="자택전화 중간 4자리">
-						<span class="txt">-</span><input type="text" name="homeTel3" id="homeTel3" value="${vo.homeTel3}" class="txtcell" maxlength="4" value="" title="자택전화 마지막 4자리">
+						<span class="txt">-</span><input type="text" name="homeTel2" id="homeTel2" value="" class="txtcell" maxlength="4" value="" title="자택전화 중간 4자리">
+						<span class="txt">-</span><input type="text" name="homeTel3" id="homeTel3" value="" class="txtcell" maxlength="4" value="" title="자택전화 마지막 4자리">
 					</td>
 				</tr>
 				<tr>
@@ -423,7 +437,7 @@ $(document).ready(function(){
 					<th scope="row"><label for="jobCd">직업</label></th>
 					<td colspan="3">
 						<select name="jobCd" id="jobCd" >
-							<option value="">${vo.jobCd }</option>
+							<option value=""></option>
 							<option value="주부" >주부</option>
 							<option value="공무원" >공무원</option>
 							<option value="사무직" >사무직</option>

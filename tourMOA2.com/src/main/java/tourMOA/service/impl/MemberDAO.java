@@ -32,4 +32,13 @@ public class MemberDAO extends EgovAbstractDAO{
 		return (boolean) select("memberDAO.loginSession",vo); 
 	}
 
+
+	public MemberVO accountDetail(MemberVO vo) {
+		return (MemberVO) select("memberDAO.accountDetail",vo);
+	}
+
+	public int accountDetailUpdate(MemberVO vo) {
+		return update("memberDAO.accountDetailUpdate",vo);
+	}
+
 }
