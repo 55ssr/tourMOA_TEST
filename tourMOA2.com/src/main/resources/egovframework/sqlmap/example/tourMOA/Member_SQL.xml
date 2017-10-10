@@ -78,7 +78,7 @@
 						) VALUES (
 							SEQ_MEMBER_UNQ.nextval,
 							'$id$',
-							'test!1234',
+							'$pwd$',
 							'$name$',
 							'$gender$',
 							'$email$',

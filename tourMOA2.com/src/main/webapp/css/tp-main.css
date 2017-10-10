@@ -48,20 +48,24 @@
          #searchBox{ width: 430px; height: 40px; border: 3px solid #12288f; margin:12px auto; /* float: left; margin-top: 50px; margin-left: 200px; */}
        	 #searchBox select.searchCondition{
           margin: 10px 0 10px 5px;
+          float: left;
           width: 120px;
           border: 0px;
           border-right: 1px solid #c0c0c0;
        	 }
        	 #searchBox input.search{
        	  line-height:10px;
+       	  float : left;
+       	  margin-top:10px;
+       	  padding-left:10px;
           border: 0px;
-          width: 250px;
+          width: 240px;
           border-right: 1px solid #c0c0c0;
        	 }
       	 #searchBox img{
       		float: right;
 	     	display: block;
-  		 	margin: 10px 10px 0 0;
+  		 	margin: 10px 10px 0 15px;
   		 	width:23px;
          }
         

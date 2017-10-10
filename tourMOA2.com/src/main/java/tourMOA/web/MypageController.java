@@ -246,7 +246,7 @@ public class MypageController {
 			request.getSession().setAttribute("loginCertification", map);
 			/*request.getSession().getMaxInactiveInterval(60);*/
 			map.put("msg", "ok");
-		}else{
+		}else if (result != true){
 			map.put("msg", "fail");
 		}
 		return map;
