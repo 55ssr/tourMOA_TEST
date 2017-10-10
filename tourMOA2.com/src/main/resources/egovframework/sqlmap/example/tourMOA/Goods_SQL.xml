@@ -203,6 +203,10 @@
 		DELETE FROM goods WHERE unq = '$unq$'
 	</delete>
 	
+	<select id="">
+		SELECT g.nation n.images from goods g nation n where g.nation = n.nation
+	</select>
+	
 </sqlMap>
 
 

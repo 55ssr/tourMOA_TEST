@@ -110,7 +110,7 @@ $(document).ready(function() {
 		<div class="headBox">
 			<div class="pNum">
 				[상품번호 <span class="num">${vo.code}-171001QR00</span>]
-				<span class="commFD">상품의 코드를 유닛과 어떻게 관계 지어야 할지 생각해야함.</span>
+				<span class="dev_comm">상품의 코드를 유닛과 어떻게 관계 지어야 할지 생각해야함.</span>
 			</div>
 			<div class="title">
 				${vo.title}
@@ -138,7 +138,7 @@ $(document).ready(function() {
 					<span class="txt under">
 						<a href="#reviewWrap" id="rAvg">0건</a>
 					</span>
-					<span class="commFD">평점과 상품평 계산!</span>
+					<span class="dev_comm">평점과 상품평 계산!</span>
 				</span>
 				
 				<div class="basicL">
@@ -268,6 +268,7 @@ $(document).ready(function() {
 								<span>ZeroU@tourmoa.co.kr</span>
 							</div>
 						</div>
+						<span class="dev_comm">담당자 테이블 만들어서 매칭</span>
 					</li>
 					
 					<li class="lineNone">

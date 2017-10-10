@@ -22,7 +22,7 @@
 		<div id="haedline">
 			<div id="title">${vo.title}</div>
 			<div id="pNum"><span>[상품번호</span><span class="num">${vo.code}</span>]
-				<span class="commFD">상품코드를 일관성있게 만들어야함</span>
+				<span class="dev_comm">상품코드를 일관성있게 만들어야함</span>
 			</div>
 		</div>
 		<div id="infoBox">
@@ -32,7 +32,7 @@
                     <span class="txt price">
                     	<fmt:formatNumber value="${vo.price}" groupingUsed="true" /> 원 ~ 
                     	3,590,000 원
-                    	<span class="commFD">가격 범위는 같은 code 상품중에서 최저가와 최대가를 계산하여 출력해야 함</span>
+                    	<span class="dev_comm">가격 범위는 같은 code 상품중에서 최저가와 최대가를 계산하여 출력해야 함</span>
                     </span>
                     <div class="sns">                    	
 						<span><a href="http://www.facebook.com" onclick="fnGoSns(this.href,'facebook',''); return false; "><img src="/images/product/detail/sns1.png" alt="페이스북 링크"></a></span>
@@ -47,7 +47,7 @@
 				</ul>
 				
 			<div class="infoPhoto">
-				<span class="commFD">이미지파일명 데이터 베이스 화</span>
+				<span class="dev_comm">이미지파일명 데이터 베이스 화</span>
 				<ul class="slide_v1">
 					<li><img src="/images/product/detail/${vo.code}/${vo.images01}" alt=""></li>
 					<li><img src="/images/product/detail/${vo.code}/${vo.images02}" alt=""></li>

@@ -276,9 +276,16 @@ CREATE TABLE NOTICE
 				'images01.PNG',
 				'images02.PNG',
 				'images03.PNG',
-				'QR863'
+				'AZ759'
 				sysdate
 				)
 				
 	select * from goods
 	delete from goods where unq='24'
+	
+	-- nation 테이블 생성
+	CREATE TABLE nation 
+	(
+		nation varchar2(20),
+		images varchar2(50)
+	);
