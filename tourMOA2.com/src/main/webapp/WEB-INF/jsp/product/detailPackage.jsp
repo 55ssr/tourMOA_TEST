@@ -255,7 +255,7 @@ $(document).ready(function() {
 					<li class="lineBlack pd0">
 						<div class="damdangWrap">
 							<div class="photo">
-								<img alt="담당자이름" src="/images/manager/${vo2.code}.png">
+								<img alt="${vo2.name}" src="/images/manager/${vo2.code}.png">
 							</div>
 							<div class="title">
 								<span>담당자</span>
@@ -409,6 +409,139 @@ $(document).ready(function() {
 							${vo.nincinfo}
 						</div>
 						</div>
+						
+						
+					
+					
+					
+					${vo.opt}
+					<!--[[ 옵션사항 info05 Start ]]-->
+					<div class="info05">
+						
+						<span class="titlebar">
+							<span class="title">옵션사항</span>
+							<span class="titlebg"></span>
+						</span>
+						<div class="cont05">
+							<table class="type03">
+								<thead>
+									<tr>
+										<th class="th01" scope="col">
+											<span>선택관광</span>
+										</th>
+										<th class="th02" scope="col">
+											<span>소요시간</span>
+										</th>
+										<th class="th03" scope="col">
+											<span>비용</span>
+										</th>
+										<th class="th04" scope="col">
+											<span>비고</span>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="td01">
+											<span class="pic">
+												<img src="http://dimg.cdn.ybtour.co.kr/TN/cb/cbbaf54cf6178747941498d66e6751a3.tn.179x110.jpg" alt="">
+											</span>
+											<span class="choice w180">
+												<span class="tit"></span>
+												<span class="txt">베니스 곤돌라</span>
+											</span>
+										</td>
+										<td class="td02">
+											<span class="txt">약 30분 소요</span>
+										</td>
+										<td class="td03">
+											<span class="txt">€50</span>
+										</td>
+										<td class="td04">
+											<span class="tit"></span>
+											<span class="txt">- 진행방법 : 베니스의 명물 곤돌라에 탑승하여 베니스 본섬 물길따라 관광합니다.<br>- 미참가시 : 주변 자유관광 합니다. (인솔자/가이드 미동행)</span>
+										</td>
+									</tr>
+									<tr>
+										<td class="td01">
+											<span class="pic">
+												<img src="http://dimg.cdn.ybtour.co.kr/TN/b0/b02134db6493f37bdd8c66d870227b70.tn.179x110.jpg" alt="">
+											</span>
+											<span class="choice w180">
+												<span class="tit"></span>
+												<span class="txt">베니스 수상택시</span>
+											</span>
+										</td>
+										<td class="td02">
+											<span class="txt">약 40분 소요</span>
+										</td>
+										<td class="td03">
+											<span class="txt">€50</span>
+										</td>
+										<td class="td04">
+											<span class="tit"></span>
+											<span class="txt">- 진행방법 : 수상택시를 탑승하여 베니스 본섬의 S자 대운하를 관광합니다. <br>- 미참가시 : 일반 배로 본토로 이동합니다. (인솔자 동행)</span>
+										</td>
+									</tr>
+									<tr>
+										<td class="td01">
+											<span class="pic">
+												<img src="http://dimg.cdn.ybtour.co.kr/TN/4a/4a07ebe32a181178a2e6534e6772fb10.tn.179x110.jpg" alt="">
+											</span>
+											<span class="choice w180">
+												<span class="tit"></span>
+												<span class="txt">로마 미니밴투어</span>
+											</span>
+										</td>
+										<td class="td02">
+											<span class="txt">약 3시간 소요</span>
+										</td>
+										<td class="td03">
+											<span class="txt">€60</span>
+										</td>
+										<td class="td04">
+											<span class="tit"></span>
+											<span class="txt">- 진행방법 : 바티칸시국을 제외한 모든 관광지를 미니밴으로 이동합니다. <br>- 미참가시 : 기존일정대로 도보로 로마 관광합니다. (인솔자 동행)</span>
+										</td>
+									</tr>
+									<tr>
+										<td class="td01">
+											<span class="pic">
+												<img src="http://dimg.cdn.ybtour.co.kr/TN/20/207e96019d37b321a419e23c148b20f2.tn.179x110.JPG" alt="">
+											</span>
+											<span class="choice w180">
+												<span class="tit"></span>
+												<span class="txt">카프리섬투어</span>
+											</span>
+										</td>
+										<td class="td02">
+											<span class="txt">약 4시간 소요</span>
+										</td>
+										<td class="td03">
+											<span class="txt">€120</span>
+										</td>
+										<td class="td04">
+											<span class="tit"></span>
+											<span class="txt">- 진행방법 : 카프리섬으로 들어가 카프리섬관광 진행합니다.<br>- 미참가시 : 미 참여자분들은 주변 자유 관광합니다.(인솔자 미동행)</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!--[[ 옵션사항 info05 End ]]-->
+					
+					
+					
+					
+					
+					
+					
+					
+					
+						
+						
+						
 						
 						<div class="info06"><!--[[ 참고/전달사항 info06 Start ]]-->
 								<span class="titlebar"><span class="title">참고/전달사항</span><span class="titlebg"></span></span>

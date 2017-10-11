@@ -135,6 +135,7 @@
 				incinfo,
 				nincinfo,
 				ref,
+				opt,
 				code
 		FROM
 			goods

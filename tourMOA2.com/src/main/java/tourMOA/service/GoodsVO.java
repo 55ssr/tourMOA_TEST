@@ -40,7 +40,15 @@ public class GoodsVO {
 	private String imgsm;
 	private String imglg;
 	private String ref;
+	private String opt;
 	
+	
+	public String getOpt() {
+		return opt;
+	}
+	public void setOpt(String opt) {
+		this.opt = opt;
+	}
 	public String getRef() {
 		return ref;
 	}
