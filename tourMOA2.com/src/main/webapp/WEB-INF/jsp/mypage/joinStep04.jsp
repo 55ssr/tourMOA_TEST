@@ -28,6 +28,8 @@
 			String marryDt = request.getParameter("marryDt");
 			String emailYn = request.getParameter("emailYn");
 			String hidPostNum1 = request.getParameter("hidPostNum1");
+			String homeTel = request.getParameter("homeTel");
+			String job = request.getParameter("job");
 			String hidAddr1_1 = request.getParameter("hidAddr1_1");
 			String hidAddr1_2 = request.getParameter("hidAddr1_2");
 
@@ -36,19 +38,22 @@
 	$(document).ready(function(){			
 		$("#btnok").click(function(){
 			
-			var param  = "id="+$("#id").val()
+			var param  = "id="+$("input:hidden[id='custId']").val()
 				param += "&pwd="+$("#custPassEnc").val()
 				param += "&name="+$("#name").val()
 				param += "&phone="+$("#custphone").val() 
+				param += "&tel="+$("#homeTel").val() 
 				param += "&birthday="+$("#birthDt").val() 
 				param += "&email="+$("#email").val()
 				param += "&gender="+$("#genderCd").val()
 				param += "&postnum1="+$("#hidPostNum1").val()
-				param += "&addr1_1="+$("#hidAddr1_1").val()
-				param += "&addr1_2="+$("#hidAddr1_2").val()
-				param += "&marryYn="+$("#marryYn").val()
-				param += "&emailYn="+$("emailYn").val()
-				param += "&mobileRcpYn="+$("mobileRcpYn").val()
+				param += "&addr11="+$("#hidAddr1_1").val()
+				param += "&addr12="+$("#hidAddr1_2").val()
+				param += "&marry="+$("#marryYn").val()
+				param += "&mdate="+$("#marryDt").val()
+				param += "&job="+$("#job").val()
+				param += "&emailYn="+$("#emailYn").val()
+				param += "&mobileRcpYn="+$("#mobileRcpYn").val()
 				param += "&agree1="+$("#agreeEss01").val()
 				param += "&agree2="+$("#agreeEss02").val();
 			alert(param);
@@ -80,7 +85,7 @@
 	});	
 </script> 
 <form name="mbrFrm" id="mbrFrm" method="post" action="/mypage/joinStep05.do">
-	<input type="hidden" name="id" 				id="id" 				value="<%=custId %>" /><!-- 아이디 -->
+	<input type="hidden" name="custId" 				id="custId" 				value="<%=custId %>" /><!-- 아이디 -->
 	<input type="hidden" name="custPassEnc" 	id="custPassEnc" 		value="<%=custPassEnc %>" /><!-- 비밀번호 -->
 	<input type="hidden" name="name" 			id="name" 				value="<%=custNmKor%>" /><!-- 이름 -->
 	<input type="hidden" name="custphone" 		id="custphone" 		    value="<%=custphone%>" /><!-- 이름 -->
@@ -91,7 +96,7 @@
 	<input type="hidden" name="emailYn" 		id="emailYn" 			value="<%=emailYn %>" /><!-- 이메일 수신여부 -->
 	<input type="hidden" name="mobileTel" 		id="mobileTel" 			value="" /><!-- 전화번호 -->
 	<input type="hidden" name="mobileRcpYn" 	id="mobileRcpYn" 		value="" /><!-- 모바일 수신여부 -->
-	<input type="hidden" name="homeTel" 		id="homeTel" 			value="" /><!-- 집전화번호 -->
+	<input type="hidden" name="homeTel" 		id="homeTel" 			value="<%=homeTel %>" /><!-- 집전화번호 -->
 	<input type="hidden" name="zipCd" 			id="zipCd" 				value="" /><!-- 우편번호 -->
 	<input type="hidden" name="custAddr" 		id="custAddr" 			value="" /><!-- 기본주소 -->
 	<input type="hidden" name="custAddrDetail" 	id="custAddrDetail" 	value="" /><!-- 상세주소 -->
@@ -119,7 +124,8 @@
 	<input type="hidden" name="prtEmail"		id="prtEmail"			value=""/> 
 	<input type="hidden" name="prtRelCd"		id="prtRelCd"			value=""/> 
 	<input type="hidden" name="prtRelAdd"		id="prtRelAdd"			value=""/>
-	<input type="hidden" 	 name="mobileRcpYn"		id="mobileRcpYn"		value="<%=mobileRcpYn%>"/><!-- SMS 수신동의/거부 -->
+	<input type="hidden" name="job"				id="job"				value="<%=job%>"/>
+	<input type="hidden" name="mobileRcpYn"		id="mobileRcpYn"		value="<%=mobileRcpYn%>"/><!-- SMS 수신동의/거부 -->
 	<input type="hidden" name="agreeEss01" 		id="agreeEss01" 		value="<%=agreeEss01%>" />
     <input type="hidden" name="agreeEss02" 		id="agreeEss02" 		value="<%=agreeEss02%>" />
     <input type="hidden" name="hidPostNum1"		id="hidPostNum1"		value="<%=hidPostNum1%>"/>        

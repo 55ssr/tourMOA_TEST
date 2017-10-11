@@ -351,6 +351,9 @@ $(document).ready(function(){
 					alert("8~16자리 영문 (소/대문자), 숫자, 특수문자 중 3종류를 조합한 최소 8자리 이상으로 사용해 주세요.");
 					return false;
 				}
+				//직업
+				var job = $("#jobCd option:selected").val();
+				$("input:hidden[name='job']").val(job);
 				
 				//결혼기념일
 				var marryYear = $("#marryYear option:selected").val();
@@ -620,7 +623,6 @@ $(document).ready(function(){
 		$(location).attr('href',"/mypage/join.do");
 	});
 	$("#btnok").click(function(){
-		
 		if($("#genderCd").val()==""){
 			alert("성별을 선택해주세요");
 			$("#genderCd").focus();
@@ -685,6 +687,7 @@ $(document).ready(function(){
 	    <input type="hidden" name="agreePrv" 	id="agreeShr" 	    value="<%=agreeShr%>" />
 	    <input type="hidden" name="agreeMkt" 	id="agreeMkt" 	    value="<%=agreeMkt%>" />
 	    <input type="hidden" name="genderCd" 	id="genderCd" 	    value="" />
+	    <input type="hidden" name="job" 		id="job" 	    	value="" />
 	    <input type="hidden" name="certDiviCd" 	id="certDiviCd" 	value="" />
 	    <input type="hidden" name="fdCd"   		id="fdCd"   	    value="" />
 	    <input type="hidden" name="custStatCd"  id="custStatCd"   	value="<%=custStatCd%>" />      
@@ -764,8 +767,8 @@ $(document).ready(function(){
 					<option value="9"  selected="selected" >선택하세요</option>
 				</select>
 				<div class="sel_area">
-					<input type="radio" name="emailYnY" id="emailYnY" value="Y"  ><span class="radio_txt"><label for="emailYnY">수신동의</label></span>
-					<input type="radio" name="emailYnN" id="emailYnN" value="N" checked="checked" ><span class="radio_txt"><label for="emailYnN">수신거부</label></span>
+					<input type="checkbox" name="emailYnY" id="emailYnY" value="Y"  ><span class="radio_txt"><label for="emailYnY">수신동의</label></span>
+					<input type="checkbox" name="emailYnN" id="emailYnN" value="N" checked="checked" ><span class="radio_txt"><label for="emailYnN">수신거부</label></span>
 					</div>
 				<span class="regDesc">· 이메일 수신동의를 하시면 이벤트/할인쿠폰/기획전/상품안내를 받으실 수 있습니다.<br />
 	                     · 수신여부와 상관없이 예약,결제, 개인정보 등에 대한 내용은 발송 됩니다.</span>
@@ -779,8 +782,8 @@ $(document).ready(function(){
 				<span class="txt">-</span><input type="text" name="mobileTel2" id="mobileTel2" value="${fn:substring(phoneNum,4,8) }"  class="txtcell" maxlength="4" title="휴대전화 중간 4자리" readonly>
 				<span class="txt">-</span><input type="text" name="mobileTel3" id="mobileTel3" value="${fn:substring(phoneNum,9,13) }"  class="txtcell" maxlength="4" title="휴대전화 마지막 4자리" readonly>
 				<div class="sel_area">
-					<input type="radio" name="mobileRcpYnY" id="mobileRcpYnY" value="Y"  ><span class="radio_txt"><label for="mobileRcpYnY">수신동의</label></span>
-					<input type="radio" name="mobileRcpYnN" id="mobileRcpYnN" value="N" checked="checked" ><span class="radio_txt"><label for="mobileRcpYnN">수신거부</label></span>
+					<input type="checkbox" name="mobileRcpYnY" id="mobileRcpYnY" value="Y"  ><span class="radio_txt"><label for="mobileRcpYnY">수신동의</label></span>
+					<input type="checkbox" name="mobileRcpYnN" id="mobileRcpYnN" value="N" checked="checked" ><span class="radio_txt"><label for="mobileRcpYnN">수신거부</label></span>
 				</div>
 				<span class="regDesc">· SMS 수신동의를 하시면 이벤트/상품안내를 받으실 수 있습니다.</span>
 			</td>
@@ -832,19 +835,12 @@ $(document).ready(function(){
 			<td colspan="3">
 				<select name="jobCd" id="jobCd">
 					<option value="">선택하세요</option>
-					<option value="10" >주부</option>
-					<option value="15" >공무원</option>
-					<option value="20" >교직자</option>
-					<option value="25" >전문직</option>
-					<option value="30" >사무직</option>
-					<option value="35" >의료인</option>
-					<option value="40" >법조인</option>
-					<option value="45" >군인</option>
-					<option value="5" >자영업</option>
-					<option value="50" >종교인</option>
-					<option value="55" >언론방송인</option>
-					<option value="60" >학생</option>
-					<option value="99" >기타</option>
+					<option value="주부" >주부</option>
+					<option value="공무원" >공무원</option>
+					<option value="군인" >군인</option>
+					<option value="자영업" >자영업</option>
+					<option value="학생" >학생</option>
+					<option value="기타" >기타</option>
 				</select>
 			</td>
 		</tr>	
@@ -894,7 +890,7 @@ $(document).ready(function(){
 			<td>
 				<input type="checkbox" name="marryYnY" id="marryYnY" value="Y"  ><span class="radio_txt"><label for="marryYnY">예</label></span>
 				<input type="checkbox" name="marryYnN" id="marryYnN" value="N"  ><span class="radio_txt"><label for="marryYnN">아니오</label></span>
-				<input type="hidden" name="marryYn" id="marryYn" value="" />
+				<input type="hidden" name="marryYn" id="marryYn" value="N" />
 			</td>
 			<th scope="row"><label for="marryYear">결혼기념일</label></th>
 			<td>
@@ -914,7 +910,7 @@ $(document).ready(function(){
 				<select name="marryMonth" id="marryMonth" class="selDt" title="결혼기념일 월">
 					<option value="" selected="selected">선택</option>
          		
-          			<c:forEach begin="1" end="31" var="idx" step="1">
+          			<c:forEach begin="1" end="12" var="idx" step="1">
           			 <option value="<c:out value="${idx}" />">
 					<c:out value="${idx}" />
 					
