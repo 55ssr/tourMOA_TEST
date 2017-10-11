@@ -34,6 +34,39 @@ public class GoodsVO {
 	private String images02;
 	private String images03;
 	private String fno;
+	private String dinfo;
+	private String incinfo;
+	private String nincinfo;
+	private String imgsm;
+	private String imglg;
+	private String ref;
+	private String opt;
+	
+	
+	public String getOpt() {
+		return opt;
+	}
+	public void setOpt(String opt) {
+		this.opt = opt;
+	}
+	public String getRef() {
+		return ref;
+	}
+	public void setRef(String ref) {
+		this.ref = ref;
+	}
+	public String getIncinfo() {
+		return incinfo;
+	}
+	public void setIncinfo(String incinfo) {
+		this.incinfo = incinfo;
+	}
+	public String getNincinfo() {
+		return nincinfo;
+	}
+	public void setNincinfo(String nincinfo) {
+		this.nincinfo = nincinfo;
+	}
 	public int getUnq() {
 		return unq;
 	}
@@ -226,11 +259,24 @@ public class GoodsVO {
 	public void setFno(String fno) {
 		this.fno = fno;
 	}
-
-	
-	
-	
-	
+	public String getDinfo() {
+		return dinfo;
+	}
+	public void setDinfo(String dinfo) {
+		this.dinfo = dinfo;
+	}
+	public String getImgsm() {
+		return imgsm;
+	}
+	public void setImgsm(String imgsm) {
+		this.imgsm = imgsm;
+	}
+	public String getImglg() {
+		return imglg;
+	}
+	public void setImglg(String imglg) {
+		this.imglg = imglg;
+	}
 	
 	
 	
