@@ -135,8 +135,8 @@ $(document).ready(function(){
 				form += "&email=" +$("#email").val()
 				form += "&phone=" +$("#hidphone").val()
 				form += "&postnum1=" +$("#postnum1").val()
-				form += "&addr1_1=" +$("#addr1_1").val()
-				form += "&addr1_2=" +$("#addr1_2").val()
+				form += "&addr11=" +$("#addr1_1").val()
+				form += "&addr12=" +$("#addr1_2").val()
 				form += "&birthday=" +$("input:hidden[name='hidbirth']").val()
 				form += "&tel=" +$("input:hidden[name='hidtel']").val()
 				form += "&marry=" +$("input:hidden[name='marry']").val()
@@ -526,8 +526,8 @@ $(document).ready(function(){
 					<td colspan="3">
 						<input type="text" id="postnum1" value="${vo.postnum1}" placeholder="우편번호">
 			<button type="button" onclick="Postcode()" class="btnChk" >우편번호 찾기</button>
-			<input type="text" id="addr1_1" value="${vo.addr1_1}" class="addr clear" placeholder="도로명주소">
-			<input type="text" id="addr1_2" value="${vo.addr1_2}" class="addr" placeholder="지번주소">
+			<input type="text" id="addr1_1" value="${vo.addr11}" class="addr clear" placeholder="도로명주소">
+			<input type="text" id="addr1_2" value="${vo.addr12}" class="addr" placeholder="지번주소">
 			<span id="guide" style="color:#999"></span>
 					</td>
 				</tr>
