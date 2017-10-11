@@ -43,8 +43,7 @@ function fn_detail(a) {
           	<c:when test="${not empty sessionScope.loginCertification}">
 	          	<ul>
 					<li><a href="/admin.do">어드민</a></li>
-					<li>
-					 <a href="#" onclick="fn_detail('${sessionScope.loginCertification.id}')">&nbsp;정보수정</a></li>
+					<li><a href="#" onclick="fn_detail('${sessionScope.loginCertification.id}')">&nbsp;정보수정</a></li>
 					<li><a href="#" id="logoutBtn">${sessionScope.loginCertification.id}님 환영합니다.[로그아웃]</a></li>
 					<li><a href="/mypage/join.do">회원가입</a></li>
 	           </ul>
@@ -70,7 +69,7 @@ function fn_detail(a) {
 					<select class="searchCondition">
 						<option>전체 상품</option>
 					</select>
-					<input type="text" class="search" placeholder="search">
+					<input type="text" id="searchInputMain" class="search" placeholder="search">
 					<a href="#"><img alt="검색" src="/images/customer/top_search.png"></a>
 				</div>
 			</div>

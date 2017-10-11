@@ -36,10 +36,12 @@
 				$("#sidemenu").css({right:"0px",height:"480px"});
 				$("#sidemenu > ul.after").css({display:"block"});
 				$("#sidemenu > ul.before").css({display:"none"});
+				$("#moveTopBtn img").css({width:"30px",marginLeft:"10px"});
 			}else{
 				$("#sidemenu").css({right:"-3px",height:"760px"});
 				$("#sidemenu > ul.after").css({display:"none"});
 				$("#sidemenu > ul.before").css({display:"block"});
+				$("#moveTopBtn img").css({width:"48px",marginLeft:"45px",marginTop: "10px"});
 			}
 				
 		});
@@ -89,7 +91,20 @@
 		});
 
 	});
-	
+	/* TOP BTN */
+	$(window).scroll(function(){
+		if ($(this).scrollTop() > 500) {
+            $('#moveTopBtn').fadeIn();
+        } else {
+            $('#moveTopBtn').fadeOut();
+        }
+	});
+	 $('#moveTopBtn').click(function(){
+		 $('html, body').animate({
+             scrollTop : 0
+         }, 400);
+         return false;
+	 });
 </script>
 <div id="main">
 	<div id="tt">
@@ -338,7 +353,6 @@
 		<li><img src="/images/customer/snb_nav11_m.gif" alt="고객만족도조사"></li>
 		<li><img src="/images/customer/snb_nav12_m.gif" alt="카카오톡"></li>
 		<li><img src="/images/customer/snb_nav13_m.gif" alt="우수여행상품"></li>
-
 	</ul>
 	<ul class="before" style="display: block;">
 		<li><a href="/search/searchKeyword.do"><img
@@ -398,6 +412,7 @@
 		<li><a href="/promotion/event/2017/0828_ev_pmawards/"><img
 				src="/images/customer/snb_nav13.gif" alt="우수여행상품"></a></li>
 	</ul>
+	<a href="#" id="moveTopBtn"><img src="/images/productDetail/quick_top.png" alt="TOP버튼"></a>
 </div>
 
 <!-- 컨텐츠 별 크기 -->

@@ -1193,4 +1193,59 @@ input[type="text"].research_box {
 #reWrap ul.frm li input#detailKeyword {
 	padding: 9px 10px 8px 10px;
 }
-}
+/* Noti */
+.noti { display: block; width: 1100px; margin: 20px auto 0; font-size: 12px; color: #a0a0a0; }
+/*여행상품내 검색 결과*/
+#product02 .listNoti { position: relative; width:1100px; margin: 0 auto; border:1px solid #ececec;}
+#product02 .noti {width:300px; margin:15px auto; padding:15px 0; text-align:center;} /* 추가 160415 */
+#product02 .noti span {display:inline; font-size:16px; color:#333; margin-bottom: 15px; text-align: center;} /* 추가 160415 */
+#product02 .noti p {display:block; margin: 10px 0 0 0; padding-left: 8px; background: url("/images/totSearch_bul02.png") left center no-repeat; font-size:13px; color:#666666; line-height:20px; text-align:left;} /* 추가 160415 */
+
+/* 여행상품 */
+#product02 { position: relative; display: inline-block; width: 100%; padding: 60px 0 0 0; }
+.searchBar { position: relative; width: 1100px; height: 50px; margin: 40px auto 0; border-top: 1px solid #ecedee; }
+.searchBar .barL { float: left; display: inline-block; margin: 18px 0 0 0; }
+.searchBar .barR { float: right; display: inline-block; margin: 18px 0 0 0; }
+.searchBar span { display: block; float: left; margin: 0 20px 0 0; font-size: 14px; color: #303030;font-family: 'NanumBold'; }
+.searchBar select { float: left; width: 140px; margin-top: -10px; margin-top: -11px \9; padding: 8px 10px 9px 10px; padding: 8px 10px \9; line-height: 30px; border: 1px solid #dee1e2; font-size: 13px; color: #777777; font-weight: normal; }
+.searchBar button { float: left; width: 140px; height: 36px; margin: -10px 0 0 10px; margin-top: -11px \9; border: none; background: #777777; color: #ffffff; }
+.searchBar span.ctnList {float:left; }
+.searchBar span.ctnList span {float:left; margin:0; }
+.list { position: relative; width: 1100px; margin: 0 auto -3px; }
+.list ul.listBar { position: relative; width: 100%; }
+.list ul.listBar li { position: relative; width: 100%; display: inline-block; z-index: 1; }
+.list ul.listBar li.odd { background: #f7f8f9; z-index:0}
+.list ul.listBar li ul { width: 100%; height: 100%; }
+.list ul.listBar li ul li { position: relative; float: left; padding: 13px 0; }
+.list ul.listBar li ul li.t01 { width: 30px; text-align: center; }
+.list ul.listBar li ul li.t02 { width: 260px; }
+.list ul.listBar li ul li.t03 { width: 780px; margin-left: 30px; }
+.list ul.listBar li ul li.t01 > input[type="checkbox"] { margin: 0 0 0 0; }
+.list ul.listBar li ul li.t02 span.pic { display: block; width: 260px; height: 170px; overflow: hidden; }
+.list ul.listBar li ul li.t02 span.pic img { width: 100%; height: auto; min-height: 170px; }
+.list ul.listBar li ul li.t03 span { display: block; font-size: 14px; color: #303030; }
+
+.list ul.listBar li ul li.t03 .productTop { display: inline-block; width: 775px; }
+.list ul.listBar li ul li.t03 .productTop span.path { display: block; font-size: 12px; padding: 7px 0 3px 0; color: #00b5b0; }
+.list ul.listBar li ul li.t03 .productTop span.mark { float: left; display: inline-block; height: 18px; margin: 10px 5px 0 0; margin: 9px 10px 0 0 \9; }
+.list ul.listBar li ul li.t03 .productTop span.mark span { font-size: 12px; color: #ffffff; line-height: 1.5; }
+.list ul.listBar li ul li.t03 .productTop span.product { float: left; /*width: 700px;*/ margin: 7px 0 0 0; padding: 0; font-size: 16px; font-family: 'NanumBold';line-height: 1.5; }
+.list ul.listBar li ul li.t03 .productL { float: left; clear: both; width: 570px; }
+.list ul.listBar li ul li.t03 .productL span.tit { clear: both; float: left; margin: 10px 0 11px 0; font-size: 12px; color: #2a2a2a; }
+.list ul.listBar li ul li.t03 .productL span.period { float: left; margin: 9px 0 11px 12px; font-size: 12px; color: #999999; }
+.list ul.listBar li ul li.t03 .productL span.txt { clear: both; width: 510px; font-size: 14px; }
+.list ul.listBar li ul li.t03 .productL span.txt.srh { margin: 10px 0 0 0; }
+.list ul.listBar li ul li.t03 .productL span.line { clear: both; width: 64px; height: 1px; margin: 12px 0 9px 0; background: #4b4b4b; }
+.list ul.listBar li ul li.t03 .productL span.subTxt { clear: both; width: 510px; font-size: 12px; color: #999999; line-height: 1.475; }
+.list ul.listBar li ul li.t03 .productL dt,dd { float: left; margin-top: 12px; font-size: 12px; color: #777777; }
+.list ul.listBar li ul li.t03 .productL dt { margin-right: 12px; }
+.list ul.listBar li ul li.t03 .productL dt.start_period { margin-top:8px; padding:0 7px; font-size:12px; color:#5eadf1; border:1px solid #5eadf1; background-color:#fff; line-height:20px }
+.list ul.listBar li ul li.t03 .productL dd.pNum { color: #00b5b0; }
+.list ul.listBar li ul li.t03 .productL dd.air { margin-right: 8px; }
+.list ul.listBar li ul li.t03 .productL dd img { padding-right: 5px; }
+.list ul.listBar li ul li.t03 .productL dd.divide { width: 1px; height: 12px; background: #d4d4d4; margin: 12px 15px 0 6px; } 
+.list ul.listBar li ul li.t03 .productR { float: left; position: relative; width: 205px; text-align: center; }
+.list ul.listBar li ul li.t03 .productR span.vline { position: absolute; width: 3px; height: 28px; top: 48px; left: 0px; background: #ffa200; }
+.list ul.listBar li ul li.t03 .productR span.price { margin: 32px 0 0 0; font-size: 22px; font-weight: 600; color: #000000; }
+.list ul.listBar li ul li.t03 .productR span.period { margin-top: 4px; font-size: 12px; color: #999999; }
+.list ul.listBar li ul li.t03 .productR button { width: 120px; height: 38px; margin-top: 14px; border: 1px solid #b8b8b8; background: #ffffff; color: #303030; }

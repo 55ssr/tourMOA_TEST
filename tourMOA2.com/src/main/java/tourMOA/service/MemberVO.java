@@ -9,11 +9,11 @@ public class MemberVO {
 	private String email;
 	private String phone;
 	private String tel;
-	private String addr1_1;
-	private String addr1_2;
+	private String addr11;
+	private String addr12;
 	private String postnum1;
-	private String addr2_1;
-	private String addr2_2;
+	private String addr21;
+	private String addr22;
 	private String postnum2;
 	private String job;
 	private String birthday;
@@ -21,9 +21,9 @@ public class MemberVO {
 	private String mdate;
 	private String floc;
 	private int point;
+	private String emailYn;
+	private String mobileRcpYn;
 	private String agree1;
-	private String agree2;
-	
 	public int getUnq() {
 		return unq;
 	}
@@ -72,17 +72,17 @@ public class MemberVO {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	public String getAddr1_1() {
-		return addr1_1;
+	public String getAddr11() {
+		return addr11;
 	}
-	public void setAddr1_1(String addr1_1) {
-		this.addr1_1 = addr1_1;
+	public void setAddr11(String addr11) {
+		this.addr11 = addr11;
 	}
-	public String getAddr1_2() {
-		return addr1_2;
+	public String getAddr12() {
+		return addr12;
 	}
-	public void setAddr1_2(String addr1_2) {
-		this.addr1_2 = addr1_2;
+	public void setAddr12(String addr12) {
+		this.addr12 = addr12;
 	}
 	public String getPostnum1() {
 		return postnum1;
@@ -90,17 +90,17 @@ public class MemberVO {
 	public void setPostnum1(String postnum1) {
 		this.postnum1 = postnum1;
 	}
-	public String getAddr2_1() {
-		return addr2_1;
+	public String getAddr21() {
+		return addr21;
 	}
-	public void setAddr2_1(String addr2_1) {
-		this.addr2_1 = addr2_1;
+	public void setAddr21(String addr21) {
+		this.addr21 = addr21;
 	}
-	public String getAddr2_2() {
-		return addr2_2;
+	public String getAddr22() {
+		return addr22;
 	}
-	public void setAddr2_2(String addr2_2) {
-		this.addr2_2 = addr2_2;
+	public void setAddr22(String addr22) {
+		this.addr22 = addr22;
 	}
 	public String getPostnum2() {
 		return postnum2;
@@ -144,6 +144,18 @@ public class MemberVO {
 	public void setPoint(int point) {
 		this.point = point;
 	}
+	public String getEmailYn() {
+		return emailYn;
+	}
+	public void setEmailYn(String emailYn) {
+		this.emailYn = emailYn;
+	}
+	public String getMobileRcpYn() {
+		return mobileRcpYn;
+	}
+	public void setMobileRcpYn(String mobileRcpYn) {
+		this.mobileRcpYn = mobileRcpYn;
+	}
 	public String getAgree1() {
 		return agree1;
 	}
@@ -155,5 +167,7 @@ public class MemberVO {
 	}
 	public void setAgree2(String agree2) {
 		this.agree2 = agree2;
-	}	
+	}
+	private String agree2;
+	
 }
