@@ -75,6 +75,6 @@ function fn_detail(a) {
 				</div>
 			</div>
 		</div>
-<form name="hiddenFrm2" method="post" action="<c:url value='mypage/accountDetail.do'/>">
+<form name="hiddenFrm2" method="post" action="<c:url value='mypage/accountPwReaffirm.do'/>">
 	<input type="hidden" name="id" id="id"/>
 </form>

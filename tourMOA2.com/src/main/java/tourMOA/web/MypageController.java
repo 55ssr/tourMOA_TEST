@@ -148,7 +148,12 @@ public class MypageController {
 	
 	/*마이페이지 회원정보 수정1단계*/
 	@RequestMapping("mypage/accountPwReaffirm.do")
-	public String accountPwReaffirm() throws Exception{		
+	public String accountPwReaffirm(@RequestParam("id")String id, Model model,MemberVO vo) throws Exception{	
+		
+		id = vo.getId();
+		vo = memberService.accountPwReaffirm(vo);	                                 
+		model.addAttribute("vo",vo);
+		
 		return "mypage/accountPwReaffirm";
 	}
 	
@@ -159,21 +164,19 @@ public class MypageController {
 			id = vo.getId();
 			vo = memberService.accountDetail(vo);	                                 
 			model.addAttribute("vo",vo);
-			System.out.println(id);
 			
 		return "mypage/accountDetail";
 	}
-	/*@RequestMapping(value = "mypage/accountDetailUpdate.do")
-	@ResponseBody public Map<String, Object> accountDetailUpdate(MemberVO vo,Model model) throws Exception {
-		int result=0;
+	@RequestMapping(value = "/mypage/accountDetailUpdate.do")
+	@ResponseBody public Map<String, Object> accountDetailUpdate(MemberVO vo) throws Exception {
+		int detailupdate=0;
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		
-		result =memberService.accountDetailUpdate(vo);
-		if(result>0) result=0;
+		detailupdate=memberService.accountDetailUpdate(vo);
+		map.put("du", detailupdate);	
 		
-		map.put("result",result);		
 		return map;
-		}*/
+		}
 	
 	/*마이페이지 비회원 예약코드 출력*/
 	@RequestMapping("mypage/selectCodeList.do")

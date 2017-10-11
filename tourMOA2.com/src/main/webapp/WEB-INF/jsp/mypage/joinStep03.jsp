@@ -600,18 +600,11 @@ $(document).ready(function(){
 			var address = $("#postnum1").val();
 			var addr1_1 = $("#addr1_1").val();
 			var addr1_2 = $("#addr1_2").val();
-			
 			$("input:hidden[name='hidPostNum1']").val(address);
 			$("input:hidden[name='hidAddr1_1']").val(addr1_1);
 			$("input:hidden[name='hidAddr1_2']").val(addr1_2);
-		}if($("#pwd").val()==""){
-			alert("패스워드를 입력해주세요");
 		}
-		else{
-			var custPassEnc = $("#pwd").val();
-			$("input:hidden[name='custPassEnc']").val(custPassEnc);
-		}
-		alert($("#pwd").val());
+			
 		$("#mbrFrm").submit();
 	});
 	
@@ -674,8 +667,7 @@ $(document).ready(function(){
 		<input type="hidden" name="custId"	  	id="custId"			value=""/>        
 		<input type="hidden" name="custNmKor"	id="custNmKor"		value="<%=custNmKor%>"/>        
 		<input type="hidden" name="custphone"	id="custphone"		value="<%=custphone%>"/>        
-		<input type="hidden" name="hidPwd"		id="hidPwd"		value=""/>        
-		<input type="hidden" name="hidPostNum1"		id="hidPostNum1"		value=""/>        
+		<input type="hidden" name="hidPostNum1"		id="hidPostNum1"			value=""/>        
 		<input type="hidden" name="hidAddr1_1"		id="hidAddr1_1"			value=""/>        
 		<input type="hidden" name="hidAddr1_2"		id="hidAddr1_2"			value=""/>        
 <div class="join_step">	
@@ -823,7 +815,7 @@ $(document).ready(function(){
 				<select name="birthYear" id="birthYear" class="selDt">
 					<option value="" selected="selected">선택</option>
          				 <c:set var="today" value="<%=new java.util.Date()%>" />
-         		
+         		 
          		 <fmt:formatDate value="${today}" pattern="yyyy" var="start"/> 
           		
           		<c:forEach begin="0" end="60" var="idx" step="1">

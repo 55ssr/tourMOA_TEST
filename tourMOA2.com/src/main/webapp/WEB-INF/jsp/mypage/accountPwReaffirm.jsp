@@ -104,9 +104,10 @@
 		<div class="cont_area">
 			<span>고객님의 소중한 개인정보를 보호하기 위해</span>
 			<span>비밀번호를 다시 한번 확인합니다.</span>        
-		<form name="frm" id="frm" method="post" action="/mypage/selectPwReaffirmProc.do">
+		<form name="frm" id="frm" method="post" action="/mypage/accountDetail.do">
+		<input type="hidden" name="id" id="id" value="${sessionScope.loginCertification.id}"/>
 			<div class="cont_l">
-				<span class="pass_tit">아이디</span><span class="cont">아이디표시</span>
+				<span class="pass_tit">아이디</span><span class="cont">${sessionScope.loginCertification.id}</span>
 				<span class="pass_tit"><label for="txtpass">비밀번호</label></span>
 				<span class="cont"><input type="password" id="custPw" name="custPw"></span>
 			</div>
@@ -259,5 +260,3 @@
 			$("#sidemenu .sidemenuLayer").stop(false, false).fadeOut(100);
 		}
     </script>
-</div><!--[[ wrap End ]]-->
-</div>

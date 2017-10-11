@@ -88,33 +88,88 @@
      }).open();
  }
 </script>
+
 <script>
-$(function() {
-	
-	$("#btnok").click(function(){
-		if($("#id").val() == "") {
-			alert("아이디를 입력해주세요.");
-			return false;
-		}
+$(document).ready(function(){
+	 $("#btnok").click(function(){
+		 
+		 //email 
+		 var email = $("input:text[id='email1']").val() + "@" + $("input:text[id='email2']").val();
+		 $("input:hidden[id='email']").val(email); 
 		
-		var loc = "<c:url value='/mypage/accountDetailUpdate.do' />";
-		var msg = "변경";
-		fn_ajax(loc,msg);
-	});
-	$("#deleteBtn").click(function(){
-		if(confirm("삭제하시겠습니까?")) {
-			var loc = "<c:url value='/accountDelete.do' />";
-			var msg = "삭제";
+			 //휴대전화
+			var phone = $("input:text[name='mobileTel1']").val() + "-" + $("input:text[name='mobileTel2']").val() + "-" + $("input:text[name='mobileTel3']").val();
+			$("input:hidden[name='hidphone']").val(phone); 
 			
-			fn_ajax(loc,msg);
-		}
+			//자택전화
+			if($("#homeTel1 option:selected").val() != "" && $("input:text[name='homeTel2']").val() != "" && $("input:text[name='homeTel3']").val() != ""){
+				var homeTel = $("#homeTel1 option:selected").val() + "-" + $("input:text[name='homeTel2']").val() + "-" + $("input:text[name='homeTel3']").val();
+				$("input:hidden[name='hidtel']").val(homeTel);
+			}
+			
+			//결혼기념일
+			var marryYear = $("#marryYear option:selected").val();
+			var marryMonth = $("#marryMonth option:selected").val();
+			var marryDay = $("#marryDay option:selected").val();
+
+			marryMonth = (marryMonth.length == 1) ? "0" + marryMonth : marryMonth;
+			marryDay = (marryDay.length == 1) ? "0" + marryDay : marryDay;
+			
+			var marry = marryYear + marryMonth + marryDay;
+			
+			 $("input:hidden[name='marry']").val(marry); 
+			
+			 //생일
+			
+				var birthYear = $("#birthYear option:selected").val();
+				var birthMonth = $("#birthMonth option:selected").val();
+				var birthDay = $("#birthDay option:selected").val();
+				
+				var birth = birthYear+"-"+birthMonth+"-"+birthDay; 
+				
+				
+				 $("input:hidden[name='hidbirth']").val(birth); 
+		 
+		 var form = "id="+$("input:hidden[id='userid']").val()
+				form += "&gender=" +$("#genderCd").val()
+				form += "&email=" +$("#email").val()
+				form += "&phone=" +$("#hidphone").val()
+				form += "&postnum1=" +$("#postnum1").val()
+				form += "&addr1_1=" +$("#addr1_1").val()
+				form += "&addr1_2=" +$("#addr1_2").val()
+				form += "&birthday=" +$("input:hidden[name='hidbirth']").val()
+				form += "&tel=" +$("input:hidden[name='hidtel']").val()
+				form += "&marry=" +$("input:hidden[name='marry']").val()
+				form += "&job=" +$("#jobcd option:selected").val();
+		alert(form);
+		
+		$.ajax({
+			type: 'POST',
+			data: form,
+			url: "<c:url value='/mypage/accountDetailUpdate.do' />",
+			dataType: 'JSON',
+			
+			success: function (data) {
+				if(data.du > 0) {
+					alert("변경 되었습니다.");
+				} else {
+					alert( "변경할 수 없습니다.");
+				}
+			},
+			error: function (error) {
+				alert("error111 : " + error);
+			}
+		});
+	 $("#modifyFrm").submit();
 	});
-	
 });
+
 </script>
+
 	<script type="text/javaScript" defer="defer">
 
 $(document).ready(function(){
+
 	// 좌우 방향키, 백스페이스, delete , tab키에 대한 예외	
 	$("#id").keydown(function(event) {
 		
@@ -127,7 +182,6 @@ $(document).ready(function(){
 		$("input:hidden[name='idChk']").val("N")
 	});
 	
-	
 	// domain을 select로 선택
 	$("#email3").change(function(){
 		
@@ -138,6 +192,34 @@ $(document).ready(function(){
 			$("#email2").val("");
 		}
 		
+	});
+	
+	$("#genderCdM").click(function(){
+		var gender = this.checked;
+		
+		if(gender) { 
+			$("#genderCdF").removeAttr("checked"); 
+			$("input:hidden[id='genderCd']").val("M");
+		}else{ 
+			var genderF = document.getElementById("genderCdF").checked;
+			if(genderF == false){
+				$("#genderCd").val("");	
+			}
+		}		
+	});
+
+	$("#genderCdF").click(function(){
+		var gender = this.checked;
+		
+		if(gender) { 
+			$("#genderCdM").removeAttr("checked"); 
+			$("input:hidden[id='genderCd']").val("F");
+		}else{ 
+			var genderM = document.getElementById("genderCdM").checked;
+			if(genderM == false){
+				$("#genderCd").val("");	
+			}
+		}		
 	});
 	
 	//이메일 수신여부
@@ -237,13 +319,14 @@ $(document).ready(function(){
 				$("#marryDiv").css("display","block");
 			}
 		}		
+		
 	});	
 	
-	$("#mbrFrm").validate({
+ 	 /* $("#modifyFrm").validate({
 		
 		submitHandler: function(){
 			
-			var email = $("#email1").val() + "@" + $("#email2").val() ;
+			var email = $("input:text[id='email1']").val() + "@" + $("input:text[id='email2']").val() ;
 			
 			var pattern = /^[_a-zA-Z0-9-\.]+@[\.a-zA-Z0-9-]+\.[a-zA-Z]+$/;
 			
@@ -251,7 +334,7 @@ $(document).ready(function(){
 				alert("이메일 형식이 잘못되었습니다.");
 				return false;
 			}else{
-				$("input:hidden[name='email']").val(email);
+				$("input:hidden[id='email']").val(email);
 			}
 					
 			if (($("input:text[name='id']").val()).search(/\s/g) != -1) {
@@ -266,29 +349,36 @@ $(document).ready(function(){
 					return false;
 				}
 			}
+		  	  //직업
+			var job = $("#job option:selected").val();
+			$("input:hidden[name='job']").val(job);  
 			
-			//결혼기념일
-			var marryYear = $("#marryYear option:selected").val();
-			var marryMonth = $("#marryMonth option:selected").val();
-			var marryDay = $("#marryDay option:selected").val();
+			 //email 
+			 var email = $("input:text[id='email1']").val() + "@" + $("input:text[id='email2']").val();
+			 $("input:hidden[id='email']").val(email); 
+			
+				 //휴대전화
+				var phone = $("input:text[name='mobileTel1']").val() + "-" + $("input:text[name='mobileTel2']").val() + "-" + $("input:text[name='mobileTel3']").val();
+				$("input:hidden[name='phone']").val(phone); 
+				
+				//자택전화
+				if($("#homeTel1 option:selected").val() != "" && $("input:text[name='homeTel2']").val() != "" && $("input:text[name='homeTel3']").val() != ""){
+					var homeTel = $("#homeTel1 option:selected").val() + "-" + $("input:text[name='homeTel2']").val() + "-" + $("input:text[name='homeTel3']").val();
+					$("input:hidden[name='hidtel']").val(homeTel);
+				}
+				
+				//결혼기념일
+				var marryYear = $("#marryYear option:selected").val();
+				var marryMonth = $("#marryMonth option:selected").val();
+				var marryDay = $("#marryDay option:selected").val();
 
-			marryMonth = (marryMonth.length == 1) ? "0" + marryMonth : marryMonth;
-			marryDay = (marryDay.length == 1) ? "0" + marryDay : marryDay;
-			
-			var marryDt = marryYear + marryMonth + marryDay;
-			
-			
-			$("input:hidden[name='marryDt']").val(marryDt);
-					
-			//휴대전화
-			var mobileTel = $("#mobileTel1 option:selected").val() + "-" + $("input:text[name='mobileTel2']").val() + "-" + $("input:text[name='mobileTel3']").val();
-			$("input:hidden[name='mobileTel']").val(mobileTel);
-			
-			//자택전화
-			if($("#homeTel1 option:selected").val() != "" && $("input:text[name='homeTel2']").val() != "" && $("input:text[name='homeTel3']").val() != ""){
-				var homeTel = $("#homeTel1 option:selected").val() + "-" + $("input:text[name='homeTel2']").val() + "-" + $("input:text[name='homeTel3']").val();
-				$("input:hidden[name='homeTel']").val(homeTel);
-			}
+				marryMonth = (marryMonth.length == 1) ? "0" + marryMonth : marryMonth;
+				marryDay = (marryDay.length == 1) ? "0" + marryDay : marryDay;
+				
+				var marry = marryYear + marryMonth + marryDay;
+				
+				
+				 $("input:hidden[name='marryYn']").val(marry); 
 			var result = confirm("변경하시겠습니까?");
 			
 			if(result){
@@ -296,10 +386,12 @@ $(document).ready(function(){
 			}else{
 				return false;
 			}
+		
 		}
-	});
 	
+	}); */
 	
+	 
 	//취소
 	$("#btncancel").click(function(){
 		var url = "/mypage/join.do";
@@ -308,19 +400,23 @@ $(document).ready(function(){
 		$(location).attr("href", url);
 	});	
 });
+
 </script>
+
 <section id="content" class="contentSub"><!--[[ content Start ]]-->
 	<div class="tit myinfo_tit" title="회원정보수정"></div>		
-	<form name="mbrFrm" id="mbrFrm" method="post" action="/mypage/accountDetailUpdate.do">
-		<input type="text" name="id" id="id" value="${sessionScope.loginCertification.id}"/>
-		<input type="hidden" name="webCustNo" 	id="webCustNo" 		value="12016519941" />
-		<input type="hidden" name="birthDt" 	id="birthDt" 		value="" />
-		<input type="hidden" name="marryDt" 	id="marryDt" 		value="" />
+	<form name="modifyFrm" id="modifyFrm" method="post" >
+		<input type="hidden" name="webCustNo" 	id="webCustNo" 		value="" />
+		<input type="hidden" name="userid" 	id="userid" 		value="${vo.id}" />
+		<input type="hidden" name="marry" 		id="marry" 		value="${vo.marry}" />
+		<input type="hidden" name="hidbirth" 	id="hidbirth" value="${vo.birthday}" />
+		<input type="hidden" name="marryYn" 		id="marryYn" 		value="" />
 		<input type="hidden" name="email" 		id="email" 			value="" />
-		<input type="hidden" name="mobileTel" 	id="mobileTel" 	    value="" />
-		<input type="hidden" name="homeTel" 	id="homeTel" 	    value="" />
+		<input type="hidden" name="genderCd" 	id="genderCd" 		value="${vo.gender}" />
+		<input type="hidden" name="job" 	id="job" 		value="" />
+		<input type="hidden" name="hidphone" 	id="hidphone" 	    value="" />
+		<input type="hidden" name="hidtel" 	id="hidtel" 	    value="" />
 		<input type="hidden" name="custPassEnc" id="custPassEnc" 	value="" />
-		<input type="hidden" name="idChk" 		id="idChk" 			value="N" />
 		<input type="hidden" name="oldid" 	id="idChk" 			value="" />        
 	<div class="join_step"><!--[[ 정보입력 Start ]]-->
 		<table class="mg0">
@@ -329,13 +425,13 @@ $(document).ready(function(){
 				<tr>
 					<th scope="row"><label for="id">아이디</label><span class="chk"></span></th>
 					<td colspan="3">
-						<input type="text" name="id" id="id" value="${vo.id}" maxlength="20" value="">
+						<input type="text" name="id" id="id" value="${vo.id}" maxlength="20" readonly>
 					</td>
 				</tr>
 				<tr>
 					<th scope="row"><label for="name">성명</label><span class="chk"></span></th>
 					<td>${vo.name}</td>
-					<th scope="row"><label for="genderCd">성별</label></th>
+					<th scope="row"><label for="gender">성별</label></th>
 					<td align="left">
 					<input type="checkbox" name="genderCdM" id="genderCdM" value="M" <c:if test="${vo.gender =='M'}">checked</c:if>>
 					     <span class="radio_txt"><label for="genderCdM">남성</label></span>
@@ -351,16 +447,13 @@ $(document).ready(function(){
 				</tr>
 				<tr>
 				
-					<th scope="row"><label for="email1">이메일</label><span class="chk"></span></th>
+					<th scope="row"><label for="email">이메일</label><span class="chk"></span></th>
 					<td colspan="3">
 					<c:set var="email" value="${vo.email}"/>
-					<c:set var="emails" value="${fn:split(email,'@')}"/>
-					 <c:forEach var="s" items="${emails}"> 
-
-						<input type="text" name="email1" id="email1" class="txtemail" value="${s}" maxlength="20" value="메일주소">
+					 <c:set var="emails" value="${fn:split(email,'@')[2]}"/> 
+					 <input type="text" name="email1" id="email1" class="txtemail"value="${fn:split(email,'@')[0]}" maxlength="20">
 						<span class="txt">@</span>
-						<input type="text" name="email2" id="email2" class="txtemail" value="" maxlength="20" value="선택된메일" title="이메일서버">
-					</c:forEach>
+						<input type="text" name="email2" id="email2" class="txtemail" value="${fn:split(email,'@')[1]}" maxlength="20"  title="이메일서버">
 						<select name="email3" id="email3" class="selemail" title="이메일서버선택">
 							<option  value="0">직접입력</option>
 							<option value="naver.com">네이버</option>
@@ -374,18 +467,19 @@ $(document).ready(function(){
 							
 						</select>		
 						<div class="sel_area">
-							<input type="radio" name="emailYnY" id="emailYnY" value="Y"  ><span class="radio_txt"><label for="emailYnY">수신동의</label></span>
-							<input type="radio" name="emailYnN" id="emailYnN" value="N" checked="checked" ><span class="radio_txt"><label for="emailYnN">수신거부</label></span>
+							<input type="radio" name="emailYnY" id="emailYnY" value="Y"<%-- <c:if test="${vo.email =='Y'}">checked</c:if> --%>>
+					     <span class="radio_txt"><label for="emailYnY">수신동의</label></span>
+							<input type="radio" name="emailYnN" id="emailYnN" value="N"><span class="radio_txt"><label for="emailYnN">수신거부</label></span>
 							<input type="hidden" name="emailYn" id="emailYn" value="N" />
 						</div>
 							<span class="regDesc">· 이메일 수신동의를 하시면 이벤트/할인쿠폰/기획전/상품안내를 받으실 수 있습니다.<br />· 수신여부와 상관없이 예약,결제, 개인정보 등에 대한 내용은 발송 됩니다.</span>
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><label for="mobileTel1">휴대폰번호</label><span class="chk"></span></th>
+					<th scope="row"><label for="tel">휴대폰번호</label><span class="chk"></span></th>
 					<td colspan="3">
 					<c:set var="phoneNum" value="${vo.phone}"/>
-					<input type="text" name="mobiletel1"  class="txtcell" maxlength="3"value="${fn:substring(phoneNum,0,3) }">
+					<input type="text" name="mobileTel1" id="mobileTel1" class="txtcell" maxlength="3"value="${fn:substring(phoneNum,0,3) }">
 						<span class="txt">-</span><input type="text" name="mobileTel2" id="mobileTel2" class="txtcell" maxlength="4" value="${fn:substring(phoneNum,4,8) }"  title="휴대폰 중간 4자리">
 						<span class="txt">-</span><input type="text" name="mobileTel3" id="mobileTel3" class="txtcell" maxlength="4" value="${fn:substring(phoneNum,9,13) }"  title="휴대폰 마지막 4자리">
 						<div class="sel_area">
@@ -399,8 +493,10 @@ $(document).ready(function(){
 				<tr>
 					<th scope="row"><label for="homeTel1">자택전화</label></th>
 					<td colspan="3">
-						<select name="homeTel1" id="homeTel1" class="sel_w selprefix">
-							<option value="">선택</option>
+					<c:set var="tel" value="${vo.tel}"/>
+					<c:set var="hometel" value="${fn:split(tel,'-')[3]}"/> 
+						<select name="homeTel1" id="homeTel1" class="sel_w selprefix" >
+							<option value="${fn:split(tel,'-')[0]}">${fn:split(tel,'-')[0]}</option>
 							<option value="02">02  (서울)</option>
 							<option value="031"  >031 (경기)</option>
 							<option value="032"  >032 (인천)</option>
@@ -419,8 +515,10 @@ $(document).ready(function(){
 							<option value="064"  >064 (제주)</option>
 							<option value="070"  >070 (인터넷)</option>
 						</select>
-						<span class="txt">-</span><input type="text" name="homeTel2" id="homeTel2" value="" class="txtcell" maxlength="4" value="" title="자택전화 중간 4자리">
-						<span class="txt">-</span><input type="text" name="homeTel3" id="homeTel3" value="" class="txtcell" maxlength="4" value="" title="자택전화 마지막 4자리">
+						<span class="txt">-</span>
+							<input type="text" name="homeTel2" id="homeTel2"class="txtcell" value="${fn:split(tel,'-')[1]}" maxlength="4" title="자택전화 중간 4자리">
+						<span class="txt">-</span>
+							<input type="text" name="homeTel3" id="homeTel3" class="txtcell" value="${fn:split(tel,'-')[2]}" maxlength="4" title="자택전화 마지막 4자리">
 					</td>
 				</tr>
 				<tr>
@@ -436,8 +534,9 @@ $(document).ready(function(){
 				<tr>
 					<th scope="row"><label for="jobCd">직업</label></th>
 					<td colspan="3">
-						<select name="jobCd" id="jobCd" >
-							<option value=""></option>
+					<%-- <c:set var="job" value="${vo.job}"/> --%>
+						<select name="jobcd" id="jobcd">
+							<option value="${vo.job}" selected="selected">${vo.job}</option>
 							<option value="주부" >주부</option>
 							<option value="공무원" >공무원</option>
 							<option value="사무직" >사무직</option>
@@ -449,12 +548,14 @@ $(document).ready(function(){
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><label for="birthYear">생년월일</label><span class="chk"></span></th>
+					<th scope="row"><label for="birthday">생년월일</label><span class="chk"></span></th>
 					<td colspan="3">
+					<c:set var="birthsplit" value="${vo.birthday}"/>
+					
 				<select name="birthYear" id="birthYear" class="selDt">
-					<option value="${vo.birthYear}" selected="selected">${vo.birthYear}</option>
+					<option value="${fn:substring(birthsplit,0,4) }" selected="selected">${fn:substring(birthsplit,0,4) }</option>
          				 <c:set var="today" value="<%=new java.util.Date()%>" />
-         		
+         		 
          		 <fmt:formatDate value="${today}" pattern="yyyy" var="start"/> 
           		
           		<c:forEach begin="0" end="60" var="idx" step="1">
@@ -465,8 +566,8 @@ $(document).ready(function(){
 
 					
 				<span class="txt">년</span>
-				<select name="birthMonth" id="birthMonth" class="selDt" title="생월">
-					<option value="${vo.birthMonth}" selected="selected">${vo.birthMonth}</option>
+				<select name="birthMonth" id="birthMonth" class="selDt" title="생년">
+					<option value="${fn:substring(birthsplit,5,7) }" selected="selected">${fn:substring(birthsplit,5,7) }</option>
          		
           			<c:forEach begin="1" end="12" var="idx" step="1">
           			 <option value="<c:out value="${idx}" />">
@@ -477,7 +578,7 @@ $(document).ready(function(){
 		</select>
 				<span class="txt">월</span>
 				<select name="birthDay" id="birthDay" class="selDt" title="생월">
-					<option value="${vo.birthDay}" selected="selected">${vo.birthDay}</option>
+					<option value="${fn:substring(birthsplit,8,11) }" selected="selected">${fn:substring(birthsplit,8,11) }</option>
          		
           			<c:forEach begin="1" end="31" var="idx" step="1">
           			 <option value="<c:out value="${idx}" />">
@@ -495,13 +596,14 @@ $(document).ready(function(){
 						<input type="checkbox" name="marryYnY" id="marryYnY" value="Y" /><span class="radio_txt"><label for="marryYnY">예</label></span>
 						<input type="checkbox" name="marryYnN" id="marryYnN" value="N" /><span class="radio_txt"><label for="marryYnN">아니오</label></span>
 						
-						<input type="hidden" name="marryYn" id="marryYn" value="Y" />
+						<input type="hidden" name="marryYn" id="marryYn" value="" />
 					</td>
 						<th scope="row"><label for="marryYear">결혼기념일</label></th>
 			<td>
 				<div id="marryDiv" style="display:none;">
+				<c:set var="marry" value="${vo.marry}"/>
 					<select name="marryYear" id="marryYear" class="selDt" title="결혼기념일">
-					<option value="${vo.marryYear}" selected="selected">${vo.marryYear}</option>
+					<option value="" selected="selected">${fn:substring(marry,0,4) }</option>
          				 <c:set var="today" value="<%=new java.util.Date()%>" />
          		
          		 <fmt:formatDate value="${today}" pattern="yyyy" var="start"/> 
@@ -513,7 +615,7 @@ $(document).ready(function(){
 		</select>
 					<span class="txt">년</span>
 				<select name="marryMonth" id="marryMonth" class="selDt" title="결혼기념일 월">
-					<option value="${vo.marryMonth}" selected="selected">${vo.marryMonth}</option>
+					<option value="" selected="selected">${fn:substring(marry,5,7) }</option>
          		
           			<c:forEach begin="1" end="31" var="idx" step="1">
           			 <option value="<c:out value="${idx}" />">
@@ -524,7 +626,7 @@ $(document).ready(function(){
 				</select>
 						<span class="txt">월</span>
 				<select name="marryDay" id="marryDay" class="selDt" title="결혼기념일">
-					<option value="${vo.marryDay}" selected="selected">${vo.marryDay}</option>
+					<option value="" selected="selected">${fn:substring(marry,8,11) }</option>
          		
           			<c:forEach begin="1" end="31" var="idx" step="1">
           			 <option value="<c:out value="${idx}" />">
@@ -543,7 +645,7 @@ $(document).ready(function(){
 	</div>
 <!--[[ 정보입력 End ]]-->
 	<div class="btnarea" style="margin-bottom:30px;">
-		<button type="submit" id="btnok" class="btnBlack btn_r" title="확인">확인</button>
+		<button type="button" id="btnok" class="btnBlack btn_r" title="확인">확인</button>
 		<button type="button" id="btncancel" class="btnGray" title="취소">취소</button>
 	</div>
 </form>		

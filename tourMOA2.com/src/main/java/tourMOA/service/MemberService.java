@@ -16,4 +16,7 @@ public interface MemberService {
 
 	int accountDetailUpdate(MemberVO vo) throws Exception;
 
+	MemberVO accountPwReaffirm(MemberVO vo)throws Exception;
+
+
 }

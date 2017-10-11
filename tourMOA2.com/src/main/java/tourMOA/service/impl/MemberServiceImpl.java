@@ -49,7 +49,13 @@ public class MemberServiceImpl extends EgovAbstractServiceImpl implements Member
 
 	@Override
 	public int accountDetailUpdate(MemberVO vo) throws Exception {
+		System.out.println("-----IMPL");
 		return memberDAO.accountDetailUpdate(vo);
+	}
+
+	@Override
+	public MemberVO accountPwReaffirm(MemberVO vo) throws Exception {
+		return memberDAO.accountPwReaffirm(vo);
 	}
 
 

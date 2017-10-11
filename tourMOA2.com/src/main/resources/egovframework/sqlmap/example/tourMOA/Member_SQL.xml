@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
 
-<sqlMap namespace="Member">
+<sqlMap namespace="Member1">
 
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="memberVO" type="tourMOA.service.MemberVO"/>
@@ -31,7 +31,6 @@
 	
 	 <select id="memberDAO.accountDetail" resultClass="MemberVO">
 		SELECT 
-				
 				id,
 				name,
 				gender,
@@ -40,26 +39,20 @@
 				postnum1,
 				addr1_1,
 				addr1_2,
-				birthday
+				to_char(birthday,'yyyy-mm-dd')as birthday ,
+				tel,
+				marry,
+				job
 		FROM 
 				MEMBER
 		WHERE id = '$id$'
 	</select>
-	<!--  
-	<update id="memberDAO.accountDetailUpdate">
-		UPDATE
-			MEMBER
-		SET
-			gender='$gender$',
-			email='$email$',
-			phone='$phone$',
-			postnum1='$postnum1$',
-			addr1_1='$addr1_1$',
-			addr1_2='$addr1_2$',
-			birthday='$birthday$'
-	    WHERE
-	    	unq = '$unq$'
-	</update> -->
+	<select id="memberDAO.accountPwReaffirm" resultClass="MemberVO">
+		SELECT id FROM MEMBER WHERE id='$id$'
+	</select>
+	 
+	
+	
 	<insert id="memberDAO.insertMemberJoin">
 		INSERT INTO MEMBER (	
 							unq,
@@ -91,5 +84,23 @@
 							'$agree2$'
 						)
 	</insert>
+	
+	<update id="memberDAO.accountDetailUpdate">
+		UPDATE
+			MEMBER
+		SET
+			gender='$gender$',
+			email='$email$',
+			phone='$phone$',
+			postnum1='$postnum1$',
+			addr1_1='$addr1_1$',
+			addr1_2='$addr1_2$',
+			birthday= '$birthday$' ,
+			tel='$tel$',
+			marry='$marry$',
+			job='$job$'
+	    WHERE
+	    	id = '$id$'
+	</update>
 	
 </sqlMap>

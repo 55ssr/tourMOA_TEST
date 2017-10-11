@@ -38,7 +38,14 @@ public class MemberDAO extends EgovAbstractDAO{
 	}
 
 	public int accountDetailUpdate(MemberVO vo) {
-		return update("memberDAO.accountDetailUpdate",vo);
+		System.out.println("-----DAO111");
+		int chk = update("memberDAO.accountDetailUpdate",vo);
+		System.out.println("chk ============ " + chk);
+		return chk;
+	}
+
+	public MemberVO accountPwReaffirm(MemberVO vo) {
+		return (MemberVO) select("memberDAO.accountPwReaffirm",vo);
 	}
 
 }

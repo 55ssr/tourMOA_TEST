@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 	<link rel="stylesheet" href="/css/mypage.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+<script src="/js/jquery.simplemodal-1.4.4.js"></script>
+<script type="text/javascript" src="/js/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="/js/jquery.validate.js"></script>
+<script type="text/javascript" src="/js/additional-methods.js"></script>
+<script type="text/javascript" src="/js/messages_ko.js"></script>
 	<script>
 		function fnMenuSelect() {
 		    //여행내역
