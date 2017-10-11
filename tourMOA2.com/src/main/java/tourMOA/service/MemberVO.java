@@ -21,6 +21,9 @@ public class MemberVO {
 	private String mdate;
 	private String floc;
 	private int point;
+	private String emailYn;
+	private String mobileRcpYn;
+	private String marryYn;
 	private String agree1;
 	private String agree2;
 	
@@ -155,5 +158,23 @@ public class MemberVO {
 	}
 	public void setAgree2(String agree2) {
 		this.agree2 = agree2;
-	}	
+	}
+	public String getEmailYn() {
+		return emailYn;
+	}
+	public void setEmailYn(String emailYn) {
+		this.emailYn = emailYn;
+	}
+	public String getMobileRcpYn() {
+		return mobileRcpYn;
+	}
+	public void setMobileRcpYn(String mobileRcpYn) {
+		this.mobileRcpYn = mobileRcpYn;
+	}
+	public String getMarryYn() {
+		return marryYn;
+	}
+	public void setMarryYn(String marryYn) {
+		this.marryYn = marryYn;
+	}
 }

@@ -232,7 +232,7 @@ $(document).ready(function(){
 		
 		if(email) { 
 			$("#emailYnN").removeAttr("checked"); 
-			$("#emailYn").val("Y");
+			$("input:hidden[id='emailYn']").val("Y");
 		}else{ 
 			var emailN = document.getElementById("emailYnN").checked;
 			if(emailN == false){
@@ -246,7 +246,7 @@ $(document).ready(function(){
 		
 		if(email) { 
 			$("#emailYnY").removeAttr("checked"); 
-			$("#emailYn").val("N");
+			$("input:hidden[id='emailYn']").val("N");
 		}else{ 
 			
 			var emailY = document.getElementById("emailYnY").checked;
@@ -262,8 +262,8 @@ $(document).ready(function(){
 		var mobile = this.checked;
 		
 		if(mobile) { 
-			$("#mobileRcpYnN").removeAttr("checked"); 
-			$("#mobileRcpYn").val("Y");
+			$("#mobileRcpYnN").removeAttr("checked");
+			$("input:hidden[id='mobileRcpYn']").val("Y");
 		}else{ 
 			var mobileN = document.getElementById("mobileRcpYnN").checked;
 			if(mobileN == false){
@@ -276,7 +276,7 @@ $(document).ready(function(){
 		
 		if(mobile) { 
 			$("#mobileRcpYnY").removeAttr("checked"); 
-			$("#mobileRcpYn").val("N");
+			$("input:hidden[id='mobileRcpYn']").val("N");
 		}else{ 
 			
 			var mobileY = document.getElementById("mobileRcpYnY").checked;
@@ -285,8 +285,38 @@ $(document).ready(function(){
 			}
 		}		
 	});
-
 	//결혼여부
+	$("#marryYnY").click(function(){
+		var marry = this.checked;
+		
+		if(marry) { 
+			$("#marryYnN").removeAttr("checked"); 
+			$("input:hidden[id='marryYn']").val("Y");
+			$("#marryDiv").css({display:"block"});
+		}else{ 
+			var marryYnN = document.getElementById("marryYnN").checked;
+			if(marryYnN == false){
+				$("#marryYn").val("");	
+			}
+		}		
+	});
+
+	$("#marryYnN").click(function(){
+		var marry = this.checked;
+		
+		if(marry) { 
+			$("#marryYnY").removeAttr("checked"); 
+			$("input:hidden[id='marryYn']").val("N");
+			$("#marryDiv").css({display:"none"});
+		}else{ 
+			var marryYnY = document.getElementById("marryYnY").checked;
+			if(marryYnY == false){
+				$("#marryYn").val("");	
+			}
+		}		
+	});
+
+	
 	
 	
 			$("#mbrFrm").validate({
@@ -313,7 +343,7 @@ $(document).ready(function(){
 					alert("아이디 중복 체크를 해주세요");
 					return false;
 				}else if($("input:hidden[name='idChk']").val() == "Y"){
-					var id = $("#id").val();
+					var id = $("input:text[id='id']").val();
 					$("input:hidden[name='custId']").val(id);
 				}
 				
@@ -611,7 +641,6 @@ $(document).ready(function(){
 			var custPassEnc = $("#pwd").val();
 			$("input:hidden[name='custPassEnc']").val(custPassEnc);
 		}
-		alert($("#pwd").val());
 		$("#mbrFrm").submit();
 	});
 	
@@ -676,6 +705,8 @@ $(document).ready(function(){
 		<input type="hidden" name="custphone"	id="custphone"		value="<%=custphone%>"/>        
 		<input type="hidden" name="hidPwd"		id="hidPwd"		value=""/>        
 		<input type="hidden" name="hidPostNum1"		id="hidPostNum1"		value=""/>        
+		<input type="hidden" name="mobileRcpYn"		id="mobileRcpYn"		value="N"/><!-- SMS 수신동의/거부 -->        
+		<input type="hidden" name="emailYn"			id="emailYn"			value="N"/><!-- EMAIL 수신동의/거부 -->        
 		<input type="hidden" name="hidAddr1_1"		id="hidAddr1_1"			value=""/>        
 		<input type="hidden" name="hidAddr1_2"		id="hidAddr1_2"			value=""/>        
 <div class="join_step">	
@@ -733,8 +764,8 @@ $(document).ready(function(){
 					<option value="9"  selected="selected" >선택하세요</option>
 				</select>
 				<div class="sel_area">
-					<input type="radio" name="emailYn" id="emailYnY" value="Y"  ><span class="radio_txt"><label for="emailYnY">수신동의</label></span>
-					<input type="radio" name="emailYn" id="emailYnN" value="N" checked="checked" ><span class="radio_txt"><label for="emailYnN">수신거부</label></span>
+					<input type="radio" name="emailYnY" id="emailYnY" value="Y"  ><span class="radio_txt"><label for="emailYnY">수신동의</label></span>
+					<input type="radio" name="emailYnN" id="emailYnN" value="N" checked="checked" ><span class="radio_txt"><label for="emailYnN">수신거부</label></span>
 					</div>
 				<span class="regDesc">· 이메일 수신동의를 하시면 이벤트/할인쿠폰/기획전/상품안내를 받으실 수 있습니다.<br />
 	                     · 수신여부와 상관없이 예약,결제, 개인정보 등에 대한 내용은 발송 됩니다.</span>
@@ -748,8 +779,8 @@ $(document).ready(function(){
 				<span class="txt">-</span><input type="text" name="mobileTel2" id="mobileTel2" value="${fn:substring(phoneNum,4,8) }"  class="txtcell" maxlength="4" title="휴대전화 중간 4자리" readonly>
 				<span class="txt">-</span><input type="text" name="mobileTel3" id="mobileTel3" value="${fn:substring(phoneNum,9,13) }"  class="txtcell" maxlength="4" title="휴대전화 마지막 4자리" readonly>
 				<div class="sel_area">
-					<input type="radio" name="mobileRcpYn" id="mobileRcpYnY" value="Y"  ><span class="radio_txt"><label for="mobileRcpYnY">수신동의</label></span>
-					<input type="radio" name="mobileRcpYn" id="mobileRcpYnN" value="N" checked="checked" ><span class="radio_txt"><label for="mobileRcpYnN">수신거부</label></span>
+					<input type="radio" name="mobileRcpYnY" id="mobileRcpYnY" value="Y"  ><span class="radio_txt"><label for="mobileRcpYnY">수신동의</label></span>
+					<input type="radio" name="mobileRcpYnN" id="mobileRcpYnN" value="N" checked="checked" ><span class="radio_txt"><label for="mobileRcpYnN">수신거부</label></span>
 				</div>
 				<span class="regDesc">· SMS 수신동의를 하시면 이벤트/상품안내를 받으실 수 있습니다.</span>
 			</td>
