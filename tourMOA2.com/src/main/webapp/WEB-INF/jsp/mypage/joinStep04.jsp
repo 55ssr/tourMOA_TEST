@@ -33,6 +33,7 @@
 		$("#btnok").click(function(){
 			
 			var param  = "id="+$("#id").val()
+				param += "&pwd="+$("#custPassEnc").val()
 				param += "&name="+$("#name").val()
 				param += "&phone="+$("#custphone").val() 
 				param += "&birthday="+$("#birthDt").val() 
@@ -43,6 +44,7 @@
 				param += "&addr1_2="+$("#hidAddr1_2").val()
 				param += "&agree1="+$("#agreeEss01").val()
 				param += "&agree2="+$("#agreeEss02").val();
+			alert(param);
 			
 			$.ajax({
 				  type:'POST'
@@ -75,7 +77,7 @@
 	<input type="hidden" name="custPassEnc" 	id="custPassEnc" 		value="<%=custPassEnc %>" /><!-- 비밀번호 -->
 	<input type="hidden" name="name" 			id="name" 				value="<%=custNmKor%>" /><!-- 이름 -->
 	<input type="hidden" name="custphone" 		id="custphone" 		    value="<%=custphone%>" /><!-- 이름 -->
-	<input type="text" 	name="genderCd" 		id="genderCd" 			value="<%=genderCd%>" /><!-- 성별 -->
+	<input type="hidden" name="genderCd" 		id="genderCd" 			value="<%=genderCd%>" /><!-- 성별 -->
 	<input type="hidden" name="email" 			id="email" 				value="<%=email%>" /><!-- FULL 이메일 -->
 	<input type="hidden" name="email1" 			id="email1" 			value="" /><!-- 이메일 ID -->
 	<input type="hidden" name="email2" 			id="email2" 			value="" /><!-- 이메일 도메인 -->

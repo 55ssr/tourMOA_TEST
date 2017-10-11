@@ -12,4 +12,8 @@ public interface MemberService {
 	
 	boolean loginSession(MemberVO vo) throws Exception;
 
+	MemberVO accountDetail(MemberVO vo) throws Exception;
+
+	int accountDetailUpdate(MemberVO vo) throws Exception;
+
 }

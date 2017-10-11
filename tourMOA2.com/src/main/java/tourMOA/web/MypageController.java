@@ -2,6 +2,7 @@ package tourMOA.web;
 
 import java.sql.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
@@ -151,10 +153,27 @@ public class MypageController {
 	}
 	
 	/*마이페이지 회원정보 수정 상세페이지단계*/
-	@RequestMapping("mypage/accountDetailUpdate.do")
-	public String accountDetailUpdate() throws Exception{		
-		return "mypage/accountDetailUpdate";
+	@RequestMapping("mypage/accountDetail.do")
+	public String accountDetail(@RequestParam("id")String id, Model model,MemberVO vo) throws Exception{		
+	
+			id = vo.getId();
+			vo = memberService.accountDetail(vo);	                                 
+			model.addAttribute("vo",vo);
+			System.out.println(id);
+			
+		return "mypage/accountDetail";
 	}
+	/*@RequestMapping(value = "mypage/accountDetailUpdate.do")
+	@ResponseBody public Map<String, Object> accountDetailUpdate(MemberVO vo,Model model) throws Exception {
+		int result=0;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		result =memberService.accountDetailUpdate(vo);
+		if(result>0) result=0;
+		
+		map.put("result",result);		
+		return map;
+		}*/
 	
 	/*마이페이지 비회원 예약코드 출력*/
 	@RequestMapping("mypage/selectCodeList.do")
@@ -227,7 +246,7 @@ public class MypageController {
 			request.getSession().setAttribute("loginCertification", map);
 			/*request.getSession().getMaxInactiveInterval(60);*/
 			map.put("msg", "ok");
-		}else{
+		}else if (result != true){
 			map.put("msg", "fail");
 		}
 		return map;
