@@ -70,7 +70,7 @@
 							birthday,
 							emailYn,
 							mobileRcpYn,
-							marryYn,
+							marry,
 							mdate,
 							agree1,
 							agree2
@@ -90,7 +90,7 @@
 							'$birthday$',
 							'$emailYn$',
 							'$mobileRcpYn$',
-							'$marryYn$',
+							'$marry$',
 							'$mdate$',
 							'$agree1$',
 							'$agree2$'
