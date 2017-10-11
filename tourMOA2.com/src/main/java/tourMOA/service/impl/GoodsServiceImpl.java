@@ -63,4 +63,9 @@ public class GoodsServiceImpl extends EgovAbstractServiceImpl implements GoodsSe
 		return goodsDAO.selectManagerDetail(vo2);
 	}
 
+	@Override
+	public List<?> selectOptionList(GoodsVO vo) throws Exception {
+		return goodsDAO.selectOptionList(vo);
+	}
+
 }

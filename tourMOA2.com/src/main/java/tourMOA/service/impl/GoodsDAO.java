@@ -49,4 +49,8 @@ public class GoodsDAO extends EgovAbstractDAO{
 		return (ManagerVO) select("goodsDAO.selectManagerDetail", vo2);
 	}
 
+	public List<?> selectOptionList(GoodsVO vo) {
+		return list("goodsDAO.selectOptionList", vo);
+	}
+
 }

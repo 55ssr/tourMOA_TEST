@@ -136,6 +136,8 @@
 				nincinfo,
 				ref,
 				opt,
+				daily,
+				shop,
 				code
 		FROM
 			goods
@@ -219,6 +221,12 @@
 		SELECT code, name, phone, mail, img
 			FROM manager
 			WHERE code = #code#
+	</select>
+	
+	<select id="goodsDAO.selectOptionList" resultClass="egovMap">
+		SELECT code, title, img, rtime, price, expl
+			FROM opt
+			WHERE code = #unq#
 	</select>
 	
 </sqlMap>
