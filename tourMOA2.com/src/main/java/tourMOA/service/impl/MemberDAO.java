@@ -32,20 +32,30 @@ public class MemberDAO extends EgovAbstractDAO{
 		return (boolean) select("memberDAO.loginSession",vo); 
 	}
 
-
 	public MemberVO accountDetail(MemberVO vo) {
 		return (MemberVO) select("memberDAO.accountDetail",vo);
 	}
 
 	public int accountDetailUpdate(MemberVO vo) {
-		System.out.println("-----DAO111");
 		int chk = update("memberDAO.accountDetailUpdate",vo);
-		System.out.println("chk ============ " + chk);
 		return chk;
 	}
 
 	public MemberVO accountPwReaffirm(MemberVO vo) {
 		return (MemberVO) select("memberDAO.accountPwReaffirm",vo);
+	}
+
+	public MemberVO accountPwUpdate(MemberVO vo) {
+		return (MemberVO) select("memberDAO.accountPwUpdate",vo);
+	}
+
+	public int accountPwUpdateProc(MemberVO vo) {
+		int ch = update("memberDAO.accountPwUpdateProc",vo);
+		return ch;
+	}
+
+	public MemberVO findId1(MemberVO vo) {
+		return (MemberVO) select("memberDAO.findId1",vo);
 	}
 
 }

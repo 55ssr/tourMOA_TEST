@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import tourMOA.service.MemberService;
@@ -47,22 +48,28 @@ public class MypageController {
 	}
 	
 	/*마이페이지 아이디 찾기*/
-	@RequestMapping(value = "/mypage/findIdRe.do")
-	@ResponseBody public Map<String, Object> findId(MemberVO vo) throws Exception {
-		int cnt = 0;
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		
-		cnt = memberService.findId(vo);
-		
-		map.put("cnt", cnt);
-
-		return map;
-	}
 	
 	@RequestMapping("mypage/findId.do")
 	public String findId1() throws Exception{		
 		return "mypage/findId";
 	}
+	
+	@RequestMapping("mypage/findIdRe.do")
+	@ResponseBody public Map<String,Object> findId(Model model,MemberVO vo) throws Exception{		
+			HashMap<String,Object> map = new HashMap<String,Object>();
+			
+			int cnt =0;
+			cnt = memberService.findId(vo);
+			if(cnt >0){
+				vo=memberService.accountDetail(vo);
+			}
+			model.addAttribute("vo",vo);
+			map.put("cnt",cnt);
+			map.put("userID", vo.getId());
+			
+		return map;
+	}
+
 	
 	/*마이페이지 비밀번호 찾기*/
 	@RequestMapping("mypage/findPw.do")
@@ -70,15 +77,19 @@ public class MypageController {
 		return "mypage/findPw";
 	}
 	@RequestMapping(value = "/mypage/findPwRe.do")
-	@ResponseBody public Map<String, Object> findPwRe(MemberVO vo) throws Exception {
-		int cnt = 0;
-		HashMap<String, Object> map = new HashMap<String, Object>();
+	@ResponseBody public Map<String, Object> findPwRe(MemberVO vo,Model model) throws Exception {
+		HashMap<String,Object> map = new HashMap<String,Object>();
 		
+		int cnt =0;
 		cnt = memberService.findPwRe(vo);
+		if(cnt >0){
+			vo=memberService.accountDetail(vo);
+		}
+		model.addAttribute("vo",vo);
+		map.put("cnt",cnt);
+		map.put("userPwd", vo.getPwd());
 		
-		map.put("cnt", cnt);
-
-		return map;
+	return map;
 	}
 	
 	/*마이페이지 회원가입 2단계*/
@@ -151,7 +162,8 @@ public class MypageController {
 	public String accountPwReaffirm(@RequestParam("id")String id, Model model,MemberVO vo) throws Exception{	
 		
 		id = vo.getId();
-		vo = memberService.accountPwReaffirm(vo);	                                 
+		vo = memberService.accountPwReaffirm(vo);
+		System.out.println("vo"+ vo.getPwd());
 		model.addAttribute("vo",vo);
 		
 		return "mypage/accountPwReaffirm";
@@ -216,15 +228,26 @@ public class MypageController {
 	
 	/*마이페이지 비밀번호 변경*/
 	@RequestMapping("mypage/accountPwUpdate.do")
-	public String accountPwUpdate() throws Exception{		
-		return "mypage/accountPwUpdate";
+	public String accountPwUpdate(@RequestParam("hiddenID") String id,Model model,MemberVO vo) throws Exception{
+		vo.setId(id);
+		vo = memberService.accountPwUpdate(vo);	 
+		model.addAttribute("vo",vo);
+		
+	return "mypage/accountPwUpdate";
 	}
 	
 	/*마이페이지 비밀번호 변경적용*/
-	@RequestMapping("mypage/accountPwUpdateProc.do")
-	public String accountPwUpdateProc() throws Exception{		
-		return "mypage/accountPwUpdate";
-	}
+	@RequestMapping(value = "mypage/accountPwUpdateProc.do")
+	@ResponseBody public Map<String, Object> accountPwUpdateProc(MemberVO vo) throws Exception {
+		int pwd=0;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		pwd=memberService.accountPwUpdateProc(vo);
+		map.put("du", pwd);	
+		
+		return map;
+		}
+
 	
 	/*마이페이지 여행상품권안내*/
 	@RequestMapping("mypage/giftcardBuy.do")

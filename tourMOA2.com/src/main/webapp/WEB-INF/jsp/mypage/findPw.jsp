@@ -6,16 +6,15 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator"%>
+
 <link rel="stylesheet" href="/css/mypage.css" />
 <script type="text/javaScript">
-
-$(document).ready(function(){
 	
-	$(document).ready(function(){	
-		$("#btnok").click(function(){
-			if($("#id").val() == ""){
+$(document).ready(function(){	
+	$("#btnok").click(function(){
+			if($("input:text[name='userid']").val() == ""){
 				alert("아이디를 입력해주세요");
-				$("#id").focus();
+				$("#userid").focus();
 				return;
 			}
 			if($("#email").val() == ""){
@@ -24,8 +23,9 @@ $(document).ready(function(){
 				return;
 			}
 		
-		var param ="id=" + $("#id").val()
+		var param ="id=" + $("#userid").val()
 			param += "&email=" + $("#email").val() ;
+		alert(param);
 		
 		$.ajax({
 			  type:'POST'
@@ -34,8 +34,8 @@ $(document).ready(function(){
 			, dataType: 'JSON'
 		   
 			, success:function(data) {
-				if(data.cnt == 1){
-					alert("아이디는 입니다.");
+				if(data.cnt > 0){
+					alert("비밀번호는 [ "+data.userPwd+ " ] 입니다.");
 				}else{
 					alert("없는아이디입니다.");
 				}
@@ -46,7 +46,7 @@ $(document).ready(function(){
 				});
 			});
 		});
-	});
+	
 </script>
 <section id="content" class="contentSub"><!--[[ content Start ]]-->
     <!-- <div class="tit findId_tit" title="아이디/비밀번호찾기"></div> -->
@@ -69,7 +69,7 @@ $(document).ready(function(){
 	<div class="id_border">
 		<div class="id_block">
 			<label for="id_check">아이디</label>
-			<input type="text" name="id" id="id" placeholder="아이디를 입력해주세요" />
+			<input type="text" name="userid" id="userid" placeholder="아이디를 입력해주세요" />
 		</div>
 		<div class="id_block1">
 			<label for="email_check">메일주소</label>
