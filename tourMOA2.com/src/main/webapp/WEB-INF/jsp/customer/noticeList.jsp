@@ -52,7 +52,7 @@ function loginConfirm(){
 	</script>
 	<section id="content"><!--[[ content Start ]] -->
         <div class="tit notice_tit" title="공지사항"><span class="tit_txt notice_sub">투어모아의 새로운 소식과 공지사항을 알려드립니다.</span></div>
-		<form name="searchForm" id="searchForm" action="/customer/noticeList.do" method="post">
+		<form name="searchForm" id="searchForm" action="/customer/noticeDetail.do" method="post">
 		<input type="hidden" name="searchNoticeCd" id="searchNoticeCd" value="" />
         <div class="board_search"><!--[[ Search Form Start ]]-->         
             <span class="select_wrap">
@@ -98,15 +98,11 @@ function loginConfirm(){
              <table>
               	<c:forEach var="result" items="${resultList}" varStatus="status">
                <tr>
-               	<c:if test="${result.allview == '사용'}">
+               	
 				    <td headers="번호" ><span class="bul bul_yellow">상시공지</span></td>
-				</c:if>   
-				<c:if test="${result.allview == '중지'}">
-				    <td headers="번호" >${number}</td>
-				</c:if>
-					
+				    <%-- <td headers="번호" >${number}</td>	 --%>				
 				    <td headers="제목" class="subject">
-				    	<a href="#">${result.title} - ${result.allview}</a>
+				    	<a href="/customer/noticeDetail.do?noticeNo=20000002822&pageIndex=1&searchCnd=&searchWrd=&searchNoticeCd=">${result.title}<%--  - ${result.allview} --%></a>
 				    </td>
 					<td headers="등록일" >${result.rdate}</td>
 					</tr>

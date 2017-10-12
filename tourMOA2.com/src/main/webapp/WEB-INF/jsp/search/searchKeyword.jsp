@@ -408,7 +408,7 @@ function fn_popup(){
 	            </ul>
 	        </div>
 	        <!--[[ 검색 전 인기검색어 rankWrap End ]]-->
-        </div>
+<!--         </div>
         <div class="notiWrapCon"><script src="/js/ui.js"></script>
 <script src="/js/jquery.number.min.js"></script>
 <script src="/js/jquery-ui.js"></script>
@@ -840,21 +840,21 @@ $(document).on("keyup", "input:text[numberOnly]", function() {
 });
 </script>
 
-<div id="notiWrap"><!--[[ 검색결과 알림 notiWrap Start ]]-->
+<div id="notiWrap">[[ 검색결과 알림 notiWrap Start ]]
 
             <span class=""><p class="keywd">
             'asfdasd'&nbsp;
             &nbsp;에 대한 총 
              0
              건의 여행상품 검색 결과가 있습니다.</p></span>
-            </div><!--[[ 검색결과 알림 notiWrap End ]]-->
+            </div>[[ 검색결과 알림 notiWrap End ]]
         <div class="titleBox">     
         	<div class="title"><span class="bul"></span>결과 내 재검색</div>
         	<a class="bntOption" href="#">검색옵션<span class="spim"></span></a>
         </div>
         <div class="optionMenu" id="optionMenu">
 	        <form id="reSearch" action="/search/searchKeyword.do" method="post" onsubmit="resultReSearchList(event); return false;">
-	        		<input type="hidden" name="query" value="asfdasd"><div id="reWrap"><!--[[ 결과내재검색 reWrap Start ]]-->
+	        		<input type="hidden" name="query" value="asfdasd"><div id="reWrap">[[ 결과내재검색 reWrap Start ]]
 	        <div class="frm">
 	            <ul class="frm">
 	                <li>
@@ -936,10 +936,10 @@ $(document).on("keyup", "input:text[numberOnly]", function() {
 	                <ul class="rankList tab01" style="display: block;"><a href="/search/searchKeyword.do?query=오사카"><li><span class="no grade">1</span><span class="name">오사카</span><span class="updown  new"></span><span class="num">0</span></li></a><a href="/search/searchKeyword.do?query=스페인 포르투갈 모로코"><li><span class="no grade">2</span><span class="name">스페인 포르투갈 모로코</span><span class="updown up"></span><span class="num">6</span></li></a><a href="/search/searchKeyword.do?query=오키나와"><li><span class="no grade">3</span><span class="name">오키나와</span><span class="updown down"></span><span class="num">2</span></li></a><a href="/search/searchKeyword.do?query=동유럽"><li><span class="no">4</span><span class="name">동유럽</span><span class="updown down"></span><span class="num">2</span></li></a><a href="/search/searchKeyword.do?query=장가계"><li><span class="no">5</span><span class="name">장가계</span><span class="updown down"></span><span class="num">2</span></li></a><a href="/search/searchKeyword.do?query=다낭"><li><span class="no">6</span><span class="name">다낭</span><span class="updown down"></span><span class="num">1</span></li></a><a href="/search/searchKeyword.do?query=미서부"><li><span class="no">7</span><span class="name">미서부</span><span class="updown down"></span><span class="num">1</span></li></a><a href="/search/searchKeyword.do?query=베트남"><li><span class="no">8</span><span class="name">베트남</span><span class="updown  new"></span><span class="num">0</span></li></a><a href="/search/searchKeyword.do?query=터키"><li><span class="no">9</span><span class="name">터키</span><span class="updown down"></span><span class="num">2</span></li></a><a href="/search/searchKeyword.do?query=호주"><li><span class="no">10</span><span class="name">호주</span><span class="updown  new"></span><span class="num">0</span></li></a></ul>
 	                <ul class="rankList tab02"><a href="/search/searchKeyword.do?query=제주도"><li><span class="no grade">1</span><span class="name">제주도</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=보라카이"><li><span class="no grade">2</span><span class="name">보라카이</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=코타키나발루"><li><span class="no grade">3</span><span class="name">코타키나발루</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=러시아"><li><span class="no">4</span><span class="name">러시아</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=괌"><li><span class="no">5</span><span class="name">괌</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=대만"><li><span class="no">6</span><span class="name">대만</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=사이판"><li><span class="no">7</span><span class="name">사이판</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=큐슈"><li><span class="no">8</span><span class="name">큐슈</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=서유럽"><li><span class="no">9</span><span class="name">서유럽</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=몽골"><li><span class="no">10</span><span class="name">몽골</span><span class="updown"></span><span class="num"></span></li></a></ul>
 	            </div>
-	        </div><!--[[ 결과내재검색 reWrap End ]]-->        
+	        </div>[[ 결과내재검색 reWrap End ]]        
 	        </form>
         </div>
-        <div id="product02"><!--[[ 여행상품목록 Start ]]-->
+        <div id="product02">[[ 여행상품목록 Start ]]
             <div class="title title02 none" title="여행상품"></div>
             <div class="searchBar">
                 <span class="barL">
@@ -966,15 +966,15 @@ $(document).on("keyup", "input:text[numberOnly]", function() {
                     <button type="button" id="btnCompare" title="선택상품비교하기">선택상품비교하기</button>
                 </span>
             </div>
-            <div class="listNoti"><!--[[ listWrap Start ]]-->
-                <div class="noti"><!--[[ listBar Start ]]-->
+            <div class="listNoti">[[ listWrap Start ]]
+                <div class="noti">[[ listBar Start ]]
                 <span>검색된 결과가 없습니다.</span>
                 <p>검색어가 올바르게 입력되었는지 확인해 보세요.</p>
                 <p>일반적이고 포괄적인 단어로 재검색 해보세요.</p>
                 <p>검색어의 띄어쓰기를 조정해 보세요.</p>
                 <p>지역명 도는 국가명으로 검색해 보세요.</p>
                 </div>
-            </div>
+            </div> -->
         </div><!--[[ 여행상품목록 End ]]-->        
         </div>
     </section>

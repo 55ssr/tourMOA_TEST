@@ -10,6 +10,7 @@ import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import tourMOA.service.DefaultListVO;
 import tourMOA.service.NoticeService;
 import tourMOA.service.NoticeVO;
+
 @Service("noticeService")
 public class NoticeServiceImpl extends EgovAbstractServiceImpl implements NoticeService{
 
@@ -29,5 +30,10 @@ public class NoticeServiceImpl extends EgovAbstractServiceImpl implements Notice
 	@Override
 	public int selectNoticeTotal(DefaultListVO searchVO) throws Exception {
 		return noticeDAO.selectNoticeTotal(searchVO);
-	}	
+	}
+	
+	@Override
+	public NoticeVO selectNoticeDetail(NoticeVO vo) throws Exception {
+		return noticeDAO.selectNoticeDetail(vo);
+	}
 }

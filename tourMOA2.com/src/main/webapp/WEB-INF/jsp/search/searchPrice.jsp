@@ -87,22 +87,22 @@
 						"width=500,height=500,resizeble=yes,left=500,top=200");
 			}
 		</script>
-
+<!-- 
 		<section id="content">
-			<!--[[ content Start ]]-->
+			[[ content Start ]]
 
 			<div id="searchWrap">
-				<!--[[ 통합검색 searchWrap Start ]]-->
+				[[ 통합검색 searchWrap Start ]]
 				<div class="tab"></div>
 
-				<!--[[ 키워드검색 tab01 End ]]-->
+				[[ 키워드검색 tab01 End ]]
 				</form>
 			</div>
-			<!--[[ 통합검색 searchWrap End ]]-->
+			[[ 통합검색 searchWrap End ]]
 
 			<div class="notiWrapCon">
 				<div id="rankWrap">
-					<!--[[ 검색 전 인기검색어 rankWrap Start ]]-->
+					[[ 검색 전 인기검색어 rankWrap Start ]]
 					<span class="tab">인기검색어</span><span class="tab"
 						style="border-left: 1px solid #d6d6d6; width: 547px">추천검색어</span>
 					<ul class="rankList tab01" style="border-left:">
@@ -191,7 +191,7 @@
 						</a>
 					</ul>
 				</div>
-				<!--[[ 검색 전 인기검색어 rankWrap End ]]-->
+				[[ 검색 전 인기검색어 rankWrap End ]]
 			</div>
 		</section>
-		<!--[[ content End ]]-->
+		[[ content End ]] -->

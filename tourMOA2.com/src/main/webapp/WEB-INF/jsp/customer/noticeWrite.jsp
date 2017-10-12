@@ -27,7 +27,7 @@ function fn_action(e) {
 		
 		var param = "title="+$("#title").val()
 			param +="&gubun="+$("#gubun").val()
-			param +="&all_view="+$("#all_view").val()
+			param +="&allview="+$("#allview").val()
 			param +="&content="+$("#content").val();
 		
 		alert(param);
@@ -38,7 +38,6 @@ function fn_action(e) {
 			url: "<c:url value='/noticeSave.do' />",
 			dataType: "json",
 			processData: false,
-			
 			/* 처리되고나서 실행되는부분 */
 			success: function (data){
 				if(data.result = "ok"){
@@ -52,10 +51,10 @@ function fn_action(e) {
 				alert("error: " + error);
 			}
 		});
-	}else if(e=="L"){
+	}
+	else if(e=="L"){
 		f.action="dataBoardList.do";
 	}
-	f.submit();
 }
 </script>
 <body>
@@ -87,8 +86,8 @@ function fn_action(e) {
 	<tr>
 		<th>상시표시</th>
 		<td>
-			상시표시<input type="radio" name="all_view" id="all_view" value="Y"/>
-			상시표시안함<input type="radio" name="all_view" id="all_view" value="N"/>
+			상시표시<input type="radio" name="allview" id="allview" value="Y"/>
+			상시표시안함<input type="radio" name="allview" id="allview" value="N"/>
 		</td>
 	</tr>	
 	<tr>
