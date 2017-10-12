@@ -40,9 +40,15 @@
 	<script src="/js/summernote-ko-KR.js"></script>
 	
 	<!-- datepicker for bootstrap V4 -->
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	<script src="http://code.gijgo.com/1.5.1/js/gijgo.js" type="text/javascript"></script>
-    <link href="http://code.gijgo.com/1.5.1/css/gijgo.css" rel="stylesheet" type="text/css" />
+    <link href="http://code.gijgo.com/1.5.1/css/gijgo.css" rel="stylesheet" type="text/css" /> -->
+	
+	<!-- datetimepicker -->
+	<link href="/css/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+	<script type="text/javascript" src="/js/datetimepicker/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="/js/datetimepicker/bootstrap-datetimepicker.ko.js" charset="UTF-8"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	
 </head>
 <body class="admin_custom">
