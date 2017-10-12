@@ -56,13 +56,13 @@ INSERT INTO goods (	unq,title,gubun,location,nation,city,price,pricech,pricein,f
 			'1390000',
 			'500000',
 			'85000',
-			'2017-10-13', --수
-			'2017-10-13', --정
-			'2017-11-19', --요
-			'2017-11-19', --함
-			'8박 10일',
+			'to_date('2017-10-15 13:55:00', 'yyyy-mm-dd hh24:mi:ss')',
+			'to_date('2017-10-15 19:00:00', 'yyyy-mm-dd hh24:mi:ss')',
+			'to_date('2017-10-21 15:00:00', 'yyyy-mm-dd hh24:mi:ss')',
+			'to_date('2017-10-22 09:25:00', 'yyyy-mm-dd hh24:mi:ss')',
+			'6박 8일',
+			'6',
 			'8',
-			'10',
 			'N',
 			'',
 			'Y',
@@ -163,3 +163,4 @@ INSERT INTO opt (code, title, img, rtime, price, expl) VALUES ('26','카프리�
 ALTER TABLE goods ADD (daily CLOB);
 -- 쇼핑센터 방문 횟수
 ALTER TABLE goods ADD(shop number DEFAULT 0);
+

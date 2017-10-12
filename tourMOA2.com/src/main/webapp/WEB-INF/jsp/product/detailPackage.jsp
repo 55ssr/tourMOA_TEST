@@ -404,9 +404,9 @@ $(document).ready(function(){
 					
 					<span class="airWrap">
 						<span class="air chk">
-							<input type="radio" name="air" id="aircord1" onclick="goEvent('상품코드번호')" checked="checked"/>
+							<input type="radio" name="air" id="aircord1" checked="checked"/>
 						</span>
-						<span class="air air01 typeAir"><label for="aircord1">${vo.airline}</label></span>
+						<span class="air air01 typeAir"><label for="aircord1" style="cursor:default">${vo.airline}</label></span>
                            <span class="air air02">
 								<fmt:parseDate var="parsedDate" value="${vo.sdate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 								<fmt:formatDate value="${parsedDate}" type="time" pattern="HH:mm"/> -
@@ -444,7 +444,17 @@ $(document).ready(function(){
 					
 					 <li class="lineNone pdt30">
                         <button type="button" name="btnSchedule" role-w="1160" role-h="800" role-url="/product/unitListPop.do?menu=pkg&did=7423&goodsCd=NCP5208" class="btnStartdate" title="다른출발일보기">다른출발일보기</button>
-						<button type="button" name="btnReserve" id="btnReserve" class="btnReserve" title="예약하기">예약하기</button>
+						<span class="dev_comm" style="position:absolute;top:22px;">unitList.do 를 팝업으로 보여줌 코드 값 보내줌</span>
+						
+						<c:if test="${oldDays - nowDays <= 2}">
+							<button type="button" name="btnClose" class="btnReserve reserveEnd" title="예약하기">예약마감</button>
+						</c:if>
+						<c:if test="${oldDays - nowDays >= 3}">
+							<button type="button" name="btnReserve" class="btnReserve" title="예약하기">예약하기</button>
+						</c:if>
+						<span class="dev_comm" style="position:absolute;bottom:1px;">db에서 rsvable=Y 가 N 으로 바뀌도록 </span>
+						
+						
                      </li>
 				</ul>
 				<!-- [[상품 상세정보 Start]] 상품의 상세정보 include 된듯 -->
@@ -1479,47 +1489,59 @@ function fnView(obj){
 		
 		<!--[[ asideWrap Start ]]-->
 		
-		<aside id="asideWrap" style="left: 550px; position: absolute; top: 19841px;">
+		<aside id="asideWrap" style="left: 550px; position: absolute;">
 
             <div class="aside01">
-                <span class="tit">담당자</span><span class="name">이기영</span><span class="phone">02-2022-7284</span><span class="info">총 
-                
-                		상품
-                	
-                가격 (성인 1인 기준) <button class="btn_calculator" type="button" name="btnCalculator" role-w="550" role-h="600" role-url="/product/calculator.do?evAdtPrice=2790000&amp;evChdPrice=2232000&amp;evInfPrice=558000"></button></span>
-                <span class="pricedetailPackage fontWhite tip" role="3">2,790,000<span>원</span><img src="/images/productDetail/icon_questionB.png" alt="안내">
+                <span class="tit">담당자</span>
+                <span class="name">${vo2.name}</span>
+                <span class="phone">${vo2.phone}</span>
+                <span class="info">총 상품 가격 (성인 1인 기준) 
+                	<button class="btn_calculator" type="button" name="btnCalculator" role-w="550" role-h="600" role-url="/product/calculator.do?evAdtPrice=2790000&amp;evChdPrice=2232000&amp;evInfPrice=558000"></button>
+                </span>
+                <span class="pricedetailPackage fontWhite tip" role="3"><fmt:formatNumber value="${vo.price}" groupingUsed="true" /><span>원</span><img src="/images/productDetail/icon_questionB.png" alt="안내">
 				<span class="tooltip asideTip" style="display: none;">
-                <span class="price_child">아동: 2,232,000</span>
-	                	<span class="price_child">유아: 558,000</span>
+                <span class="price_child">아동: <fmt:formatNumber value="${vo.pricech}" groupingUsed="true" /></span>
+	                	<span class="price_child">유아: <fmt:formatNumber value="${vo.pricein}" groupingUsed="true" /></span>
 	                </span>
              </span>
                         
               
             </div>
             <div class="aside02">
-                <span class="tit">상품번호</span><span class="pNum">[<span class="num">NCP5208-170922OZ00</span>]</span>
+                <span class="tit">상품번호</span><span class="pNum">[<span class="num">${vo.code}-170922OZ00</span>]</span>
                 
-                <span class="txt">시애틀+록키완전일주 + 하와이 10일</span>
+                <span class="txt">${vo.title}</span>
             </div>
 
             <div class="aside03">
-                <span class="tit">
-                	출발일 - 
-                	OZ272</span>
+                <span class="tit">출발일 - ${vo.fno}</span>
                 <button type="button" name="btnSchedule" role-w="1160" role-h="800" role-url="/product/unitListPop.do?menu=pkg&amp;did=7423&amp;goodsCd=NCP5208" class="btn" title="퀵메뉴 다른출발일보기">다른출발일보기</button>
-                <span class="txt txt01">한국출발 2017년 09월 22일(금) 18:40</span>
-                <span class="txt txt02">현지도착 2017년 09월 22일(금) 13:10</span>
+				<span class="txt txt01">한국출발 
+                	<fmt:parseDate var="parsedDate" value="${vo.sdate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+					<fmt:formatDate value="${parsedDate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
+				</span>
+				<span class="txt txt02">현지도착 
+					<fmt:parseDate var="parsedDate" value="${vo.sadate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+					<fmt:formatDate value="${parsedDate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
+				</span>
+                
             </div>
 
             <div class="aside04">
-                <span class="tit">도착일 - OZ231</span>
-                <span class="txt txt01">현지출발 2017년 09월 30일(토) 12:10</span>
-                <span class="txt txt02">한국도착 2017년 10월 01일(일) 17:10</span>
+                <span class="tit">도착일 - ${vo.fno}</span>
+				<span class="txt txt01">현지출발 
+					<fmt:parseDate var="parsedDate" value="${vo.edate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+					<fmt:formatDate value="${parsedDate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
+				</span>
+				<span class="txt txt02">한국도착 
+					<fmt:parseDate var="parsedDate" value="${vo.eadate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+					<fmt:formatDate value="${parsedDate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
+				</span>
             </div>
 
             <div class="aside05">
                 <span class="tit">여행기간</span>
-                <span class="txt">8박10일</span>
+                <span class="txt">${vo.period}</span>
             </div>
        
             <div class="aside06">
@@ -1543,7 +1565,7 @@ function fnView(obj){
 
             <div class="aside07">    
 	           		<span class="tit">남은좌석</span>
-								<span class="txt">10석&nbsp;(최소 출발인원: 8명)</span>
+								<span class="txt">${vo.rem}석&nbsp;(최소 출발인원: ${vo.minp}명)</span>
 	               	</div>
 	           	<div class="aside08">
                 <!--  <button type="button" name="btnCalculator" id="btnCalculator" role-w="550" role-h="600" role-url="/product/calculator.do?evAdtPrice=2790000&evChdPrice=2232000&evInfPrice=558000" class="btnCalculator" title="요금계산기">요금계산기</button>-->
