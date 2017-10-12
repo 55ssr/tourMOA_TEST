@@ -25,7 +25,6 @@ $(document).ready(function(){
 		
 		var param ="id=" + $("#userid").val()
 			param += "&email=" + $("#email").val() ;
-		alert(param);
 		
 		$.ajax({
 			  type:'POST'

@@ -69,9 +69,10 @@ public class MemberServiceImpl extends EgovAbstractServiceImpl implements Member
 	}
 
 	@Override
-	public MemberVO findId1(MemberVO vo) throws Exception {
-		return memberDAO.findId1(vo);
+	public MemberVO findIdDetail(MemberVO vo) throws Exception {
+		return memberDAO.findIdDetail(vo);
 	}
+
 
 
 }

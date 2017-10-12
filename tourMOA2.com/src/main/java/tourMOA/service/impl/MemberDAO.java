@@ -54,8 +54,8 @@ public class MemberDAO extends EgovAbstractDAO{
 		return ch;
 	}
 
-	public MemberVO findId1(MemberVO vo) {
-		return (MemberVO) select("memberDAO.findId1",vo);
+	public MemberVO findIdDetail(MemberVO vo) {
+		return (MemberVO) select("memberDAO.findIdDetail",vo);
 	}
 
 }
