@@ -49,7 +49,7 @@ INSERT INTO goods (	unq,title,gubun,location,nation,city,price,pricech,pricein,f
 	VALUES (SEQ_goods_unq.nextval,
 			'[한폭의그림 이태리] 친퀘테레/오르비에또+로마아울렛포함 이태리완전일주 8일',
 			'해외패키지',
-			'westeu',
+			'weurope',
 			'이탈리아',
 			'로마,피렌체,베니스,베로나,몬테카티니,친퀘테레,피사,나폼쏘',
 			'1390000',
