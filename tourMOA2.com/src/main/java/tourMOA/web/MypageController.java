@@ -61,7 +61,7 @@ public class MypageController {
 			int cnt =0;
 			cnt = memberService.findId(vo);
 			if(cnt >0){
-				vo=memberService.accountDetail(vo);
+				vo=memberService.findIdDetail(vo);
 			}
 			model.addAttribute("vo",vo);
 			map.put("cnt",cnt);
@@ -83,7 +83,7 @@ public class MypageController {
 		int cnt =0;
 		cnt = memberService.findPwRe(vo);
 		if(cnt >0){
-			vo=memberService.accountDetail(vo);
+			vo=memberService.findIdDetail(vo);
 		}
 		model.addAttribute("vo",vo);
 		map.put("cnt",cnt);
