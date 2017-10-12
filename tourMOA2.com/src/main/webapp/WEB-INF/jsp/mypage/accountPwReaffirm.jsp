@@ -1,6 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/css/mypage.css" />
+<script>
+
+function fn_btn(a) {
+	var f = document.frmpwd;
+	f.hiddenID.value = a;
+	f.submit();
+}
+
+</script>
+	
 	<script>
+	
 		function fnMenuSelect() {
 		    //여행내역  
 		    
@@ -29,9 +40,13 @@
          <div class="sec_wrap sec_01" style="width:100%;"><!--[[ 메인상단 Start ]]-->
              <div class="para_01">
                  <p>안녕하세요. 즐거운 여행 되세요.</p>
+                 <form name="frmpwd" id="frmpwd" method="post" action="/mypage/accountPwUpdate.do">
+                 
                  <div class="btnArea">
                      <span class="btn"><a href="/mypage/accountPwReaffirm.do">개인정보관리</a></span>
-                     <span class="btn"><a href="/mypage/accountPwUpdate.do">비밀번호변경</a></span>
+                     <span class="btn"><a href="#" onclick="fn_btn('${vo.id}')">비밀번호변경</a></span>
+                     <input type="hidden" name="hiddenID" id="hiddenID" value="" />
+                 </form>
                  </div>
              </div>
              <div class="para_02">
@@ -106,6 +121,7 @@
 			<span>비밀번호를 다시 한번 확인합니다.</span>        
 		<form name="frm" id="frm" method="post" action="/mypage/accountDetail.do">
 		<input type="hidden" name="id" id="id" value="${sessionScope.loginCertification.id}"/>
+		
 			<div class="cont_l">
 				<span class="pass_tit">아이디</span><span class="cont">${sessionScope.loginCertification.id}</span>
 				<span class="pass_tit"><label for="txtpass">비밀번호</label></span>

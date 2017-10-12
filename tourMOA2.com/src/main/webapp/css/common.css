@@ -324,23 +324,23 @@ input:-moz-placeholder { color: #c0c0c0; font-size: 14px; font-weight: normal; }
 /* PIE */
 span.pie { float: left; display: inline-block; height: 18px; font-size: 12px; color: #ffffff; line-height: 1.4; z-index: 1;}
 
-span.pie.mint { width:43px; text-align:center; background:url(/images/common/sprite_tag.jpg) -57px -10px no-repeat;}/* 특가 */
-span.pie.blue { width:42px;text-align:center; background:url(/images/common/sprite_tag.jpg) -106px -10px no-repeat; }/* 품격 */
-span.pie.yellow { width:42px;text-align:center; background:url(/images/common/sprite_tag.jpg) -10px -10px no-repeat; }/* 긴급 (클래스명 그대로 이용) */
-span.pie.redReal { width:42px;text-align:center; background:url(/images/common/sprite_tag.jpg) -10px -10px no-repeat; }/* 행사리스트 긴급 */
-span.pie.pink { width:54px;text-align:center; background:url(/images/common/sprite_tag.jpg) -152px -10px no-repeat; }/* 선착순 */
-span.pie.gold { width:65px;text-align:center; background:url(/images/common/sprite_tag.jpg) -212px -10px no-repeat; }/* 프리미엄 */
-span.pie.green { width:43px; text-align:center; background:url(/images/common/sprite_tag.jpg) -282px -10px no-repeat;}/* 실속 */
-span.pie.red { width:54px;text-align:center; background:url(/images/common/sprite_tag.jpg) -330px -10px no-repeat; }/* 땡처리 */
-span.pie.purple { width:65px;text-align:center; background:url(/images/common/sprite_tag.jpg) -388px -10px no-repeat; }/* 주말특가 */
-span.pie.gray { width:65px;text-align:center; background:url(/images/common/sprite_tag.jpg) -11px -38px no-repeat; }/* 예약마감 */
-span.pie.orange { width:65px;text-align:center; background:url(/images/common/sprite_tag.jpg) -83px -38px no-repeat; }/* 예약가능 */
-span.pie.mintblue { width:65px;text-align:center; background:url(/images/common/sprite_tag.jpg) -155px -38px no-repeat; }/* 예약대기 */
-span.pie.promotion { width:65px;text-align:center; background:url(/images/common/sprite_tag.jpg) -227px -38px no-repeat; }/* 프로모션 */
-span.pie.tv { width:65px;text-align:center; background:url(/images/common/sprite_tag.jpg) -296px -38px no-repeat; }/* 노랑티비 */
-span.pie.limited { width:88px;text-align:center; background:url(/images/common/sprite_tag.jpg) -368px -38px no-repeat; }/* 리미티드 */
-span.pie.hotel { width:65px;text-align:center; background:url(/images/common/sprite_tag.jpg) -57px -66px no-repeat; }/* 특급호텔 */
-span.pie.besthotel { width:68px;text-align:center; background:url(/images/common/sprite_tag.jpg) -127px -66px no-repeat; }/* 초특급호텔 */
+span.pie.mint { width:43px; text-align:center; background:url(/images/common/sprite_tag.png) -57px -10px no-repeat;}/* 특가 */
+span.pie.blue { width:42px;text-align:center; background:url(/images/common/sprite_tag.png) -106px -10px no-repeat; }/* 품격 */
+span.pie.yellow { width:42px;text-align:center; background:url(/images/common/sprite_tag.png) -10px -10px no-repeat; }/* 긴급 (클래스명 그대로 이용) */
+span.pie.redReal { width:42px;text-align:center; background:url(/images/common/sprite_tag.png) -10px -10px no-repeat; }/* 행사리스트 긴급 */
+span.pie.pink { width:54px;text-align:center; background:url(/images/common/sprite_tag.png) -152px -10px no-repeat; }/* 선착순 */
+span.pie.gold { width:65px;text-align:center; background:url(/images/common/sprite_tag.png) -212px -10px no-repeat; }/* 프리미엄 */
+span.pie.green { width:43px; text-align:center; background:url(/images/common/sprite_tag.png) -282px -10px no-repeat;}/* 실속 */
+span.pie.red { width:54px;text-align:center; background:url(/images/common/sprite_tag.png) -330px -10px no-repeat; }/* 땡처리 */
+span.pie.purple { width:65px;text-align:center; background:url(/images/common/sprite_tag.png) -388px -10px no-repeat; }/* 주말특가 */
+span.pie.gray { width:65px;text-align:center; background:url(/images/common/sprite_tag.png) -11px -38px no-repeat; }/* 예약마감 */
+span.pie.orange { width:65px;text-align:center; background:url(/images/common/sprite_tag.png) -83px -38px no-repeat; }/* 예약가능 */
+span.pie.mintblue { width:65px;text-align:center; background:url(/images/common/sprite_tag.png) -155px -38px no-repeat; }/* 예약대기 */
+span.pie.promotion { width:65px;text-align:center; background:url(/images/common/sprite_tag.png) -227px -38px no-repeat; }/* 프로모션 */
+span.pie.tv { width:65px;text-align:center; background:url(/images/common/sprite_tag.png) -296px -38px no-repeat; }/* 노랑티비 */
+span.pie.limited { width:88px;text-align:center; background:url(/images/common/sprite_tag.png) -368px -38px no-repeat; }/* 리미티드 */
+span.pie.hotel { width:65px;text-align:center; background:url(/images/common/sprite_tag.png) -57px -66px no-repeat; }/* 특급호텔 */
+span.pie.besthotel { width:68px;text-align:center; background:url(/images/common/sprite_tag.png) -127px -66px no-repeat; }/* 초특급호텔 */
 
 /* ########################################################################################################################### */
 /* Layout #################################################################################################################### */

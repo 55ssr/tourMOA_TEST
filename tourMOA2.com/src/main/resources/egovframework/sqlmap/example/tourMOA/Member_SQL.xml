@@ -12,13 +12,12 @@
 	</select>
 	
 	<select id="memberDAO.findId" resultClass="java.lang.Integer">
-		SELECT COUNT(*) FROM member
+		SELECT COUNT(id) FROM member
 			WHERE name = '$name$' AND email = '$email$'
 	</select>
 	
-	
 	<select id="memberDAO.findPwRe" resultClass="java.lang.Integer">
-		SELECT COUNT(*) FROM member
+		SELECT COUNT(pwd) FROM member
 			WHERE id = '$id$' AND email = '$email$'
 	</select>
 	
@@ -32,26 +31,31 @@
 	 <select id="memberDAO.accountDetail" resultClass="MemberVO">
 		SELECT 
 				id,
+				pwd,
 				name,
 				gender,
 				email,
 				phone,
 				postnum1,
-				addr1_1,
-				addr1_2,
+				addr11,
+				addr12,
 				to_char(birthday,'yyyy-mm-dd')as birthday ,
 				tel,
 				marry,
 				job
-		FROM 
+		FROM  
 				MEMBER
-		WHERE id = '$id$'
+		WHERE id = '$id$' OR name = '$name$'
 	</select>
+	
 	<select id="memberDAO.accountPwReaffirm" resultClass="MemberVO">
 		SELECT id FROM MEMBER WHERE id='$id$'
 	</select>
 	 
-	
+	<select id="memberDAO.accountPwUpdate" resultClass="MemberVO">
+		SELECT pwd,id
+		 FROM MEMBER WHERE id='$id$'
+	</select>
 	
 	<insert id="memberDAO.insertMemberJoin">
 		INSERT INTO MEMBER (	
@@ -105,8 +109,8 @@
 			email='$email$',
 			phone='$phone$',
 			postnum1='$postnum1$',
-			addr1_1='$addr1_1$',
-			addr1_2='$addr1_2$',
+			addr11='$addr11$',
+			addr12='$addr12$',
 			birthday= '$birthday$' ,
 			tel='$tel$',
 			marry='$marry$',
@@ -114,5 +118,13 @@
 	    WHERE
 	    	id = '$id$'
 	</update>
+	<update id="memberDAO.accountPwUpdateProc">
+		UPDATE
+			MEMBER
+		SET
+			pwd ='$pwd$'
+		WHERE
+			id = '$id$'
 	
+	</update>
 </sqlMap>

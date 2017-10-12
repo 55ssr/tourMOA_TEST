@@ -8,13 +8,26 @@
 <%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator"%>
 
 <link rel="stylesheet" href="/css/mypage.css" />
+<script>
+
+function fn_btn(a) {
+	var f = document.frmpwd;
+	f.hiddenID.value = a;
+	f.submit();
+}
+
+</script>
 	<section id="content" class="contentSub"><!--[[ content Start ]]-->
 		<div class="sec_wrap sec_01"><!--[[ 메인상단 Start ]]-->
 			<div class="para_01">
 			<p>안녕하세요. 즐거운 여행 되세요.</p>
+			
+			<form name="frmpwd" id="frmpwd" method="post" action="/mypage/accountPwUpdate.do">
 				<div class="btnArea">
 					<span class="btn"><a href="/mypage/accountPwReaffirm.do">개인정보관리</a></span>
-					<span class="btn"><a href="/mypage/accountPwUpdate.do">비밀번호변경</a></span>
+					<span class="btn"><a href="#" onclick="fn_btn('${vo.id}')">비밀번호변경</a></span>
+                     <input type="hidden" name="hiddenID" id="hiddenID" value="" />
+                 </form>
 				</div>
 			</div>
 			<div class="para_02">
@@ -131,12 +144,13 @@ $(document).ready(function(){
 				 $("input:hidden[name='hidbirth']").val(birth); 
 		 
 		 var form = "id="+$("input:hidden[id='userid']").val()
+				form += "pwd="+$("input:hidden[id='userpwd']").val()
 				form += "&gender=" +$("#genderCd").val()
 				form += "&email=" +$("#email").val()
 				form += "&phone=" +$("#hidphone").val()
 				form += "&postnum1=" +$("#postnum1").val()
-				form += "&addr1_1=" +$("#addr1_1").val()
-				form += "&addr1_2=" +$("#addr1_2").val()
+				form += "&addr11=" +$("#addr1_1").val()
+				form += "&addr12=" +$("#addr1_2").val()
 				form += "&birthday=" +$("input:hidden[name='hidbirth']").val()
 				form += "&tel=" +$("input:hidden[name='hidtel']").val()
 				form += "&marry=" +$("input:hidden[name='marry']").val()
@@ -408,6 +422,7 @@ $(document).ready(function(){
 	<form name="modifyFrm" id="modifyFrm" method="post" >
 		<input type="hidden" name="webCustNo" 	id="webCustNo" 		value="" />
 		<input type="hidden" name="userid" 	id="userid" 		value="${vo.id}" />
+		<input type="hidden" name="userpwd" 	id="userpwd" 		value="${vo.pwd}" />
 		<input type="hidden" name="marry" 		id="marry" 		value="${vo.marry}" />
 		<input type="hidden" name="hidbirth" 	id="hidbirth" value="${vo.birthday}" />
 		<input type="hidden" name="marryYn" 		id="marryYn" 		value="" />
@@ -526,8 +541,8 @@ $(document).ready(function(){
 					<td colspan="3">
 						<input type="text" id="postnum1" value="${vo.postnum1}" placeholder="우편번호">
 			<button type="button" onclick="Postcode()" class="btnChk" >우편번호 찾기</button>
-			<input type="text" id="addr1_1" value="${vo.addr1_1}" class="addr clear" placeholder="도로명주소">
-			<input type="text" id="addr1_2" value="${vo.addr1_2}" class="addr" placeholder="지번주소">
+			<input type="text" id="addr1_1" value="${vo.addr11}" class="addr clear" placeholder="도로명주소">
+			<input type="text" id="addr1_2" value="${vo.addr12}" class="addr" placeholder="지번주소">
 			<span id="guide" style="color:#999"></span>
 					</td>
 				</tr>

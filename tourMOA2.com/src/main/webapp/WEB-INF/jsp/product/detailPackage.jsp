@@ -11,8 +11,140 @@
 <script src="/js/ui.js"></script>
 <script src="/js/jquery.sliderkit.1.9.2.pack.js"></script>
 
+
+
+
+
+<script>
+$(document).ready(function() {
+
+	//옵션사항 이미지 없을경우 
+	$("#infoWrap .info05 .cont05 .type03 span.pic img").each(function(){
+		if($(this).attr("src") == "" || $(this).attr("src") == undefined){
+			$(this).parent().css("display","none");
+		}else{
+			$(this).parent().parent().find("span.choice").addClass("w180");
+		}
+	});
+	
+	$("#tabWrap > .tab > ul > li:eq(0)").trigger('click');
+
+	
+	$(".photosgallery-vertical").sliderkit({
+        auto:true,
+        autospeed:3000,
+        circular:true,
+        mousewheel:false,
+        shownavitems: 3,
+        verticalnav:true,
+        navclipcenter:true,
+        scrollspeed:1000
+    });
+		
+	//상품평 호출
+	fnInitRvw();	
+
+	/* 숙박지 정보
+	$("#daily .dayStay span.stayAccomInfo").each(function(){
+		var accomId = $(this).attr('value');
+		if(accomId != '' && accomId != undefined){
+			$(this).css("cursor","pointer");
+			$(this).css("text-decoration","underline");
+			$(this).css("color","#00b6ad");
+		}else{
+			$(this).css("cursor","text");
+			$(this).css("text-decoration","none");
+			$(this).css("color","#5d636f");
+		}
+	});
+	숙박지 정보 */
+	
+	/* 날씨 제어
+	$("#realArea").change(function(){
+	
+		$(".clock, .weather").each(function(){
+			$(this).css("display", "none");
+		})
+		var cityCd = $(this).val();
+		$("#c"+cityCd).css("display", "block");
+		$("#w"+cityCd).css("display", "block");
+		
+	});
+	날씨 제어 */
+});
+
+//?
+function fnScheAccom(accomInfoId){
+	if(accomInfoId != "" && accomInfoId != undefined ){
+		fnTourDtlInfo("accom",accomInfoId);
+	}
+}
+
+//?
+function fnTourDtlInfo(popDspNm,infoId){
+	var newBtn = $("<button></button>");
+	$(newBtn).attr("role-w",880);
+	$(newBtn).attr("role-h",600);
+	$(newBtn).attr("role-url", "/travelInfo/pdtTourInfo.do?popDspNm="+popDspNm+"&infoId="+infoId+"&isWeb=Y");
+	showLayer($(newBtn));
+}
+
+/*****************
+ * 일정표 일차 이동
+ *****************/
+function moveSchedule(target , id, dayno){
+	var offset = $(target).offset().top; 
+	$('body,html').animate({scrollTop:offset},1000);
+	
+	if( id != "" && dayno != ""){
+		$("#"+id+" option[value="+dayno+"]").attr("selected", "selected");
+	}
+}
+/******************************
+ * 안전한 여행을 위한 주의사항 팝업
+ ******************************/
+function fnSafetyNotice(){
+	var newBtn = $("<button></button>");
+	$(newBtn).attr("role-w",550);
+	$(newBtn).attr("role-h",546);
+	$(newBtn).attr("role-url", "/product/safetyNotice.do");
+	showLayer($(newBtn));
+}
+/******************************
+ * 무료수하물 팝업
+ ******************************/
+function fnfreeBag(){
+	var newBtn = $("<button></button>");
+	$(newBtn).attr("role-w",550);
+	$(newBtn).attr("role-h",520);
+	$(newBtn).attr("role-url", "/html/common/other/freebag.html");
+	showLayer($(newBtn));
+}
+
+/*상품평 function*/
+
+function fnSelectIncRvw(vUrl){
+	$("#listWrap").load(vUrl);
+} 
+  
+function fnInitRvw(){
+	
+	var rvwInitUrl = "/product/selectPdtRvwList.do?pageIndex=1&goodsCd=EWP1007&evCd=EWP1007-171015AZ00&dspId=731";
+	fnSelectIncRvw(rvwInitUrl);
+}
+
+</script>
+
+
+
+
+
+
+
 <script type="text/javascript">
-$(document).ready(function(){
+
+
+/* $(document).ready(function(){
 	
 	//이미지 액박처리start
 	$(".txt.txt03 img").error(function(){
@@ -37,7 +169,9 @@ $(document).ready(function(){
 		$("#localWrapOne").css({display:"none"});
 	});
 	
-});
+}); */
+
+
 $(document).ready(function() {
 	
 
@@ -66,42 +200,19 @@ $(document).ready(function() {
 			$(this).parent().parent().find("span.choice").addClass("w180");
 		}
 	});
-	
-	$("#tabWrap > .tab > ul > li:eq(0)").trigger('click');
-
-	
-	$(".photosgallery-vertical").sliderkit({
-        auto:true,
-        autospeed:3000,
-        circular:true,
-        mousewheel:false,
-        shownavitems: 3,
-        verticalnav:true,
-        navclipcenter:true,
-        scrollspeed:1000
-    });
-	
-	$("#realArea").change(function(){
-	
-		$(".clock, .weather").each(function(){
-			$(this).css("display", "none");
-		})
-		var cityCd = $(this).val();
-		$("#c"+cityCd).css("display", "block");
-		$("#w"+cityCd).css("display", "block");
-		
-	});
 });
-	$(document).ready(function(){
-		
-		$("#btnReserve"),$("#btnReserves").click(function(e){
-			$(".simplemodal-container").dialog("open");
-			e.preventDefault();
-			/* showLoginRsvLayer(encodeURIComponent("/product/reserveStep01.do?")); */
-			
-		});
+
+
+$(document).ready(function(){
+	
+	$("#btnReserve"),$("#btnReserves").click(function(e){
+		$(".simplemodal-container").dialog("open");
+		e.preventDefault();
+		/* showLoginRsvLayer(encodeURIComponent("/product/reserveStep01.do?")); */
 		
 	});
+	
+});
 </script>
 
 <div id="wrap">
@@ -152,6 +263,7 @@ $(document).ready(function() {
 									<fmt:formatDate value="${parsedDate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
 									 - ${vo.fno}
 								</span>
+								
 								<span class="txt txt02">현지 도착 
 									<fmt:parseDate var="parsedDate" value="${vo.sadate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 									<fmt:formatDate value="${parsedDate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
@@ -292,9 +404,9 @@ $(document).ready(function() {
 					
 					<span class="airWrap">
 						<span class="air chk">
-							<input type="radio" name="air" id="aircord1" onclick="goEvent('상품코드번호')" checked="checked"/>
+							<input type="radio" name="air" id="aircord1" checked="checked"/>
 						</span>
-						<span class="air air01 typeAir"><label for="aircord1" onclick="goEvent('NCP5208-170922OZ00')">${vo.airline}</label></span>
+						<span class="air air01 typeAir"><label for="aircord1" style="cursor:default">${vo.airline}</label></span>
                            <span class="air air02">
 								<fmt:parseDate var="parsedDate" value="${vo.sdate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 								<fmt:formatDate value="${parsedDate}" type="time" pattern="HH:mm"/> -
@@ -304,15 +416,45 @@ $(document).ready(function() {
 	                            <!-- class: mint , blue , yellow , pink , gold , green , red , purple -->
 	                            
 	                            <span class="mark">
-	                            			<span class="pie orange1">예약가능</span>
-	                            </span>
+	                            	
+	                            	
+									<jsp:useBean id="toDay" class="java.util.Date" />
+									                                         
+									<fmt:parseDate var="regDate" value="${vo.sdate}" pattern="yyyy-MM-dd HH:mm:ss" />                                         
+									<fmt:parseNumber value="${toDay.time / (1000*60*60*24)}" integerOnly="true" var="nowDays" scope="request"/>
+									<fmt:parseNumber value="${regDate.time / (1000*60*60*24)}" integerOnly="true" var="oldDays" scope="request" />
+									
+									<!-- 출발일 2일전부터 예약 마감 -->
+									<c:if test="${oldDays - nowDays <= 2}">
+										<span class="pie gray">예약마감</span>
+									</c:if>
+									<!-- 출발일 3일 이상 남았다면 예약 가능 -->
+									<c:if test="${oldDays - nowDays >= 3}">
+										<span class="pie orange1">예약가능</span>
+									</c:if>
+									
+									
+									
+									
+									
+								</span>
 		                    </span>		                        
 	                </span>
 					</li>
 					
 					 <li class="lineNone pdt30">
                         <button type="button" name="btnSchedule" role-w="1160" role-h="800" role-url="/product/unitListPop.do?menu=pkg&did=7423&goodsCd=NCP5208" class="btnStartdate" title="다른출발일보기">다른출발일보기</button>
-						<button type="button" name="btnReserve" id="btnReserve" class="btnReserve" title="예약하기">예약하기</button>
+						<span class="dev_comm" style="position:absolute;top:22px;">unitList.do 를 팝업으로 보여줌 코드 값 보내줌</span>
+						
+						<c:if test="${oldDays - nowDays <= 2}">
+							<button type="button" name="btnClose" class="btnReserve reserveEnd" title="예약하기">예약마감</button>
+						</c:if>
+						<c:if test="${oldDays - nowDays >= 3}">
+							<button type="button" name="btnReserve" class="btnReserve" title="예약하기">예약하기</button>
+						</c:if>
+						<span class="dev_comm" style="position:absolute;bottom:1px;">db에서 rsvable=Y 가 N 으로 바뀌도록 </span>
+						
+						
                      </li>
 				</ul>
 				<!-- [[상품 상세정보 Start]] 상품의 상세정보 include 된듯 -->
@@ -410,11 +552,7 @@ $(document).ready(function() {
 						</div>
 						</div>
 						
-						
 					
-					
-					
-					${vo.opt}
 					<!--[[ 옵션사항 info05 Start ]]-->
 					<div class="info05">
 						
@@ -441,90 +579,29 @@ $(document).ready(function() {
 									</tr>
 								</thead>
 								<tbody>
+								<c:forEach var="rs" items="${optList}">
 									<tr>
 										<td class="td01">
 											<span class="pic">
-												<img src="http://dimg.cdn.ybtour.co.kr/TN/cb/cbbaf54cf6178747941498d66e6751a3.tn.179x110.jpg" alt="">
+												<img src="/images/opt/${rs.img}" alt="${rs.title}">
 											</span>
 											<span class="choice w180">
 												<span class="tit"></span>
-												<span class="txt">베니스 곤돌라</span>
+												<span class="txt">${rs.title}</span>
 											</span>
 										</td>
 										<td class="td02">
-											<span class="txt">약 30분 소요</span>
+											<span class="txt">${rs.rtime}</span>
 										</td>
 										<td class="td03">
-											<span class="txt">€50</span>
+											<span class="txt">${rs.price}</span>
 										</td>
 										<td class="td04">
 											<span class="tit"></span>
-											<span class="txt">- 진행방법 : 베니스의 명물 곤돌라에 탑승하여 베니스 본섬 물길따라 관광합니다.<br>- 미참가시 : 주변 자유관광 합니다. (인솔자/가이드 미동행)</span>
+											<span class="txt">${rs.expl}</span>
 										</td>
 									</tr>
-									<tr>
-										<td class="td01">
-											<span class="pic">
-												<img src="http://dimg.cdn.ybtour.co.kr/TN/b0/b02134db6493f37bdd8c66d870227b70.tn.179x110.jpg" alt="">
-											</span>
-											<span class="choice w180">
-												<span class="tit"></span>
-												<span class="txt">베니스 수상택시</span>
-											</span>
-										</td>
-										<td class="td02">
-											<span class="txt">약 40분 소요</span>
-										</td>
-										<td class="td03">
-											<span class="txt">€50</span>
-										</td>
-										<td class="td04">
-											<span class="tit"></span>
-											<span class="txt">- 진행방법 : 수상택시를 탑승하여 베니스 본섬의 S자 대운하를 관광합니다. <br>- 미참가시 : 일반 배로 본토로 이동합니다. (인솔자 동행)</span>
-										</td>
-									</tr>
-									<tr>
-										<td class="td01">
-											<span class="pic">
-												<img src="http://dimg.cdn.ybtour.co.kr/TN/4a/4a07ebe32a181178a2e6534e6772fb10.tn.179x110.jpg" alt="">
-											</span>
-											<span class="choice w180">
-												<span class="tit"></span>
-												<span class="txt">로마 미니밴투어</span>
-											</span>
-										</td>
-										<td class="td02">
-											<span class="txt">약 3시간 소요</span>
-										</td>
-										<td class="td03">
-											<span class="txt">€60</span>
-										</td>
-										<td class="td04">
-											<span class="tit"></span>
-											<span class="txt">- 진행방법 : 바티칸시국을 제외한 모든 관광지를 미니밴으로 이동합니다. <br>- 미참가시 : 기존일정대로 도보로 로마 관광합니다. (인솔자 동행)</span>
-										</td>
-									</tr>
-									<tr>
-										<td class="td01">
-											<span class="pic">
-												<img src="http://dimg.cdn.ybtour.co.kr/TN/20/207e96019d37b321a419e23c148b20f2.tn.179x110.JPG" alt="">
-											</span>
-											<span class="choice w180">
-												<span class="tit"></span>
-												<span class="txt">카프리섬투어</span>
-											</span>
-										</td>
-										<td class="td02">
-											<span class="txt">약 4시간 소요</span>
-										</td>
-										<td class="td03">
-											<span class="txt">€120</span>
-										</td>
-										<td class="td04">
-											<span class="tit"></span>
-											<span class="txt">- 진행방법 : 카프리섬으로 들어가 카프리섬관광 진행합니다.<br>- 미참가시 : 미 참여자분들은 주변 자유 관광합니다.(인솔자 미동행)</span>
-										</td>
-									</tr>
+								</c:forEach>
 								</tbody>
 							</table>
 						</div>
@@ -551,1433 +628,478 @@ $(document).ready(function() {
 								</div>
 						</div>
 						<div id="tabWrap">
-						<span class="dev_comm">일정표 만들어야 함</span>
+						<span class="dev_comm" style="position:absolute">일정표 만들어야 함</span>
 						<!--[[ 탭 tabWrap Start ]]-->
 						<div class="tab">
 							<ul>
 								<li class="t01 on"><a href="#submain02">일정표</a></li>
 								<li class="t03"><a href="#submain02">관광지 정보</a></li>
-								<li class="t04"><a href="#submain02">선택관광 정보</a></li>
-								<li class="t07"><a href="#submain02">쇼핑 정보</a></li>
 								</ul>
 						</div>
 						</div>
 						<div id="schedule" class="tabview tab01" style="display: block;"><!--[[ 일정표 schedule Start ]]-->
-						<div class="infomation_txt">
+							<div class="infomation_txt">
 								여행 일정은 계약 체결 시 예상하지 못한 부득이한 사정 등이 발생하는 경우 <br>여행자의 사전 동의를 거쳐 변경될 수 있음을 양지하여 주시기 바랍니다.								
 							</div>
-						<div id="dateWrap"><!--[[ 일정차수 dateWrap Start ]]-->
-							
-							<div class="dateSlider">
-							
-								<button type="button" class="prev off" title="이전">&lt;</button>
+							<div id="dateWrap"><!--[[ 일정차수 dateWrap Start ]]-->
 								
-								<div class="slideWrap">
-									<div class="slide">
-										
-										<span class="on" onclick="moveSchedule('#dayTitle1'); return false;">
+								<div class="dateSlider">
+								
+									<button type="button" class="prev off" title="이전">&lt;</button>
+									
+									<div class="slideWrap">
+										<div class="slide">
+											<span class="on" onclick="moveSchedule('#dayTitle1'); return false;">
 												1일
 											</span>
-										<span class="" onclick="moveSchedule('#dayTitle2'); return false;">
-												2일
+										
+										<c:set value="${vo.period2}" var="ped"/>
+										<c:forEach var="i" begin="2" end="${ped}" step="1">
+										
+											<span class="" onclick="moveSchedule('#dayTitle${i}'); return false;">
+												${i}일
 											</span>
-										<span class="" onclick="moveSchedule('#dayTitle3'); return false;">
-												3일
-											</span>
-										<span class="" onclick="moveSchedule('#dayTitle4'); return false;">
-												4일
-											</span>
-										<span class="" onclick="moveSchedule('#dayTitle5'); return false;">
-												5일
-											</span>
-										<span class="" onclick="moveSchedule('#dayTitle6'); return false;">
-												6일
-											</span>
-										<span class="" onclick="moveSchedule('#dayTitle7'); return false;">
-												7일
-											</span>
-										<span class="" onclick="moveSchedule('#dayTitle8'); return false;">
-												8일
-											</span>
-										<span class="" onclick="moveSchedule('#dayTitle9'); return false;">
-												9일
-											</span>
-										<span class="" onclick="moveSchedule('#dayTitle10'); return false;">
-												10일
-											</span>
+											
+										</c:forEach>
 										</div>
-								</div>
-								<button type="button" class="next on" title="다음">&gt;</button>
-							</div>
-							
-						</div><!--[[ 일정차수 dateWrap End ]]-->
-					
-						<div class="scheduleNoti">
-							<button type="button" class="print_new" onclick="fnAllPrint('NCP5208-170922OZ00','Y')"><img src="/images/detail/schedule_print.png" alt=" ">인쇄하기</button>
-							<button type="button" class="safe" onclick="fnSafetyNotice()">안전한 여행을 위한 주의사항보기</button>
-							 </div>
-						
-						<div id="daily"><!--[[ 일정상세 daily Start ]]-->
-
-							<!-- 일정start -->	
-								<div class="dayTitle" id="dayTitle1">
-										<span class="day">1일차</span>
-										<span class="dayTxt"><p>2017년09월22일 금요일 - 인천/시애틀/밴쿠버</p></span>                        
-										<select name="product" id="daySchedule1" title="일정선택" onchange="moveSchedule(this.value, this.id, '#dayTitle1'); return false;">
-											<option value="#dayTitle1" selected="">[1일차] 2017-09-22  금</option>
-											<option value="#dayTitle2">[2일차] 2017-09-23  토</option>
-											<option value="#dayTitle3">[3일차] 2017-09-24  일</option>
-											<option value="#dayTitle4">[4일차] 2017-09-25  월</option>
-											<option value="#dayTitle5">[5일차] 2017-09-26  화</option>
-											<option value="#dayTitle6">[6일차] 2017-09-27  수</option>
-											<option value="#dayTitle7">[7일차] 2017-09-28  목</option>
-											<option value="#dayTitle8">[8일차] 2017-09-29  금</option>
-											<option value="#dayTitle9">[9일차] 2017-09-30  토</option>
-											<option value="#dayTitle10">[10일차] 2017-10-01  일</option>
-											</select>
 									</div>
-									
-									<!-- 시간별 일정정보  Start -->       
-									<!-- 방문도시정보 -->       
-												<div class="dayArea">
-													<span class="areaName">인천</span>
+									<button type="button" class="next on" title="다음">&gt;</button>
+								</div>
+								
+							</div><!--[[ 일정차수 dateWrap End ]]-->
+					
+							<div class="scheduleNoti">
+								<button type="button" class="print_new" onclick="fnAllPrint('NCP5208-170922OZ00','Y')"><img src="/images/detail/schedule_print.png" alt=" ">인쇄하기</button>
+								<button type="button" class="safe" onclick="fnSafetyNotice()">안전한 여행을 위한 주의사항보기</button>
+								 </div>
+							
+							<div id="daily">
+								${vo.daily}
+							</div>
+								<!--[[ 일정상세 daily End ]]-->
+						</div>
+						
+						
+						
+						
+						
+						<div id="tourInfo" class="tabview tab03" style="display: none;"><!--[[ 관광지정보 tab03 Start ]]-->
+	            
+			            <div class="etcInfo"><!--[[ 박스영역 Start ]]-->
+		
+								<div class="infoTxt template">
+											<div class="infoBar ">
+												<span class="head mint">관광지</span>
+				                                <span class="tit">
+													<span class="hgName mrl5">베키오다리</span>
+													<span class="hgName mrl5">:</span><span class="ctName">Ponte Vecchio</span>
+													<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1000264');">자세히보기<p>+</p></span></span>                										
+											</div>
+											<div class="infoBody">
+												<div class="picWrap">
+												
+													<!-- 템플릿 -->												
+													<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/09/09984950e4be367601df7821f6575ea7.tn.410x280.jpg" alt="베키오다리" style="height: 140px;"></span>
+															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/68/68ccb689ebf82f9e831121bd866d63c4.tn.410x280.jpg" alt="베키오다리" style="height: 140px;"></span>
+														<span class=" txtBox">										
+														아르노강 위의 다리 중에서 가장 오래된 것으로 1345년에 건설되었다. 로마시대의 마지막 다리로 알려져 있다. 1944년 연합군의 추격을 받던 독일군이 강 양쪽 기슭의 집을 모두 파괴했으나 베키오 다리만 남겨두었다고 한다. 원래 이 다리에는 푸줏간, 대장간, 가죽 처리장 등이 있었는데 1593년에 페르디난도 1세가 시끄럽고 악취가 난다며 모두 추방하였고 대신 금세공업자들이 다리 위의 상점에 세들었다. 이후로 지금까지 베키오 다리의 금세공 상점들은 다양한 보석을 판매하고 있으며, 이곳에서 판매하는 수공예 제품들은 여행자들에게 인기가 높다.</span>
 													</div>
-											<div class="dayInfo">
-												<!-- 시간별 일정 제목& 내용 -->
-												<span class="time">18:30</span>
-												<span class="timeTxt">인천출발</span>			                        
-												<span class="timeTxtSub">[ 18:30 OZ272 ] 인천 국제공항 출발 (약 9시간 40분 소요)</span>
-												<!-- 출발미팅정보 Start-->
-													<div class="infoTxt infoType01">		
-														<span class="pic"><img src="http://cimg.cdn.ybtour.co.kr/attachHome/GB/GO/201512/201512151325222171301004001008.jpg" alt="미팅장소"></span>
-														<!-- 미팅정보 -->
-														<span class="dot">
-															미팅장소 : 인천 국제공항 3층 M카운터 </span>
-														<span class="dot">미팅 담당연락처 : 010-4393-2003</span>   
-														<span class="dot">안내:인천 국제공항 3층 M카운터 <br>
-아시아나 항공 19,20번 맞은편 테이블 </span>						
-														<!-- 항공출발 정보 -->
-														<span class="tit">
-															<span>인천출발 -18:40분</span>
-															<p>|</p>
-															<span>항공편 OZ272</span>
-															<p>|</p>
-															<span>비행시간:   소요</span>
+												
+												</div>	
+																		
+											</div>
+									<div class="infoTxt template">
+											<div class="infoBar ">
+												<span class="head mint">관광지</span>
+				                                <span class="tit">
+													<span class="hgName mrl5">시뇨리아 광장</span>
+													<span class="hgName mrl5">:</span><span class="ctName">Piazza della Signoria</span>
+													<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1000266');">자세히보기<p>+</p></span></span>                										
+											</div>
+											<div class="infoBody">
+												<div class="picWrap">
+												
+													<!-- 템플릿 -->												
+													<span class="pic">
+																<img src="https://dimgcdn.ybtour.co.kr/TN/52/529a80b065e3f9a7cab1b945380d8ae0.tn.410x280.JPG" alt="시뇨리아 광장" style="height: 140px;">
+																</span>
+														<span class=" txtBox">										
+														피렌체에서는 찾아보기 드문 널찍한 공간으로 13~14세기에 만들어져 도시의 구심점으로 시민들이 토론을 벌이거나 거수로 정사를 결정하던 곳이다. 주변에는 시청사로 쓰이고 있는 베키오 궁전, 피렌체를 대표하는 미술관인 우피치 미술관이 있다.</span>
+													</div>
+												
+												</div>	
+																		
+											</div>
+									<div class="infoTxt template">
+											<div class="infoBar ">
+												<span class="head mint">관광지</span>
+				                                <span class="tit">
+													<span class="hgName mrl5">오르비에또 두오모성당</span>
+													<span class="ctName"></span>
+													<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1003654');">자세히보기<p>+</p></span></span>                										
+											</div>
+											<div class="infoBody">
+												<div class="picWrap">
+												
+													<!-- 템플릿 -->												
+													<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/9f/9fc4733c1fc6d01ae767ade70259a2bd.tn.410x280.jpg" alt="오르비에또 두오모성당" style="height: 140px;"></span>
+															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/97/9768cc3cef8af8876100d805819eef73.tn.410x280.jpg" alt="오르비에또 두오모성당" style="height: 140px;"></span>
+														<span class=" txtBox">										
 														</span>
 													</div>
-													<!-- 출발미팅정보 end-->
-												<!--  s: 20161110 -->
-												<!-- 여행정보 Start -->
-												<!-- 여행정보 end -->               	
-												<!--  e: 20161110 -->
-												</div>
-										<!-- 방문도시정보 -->       
-												<div class="dayArea">
-													<span class="areaName">시애틀</span>
-													</div>
-											<div class="dayInfo">
-												<!-- 시간별 일정 제목& 내용 -->
-												<span class="time">11:10</span>
-												<span class="timeTxt">시애틀 도착</span>			                        
-												<span class="timeTxtSub">시애틀 도착하여 가이드 미팅<br>
-(미팅장소 : 시애틀공항 1번 베기지클레임)</span>
-												<!--  s: 20161110 -->
-												<!-- 여행정보 Start -->
-												<div class="infoTxt template">    
-													<div class="infoBar ">
-																<!-- 도시 헤더정보 -->
-																<span class="head yellow">도시</span>
-																<span class="tit">
-																	<span class="hgName">시애틀</span>
-																	<span class="hgName mrl5">:</span><span class="ctName">Seattle</span>
-																	<span class="btn" onclick="javascript:fnTourDtlInfo('city','USSEA');">자세히보기<p>+</p></span></span>     				                                
-															</div>
-														<div class="infoBody">
-														<div class="picWrap">
-															<!-- 템플릿 -->											
-															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/e0/e01b392e9854eca9942432b0c22d1aaf.tn.410x280.jpg" alt="시애틀" style="height: 140px;"></span>
-																	<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/92/920f17500248a092008e0f3a550ccee3.tn.410x280.jpg" alt="시애틀" style="height: 140px;"></span>
-																<span class=" txtBox">							
-																워싱턴주의 서부, 태평양과 접해 있는 항구도시 시애틀은 워싱턴주에서 가장 큰 도시이자 서북부에서 가장 아름다운 도시로 손꼽히는 곳이다. 남과 북쪽으로 퓌젯트 사운드, 동쪽으로는 위싱턴 호가 자리하고 있는 시애틀은 물의 도시라고도 불리운다. 따뜻하고 볕좋은 여름과 온화한 겨울 날씨가 미국인들에게 인기있는 관광지이다. 시애틀은 시내에도 스페이스 니들과 시애틀 센터, 파이크 플레이스 마켓, 지하에 남아있는 옛도시의 잔재인 언더그라운드 등과 같은 풍부한 볼거리가 가득하고 시내에서 벗어나면 레이니어산 국립공원, 올림픽 국립공원, 노스 케스케이즈 국립공원의 미국을 대표하는 3개의 국립공원이 있어 많은 사람들이 찾아온다</span>
-															</div>
-																																										
-														<!--객실정보 :: 여행정보가 숙박이고 룸표시를 할경우  -->
-														<!-- 참고사항 -->		
-														</div>
-														
-													</div>
-												<!-- 여행정보 end -->               	
-												<!--  e: 20161110 -->
-												</div>
-										<div class="dayInfo">
-												<!-- 시간별 일정 제목& 내용 -->
-												<span class="timeTxt">시애틀 관광</span>			                        
-												<span class="timeTxtSub">시애틀 최고명소인 <span style="color:rgb(0, 0, 0)"><strong>파이크플레이스마켓(스타벅스 1호점, 수산시장)</strong></span> 관광</span>
-												<!--  s: 20161110 -->
-												<!-- 여행정보 Start -->
-												<div class="infoTxt template">    
-													<div class="infoBar ">
-																<!-- 관광지 헤더정보 -->
-																<span class="head mint">관광지</span>
-																<span class="tit">
-																	<span class="hgName">파이크 플레이스 마켓</span>
-																	<span class="hgName mrl5">:</span><span class="ctName">Pike Place Market</span>
-																	<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1001366');">자세히보기<p>+</p></span></span>                             
-															</div>		
-														<div class="infoBody">
-														<div class="picWrap">
-															<!-- 템플릿 -->											
-															<span class="pic">
-																		<img src="https://dimgcdn.ybtour.co.kr/TN/4e/4ef48809ad584d8501a31c664cf328ca.tn.410x280.jpg" alt="파이크 플레이스 마켓" style="height: 140px;">
-																		</span>
-																<span class=" txtBox">							
-																시애틀에서 가장 에너지가 넘치는 곳을 찾는다면 파이크 플레이스 마켓이 최적의 장소입니다! 1907년에 생긴 오래된 시장으로 신선한 야채와 어패류 등이 풍부하고 각종 민예품, 장신구 등을 직접 만들어 판매하는 직판장입니다. 어느 곳에서나 흔히 볼 수 있는 시장의 모습은 낯선 이국의 땅에서 친근함을 느끼게 해주기에 충분해 시애틀을 관광하는 관광객들은 반드시 들러 보는 곳 중의 하나입니다. 시장 곳곳에는 상점리스트와 지도 등이 수록된 무료정보지가 있어 편리하게 이용할 수 있습니다.</span>
-															</div>
-																																										
-														<!--객실정보 :: 여행정보가 숙박이고 룸표시를 할경우  -->
-														<!-- 참고사항 -->		
-														</div>
-														
-													</div>
-												<div class="infoTxt template">    
-													<div class="infoBar ">
-																<!-- 관광지 헤더정보 -->
-																<span class="head mint">관광지</span>
-																<span class="tit">
-																	<span class="hgName">스타벅스 1호점</span>
-																	<span class="hgName mrl5">:</span><span class="ctName">The first Starbucks</span>
-																	<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1001360');">자세히보기<p>+</p></span></span>                             
-															</div>		
-														<div class="infoBody">
-														<div class="picWrap">
-															<!-- 템플릿 -->											
-															<span class="pic">
-																		<img src="https://dimgcdn.ybtour.co.kr/TN/3c/3c91bdd215c69a3b1fe86b984eb8a69f.tn.410x280.jpg" alt="스타벅스 1호점" style="height: 140px;">
-																		</span>
-																<span class=" txtBox">							
-																전 세계 수많은 스타벅스 들의 원조 1호점 시애틀 스타벅스 1호점 입니다!  차별화를 경험하실 수 있으며 언제나 자바 애호가들이 넘침니다! 이 곳에 오시면, 기존 스타벅스 로고와는 전혀 다른, 1호점만의 로고를 보실 수 있습니다. 바리스타 4명이 한꺼번에 주문을 받을 정도로 높은 명성만큼 굉장히 인기가 좋습니다! 특히, 3~4시사이에 한꺼번에 관광객들이 몰릴 때가 많으므로 이점을 유의하여 가는 것이 좋습니다. </span>
-															</div>
-																																										
-														<!--객실정보 :: 여행정보가 숙박이고 룸표시를 할경우  -->
-														<!-- 참고사항 -->		
-														</div>
-														
-													</div>
-												<!-- 여행정보 end -->               	
-												<!--  e: 20161110 -->
-												</div>
-										<!-- 방문도시정보 -->       
-												<div class="dayArea">
-													<span class="areaName">밴쿠버</span>
-													</div>
-											<div class="dayInfo">
-												<!-- 시간별 일정 제목& 내용 -->
-												<span class="timeTxt">밴쿠버로 이동</span>			                        
-												<span class="timeTxtSub">I-5 고속도로를 따라 캐나다 국경을 통과하여<br>
-밴쿠버 도착<br>
-석식 후 호텔투숙 및 휴식</span>
-												<!--  s: 20161110 -->
-												<!-- 여행정보 Start -->
-												<!-- 여행정보 end -->               	
-												<!--  e: 20161110 -->
-												</div>
-										<!-- 일정정보 end -->
-									
-														
-									<!-- 숙박 -->  
-										<div class="dayStay">
-											<span class="stay">숙박</span>
-											<span class="stayTxt stayAccomInfo" onclick="javascript:fnScheAccom('A0006650');" value="A0006650" style="cursor: pointer; text-decoration: underline; color: rgb(0, 182, 173);">
-														컴포트 인 에어포트</span>						                        
-													</div>			                    
-									<!-- 식사 -->
-											<div class="dayFood">				                    
-												<span class="food">식사</span>				                        
-												<span class="foodTxt">
-													<img src="/images/productDetail/schedule_icon02-3.png" alt="석식">
-														<span>한식</span>
-													</span>
-											</div>	
-										<div class="dayTitle" id="dayTitle2">
-										<span class="day">2일차</span>
-										<span class="dayTxt"><p>2017년09월23일 토요일 - 밴쿠버/골든</p></span>                        
-										<select name="product" id="daySchedule2" title="일정선택" onchange="moveSchedule(this.value, this.id, '#dayTitle2'); return false;">
-											<option value="#dayTitle1">[1일차] 2017-09-22  금</option>
-											<option value="#dayTitle2" selected="">[2일차] 2017-09-23  토</option>
-											<option value="#dayTitle3">[3일차] 2017-09-24  일</option>
-											<option value="#dayTitle4">[4일차] 2017-09-25  월</option>
-											<option value="#dayTitle5">[5일차] 2017-09-26  화</option>
-											<option value="#dayTitle6">[6일차] 2017-09-27  수</option>
-											<option value="#dayTitle7">[7일차] 2017-09-28  목</option>
-											<option value="#dayTitle8">[8일차] 2017-09-29  금</option>
-											<option value="#dayTitle9">[9일차] 2017-09-30  토</option>
-											<option value="#dayTitle10">[10일차] 2017-10-01  일</option>
-											</select>
-									</div>
-									
-									<!-- 시간별 일정정보  Start -->       
-									<!-- 방문도시정보 -->       
-												<div class="dayArea">
-													<span class="areaName">밴쿠버</span>
-													</div>
-											<div class="dayInfo">
-												<!-- 시간별 일정 제목& 내용 -->
-												<span class="timeTxt"></span>			                        
-												<span class="timeTxtSub"><p>조식후 가이드 미팅(합류행사)</p>
-
-<p><br>
-1번 하이웨이를 따라 <strong>프레이져 밸리의 넓은 초원지대</strong>를 지나<br>
-신부의 면사포 모양을 닮은 <strong>브라이덜 폭포</strong> 및 호프를 경유</p>
-</span>
-												<!--  s: 20161110 -->
-												<!-- 여행정보 Start -->
-												<div class="infoTxt template">    
-													<div class="infoBar ">
-																<!-- 도시 헤더정보 -->
-																<span class="head yellow">도시</span>
-																<span class="tit">
-																	<span class="hgName">밴쿠버</span>
-																	<span class="hgName mrl5">:</span><span class="ctName">Vancouver</span>
-																	<span class="btn" onclick="javascript:fnTourDtlInfo('city','CAYVR');">자세히보기<p>+</p></span></span>     				                                
-															</div>
-														<div class="infoBody">
-														<div class="picWrap">
-															<!-- 템플릿 -->											
-															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/15/150b216577fd3635c09d6b5b7a3b6acf.tn.410x280.png" alt="밴쿠버" style="height: 140px;"><span class="txtC">브라이덜폭포</span></span>
-																	<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/5d/5de9ef3d7d619080843bd6ffa214c5f5.tn.410x280.png" alt="밴쿠버" style="height: 140px;"><span class="txtC">브라이덜폭포</span></span>
-																</div>
-																																										
-														<!--객실정보 :: 여행정보가 숙박이고 룸표시를 할경우  -->
-														<!-- 참고사항 -->		
-														</div>
-														
-													</div>
-												<!-- 여행정보 end -->               	
-												<!--  e: 20161110 -->
-												</div>
-										<!-- 방문도시정보 -->       
-												<div class="dayArea">
-													<span class="areaName">골든</span>
-													</div>
-											<div class="dayInfo">
-												<!-- 시간별 일정 제목& 내용 -->
-												<span class="timeTxt"></span>			                        
-												<span class="timeTxtSub"><p>인삼과 목재의 도시 <strong>캠룹스</strong></p>
-
-<p><br>
-슈슈왑 호스를 따라 시카무스와 연어의 도시 <strong>샐몬암</strong>을 경유</p>
-
-<p><br>
-캐나다 횡단 철도의 종착지인 <strong>라스트 스파이크 </strong>포인트 관광후<br>
-록키 산맥의 관문인 골든 도착</p>
-
-<p><br>
-호텔 투숙 및 자유시간</p>
-</span>
-												<!--  s: 20161110 -->
-												<!-- 여행정보 Start -->
-												<div class="infoTxt template">    
-													<div class="infoBar ">
-																<!-- 도시 헤더정보 -->
-																<span class="head yellow">도시</span>
-																<span class="tit">
-																	<span class="hgName">샐몬암</span>
-																	<span class="hgName mrl5">:</span><span class="ctName">Salmon Arm</span>
-																	<span class="btn" onclick="javascript:fnTourDtlInfo('city','CAYSN');">자세히보기<p>+</p></span></span>     				                                
-															</div>
-														<div class="infoBody">
-														<div class="picWrap">
-															<!-- 템플릿 -->											
-															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/49/49204a74fd3b8a6389c9c3966159189f.tn.410x280.png" alt="샐몬암" style="height: 140px;"></span>
-																	<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/41/41e3523eaddab879fcf4accffb9b53d3.tn.410x280.png" alt="샐몬암" style="height: 140px;"></span>
-																</div>
-																																										
-														<!--객실정보 :: 여행정보가 숙박이고 룸표시를 할경우  -->
-														<!-- 참고사항 -->		
-														</div>
-														
-													</div>
-												<!-- 여행정보 end -->               	
-												<!--  e: 20161110 -->
-												</div>
-										<!-- 일정정보 end -->
-									
-														
-									<!-- 숙박 -->  
-										<div class="dayStay">
-											<span class="stay">숙박</span>
-											<span class="stayTxt stayAccomInfo" onclick="javascript:fnScheAccom('');" value="" style="cursor: text; text-decoration: none; color: rgb(93, 99, 111);">
-														PONDEROSA  INN 또는 미정</span>						                        
-													</div>			                    
-									<!-- 식사 -->
-											<div class="dayFood">				                    
-												<span class="food">식사</span>				                        
-												<span class="foodTxt">
-													<img src="/images/productDetail/schedule_icon02-1.png" alt="조식">
-														<span>호텔식</span>
-													<img src="/images/productDetail/schedule_icon02-2.png" alt="중식">
-														<span>한식</span>
-													<img src="/images/productDetail/schedule_icon02-3.png" alt="석식">
-														<span>현지식</span>
-													</span>
-											</div>	
-										<div class="dayTitle" id="dayTitle3">
-										<span class="day">3일차</span>
-										<span class="dayTxt"><p>2017년09월24일 일요일 - 골든/캘거리</p></span>                        
-										<select name="product" id="daySchedule3" title="일정선택" onchange="moveSchedule(this.value, this.id, '#dayTitle3'); return false;">
-											<option value="#dayTitle1">[1일차] 2017-09-22  금</option>
-											<option value="#dayTitle2">[2일차] 2017-09-23  토</option>
-											<option value="#dayTitle3" selected="">[3일차] 2017-09-24  일</option>
-											<option value="#dayTitle4">[4일차] 2017-09-25  월</option>
-											<option value="#dayTitle5">[5일차] 2017-09-26  화</option>
-											<option value="#dayTitle6">[6일차] 2017-09-27  수</option>
-											<option value="#dayTitle7">[7일차] 2017-09-28  목</option>
-											<option value="#dayTitle8">[8일차] 2017-09-29  금</option>
-											<option value="#dayTitle9">[9일차] 2017-09-30  토</option>
-											<option value="#dayTitle10">[10일차] 2017-10-01  일</option>
-											</select>
-									</div>
-									
-									<!-- 시간별 일정정보  Start -->       
-									<!-- 방문도시정보 -->       
-												<div class="dayArea">
-													<span class="areaName">골든</span>
-													</div>
-											<div class="dayInfo">
-												<!-- 시간별 일정 제목& 내용 -->
-												<span class="timeTxt">요호국립공원 관광</span>			                        
-												<span class="timeTxtSub"><p>호텔 조식후 출발하여 알버타주</p>
-
-<p><br>
-브리티시 컬럼비아주 경계인 키킹 호스 패스를 지나 <span style="color:rgb(0, 0, 0)"><strong>요호 국립공원</strong>으로 </span>이동</p>
-
-<p>&nbsp;</p>
-
-<p>아름다운 <strong>요호밸리</strong>를 따라 키킹호스강의 침식작용으로 이루어진</p>
-
-<p><strong>- 자연의 다리</strong>와 침엽수가 아늑하게 둘러싸고 있는 <strong>에메랄드 호수</strong>를 관광</p>
-
-<p>&nbsp;</p>
-
-<p>아이스필드 파크웨이를 따라 까마귀발 빙하, 보우호수를 감상하며</p>
-
-<p>- 콜럼비아 대빙원에 도착하여 특수설상차를 타고 <strong>아싸바스카 빙하</strong>에 올라 <strong>빙하체험</strong></p>
-</span>
-												<!--  s: 20161110 -->
-												<!-- 여행정보 Start -->
-												<div class="infoTxt template">    
-													<div class="infoBar ">
-																<!-- 관광지 헤더정보 -->
-																<span class="head mint">관광지</span>
-																<span class="tit">
-																	<span class="hgName">에메랄드 호수</span>
-																	<span class="hgName mrl5">:</span><span class="ctName">Emerald Lake</span>
-																	<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1000532');">자세히보기<p>+</p></span></span>                             
-															</div>		
-														<div class="infoBody">
-														<div class="picWrap">
-															<!-- 템플릿 -->											
-															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/3f/3f7c421976b6e5a34be55405c8de7b49.tn.410x280.jpg" alt="에메랄드 호수" style="height: 140px;"></span>
-																	<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/c2/c2f86250005da83b8e43bd2eaa8abb06.tn.410x280.jpg" alt="에메랄드 호수" style="height: 140px;"></span>
-																<span class=" txtBox">							
-																요호 국립공원을 대표하는 호수 중 하나로, 겨울에는 얼어있다가 날씨가 따뜻해지면 에메랄드빛이 나는 호수가 된다. 호수 위에서 카약을 타는 사람들을 종종 볼 수 있다.</span>
-															</div>
-																																										
-														<!--객실정보 :: 여행정보가 숙박이고 룸표시를 할경우  -->
-														<!-- 참고사항 -->		
-														</div>
-														
-													</div>
-												<div class="infoTxt template">    
-													<div class="infoBar headOk ">
-																<!-- 선택관광 헤더정보 -->
-																<span class="head yellow">선택관광</span>
-																<span class="tit pdL180">
-																	<span class="hgName choTxt">[헬기투어]</span>
-																	<span class="barLine mrl5">|</span><span class="navi">
-																		<p class="payTxt">$150/1인</p></span>
-																	</span>		
-															</div>
-														<div class="infoBody">
-														<div class="picWrap">
-															<!-- 템플릿 -->											
-															<span class=" txtBox">							
+												
+												</div>	
+																		
+											<!-- 비고 -->															
+												<div class="infoFoot">로마에서 북서쪽으로 96㎞ 떨어진 팔리아강(江)과 키아나강(江)의 합류점에 있다. 해발고도 195m의 바위산 위에 위치하며, 케이블카로 오르내린다. 주변의 비옥한 농업지대의 유통·산업·관광의 중심지이다. 부근의 농촌에서는 포도가 많이 생산되며, '오르비에토'라는 이름으로 생산되는 백포도주가 유명하다. 연철·도자기·레이스 등의 수공업이 이루어진다. </div>	                        	
+											</div>
+									<div class="infoTxt template">
+											<div class="infoBar ">
+												<span class="head mint">관광지</span>
+				                                <span class="tit">
+													<span class="hgName mrl5">피렌체 두오모 대성당</span>
+													<span class="hgName mrl5">:</span><span class="ctName">Santa Maria del Fiore</span>
+													<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1000263');">자세히보기<p>+</p></span></span>                										
+											</div>
+											<div class="infoBody">
+												<div class="picWrap">
+												
+													<!-- 템플릿 -->												
+													<span class="pic">
+																<img src="https://dimgcdn.ybtour.co.kr/TN/e1/e1796d23bb2c6a0eb7801f3852976fdf.tn.410x280.jpg" alt="피렌체 두오모 대성당" style="height: 140px;">
 																</span>
-															</div>
-																																										
-														<!--객실정보 :: 여행정보가 숙박이고 룸표시를 할경우  -->
-														<!-- 참고사항 -->		
-														</div>
-														
+														<span class=" txtBox">										
+														정식 명칭은 ‘꽃의 성모 마리아’라는 뜻의 산타 마리아 델 피오레 대성당(Cattedrale di Santa Maria del Fiore)이다. 필리포 브루넬레스키가 설계한 돔으로 유명하며, 실외는 하얀색으로 윤곽선을 두른 초록색과 분홍색의 대리석 판으로 마감되어 있다.<br>
+두오모의 쿠폴라는 '냉정과 열정사이' 영화에서 아오이와 준세이의 10년의 약속을 했던 장소로 유명하다. 두오모의 쿠폴라는 올라가면<br>
+피렌체의 아름다운 모습을 볼 수 있다.</span>
 													</div>
-												<div class="infoTxt template">    
-													<div class="infoBar headOk ">
-																<!-- 선택관광 헤더정보 -->
-																<span class="head yellow">선택관광</span>
-																<span class="tit pdL180">
-																	<span class="hgName choTxt">[설상차]</span>
-																	<span class="barLine mrl5">|</span><span class="navi">
-																		<p class="payTxt">$60 /1인</p></span>
-																	<span class="btn" onclick="javascript:fnTourDtlInfo('selectTour','E1001831');">자세히보기<p>+</p></span></span>		
-															</div>
-														<div class="infoBody">
-														<div class="picWrap">
-															<!-- 템플릿 -->											
-															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/b5/b5113738b87c19e0e2bef86dfe74a32d.tn.410x280.JPG" alt="설상차" style="height: 140px;"></span>
-																	<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/97/977694fa5b71130d8a1b07865490b354.tn.410x280.JPG" alt="설상차" style="height: 140px;"></span>
-																<span class=" txtBox">							
-																캐나다 로키관광의 꽃! 특수 설상차. 설상차 운전기사의 가이드를 직접 들으며, 가파른 빙원을 올라갑니다. 차창밖으로 보이는 아름다운 빙하를 감상해 보세요</span>
-															</div>
-																																										
-														<!--객실정보 :: 여행정보가 숙박이고 룸표시를 할경우  -->
-														<!-- 참고사항 -->		
-														</div>
-														
+												
+												</div>	
+																		
+											</div>
+									<div class="infoTxt template">
+											<div class="infoBar ">
+												<span class="head mint">관광지</span>
+				                                <span class="tit">
+													<span class="hgName mrl5">탄식의 다리</span>
+													<span class="hgName mrl5">:</span><span class="ctName">Bridge of Sighs</span>
+													<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1000362');">자세히보기<p>+</p></span></span>                										
+											</div>
+											<div class="infoBody">
+												<div class="picWrap">
+												
+													<!-- 템플릿 -->												
+													<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/bc/bc01d0789844703aa1c8b3f98888b59d.tn.410x280.jpg" alt="탄식의 다리" style="height: 140px;"></span>
+															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/7f/7ffe8526755449eaf1475c231784f468.tn.410x280.jpg" alt="탄식의 다리" style="height: 140px;"></span>
+														<span class=" txtBox">										
+														두칼레 궁전과 작은 운하를 사이에 두고 동쪽으로 나 있는 감옥을 잇는 다리이다. 죄수들이 이 다리를 건너 프리지오니 지하 감옥으로 들어가면서 다시는 햇빛을 볼 수 없다는 생각에 한숨을 지으며 건넜다고 해서 지금의 이름이 붙여졌다. 이곳을 더욱 유명하게 만든 인물은 바로 작가이자 역사에 길이 남을 바람둥이였던 카사노바로, 그는 바로 이곳에 위치한 감옥에 투옥되었다가 탈옥을 시도하였다고 한다.</span>
 													</div>
-												<!-- 여행정보 end -->               	
-												<!--  e: 20161110 -->
-												</div>
-										<!-- 방문도시정보 -->       
-												<div class="dayArea">
-													<span class="areaName">캘거리</span>
+												
+												</div>	
+																		
+											</div>
+									<div class="infoTxt template">
+											<div class="infoBar ">
+												<span class="head mint">관광지</span>
+				                                <span class="tit">
+													<span class="hgName mrl5">아레나 원형극장</span>
+													<span class="hgName mrl5">:</span><span class="ctName">Arena theater</span>
+													<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1000379');">자세히보기<p>+</p></span></span>                										
+											</div>
+											<div class="infoBody">
+												<div class="picWrap">
+												
+													<!-- 템플릿 -->												
+													<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/47/476d6ce6255c5c25f2c4959297f7b245.tn.410x280.jpg" alt="아레나 원형극장" style="height: 140px;"></span>
+															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/85/858773da0fc325036f22ade1cef3486e.tn.410x280.jpg" alt="아레나 원형극장" style="height: 140px;"></span>
+														<span class=" txtBox">										
+														원형 경기장으로는 세계에서 3번째로 큰 규모를 갖는 "베로나의 마돈나"로 불리는 14세기 분수가 있는 구시가의 중심이다. 로마제국이 멸망한 뒤에는 사형장, 기사들의 결투 장소 등으로 이용되다가 19세기 이후부터 역사 유적으로 보호 받았다. 최대 2만 2000명까지 수용 가능하며, 해마다 여름이면 이곳에서 베로나 오페라축제가 열린다.</span>
 													</div>
-											<div class="dayInfo">
-												<!-- 시간별 일정 제목& 내용 -->
-												<span class="timeTxt"></span>			                        
-												<span class="timeTxtSub"><p>광활한 알버타의 목장지대를 지나 캘거리로 이동</p>
-
-<p>&nbsp;</p>
-
-<p>호텔 투숙 및 자유시간</p>
-</span>
-												<!--  s: 20161110 -->
-												<!-- 여행정보 Start -->
-												<!-- 여행정보 end -->               	
-												<!--  e: 20161110 -->
-												</div>
-										<!-- 일정정보 end -->
-									
-														
-									<!-- 숙박 -->  
-										<div class="dayStay">
-											<span class="stay">숙박</span>
-											<span class="stayTxt stayAccomInfo" onclick="javascript:fnScheAccom('');" value="" style="cursor: text; text-decoration: none; color: rgb(93, 99, 111);">
-														CLARION CALGARY 또는 미정</span>						                        
-													</div>			                    
-									<!-- 식사 -->
-											<div class="dayFood">				                    
-												<span class="food">식사</span>				                        
-												<span class="foodTxt">
-													<img src="/images/productDetail/schedule_icon02-1.png" alt="조식">
-														<span>호텔식</span>
-													<img src="/images/productDetail/schedule_icon02-2.png" alt="중식">
-														<span>현지식</span>
-													<img src="/images/productDetail/schedule_icon02-3.png" alt="석식">
-														<span>한식</span>
-													</span>
-											</div>	
-										<div class="dayTitle" id="dayTitle4">
-										<span class="day">4일차</span>
-										<span class="dayTxt"><p>2017년09월25일 월요일 - 캘거리/벤프</p></span>                        
-										<select name="product" id="daySchedule4" title="일정선택" onchange="moveSchedule(this.value, this.id, '#dayTitle4'); return false;">
-											<option value="#dayTitle1">[1일차] 2017-09-22  금</option>
-											<option value="#dayTitle2">[2일차] 2017-09-23  토</option>
-											<option value="#dayTitle3">[3일차] 2017-09-24  일</option>
-											<option value="#dayTitle4" selected="">[4일차] 2017-09-25  월</option>
-											<option value="#dayTitle5">[5일차] 2017-09-26  화</option>
-											<option value="#dayTitle6">[6일차] 2017-09-27  수</option>
-											<option value="#dayTitle7">[7일차] 2017-09-28  목</option>
-											<option value="#dayTitle8">[8일차] 2017-09-29  금</option>
-											<option value="#dayTitle9">[9일차] 2017-09-30  토</option>
-											<option value="#dayTitle10">[10일차] 2017-10-01  일</option>
-											</select>
-									</div>
-									
-									<!-- 시간별 일정정보  Start -->       
-									<!-- 방문도시정보 -->       
-												<div class="dayArea">
-													<span class="areaName">캘거리</span>
+												
+												</div>	
+																		
+											</div>
+									<div class="infoTxt template">
+											<div class="infoBar ">
+												<span class="head mint">관광지</span>
+				                                <span class="tit">
+													<span class="hgName mrl5">산마르코 광장</span>
+													<span class="hgName mrl5">:</span><span class="ctName">San Marco Piazza</span>
+													<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1000375');">자세히보기<p>+</p></span></span>                										
+											</div>
+											<div class="infoBody">
+												<div class="picWrap">
+												
+													<!-- 템플릿 -->												
+													<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/88/88f3bd06aa42831d72ceb635ab0cd93e.tn.410x280.jpg" alt="산마르코 광장" style="height: 140px;"></span>
+															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/26/26cdac956f2808124dc824231d4cd4db.tn.410x280.jpg" alt="산마르코 광장" style="height: 140px;"></span>
+														<span class=" txtBox">										
+														베네치아 정치, 경제, 문화의 중심지로 건물들이 광장을 'ㄷ'자로 둘러싸고 있다. 나폴레옹은 이를 두고 세계에서 가장 아름다운 응접실이라 불렀다. 광장의 가운데에는 베네치아의 수호신인 날개 달린 사자상과 성테오도르상이 있고 동쪽으로 산 마르코 대성당, 두칼레 궁전이 있다. 광장을 둘러싼 건물은 16세기 경 정부청사로 건립된 것으로 나폴레옹의 날개라고도 불리며, 현재는 박물관을 비롯해 오래된 카페, 살롱들이 들어서 있다.</span>
 													</div>
-											<div class="dayInfo">
-												<!-- 시간별 일정 제목& 내용 -->
-												<span class="timeTxt"></span>			                        
-												<span class="timeTxtSub"><p>호텔조식 후 출발하여</p>
-
-<p>&nbsp;</p>
-
-<p>로키의 장수마을 캔모어로 이동하여 쇼핑센터 방문</p>
-
-<p><strong>NUTRITION 특판점</strong> 방문</p>
-
-<p>(아싸히 베리, 키토산, 초유, 석청 등 구매가능)</p>
-</span>
-												<!--  s: 20161110 -->
-												<!-- 여행정보 Start -->
-												<!-- 여행정보 end -->               	
-												<!--  e: 20161110 -->
-												</div>
-										<!-- 방문도시정보 -->       
-												<div class="dayArea">
-													<span class="areaName">벤프</span>
+												
+												</div>	
+																		
+											</div>
+									<div class="infoTxt template">
+											<div class="infoBar ">
+												<span class="head mint">관광지</span>
+				                                <span class="tit">
+													<span class="hgName mrl5">두칼레 궁전</span>
+													<span class="hgName mrl5">:</span><span class="ctName">Palazzo Ducale</span>
+													<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1000371');">자세히보기<p>+</p></span></span>                										
+											</div>
+											<div class="infoBody">
+												<div class="picWrap">
+												
+													<!-- 템플릿 -->												
+													<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/61/61569e6db41f35eff573ea39b67a6223.tn.410x280.jpg" alt="두칼레 궁전" style="height: 140px;"></span>
+															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/a5/a5f23d077c2904b313d801ad131cca33.tn.410x280.jpg" alt="두칼레 궁전" style="height: 140px;"></span>
+														<span class=" txtBox">										
+														베네치아 공국의 정부청사로 9세기에 처음 만들어졌다. 하지만 몇 차례의 화재를 겪으며 재건을 반복해 지금의 건물은 15세기에 완성됐다. 북방의 고딕 양식과 베네치아의 동방적 양식과 장식이 어우러진 모습을 베네치아 고딕이라고 부르기도 한다. 두칼레 궁전에서는 산 마르코 광장과 베네치아 석호를 동시에 바라보며 즐길 수 있다.</span>
 													</div>
-											<div class="dayInfo">
-												<!-- 시간별 일정 제목& 내용 -->
-												<span class="timeTxt">밴프국립공원 관광</span>			                        
-												<span class="timeTxtSub"><p>1885년 지정된 캐나다 최초의 국립공원인 <span style="color:rgb(0, 0, 0)"><strong>밴프 국립공원</strong></span>으로 이동</p>
-
-<p>&nbsp;</p>
-
-<p><strong>- 밴프 스프링스 호텔</strong> 및 <strong>서프라이즈 코너</strong> 관광</p>
-
-<p>-&nbsp;마른린 몬로 주연의 '돌아오지 않는 강' 촬영지 였던 <strong>보우폭포</strong></p>
-
-<p>&nbsp;</p>
-</span>
-												<!--  s: 20161110 -->
-												<!-- 여행정보 Start -->
-												<div class="infoTxt template">    
-													<div class="infoBar ">
-																<!-- 관광지 헤더정보 -->
-																<span class="head mint">관광지</span>
-																<span class="tit">
-																	<span class="hgName">밴프국립공원</span>
-																	<span class="hgName mrl5">:</span><span class="ctName">Banff National Park</span>
-																	<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1000534');">자세히보기<p>+</p></span></span>                             
-															</div>		
-														<div class="infoBody">
-														<div class="picWrap">
-															<!-- 템플릿 -->											
-															<span class="pic">
-																		<img src="https://dimgcdn.ybtour.co.kr/TN/e9/e9ee07cc2389d6a0a2e6ae55d6c11c88.tn.410x280.JPG" alt="밴프국립공원" style="height: 140px;">
-																		</span>
-																<span class=" txtBox">							
-																1885년 지정된 캐나다 최초인 동시에 세계에서 세 번째로 개설된 국립공원이다. 대규모의 빙하와 호소 · 온천 · 야생동물 등 관광자원이 풍부하며, 야영장 · 숙박시설 · 트레일러 주차장 등이 갖추어져 있다.</span>
-															</div>
-																																										
-														<!--객실정보 :: 여행정보가 숙박이고 룸표시를 할경우  -->
-														<!-- 참고사항 -->		
-														</div>
-														
+												
+												</div>	
+																		
+											</div>
+									<div class="infoTxt template">
+											<div class="infoBar ">
+												<span class="head mint">관광지</span>
+				                                <span class="tit">
+													<span class="hgName mrl5">베니스 전경</span>
+													<span class="ctName"></span>
+													<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1004425');">자세히보기<p>+</p></span></span>                										
+											</div>
+											<div class="infoBody">
+												<div class="picWrap">
+												
+													<!-- 템플릿 -->												
+													<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/4b/4b65ffc2a8b867fe936f71137b92c027.tn.410x280.jpg" alt="베니스 전경" style="height: 140px;"></span>
+															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/5b/5bef3bdc12f56446a5b88fefff5c2ce5.tn.410x280.jpg" alt="베니스 전경" style="height: 140px;"></span>
+														<span class=" txtBox">										
+														영어로는 베니스(Venice)라고 한다. 베네치아만 안쪽의 석호 위에 흩어져 있는 118개의 섬들이 약 400개의 다리로 이어져 있다. 섬과 섬 사이의 수로가 중요한 교통로가 되어 독특한 시가지를 이루며, 흔히 ‘물의 도시’라고 부른다.</span>
 													</div>
-												<div class="infoTxt template">    
-													<div class="infoBar ">
-																<!-- 관광지 헤더정보 -->
-																<span class="head mint">관광지</span>
-																<span class="tit">
-																	<span class="hgName">보우 폭포</span>
-																	<span class="hgName mrl5">:</span><span class="ctName">Bow Falls</span>
-																	<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1000529');">자세히보기<p>+</p></span></span>                             
-															</div>		
-														<div class="infoBody">
-														<div class="picWrap">
-															<!-- 템플릿 -->											
-															<span class="pic">
-																		<img src="https://dimgcdn.ybtour.co.kr/TN/77/77987feb80bf5893ae39c71c4230ba8e.tn.410x280.JPG" alt="보우 폭포" style="height: 140px;">
-																		</span>
-																<span class=" txtBox">							
-																마릴린 먼로가 주연으로 나온 영화 '돌아오지 않는 강'의 배경지가 된 곳이다. 높은 곳에서 떨어지는 세찬 폭포가 아닌 조그마하게 흐르는 폭포이다.</span>
-															</div>
-																																										
-														<!--객실정보 :: 여행정보가 숙박이고 룸표시를 할경우  -->
-														<!-- 참고사항 -->		
-														</div>
-														
+												
+												</div>	
+																		
+											</div>
+									<div class="infoTxt template">
+											<div class="infoBar ">
+												<span class="head mint">관광지</span>
+				                                <span class="tit">
+													<span class="hgName mrl5">친퀘테레</span>
+													<span class="ctName"></span>
+													<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1003745');">자세히보기<p>+</p></span></span>                										
+											</div>
+											<div class="infoBody">
+												<div class="picWrap">
+												
+													<!-- 템플릿 -->												
+													<span class="picB"><img src="https://dimgcdn.ybtour.co.kr/TN/57/57d6683c7cc4a71a1d8c82df90655285.tn.900x657.jpg" alt="친퀘테레" style="width: 690px;"></span>
+														<span class=" txtBoxB">										
+														20세기에 이탈리아의 지역 중 외국의 관광객에 의해서 가장 대중적으로 인기 있는 곳으로 발견되었고 해안과 5개 마을, 주변의 언덕은 친퀘테레 국립 공원으로 보호되고 있으며 유네스코 세계문화 유산으로 지정되어 있다.</span>
 													</div>
-												<!-- 여행정보 end -->               	
-												<!--  e: 20161110 -->
-												</div>
-										<div class="dayInfo">
-												<!-- 시간별 일정 제목& 내용 -->
-												<span class="timeTxt">레이크루이스 관광</span>			                        
-												<span class="timeTxtSub"><p><strong>세계 10대 절경중</strong> 하나로 로키 산맥의 진주라 불리는 <strong>레이크루이스</strong>로 이동하여</p>
-
-<p>호수 및 <strong>레이크 루이스</strong> 호텔 주변 관광</p>
-
-<p>&nbsp;</p>
-</span>
-												<!--  s: 20161110 -->
-												<!-- 여행정보 Start -->
-												<div class="infoTxt template">    
-													<div class="infoBar ">
-																<!-- 관광지 헤더정보 -->
-																<span class="head mint">관광지</span>
-																<span class="tit">
-																	<span class="hgName">레이크 루이스</span>
-																	<span class="hgName mrl5">:</span><span class="ctName">Lake Luise</span>
-																	<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1000526');">자세히보기<p>+</p></span></span>                             
-															</div>		
-														<div class="infoBody">
-														<div class="picWrap">
-															<!-- 템플릿 -->											
-															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/cb/cbb3531385aa77a1e09d75fd0f714e30.tn.410x280.jpg" alt="레이크 루이스" style="height: 140px;"></span>
-																	<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/c9/c9baa693d8d9f286351aba79d9b27018.tn.410x280.jpg" alt="레이크 루이스" style="height: 140px;"></span>
-																<span class=" txtBox">							
-																아름다운 절경을 볼 수 있는 레이크 루이스는 우리나라에도 잘 알려진 피아니스트 '유키 구라모토(Yuhki Kuramoto)'의 피아노곡 'Lake Louis'에 영감을 준 곳이다. 호수는 맑은 날씨에 에메랄드빛을 띄는데, 이는 호수의 물속에 함유된 석회질 성분과 햇빛의 조화로 인한 현상이라고 한다.</span>
-															</div>
-																																										
-														<!--객실정보 :: 여행정보가 숙박이고 룸표시를 할경우  -->
-														<!-- 참고사항 -->		
-														</div>
-														
+												
+												</div>	
+																		
+											</div>
+									<div class="infoTxt template">
+											<div class="infoBar ">
+												<span class="head mint">관광지</span>
+				                                <span class="tit">
+													<span class="hgName mrl5">친퀘테레</span>
+													<span class="ctName"></span>
+													<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1003745');">자세히보기<p>+</p></span></span>                										
+											</div>
+											<div class="infoBody">
+												<div class="picWrap">
+												
+													<!-- 템플릿 -->												
+													<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/ca/caa672254dc11e7792639462b93c7127.tn.410x280.jpg" alt="친퀘테레" style="height: 140px;"></span>
+															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/d0/d07fbd60383c383582844b9bd54c9670.tn.410x280.jpg" alt="친퀘테레" style="height: 140px;"></span>
+														<span class=" txtBox">										
+														20세기에 이탈리아의 지역 중 외국의 관광객에 의해서 가장 대중적으로 인기 있는 곳으로 발견되었고 해안과 5개 마을, 주변의 언덕은 친퀘테레 국립 공원으로 보호되고 있으며 유네스코 세계문화 유산으로 지정되어 있다.</span>
 													</div>
-												<!-- 여행정보 end -->               	
-												<!--  e: 20161110 -->
-												</div>
-										<div class="dayInfo">
-												<!-- 시간별 일정 제목& 내용 -->
-												<span class="timeTxt">레이크루이스</span>			                        
-												<span class="timeTxtSub">석식 후 호텔 투숙</span>
-												<!--  s: 20161110 -->
-												<!-- 여행정보 Start -->
-												<!-- 여행정보 end -->               	
-												<!--  e: 20161110 -->
-												</div>
-										<!-- 일정정보 end -->
-									
-														
-									<!-- 숙박 -->  
-										<div class="dayStay">
-											<span class="stay">숙박</span>
-											<span class="stayTxt stayAccomInfo" onclick="javascript:fnScheAccom('');" value="" style="cursor: text; text-decoration: none; color: rgb(93, 99, 111);">
-														3 VALLEY LAKE CHATEAU 또는 미정</span>						                        
-													</div>			                    
-									<!-- 식사 -->
-											<div class="dayFood">				                    
-												<span class="food">식사</span>				                        
-												<span class="foodTxt">
-													<img src="/images/productDetail/schedule_icon02-1.png" alt="조식">
-														<span>호텔식</span>
-													<img src="/images/productDetail/schedule_icon02-2.png" alt="중식">
-														<span>현지식</span>
-													<img src="/images/productDetail/schedule_icon02-3.png" alt="석식">
-														<span>현지식</span>
-													</span>
-											</div>	
-										<div class="dayTitle" id="dayTitle5">
-										<span class="day">5일차</span>
-										<span class="dayTxt"><p>2017년09월26일 화요일 - 샐몬암/밴쿠버</p></span>                        
-										<select name="product" id="daySchedule5" title="일정선택" onchange="moveSchedule(this.value, this.id, '#dayTitle5'); return false;">
-											<option value="#dayTitle1">[1일차] 2017-09-22  금</option>
-											<option value="#dayTitle2">[2일차] 2017-09-23  토</option>
-											<option value="#dayTitle3">[3일차] 2017-09-24  일</option>
-											<option value="#dayTitle4">[4일차] 2017-09-25  월</option>
-											<option value="#dayTitle5" selected="">[5일차] 2017-09-26  화</option>
-											<option value="#dayTitle6">[6일차] 2017-09-27  수</option>
-											<option value="#dayTitle7">[7일차] 2017-09-28  목</option>
-											<option value="#dayTitle8">[8일차] 2017-09-29  금</option>
-											<option value="#dayTitle9">[9일차] 2017-09-30  토</option>
-											<option value="#dayTitle10">[10일차] 2017-10-01  일</option>
-											</select>
-									</div>
-									
-									<!-- 시간별 일정정보  Start -->       
-									<!-- 방문도시정보 -->       
-												<div class="dayArea">
-													<span class="areaName">샐몬암</span>
+												
+												</div>	
+																		
+											</div>
+									<div class="infoTxt template">
+											<div class="infoBar ">
+												<span class="head mint">관광지</span>
+				                                <span class="tit">
+													<span class="hgName mrl5">피사의 사탑</span>
+													<span class="hgName mrl5">:</span><span class="ctName">Leaning Tower of Pisa</span>
+													<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1000290');">자세히보기<p>+</p></span></span>                										
+											</div>
+											<div class="infoBody">
+												<div class="picWrap">
+												
+													<!-- 템플릿 -->												
+													<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/72/72024fdf385595547b2a4f3cd40595f6.tn.410x280.jpg" alt="피사의 사탑" style="height: 140px;"></span>
+															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/e1/e108eba54d1518185f9d07c47a875926.tn.410x280.jpg" alt="피사의 사탑" style="height: 140px;"></span>
+														<span class=" txtBox">										
+														매년 1mm씩 남쪽으로 기울고 있어 보는 이로 하여금 안타까움과 위태로움을 동시에 느끼게 한다. 최상층부를 기준할 때 중심축으로부터 약 3.6m, 수직에서 10도 이상 기울어져 있다. 중세의 세계 7대 불가사의 중 하나로 불리고 있다. 이탈리아 정부는 경사각을 수정하기 위해 보수공사를 착수한 뒤 2001년 6월 일반인에게 다시 공개되었으나 보존을 위해 입장객의 수를 제한하고 있다.</span>
 													</div>
-											<div class="dayInfo">
-												<!-- 시간별 일정 제목& 내용 -->
-												<span class="timeTxt"></span>			                        
-												<span class="timeTxtSub"><p>조식 후 호텔 출발</p>
-
-<p>쓰리밸리 갭을 지나 연어의 도시 샐몬암을 경유하여 메릿 도착</p>
-</span>
-												<!--  s: 20161110 -->
-												<!-- 여행정보 Start -->
-												<!-- 여행정보 end -->               	
-												<!--  e: 20161110 -->
-												</div>
-										<!-- 방문도시정보 -->       
-												<div class="dayArea">
-													<span class="areaName">밴쿠버</span>
+												
+												</div>	
+																		
+											</div>
+									<div class="infoTxt template">
+											<div class="infoBar ">
+												<span class="head mint">관광지</span>
+				                                <span class="tit">
+													<span class="hgName mrl5">폼페이 유적지</span>
+													<span class="ctName"></span>
+													<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1003653');">자세히보기<p>+</p></span></span>                										
+											</div>
+											<div class="infoBody">
+												<div class="picWrap">
+												
+													<!-- 템플릿 -->												
+													<span class="picB"><img src="https://dimgcdn.ybtour.co.kr/TN/91/91854500b7598ed535304cc05dba6d22.tn.900x657.jpg" alt="폼페이 유적지" style="width: 690px;"></span>
+														<span class=" txtBoxB">										
+														AD 79년 8월 24일 베수비오 화산의 폭발로 한순간에 멸망한 폼페이의 유적이 19세기에 들어 발굴된 곳이다. 드러난 유적은 고대 로마의 생활상을 생생하게 재현하고 있다. </span>
 													</div>
-											<div class="dayInfo">
-												<!-- 시간별 일정 제목& 내용 -->
-												<span class="timeTxt">밴쿠버 시내관광</span>			                        
-												<span class="timeTxtSub"><p>중식 후 밴쿠버로 이동하여</p>
-
-<p><strong>밴쿠버 시내관광</strong></p>
-
-<p>&nbsp;- 차이나타운, 게스타운, 캐나다플레이스, 스탠리 공원, 잉글리쉬 베이 등</p>
-</span>
-												<!--  s: 20161110 -->
-												<!-- 여행정보 Start -->
-												<div class="infoTxt template">    
-													<div class="infoBar ">
-																<!-- 도시 헤더정보 -->
-																<span class="head yellow">도시</span>
-																<span class="tit">
-																	<span class="hgName">밴쿠버</span>
-																	<span class="hgName mrl5">:</span><span class="ctName">Vancouver</span>
-																	<span class="btn" onclick="javascript:fnTourDtlInfo('city','CAYVR');">자세히보기<p>+</p></span></span>     				                                
-															</div>
-														<div class="infoBody">
-														<div class="picWrap">
-															<!-- 템플릿 -->											
-															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/ee/eeb3d6ec19c3c9eb0125c0c859e5a3c3.tn.410x280.jpg" alt="밴쿠버" style="height: 140px;"></span>
-																	<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/6a/6a333f4fd8cb0e0f28fc60c417188746.tn.410x280.jpg" alt="밴쿠버" style="height: 140px;"></span>
-																<span class=" txtBox">							
-																온난한 기후와 수려한 경관으로 캐나다에서 가장 아름다운 도시 중의 하나이다<br>
-캐나다 제3의 대도시로서 조지아 해협의 버라드만과 프레이저강 의 삼각주 사이에 위치하며, 밴쿠버섬과 마주 대한다. 서부 캐나다 최대의 상공업 도시이자, 태평양으로 통하는 주요 무역항이기도 하다. <br>
-20세기 초에는 주도(州都)인 빅토리아를 능가하여 주 전체의 경제활동을 통할하는 주 제1의 대도시로 성장하였다.</span>
-															</div>
-																																										
-														<!--객실정보 :: 여행정보가 숙박이고 룸표시를 할경우  -->
-														<!-- 참고사항 -->		
-														</div>
-														
+												
+												</div>	
+																		
+											</div>
+									<div class="infoTxt template">
+											<div class="infoBar ">
+												<span class="head mint">관광지</span>
+				                                <span class="tit">
+													<span class="hgName mrl5">소렌토 해안가</span>
+													<span class="ctName"></span>
+													<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1003651');">자세히보기<p>+</p></span></span>                										
+											</div>
+											<div class="infoBody">
+												<div class="picWrap">
+												
+													<!-- 템플릿 -->												
+													<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/f0/f0bd898945208aaf3ef1a6298d9cc005.tn.410x280.jpg" alt="소렌토 해안가" style="height: 140px;"></span>
+															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/59/5916311b9da45d4245e98f5ffbe9daf1.tn.410x280.jpg" alt="소렌토 해안가" style="height: 140px;"></span>
+														<span class=" txtBox">										
+														그리스인에 의해 건설된 것으로 추정되며, 고대 로마제국 시대에는 수렌툼이라는 휴양지였다. 7세기에는 자치 공작령의 수도였으며, 1137년에노르만족(族)에 정복당해 시칠리아 왕국에 편입되었다(族)에 정복당해 시칠리아 왕국에 편입되었다.</span>
 													</div>
-												<div class="infoTxt template">    
-													<div class="infoBar ">
-																<!-- 관광지 헤더정보 -->
-																<span class="head mint">관광지</span>
-																<span class="tit">
-																	<span class="hgName">스탠리 공원</span>
-																	<span class="hgName mrl5">:</span><span class="ctName">Stanley Park</span>
-																	<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1000595');">자세히보기<p>+</p></span></span>                             
-															</div>		
-														<div class="infoBody">
-														<div class="picWrap">
-															<!-- 템플릿 -->											
-															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/83/83d3ae4b46424bb14babc2e6f8914a21.tn.410x280.JPG" alt="스탠리 공원" style="height: 140px;"></span>
-																	<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/62/62835d9b63e0dc43e9d7164b6fc8397c.tn.410x280.JPG" alt="스탠리 공원" style="height: 140px;"></span>
-																<span class=" txtBox">							
-																해변으로 둘러싸인 녹지에 꽃이 만개한 정원의 녹지공간과 문화 기념물, 원주민의 예술품이 산대해 있습니다. 벤쿠버에 가장 크고 오래된 스탠리 공원은 캐나다의 국립 사적지이자 도시 최고의 문화 유산입니다. 이 공원은 도시의 레저중심에 위치한 모두를 위한 공원입니다. 활기찬 도시의 스카이라인을 넘어 태평양을 바라보고 방파제를 따라 자전거 여행을 즐기실 수도 있습니다.</span>
-															</div>
-																																										
-														<!--객실정보 :: 여행정보가 숙박이고 룸표시를 할경우  -->
-														<!-- 참고사항 -->		
-														</div>
-														
+												
+												</div>	
+																		
+											</div>
+									<div class="infoTxt template">
+											<div class="infoBar ">
+												<span class="head mint">관광지</span>
+				                                <span class="tit">
+													<span class="hgName mrl5">나폴리 해안가</span>
+													<span class="ctName"></span>
+													<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1003650');">자세히보기<p>+</p></span></span>                										
+											</div>
+											<div class="infoBody">
+												<div class="picWrap">
+												
+													<!-- 템플릿 -->												
+													<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/45/45054e5b8e5ae31962d187cdf7b3bed3.tn.410x280.jpg" alt="나폴리 해안가" style="height: 140px;"></span>
+															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/e9/e9edda9b4cfa8b9373cc3cd156f5572b.tn.410x280.JPG" alt="나폴리 해안가" style="height: 140px;"></span>
+														<span class=" txtBox">										
+														나폴리는 로마·밀라노 다음가는 이탈리아 제3의 도시로 영어명은 네이플스(Naples)라고 한다. 세계 3대 미항으로 꼽히는 나폴리 항은 예로부터 '나폴리를 보고 죽어라'라는 말이 있을 정도로 경치가 아름답다.</span>
 													</div>
-												<div class="infoTxt template">    
-													<div class="infoBar ">
-																<!-- 관광지 헤더정보 -->
-																<span class="head mint">관광지</span>
-																<span class="tit">
-																	<span class="hgName">캐나다 플레이스</span>
-																	<span class="hgName mrl5">:</span><span class="ctName">Canada Place</span>
-																	<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1000590');">자세히보기<p>+</p></span></span>                             
-															</div>		
-														<div class="infoBody">
-														<div class="picWrap">
-															<!-- 템플릿 -->											
-															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/8f/8f58e524390991c9a15efe0331d464a8.tn.410x280.jpg" alt="캐나다 플레이스" style="height: 140px;"></span>
-																	<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/d2/d222210c12066f73c51a661fe885b551.tn.410x280.jpg" alt="캐나다 플레이스" style="height: 140px;"></span>
-																<span class=" txtBox">							
-																1986년 만국 박람회장이였던 곳으로 벤쿠버의 상징으로 불린다. 벤쿠버 항구의 모습을 한눈에 볼 수 있는 장소이다. 크루즈 선박 터미널, 아이맥스 극장, 레스토랑 등 이 다양하게 자리잡고 있다.</span>
-															</div>
-																																										
-														<!--객실정보 :: 여행정보가 숙박이고 룸표시를 할경우  -->
-														<!-- 참고사항 -->		
-														</div>
-														
-													</div>
-												<div class="infoTxt template">    
-													<div class="infoBar ">
-																<!-- 쇼핑 헤더정보 -->
-																<span class="head yellow">쇼핑</span>
-																<span class="tit">
-																	<span class="hgName">GOOD LIFE HEALTH </span>
-																	<span class="ctName"></span>
-																	</span>                             
-															</div>
-														<div class="infoBody">
-														<div class="picWrap">
-															<!-- 템플릿 -->											
-															<span class=" txtBox">							
+												
+												</div>	
+																		
+											</div>
+									<div class="infoTxt template">
+											<div class="infoBar ">
+												<span class="head mint">관광지</span>
+				                                <span class="tit">
+													<span class="hgName mrl5">콜로세움</span>
+													<span class="hgName mrl5">:</span><span class="ctName">Colosseum</span>
+													<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1000301');">자세히보기<p>+</p></span></span>                										
+											</div>
+											<div class="infoBody">
+												<div class="picWrap">
+												
+													<!-- 템플릿 -->												
+													<span class="pic">
+																<img src="https://dimgcdn.ybtour.co.kr/TN/39/39fb263eb3e2cdb29c589e7e6a02451e.tn.410x280.jpg" alt="콜로세움" style="height: 140px;">
 																</span>
-															</div>
-																																										
-														<!--객실정보 :: 여행정보가 숙박이고 룸표시를 할경우  -->
-														<!-- 참고사항 -->		
-														</div>
-														
-													<!-- 비고 -->	
-														<div class="infoFoot">크릴오일, 비프로폴리스, 비타민 등 구매가능</div>	                        	
+														<span class=" txtBox">										
+														정식 명칭은 '플라비우스 원형경기장(Amphitheatrum Flavium)'이라고 한다. 플라비우스 왕조 때 세워진 것으로 베스파시아누스 황제가 착공하여 80년 그의 아들 티투스 황제 때에 완성하였다. 본래는 비공식 이름이었던 콜로세움(Colosseum)의 유래에 대해서는 원형 경기장 근처에 있던 네로 황제의 거대한 청동상(Colossus Neronis)과 명칭이 혼동되었다는 설과 '거대하다'는 뜻의 이탈리아어 콜로살레(Colossale)와 어원이 같다는 설이 있는데 중세에는 그 자체가 ‘거대한 건축물’이란 뜻으로 쓰이기도 했다.</span>
 													</div>
-												<!-- 여행정보 end -->               	
-												<!--  e: 20161110 -->
-												</div>
-										<div class="dayInfo">
-												<!-- 시간별 일정 제목& 내용 -->
-												<span class="timeTxt"></span>			                        
-												<span class="timeTxtSub">석식 후 호텔투숙</span>
-												<!--  s: 20161110 -->
-												<!-- 여행정보 Start -->
-												<!-- 여행정보 end -->               	
-												<!--  e: 20161110 -->
-												</div>
-										<!-- 일정정보 end -->
-									
-														
-									<!-- 숙박 -->  
-										<div class="dayStay">
-											<span class="stay">숙박</span>
-											<span class="stayTxt stayAccomInfo" onclick="javascript:fnScheAccom('A0006650');" value="A0006650" style="cursor: pointer; text-decoration: underline; color: rgb(0, 182, 173);">
-														컴포트 인 에어포트</span>						                        
-													<span class="stayBigo2">또는 미정</span>
-													</div>			                    
-									<!-- 식사 -->
-											<div class="dayFood">				                    
-												<span class="food">식사</span>				                        
-												<span class="foodTxt">
-													<img src="/images/productDetail/schedule_icon02-1.png" alt="조식">
-														<span>호텔식</span>
-													<img src="/images/productDetail/schedule_icon02-2.png" alt="중식">
-														<span>현지식</span>
-													<img src="/images/productDetail/schedule_icon02-3.png" alt="석식">
-														<span>한식</span>
-													</span>
-											</div>	
-										<div class="dayTitle" id="dayTitle6">
-										<span class="day">6일차</span>
-										<span class="dayTxt"><p>2017년09월27일 수요일 - 밴쿠버/호놀룰루</p></span>                        
-										<select name="product" id="daySchedule6" title="일정선택" onchange="moveSchedule(this.value, this.id, '#dayTitle6'); return false;">
-											<option value="#dayTitle1">[1일차] 2017-09-22  금</option>
-											<option value="#dayTitle2">[2일차] 2017-09-23  토</option>
-											<option value="#dayTitle3">[3일차] 2017-09-24  일</option>
-											<option value="#dayTitle4">[4일차] 2017-09-25  월</option>
-											<option value="#dayTitle5">[5일차] 2017-09-26  화</option>
-											<option value="#dayTitle6" selected="">[6일차] 2017-09-27  수</option>
-											<option value="#dayTitle7">[7일차] 2017-09-28  목</option>
-											<option value="#dayTitle8">[8일차] 2017-09-29  금</option>
-											<option value="#dayTitle9">[9일차] 2017-09-30  토</option>
-											<option value="#dayTitle10">[10일차] 2017-10-01  일</option>
-											</select>
-									</div>
-									
-									<!-- 시간별 일정정보  Start -->       
-									<!-- 방문도시정보 -->       
-												<div class="dayArea">
-													<span class="areaName">밴쿠버</span>
-													</div>
-											<div class="dayInfo">
-												<!-- 시간별 일정 제목& 내용 -->
-												<span class="timeTxt"></span>			                        
-												<span class="timeTxtSub"><p>기상 후 시애틀 공항으로 이동</p>
-
-<p>[AS851 10:00] 탑승</p>
-
-<p>&nbsp;</p>
-
-<p>*시애틀-호놀룰루 구간은 좌석 상황에 따라 변경될 수 있습니다.</p>
-
-<p>*시애틀-호놀룰루 구간 예약 후 1일 이내 발권이 진행되며,발권 후 취소시,전액 환불이 불가합니다.</p>
-
-<p>&nbsp;</p>
-</span>
-												<!--  s: 20161110 -->
-												<!-- 여행정보 Start -->
-												<!-- 여행정보 end -->               	
-												<!--  e: 20161110 -->
-												</div>
-										<!-- 방문도시정보 -->       
-												<div class="dayArea">
-													<span class="areaName">호놀룰루</span>
-													</div>
-											<div class="dayInfo">
-												<!-- 시간별 일정 제목& 내용 -->
-												<span class="timeTxt"></span>			                        
-												<span class="timeTxtSub"><p>호놀룰루 도착</p>
-</span>
-												<!--  s: 20161110 -->
-												<!-- 여행정보 Start -->
-												<!-- 여행정보 end -->               	
-												<!--  e: 20161110 -->
-												</div>
-										<div class="dayInfo">
-												<!-- 시간별 일정 제목& 내용 -->
-												<span class="timeTxt">호놀룰루 시내관광</span>			                        
-												<span class="timeTxtSub"><p>- 호눌룰루를 한눈에 바라 볼 수 있는 펀치볼 전망대</p>
-
-<p><br>
-- 호놀룰루 다운타운에 위치한 주정부청사</p>
-
-<p><br>
-- 하와이를 통일한 킹 카메하메하 동상</p>
-
-<p><br>
-- 하와이 왕조 역사이며, 미국의 단 하나뿐인 왕궁 이올라니 궁전</p>
-
-<p><br>
-*시내관광 시 일부 관광지는 차창 관광으로 진행될 수 있습니다.</p>
-</span>
-												<!--  s: 20161110 -->
-												<!-- 여행정보 Start -->
-												<div class="infoTxt template">    
-													<div class="infoBar ">
-																<!-- 도시 헤더정보 -->
-																<span class="head yellow">도시</span>
-																<span class="tit">
-																	<span class="hgName">호놀룰루</span>
-																	<span class="hgName mrl5">:</span><span class="ctName">Honolulu</span>
-																	<span class="btn" onclick="javascript:fnTourDtlInfo('city','USHNL');">자세히보기<p>+</p></span></span>     				                                
-															</div>
-														<div class="infoBody">
-														<div class="picWrap">
-															<!-- 템플릿 -->											
-															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/f4/f438622fc3502a9ba553a92640b62892.tn.410x280.jpg" alt="호놀룰루" style="height: 140px;"></span>
-																	<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/42/422ea58bfde8453deefad79f7dc4658b.tn.410x280.jpg" alt="호놀룰루" style="height: 140px;"></span>
-																<span class=" txtBox">							
-																호놀룰루는 하와이의 오아후 섬의 주도이다. 하와이제도는 8개의 주요섬과 크고 작은 124개의 섬으로 이루어져 있으며 태평양의 보석과도 같은 곳이다. 그러나 일반적으로 하와이는 미국의 50번째 주로 승인된 후, 알로하 스테이트로 알려져 있고 지도상으로는 8개의 섬 만을 가르킨다. 8개의 섬은 정원의 섬이라는 별명을 가진 하와이에서 가장 먼저 생성된 섬, 카우아이와 자연 그대로의 모습을 유지하고 있는 진짜 하와이 몰로카이섬, 세계 정상급 호텔과 유명 골프코스로 완벽한 휴식의 공간, 라나이섬과 마법의 섬이라고 불릴만큼 무궁무진한 매력의 마우이섬, 향기좋고 부드러운 맛의 코나커피의 생산지인 하와이에서 가장큰 섬 빅아일랜드섬, 마지막으로 하와이의 심장이자 만남의 장소인 사랑스러운 와이키키 비치가 있는 오아후 섬을 말한다.</span>
-															</div>
-																																										
-														<!--객실정보 :: 여행정보가 숙박이고 룸표시를 할경우  -->
-														<!-- 참고사항 -->		
-														</div>
-														
-													<!-- 비고 -->	
-														<div class="infoFoot">하와이제도는 8개의 주요섬과 크고 작은 124개의 섬으로 이루어져 있으며 태평양의 보석과도 같은 곳이다. 그러나 일반적으로 하와이는 미국의 50번째 주로 승인된 후, 알로하 스테이트로 알려져 있고 지도상으로는 8개의 섬 만을 가르킨다. 8개의 섬은 정원의 섬이라는 별명을 가진 하와이에서 가장 먼저 생성된 섬, 카우아이와 자연 그대로의 모습을 유지하고 있는 진짜 하와이 몰로카이섬, 세계 정상급 호텔과 유명 골프코스로 완벽한 휴식의 공간, 라나이섬과 마법의 섬이라고 불릴만큼 무궁무진한 매력의 마우이섬, 향기좋고 부드러운 맛의 코나커피의 생산지인 하와이에서 가장큰 섬 빅아일랜드섬, 마지막으로 하와이의 심장이자 만남의 장소인 사랑스러운 와이키키 비치가 있는 오아후 섬을 말한다.<br>
-</div>	                        	
-													</div>
-												<!-- 여행정보 end -->               	
-												<!--  e: 20161110 -->
-												</div>
-										<div class="dayInfo">
-												<!-- 시간별 일정 제목& 내용 -->
-												<span class="timeTxt"></span>			                        
-												<span class="timeTxtSub"><p>▣ 호텔 체크인 시 주의 사항 ▣</p>
-
-<p>&nbsp;</p>
-
-<p>1. 호텔 CHECK - IN 시간은 15:00 이후로 가능 합니다.<br>
-2. 하와이 모든 호텔은 체크인시 손님 카드를 이용해 데포짓 요금을 결제하게 되어 있습니다.<br>
-추후 체크-아웃시 호테 내 시성 및 객실 미니바 사용에 따른 추가결재를 위한조치 이므로 사용금액에 대해서만 최종 결재 됩니다.<br>
-3. 데포짓으로 걸어두신 요금은 추후 취소처리 되오니 여행 완료후에도 조금 기다려 주시길 바랍니다.</p>
-</span>
-												<!--  s: 20161110 -->
-												<!-- 여행정보 Start -->
-												<!-- 여행정보 end -->               	
-												<!--  e: 20161110 -->
-												</div>
-										<!-- 일정정보 end -->
-									
-														
-									<!-- 숙박 -->  
-										<div class="dayStay">
-											<span class="stay">숙박</span>
-											<span class="stayBigo">와이키키 게이트웨이 호텔</span>
-													</div>			                    
-									<!-- 식사 -->
-											<div class="dayFood">				                    
-												<span class="food">식사</span>				                        
-												<span class="foodTxt">
-													<img src="/images/productDetail/schedule_icon02-2.png" alt="중식">
-														<span>불포함</span>
-													<img src="/images/productDetail/schedule_icon02-3.png" alt="석식">
-														<span>한식</span>
-													</span>
-											</div>	
-										<div class="dayTitle" id="dayTitle7">
-										<span class="day">7일차</span>
-										<span class="dayTxt"><p>2017년09월28일 목요일 - 호놀룰루</p></span>                        
-										<select name="product" id="daySchedule7" title="일정선택" onchange="moveSchedule(this.value, this.id, '#dayTitle7'); return false;">
-											<option value="#dayTitle1">[1일차] 2017-09-22  금</option>
-											<option value="#dayTitle2">[2일차] 2017-09-23  토</option>
-											<option value="#dayTitle3">[3일차] 2017-09-24  일</option>
-											<option value="#dayTitle4">[4일차] 2017-09-25  월</option>
-											<option value="#dayTitle5">[5일차] 2017-09-26  화</option>
-											<option value="#dayTitle6">[6일차] 2017-09-27  수</option>
-											<option value="#dayTitle7" selected="">[7일차] 2017-09-28  목</option>
-											<option value="#dayTitle8">[8일차] 2017-09-29  금</option>
-											<option value="#dayTitle9">[9일차] 2017-09-30  토</option>
-											<option value="#dayTitle10">[10일차] 2017-10-01  일</option>
-											</select>
-									</div>
-									
-									<!-- 시간별 일정정보  Start -->       
-									<!-- 방문도시정보 -->       
-												<div class="dayArea">
-													<span class="areaName">호놀룰루</span>
-													</div>
-											<div class="dayInfo">
-												<!-- 시간별 일정 제목& 내용 -->
-												<span class="timeTxt">오아후 섬 핵심일주</span>			                        
-												<span class="timeTxtSub"><p>조식 후 호텔 출발</p>
-
-<p><br>
-<strong>★섬일주 투어는 현지 상황에 따라 2일차가 아닌 3일차에 진행 될 수 있습니다.</strong></p>
-
-<p>&nbsp;</p>
-
-<p><br>
--화산 분화로 형성된 독특한 지형인 가벼운 크레킹코스로도 인기가 많은 다이아몬드헤드(차창관광)</p>
-
-<p>&nbsp;</p>
-
-<p>-마리나 릿지 마을로 그 형태가 한반도 지도와 흡사한 한반도 지도 마을(차창관광)</p>
-
-<p>&nbsp;</p>
-
-<p>-자연 천혜의 바다를 그대로 간직한 또 가고 싶을 하나우마베이 전망대</p>
-
-<p>&nbsp;</p>
-
-<p>-오아후 동쪽 끝에 위치한 아름다운 뷰 포인트 마카푸우 전망대</p>
-
-<p>&nbsp;</p>
-
-<p>-하와이의 역사, 폴리네시안들의 생활과 문화를 만날 수 있는 폴리네시안 민속촌</p>
-
-<p>&nbsp;</p>
-
-<p>-흥미만점인 여러가지 볼거리, 먹거리가 있는 돌 파인애플 농장 방문</p>
-</span>
-												<!--  s: 20161110 -->
-												<!-- 여행정보 Start -->
-												<div class="infoTxt template">    
-													<div class="infoBar ">
-																<!-- 도시 헤더정보 -->
-																<span class="head yellow">도시</span>
-																<span class="tit">
-																	<span class="hgName">호놀룰루</span>
-																	<span class="hgName mrl5">:</span><span class="ctName">Honolulu</span>
-																	<span class="btn" onclick="javascript:fnTourDtlInfo('city','USHNL');">자세히보기<p>+</p></span></span>     				                                
-															</div>
-														<div class="infoBody">
-														<div class="picWrap">
-															<!-- 템플릿 -->											
-															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/b4/b4fdbc68ce8343b033f88350d9a20330.tn.410x280.jpg" alt="호놀룰루" style="height: 140px;"></span>
-																	<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/23/239d5781d1ea2651e73bd4f2019cc51d.tn.410x280.jpg" alt="호놀룰루" style="height: 140px;"></span>
-																<span class=" txtBox">							
-																호놀룰루는 하와이의 오아후 섬의 주도이다. 하와이제도는 8개의 주요섬과 크고 작은 124개의 섬으로 이루어져 있으며 태평양의 보석과도 같은 곳이다. 그러나 일반적으로 하와이는 미국의 50번째 주로 승인된 후, 알로하 스테이트로 알려져 있고 지도상으로는 8개의 섬 만을 가르킨다. 8개의 섬은 정원의 섬이라는 별명을 가진 하와이에서 가장 먼저 생성된 섬, 카우아이와 자연 그대로의 모습을 유지하고 있는 진짜 하와이 몰로카이섬, 세계 정상급 호텔과 유명 골프코스로 완벽한 휴식의 공간, 라나이섬과 마법의 섬이라고 불릴만큼 무궁무진한 매력의 마우이섬, 향기좋고 부드러운 맛의 코나커피의 생산지인 하와이에서 가장큰 섬 빅아일랜드섬, 마지막으로 하와이의 심장이자 만남의 장소인 사랑스러운 와이키키 비치가 있는 오아후 섬을 말한다.</span>
-															</div>
-																																										
-														<!--객실정보 :: 여행정보가 숙박이고 룸표시를 할경우  -->
-														<!-- 참고사항 -->		
-														</div>
-														
-													</div>
-												<!-- 여행정보 end -->               	
-												<!--  e: 20161110 -->
-												</div>
-										<div class="dayInfo">
-												<!-- 시간별 일정 제목& 내용 -->
-												<span class="timeTxt"></span>			                        
-												<span class="timeTxtSub">호텔로 이동 후 투숙 및 휴식</span>
-												<!--  s: 20161110 -->
-												<!-- 여행정보 Start -->
-												<!-- 여행정보 end -->               	
-												<!--  e: 20161110 -->
-												</div>
-										<!-- 일정정보 end -->
-									
-														
-									<!-- 숙박 -->  
-										<div class="dayStay">
-											<span class="stay">숙박</span>
-											<span class="stayBigo">와이키키 게이트웨이 호텔</span>
-													</div>			                    
-									<!-- 식사 -->
-											<div class="dayFood">				                    
-												<span class="food">식사</span>				                        
-												<span class="foodTxt">
-													<img src="/images/productDetail/schedule_icon02-1.png" alt="조식">
-														<span>호텔식</span>
-													<img src="/images/productDetail/schedule_icon02-2.png" alt="중식">
-														<span>PCC뷔페</span>
-													<img src="/images/productDetail/schedule_icon02-3.png" alt="석식">
-														<span>한식</span>
-													</span>
-											</div>	
-										<div class="dayTitle" id="dayTitle8">
-										<span class="day">8일차</span>
-										<span class="dayTxt"><p>2017년09월29일 금요일 - 호놀룰루</p></span>                        
-										<select name="product" id="daySchedule8" title="일정선택" onchange="moveSchedule(this.value, this.id, '#dayTitle8'); return false;">
-											<option value="#dayTitle1">[1일차] 2017-09-22  금</option>
-											<option value="#dayTitle2">[2일차] 2017-09-23  토</option>
-											<option value="#dayTitle3">[3일차] 2017-09-24  일</option>
-											<option value="#dayTitle4">[4일차] 2017-09-25  월</option>
-											<option value="#dayTitle5">[5일차] 2017-09-26  화</option>
-											<option value="#dayTitle6">[6일차] 2017-09-27  수</option>
-											<option value="#dayTitle7">[7일차] 2017-09-28  목</option>
-											<option value="#dayTitle8" selected="">[8일차] 2017-09-29  금</option>
-											<option value="#dayTitle9">[9일차] 2017-09-30  토</option>
-											<option value="#dayTitle10">[10일차] 2017-10-01  일</option>
-											</select>
-									</div>
-									
-									<!-- 시간별 일정정보  Start -->       
-									<!-- 방문도시정보 -->       
-												<div class="dayArea">
-													<span class="areaName">호놀룰루</span>
-													</div>
-											<div class="dayInfo">
-												<!-- 시간별 일정 제목& 내용 -->
-												<span class="timeTxt"></span>			                        
-												<span class="timeTxtSub"><p>호텔 조식 후 전 일정 자유</p>
-
-<p>&nbsp;</p>
-
-<p>&nbsp;</p>
-
-<p><strong>★ 노랑풍선이 제안하는 추천 관광일정 ★</strong></p>
-</span>
-												<!--  s: 20161110 -->
-												<!-- 여행정보 Start -->
-												<div class="infoTxt template">    
-													<div class="infoBar headOk ">
-																<!-- 선택관광 헤더정보 -->
-																<span class="head yellow">선택관광</span>
-																<span class="tit pdL180">
-																	<span class="hgName choTxt">[스타오브 호놀룰루]</span>
-																	<span class="barLine mrl5">|</span><span class="navi">
-																		<p class="payTxt">$165/1인</p><p class="payTxt mrl5">/</p><p class="timeTxt">석식시간</p></span>
-																	<span class="btn" onclick="javascript:fnTourDtlInfo('selectTour','E1000607');">자세히보기<p>+</p></span></span>		
-															</div>
-														<div class="infoBody">
-														<div class="picWrap">
-															<!-- 템플릿 -->											
-															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/5b/5b0b84ed34c06ff70b74b0ce63d2e39b.tn.410x280.jpg" alt="스타오브 호놀룰루" style="height: 140px;"></span>
-																	<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/e8/e810914da7550722bbe033f759f47886.tn.410x280.jpg" alt="스타오브 호놀룰루" style="height: 140px;"></span>
-																<span class=" txtBox">							
-																약1500명이 승선하는 하와이 최대규모의 크루즈로서, 감미로운 라이브 밴드의 선율과 다채로운 선상쇼, 하와이의 백만불짜리 석양, 그리고 와이키키 전경을 한눈에 볼수 있습니다.</span>
-															</div>
-																																										
-														<!--객실정보 :: 여행정보가 숙박이고 룸표시를 할경우  -->
-														<!-- 참고사항 -->		
-														</div>
-														
-													</div>
-												<div class="infoTxt template">    
-													<div class="infoBar ">
-																<!-- 도시 헤더정보 -->
-																<span class="head yellow">도시</span>
-																<span class="tit">
-																	<span class="hgName">호놀룰루</span>
-																	<span class="hgName mrl5">:</span><span class="ctName">Honolulu</span>
-																	<span class="btn" onclick="javascript:fnTourDtlInfo('city','USHNL');">자세히보기<p>+</p></span></span>     				                                
-															</div>
-														<div class="infoBody">
-														<div class="picWrap">
-															<!-- 템플릿 -->											
-															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/1b/1bbb751ba6ea8685d425babba733b0c8.tn.410x280.jpg" alt="호놀룰루" style="height: 140px;"></span>
-																	<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/ed/ed654f517dcb1cae82b1280e4e3d1842.tn.410x280.jpg" alt="호놀룰루" style="height: 140px;"></span>
-																<span class=" txtBox">							
-																호놀룰루는 하와이의 오아후 섬의 주도이다. 하와이제도는 8개의 주요섬과 크고 작은 124개의 섬으로 이루어져 있으며 태평양의 보석과도 같은 곳이다. 그러나 일반적으로 하와이는 미국의 50번째 주로 승인된 후, 알로하 스테이트로 알려져 있고 지도상으로는 8개의 섬 만을 가르킨다. 8개의 섬은 정원의 섬이라는 별명을 가진 하와이에서 가장 먼저 생성된 섬, 카우아이와 자연 그대로의 모습을 유지하고 있는 진짜 하와이 몰로카이섬, 세계 정상급 호텔과 유명 골프코스로 완벽한 휴식의 공간, 라나이섬과 마법의 섬이라고 불릴만큼 무궁무진한 매력의 마우이섬, 향기좋고 부드러운 맛의 코나커피의 생산지인 하와이에서 가장큰 섬 빅아일랜드섬, 마지막으로 하와이의 심장이자 만남의 장소인 사랑스러운 와이키키 비치가 있는 오아후 섬을 말한다.</span>
-															</div>
-																																										
-														<!--객실정보 :: 여행정보가 숙박이고 룸표시를 할경우  -->
-														<!-- 참고사항 -->		
-														<span class="refer">
-																<span class="referTit">참고하세요!</span>
-																<span class="referTxt">화요일은 휴관입니다. </span>
-															</span>
-														</div>
-														
-													<!-- 비고 -->	
-														<div class="infoFoot">하나우마베이는 남태평양의 다양한 열대어와 함께 수영을 할 수 있는 값진 경험을 드리는 관광입니다. </div>	                        	
-													</div>
-												<div class="infoTxt template">    
-													<div class="infoBar headOk ">
-																<!-- 선택관광 헤더정보 -->
-																<span class="head yellow">선택관광</span>
-																<span class="tit pdL180">
-																	<span class="hgName choTxt">[이웃섬 관광]</span>
-																	<span class="barLine mrl5">|</span><span class="navi">
-																		<p class="payTxt">$350/인</p><p class="payTxt mrl5">/</p><p class="timeTxt">당일관광</p></span>
-																	</span>		
-															</div>
-														<div class="infoBody">
-														<div class="picWrap">
-															<!-- 템플릿 -->											
-															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/1b/1b8605f845dda54fd8d45a01f1ac2098.tn.410x280.jpg" alt="이웃섬 관광" style="height: 140px;"></span>
-																	<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/cd/cdf85101730ed70454807f9e5fa66261.tn.410x280.jpg" alt="이웃섬 관광" style="height: 140px;"></span>
-																<span class=" txtBox">							
+												
+												</div>	
+																		
+											</div>
+									<div class="infoTxt template">
+											<div class="infoBar ">
+												<span class="head mint">관광지</span>
+				                                <span class="tit">
+													<span class="hgName mrl5">바티칸박물관</span>
+													<span class="hgName mrl5">:</span><span class="ctName">Vatican Museums</span>
+													<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1000306');">자세히보기<p>+</p></span></span>                										
+											</div>
+											<div class="infoBody">
+												<div class="picWrap">
+												
+													<!-- 템플릿 -->												
+													<span class="pic">
+																<img src="https://dimgcdn.ybtour.co.kr/TN/2a/2a2e4c8f882be604d423a9f697e86333.tn.410x280.jpg" alt="바티칸박물관" style="height: 140px;">
 																</span>
-															</div>
-																																										
-														<!--객실정보 :: 여행정보가 숙박이고 룸표시를 할경우  -->
-														<!-- 참고사항 -->		
-														<span class="refer">
-																<span class="referTit">참고하세요!</span>
-																<span class="referTxt">1. 왕복 항공이동 이며 소요시간은 약1시간 미만입니다. <br>
-2. 당일 관광으로 진행이 되며 다른 가이드와 함께 관광을 하게 됩니다.<br>
-3. 이웃섬 관광은 월요일에는 진행되지 않으니 이점 유념 바랍니다.</span>
-															</span>
-														</div>
-														
-													<!-- 비고 -->	
-														<div class="infoFoot">이웃섬 관광은 마우이, 빅아일랜드, 카우아이섬 추천드리며 선택하실 수 있습니다. </div>	                        	
+														<span class=" txtBox">										
+														로마 교황청 바티칸궁전 내의 기념물, 미술관, 회화관 등의 종합적 명칭. 이 곳은 원래 교황의 바티칸 궁전이었으나 14세기 프랑스 아비뇽의 유폐를 마치고 바티칸으로 돌아온 후 박물관이나 미술관, 도서관으로 사용되었다. 박물관의 소장품은 16세기 초 추기경 줄리아노 델라 로베레의 개인수집에서 시작되어 역대 교황 에 의한 기증품과 시설의 증설에 의하여 풍성하게 되었다.</span>
 													</div>
-												<div class="infoTxt template">    
-													<div class="infoBar headOk ">
-																<!-- 선택관광 헤더정보 -->
-																<span class="head yellow">선택관광</span>
-																<span class="tit pdL180">
-																	<span class="hgName choTxt">[쿠알로아 목장]</span>
-																	<span class="barLine mrl5">|</span><span class="navi">
-																		<p class="payTxt">$145~170</p><p class="payTxt mrl5">/</p><p class="timeTxt">약 3시간</p></span>
-																	</span>		
-															</div>
-														<div class="infoBody">
-														<div class="picWrap">
-															<!-- 템플릿 -->											
-															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/d5/d5cda89585aaed930130644e0b0e0a48.tn.410x280.jpg" alt="쿠알로아 목장" style="height: 140px;"></span>
-																	<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/86/862dc86c69a5d0b6fb298116af9e9167.tn.410x280.jpg" alt="쿠알로아 목장" style="height: 140px;"></span>
-																<span class=" txtBox">							
+												
+												</div>	
+																		
+											</div>
+									<div class="infoTxt template">
+											<div class="infoBar ">
+												<span class="head mint">관광지</span>
+				                                <span class="tit">
+													<span class="hgName mrl5">트레비 분수</span>
+													<span class="hgName mrl5">:</span><span class="ctName">Fontana de Trevi</span>
+													<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1000345');">자세히보기<p>+</p></span></span>                										
+											</div>
+											<div class="infoBody">
+												<div class="picWrap">
+												
+													<!-- 템플릿 -->												
+													<span class="pic">
+																<img src="https://dimgcdn.ybtour.co.kr/TN/6b/6b2669fb9902d4238ae5c4a3db05da54.tn.410x280.jpg" alt="트레비 분수" style="height: 140px;">
 																</span>
-															</div>
-																																										
-														<!--객실정보 :: 여행정보가 숙박이고 룸표시를 할경우  -->
-														<!-- 참고사항 -->		
-														<span class="refer">
-																<span class="referTit">참고하세요!</span>
-																<span class="referTxt">일요일은 휴관입니다.</span>
-															</span>
-														</div>
-														
-													<!-- 비고 -->	
-														<div class="infoFoot">고대 하와이의 역사가 잠들어 있는 아름다운 절경을 지닌 쿠알로아 목장에는 헐리우드의 유명한 영화(킹콩,진주만,쥬라기공원 등)와 각종 TV 드라마의 배경이 되어 지고 있습니다. 또한 이곳에는 다양한 엑티비티가 활성화 되어 있습니다. </div>	                        	
+														<span class=" txtBox">										
+														방문객들이 물속에 동전을 던지고 소원을 비는 바로크 양식의 분수이다. 높이 26m, 너비 20m로 우뚝 서 있는 폰타나 디 트레비(트레비 분수)는 로마의 트레비 구역에 있는 자그마한 폴리 궁전을 온통 지배하고 있다. 하얀 대리석으로 이루어진 이 분수는 폴리 궁전의 파사드를 배경으로 하여 웅장하게 위치하고 있는 그 극적인 형태로 바로크 양식을 보여 주는 훌륭한 예이다. 분수에서 흘러나오는 물은 로마에서 22㎞ 떨어진 살로네 샘으로부터 오는데, 기원전 19년에 세워진 '아쿠아 비르고' 수도교를 통해 운반된다.</span>
 													</div>
-												<div class="infoTxt template">    
-													<div class="infoBar headOk ">
-																<!-- 선택관광 헤더정보 -->
-																<span class="head yellow">선택관광</span>
-																<span class="tit pdL180">
-																	<span class="hgName choTxt">[8종 해양 스포츠]</span>
-																	<span class="barLine mrl5">|</span><span class="navi">
-																		<p class="payTxt">$180/1인</p><p class="payTxt mrl5">/</p><p class="timeTxt">약 4시간</p></span>
-																	</span>		
-															</div>
-														<div class="infoBody">
-														<div class="picWrap">
-															<!-- 템플릿 -->											
-															<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/30/30e566e8c866a139e357fc05f04b0f9c.tn.410x280.jpg" alt="8종 해양 스포츠" style="height: 140px;"></span>
-																	<span class="pic"><img src="https://dimgcdn.ybtour.co.kr/TN/0e/0e11e9a8ff992de3b479f78b8d71f2e5.tn.410x280.jpg" alt="8종 해양 스포츠" style="height: 140px;"></span>
-																<span class=" txtBox">							
+												
+												</div>	
+																		
+											</div>
+									<div class="infoTxt template">
+											<div class="infoBar ">
+												<span class="head mint">관광지</span>
+				                                <span class="tit">
+													<span class="hgName mrl5">스페인 광장</span>
+													<span class="hgName mrl5">:</span><span class="ctName">Piazza di Spagna</span>
+													<span class="btn" onclick="javascript:fnTourDtlInfo('tour','T1000321');">자세히보기<p>+</p></span></span>                										
+											</div>
+											<div class="infoBody">
+												<div class="picWrap">
+												
+													<!-- 템플릿 -->												
+													<span class="pic">
+																<img src="https://dimgcdn.ybtour.co.kr/TN/03/03c9d12cdc5445d037a0efca36e1f86e.tn.410x280.jpg" alt="스페인 광장" style="height: 140px;">
 																</span>
-															</div>
-																																										
-														<!--객실정보 :: 여행정보가 숙박이고 룸표시를 할경우  -->
-														<!-- 참고사항 -->		
-														</div>
-														
-													<!-- 비고 -->	
-														<div class="infoFoot">윈드 서핑, 제트스키, 범퍼라이더 등 해양스포츠를 남태평양 한가운데, 선상위에서 즐길 수 있는 인기만점의 관광 상품입니다.</div>	                        	
+														<span class=" txtBox">										
+														17세기에 교황청 스페인 대사가 이곳에 본부를 두면서 스페인 광장이라고 불리게 되었다. 영화 '로마의 휴일'에 등장하여 유명해졌으며 이탈리아 사람들과 관광객들로 항상 붐빈다. 계단에 철쭉꽃이 심어져 꽃이 피는 시기에는 적색, 분홍색 꽃들이 만발한다. 계단을 올라가면 트리니타 데이 몬티 교회가 있다. 스페인 계단은 17세기에 트리니타 데이 몬티의 프랑스인 주민들이 교회와 스페인 광장을 계단으로 연결시키기 시작하면서 만들어졌다. 광장 중앙에는 베르니니와 그의 아버지가 설계한 바르카치아 분수가 있다. 물에 반쯤 잠겨 있는 물이 새는 배는 베르니니가 만든 것이다. 바르카치아는 '쓸모 없는 오래된 배'를 의미한다.</span>
 													</div>
-												<!-- 여행정보 end -->               	
-												<!--  e: 20161110 -->
-												</div>
-										<!-- 일정정보 end -->
-									
-														
-									<!-- 숙박 -->  
-										<div class="dayStay">
-											<span class="stay">숙박</span>
-											<span class="stayBigo">와이키키 게이트웨이 호텔</span>
-													</div>			                    
-									<!-- 식사 -->
-											<div class="dayFood">				                    
-												<span class="food">식사</span>				                        
-												<span class="foodTxt">
-													<img src="/images/productDetail/schedule_icon02-1.png" alt="조식">
-														<span>호텔식</span>
-													<img src="/images/productDetail/schedule_icon02-2.png" alt="중식">
-														<span>불포함</span>
-													<img src="/images/productDetail/schedule_icon02-3.png" alt="석식">
-														<span>불포함</span>
-													</span>
-											</div>	
-										<div class="dayTitle" id="dayTitle9">
-										<span class="day">9일차</span>
-										<span class="dayTxt"><p>2017년09월30일 토요일 - 호놀룰루</p></span>                        
-										<select name="product" id="daySchedule9" title="일정선택" onchange="moveSchedule(this.value, this.id, '#dayTitle9'); return false;">
-											<option value="#dayTitle1">[1일차] 2017-09-22  금</option>
-											<option value="#dayTitle2">[2일차] 2017-09-23  토</option>
-											<option value="#dayTitle3">[3일차] 2017-09-24  일</option>
-											<option value="#dayTitle4">[4일차] 2017-09-25  월</option>
-											<option value="#dayTitle5">[5일차] 2017-09-26  화</option>
-											<option value="#dayTitle6">[6일차] 2017-09-27  수</option>
-											<option value="#dayTitle7">[7일차] 2017-09-28  목</option>
-											<option value="#dayTitle8">[8일차] 2017-09-29  금</option>
-											<option value="#dayTitle9" selected="">[9일차] 2017-09-30  토</option>
-											<option value="#dayTitle10">[10일차] 2017-10-01  일</option>
-											</select>
-									</div>
-									
-									<!-- 시간별 일정정보  Start -->       
-									<!-- 방문도시정보 -->       
-												<div class="dayArea">
-													<span class="areaName">호놀룰루</span>
-													</div>
-											<div class="dayInfo">
-												<!-- 시간별 일정 제목& 내용 -->
-												<span class="timeTxt"></span>			                        
-												<span class="timeTxtSub"><p>호텔 조식 후 공항으로 이동</p>
-
-<p>&nbsp;</p>
-
-<p><strong>[11:50 OZ231]&nbsp; 호놀룰루 공항 출발</strong></p>
-
-<p>&nbsp;</p>
-
-<p>비행 소요시간: 약 10시간 55분</p>
-</span>
-												<!--  s: 20161110 -->
-												<!-- 여행정보 Start -->
-												<!-- 여행정보 end -->               	
-												<!--  e: 20161110 -->
-												</div>
-										<!-- 일정정보 end -->
-									
-														
-									<!-- 숙박 -->  
-										<div class="dayStay">
-											<span class="stay">숙박</span>
-											<span class="stayBigo">기내박</span>
-													</div>			                    
-									<!-- 식사 -->
-											<div class="dayFood">				                    
-												<span class="food">식사</span>				                        
-												<span class="foodTxt">
-													<img src="/images/detail/schedule_icon02-1.png" alt="조식">
-														<span>호텔식</span>
-													</span>
-											</div>	
-										<div class="dayTitle" id="dayTitle10">
-										<span class="day">10일차</span>
-										<span class="dayTxt"><p>2017년10월01일 일요일 - 인천</p></span>                        
-										<select name="product" id="daySchedule10" title="일정선택" onchange="moveSchedule(this.value, this.id, '#dayTitle10'); return false;">
-											<option value="#dayTitle1">[1일차] 2017-09-22  금</option>
-											<option value="#dayTitle2">[2일차] 2017-09-23  토</option>
-											<option value="#dayTitle3">[3일차] 2017-09-24  일</option>
-											<option value="#dayTitle4">[4일차] 2017-09-25  월</option>
-											<option value="#dayTitle5">[5일차] 2017-09-26  화</option>
-											<option value="#dayTitle6">[6일차] 2017-09-27  수</option>
-											<option value="#dayTitle7">[7일차] 2017-09-28  목</option>
-											<option value="#dayTitle8">[8일차] 2017-09-29  금</option>
-											<option value="#dayTitle9">[9일차] 2017-09-30  토</option>
-											<option value="#dayTitle10" selected="">[10일차] 2017-10-01  일</option>
-											</select>
-									</div>
-									
-									<!-- 시간별 일정정보  Start -->       
-									<!-- 방문도시정보 -->       
-												<div class="dayArea">
-													<span class="areaName">인천</span>
-													</div>
-											<div class="dayInfo">
-												<!-- 시간별 일정 제목& 내용 -->
-												<span class="timeTxt"></span>			                        
-												<span class="timeTxtSub"><p>--- 날짜 변경선 ---<br>
-&nbsp;</p>
-
-<p><strong>[17:45] 인천 국제공항 도착</strong></p>
-</span>
-												<!--  s: 20161110 -->
-												<!-- 여행정보 Start -->
-												<!-- 여행정보 end -->               	
-												<!--  e: 20161110 -->
-												</div>
-										<!-- 일정정보 end -->
-									
-														
-									<!-- 일정end -->	
-							</div>
-							<!--[[ 일정상세 daily End ]]-->
-					</div>
+												
+												</div>	
+																		
+											</div>
+									</div><!--[[ 박스영역 End ]]-->
+						</div>
+						
+						
+						
+						
 					<!--[[ 일정표 schedule tab01 End ]]-->
 					<div id="etcWrap"><!--[[ 기타정보 탭 etcWrap Start ]]-->
 		                <div class="tab">
@@ -2170,7 +1292,12 @@ $(document).ready(function() {
 		
 		                <div class="etc tab07">
 		                <!--[[ 쇼핑안내 tab07 Start ]]-->
-		                	<span class="tit">본 상품에는 <p>총 3회의 쇼핑센터 방문 일정</p>이 있습니다.</span>
+		                	<c:if test="${vo.shop > 0 }">
+		                		<span class="tit">본 상품에는 <p>총 ${vo.shop}회의 쇼핑센터 방문 일정</p>이 있습니다.</span>
+		                	</c:if>
+		                	<c:if test="${vo.shop == 0 }">
+		                		<span class="tit">본 상품에는 <p>쇼핑센터 방문 일정이 없습니다.</p></span>
+		                	</c:if>
 							<br>
 		                    </div><!--[[ 쇼핑안내 tab08 End ]]-->
 						</div>
@@ -2362,47 +1489,59 @@ function fnView(obj){
 		
 		<!--[[ asideWrap Start ]]-->
 		
-		<aside id="asideWrap" style="left: 550px; position: absolute; top: 19841px;">
+		<aside id="asideWrap" style="left: 550px; position: absolute;">
 
             <div class="aside01">
-                <span class="tit">담당자</span><span class="name">이기영</span><span class="phone">02-2022-7284</span><span class="info">총 
-                
-                		상품
-                	
-                가격 (성인 1인 기준) <button class="btn_calculator" type="button" name="btnCalculator" role-w="550" role-h="600" role-url="/product/calculator.do?evAdtPrice=2790000&amp;evChdPrice=2232000&amp;evInfPrice=558000"></button></span>
-                <span class="pricedetailPackage fontWhite tip" role="3">2,790,000<span>원</span><img src="/images/productDetail/icon_questionB.png" alt="안내">
+                <span class="tit">담당자</span>
+                <span class="name">${vo2.name}</span>
+                <span class="phone">${vo2.phone}</span>
+                <span class="info">총 상품 가격 (성인 1인 기준) 
+                	<button class="btn_calculator" type="button" name="btnCalculator" role-w="550" role-h="600" role-url="/product/calculator.do?evAdtPrice=2790000&amp;evChdPrice=2232000&amp;evInfPrice=558000"></button>
+                </span>
+                <span class="pricedetailPackage fontWhite tip" role="3"><fmt:formatNumber value="${vo.price}" groupingUsed="true" /><span>원</span><img src="/images/productDetail/icon_questionB.png" alt="안내">
 				<span class="tooltip asideTip" style="display: none;">
-                <span class="price_child">아동: 2,232,000</span>
-	                	<span class="price_child">유아: 558,000</span>
+                <span class="price_child">아동: <fmt:formatNumber value="${vo.pricech}" groupingUsed="true" /></span>
+	                	<span class="price_child">유아: <fmt:formatNumber value="${vo.pricein}" groupingUsed="true" /></span>
 	                </span>
              </span>
                         
               
             </div>
             <div class="aside02">
-                <span class="tit">상품번호</span><span class="pNum">[<span class="num">NCP5208-170922OZ00</span>]</span>
+                <span class="tit">상품번호</span><span class="pNum">[<span class="num">${vo.code}-170922OZ00</span>]</span>
                 
-                <span class="txt">시애틀+록키완전일주 + 하와이 10일</span>
+                <span class="txt">${vo.title}</span>
             </div>
 
             <div class="aside03">
-                <span class="tit">
-                	출발일 - 
-                	OZ272</span>
+                <span class="tit">출발일 - ${vo.fno}</span>
                 <button type="button" name="btnSchedule" role-w="1160" role-h="800" role-url="/product/unitListPop.do?menu=pkg&amp;did=7423&amp;goodsCd=NCP5208" class="btn" title="퀵메뉴 다른출발일보기">다른출발일보기</button>
-                <span class="txt txt01">한국출발 2017년 09월 22일(금) 18:40</span>
-                <span class="txt txt02">현지도착 2017년 09월 22일(금) 13:10</span>
+				<span class="txt txt01">한국출발 
+                	<fmt:parseDate var="parsedDate" value="${vo.sdate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+					<fmt:formatDate value="${parsedDate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
+				</span>
+				<span class="txt txt02">현지도착 
+					<fmt:parseDate var="parsedDate" value="${vo.sadate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+					<fmt:formatDate value="${parsedDate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
+				</span>
+                
             </div>
 
             <div class="aside04">
-                <span class="tit">도착일 - OZ231</span>
-                <span class="txt txt01">현지출발 2017년 09월 30일(토) 12:10</span>
-                <span class="txt txt02">한국도착 2017년 10월 01일(일) 17:10</span>
+                <span class="tit">도착일 - ${vo.fno}</span>
+				<span class="txt txt01">현지출발 
+					<fmt:parseDate var="parsedDate" value="${vo.edate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+					<fmt:formatDate value="${parsedDate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
+				</span>
+				<span class="txt txt02">한국도착 
+					<fmt:parseDate var="parsedDate" value="${vo.eadate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+					<fmt:formatDate value="${parsedDate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
+				</span>
             </div>
 
             <div class="aside05">
                 <span class="tit">여행기간</span>
-                <span class="txt">8박10일</span>
+                <span class="txt">${vo.period}</span>
             </div>
        
             <div class="aside06">
@@ -2413,7 +1552,7 @@ function fnView(obj){
          		    	<img src="/images/productDetail/KE.png" alt="아시아나항공">
 	                   			아시아나항공</span>
                     <ul>
-                    	<li onclick="goEvent('NCP5208-170922OZ00')" style="background: rgb(249, 251, 251);">
+                    	<li style="background: rgb(249, 251, 251);">
 		                        <img src="/images/productDetail/KE.png" alt="아시아나항공">
 			                   			<span class="airname">아시아나항공</span>
 	                            <span class="mark"><span class="pie orange">예약가능</span></span>
@@ -2426,7 +1565,7 @@ function fnView(obj){
 
             <div class="aside07">    
 	           		<span class="tit">남은좌석</span>
-								<span class="txt">10석&nbsp;(최소 출발인원: 8명)</span>
+								<span class="txt">${vo.rem}석&nbsp;(최소 출발인원: ${vo.minp}명)</span>
 	               	</div>
 	           	<div class="aside08">
                 <!--  <button type="button" name="btnCalculator" id="btnCalculator" role-w="550" role-h="600" role-url="/product/calculator.do?evAdtPrice=2790000&evChdPrice=2232000&evInfPrice=558000" class="btnCalculator" title="요금계산기">요금계산기</button>-->

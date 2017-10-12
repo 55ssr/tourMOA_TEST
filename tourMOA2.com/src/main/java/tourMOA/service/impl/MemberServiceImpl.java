@@ -58,5 +58,20 @@ public class MemberServiceImpl extends EgovAbstractServiceImpl implements Member
 		return memberDAO.accountPwReaffirm(vo);
 	}
 
+	@Override
+	public MemberVO accountPwUpdate(MemberVO vo) throws Exception {
+		return memberDAO.accountPwUpdate(vo);
+	}
+
+	@Override
+	public int accountPwUpdateProc(MemberVO vo) throws Exception {
+		return memberDAO.accountPwUpdateProc(vo);
+	}
+
+	@Override
+	public MemberVO findId1(MemberVO vo) throws Exception {
+		return memberDAO.findId1(vo);
+	}
+
 
 }

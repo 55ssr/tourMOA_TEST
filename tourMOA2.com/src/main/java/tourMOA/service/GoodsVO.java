@@ -41,8 +41,22 @@ public class GoodsVO {
 	private String imglg;
 	private String ref;
 	private String opt;
+	private String daily;
+	private int shop;
 	
 	
+	public int getShop() {
+		return shop;
+	}
+	public void setShop(int shop) {
+		this.shop = shop;
+	}
+	public String getDaily() {
+		return daily;
+	}
+	public void setDaily(String daily) {
+		this.daily = daily;
+	}
 	public String getOpt() {
 		return opt;
 	}

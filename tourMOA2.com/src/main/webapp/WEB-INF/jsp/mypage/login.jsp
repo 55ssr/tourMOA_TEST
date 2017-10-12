@@ -357,7 +357,7 @@ $(document).ready(function(){
 							<input type="hidden" id="mpg_mphone" name="r_mphone" title="" />
 						</span>
 					</div>
-					<div class="input02 input02B"><button type="button" name="btnSubmit" id="btnSubmitMpg" onclick="airfn_noMemberSearchSubmitMpg(this); return false;">확인</button></div>
+					<div class="input02 input02B"><button type="submit" name="btnSubmit" id="btnSubmitMpg" onclick="airfn_noMemberSearchSubmitMpg(this); return false;">확인</button></div>
 					<div class="para para_l">
 					<span>네이버 아이디로 항공권을 예약하신 경우<br />네이버 항공권 예약확인 버튼을 클릭해주세요.</span>
 					<button type="button" name="btnNaver" class="naver" onclick="naverLogin();" title="네이버항공권예약확인"></button>

@@ -6,16 +6,22 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator"%>
+
 <link rel="stylesheet" href="/css/mypage.css" />
 
 <!-- 로그인, 아이디찾기, 비밀번호 찾기 -->
 <script type="text/javaScript">
-
-$(document).ready(function(){	
+/* function fn_btn(a) {
+	var f = document.frm;
+	f.hiddenID.value = a;
+	alert(f.hiddenID.value);
+	f.submit();
+} */
+  $(document).ready(function(){	
 	$("#btnok").click(function(){
-		if($("#findId").val() == ""){
+		if($("input:text[name='name']").val() == ""){
 			alert("이름을 입력해주세요");
-			$("#findId").focus();
+			$("#name").focus();
 			return;
 		}
 		if($("#email").val() == ""){
@@ -24,7 +30,8 @@ $(document).ready(function(){
 			return;
 		}
 	
-	var param ="name=" + $("#findId").val()
+	var 
+		param = "name=" + $("#name").val()
 		param += "&email=" + $("#email").val() ;
 	
 	$.ajax({
@@ -34,8 +41,8 @@ $(document).ready(function(){
 		, dataType: 'JSON'
 	   
 		, success:function(data) {
-			if(data.cnt == 1){
-				alert("아이디는 입니다.");
+			if(data.cnt > 0){
+				alert("아이디는 [ "+data.userID+ " ] 입니다.");
 			}else{
 				alert("없는아이디입니다.");
 			}
@@ -46,7 +53,7 @@ $(document).ready(function(){
 	
 		});
 	});
-});
+}); 
 
 </script>
 <section id="content" class="contentSub">
@@ -63,8 +70,9 @@ $(document).ready(function(){
 	    </tbody>
 	</table><!--[[ tab End ]]-->
 	<!-- <form name="frm" id="frm" method="post" action="/icert/kmcisStep02.do"> -->
-	<form name="frm" id="frm" method="post" >
+	<form name="frm" id="frm" method="post" action="/mypage/findIdRe.do" >
 	<input type="hidden" name="plusInfo" value="2" />
+
 	        <div class="txt01">
 	        	<span class="txt">회원가입 시, 입력하신 회원정보 또는 본인인증으로 아이디와 비밀번호를 확인할 수 있습니다.
 				아이디와 비밀번호는 가입 시 적어주신 이메일로 보내드립니다.</span>
@@ -72,7 +80,7 @@ $(document).ready(function(){
 	<div class="id_border">
 		<div class="id_block">
 			<label for="name_check">이름</label>
-			<input type="text" name="findId" id="findId" placeholder="이름을 입력해주세요" />
+			<input type="text" name="name" id="name" placeholder="이름을 입력해주세요" />
 		</div>
 		<div class="id_block1">
 			<label for="email_check">메일주소</label>
@@ -80,7 +88,7 @@ $(document).ready(function(){
 		</div>
 	</div>
 		 <div class="btnarea" style="margin-bottom:40px;">
-		    <button type="button" id="btnok" class="btnBlack btn_r" title="확인">확인</button>
+			 <button type="button" id="btnok" class="btnGray" title="확인">확인</button>
 		    <button type="button" id="btncancel" class="btnGray" title="취소">취소</button>
 	    </div>  
 	
