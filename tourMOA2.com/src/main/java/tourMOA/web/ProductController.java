@@ -73,10 +73,12 @@ public class ProductController {
 		System.out.println(vo2.getCode());
 		vo2 = goodsService.selectManagerDetail(vo2);
 		List<?> imgList = goodsService.selectDetailImages(vo);
+		List<?> optList = goodsService.selectOptionList(vo);
 		
 		model.addAttribute("vo", vo);
 		model.addAttribute("vo2", vo2);
 		model.addAttribute("imgList", imgList);
+		model.addAttribute("optList", optList);
 		
 		return "product/detailPackage";		
 	}

@@ -13,5 +13,6 @@ public interface GoodsService {
 	GoodsVO selectUnitDetail(GoodsVO vo) throws Exception;
 	List<?> selectDetailImages(GoodsVO vo) throws Exception;
 	ManagerVO selectManagerDetail(ManagerVO vo2) throws Exception;
+	List<?> selectOptionList(GoodsVO vo) throws Exception;
 	
 }
