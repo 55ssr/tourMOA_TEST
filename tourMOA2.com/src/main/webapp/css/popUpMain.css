@@ -1,0 +1,79 @@
+
+@CHARSET "UTF-8";
+@charset "utf-8";
+/* popup.css 커스트마이징 */
+
+div.k1_yb_pop_wrap{position:relative; background-color:#fff}
+div.k1_yb_pop_wrap h4{padding:10px 25px 0px; height:40px; font-size:22px; font-weight:500; color:#fff; background:#FFC200;}
+div.k1_yb_pop_wrap a.close_pop{position:absolute;top:10px; right:30px; width:26px; height:26px;text-indent:-9999px; background:url('http://air.ybtour.co.kr/air/imgs_ibe/new/btn/btn_x_large.png') no-repeat 0px 0px;}
+div.k1_yb_pop_wrap p{font-size:13px;}
+div.k1_yb_pop_wrap p.k1_title{margin-bottom:20px; font-size:16px; font-weight:600; color:#333333}
+div.k1_yb_pop_contents{padding:30px; border:1px solid #D1D1D1; border-top:none; overflow:scroll; height:710px;}
+
+span.ico-round-trip{display:inline-block; padding-left:25px; margin-right:5px; background:url('http://air.ybtour.co.kr/air/imgs_ibe/new/ico/ico_round_trip.png') no-repeat 0px 0px;}
+
+div.k1_yb_pop_contents table.k1_tbl_basic th{padding:10px 10px; font-size:13px}
+div.k1_yb_pop_contents table.k1_tbl_basic td{padding:5px 10px; font-size:13px}
+div.k1_yb_pop_contents table.k1_tbl_form th,
+div.k1_yb_pop_contents table.k1_tbl_form td{padding:5px 20px; height:20px}
+
+
+div.k1_yb_pop_contents .k1_journey h4{padding:0px; font-size:18px; color:#FDBA00; background:none;}
+div.k1_yb_pop_contents .k1_journey p.dep_arr{left:245px;}
+div.k1_yb_pop_contents .k1_journey p.date{position:absolute;top:12px; left:155px; font-size:14px; font-weight:500; color:#fff}
+
+/* 나이구분 레이어 팝업 */
+dl.child_price{position:absolute;width:455px; height:100px; padding-top:20px; padding-left:30px; font-size:12px; color:#333; border:1px solid #6A6A6A; background-color:#fff;z-index:9000}
+dl.child_price dt{clear:both; float:left; padding:3px 8px; background:url("http://air.ybtour.co.kr/air/imgs_ibe/new/bu/bu_dot_gray_01.png") no-repeat 0px 8px;}
+dl.child_price dd{float:left; padding:3px 8px 3px; width:360px; line-height:16px;background:url("http://air.ybtour.co.kr/air/imgs_ibe/new/bu/bu_bar_vertical_01.png") no-repeat 0px 3px;}
+
+/*운임중심 조회*/
+.k1_pop_tit2 {padding:5px 0px 15px 30px;background:url('http://air.ybtour.co.kr/air/imgs_ibe/new/ico/ico_caution.png') no-repeat 0px 0px;}
+.k1_btn_p_close2{top:10px; background:url('http://air.ybtour.co.kr/air/imgs_ibe/new/btn/btn_x.png') no-repeat 0px 0px;}
+
+.k1_cpoint_over{color:#FD5A3B}
+.k1_yb_late_login .k1_yb_ct .yb_late_loginBox_wrap{margin:0 auto; padding:0px; width:400px}
+.k1_yb_late_login{width:inherit;padding:0px;background:#fff}
+.k1_yb_late_login .yb_late_loginBox .btn_login{position:absolute;top:0px; right:0px; width:110px; }
+.k1_yb_late_login .yb_late_loginBox .btn_login button{width:100%; height:100px; padding-top:30px;background:#666666 url("http://air.ybtour.co.kr/air/imgs_ibe/new/bu/bu_login.png") no-repeat 45px 27px; font-size:14px}
+.k1_yb_late_login .yb_late_loginBox .login_input{width:395px}
+.k1_yb_late_login .yb_late_loginBox .login_input li input{width:250px;height: 29px;padding-left: 10px;line-height: 29px;font-size: 14px;color: #aaa;font-weight: bold;}
+.k1_yb_late_login .login_search{width:400px; margin:20px auto; text-align:right}
+.k1_yb_late_login .login_search span.bar{padding:0 3px}
+
+.k1_yb_late_login .yb_late_loginBox_wrap .yb_late_loginBox{position:relative;}
+.k1_yb_late_login .yb_late_loginBox .login_input li{margin-bottom:6px}
+.k1_yb_late_login .yb_late_loginBox_wrap .yb_nonmember{margin-top:20px}
+.k1_yb_late_login .yb_late_loginBox_wrap .yb_nonmember button{width:197px; font-size:14px}
+
+
+.yb_yb_nonmember_wrap{width:440px; margin:0 auto; padding:0px 0px 20px; border-bottom:1px solid #ccc}
+.yb_yb_nonmember_wrap .yb_loginBox{position:relative;}
+.yb_yb_nonmember_wrap .yb_loginBox .login_input{width:330px}
+.yb_yb_nonmember_wrap .yb_loginBox .btn_login{position:absolute;top:3px; right:0px }
+.yb_yb_nonmember_wrap .yb_loginBox .btn_login button{width:100%; height:100px; padding-top:30px;background:#666666 url("http://air.ybtour.co.kr/air/imgs_ibe/new/bu/bu_login.png") no-repeat 38px 27px; font-size:14px}
+.yb_yb_nonmember_wrap .yb_loginBox .login_input li{margin-bottom:6px}
+.yb_yb_nonmember_wrap .yb_loginBox .login_input li label{display:inline-block; width:100px; text-align:left; font-weight:bold}
+.yb_yb_nonmember_wrap .yb_loginBox .login_input li input{width:46px}
+.k1_error_pop {width: 345px;height: 110px;padding: 80px 10px 0 210px;background:url('http://air.ybtour.co.kr/air/imgs_ibe/new/ico/ico_err_huge.png') no-repeat 0px 0px;}
+.k1_error_pop p{font-size:16px !important; line-height:22px}
+
+.k1_select_air_layer .k1_cont span.txt{background:url('http://air.ybtour.co.kr/air/imgs_ibe/new/bg/txt_rbg.gif') no-repeat 0px 0px;}
+.k1_select_air_layer .k1_cont span.no{width:50px}
+
+.k1_pop_tit3 {margin-bottom:10px; padding: 5px 0 5px 17px;background: url('http://air.ybtour.co.kr/air/imgs_ibe/new/bu/bu_squ_yellow.gif') 5px 7px no-repeat;color: #393939;font-weight: normal;font-size: 16px;line-height: 12px;}
+.k1_itinerary_tit{position:relative; margin-top:10px; padding-top:20px; height:70px; text-align:right; border-top:1px solid #999; border-bottom:2px solid #999; background:none;}
+.k1_informlist li span.tt{display: inline-block;width: 70px;padding: 0 10px;background: url('http://air.ybtour.co.kr/air/imgs_ibe/new/bu/bu_dot_yellow.png') no-repeat 0 2px;vertical-align: middle;}
+.k1_itinerary_foot {padding: 10px;margin-top: 20px; background: #fff;}
+
+.k1_pop_header{padding:20px 25px 0px; height:50px;  background:#FFC200;}
+.k1_pop_header h1{font-size:22px; font-weight:500; color:#fff; background:none}
+
+.k1_informlist2 li{float: left;width: 290px;padding: 4px 5px 4px 10px;line-height: 1.2em;}
+.k1_informlist2 li span.tt {display: inline-block;width: 33%;padding: 0 10px; color:#000;background: url('http://air.ybtour.co.kr/air/imgs_ibe/new/bu/bu_dot_yellow.png') no-repeat 0 4px; vertical-align: middle;}
+
+.k1_receipt .title{width:100%}
+.k1_receipt .title h1{float:right; margin-right:10px}
+
+div#simplemodal-data > div{overflow-y:hidden !important}
+#k1_pop_wrap{border:none}
