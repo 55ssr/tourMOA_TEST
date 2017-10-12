@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core" %>
+
 <link rel="stylesheet" href="/css/customer.css" />
     <script>
 function fnMenuSelect() {
@@ -68,7 +70,7 @@ function loginConfirm(){
 				<!-- [공통코드 - 여행종류] Start -->
 								<ul class="sub_choice_in">
 						<li>
-							<input type="radio" id="rdo_travrvTypeCd1" name="travrvTypeCd" value="FFC" onclick="fn_setTravrvType('FFC');" checked="checked"/>
+							<input type="radio" id="rdo_travrvTypeCd1" name="travrvTypeCd" value="FFC" onclick="fn_setTravrvType('FFC');"/>
 								<label for="rdo_travrvTypeCd1">자유여행[해외]</label>
 									</li>
 						<li>
@@ -101,7 +103,7 @@ function loginConfirm(){
 						</tr>
 					</tbody>
 				</table>
-				
+				<div id="rdo_travrvTypeCd1" style="display:block;">
 				<h3 class="tit_estimate_form">1. 문의 고객 정보<span class="sub_txt">※ <img src="/images/customer/03_bul01.png" alt="필수입력" class="ico_essential">필수입력 정보입니다.</span></h3>
 				
 				<table class="tbl_horizontal_type bd_type01">
@@ -164,16 +166,16 @@ function loginConfirm(){
 										<!-- [공통코드 - 시간리스트] Start -->							
 										<select class="sel_default" style="width:132px" name="callTm" id="callTm">
 											<option value="">시간선택</option>
-								<option value="TM1" >09:00~10:00</option>
-								<option value="TM2" >10:00~11:00</option>
-								<option value="TM3" >11:00~12:00</option>
-								<option value="TM4" >12:00~13:00</option>
-								<option value="TM5" >13:00~14:00</option>
-								<option value="TM6" >14:00~15:00</option>
-								<option value="TM7" >15:00~16:00</option>
-								<option value="TM8" >16:00~17:00</option>
-								<option value="TM9" >17:00~18:00</option>
-								</select>
+											<option value="TM1" >09:00~10:00</option>
+											<option value="TM2" >10:00~11:00</option>
+											<option value="TM3" >11:00~12:00</option>
+											<option value="TM4" >12:00~13:00</option>
+											<option value="TM5" >13:00~14:00</option>
+											<option value="TM6" >14:00~15:00</option>
+											<option value="TM7" >15:00~16:00</option>
+											<option value="TM8" >16:00~17:00</option>
+											<option value="TM9" >17:00~18:00</option>
+										</select>
 										<!-- [공통코드 - 시간리스트] End -->
 									</li>
 								</ul>
@@ -765,10 +767,8 @@ function loginConfirm(){
 			<div class="privacy_agree_box">
 				<p><input type="checkbox" id="inEstimateAgree" name= "inEstimateAgree"/><label for="inEstimateAgree">개인정보 수집/이용 동의</label></p>
 				<input type="submit" value="등록" class="bt_right bt_type bd_type02" id="btnOK">
-			</div>
-			
-		</form>
-			
+			</div>			
+		</form>			
 		</div>
 	</section>
 	<script type="text/javaScript" language="javascript" defer="defer">
@@ -1447,7 +1447,57 @@ function loginConfirm(){
 	
 	// [function] 여행타입 변경
 	function fn_setTravrvType( travrvAreaCd ) {
+		var obj1 = document.getElementById("rdo_travrvTypeCd1");
+		var obj2 = document.getElementById("rdo_travrvTypeCd2");
+		var obj3 = document.getElementById("rdo_travrvTypeCd3");
+		var obj4 = document.getElementById("rdo_travrvTypeCd4");
+		var obj5 = document.getElementById("rdo_travrvTypeCd5");
+		var obj6 = document.getElementById("rdo_travrvTypeCd6");
 		
+		if( travrvAreaCd == "rdo_travrvTypeCd1" ) { // 자유여행내용
+			obj1.style.display = "block";	
+			obj2.style.display = "none";
+			obj3.style.display = "none";
+			obj4.style.display = "none";
+			obj5.style.display = "none";
+			obj6.style.display = "none";
+		} else if ( travrvAreaCd == "rdo_travrvTypeCd2" ){ // 허니문내용
+			obj1.style.display = "none";	
+			obj2.style.display = "block";
+			obj3.style.display = "none";
+			obj4.style.display = "none";
+			obj5.style.display = "none";
+			obj6.style.display = "none";
+		} else if ( travrvAreaCd == "rdo_travrvTypeCd3" ){ // 골프
+			obj1.style.display = "none";	
+			obj2.style.display = "none";
+			obj3.style.display = "block";
+			obj4.style.display = "none";
+			obj5.style.display = "none";
+			obj6.style.display = "none";
+		} else if ( travrvAreaCd == "rdo_travrvTypeCd4" ){ // 골프
+			obj1.style.display = "none";	
+			obj2.style.display = "none";
+			obj3.style.display = "none";
+			obj4.style.display = "block";
+			obj5.style.display = "none";
+			obj6.style.display = "none";
+		} else if ( travrvAreaCd == "rdo_travrvTypeCd5" ){ // 골프
+			obj1.style.display = "none";	
+			obj2.style.display = "none";
+			obj3.style.display = "none";
+			obj4.style.display = "none";
+			obj5.style.display = "block";
+			obj6.style.display = "none";
+		} 		
+		else{
+			obj1.style.display = "none";	
+			obj2.style.display = "none";
+			obj3.style.display = "none";
+			obj4.style.display = "none";
+			obj5.style.display = "none";
+			obj6.style.display = "block";
+		}
 		document.location.href='/customer/estimateReq.do?travrvTypeCd='+travrvAreaCd;
 		
 	}
