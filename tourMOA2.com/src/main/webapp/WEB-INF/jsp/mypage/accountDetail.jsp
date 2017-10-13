@@ -6,7 +6,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator"%>
-
+<%
+			String id = request.getParameter("id");
+%>
 <link rel="stylesheet" href="/css/mypage.css" />
 <script>
 
@@ -144,7 +146,6 @@ $(document).ready(function(){
 				 $("input:hidden[name='hidbirth']").val(birth); 
 		 
 		 var form = "id="+$("input:hidden[id='userid']").val()
-				form += "pwd="+$("input:hidden[id='userpwd']").val()
 				form += "&gender=" +$("#genderCd").val()
 				form += "&email=" +$("#email").val()
 				form += "&phone=" +$("#hidphone").val()
@@ -422,7 +423,6 @@ $(document).ready(function(){
 	<form name="modifyFrm" id="modifyFrm" method="post" >
 		<input type="hidden" name="webCustNo" 	id="webCustNo" 		value="" />
 		<input type="hidden" name="userid" 	id="userid" 		value="${vo.id}" />
-		<input type="hidden" name="userpwd" 	id="userpwd" 		value="${vo.pwd}" />
 		<input type="hidden" name="marry" 		id="marry" 		value="${vo.marry}" />
 		<input type="hidden" name="hidbirth" 	id="hidbirth" value="${vo.birthday}" />
 		<input type="hidden" name="marryYn" 		id="marryYn" 		value="" />

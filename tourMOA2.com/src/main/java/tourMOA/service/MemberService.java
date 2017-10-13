@@ -22,7 +22,8 @@ public interface MemberService {
 
 	int accountPwUpdateProc(MemberVO vo) throws Exception;
 
-	MemberVO findId1(MemberVO vo) throws Exception;
+	MemberVO findIdDetail(MemberVO vo) throws Exception;
+
 
 
 

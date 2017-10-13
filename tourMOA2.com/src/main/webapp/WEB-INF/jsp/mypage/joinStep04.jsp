@@ -56,7 +56,6 @@
 				param += "&mobileRcpYn="+$("#mobileRcpYn").val()
 				param += "&agree1="+$("#agreeEss01").val()
 				param += "&agree2="+$("#agreeEss02").val();
-			alert(param);
 			
 			$.ajax({
 				  type:'POST'

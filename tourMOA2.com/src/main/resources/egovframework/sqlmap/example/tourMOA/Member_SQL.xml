@@ -21,17 +21,23 @@
 			WHERE id = '$id$' AND email = '$email$'
 	</select>
 	
+	<select id="memberDAO.findIdDetail" resultClass="MemberVO">
+		SELECT 
+			id,pwd
+		FROM 
+			member
+		WHERE name = '$name$' OR id = '$id$' AND email = '$email$'
+	</select>
+	
 	<select id="memberDAO.loginSession" resultClass="java.lang.Boolean">
 	
 		SELECT * FROM MEMBER
 			WHERE id = '$id$' AND pwd = '$pwd$'
 	
 	</select>
-	
 	 <select id="memberDAO.accountDetail" resultClass="MemberVO">
 		SELECT 
 				id,
-				pwd,
 				name,
 				gender,
 				email,
@@ -45,16 +51,16 @@
 				job
 		FROM  
 				MEMBER
-		WHERE id = '$id$' OR name = '$name$'
+		WHERE id = '$id$'
 	</select>
 	
 	<select id="memberDAO.accountPwReaffirm" resultClass="MemberVO">
-		SELECT id FROM MEMBER WHERE id='$id$'
+		SELECT id,pwd FROM MEMBER WHERE id='$id$'
 	</select>
 	 
 	<select id="memberDAO.accountPwUpdate" resultClass="MemberVO">
 		SELECT pwd,id
-		 FROM MEMBER WHERE id='$id$'
+		 FROM MEMBER WHERE id='$id$' 
 	</select>
 	
 	<insert id="memberDAO.insertMemberJoin">

@@ -121,6 +121,7 @@ function fn_btn(a) {
 			<span>비밀번호를 다시 한번 확인합니다.</span>        
 		<form name="frm" id="frm" method="post" action="/mypage/accountDetail.do">
 		<input type="hidden" name="id" id="id" value="${sessionScope.loginCertification.id}"/>
+		<input type="hidden" name="pwd" id="pwd" value="${sessionScope.loginCertification.id}"/>
 		
 			<div class="cont_l">
 				<span class="pass_tit">아이디</span><span class="cont">${sessionScope.loginCertification.id}</span>

@@ -21,3 +21,5 @@
 table td[class*=col-],table th[class*=col-]{position:static;display:table-cell;float:none}
 
 .note-editor.note-frame.card {margin:0}
+
+.vm {line-height:2em}
