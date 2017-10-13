@@ -129,6 +129,7 @@
 				url: "<c:url value='/adminGoodsWriteSave.do' />",
 				dataType: "json",
 				processData: false,
+				contentType: false,
 				success: function (data) {
 					if(data.result == "ok") {
 						alert("저장됐습니다.");
@@ -144,7 +145,7 @@
 		});
 	});
 	</script>
-	<form name="frm" id="frm">
+	<form name="frm" id="frm" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="unq" value="" />
 		<div class="form-group row">
 			<label for="inputGoodsType" class="col-sm-2 col-form-label">상품구분</label>
@@ -472,6 +473,18 @@
 			<div class="col-sm-10">
 				<input type="text" class="form-control" name="vias" id="vias" placeholder="상해,뭄바이" disabled>
 			</div>
+		</div>
+		
+		<div class="form-group row">
+			<label for="selectUse" class="col-sm-2 col-form-label">슬라이드 이미지</label>
+			<div class="col-sm-2">
+				
+				<input type="file" class="form-control-file" id="exampleFormControlFile1" multiple>
+			
+			</div>
+			
+			
+			
 		</div>
 		
 		<div class="form-group row">
