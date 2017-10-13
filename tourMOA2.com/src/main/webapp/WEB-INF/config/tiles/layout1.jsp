@@ -52,8 +52,8 @@
 <script src="/js/sessionCheck.js"></script><!-- 새벽 배포이후 빼기로 -->
 <script src="/js/naverLogin_implicit-1.0.2.js"></script>
 <script src="/js/yb.mobileCheck.js" type="text/javascript"></script>
-<script type="text/javascript" src="/js/yb.core.js"></script>
-<script type="text/javascript" src="/js/yb.certification.js"></script>
+<!-- <script type="text/javascript" src="/js/yb.core.js"></script>
+<script type="text/javascript" src="/js/yb.certification.js"></script> -->
 <!-- Kim Kookjin 추가 e -->
 </head>
 <body>
