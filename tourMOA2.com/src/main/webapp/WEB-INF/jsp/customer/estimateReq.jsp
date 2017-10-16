@@ -51,8 +51,9 @@ function loginConfirm(){
 				</p>
 			</div>
 			
-			<form name="frm" id="frm" method="post" action="/customer/insertEstimateInfo.do">
+			<form name="frm" id="frm" method="post" action="customer/estimateReqSave.do">
 			<input type="hidden" name="userid" value="" />
+			<input type="hidden" name="phone" id="phone" value="" />			
 			<table class="tbl_horizontal_type bdb_type01">
 				<caption>여행타입 선택</caption>
 				<colgroup>
@@ -60,6 +61,7 @@ function loginConfirm(){
 					<col style="width:970px;" />
 				</colgroup>
 				<tbody>
+					<!-- [견적 제목 입력] Start -->
 					<tr>
 						<th scope="row"><img src="/images/customer/03_bul01.png" alt="필수입력" class="ico_essential" />제목</th>
 						<td>				
@@ -67,15 +69,16 @@ function loginConfirm(){
 								<li>
 									<input type="text" name="title" style="width:910px; height:30px; padding-left:10px;" id="title" value=""/>
 								</li>									
-							</ul>
-							<!-- [공통코드 - 여행종류] End -->
+							</ul>							
 						</td>
 					</tr>
+					<!-- [견적 제목 입력] End -->
 				</tbody>
 			</table>				
 			<div id="rdo_travrvTypeCd1" style="display:block;">
 				<h3 class="tit_estimate_form">1. 문의 고객 정보<span class="sub_txt">※ <img src="/images/customer/03_bul01.png" alt="필수입력" class="ico_essential">필수입력 정보입니다.</span></h3>
 				
+				<!-- [고객정보 입력] Start -->				
 				<table class="tbl_horizontal_type bd_type01">
 					<caption>문의 고객 정보 입력</caption>
 					<colgroup>
@@ -87,27 +90,27 @@ function loginConfirm(){
 					<tbody>
 						<tr>
 							<th scope="row"><img src="/images/customer/03_bul01.png" alt="필수입력" class="ico_essential" />성함 | 단체명</th>
-							<td><input type="text" class="input_default" style="width:183px" name="name" id ="name" maxlength="40"/></td>
+							<td><input type="text" class="input_default" style="width:183px; height:16px;" name="name" id ="name" maxlength="40" /></td>
 							<th scope="row"><img src="/images/customer/03_bul01.png" alt="필수입력" class="ico_essential" />이메일</th>
 							<td>
-								<input type="text" class="input_default input_space02" style="width:87px" name="cstEmail1" id="cstEmail1" maxlength="40"/><span class="txt_mail_division">@</span><input type="text" class="input_default input_space" style="width:87px" name="cstEmail2" id="cstEmail2" maxlength="40"/>
+								<input type="text" class="input_default input_space02" style="width:87px; height:16px;" name="cstEmail1" id="cstEmail1" maxlength="40"/><span class="txt_mail_division">@</span><input type="text" class="input_default input_space" style="width:87px; height:16px;" name="cstEmail2" id="cstEmail2" maxlength="40"/>
 								<!-- [공통코드 - 메일리스트] Start -->
 								<select class="sel_default input_space" style="width:134px" name="cstEmail3" id="cstEmail3">
-								<option value="">직접입력</option>
-								<option value="naver.com" >naver.com</option>
-								<option value="nate.com" >nate.com</option>
-								<option value="hanmail.net" >hanmail.net</option>
-								<option value="dreamwiz.com" >dreamwiz.com</option>
-								<option value="lycos.co.kr" >lycos.co.kr</option>
-								<option value="gmail.com" >gmail.com</option>
-								<option value="hotmail.com" >hotmail.com</option>
-								<option value="paran.com" >paran.com</option>
-								<option value="yahoo.co.kr" >yahoo.co.kr</option>
-								<option value="empal.com" >empal.com</option>
-								<option value="unitel.co.kr" >unitel.co.kr</option>
-								<option value="korea.com" >korea.com</option>
-								<option value="chol.com" >chol.com</option>
-								<option value="freechal.com" >freechal.com</option>
+									<option value="">직접입력</option>
+									<option value="naver.com" >naver.com</option>
+									<option value="nate.com" >nate.com</option>
+									<option value="hanmail.net" >hanmail.net</option>
+									<option value="dreamwiz.com" >dreamwiz.com</option>
+									<option value="lycos.co.kr" >lycos.co.kr</option>
+									<option value="gmail.com" >gmail.com</option>
+									<option value="hotmail.com" >hotmail.com</option>
+									<option value="paran.com" >paran.com</option>
+									<option value="yahoo.co.kr" >yahoo.co.kr</option>
+									<option value="empal.com" >empal.com</option>
+									<option value="unitel.co.kr" >unitel.co.kr</option>
+									<option value="korea.com" >korea.com</option>
+									<option value="chol.com" >chol.com</option>
+									<option value="freechal.com" >freechal.com</option>
 								</select>
 								<!-- [공통코드 - 메일리스트] End -->
 							</td>
@@ -117,24 +120,24 @@ function loginConfirm(){
 							<td>
 								<!-- [공통코드 - 국번리스트] Start -->
 								<select class="sel_default" style="width:84px" name="cstTel1" id="cstTel1">
-								<option value="010" >010</option>
-								<option value="011" >011</option>
-								<option value="016" >016</option>
-								<option value="017" >017</option>
-								<option value="018" >018</option>
-								<option value="019" >019</option>
-								</select><!-- [공통코드 - 국번리스트] End --><span class="space">-</span><input type="text" class="input_default" style="width:84px" name="cstTel2" id="cstTel2" maxlength="4" /><span class="space">-</span><input type="text" class="input_default" style="width:84px" name="cstTel3" id="cstTel3" maxlength="4" />
+									<option value="010" >010</option>
+									<option value="011" >011</option>
+									<option value="016" >016</option>
+									<option value="017" >017</option>
+									<option value="018" >018</option>
+									<option value="019" >019</option>
+								</select><!-- [공통코드 - 국번리스트] End --><span class="space">-</span><input type="text" class="input_default" style="width:84px; height:16px;" name="cstTel2" id="cstTel2" maxlength="4" /><span class="space">-</span><input type="text" class="input_default" style="width:84px; height:16px;" name="cstTel3" id="cstTel3" maxlength="4" />
 								<input type="button" value="인증하기" class="estimate_btn_confirm" role-w="550" role-h="378" role-url="/customer/prcEstimateSmsPopup.do" />
 							</td>
 							<th scope="row"><img src="/images/customer/03_bul01.png" alt="필수입력" class="ico_essential" />통화가능시간</th>
 							<td>
 								<ul class="sub_choice_in">
-									<li><input type="radio" id="callDiviCd01" name="callDiviCd" value="X" onclick="clickCallTmButton('X');"/><label for="callDiviCd01">안함</label></li>
-									<li><input type="radio" id="callDiviCd02" name="callDiviCd" value="" checked="checked" onclick="clickCallTmButton('');"/><label for="callDiviCd02">상관없음</label></li>
+									<li><input type="radio" id="r_r_ptime01" name="r_r_ptime" value="X" onclick="clickptimeButton('X');"/><label for="r_r_ptime01">안함</label></li>
+									<li><input type="radio" id="r_r_ptime02" name="r_r_ptime" value="" checked="checked" onclick="clickptimeButton('');"/><label for="r_r_ptime02">상관없음</label></li>
 									<li class="last">
-										<input type="radio" id="callDiviCd03" name="callDiviCd" value="C" onclick="clickCallTmButton('C');"/><label for="callDiviCd03" class="input_space04">선택</label>
+										<input type="radio" id="r_r_ptime03" name="r_r_ptime" value="C" onclick="clickptimeButton('C');"/><label for="r_r_ptime03" class="input_space04">선택</label>
 										<!-- [공통코드 - 시간리스트] Start -->							
-										<select class="sel_default" style="width:132px" name="callTm" id="callTm">
+										<select class="sel_default" style="width:132px" name="ptime" id="ptime">
 											<option value="">시간선택</option>
 											<option value="TM1" >09:00~10:00</option>
 											<option value="TM2" >10:00~11:00</option>
@@ -150,17 +153,14 @@ function loginConfirm(){
 									</li>
 								</ul>
 							</td>
-						</tr>
-					<!-- [여행타입 : 성지순례 - 소속 및 단체명, 소속 소재지입력란 활성화] Start -->
-					<!-- [여행타입 : 성지순례 - 소속 및 단체명, 소속 소재지입력란 활성화] End -->
-					
-				<!-- [기본값 : 여행인원, 여행경비 활성화] Start -->
+						</tr>					
+						<!-- [기본값 : 여행인원, 여행경비 활성화] Start -->						
 						<tr>
 							<th scope="row"><img src="/images/customer/03_bul01.png" alt="필수입력" class="ico_essential" />여행인원</th>
 							<td>
 								<span class="txt_sel">성인
 									<!-- [공통코드 - 여행인원리스트] Start --> 
-									<select class="sel_default input_space03" style="width:77px" id="rervAdtCnt" name="rervAdtCnt">
+									<select class="sel_default input_space03" style="width:77px" id="rervAdtCnt" name="person">
 										<option value="">선택</option>
 										<option value="1" >1명</option>
 										<option value="2" >2명</option>
@@ -175,47 +175,16 @@ function loginConfirm(){
 										<option value="11" >11명</option>
 									</select>
 									<!-- [공통코드 - 여행인원리스트] End -->
-								</span>
-								<span class="txt_sel">소아
-									<!-- [공통코드 - 여행인원리스트] Start --> 
-									<select class="sel_default input_space03" style="width:77px" id="rervChdCnt" name="rervChdCnt">
-										<option value="0" >0명</option>
-										<option value="1" >1명</option>
-										<option value="2" >2명</option>
-										<option value="3" >3명</option>
-										<option value="4" >4명</option>
-										<option value="5" >5명</option>
-										<option value="6" >6명</option>
-										<option value="7" >7명</option>
-										<option value="8" >8명</option>
-										<option value="9" >9명</option>
-										<option value="10" >10명</option>
-									</select>
-									<!-- [공통코드 - 여행인원리스트] End -->
-								</span>
-								<span class="txt_sel">유아 
-									<!-- [공통코드 - 여행인원리스트] Start -->							
-									<select class="sel_default" style="width:77px" id="rervInfCnt" name="rervInfCnt">
-										<option value="0" >0명</option>
-										<option value="1" >1명</option>
-										<option value="2" >2명</option>
-										<option value="3" >3명</option>
-										<option value="4" >4명</option>
-										<option value="5" >5명</option>
-										<option value="6" >6명</option>
-										<option value="7" >7명</option>
-										<option value="8" >8명</option>
-										<option value="9" >9명</option>
-										<option value="10" >10명</option>
-									</select>
-									<!-- [공통코드 - 여행인원리스트] End -->
+								</span>								
+								<span class="txt_sel">
+									소아 및 유아의 경우 상담시 진행합니다.
 								</span>
 							</td>
 							<th scope="row"><img src="/images/customer/03_bul01.png" alt="필수입력" class="ico_essential" />여행경비</th>
 							<td>
 								<span class="txt_sel">1인당 
 									<!-- [공통코드 - 여행경비리스트] Start -->
-									<select class="sel_default" style="width:203px" name="travrvMny" id="travrvMny">
+									<select class="sel_default" style="width:203px" name="money" id="travrvMny">
 										<option value="">선택</option>
 										<option value="IT1" >30만원 미만</option>
 										<option value="IT2" >30만 ~ 50만원</option>
@@ -241,49 +210,49 @@ function loginConfirm(){
 					</colgroup>
 					<tbody>
 			<!-- [여행타입 : 자유여행[제주], 하이호주 - 여행지역 비활성화] Start -->
-						<tr id="tr_TravrvArea" >
+						<tr id="tr_floc" >
 					<!-- [여행타입 : 자유여행[제주], 하이호주 - 여행지역 비활성화] End -->
 							<th scope="row"><img src="/images/customer/03_bul01.png" alt="필수입력" class="ico_essential" />여행지역</th>
 							<td>
-								<input type="hidden" name="travrvAreaDetail" id="travrvAreaDetail" value="">
+								<input type="hidden" name="flocDetail" id="flocDetail" value="">
 								<div id="div_Area_FFC" class="div_Area" style="">
 									<div class="country_select">
 										<ul class="sub_choice_in">
 										<!-- [여행지역 1차 설정] Start -->
 											<li>
-												<input type="radio" name="travrvArea" class="travrvAreaFst" id="rdo_FFC_55" value="55" onclick="fn_setTravrvAreaFst('FFC','55')" checked="checked" >
+												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_55" value="55" onclick="fn_setflocFst('FFC','55')" checked="checked" >
 												<label for="rdo_FFC_55">유럽/지중해</label>
 											</li>
 											<li>
-												<input type="radio" name="travrvArea" class="travrvAreaFst" id="rdo_FFC_58" value="58" onclick="fn_setTravrvAreaFst('FFC','58')">
+												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_58" value="58" onclick="fn_setflocFst('FFC','58')">
 												<label for="rdo_FFC_58">동남아</label>
 											</li>
 											<li>
-												<input type="radio" name="travrvArea" class="travrvAreaFst" id="rdo_FFC_56" value="56" onclick="fn_setTravrvAreaFst('FFC','56')">
+												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_56" value="56" onclick="fn_setflocFst('FFC','56')">
 												<label for="rdo_FFC_56">일본</label>
 											</li>
 											<li>
-												<input type="radio" name="travrvArea" class="travrvAreaFst" id="rdo_FFC_300" value="300" onclick="fn_setTravrvAreaFst('FFC','300')">
+												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_300" value="300" onclick="fn_setflocFst('FFC','300')">
 												<label for="rdo_FFC_300">중국</label>
 											</li>
 											<li>
-												<input type="radio" name="travrvArea" class="travrvAreaFst" id="rdo_FFC_57" value="57" onclick="fn_setTravrvAreaFst('FFC','57')">
+												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_57" value="57" onclick="fn_setflocFst('FFC','57')">
 												<label for="rdo_FFC_57">홍콩/마카오/대만</label>
 											</li>
 											<li>
-												<input type="radio" name="travrvArea" class="travrvAreaFst" id="rdo_FFC_59" value="59" onclick="fn_setTravrvAreaFst('FFC','59')">
+												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_59" value="59" onclick="fn_setflocFst('FFC','59')">
 												<label for="rdo_FFC_59">미주/하와이</label>
 											</li>
 											<li>
-												<input type="radio" name="travrvArea" class="travrvAreaFst" id="rdo_FFC_60" value="60" onclick="fn_setTravrvAreaFst('FFC','60')">
+												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_60" value="60" onclick="fn_setflocFst('FFC','60')">
 												<label for="rdo_FFC_60">호주</label>
 											</li>
 											<li>
-												<input type="radio" name="travrvArea" class="travrvAreaFst" id="rdo_FFC_295" value="295" onclick="fn_setTravrvAreaFst('FFC','295')">
+												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_295" value="295" onclick="fn_setflocFst('FFC','295')">
 												<label for="rdo_FFC_295">몰디브</label>
 											</li>
 											<li>
-												<input type="radio" name="travrvArea" class="travrvAreaFst" id="rdo_FFC_11" value="11" onclick="fn_setTravrvAreaFst('FFC','11')">
+												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_11" value="11" onclick="fn_setflocFst('FFC','11')">
 												<label for="rdo_FFC_11">괌/사이판</label>
 											</li>
 										<!-- [여행지역 1차 설정] End -->
@@ -293,55 +262,55 @@ function loginConfirm(){
 									<div class="sub_country_select" id="div_AreaDtl_FFC_55" style="">
 											<ul class="sub_choice_in">
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_55_160" value="160">
+											<input type="checkbox" name="city" id="chk_FFC_55_160" value="160">
 											<label for="chk_FFC_55_160">프랑스</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_55_161" value="161">
+											<input type="checkbox" name="city" id="chk_FFC_55_161" value="161">
 											<label for="chk_FFC_55_161">스위스</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_55_162" value="162">
+											<input type="checkbox" name="city" id="chk_FFC_55_162" value="162">
 											<label for="chk_FFC_55_162">이탈리아</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_55_163" value="163">
+											<input type="checkbox" name="city" id="chk_FFC_55_163" value="163">
 											<label for="chk_FFC_55_163">영국</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_55_164" value="164">
+											<input type="checkbox" name="city" id="chk_FFC_55_164" value="164">
 											<label for="chk_FFC_55_164">스페인/포르투갈</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_55_165" value="165">
+											<input type="checkbox" name="city" id="chk_FFC_55_165" value="165">
 											<label for="chk_FFC_55_165">독일</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_55_166" value="166">
+											<input type="checkbox" name="city" id="chk_FFC_55_166" value="166">
 											<label for="chk_FFC_55_166">체코(프라하)</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_55_167" value="167">
+											<input type="checkbox" name="city" id="chk_FFC_55_167" value="167">
 											<label for="chk_FFC_55_167">오스트리아</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_55_168" value="168">
+											<input type="checkbox" name="city" id="chk_FFC_55_168" value="168">
 											<label for="chk_FFC_55_168">헝가리</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_55_169" value="169">
+											<input type="checkbox" name="city" id="chk_FFC_55_169" value="169">
 											<label for="chk_FFC_55_169">크로아티아</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_55_170" value="170">
+											<input type="checkbox" name="city" id="chk_FFC_55_170" value="170">
 											<label for="chk_FFC_55_170">그리스(산토리니)</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_55_275" value="275">
+											<input type="checkbox" name="city" id="chk_FFC_55_275" value="275">
 											<label for="chk_FFC_55_275">북유럽</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_55_276" value="276">
+											<input type="checkbox" name="city" id="chk_FFC_55_276" value="276">
 											<label for="chk_FFC_55_276">기타지역</label>
 										</li>
 									</ul>
@@ -349,75 +318,75 @@ function loginConfirm(){
 								<div class="sub_country_select" id="div_AreaDtl_FFC_58" style="display:none;">
 									<ul class="sub_choice_in">
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_58_104" value="104">
+											<input type="checkbox" name="city" id="chk_FFC_58_104" value="104">
 											<label for="chk_FFC_58_104">싱가포르</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_58_105" value="105">
+											<input type="checkbox" name="city" id="chk_FFC_58_105" value="105">
 											<label for="chk_FFC_58_105">코타키나발루</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_58_106" value="106">
+											<input type="checkbox" name="city" id="chk_FFC_58_106" value="106">
 											<label for="chk_FFC_58_106">페낭</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_58_107" value="107">
+											<input type="checkbox" name="city" id="chk_FFC_58_107" value="107">
 											<label for="chk_FFC_58_107">랑카위</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_58_108" value="108">
+											<input type="checkbox" name="city" id="chk_FFC_58_108" value="108">
 											<label for="chk_FFC_58_108">발리</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_58_109" value="109">
+											<input type="checkbox" name="city" id="chk_FFC_58_109" value="109">
 											<label for="chk_FFC_58_109">롬복</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_58_277" value="277">
+											<input type="checkbox" name="city" id="chk_FFC_58_277" value="277">
 											<label for="chk_FFC_58_277">하노이</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_58_278" value="278">
+											<input type="checkbox" name="city" id="chk_FFC_58_278" value="278">
 											<label for="chk_FFC_58_278">호치민</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_58_279" value="279">
+											<input type="checkbox" name="city" id="chk_FFC_58_279" value="279">
 											<label for="chk_FFC_58_279">다낭</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_58_280" value="280">
+											<input type="checkbox" name="city" id="chk_FFC_58_280" value="280">
 											<label for="chk_FFC_58_280">나트랑</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_58_281" value="281">
+											<input type="checkbox" name="city" id="chk_FFC_58_281" value="281">
 											<label for="chk_FFC_58_281">씨엠립</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_58_282" value="282">
+											<input type="checkbox" name="city" id="chk_FFC_58_282" value="282">
 											<label for="chk_FFC_58_282">세부</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_58_283" value="283">
+											<input type="checkbox" name="city" id="chk_FFC_58_283" value="283">
 											<label for="chk_FFC_58_283">보라카이</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_58_284" value="284">
+											<input type="checkbox" name="city" id="chk_FFC_58_284" value="284">
 											<label for="chk_FFC_58_284">마닐라</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_58_285" value="285">
+											<input type="checkbox" name="city" id="chk_FFC_58_285" value="285">
 											<label for="chk_FFC_58_285">보홀</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_58_286" value="286">
+											<input type="checkbox" name="city" id="chk_FFC_58_286" value="286">
 											<label for="chk_FFC_58_286">방콕/파타야</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_58_287" value="287">
+											<input type="checkbox" name="city" id="chk_FFC_58_287" value="287">
 											<label for="chk_FFC_58_287">푸켓/카오락</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_58_288" value="288">
+											<input type="checkbox" name="city" id="chk_FFC_58_288" value="288">
 											<label for="chk_FFC_58_288">치앙마이</label>
 										</li>
 									</ul>
@@ -425,27 +394,27 @@ function loginConfirm(){
 								<div class="sub_country_select" id="div_AreaDtl_FFC_56" style="display:none;">
 									<ul class="sub_choice_in">
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_56_95" value="95">
+											<input type="checkbox" name="city" id="chk_FFC_56_95" value="95">
 											<label for="chk_FFC_56_95">북해도</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_56_96" value="96">
+											<input type="checkbox" name="city" id="chk_FFC_56_96" value="96">
 											<label for="chk_FFC_56_96">동경</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_56_97" value="97">
+											<input type="checkbox" name="city" id="chk_FFC_56_97" value="97">
 											<label for="chk_FFC_56_97">간사이/나고야</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_56_98" value="98">
+											<input type="checkbox" name="city" id="chk_FFC_56_98" value="98">
 											<label for="chk_FFC_56_98">큐슈</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_56_99" value="99">
+											<input type="checkbox" name="city" id="chk_FFC_56_99" value="99">
 											<label for="chk_FFC_56_99">오키나와</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_56_171" value="171">
+											<input type="checkbox" name="city" id="chk_FFC_56_171" value="171">
 											<label for="chk_FFC_56_171">기타지역</label>
 										</li>
 									</ul>
@@ -453,19 +422,19 @@ function loginConfirm(){
 								<div class="sub_country_select" id="div_AreaDtl_FFC_300" style="display:none;">
 									<ul class="sub_choice_in">
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_300_301" value="301">
+											<input type="checkbox" name="city" id="chk_FFC_300_301" value="301">
 											<label for="chk_FFC_300_301">북경</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_300_302" value="302">
+											<input type="checkbox" name="city" id="chk_FFC_300_302" value="302">
 											<label for="chk_FFC_300_302">상해</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_300_303" value="303">
+											<input type="checkbox" name="city" id="chk_FFC_300_303" value="303">
 											<label for="chk_FFC_300_303">청도</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_300_304" value="304">
+											<input type="checkbox" name="city" id="chk_FFC_300_304" value="304">
 											<label for="chk_FFC_300_304">하이난</label>
 										</li>
 									</ul>
@@ -473,23 +442,23 @@ function loginConfirm(){
 								<div class="sub_country_select" id="div_AreaDtl_FFC_57" style="display:none;">
 									<ul class="sub_choice_in">
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_57_100" value="100">
+											<input type="checkbox" name="city" id="chk_FFC_57_100" value="100">
 											<label for="chk_FFC_57_100">홍콩</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_57_101" value="101">
+											<input type="checkbox" name="city" id="chk_FFC_57_101" value="101">
 											<label for="chk_FFC_57_101">마카오</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_57_102" value="102">
+											<input type="checkbox" name="city" id="chk_FFC_57_102" value="102">
 											<label for="chk_FFC_57_102">타이페이</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_57_103" value="103">
+											<input type="checkbox" name="city" id="chk_FFC_57_103" value="103">
 											<label for="chk_FFC_57_103">타이중</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_57_299" value="299">
+											<input type="checkbox" name="city" id="chk_FFC_57_299" value="299">
 											<label for="chk_FFC_57_299">까오슝 </label>
 										</li>
 									</ul>
@@ -497,35 +466,35 @@ function loginConfirm(){
 								<div class="sub_country_select" id="div_AreaDtl_FFC_59" style="display:none;">
 									<ul class="sub_choice_in">
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_59_111" value="111">
+											<input type="checkbox" name="city" id="chk_FFC_59_111" value="111">
 											<label for="chk_FFC_59_111">오아후</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_59_112" value="112">
+											<input type="checkbox" name="city" id="chk_FFC_59_112" value="112">
 											<label for="chk_FFC_59_112">마우이</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_59_263" value="263">
+											<input type="checkbox" name="city" id="chk_FFC_59_263" value="263">
 											<label for="chk_FFC_59_263">빅아일랜드</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_59_289" value="289">
+											<input type="checkbox" name="city" id="chk_FFC_59_289" value="289">
 											<label for="chk_FFC_59_289">라스베이거스&오아후</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_59_290" value="290">
+											<input type="checkbox" name="city" id="chk_FFC_59_290" value="290">
 											<label for="chk_FFC_59_290">미서부</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_59_291" value="291">
+											<input type="checkbox" name="city" id="chk_FFC_59_291" value="291">
 											<label for="chk_FFC_59_291">미동부</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_59_292" value="292">
+											<input type="checkbox" name="city" id="chk_FFC_59_292" value="292">
 											<label for="chk_FFC_59_292">2개이상 연계지역(미본토)</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_59_293" value="293">
+											<input type="checkbox" name="city" id="chk_FFC_59_293" value="293">
 											<label for="chk_FFC_59_293">기타지역</label>
 										</li>
 									</ul>
@@ -533,19 +502,19 @@ function loginConfirm(){
 								<div class="sub_country_select" id="div_AreaDtl_FFC_60" style="display:none;">
 									<ul class="sub_choice_in">
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_60_113" value="113">
+											<input type="checkbox" name="city" id="chk_FFC_60_113" value="113">
 											<label for="chk_FFC_60_113">시드니/골드코스트</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_60_114" value="114">
+											<input type="checkbox" name="city" id="chk_FFC_60_114" value="114">
 											<label for="chk_FFC_60_114">멜버른/케언즈</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_60_115" value="115">
+											<input type="checkbox" name="city" id="chk_FFC_60_115" value="115">
 											<label for="chk_FFC_60_115">울룰루/태즈매니아</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_60_294" value="294">
+											<input type="checkbox" name="city" id="chk_FFC_60_294" value="294">
 											<label for="chk_FFC_60_294">기타지역</label>
 										</li>
 									</ul>
@@ -553,15 +522,15 @@ function loginConfirm(){
 								<div class="sub_country_select" id="div_AreaDtl_FFC_295" style="display:none;">
 									<ul class="sub_choice_in">
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_295_296" value="296">
+											<input type="checkbox" name="city" id="chk_FFC_295_296" value="296">
 											<label for="chk_FFC_295_296">올인크루시브</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_295_297" value="297">
+											<input type="checkbox" name="city" id="chk_FFC_295_297" value="297">
 											<label for="chk_FFC_295_297">하프보드(HB)</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_295_298" value="298">
+											<input type="checkbox" name="city" id="chk_FFC_295_298" value="298">
 											<label for="chk_FFC_295_298">기타</label>
 										</li>
 									</ul>
@@ -569,11 +538,11 @@ function loginConfirm(){
 								<div class="sub_country_select" id="div_AreaDtl_FFC_11" style="display:none;">
 									<ul class="sub_choice_in">
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_11_12" value="12">
+											<input type="checkbox" name="city" id="chk_FFC_11_12" value="12">
 											<label for="chk_FFC_11_12">괌</label>
 										</li>
 										<li>
-											<input type="checkbox" name="chk_travrvAreaDetail" id="chk_FFC_11_13" value="13">
+											<input type="checkbox" name="city" id="chk_FFC_11_13" value="13">
 											<label for="chk_FFC_11_13">사이판</label>
 										</li>
 									</ul>
@@ -590,27 +559,27 @@ function loginConfirm(){
 							<td>
 								<span class="date_sel">
 									<label for="in_start">출발일</label>
-									<input type="text" id="startDt" name="startDt" class="input_date input_space02" style="width:111px; height:30px;" readonly="readonly"/>
+									<input type="text" id="sdate" name="sdate" class="input_date input_space02" style="width:111px; height:16px;" readonly="readonly"/>
 									~
 									<label for="in_arrive" class="input_space">도착일</label>
-									<input type="text" id="endDt" name="endDt" class="input_date input_space02"  style="width:111px; height:30px;" readonly="readonly" />
+									<input type="text" id="edate" name="edate" class="input_date input_space02"  style="width:111px; height:16px;" readonly="readonly" />
 								</span>
 								<span class="st_date_change">
 									<em>출발일변경가능</em>
 									<ul class="sub_choice_in">
 									<!-- [출발일 변경 설정] Start -->
 										<li>
-											<input type="radio" name="startChange" id="불가" value="SC1" checked="checked"/>
+											<input type="radio" name="schange" id="불가" value="SC1" checked="checked"/>
 											<label for="불가">불가</label>								
 										</li>
 								</span>
 										<li>
-										<input type="radio" name="startChange" id="3일 이내" value="SC2"/>
+										<input type="radio" name="schange" id="3일 이내" value="SC2"/>
 											<label for="3일 이내">3일 이내</label>
 								</span>
 										</li>
 										<li>
-										<input type="radio" name="startChange" id="7일 이내" value="SC3"/>
+										<input type="radio" name="schange" id="7일 이내" value="SC3"/>
 											<label for="7일 이내">7일 이내</label>
 								</span>
 										</li>
@@ -623,49 +592,27 @@ function loginConfirm(){
 			
 						<!-- [항목 설정 Start] -->
 						<tr id="tr_Item_FFC_29" class="tr_Item tr_Item_FFC tr_Item_travrvAir" style="">
-							<th scope="row">항공권<input type="hidden" class="item_korName" name="travrvAirNm" id="travrvAirNm" value="항공권">
+							<th scope="row">선호항공사
+								<input type="hidden" class="item_korName" name="travrvAirNm" id="travrvAirNm" value="항공사">
 								<input type="hidden" class="item_title" name="travrvAir" id="travrvAir" value="">
 								<input type="hidden" class="item_other" name="travrvAirOther" id="travrvAirOther" value="">
 							</th>
 							<td>
 								<ul class="sub_choice_in">
 									<li>
-										<input type="checkbox" name="chk_travrvAir" id="chk_Item_FFC_29_10" value="10">
-										<label for="chk_Item_FFC_29_10">추천요망</label>
-										<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="chk_travrvAirOther" 
-											id="txt_Item_FFC_29_10_Other" maxlength="40" value="">
+										<input type="radio" name="airline" id="chk_Item_FFC_29_10" value="대한항공">
+										<label for="chk_Item_FFC_29_10">대한항공</label>
 									</li>
 									<li>
-										<input type="checkbox" name="chk_travrvAir" id="chk_Item_FFC_29_11" value="11">
-										<label for="chk_Item_FFC_29_11">직항선호</label>
-										<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="chk_travrvAirOther" 
-											id="txt_Item_FFC_29_11_Other" maxlength="40" value="">
+										<input type="radio" name="airline" id="chk_Item_FFC_29_11" value="아시아나">
+										<label for="chk_Item_FFC_29_11">아시아나</label>
 									</li>
 									<li>
-										<input type="checkbox" name="chk_travrvAir" id="chk_Item_FFC_29_22" value="22">
-										<label for="chk_Item_FFC_29_22">국적기선호</label>
-										<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="chk_travrvAirOther" 
-											id="txt_Item_FFC_29_22_Other" maxlength="40" value="">
+										<input type="radio" name="airline" id="chk_Item_FFC_29_11" value="제주항공">
+										<label for="chk_Item_FFC_29_11">제주항공</label>
 									</li>
-									<li>
-										<input type="checkbox" name="chk_travrvAir" id="chk_Item_FFC_29_23" value="23">
-										<label for="chk_Item_FFC_29_23">경유항공</label>
-										<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="chk_travrvAirOther" 
-											id="txt_Item_FFC_29_23_Other" maxlength="40" value="">
-									</li>
-									<li>
-										<input type="checkbox" name="chk_travrvAir" id="chk_Item_FFC_29_24" value="24">
-										<label for="chk_Item_FFC_29_24">저가항공</label>
-										<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="chk_travrvAirOther" 
-											id="txt_Item_FFC_29_24_Other" maxlength="40" value="">
-									</li>
-									<li>
-										<input type="checkbox" name="chk_travrvAir" id="chk_Item_FFC_29_122" value="122">
-										<label for="chk_Item_FFC_29_122">항공권보유</label>
-										<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="chk_travrvAirOther" 
-											id="txt_Item_FFC_29_122_Other" maxlength="40" value="">
-									</li>
-								</td>
+								</ul>
+								</td>								
 							</tr>
 							<tr id="tr_Item_FFC_30" class="tr_Item tr_Item_FFC tr_Item_accomm" style="">
 								<th scope="row">숙소<input type="hidden" class="item_korName" name="accommNm" id="accommNm" value="숙소">
@@ -675,43 +622,44 @@ function loginConfirm(){
 								<td>
 									<ul class="sub_choice_in">
 										<li>
-											<input type="checkbox" name="chk_accomm" id="chk_Item_FFC_30_25" value="25">
+											<input type="checkbox" name="stay" id="chk_Item_FFC_30_25" value="25">
 											<label for="chk_Item_FFC_30_25">민박,호스텔</label>
-											<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="chk_accommOther" 
+											<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="stayOther" 
 												id="txt_Item_FFC_30_25_Other" maxlength="40" value="">
 										</li>
 										<li>
-											<input type="checkbox" name="chk_accomm" id="chk_Item_FFC_30_26" value="26">
+											<input type="checkbox" name="stay" id="chk_Item_FFC_30_26" value="26">
 											<label for="chk_Item_FFC_30_26">투어리스트급호텔(3성급)</label>
-											<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="chk_accommOther" 
+											<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="stayOther" 
 												id="txt_Item_FFC_30_26_Other" maxlength="40" value="">
 										</li>
 										<li>
-											<input type="checkbox" name="chk_accomm" id="chk_Item_FFC_30_27" value="27">
+											<input type="checkbox" name="stay" id="chk_Item_FFC_30_27" value="27">
 											<label for="chk_Item_FFC_30_27">일급호텔(4성급)</label>
-											<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="chk_accommOther" 
+											<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="stayOther" 
 												id="txt_Item_FFC_30_27_Other" maxlength="40" value="">
 										</li>
 										<li>
-											<input type="checkbox" name="chk_accomm" id="chk_Item_FFC_30_29" value="29">
+											<input type="checkbox" name="stay" id="chk_Item_FFC_30_29" value="29">
 											<label for="chk_Item_FFC_30_29">특급호텔(5성급)</label>
-											<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="chk_accommOther" 
+											<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="stayOther" 
 												id="txt_Item_FFC_30_29_Other" maxlength="40" value="">
 										</li>
 										<li>
-											<input type="checkbox" name="chk_accomm" id="chk_Item_FFC_30_110" value="110">
+											<input type="checkbox" name="stay" id="chk_Item_FFC_30_110" value="110">
 											<label for="chk_Item_FFC_30_110">숙박필요없음</label>
-											<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="chk_accommOther" 
+											<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="stayOther" 
 												id="txt_Item_FFC_30_110_Other" maxlength="40" value="">
 										</li>
 										<li class="clearfix"></li>
 										<li>
-											<input type="checkbox" name="chk_accomm" id="chk_Item_FFC_30_111" value="111" onclick="fn_ToggleEnable(this.id);">
+											<input type="checkbox" name="stay" id="chk_Item_FFC_30_111" value="111" onclick="fn_ToggleEnable(this.id);">
 											<label for="chk_Item_FFC_30_111">원하는숙박</label>
-											<input type="text" class="input_default input_space02 item_val" style="width:90px" name="chk_accommOther"
+											<input type="text" class="input_default input_space02 item_val" style="width:180px; height:16px;" name="stayOther"
 												onclick="fn_ResetText(this.id);"
 												id="txt_Item_FFC_30_111_Other" maxlength="40" value="숙박명" disabled="disabled">
 										</li>
+									</ul>	
 									</td>
 								</tr>
 								<!-- [항목 설정 End] -->
@@ -763,7 +711,7 @@ function loginConfirm(){
 			, showMonthAfterYear: true
 			, minDate: 1
 			, onSelect: function(selected) {
-				$("#endDt").datepicker("option","minDate", selected)	
+				$("#edate").datepicker("option","minDate", selected)	
 			}
 		};
 	
@@ -777,7 +725,7 @@ function loginConfirm(){
 			, showMonthAfterYear: true
 			, minDate: 1
 			, onSelect: function(selected) {
-				//$("#startDt").datepicker("option","maxDate", selected)
+				//$("#sdate").datepicker("option","maxDate", selected)
 			}
 		};
 
@@ -798,13 +746,13 @@ function loginConfirm(){
 		});
 		
 		// 통화가능시간 변경시 Disabled 처리
-		$("input[name=callDiviCd]").change(function(){
+		$("input[name=r_r_ptime]").change(function(){
 			if( $(this).val() != "C" ) {
-				$("#callTm").attr("disabled",true);
-				$("#callTm").attr("style", "width: 132px;background-color: rgb(235, 235, 228);cursor: default;");
+				$("#ptime").attr("disabled",true);
+				$("#ptime").attr("style", "width: 132px;background-color: rgb(235, 235, 228);cursor: default;");
 			} else {
-				$("#callTm").attr("disabled",false);
-				$("#callTm").attr("style", "width: 132px;cursor: pointer;");
+				$("#ptime").attr("disabled",false);
+				$("#ptime").attr("style", "width: 132px;cursor: pointer;");
 			}
 		});
 		
@@ -812,10 +760,10 @@ function loginConfirm(){
 		$("#venueDt1").datepicker(datepickerOption);
 		
 		// 여행기간 시작 달력세팅
-		$("#startDt").datepicker(datepickerFromOption);
+		$("#sdate").datepicker(datepickerFromOption);
 		
 		// 여행기간 종료 달력세팅
-		$("#endDt").datepicker(datepickerToOption);
+		$("#edate").datepicker(datepickerToOption);
 		
 		// 핸드폰 중간번호 숫자만 입력
 		$("#cstTel2").keyup(function () { 
@@ -875,15 +823,15 @@ function loginConfirm(){
 		// 로딩시 컴포넌트 초기처리
 		
 		// 통화 가능 시간 combo box disabled 처리
-		$("#callTm").attr("disabled",true);
-		$("#callTm").attr("style", "width: 132px;background-color: rgb(235, 235, 228);cursor: default;");
+		$("#ptime").attr("disabled",true);
+		$("#ptime").attr("style", "width: 132px;background-color: rgb(235, 235, 228);cursor: default;");
 		
         
 		// 인증하기 팝업
 		$('.estimate_btn_confirm').on('click', function() {
-			var popVal = "cstTel1="+$("#cstTel1").val()+"&cstTel2="+$("#cstTel2").val()+"&cstTel3="+$("#cstTel3").val();
+			/* var popVal = "cstTel1="+$("#cstTel1").val()+"&cstTel2="+$("#cstTel2").val()+"&cstTel3="+$("#cstTel3").val();
 			var popupUrl = "/customer/prcEstimateSmsPopup.do?"+popVal;
-			$(this).attr("role-url", popupUrl);
+			$(this).attr("role-url", popupUrl); */
 	
 			if($("#cstTel1").val() == ""){
 				alert("휴대폰 번호를 입력해주세요.");
@@ -897,21 +845,24 @@ function loginConfirm(){
 				alert("휴대폰 번호를 입력해주세요.");
 				$("#cstTel3").focus();
 				return false;
-			}
- 			showLayer(this);
+			} else{
+				alert("인증되었습니다.");
+			}		
+			
+ 			/* showLayer(this); */
 		});
 		
 	});
 	
 	
 	// 통화 가능 시간 선택시
-	function clickCallTmButton(object) {
+	function clickptimeButton(object) {
 		
 		if (object == "C") {
-			$("#callTm").attr("disabled",false);	
+			$("#ptime").attr("disabled",false);	
 		} else {
-			$("#callTm").attr("disabled",true);
-			$("#callTm").val("");	
+			$("#ptime").attr("disabled",true);
+			$("#ptime").val("");	
 		}
 		
 	}
@@ -932,8 +883,8 @@ function loginConfirm(){
 		var venueDt2 = $("#venueDt2").val();
 		var venueDt3 = $("#venueDt3").val();
 		
-		$("#cstTel").val( cstTel1+"-"+cstTel2+"-"+cstTel3 );
-		$("#cstEmail").val( (cstEmail3 == "" ? cstEmail1+"@"+cstEmail2 : cstEmail1+"@"+cstEmail3) );
+		$("#phone").val( cstTel1+"-"+cstTel2+"-"+cstTel3 );
+		$("#email").val( (cstEmail3 == "" ? cstEmail1+"@"+cstEmail2 : cstEmail1+"@"+cstEmail3) );
 		
 		if( $("#venueDtChk").is(":checked") ) {
 			$("#venueDt").val( "" );
@@ -946,22 +897,22 @@ function loginConfirm(){
 		var travrvTypeCd = "FFC";
 		
 		if( travrvTypeCd != "FDMI" ) {
-			var travrvAreaDetailCd = $("#div_Area_"+travrvTypeCd).find("input:radio:checked").val();
-			var travrvAreaDetailArr = $("#div_AreaDtl_"+travrvTypeCd+"_"+travrvAreaDetailCd).find("input:checkbox:checked");
-			var travrvAreaDetailVal = "";
+			var flocDetailCd = $("#div_Area_"+travrvTypeCd).find("input:radio:checked").val();
+			var flocDetailArr = $("#div_AreaDtl_"+travrvTypeCd+"_"+flocDetailCd).find("input:checkbox:checked");
+			var flocDetailVal = "";
 			
 			// 여행타입별 아이템 항목값 추출
-			for( var i=0; i<travrvAreaDetailArr.size(); i++ ) {
+			for( var i=0; i<flocDetailArr.size(); i++ ) {
 				
-				var item = travrvAreaDetailArr.eq(i);
+				var item = flocDetailArr.eq(i);
 				
 				// 체크 선택 항목
 				if( item.is(":checked") ) {
-					travrvAreaDetailVal += item.val() + ",";
+					flocDetailVal += item.val() + ",";
 				}
 				
 			}
-			$("#travrvAreaDetail").val(travrvAreaDetailVal);
+			$("#flocDetail").val(flocDetailVal);
 		}			
 		
 		// 여행타입별 항목
@@ -1025,9 +976,9 @@ function loginConfirm(){
 		fn_setInputValue();
 		
 		var valArea1 = "FFC";
-		var valArea2 = $("input[name=travrvArea]:checked").val()
+		var valArea2 = $("input[name=floc]:checked").val()
 		var focusArea = "div_AreaDtl_"+valArea1+"_"+valArea2;
-		var focusName = "chk_travrvAreaDetail";
+		var focusName = "city";
 		var validateArr = [];
 		
 		// [자유여행 해외] 벨리데이션 체크
@@ -1037,156 +988,31 @@ function loginConfirm(){
 				  { title : "성명", name : "cstNm" }
 				, { title : "이메일주소", name : "cstEmail", type: "email", refId : "cstEmail1,cstEmail2", midText : "를" }
 				, { title : "연락처", name : "cstTel", type: "tel", refId : "cstTel1,cstTel2,cstTel3", midText : "를" }
-				, { title : "시간", name : "callTm", type: "condition", refName : "callDiviCd", refVal : "C", msg : "시간을 선택해주세요." }
+				, { title : "시간", name : "ptime", type: "condition", refName : "r_r_ptime", refVal : "C", msg : "시간을 선택해주세요." }
 				, { title : "성인인원", name : "rervAdtCnt" }
 				, { title : "여행경비", name : "travrvMny", midText : "를" }
-				, { title : "여행지역", name : "travrvArea" }
-				, { title : "여행상세지역", name : "travrvAreaDetail", focusArea : focusArea, focusName : focusName }
-				, { title : "출발일", name : "startDt" }
-				, { title : "도착일", name : "endDt" }
+				, { title : "여행지역", name : "floc" }
+				, { title : "여행상세지역", name : "flocDetail", focusArea : focusArea, focusName : focusName }
+				, { title : "출발일", name : "sdate" }
+				, { title : "도착일", name : "edate" }
 				, { title : "개인정보 수집/이용", name : "inEstimateAgree", msg : "개인정보 수집/이용에 동의하셔야 견적문의를 하실 수 있습니다." }
 			];
 			
 		}
-		// [국내여행 제주] 벨리데이션 체크
-		else if( valArea1 == "FDMA" ) {
-			
-			validateArr = [
-				  { title : "성명", name : "cstNm" }
-				, { title : "이메일주소", name : "cstEmail", type: "email", refId : "cstEmail1,cstEmail2", midText : "를" }
-				, { title : "연락처", name : "cstTel", type: "tel", refId : "cstTel1,cstTel2,cstTel3", midText : "를" }
-				, { title : "시간", name : "callTm", type: "condition", refName : "callDiviCd", refVal : "C", msg : "시간을 선택해주세요." }
-				, { title : "성인인원", name : "rervAdtCnt" }
-				, { title : "여행인원", name : "rervAdtCnt", type : "sum", refId : "rervAdtCnt,rervChdCnt,rervInfCnt", minVal : 10, minPreMsg : "은" }
-				, { title : "여행경비", name : "travrvMny", midText : "를" }
-				, { title : "출발일", name : "startDt" }
-				, { title : "도착일", name : "endDt" }
-				, { title : "개인정보 수집/이용", name : "inEstimateAgree", msg : "개인정보 수집/이용에 동의하셔야 견적문의를 하실 수 있습니다." }
-			];
-			
-		}
-		// [국내여행 내륙] 벨리데이션 체크
-		else if( valArea1 == "FDMI" ) {
-			
-			validateArr = [
-				  { title : "성명", name : "cstNm" }
-				, { title : "이메일주소", name : "cstEmail", type: "email", refId : "cstEmail1,cstEmail2", midText : "를" }
-				, { title : "연락처", name : "cstTel", type: "tel", refId : "cstTel1,cstTel2,cstTel3", midText : "를" }
-				, { title : "시간", name : "callTm", type: "condition", refName : "callDiviCd", refVal : "C", msg : "시간을 선택해주세요." }
-				, { title : "성인인원", name : "rervAdtCnt", minVal : 1, minPreMsg : "은" }
-				, { title : "여행인원", name : "rervAdtCnt", type : "sum", refId : "rervAdtCnt,rervChdCnt,rervInfCnt", minVal : 20, minPreMsg : "은" }
-				, { title : "여행경비", name : "travrvMny", midText : "를" }
-				, { title : "출발일", name : "startDt" }
-				, { title : "도착일", name : "endDt" }
-				, { title : "여행지역", name : "travrvArea" }
-				, { title : "출발지/출발시각", name : "travrvAreaDetail" }
-				, { title : "개인정보 수집/이용", name : "inEstimateAgree", msg : "개인정보 수집/이용에 동의하셔야 견적문의를 하실 수 있습니다." }
-			];
-			
-		}
-		// [골프] 벨리데이션 체크
-		else if( valArea1 == "GOLF" ) {
-				
-			validateArr = [
-				  { title : "성명", name : "cstNm" }
-				, { title : "이메일주소", name : "cstEmail", type: "email", refId : "cstEmail1,cstEmail2", midText : "를" }
-				, { title : "연락처", name : "cstTel", type: "tel", refId : "cstTel1,cstTel2,cstTel3", midText : "를" }
-				, { title : "시간", name : "callTm", type: "condition", refName : "callDiviCd", refVal : "C", msg : "시간을 선택해주세요." }
-				, { title : "성인인원", name : "rervAdtCnt" }
-				, { title : "여행경비", name : "travrvMny", midText : "를" }
-				, { title : "출발일", name : "startDt" }
-				, { title : "도착일", name : "endDt" }
-				, { title : "개인정보 수집/이용", name : "inEstimateAgree", msg : "개인정보 수집/이용에 동의하셔야 견적문의를 하실 수 있습니다." }
-			];
-			
-		}
-		// [허니문] 벨리데이션 체크
-		else if( valArea1 == "HYM" ) {
-			
-			validateArr.push( { title : "성명", name : "cstNm" } );
-			validateArr.push( { title : "이메일주소", name : "cstEmail", type: "email", refId : "cstEmail1,cstEmail2", midText : "를" } );
-			validateArr.push( { title : "연락처", name : "cstTel", type: "tel", refId : "cstTel1,cstTel2,cstTel3", midText : "를" } );
-			validateArr.push( { title : "시간", name : "callTm", type: "condition", refName : "callDiviCd", refVal : "C", msg : "시간을 선택해주세요." } );
-			
-			// 예식일이 미정이 아닌경우 체크
-			if( !$("#venueDtChk").is(":checked") ) {
-				validateArr.push( { title : "예식일", name : "venueDt1" } );
-				validateArr.push( { title : "예식시간", name : "venueDt2" } );
-				validateArr.push( { title : "예식분", name : "venueDt3" } );	
-			}
-			
-			validateArr.push( { title : "여행경비", name : "travrvMny", midText : "를" } );
-			validateArr.push( { title : "여행상세지역", name : "travrvAreaDetail", focusArea : focusArea, focusName : focusName } );
-			validateArr.push( { title : "출발일", name : "startDt" } );
-			validateArr.push( { title : "도착일", name : "endDt" } );
-			validateArr.push( { title : "개인정보 수집/이용", name : "inEstimateAgree", msg : "개인정보 수집/이용에 동의하셔야 견적문의를 하실 수 있습니다." } );
-				
 		
-		}
-		// [성지순례] 벨리데이션 체크
-		else if( valArea1 == "HYL" ) {
-			
-			validateArr = [
-				  { title : "성명", name : "cstNm" }
-				, { title : "이메일주소", name : "cstEmail", type: "email", refId : "cstEmail1,cstEmail2", midText : "를" }
-				, { title : "연락처", name : "cstTel", type: "tel", refId : "cstTel1,cstTel2,cstTel3", midText : "를" }
-				, { title : "시간", name : "callTm", type: "condition", refName : "callDiviCd", refVal : "C", msg : "시간을 선택해주세요." }
-				, { title : "소속 및 단체명", name : "grpNm" }
-				//, { title : "소속소재지", name : "grpAddr" }
-				, { title : "성인인원", name : "rervAdtCnt" }
-				, { title : "여행경비", name : "travrvMny", midText : "를" }
-				, { title : "출발일", name : "startDt" }
-				, { title : "도착일", name : "endDt" }
-				, { title : "개인정보 수집/이용", name : "inEstimateAgree", msg : "개인정보 수집/이용에 동의하셔야 견적문의를 하실 수 있습니다." }
-			];
-			
-		}
-		// [기업/단체] 벨리데이션 체크
-		else if( valArea1 == "COMP_GROUP" ) {
-
-			validateArr = [
-				  { title : "성명", name : "cstNm" }
-				, { title : "이메일주소", name : "cstEmail", type: "email", refId : "cstEmail1,cstEmail2", midText : "를" }
-				, { title : "연락처", name : "cstTel", type: "tel", refId : "cstTel1,cstTel2,cstTel3", midText : "를" }
-				, { title : "시간", name : "callTm", type: "condition", refName : "callDiviCd", refVal : "C", msg : "시간을 선택해주세요." }
-				, { title : "성인인원", name : "rervAdtCnt", minVal : 1, minPreMsg : "은" }
-				, { title : "여행경비", name : "travrvMny", midText : "를" }
-				, { title : "여행지역", name : "travrvArea" }
-				, { title : "여행상세지역", name : "travrvAreaDetail", focusArea : focusArea, focusName : focusName }
-				, { title : "출발일", name : "startDt" }
-				, { title : "도착일", name : "endDt" }
-				, { title : "개인정보 수집/이용", name : "inEstimateAgree", msg : "개인정보 수집/이용에 동의하셔야 견적문의를 하실 수 있습니다." }
-			];
-		
-		}
-		// [하이호주] 벨리데이션 체크
-		else if( valArea1 == "HI_HOJOO" ) {
-
-			validateArr = [
-				  { title : "성명", name : "cstNm" }
-				, { title : "이메일주소", name : "cstEmail", type: "email", refId : "cstEmail1,cstEmail2", midText : "를" }
-				, { title : "연락처", name : "cstTel", type: "tel", refId : "cstTel1,cstTel2,cstTel3", midText : "를" }
-				, { title : "시간", name : "callTm", type: "condition", refName : "callDiviCd", refVal : "C", msg : "시간을 선택해주세요." }
-				, { title : "성인인원", name : "rervAdtCnt" }
-				, { title : "출발일", name : "startDt" }
-				, { title : "도착일", name : "endDt" }
-				, { title : "개인정보 수집/이용", name : "inEstimateAgree", msg : "개인정보 수집/이용에 동의하셔야 견적문의를 하실 수 있습니다." }
-			];
-		
-		}
 		else {
 		
 			validateArr = [
 				  { title : "성명", name : "cstNm" }
 				, { title : "이메일주소", name : "cstEmail", type: "email", refId : "cstEmail1,cstEmail2", midText : "를" }
 				, { title : "연락처", name : "cstTel", type: "tel", refId : "cstTel1,cstTel2,cstTel3", midText : "를" }
-				, { title : "시간", name : "callTm", type: "condition", refName : "callDiviCd", refVal : "C", msg : "시간을 선택해주세요." }
+				, { title : "시간", name : "ptime", type: "condition", refName : "r_r_ptime", refVal : "C", msg : "시간을 선택해주세요." }
 				, { title : "성인인원", name : "rervAdtCnt" }
 				, { title : "여행경비", name : "travrvMny", midText : "를" }
-				, { title : "여행지역", name : "travrvArea" }
-				, { title : "여행상세지역", name : "travrvAreaDetail", focusArea : focusArea, focusName : focusName }
-				, { title : "출발일", name : "startDt" }
-				, { title : "도착일", name : "endDt" }
+				, { title : "여행지역", name : "floc" }
+				, { title : "여행상세지역", name : "flocDetail", focusArea : focusArea, focusName : focusName }
+				, { title : "출발일", name : "sdate" }
+				, { title : "도착일", name : "edate" }
 				, { title : "개인정보 수집/이용", name : "inEstimateAgree", msg : "개인정보 수집/이용에 동의하셔야 견적문의를 하실 수 있습니다." }
 			];
 		
@@ -1237,7 +1063,7 @@ function loginConfirm(){
 		if( confirm(cfmMsg) ) {
 			$.ajax({
 				  type:"POST"	
-				, url: "/customer/insertEstimateInfo.do"
+				, url: "/customer/estimateReqSave.do"
 				, data:$("#frm").serialize()
 				, dataType: 'json'
 				, async: true
@@ -1416,7 +1242,7 @@ function loginConfirm(){
 	
 	
 	// [function] 여행타입 변경
-	function fn_setTravrvType( travrvAreaCd ) {
+	function fn_setTravrvType( flocCd ) {
 		var obj1 = document.getElementById("rdo_travrvTypeCd1");
 		var obj2 = document.getElementById("rdo_travrvTypeCd2");
 		var obj3 = document.getElementById("rdo_travrvTypeCd3");
@@ -1424,35 +1250,35 @@ function loginConfirm(){
 		var obj5 = document.getElementById("rdo_travrvTypeCd5");
 		var obj6 = document.getElementById("rdo_travrvTypeCd6");
 		
-		if( travrvAreaCd == "rdo_travrvTypeCd1" ) { // 자유여행내용
+		if( flocCd == "rdo_travrvTypeCd1" ) { // 자유여행내용
 			obj1.style.display = "block";	
 			obj2.style.display = "none";
 			obj3.style.display = "none";
 			obj4.style.display = "none";
 			obj5.style.display = "none";
 			obj6.style.display = "none";
-		} else if ( travrvAreaCd == "rdo_travrvTypeCd2" ){ // 허니문내용
+		} else if ( flocCd == "rdo_travrvTypeCd2" ){ // 허니문내용
 			obj1.style.display = "none";	
 			obj2.style.display = "block";
 			obj3.style.display = "none";
 			obj4.style.display = "none";
 			obj5.style.display = "none";
 			obj6.style.display = "none";
-		} else if ( travrvAreaCd == "rdo_travrvTypeCd3" ){ // 골프
+		} else if ( flocCd == "rdo_travrvTypeCd3" ){ // 골프
 			obj1.style.display = "none";	
 			obj2.style.display = "none";
 			obj3.style.display = "block";
 			obj4.style.display = "none";
 			obj5.style.display = "none";
 			obj6.style.display = "none";
-		} else if ( travrvAreaCd == "rdo_travrvTypeCd4" ){ // 골프
+		} else if ( flocCd == "rdo_travrvTypeCd4" ){ // 골프
 			obj1.style.display = "none";	
 			obj2.style.display = "none";
 			obj3.style.display = "none";
 			obj4.style.display = "block";
 			obj5.style.display = "none";
 			obj6.style.display = "none";
-		} else if ( travrvAreaCd == "rdo_travrvTypeCd5" ){ // 골프
+		} else if ( flocCd == "rdo_travrvTypeCd5" ){ // 골프
 			obj1.style.display = "none";	
 			obj2.style.display = "none";
 			obj3.style.display = "none";
@@ -1468,22 +1294,22 @@ function loginConfirm(){
 			obj5.style.display = "none";
 			obj6.style.display = "block";
 		}
-		document.location.href='/customer/estimateReq.do?travrvTypeCd='+travrvAreaCd;
+		document.location.href='/customer/estimateReq.do?travrvTypeCd='+flocCd;
 		
 	}
 	
 	// [function] 1차 여행지역 변경
-	function fn_setTravrvAreaFst( travrvAreaCd, travrvAreaId ) {
+	function fn_setflocFst( flocCd, flocId ) {
 		
 		// 1. 여행지역설정
 		$(".sub_country_select").hide();
-		$("#div_AreaDtl_"+travrvAreaCd+"_"+travrvAreaId ).show();
+		$("#div_AreaDtl_"+flocCd+"_"+flocId ).show();
 		
 		// 2. 여행지역상세 설정
 		$(".sub_country_select :checkbox").attr("checked", false);
 		
 		// 3. 요청사항 Text 변경
-		if( ( travrvAreaCd == "FFC" && travrvAreaId == 55 ) || ( travrvAreaCd == "HYM" && travrvAreaId == 69 ) ) {
+		if( ( flocCd == "FFC" && flocId == 55 ) || ( flocCd == "HYM" && flocId == 69 ) ) {
 			msgText = "도시, 체류일정을 구체적으로 작성해 주세요.ex) 파리 2일 - 프라하 2일 - 비엔나 1일";
 		} else {
 			msgText = "원하는 일정, 도시 등 간략 일정을 작성해 주세요.";
@@ -1577,4 +1403,3 @@ function loginConfirm(){
 	
 	
 </script>
-</div>

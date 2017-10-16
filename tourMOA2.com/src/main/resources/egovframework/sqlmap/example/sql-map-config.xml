@@ -7,4 +7,5 @@
 	<sqlMap resource="egovframework/sqlmap/example/tourMOA/Notice_SQL.xml"/>
 	<sqlMap resource="egovframework/sqlmap/example/tourMOA/Member_SQL.xml"/>
 	<sqlMap resource="egovframework/sqlmap/example/tourMOA/Category_SQL.xml"/>
+	<sqlMap resource="egovframework/sqlmap/example/tourMOA/Estimate_SQL.xml"/>
 </sqlMapConfig>
