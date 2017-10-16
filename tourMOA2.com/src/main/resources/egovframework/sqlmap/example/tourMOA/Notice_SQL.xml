@@ -2,6 +2,7 @@
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="Notice">
+
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="noticeVO" type="tourMOA.service.NoticeVO"/>
 	
@@ -13,14 +14,16 @@
 			  , content
 			  , hit
 			  , rdate
-			  , all_view )
+			  , upddate
+			  , allview)
 		VALUES ( SEQ_notice_unq.nextval
 			  , #gubun#
 			  , #title#
 			  , #content#
 			  , '0'
 			  , sysdate
-			  , #all_view# )
+			  , sysdate
+			  , #allview# )
 	</insert>
 	
 	<select id="noticeDAO.selectNoticeList" resultClass="egovMap">
@@ -33,7 +36,7 @@
 									, content
 									, hit
 									, rdate
-									, DECODE(all_view,'Y',('사용'),('중지')) allview
+									, allview
 									, upddate 
 							FROM 
 									notice
@@ -58,4 +61,18 @@
 		SELECT COUNT(*) FROM notice
 	</select>
 	
+	<select id="noticeDAO.selectNoticeDetail" resultClass="noticeVO">
+		SELECT
+			unq,
+			title,
+			centent,
+			hit,
+			rdate,
+			upddate,
+			allview
+		FROM
+			notice
+		WHERE
+			unq= '$unq$'
+	</select>
 </sqlMap>

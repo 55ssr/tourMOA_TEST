@@ -7,7 +7,7 @@ DROP TABLE point CASCADE CONSTRAINTS;
 DROP TABLE popup CASCADE CONSTRAINTS;
 DROP TABLE reserv CASCADE CONSTRAINTS;
 DROP TABLE ticket CASCADE CONSTRAINTS;
-
+DROP TABLE notice CASCADE CONSTRAINTS;
 
 
 
@@ -18,7 +18,7 @@ DROP SEQUENCE SEQ_point_unq;
 DROP SEQUENCE SEQ_popup_unq;
 DROP SEQUENCE SEQ_reserv_unq;
 DROP SEQUENCE SEQ_ticket_unq;
-
+DROP SEQUENCE SEQ_notice_unq;
 
 
 
@@ -29,6 +29,7 @@ CREATE SEQUENCE SEQ_point_unq INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_popup_unq INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_reserv_unq INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_ticket_unq INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE SEQ_notice_unq INCREMENT BY 1 START WITH 1;
 
 
 
@@ -183,5 +184,19 @@ CREATE TABLE ticket
 	route char,
 	stime varchar2(20) NOT NULL,
 	etime varchar2(20) NOT NULL,
+	PRIMARY KEY (unq)
+);
+
+
+CREATE TABLE notice
+(
+	unq number NOT NULL,
+	gubun varchar2(50) NOT NULL,
+	title varchar2(100) NOT NULL,
+	content varchar2(4000) NOT NULL,
+	hit number NOT NULL,
+	rdate timestamp(6) NOT NULL,
+	upddate timestamp(6),
+	allview char(1) NOT NULL,
 	PRIMARY KEY (unq)
 );

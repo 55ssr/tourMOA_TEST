@@ -1549,15 +1549,30 @@ function fnView(obj){
                 <div class="seletboxAir">
                     <input type="hidden" name="search_txt" id="search_txt">
                     <span id="inputAir">
-         		    	<img src="/images/productDetail/KE.png" alt="아시아나항공">
+         		    	<img src="/images/air/${fn:substring(vo.fno,0,2)}.png" alt="${vo.airline}">
 	                   			아시아나항공</span>
                     <ul>
                     	<li style="background: rgb(249, 251, 251);">
-		                        <img src="/images/productDetail/KE.png" alt="아시아나항공">
-			                   			<span class="airname">아시아나항공</span>
-	                            <span class="mark"><span class="pie orange">예약가능</span></span>
-		                          	<span class="date">2017년 09/22 (금) 18:40 - OZ272</span>
-	                            <span class="price">2,790,000원</span>
+		                        <img src="/images/air/${fn:substring(vo.fno,0,2)}.png" alt="${vo.airline}">
+			                   			<span class="airname">${vo.airline}</span>
+			                   			
+	                            <span class="mark">
+	                            	
+									<!-- 출발일 2일전부터 예약 마감 -->
+									<c:if test="${oldDays - nowDays <= 2}">
+										<span class="pie gray">예약마감</span>
+									</c:if>
+									<!-- 출발일 3일 이상 남았다면 예약 가능 -->
+									<c:if test="${oldDays - nowDays >= 3}">
+										<span class="pie orange">예약가능</span>
+									</c:if>
+										                            
+	                            </span>
+		                          	<span class="date">
+		                          	<fmt:parseDate var="parsedDate" value="${vo.sdate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+									<fmt:formatDate value="${parsedDate}" type="both" pattern="yyyy-MM-dd (E) HH:mm"/>
+					 				- ${vo.fno}</span>
+	                            <span class="price"><fmt:formatNumber value="${vo.price}" groupingUsed="true" />원</span>
 	                        </li>
                         </ul>
                 </div>

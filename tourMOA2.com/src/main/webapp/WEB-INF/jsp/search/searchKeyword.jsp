@@ -442,7 +442,7 @@ $(document).ready(function(){
 					                       <img src="/images/air/LJ.png" alt="LJ">
 					                       <img src="/images/air/TW.png" alt="TW">
 					                       <img src="/images/air/XJ.png" alt="XJ">
-					                       <img src="/images/air/ZE.png" alt="ZE">
+					                        	<img src="/images/air/ZE.png" alt="ZE">
 					                        	</dd>
                                             <dd class="divide"></dd>
                                             <dt>상품번호</dt>

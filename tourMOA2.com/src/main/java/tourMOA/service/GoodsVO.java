@@ -43,44 +43,13 @@ public class GoodsVO {
 	private String opt;
 	private String daily;
 	private int shop;
+	//
+	private String name;
+	private String imgs;
+	private String imgl;
+	private String filename;
 	
 	
-	public int getShop() {
-		return shop;
-	}
-	public void setShop(int shop) {
-		this.shop = shop;
-	}
-	public String getDaily() {
-		return daily;
-	}
-	public void setDaily(String daily) {
-		this.daily = daily;
-	}
-	public String getOpt() {
-		return opt;
-	}
-	public void setOpt(String opt) {
-		this.opt = opt;
-	}
-	public String getRef() {
-		return ref;
-	}
-	public void setRef(String ref) {
-		this.ref = ref;
-	}
-	public String getIncinfo() {
-		return incinfo;
-	}
-	public void setIncinfo(String incinfo) {
-		this.incinfo = incinfo;
-	}
-	public String getNincinfo() {
-		return nincinfo;
-	}
-	public void setNincinfo(String nincinfo) {
-		this.nincinfo = nincinfo;
-	}
 	public int getUnq() {
 		return unq;
 	}
@@ -279,6 +248,18 @@ public class GoodsVO {
 	public void setDinfo(String dinfo) {
 		this.dinfo = dinfo;
 	}
+	public String getIncinfo() {
+		return incinfo;
+	}
+	public void setIncinfo(String incinfo) {
+		this.incinfo = incinfo;
+	}
+	public String getNincinfo() {
+		return nincinfo;
+	}
+	public void setNincinfo(String nincinfo) {
+		this.nincinfo = nincinfo;
+	}
 	public String getImgsm() {
 		return imgsm;
 	}
@@ -291,6 +272,55 @@ public class GoodsVO {
 	public void setImglg(String imglg) {
 		this.imglg = imglg;
 	}
+	public String getRef() {
+		return ref;
+	}
+	public void setRef(String ref) {
+		this.ref = ref;
+	}
+	public String getOpt() {
+		return opt;
+	}
+	public void setOpt(String opt) {
+		this.opt = opt;
+	}
+	public String getDaily() {
+		return daily;
+	}
+	public void setDaily(String daily) {
+		this.daily = daily;
+	}
+	public int getShop() {
+		return shop;
+	}
+	public void setShop(int shop) {
+		this.shop = shop;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getImgs() {
+		return imgs;
+	}
+	public void setImgs(String imgs) {
+		this.imgs = imgs;
+	}
+	public String getImgl() {
+		return imgl;
+	}
+	public void setImgl(String imgl) {
+		this.imgl = imgl;
+	}
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+	
 	
 	
 	
