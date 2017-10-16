@@ -68,4 +68,9 @@ public class GoodsServiceImpl extends EgovAbstractServiceImpl implements GoodsSe
 		return goodsDAO.selectOptionList(vo);
 	}
 
+	@Override
+	public String insertSlider(GoodsVO vo) throws Exception {
+		return goodsDAO.insertSlider(vo);
+	}
+
 }

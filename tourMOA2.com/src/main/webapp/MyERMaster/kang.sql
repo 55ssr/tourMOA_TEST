@@ -164,3 +164,20 @@ ALTER TABLE goods ADD (daily CLOB);
 -- 쇼핑센터 방문 횟수
 ALTER TABLE goods ADD(shop number DEFAULT 0);
 
+------------------- 2017-10-15 집 -------------------
+
+-- Slider 테이블 생성
+CREATE TABLE slider 
+(
+	code varchar2(20),
+	name varchar2(20),
+	imgs varchar2(4000),
+	imgl varchar2(4000)
+);
+drop table slider
+CREATE TABLE slider 
+(
+	code varchar2(20),
+	name varchar2(20),
+	filename varchar2(4000)
+);

@@ -1,10 +1,14 @@
 package tourMOA.web;
 
+import java.io.File;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +16,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import egovframework.example.sample.service.SampleDefaultVO;
 import tourMOA.service.CategoryService;
@@ -31,6 +38,9 @@ public class AdminController {
 	
 	@Resource(name="goodsService")
 	private GoodsService goodsService;
+	
+	@Resource(name = "multipartResolver")
+	CommonsMultipartResolver multipartResolver;
 	
 	@RequestMapping("/admin.do")
 	public String admin() {
@@ -167,7 +177,94 @@ public class AdminController {
 		return map;
 	}
 	
+	@RequestMapping("/adminSliderWrite.do")
+	public String adminSliderWrite() {
+		return "admin/Slider/adminSliderWrite";
+	}
 	
+	
+	
+	
+	
+	
+	/*adminSliderWriteSave
+	 *   자료 게시판 저장 기능
+	 */
+	/*
+	 *   자료 게시판 저장 기능
+	 */
+	@RequestMapping(value = "/adminSliderWriteSave.do")
+	@ResponseBody public Map<String, String> multipartProcess(
+						MultipartHttpServletRequest multiRequest,
+						HttpServletResponse response, 
+						GoodsVO vo) throws Exception {
+
+		String result="";
+		int cnt = 0;
+		
+		Map<String, String> map = new HashMap<String, String>();
+		
+		map = uploadFile(multiRequest);
+		vo.setFilename(map.get("filename"));
+		result = goodsService.insertSlider(vo);
+	
+		if(result == null) result = "ok";
+		else result = "not";
+		
+		map.put("cnt", map.get(cnt));
+		map.put("result", result);
+		return map;
+	}
+	
+	
+	
+	/*
+	 *  파일업로드
+	 */
+	public static Map<String, String> uploadFile(MultipartHttpServletRequest multiRequest) throws Exception {
+		MultipartFile file;
+		String uploadFile = "c:/upload" , fulldir = "", filename="";
+		int cnt = 0;
+		Map<String, String> map = new HashMap<String, String>();
+		File saveFolder = new File(uploadFile);
+		if (!saveFolder.exists()) saveFolder.mkdirs();
+		
+		Map<String, MultipartFile> files = multiRequest.getFileMap();
+		
+		Iterator<Entry<String, MultipartFile>> itr = files.entrySet().iterator();
+		while (itr.hasNext()) {
+			Entry<String, MultipartFile> entry = itr.next();
+			file = entry.getValue();
+
+			if (!"".equals(file.getOriginalFilename())) {
+				fulldir = uploadFile + "/" + file.getOriginalFilename();
+				file.transferTo(new File(fulldir));
+				filename += file.getOriginalFilename() + "／";
+				cnt++;
+			}
+		}
+		map.put("filename", filename);
+		map.put("cnt", Integer.toString(cnt));
+		return map;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping("/adminSliderList.do")
+	public String adminSliderList() {
+		return "admin/Slider/adminSliderList";
+	}
+	
+	@RequestMapping("/adminSliderDetail.do")
+	public String adminSliderDetail() {
+		return "admin/Slider/adminSliderDetail";
+	}
 	
 	
 	@RequestMapping("/adminGoodsCommList.do")

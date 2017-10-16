@@ -211,6 +211,22 @@
 		DELETE FROM goods WHERE unq = '$unq$'
 	</delete>
 	
+	<!-- <insert id="goodsDAO.insertSlider">
+		INSERT INTO slider (name, code, imgs, imgl)
+			VALUES ('$name$',
+					'$code$',
+					'$imgs$',
+					'$imgl$'
+					)
+	</insert> -->
+	<insert id="goodsDAO.insertSlider">
+		INSERT INTO slider (name, code, filename)
+			VALUES ('$name$',
+					'$code$',
+					'$filename$'
+					)
+	</insert>
+	
 	<select id="goodsDAO.selectDetailImages" resultClass="egovMap">
 		SELECT imgsm, imglg, eng
 			FROM nation

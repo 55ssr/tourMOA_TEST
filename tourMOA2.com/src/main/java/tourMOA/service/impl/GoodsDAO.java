@@ -53,4 +53,8 @@ public class GoodsDAO extends EgovAbstractDAO{
 		return list("goodsDAO.selectOptionList", vo);
 	}
 
+	public String insertSlider(GoodsVO vo) {
+		return (String) insert("goodsDAO.insertSlider", vo);
+	}
+
 }
