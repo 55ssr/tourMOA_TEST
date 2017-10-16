@@ -57,4 +57,25 @@ public class GoodsDAO extends EgovAbstractDAO{
 		return (String) insert("goodsDAO.insertSlider", vo);
 	}
 
+	public int selectSliderTotal(DefaultListVO searchVO) {
+		return (int) select("goodsDAO.selectSliderTotal", searchVO);
+	}
+
+	public List<?> selectSliderList(DefaultListVO searchVO) {
+		return list("goodsDAO.selectSliderList", searchVO);
+	}
+
+	public GoodsVO adminSliderDetail(GoodsVO vo) {
+		return (GoodsVO) select("goodsDAO.selectSliderDetail", vo);
+	}
+
+	public int deleteSlider(GoodsVO vo) {
+		return delete("goodsDAO.deleteSlider", vo);
+	}
+
+	public int updateSlider(GoodsVO vo) {
+		return update("goodsDAO.updateSlider", vo);
+	}
+
+
 }

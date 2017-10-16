@@ -8,10 +8,12 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -190,9 +192,6 @@ public class AdminController {
 	/*adminSliderWriteSave
 	 *   자료 게시판 저장 기능
 	 */
-	/*
-	 *   자료 게시판 저장 기능
-	 */
 	@RequestMapping(value = "/adminSliderWriteSave.do")
 	@ResponseBody public Map<String, String> multipartProcess(
 						MultipartHttpServletRequest multiRequest,
@@ -251,20 +250,189 @@ public class AdminController {
 	
 	
 	
-	
-	
-	
-	
-	
 	@RequestMapping("/adminSliderList.do")
-	public String adminSliderList() {
+	public String selectSliderList(@ModelAttribute("searchVO") DefaultListVO searchVO, Model model) throws Exception {
+		
+		/*1. 한 화면에 출력 할 행 갯수, 한 화면에 출력할 페이지 갯수 */
+		int recordCountPerPage = 10;
+		int pageSize = 5;
+		
+		/*2.총 데이터 갯수*/
+		int totalCount = goodsService.selectSliderTotal(searchVO);
+		
+		/*3. 화면 출력 할 페이지 번호*/
+		int pageIndex = searchVO.getPageIndex();
+		
+		/*4. 화면 출력할 페이징의 시작 번호, 끝 번호*/
+		int firstPage = ((int) Math.floor((pageIndex-1)/pageSize)*pageSize) + 1;
+		int lastPage = firstPage + pageSize - 1;
+		
+		/*5. 화면 출력할 행(데이터)의 시작 번호, 끝 번호*/
+		int firstIndex = (pageIndex-1) * 10 + 1;
+		int lastIndex = firstIndex + (recordCountPerPage - 1);
+		
+		/*6. 총 페이지 갯수*/
+		int totalPage = (int) Math.ceil((double) totalCount / recordCountPerPage);
+		
+		/*7. [이전] / [다음] 처리 할 변수 지정*/
+		int before = 0; // 링크 없음
+		if (firstPage > 1) before = 1;
+		
+		int next = 0; // 링크 없음
+		if (lastPage < totalPage) next = 1;
+		/*8. 행번호*/
+		int number  = totalCount - ((pageIndex-1) * recordCountPerPage);
+		
+		searchVO.setFirstIndex(firstIndex);
+		searchVO.setLastIndex(lastIndex);
+						
+		List<?> resultList = goodsService.selectSliderList(searchVO);
+		
+		model.addAttribute("totalCount", totalCount);
+		model.addAttribute("firstPage", firstPage);
+		model.addAttribute("lastPage", lastPage);
+		model.addAttribute("totalPage", totalPage);
+		model.addAttribute("before", before);
+		model.addAttribute("next", next);
+		model.addAttribute("number", number);
+		
+		model.addAttribute("resultList", resultList);
 		return "admin/Slider/adminSliderList";
 	}
 	
+	
 	@RequestMapping("/adminSliderDetail.do")
-	public String adminSliderDetail() {
+	public String adminSliderDetail(@RequestParam("code") String code, Model model, GoodsVO vo) throws Exception {
+		System.out.println("d");
+		vo = goodsService.adminSliderDetail(vo);
+		System.out.println("code" + vo.getCode());
+		System.out.println("name" + vo.getName());
+		System.out.println("file" + vo.getFilename());
+		model.addAttribute("vo", vo);
 		return "admin/Slider/adminSliderDetail";
 	}
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value = "/deleteSlider.do")
+	@ResponseBody public Map<String, Object> deleteDataBoard(
+			HttpServletRequest request,
+			HttpServletResponse response, 
+			GoodsVO vo) throws Exception {
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		//String uploadPath = egovMessageSource.getMessage("upload.path");
+		String uploadPath = "c:/upload";
+		String fullPath = "";
+		
+		/*BoardVO 에 데이터 정보를 담아서 파일명을 읽어내기 위해서 detail service 실행*/
+		GoodsVO sliderDetail = goodsService.adminSliderDetail(vo);
+		int cnt = goodsService.deleteSlider(vo);
+		
+		if(cnt > 0) {
+			String files = sliderDetail.getFilename();	//파일명 읽기 위해서 detail 서비스 실행
+			// a.jpg;b.jpg
+			if(files.length() > 0) {
+				String[] f = files.split("／");
+				for(int i=0; i<f.length; i++) {
+					fullPath = uploadPath+"\\"+f[i];
+					File file = new File(fullPath);					
+					file.delete();
+				}
+			}
+		}
+		System.out.println(cnt);
+		map.put("cnt", cnt);
+		
+		return map;
+		
+	}
+	
+	@RequestMapping(value ="/updateSlider.do")
+	@ResponseBody public Map<String, String> updateDataBoard(
+								final MultipartHttpServletRequest multiRequest,
+								HttpServletResponse response, 
+								GoodsVO vo,
+								Model model) throws Exception {
+		MultipartFile file;
+		String filePath = "";
+		int cnt = 0;
+		
+		Map<String, String> map = new HashMap<String, String>();
+		Map<String, MultipartFile> files = multiRequest.getFileMap();
+		
+		String uploadPath = "c:\\upload";
+		//String uploadPath = egovMessageSource.getMessage("file.upload.path");
+		
+		System.out.println("name : " + vo.getName());
+		System.out.println("path : " + uploadPath);
+		
+		// 폴더의 존재 유무 및 생성
+		
+		File saveFolder = new File(uploadPath);
+		if (!saveFolder.exists() || saveFolder.isFile()) {
+			saveFolder.mkdirs();
+		}
+		
+		Iterator<Entry<String, MultipartFile>> itr = files.entrySet().iterator();
+		
+		String filename = "";
+		
+		while (itr.hasNext()) {
+			Entry<String, MultipartFile> entry = itr.next();
+			file = entry.getValue();
+			if (!"".equals(file.getOriginalFilename())) {
+				filePath = uploadPath + "\\" + file.getOriginalFilename();
+				file.transferTo(new File(filePath));
+				filename += file.getOriginalFilename() + "／";
+				cnt++;
+			}
+		}
+		System.out.println("filePath : " + filePath);
+		
+		vo.setFilename(filename);
+		
+		int cntUpdate = goodsService.updateSlider(vo);
+		
+		map.put("cnt", Integer.toString(cnt));
+		map.put("cntUpdate", Integer.toString(cntUpdate));
+		System.out.println("cnt -> " + cnt);
+		System.out.println("cntUpdate -> " + cntUpdate);
+		return map;
+		}
+	
+	@RequestMapping(value = "/updateFileDelete.do")
+	@ResponseBody public Map<String, String> updateFileDelete(
+														HttpServletResponse response, 
+														GoodsVO vo) throws Exception {
+		
+		Map<String, String> map = new HashMap<String, String>();
+
+		String fullPath = "c:/upload";
+		fullPath = fullPath+"/"+vo.getFilename();
+		File file = new File(fullPath);
+		file.delete();
+		
+		System.out.println("vo=======================filename "+ vo.getFilename());
+		System.out.println("vo=======================unq "+ vo.getUnq());
+		vo.setTitle(null);
+		
+		int cnt = goodsService.updateSlider(vo);
+		
+		
+		map.put("cnt", Integer.toString(cnt));
+		
+		return map;
+		
+	}
+	
+	
+	
+	
+	
 	
 	
 	@RequestMapping("/adminGoodsCommList.do")
