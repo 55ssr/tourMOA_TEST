@@ -7,50 +7,54 @@
 	<typeAlias  alias="estimateVO" type="tourMOA.service.EstimateVO"/>
 	
 	<insert id="estimateDAO.insertEstimateReq">
-		INSERT INTO notice 
+		INSERT INTO estimate 
 			( unq
-			  , title
-			  , name
-			  , userid
-			  , phone
-			  , email
-			  , person
 			  , type
+			  , email
+			  , name
+			  , phone
+			  , person
 			  , money
+			  , ptime
 			  , floc
-			  , city
 			  , sdate
 			  , edate
 			  , schange
 			  , airline
-			  , passage
 			  , stay
 			  , stayname
 			  , req
-			  , ptime			  
 			  , rdate
+			  , inestimateagree
+			  , title			  
+			  , userid
+			  , city
+			  , passage
+			  , reply
 			  )
 		VALUES ( SEQ_estimate_unq.nextval
-			  , '$title$'
-			  , '$name$'
-			  , '$userid$'
-			  , '$phone$'
-			  , '$email$'
-			  , '$person$'
-			  , '$type$'
-			  , '$money$'
-			  , '$floc$'
-			  , '$city$'
-			  , '$sdate$'
-			  , '$edate$'
-			  , '$schange$'
-			  , '$airline$'
-			  , '$passage$'
-			  , '$stay$'
-			  , '$stayname$'
-			  , '$req$'
-			  , '$ptime$'			  
+			  , 'A'
+			  , 'B'
+			  , 'C'
+			  , 'D'
+			  , '1'
+			  , '2'
+			  , 'F'
+			  , 'G'
+			  , 'H'
+			  , 'I'
+			  , 'J'
+			  , 'K'
+			  ,	'L'
+			  , 'M'
+			  , 'N'
 			  , sysdate
+			  , 'O'
+			  , '$title$'		  
+			  , 'Q'
+			  , 'R'
+			  , 'S'
+			  , 'T'
 			   )
 	</insert>
 </sqlMap>
