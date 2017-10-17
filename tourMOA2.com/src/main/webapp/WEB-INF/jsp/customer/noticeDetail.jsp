@@ -1,35 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+
 <script>
-function fileDownloadCount() {
+	function fileDownloadCount() {
 
-	$.ajax({
-		url:"/customer/noticeFileDownloadCount.do"
-		, dataType : 'JSON'
-		, data : {
-			  "noticeNo"					:	20000002821
-		}
-		, success : function(data)	{
-			$("#downloadCnt").text(data);
-		}
-		, error: function(data) {
-			/* console.log(data);
-			console.log("downloadCnt error"); */
-		}
+		$.ajax({
+			url : "/customer/noticeFileDownloadCount.do",
+			dataType : 'JSON',
+			data : {
+				"noticeNo" : 20000002821
+			},
+			success : function(data) {
+				$("#downloadCnt").text(data);
+			},
+			error : function(data) {
+				/* console.log(data);
+				console.log("downloadCnt error"); */
+			}
+		});
+
+	}
+
+	$(document).ready(function() {
+
+		//탭 클릭 이벤트 삭제
+		$(".cat_area > tbody > tr > th").unbind('click');
+
+		byteCalculation();
+
 	});
-
-}
-
-$(document).ready(function() {
-	
-	//탭 클릭 이벤트 삭제
-	$(".cat_area > tbody > tr > th").unbind('click');	
-
- 	byteCalculation();
-	
-});
-
 </script>
 <section id="content">
 	<!--[[ content Start ]] -->
@@ -75,7 +74,7 @@ $(document).ready(function() {
 							style="font-size: 14px;">&nbsp;&nbsp; (단, 델타항공은 9월 29일부터
 								인상되므로, 9월 28일(목) 17:00시까지 결제 완료 해주시기 바랍니다)</span></strong></span></span>
 			</p>
-
+			<!-- -------------------------------------------------------------
 			<p>&nbsp;</p>
 
 			<p>
@@ -520,13 +519,14 @@ $(document).ready(function() {
 			<p>&nbsp;</p>
 		</div>
 
+	</div> -->
+			<!-- [[ board contents End ]] -->
+		</div>
 	</div>
-	<!--[[ board contents End ]]-->
-
 	<!-- 목록 -->
 	<div class="btnarea">
 		<button id="btn_list" class="btnGray" title="목록보기"
-			onclick="document.location.href='/customer/noticeList.do?pageIndex=1&amp;searchCnd=&amp;searchWrd=&amp;searchNoticeCd=&amp;'">목록보기</button> 
+			onclick="document.location.href='/customer/noticeList.do?pageIndex=1&amp;searchCnd=&amp;searchWrd=&amp;searchNoticeCd=&amp;'">목록보기</button>
 	</div>
 </section>
 </div>
