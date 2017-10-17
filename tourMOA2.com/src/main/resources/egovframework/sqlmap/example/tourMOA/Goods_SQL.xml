@@ -5,6 +5,7 @@
 
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="goodsVO" type="tourMOA.service.GoodsVO"/>
+	<typeAlias  alias="sliderVO" type="tourMOA.service.SliderVO"/>
 	<typeAlias  alias="managerVO" type="tourMOA.service.ManagerVO"/>
 
 	<select id="goodsDAO.selectGoodsList" resultClass="egovMap">
@@ -210,6 +211,88 @@
 	<delete id="goodsDAO.deleteGoods">
 		DELETE FROM goods WHERE unq = '$unq$'
 	</delete>
+	
+	<!-- <insert id="goodsDAO.insertSlider">
+		INSERT INTO slider (name, code, imgs, imgl)
+			VALUES ('$name$',
+					'$code$',
+					'$imgs$',
+					'$imgl$'
+					)
+	</insert> -->
+	<insert id="goodsDAO.insertSlider">
+		INSERT INTO slider (name, code, filename)
+			VALUES ('$name$',
+					'$code$',
+					'$filename$'
+					)
+	</insert>
+	
+	<select id="goodsDAO.selectSliderTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM slider
+	</select>
+	
+	<select id="goodsDAO.selectSliderList" resultClass="egovMap">
+		SELECT b.* FROM (
+			SELECT 
+				rownum rn, a.* FROM (
+							SELECT	  name
+									, code
+									, filename
+							FROM 
+									slider
+									
+							WHERE
+									1=1 
+									
+							<isNotNull property="searchCondition">
+								<isNotEmpty property="searchCondition">
+									AND $searchCondition$ LIKE '%' || #searchKeyword# || '%' 	
+								</isNotEmpty>
+							</isNotNull>		
+									
+							ORDER BY name ASC
+									) a
+						) b
+		WHERE 
+				rn >= #firstIndex# AND rn <![CDATA[<=]]> #lastIndex#
+	</select>
+	
+	<select id="goodsDAO.adminSliderDetail" resultClass="goodsVO">
+		SELECT code, name, filename FROM slider WHERE code = '$code$'
+	</select>
+	
+	<select id="goodsDAO.selectSliderDetail" resultClass="sliderVO">
+		SELECT code, name, filename FROM slider WHERE code = '$code$'
+	</select>
+	
+	
+	
+	<delete id="goodsDAO.deleteSlider">
+		DELETE FROM slider WHERE code = '$code$'
+	</delete>
+	
+	<update id="goodsDAO.updateSlider">
+		<!-- 파일 하나 지울때 -->
+		<isNull property="name">
+			<isEmpty property="name">
+				UPDATE slider SET filename = replace(filename,#filename#,'')
+				WHERE code = #code#
+			</isEmpty>
+		</isNull>
+		<!-- 일반 수정 -->
+		<isNotNull property="name">
+			<isNotEmpty property="name">
+				UPDATE slider SET
+					filename = filename || #filename#
+				WHERE
+					code = '$code$'
+			</isNotEmpty>
+		</isNotNull>
+	</update>
+	
+	
+	
 	
 	<select id="goodsDAO.selectDetailImages" resultClass="egovMap">
 		SELECT imgsm, imglg, eng

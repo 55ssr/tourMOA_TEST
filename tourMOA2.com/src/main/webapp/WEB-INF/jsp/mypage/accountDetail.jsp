@@ -7,7 +7,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator"%>
 <%
-			String id = request.getParameter("id");
+			String id = request.getParameter("userid");
+			String pwd= request.getParameter("pwd");
 %>
 <link rel="stylesheet" href="/css/mypage.css" />
 <script>
@@ -84,7 +85,7 @@ function fn_btn(a) {
              // 우편번호와 주소 정보를 해당 필드에 넣는다.
              document.getElementById('postnum1').value = data.zonecode; //5자리 새우편번호 사용
              document.getElementById('addr1_1').value = fullRoadAddr;
-             document.getElementById('addr1_2').value = data.jibunAddress;
+           //  document.getElementById('addr1_2').value = data.jibunAddress;
 
              // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
              if(data.autoRoadAddress) {
@@ -146,6 +147,7 @@ $(document).ready(function(){
 				 $("input:hidden[name='hidbirth']").val(birth); 
 		 
 		 var form = "id="+$("input:hidden[id='userid']").val()
+				form += "&pwd=" +$("input:hidden[id='userpwd']").val()
 				form += "&gender=" +$("#genderCd").val()
 				form += "&email=" +$("#email").val()
 				form += "&phone=" +$("#hidphone").val()
@@ -154,7 +156,10 @@ $(document).ready(function(){
 				form += "&addr12=" +$("#addr1_2").val()
 				form += "&birthday=" +$("input:hidden[name='hidbirth']").val()
 				form += "&tel=" +$("input:hidden[name='hidtel']").val()
-				form += "&marry=" +$("input:hidden[name='marry']").val()
+				form += "&marry=" +$("input:hidden[name='marryYn']").val()
+				form += "&mdate=" +$("input:hidden[name='marry']").val()
+				form += "&mobileRcpYn=" +$("input:hidden[name='mobileRcpYn']").val()
+				form += "&emailYn=" +$("input:hidden[name='emailYn']").val()
 				form += "&job=" +$("#jobcd option:selected").val();
 		alert(form);
 		
@@ -167,6 +172,7 @@ $(document).ready(function(){
 			success: function (data) {
 				if(data.du > 0) {
 					alert("변경 되었습니다.");
+					location.href="main.do";
 				} else {
 					alert( "변경할 수 없습니다.");
 				}
@@ -193,7 +199,7 @@ $(document).ready(function(){
 	});
 	
 	//아이디가 바뀌면
-	$("#id").change(function(){
+	$("#userid").change(function(){
 		$("input:hidden[name='idChk']").val("N")
 	});
 	
@@ -423,6 +429,7 @@ $(document).ready(function(){
 	<form name="modifyFrm" id="modifyFrm" method="post" >
 		<input type="hidden" name="webCustNo" 	id="webCustNo" 		value="" />
 		<input type="hidden" name="userid" 	id="userid" 		value="${vo.id}" />
+		<input type="hidden" name="userpwd" 	id="userpwd" 		value="" />
 		<input type="hidden" name="marry" 		id="marry" 		value="${vo.marry}" />
 		<input type="hidden" name="hidbirth" 	id="hidbirth" value="${vo.birthday}" />
 		<input type="hidden" name="marryYn" 		id="marryYn" 		value="" />
@@ -440,7 +447,7 @@ $(document).ready(function(){
 				<tr>
 					<th scope="row"><label for="id">아이디</label><span class="chk"></span></th>
 					<td colspan="3">
-						<input type="text" name="id" id="id" value="${vo.id}" maxlength="20" readonly>
+						<input type="text" name="userid" id="userid" value="${sessionScope.loginCertification.id}" maxlength="20" readonly>
 					</td>
 				</tr>
 				<tr>
@@ -482,9 +489,9 @@ $(document).ready(function(){
 							
 						</select>		
 						<div class="sel_area">
-							<input type="radio" name="emailYnY" id="emailYnY" value="Y"<%-- <c:if test="${vo.email =='Y'}">checked</c:if> --%>>
+							<input type="radio" name="emailYnY" id="emailYnY" value="Y" <c:if test="${vo.emailYn =='Y'}">checked</c:if>>
 					     <span class="radio_txt"><label for="emailYnY">수신동의</label></span>
-							<input type="radio" name="emailYnN" id="emailYnN" value="N"><span class="radio_txt"><label for="emailYnN">수신거부</label></span>
+							<input type="radio" name="emailYnN" id="emailYnN" value="N" <c:if test="${vo.emailYn =='N'}">checked</c:if>><span class="radio_txt"><label for="emailYnN">수신거부</label></span>
 							<input type="hidden" name="emailYn" id="emailYn" value="N" />
 						</div>
 							<span class="regDesc">· 이메일 수신동의를 하시면 이벤트/할인쿠폰/기획전/상품안내를 받으실 수 있습니다.<br />· 수신여부와 상관없이 예약,결제, 개인정보 등에 대한 내용은 발송 됩니다.</span>
@@ -632,7 +639,7 @@ $(document).ready(function(){
 				<select name="marryMonth" id="marryMonth" class="selDt" title="결혼기념일 월">
 					<option value="" selected="selected">${fn:substring(marry,5,7) }</option>
          		
-          			<c:forEach begin="1" end="31" var="idx" step="1">
+          			<c:forEach begin="1" end="12" var="idx" step="1">
           			 <option value="<c:out value="${idx}" />">
 					<c:out value="${idx}" />
 					

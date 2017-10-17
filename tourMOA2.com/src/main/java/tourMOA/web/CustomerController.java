@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import tourMOA.service.DefaultListVO;
+import tourMOA.service.EstimateService;
+import tourMOA.service.EstimateVO;
 import tourMOA.service.NoticeService;
 import tourMOA.service.NoticeVO;
 
@@ -20,6 +22,9 @@ import tourMOA.service.NoticeVO;
 public class CustomerController {
 	@Resource(name = "noticeService")
 	private NoticeService noticeService;
+	
+	@Resource(name = "estimateService")
+	private EstimateService estimateService;
 	
 
 	/*고객센터 메인페이지*/
@@ -133,10 +138,23 @@ public class CustomerController {
 		return "customer/estimateReq";
 	}
 	
+	/*견적문의 저장*/
 	@RequestMapping("customer/estimateReqSave.do")
-	public String insertEstimateReq() {
-		return "customer/estimateReqSave";
+	@ResponseBody public Map<String, Object> insertEstimateReq(EstimateVO vo) throws Exception {
+		
+		System.out.println("test");
+		String result="";
+		int cnt = 0;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		result = estimateService.insertEstimateReq(vo);
+		if(result == null) {
+			result = "ok";
+		}
+		map.put("result", result);
+		return map;
 	}
+	
 	
 	/*칭찬합시다*/
 	@RequestMapping("customer/praiseList.do")

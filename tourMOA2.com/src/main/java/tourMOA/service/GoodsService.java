@@ -14,5 +14,11 @@ public interface GoodsService {
 	List<?> selectDetailImages(GoodsVO vo) throws Exception;
 	ManagerVO selectManagerDetail(ManagerVO vo2) throws Exception;
 	List<?> selectOptionList(GoodsVO vo) throws Exception;
-	
+	String insertSlider(GoodsVO vo) throws Exception;
+	int selectSliderTotal(DefaultListVO searchVO) throws Exception;
+	List<?> selectSliderList(DefaultListVO searchVO);
+	GoodsVO adminSliderDetail(GoodsVO vo);
+	int deleteSlider(GoodsVO vo);
+	int updateSlider(GoodsVO vo);
+	SliderVO selectSliderDetail(SliderVO vo3);
 }
