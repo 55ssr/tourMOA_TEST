@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 	<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
-	<h1>전체 게시판</h1>
+	<h1>전체 게시판</h1> 
 	
 	<div class="table-responsive">
 		<table class="table table-hover">
