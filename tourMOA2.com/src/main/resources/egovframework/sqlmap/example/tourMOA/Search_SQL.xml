@@ -63,15 +63,15 @@
 						</isNotEmpty>
 					</isNotNull>
 						
-							ORDER BY sdate DESC
+							ORDER BY sdate ASC
 											) a
 							) b
 					WHERE
-						rn >= #firstIndex#
+						rn >= '$firstIndex$'
 			<![CDATA[ 
-						AND rn <=
-								#lastIndex#
-			]]> 			
+						AND rn <= '$lastIndex$'
+			]]> 		
+				
  	</select>
  	
  	<select id = "searchDAO.selectSearchKeywordTotal" resultClass ="java.lang.Integer">
