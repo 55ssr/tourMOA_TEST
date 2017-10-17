@@ -29,15 +29,37 @@
 									code
 								FROM
 									goods
+									<!-- 두개 다 SEARCH 할 때 -->
 					<isNotNull property="searchCondition">
 						<isNotEmpty property="searchCondition">
-						WHERE
-							gubun ='$searchCondition$'
-						</isNotEmpty>
-					</isNotNull>
 					<isNotNull property="searchKeyword">
 						<isNotEmpty property="searchKeyword">
+						WHERE
+							gubun ='$searchCondition$'
 							AND title	LIKE '%' || '$searchKeyword$' || '%'	
+						</isNotEmpty>
+					</isNotNull>
+						</isNotEmpty>
+					</isNotNull>
+					
+					<!-- SELECT OPTION 만으로  SEARCH 할 때 -->
+					<isNotNull property="searchCondition">
+						<isNotEmpty property="searchCondition">
+					
+						WHERE
+							gubun ='$searchCondition$'
+					
+						</isNotEmpty>
+					</isNotNull>
+					
+					<!-- INPUT KEYWORD 만으로  SEARCH 할 때 -->
+					<isNotNull property="searchKeyword">
+						<isNotEmpty property="searchKeyword">
+						WHERE
+							
+							title	LIKE '%' || '$searchKeyword$' || '%'
+							OR city	    LIKE '%' || '$searchKeyword$' || '%'
+							OR nation	LIKE '%' || '$searchKeyword$' || '%'	
 						</isNotEmpty>
 					</isNotNull>
 						
@@ -53,14 +75,47 @@
  	</select>
  	
  	<select id = "searchDAO.selectSearchKeywordTotal" resultClass ="java.lang.Integer">
+		<isNotNull property="searchCondition">
+		<isNotEmpty property="searchCondition">
+		<isNotNull property="searchKeyword">
+		<isNotEmpty property="searchKeyword">
+
 		SELECT COUNT(*) FROM goods
-			WHERE 
-				gubun = '$searchCondition$'
+		
+						WHERE
+							gubun ='$searchCondition$'
 				
-				OR title	LIKE '%' || '$searchKeyword$' || '%'	
+				AND title	LIKE '%' || '$searchKeyword$' || '%'	
 				OR city	    LIKE '%' || '$searchKeyword$' || '%'
 				OR nation	LIKE '%' || '$searchKeyword$' || '%'
 	
-			
+		</isNotEmpty>
+		</isNotNull>
+		</isNotEmpty>
+		</isNotNull>
+		
+		<isNotNull property="searchCondition">
+		<isNotEmpty property="searchCondition">
+		
+		SELECT COUNT(*) FROM goods
+		
+						WHERE
+							gubun ='$searchCondition$'
+		
+		</isNotEmpty>
+		</isNotNull>
+		
+		<isNotNull property="searchKeyword">
+		<isNotEmpty property="searchKeyword">
+		
+		SELECT COUNT(*) FROM goods
+		
+						WHERE
+				   title	LIKE '%' || '$searchKeyword$' || '%'	
+				OR city	    LIKE '%' || '$searchKeyword$' || '%'
+				OR nation	LIKE '%' || '$searchKeyword$' || '%'
+		
+		</isNotEmpty>
+		</isNotNull>
 	</select>
 </sqlMap>

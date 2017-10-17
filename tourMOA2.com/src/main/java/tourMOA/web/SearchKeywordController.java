@@ -26,11 +26,7 @@ public class SearchKeywordController {
 	@RequestMapping("search/searchKeyword.do")
 	public String searchKeyword(@ModelAttribute("searchVO") DefaultListVO searchVO, Model model) throws Exception{
 
-		
-		
-		
-		
-		int recordCountPerPage = 10;
+		/*int recordCountPerPage = 10;
 		int pageSize = 5;
 		int totalCount = searchService.selectSearchKeywordTotal(searchVO);
 		int pageIndex = searchVO.getPageIndex(); // 사용자가 누른 페이지 값을 가져와야한다.
@@ -58,26 +54,39 @@ public class SearchKeywordController {
 		// 8. 행번호
 		searchVO.setFirstIndex(firstIndex);
 		searchVO.setLastIndex(lastIndex); // 계산한값을 VO에 태워 새로 셋팅을 해준다.
-
-		int total = searchService.selectSearchKeywordTotal(searchVO);
+*/
+		/*int total = searchService.selectSearchKeywordTotal(searchVO);*/
 
 		// 사용자가 1Page를 보고있으면 total 값, 2Pages를 보고있으면 total-10, 3Pages는 total-20
-		int topNumber = total - (pageIndex - 1) * 10;
+		/*int topNumber = total - (pageIndex - 1) * 10;*/
 
-		// lastPage는 화면에 뿌려야 한다 그러므로 model 사용
+		boolean tfKeyword = false;
 		String existKeyword = searchVO.getSearchKeyword();
 		String existCondition = searchVO.getSearchCondition();
-		if(existKeyword!=null || existCondition!=null){
-			int viewOpen = 1;
-			model.addAttribute("viewOpen", viewOpen);
-			model.addAttribute("existKeyword", existKeyword);
-			model.addAttribute("existCondition", existCondition);
+		if((existKeyword).equals("") && (existCondition).equals("")){
+			tfKeyword=false;
+		}else if (!(existKeyword).equals("") || !(existCondition).equals("")){
+			tfKeyword=true;
 			
 		}
+		System.out.println(tfKeyword+"==="+existKeyword+"==="+existCondition);
 		
-		List<?> selectSearchProductList = searchService.selectSearchProductList(searchVO);
+		if(tfKeyword==true){
+			boolean viewOpen = true;
+			int goodsCnt = searchService.selectSearchKeywordTotal(searchVO);
+			List<?> selectSearchProductList = searchService.selectSearchProductList(searchVO);
+			model.addAttribute("goodsCnt", goodsCnt);
+			model.addAttribute("viewOpen", viewOpen);
+			model.addAttribute("searchKeyword", selectSearchProductList);
+			model.addAttribute("existKeyword", existKeyword);
+		}else if(tfKeyword==false){
+			boolean viewOpen = false;
+			model.addAttribute("viewOpen", viewOpen);
+		}
+		
+		
 
-		model.addAttribute("recordCountPerPage", recordCountPerPage);
+		/*model.addAttribute("recordCountPerPage", recordCountPerPage);
 		model.addAttribute("totalCount", totalCount);
 		model.addAttribute("firstPage", firstPage);
 		model.addAttribute("lastPage", lastPage);
@@ -85,10 +94,10 @@ public class SearchKeywordController {
 
 		model.addAttribute("totalPage", totalPage);
 		model.addAttribute("before", before);
-		model.addAttribute("next", next);
+		model.addAttribute("next", next);*/
 
-		model.addAttribute("searchKeyword", selectSearchProductList);
-		model.addAttribute("number", topNumber);
+		
+		/*model.addAttribute("number", topNumber);*/
 		return "search/searchKeyword";
 	}
 	

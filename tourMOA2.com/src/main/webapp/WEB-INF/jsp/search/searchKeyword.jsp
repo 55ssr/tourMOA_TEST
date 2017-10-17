@@ -17,8 +17,8 @@ String searchCondition = request.getParameter("searchCondition");
 <c:set var="existKeyword" value="<%=searchKeyword %>"/>
 <script>
 $(document).ready(function(){
-	var viewOpen = ${viewOpen };
-	if(viewOpen > 0){
+	var viewOpen = ${viewOpen};
+	if(viewOpen == true){
 		$("#rankWrap").css("display","none");
 		$("#if_SearchWrap").css("display","block");
 	}else{
@@ -266,7 +266,7 @@ $(document).ready(function(){
 	            </c:if>
 	            &nbsp;
 	            &nbsp;에 대한 총 
-	             ${totalCount }
+	             ${goodsCnt }
 	             	건의 여행상품 검색 결과가 있습니다.
 	             </p>
              </span>
@@ -412,7 +412,7 @@ $(document).ready(function(){
                             <li class="t03">
                                 <div class="productTop">
                                     <span class="path">${goodsList.gubun} &gt; ${goodsList.nation}</span>
-                                    <a href="/product/unitList.do?menu=${existCondition}&goodsCd=${goodsList.code}">
+                                    <a href="/product/unitList.do?menu=${existCondition}&code=${goodsList.code}">
                                     <span class="mark none"><span class="pie mint">특가</span></span>
                                     <span class="mark none"><span class="pie green">실속</span></span>
                                     <span class="mark none"><span class="pie blue">품격</span></span>

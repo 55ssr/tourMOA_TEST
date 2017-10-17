@@ -83,7 +83,7 @@ function fn_detail(a) {
                             <option value="성지순례">성지순례</option>
                             <option value="대구출발">부산/대구출발</option>
 						</select>
-						<input type="text" id="searchKeyword" name="searchKeyword" class="search" placeholder="search">
+						<input type="text" id="searchKeyword" name="searchKeyword" class="search" placeholder="search" value="">
 						<a href="#" id="searchBtnMain"><img alt="검색" src="/images/customer/top_search.png"></a>
 					</div>
 				</form>
