@@ -20,7 +20,8 @@
 	<!-- Placed at the end of the document so the pages load faster -->
 	<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> -->
+	<!-- <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery.min.js"><\/script>')</script> -->
 	<script src="/bootstrap4/assets/js/vendor/popper.min.js"></script>
 	<script src="/bootstrap4/dist/js/bootstrap.min.js"></script>
 
@@ -40,9 +41,15 @@
 	<script src="/js/summernote-ko-KR.js"></script>
 	
 	<!-- datepicker for bootstrap V4 -->
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	<script src="http://code.gijgo.com/1.5.1/js/gijgo.js" type="text/javascript"></script>
-    <link href="http://code.gijgo.com/1.5.1/css/gijgo.css" rel="stylesheet" type="text/css" />
+    <link href="http://code.gijgo.com/1.5.1/css/gijgo.css" rel="stylesheet" type="text/css" /> -->
+	
+	<!-- datetimepicker -->
+	<link href="/css/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+	<script type="text/javascript" src="/js/datetimepicker/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+	<script type="text/javascript" src="/js/datetimepicker/bootstrap-datetimepicker.ko.js" charset="UTF-8"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	
 </head>
 <body class="admin_custom">

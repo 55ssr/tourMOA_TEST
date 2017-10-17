@@ -12,17 +12,19 @@ import tourMOA.service.NoticeVO;
 public class NoticeDAO extends EgovAbstractDAO{
 
 	public List<?> selectNoticeList(DefaultListVO searchVO) {
-		return list("selectNoticeList",searchVO);
+		return list("noticeDAO.selectNoticeList",searchVO);
 	}
 
 	public String insertNotice(NoticeVO vo) {
-		// TODO Auto-generated method stub
-		return (String) insert("insertNotice",vo);
+		return (String) insert("noticeDAO.insertNotice",vo);
 	}
 
 	public int selectNoticeTotal(DefaultListVO searchVO) {
-		// TODO Auto-generated method stub
-		return (int) select("selectNoticeTotal",searchVO);
+		return (int) select("noticeDAO.selectNoticeTotal",searchVO);
+	}
+
+	public NoticeVO selectNoticeDetail(NoticeVO vo) {
+		return (NoticeVO) select("noticeDAO.selectNoticeDetail", vo);
 	}
 
 }

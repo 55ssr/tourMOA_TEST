@@ -1,5 +1,4 @@
 
-
 DROP TABLE company CASCADE CONSTRAINTS;
 DROP TABLE estimate CASCADE CONSTRAINTS;
 DROP TABLE goods CASCADE CONSTRAINTS;
@@ -8,7 +7,7 @@ DROP TABLE point CASCADE CONSTRAINTS;
 DROP TABLE popup CASCADE CONSTRAINTS;
 DROP TABLE reserv CASCADE CONSTRAINTS;
 DROP TABLE ticket CASCADE CONSTRAINTS;
-
+DROP TABLE notice CASCADE CONSTRAINTS;
 
 
 
@@ -19,7 +18,7 @@ DROP SEQUENCE SEQ_point_unq;
 DROP SEQUENCE SEQ_popup_unq;
 DROP SEQUENCE SEQ_reserv_unq;
 DROP SEQUENCE SEQ_ticket_unq;
-
+DROP SEQUENCE SEQ_notice_unq;
 
 
 
@@ -30,6 +29,7 @@ CREATE SEQUENCE SEQ_point_unq INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_popup_unq INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_reserv_unq INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_ticket_unq INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE SEQ_notice_unq INCREMENT BY 1 START WITH 1;
 
 
 
@@ -187,38 +187,16 @@ CREATE TABLE ticket
 	PRIMARY KEY (unq)
 );
 
-CREATE TABLE NOTICE
+
+CREATE TABLE notice
 (
-  UNQ       NUMBER                              NOT NULL,
-  GUBUN     VARCHAR2(50 BYTE)                   NOT NULL,
-  TITLE     VARCHAR2(100 BYTE)                  NOT NULL,
-  CONTENT   VARCHAR2(4000 BYTE)                 NOT NULL,
-  HIT       NUMBER                              NOT NULL,
-  RDATE     TIMESTAMP(6)                        NOT NULL,
-  UPDDATE   TIMESTAMP(6),
-  ALL_VIEW  CHAR(1 BYTE)                        NOT NULL
+	unq number NOT NULL,
+	gubun varchar2(50) NOT NULL,
+	title varchar2(100) NOT NULL,
+	content varchar2(4000) NOT NULL,
+	hit number NOT NULL,
+	rdate timestamp(6) NOT NULL,
+	upddate timestamp(6),
+	allview char(1) NOT NULL,
+	PRIMARY KEY (unq)
 );
-	-- goods 테이블 지역 추가
-	ALTER TABLE goods ADD(location varchar2(20)); --varchar2
-	-- goods 테이블 아동가 추가
-	ALTER TABLE goods ADD(pricech number);
-	-- goods 테이블 유아가 추가
-	ALTER TABLE goods ADD(pricein number);
-	-- goods 테이블 "1박" 추가
-	ALTER TABLE goods ADD(period1 varchar2(20));
-	-- goods 테이블 "2일" 추가
-	ALTER TABLE goods ADD(period2 varchar2(20));
-	-- goods 테이블 경유여부 추가
-	ALTER TABLE goods ADD(via char(1));
-	-- goods 테이블 경유지들 추가
-	ALTER TABLE goods ADD(vias varchar2(50)); --varchar2
-	-- goods 테이블 사용여부 추가
-	ALTER TABLE goods ADD(use char(1));
-	-- goods 테이블 rdate 추가
-	ALTER TABLE goods ADD(rdate timestamp); -- add
-	-- city 컬럼 바이트 수 증가
-	ALTER TABLE goods MODIFY (city varchar(100))
-	
-	-- member 테이블 addr1_1, 1_2 바이트 수 증가
-	ALTER TABLE member MODIFY (addr1_1 varchar(100))
-	ALTER TABLE member MODIFY (addr1_2 varchar(100))

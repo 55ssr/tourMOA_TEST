@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
 
-<sqlMap namespace="Member">
+<sqlMap namespace="Member1">
 
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="memberVO" type="tourMOA.service.MemberVO"/>
@@ -12,14 +12,21 @@
 	</select>
 	
 	<select id="memberDAO.findId" resultClass="java.lang.Integer">
-		SELECT COUNT(*) FROM member
+		SELECT COUNT(id) FROM member
 			WHERE name = '$name$' AND email = '$email$'
 	</select>
 	
-	
 	<select id="memberDAO.findPwRe" resultClass="java.lang.Integer">
-		SELECT COUNT(*) FROM member
+		SELECT COUNT(pwd) FROM member
 			WHERE id = '$id$' AND email = '$email$'
+	</select>
+	
+	<select id="memberDAO.findIdDetail" resultClass="MemberVO">
+		SELECT 
+			id,pwd
+		FROM 
+			member
+		WHERE name = '$name$' OR id = '$id$' AND email = '$email$'
 	</select>
 	
 	<select id="memberDAO.loginSession" resultClass="java.lang.Boolean">
@@ -27,6 +34,33 @@
 		SELECT * FROM MEMBER
 			WHERE id = '$id$' AND pwd = '$pwd$'
 	
+	</select>
+	 <select id="memberDAO.accountDetail" resultClass="MemberVO">
+		SELECT 
+				id,
+				name,
+				gender,
+				email,
+				phone,
+				postnum1,
+				addr11,
+				addr12,
+				to_char(birthday,'yyyy-mm-dd')as birthday ,
+				tel,
+				marry,
+				job
+		FROM  
+				MEMBER
+		WHERE id = '$id$'
+	</select>
+	
+	<select id="memberDAO.accountPwReaffirm" resultClass="MemberVO">
+		SELECT id,pwd FROM MEMBER WHERE id='$id$'
+	</select>
+	 
+	<select id="memberDAO.accountPwUpdate" resultClass="MemberVO">
+		SELECT pwd,id
+		 FROM MEMBER WHERE id='$id$' 
 	</select>
 	
 	<insert id="memberDAO.insertMemberJoin">
@@ -38,27 +72,65 @@
 							gender,
 							email,
 							phone,
+							tel,
+							job,
 							postnum1,
-							addr1_1,
-							addr1_2,
+							addr11,
+							addr12,
 							birthday,
+							emailYn,
+							mobileRcpYn,
+							marry,
+							mdate,
 							agree1,
 							agree2
 						) VALUES (
 							SEQ_MEMBER_UNQ.nextval,
 							'$id$',
-							'test!1234',
+							'$pwd$',
 							'$name$',
 							'$gender$',
 							'$email$',
 							'$phone$',
+							'$tel$',
+							'$job$',
 							'$postnum1$',
-							'$addr1_1$',
-							'$addr1_2$',
+							'$addr11$',
+							'$addr12$',
 							'$birthday$',
+							'$emailYn$',
+							'$mobileRcpYn$',
+							'$marry$',
+							'$mdate$',
 							'$agree1$',
 							'$agree2$'
 						)
 	</insert>
 	
+	<update id="memberDAO.accountDetailUpdate">
+		UPDATE
+			MEMBER
+		SET
+			gender='$gender$',
+			email='$email$',
+			phone='$phone$',
+			postnum1='$postnum1$',
+			addr11='$addr11$',
+			addr12='$addr12$',
+			birthday= '$birthday$' ,
+			tel='$tel$',
+			marry='$marry$',
+			job='$job$'
+	    WHERE
+	    	id = '$id$'
+	</update>
+	<update id="memberDAO.accountPwUpdateProc">
+		UPDATE
+			MEMBER
+		SET
+			pwd ='$pwd$'
+		WHERE
+			id = '$id$'
+	
+	</update>
 </sqlMap>

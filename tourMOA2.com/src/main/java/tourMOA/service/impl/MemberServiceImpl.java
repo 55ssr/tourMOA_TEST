@@ -39,8 +39,40 @@ public class MemberServiceImpl extends EgovAbstractServiceImpl implements Member
 
 	@Override
 	public boolean loginSession(MemberVO vo) throws Exception {
-		// TODO Auto-generated method stub
 		return memberDAO.loginSession(vo);
 	}
-	
+
+	@Override
+	public MemberVO accountDetail(MemberVO vo) throws Exception {
+		return memberDAO.accountDetail(vo);
+	}
+
+	@Override
+	public int accountDetailUpdate(MemberVO vo) throws Exception {
+		System.out.println("-----IMPL");
+		return memberDAO.accountDetailUpdate(vo);
+	}
+
+	@Override
+	public MemberVO accountPwReaffirm(MemberVO vo) throws Exception {
+		return memberDAO.accountPwReaffirm(vo);
+	}
+
+	@Override
+	public MemberVO accountPwUpdate(MemberVO vo) throws Exception {
+		return memberDAO.accountPwUpdate(vo);
+	}
+
+	@Override
+	public int accountPwUpdateProc(MemberVO vo) throws Exception {
+		return memberDAO.accountPwUpdateProc(vo);
+	}
+
+	@Override
+	public MemberVO findIdDetail(MemberVO vo) throws Exception {
+		return memberDAO.findIdDetail(vo);
+	}
+
+
+
 }

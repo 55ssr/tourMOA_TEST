@@ -5,6 +5,7 @@
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 	<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
 	<h1>상품 등록</h1>
@@ -112,27 +113,23 @@
 				param +="&sdate="+$("#sdate").val()
 				param +="&edate="+$("#edate").val()
 				param +="&period="+$("#period").val()
-				param +="&period="+$("#period1").val()
-				param +="&period="+$("#period2").val()
+				param +="&period1="+$("#period1").val()
+				param +="&period2="+$("#period2").val()
 				param +="&price="+$("#price").val()
 				param +="&pricech="+$("#pricech").val()
 				param +="&pricein="+$("#pricein").val();
 			
-				/* param +="&price="+$("#price").val()
-				param +="&pricech="+$("#pricech").val()
-				param +="&pricein="+$("#pricein").val(); */
-			
 			alert(param);
 			
-			var form = new FormData(document.getElementById("frm"));
-			
-			
+			/* var form = new FormData(document.getElementById("frm")); */
+						
 			$.ajax({
 				type: "POST",
 				data: param,
 				url: "<c:url value='/adminGoodsWriteSave.do' />",
 				dataType: "json",
 				processData: false,
+				contentType: false,
 				success: function (data) {
 					if(data.result == "ok") {
 						alert("저장됐습니다.");
@@ -148,7 +145,7 @@
 		});
 	});
 	</script>
-	<form name="frm" id="frm">
+	<form name="frm" id="frm" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="unq" value="" />
 		<div class="form-group row">
 			<label for="inputGoodsType" class="col-sm-2 col-form-label">상품구분</label>
@@ -184,11 +181,11 @@
 			<div class="col-sm-2">
 				<select class="form-control" name="location" id="location">
 					<option value="">-선택-</option>
-					<option value="서유럽">서유럽</option>
-					<option value="동유럽">동유럽</option>
-					<option value="동남아">동남아</option>
-					<option value="동아시아">동아시아</option>
-					<option value="미주">미주</option>
+					<option value="weurope">서유럽</option>
+					<option value="eeurope">동유럽</option>
+					<option value="enasia">동남아</option>
+					<option value="easia">동아시아</option>
+					<option value="namerica">미주</option>
 				</select>
 			</div>
 			<div class="btn-group col-sm-2" role="group" aria-label="First group">
@@ -245,24 +242,54 @@
 		</div>
 		
 		<div class="form-group row">
-			<label for="priceAdult" class="col-sm-2 col-form-label">비용</label>
-			<div class="col-sm-6">
+			<label for="priceAdult" class="col-sm-2 col-form-label">인원</label>
+			<div class="col-sm-10">
 				<div class="form-row align-items-center">
-					<div class="col-auto">
+					<div class="col-2">
+						<div class="input-group">
+							<input type="text" name="price" id="price" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="총 인원">
+							<span class="input-group-addon">명</span>
+						</div>
+					</div>
+					
+					<div class="col-2">
+						<div class="input-group">
+							<input type="text" name="pricech" id="pricech" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="남은 인원">
+							<span class="input-group-addon">명</span>
+						</div>
+					</div>
+					
+					<div class="col-2">
+						<div class="input-group">
+							<input type="text" name="pricein" id="pricein" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="출발가능 인원">
+							<span class="input-group-addon">명</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+		
+		<div class="form-group row">
+			<label for="priceAdult" class="col-sm-2 col-form-label">비용</label>
+			<div class="col-sm-10">
+				<div class="form-row align-items-center">
+					<div class="col-2">
 						<div class="input-group">
 							<input type="text" name="price" id="price" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="성인가">
 							<span class="input-group-addon">￦</span>
 						</div>
 					</div>
 					
-					<div class="col-auto">
+					<div class="col-2">
 						<div class="input-group">
 							<input type="text" name="pricech" id="pricech" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="아동가">
 							<span class="input-group-addon">￦</span>
 						</div>
 					</div>
 					
-					<div class="col-auto">
+					<div class="col-2">
 						<div class="input-group">
 							<input type="text" name="pricein" id="pricein" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="유아가">
 							<span class="input-group-addon">￦</span>
@@ -271,6 +298,124 @@
 				</div>
 			</div>
 			
+		</div>
+		
+		<div class="form-group row">
+			<label for="priceAdult" class="col-sm-2 col-form-label">여행기간</label>
+			
+			<div class="col-sm-10">
+				<div class="form-row align-items-center">
+					<div class="col-2">
+						<div class="input-group">
+							<input type="text" name="period1" id="period1" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="1">
+							<span class="input-group-addon">박</span>
+						</div>
+					</div>
+					
+					<div class="col-2">
+						<div class="input-group">
+							<input type="text" name="period2" id="period2" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="2">
+							<span class="input-group-addon">일</span>
+						</div>
+					</div>
+					
+					<div class="col-auto">
+						<input type="hidden" name="period" id="period" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="(히든)">
+					</div>
+				</div>
+			</div>
+			
+		</div>
+				
+		<div class="form-group row">
+			<label for="inputTitle" class="col-sm-2 col-form-label">출발일</label>
+			
+			<div class='col-sm-10'>
+				<div class="form-row align-items-center">
+					<div class='col-4'>
+						<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" data-link-field="dtp_input1">
+		                    <input class="form-control" size="16" type="text" value="" placeholder="한국 출발" readonly>
+		                    <span class="input-group-addon"><span class="fa fa-times" aria-hidden="true"></span></span>
+							<span class="input-group-addon"><span class="fa fa-calendar" aria-hidden="true"></span></span>
+		                </div>
+						<input type="hidden" id="dtp_input1" value="" />
+					</div>
+					<div class='col-4'>
+						<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" data-link-field="dtp_input1">
+		                    <input class="form-control" size="16" type="text" value="" placeholder="현지 도착" readonly>
+		                    <span class="input-group-addon"><span class="fa fa-times" aria-hidden="true"></span></span>
+							<span class="input-group-addon"><span class="fa fa-calendar" aria-hidden="true"></span></span>
+		                </div>
+						<input type="hidden" id="dtp_input1" value="" />
+					</div>
+				</div>
+			</div>
+				
+		</div>
+		
+		<div class="form-group row">
+			<label for="inputTitle" class="col-sm-2 col-form-label">도착일</label>
+			<div class='col-sm-10'>
+				<div class="form-row align-items-center">
+					<div class='col-4'>
+						<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" data-link-field="dtp_input1">
+		                    <input class="form-control" size="16" type="text" value="" placeholder="현지 출발" readonly>
+		                    <span class="input-group-addon"><span class="fa fa-times" aria-hidden="true"></span></span>
+							<span class="input-group-addon"><span class="fa fa-calendar" aria-hidden="true"></span></span>
+		                </div>
+						<input type="hidden" id="dtp_input1" value="" />
+					</div>
+					<div class='col-sm-4'>
+						<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" data-link-field="dtp_input1">
+		                    <input class="form-control" size="16" type="text" value="" placeholder="한국 도착" readonly>
+		                    <span class="input-group-addon"><span class="fa fa-times" aria-hidden="true"></span></span>
+							<span class="input-group-addon"><span class="fa fa-calendar" aria-hidden="true"></span></span>
+		                </div>
+						<input type="hidden" id="dtp_input1" value="" />
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- <div class="form-group row">
+			<label for="inputTitle" class="col-sm-2 col-form-label">시작일</label>
+			<div class='col-sm-2'>
+				<div class='input-group date'>
+					<input type='text' name="sdate" id="sdate" class="form-control" />
+				</div>
+			</div>
+				<script>
+			        $('#sdate').datepicker({
+			            uiLibrary: 'bootstrap4',
+			            format: 'yyyy-mm-dd HH:mm:ss',
+			            iconsLibrary: 'fontawesome'
+			        });
+			    </script>			
+		</div>
+		
+		<div class="form-group row">
+			<label for="inputTitle" class="col-sm-2 col-form-label">종료일</label>
+			<div class='col-sm-2'>
+				<div class='input-group date' >
+					<input type='text' name="edate" id="edate" class="form-control" />
+				</div>
+			</div>
+			
+				<script>
+			        $('#edate').datepicker({
+			            uiLibrary: 'bootstrap4',
+			            format: 'yyyy-mm-dd HH:mm:ss',
+			            iconsLibrary: 'fontawesome'
+			        });
+			    </script>
+			    
+		</div> -->
+		
+		<div class="form-group row">
+			<label for="inputTitle" class="col-sm-2 col-form-label">간단 정보</label>
+			<div class='col-sm-10'>
+				<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+			</div>
 		</div>
 		
 		<div class="form-group row">
@@ -289,67 +434,6 @@
 				</script>
 				<textarea class="form-control" id="detail1" rows="6" hidden></textarea>
 			</div>
-		</div>
-		
-		<div class="form-group row">
-			<label for="inputTitle" class="col-sm-2 col-form-label">시작일</label>
-			<div class='col-sm-2'>
-				<div class='input-group date'>
-					<input type='text' name="sdate" id="sdate" class="form-control" />
-				</div>
-			</div>
-				<script>
-			        $('#sdate').datepicker({
-			            uiLibrary: 'bootstrap4',
-			            format: 'yyyy-mm-dd',
-			            iconsLibrary: 'fontawesome'
-			        });
-			    </script>			
-		</div>
-		
-		<div class="form-group row">
-			<label for="inputTitle" class="col-sm-2 col-form-label">종료일</label>
-			<div class='col-sm-2'>
-				<div class='input-group date' >
-					<input type='text' name="edate" id="edate" class="form-control" />
-				</div>
-			</div>
-			
-				<script>
-			        $('#edate').datepicker({
-			            uiLibrary: 'bootstrap4',
-			            format: 'yyyy-mm-dd',
-			            iconsLibrary: 'fontawesome'
-			        });
-			    </script>
-			    
-		</div>
-		
-		<div class="form-group row">
-			<label for="priceAdult" class="col-sm-2 col-form-label">여행기간</label>
-			
-			<div class="col-sm-6">
-				<div class="form-row align-items-center">
-					<div class="col-auto">
-						<div class="input-group">
-							<input type="text" name="period1" id="period1" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="1">
-							<span class="input-group-addon">박</span>
-						</div>
-					</div>
-					
-					<div class="col-auto">
-						<div class="input-group">
-							<input type="text" name="period2" id="period2" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="2">
-							<span class="input-group-addon">일</span>
-						</div>
-					</div>
-					
-					<div class="col-auto">
-						<input type="hidden" name="period" id="period" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="(히든)">
-					</div>
-				</div>
-			</div>
-			
 		</div>
 		
 		<div class="form-group row">
@@ -392,6 +476,18 @@
 		</div>
 		
 		<div class="form-group row">
+			<label for="selectUse" class="col-sm-2 col-form-label">슬라이드 이미지</label>
+			<div class="col-sm-2">
+				
+				<input type="file" class="form-control-file" id="exampleFormControlFile1" multiple>
+			
+			</div>
+			
+			
+			
+		</div>
+		
+		<div class="form-group row">
 			<label for="selectUse" class="col-sm-2 col-form-label">사용여부</label>
 			<div class="col-sm-2">
 				<select class="form-control" name="use" id="use">
@@ -408,5 +504,23 @@
 		</div>
 		
 	</form>
+	
+	
+<script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+        language:  'ko',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		forceParse: 0,
+        showMeridian: 1
+    });
+   </script>
+	
+	
+	
+	
 	
     </main>

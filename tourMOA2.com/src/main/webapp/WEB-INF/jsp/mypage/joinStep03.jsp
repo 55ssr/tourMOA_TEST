@@ -95,9 +95,9 @@ $(document).ready(function(){
 	//중복체크
 	$("#btnDup").click(function(){
 		
-		if($("#id").val() == "") {
+		if($("input:text[id=id]").val() == '') {
 			alert("아이디를 입력해주세요.");
-			$("#id").focus();
+			$("input:text[id=id]").focus();
 			return false;
 		}
 				
@@ -112,7 +112,7 @@ $(document).ready(function(){
 			$("#id").focus();
 			return;
 		}   */
-		var param ="id="+$("#id").val();
+		var param ="id="+$("input:text[id=id]").val();
 		$.ajax({
 			  type:'POST'
 			, url:"<c:url value='/mypage/selectCustIdDuplication.do'/>"
@@ -232,7 +232,7 @@ $(document).ready(function(){
 		
 		if(email) { 
 			$("#emailYnN").removeAttr("checked"); 
-			$("#emailYn").val("Y");
+			$("input:hidden[id='emailYn']").val("Y");
 		}else{ 
 			var emailN = document.getElementById("emailYnN").checked;
 			if(emailN == false){
@@ -246,7 +246,7 @@ $(document).ready(function(){
 		
 		if(email) { 
 			$("#emailYnY").removeAttr("checked"); 
-			$("#emailYn").val("N");
+			$("input:hidden[id='emailYn']").val("N");
 		}else{ 
 			
 			var emailY = document.getElementById("emailYnY").checked;
@@ -262,8 +262,8 @@ $(document).ready(function(){
 		var mobile = this.checked;
 		
 		if(mobile) { 
-			$("#mobileRcpYnN").removeAttr("checked"); 
-			$("#mobileRcpYn").val("Y");
+			$("#mobileRcpYnN").removeAttr("checked");
+			$("input:hidden[id='mobileRcpYn']").val("Y");
 		}else{ 
 			var mobileN = document.getElementById("mobileRcpYnN").checked;
 			if(mobileN == false){
@@ -276,7 +276,7 @@ $(document).ready(function(){
 		
 		if(mobile) { 
 			$("#mobileRcpYnY").removeAttr("checked"); 
-			$("#mobileRcpYn").val("N");
+			$("input:hidden[id='mobileRcpYn']").val("N");
 		}else{ 
 			
 			var mobileY = document.getElementById("mobileRcpYnY").checked;
@@ -285,8 +285,38 @@ $(document).ready(function(){
 			}
 		}		
 	});
-
 	//결혼여부
+	$("#marryYnY").click(function(){
+		var marry = this.checked;
+		
+		if(marry) { 
+			$("#marryYnN").removeAttr("checked"); 
+			$("input:hidden[id='marryYn']").val("Y");
+			$("#marryDiv").css({display:"block"});
+		}else{ 
+			var marryYnN = document.getElementById("marryYnN").checked;
+			if(marryYnN == false){
+				$("#marryYn").val("");	
+			}
+		}		
+	});
+
+	$("#marryYnN").click(function(){
+		var marry = this.checked;
+		
+		if(marry) { 
+			$("#marryYnY").removeAttr("checked"); 
+			$("input:hidden[id='marryYn']").val("N");
+			$("#marryDiv").css({display:"none"});
+		}else{ 
+			var marryYnY = document.getElementById("marryYnY").checked;
+			if(marryYnY == false){
+				$("#marryYn").val("");	
+			}
+		}		
+	});
+
+	
 	
 	
 			$("#mbrFrm").validate({
@@ -313,7 +343,7 @@ $(document).ready(function(){
 					alert("아이디 중복 체크를 해주세요");
 					return false;
 				}else if($("input:hidden[name='idChk']").val() == "Y"){
-					var id = $("#id").val();
+					var id = $("input:text[id='id']").val();
 					$("input:hidden[name='custId']").val(id);
 				}
 				
@@ -321,6 +351,9 @@ $(document).ready(function(){
 					alert("8~16자리 영문 (소/대문자), 숫자, 특수문자 중 3종류를 조합한 최소 8자리 이상으로 사용해 주세요.");
 					return false;
 				}
+				//직업
+				var job = $("#jobCd option:selected").val();
+				$("input:hidden[name='job']").val(job);
 				
 				//결혼기념일
 				var marryYear = $("#marryYear option:selected").val();
@@ -590,7 +623,6 @@ $(document).ready(function(){
 		$(location).attr('href',"/mypage/join.do");
 	});
 	$("#btnok").click(function(){
-		
 		if($("#genderCd").val()==""){
 			alert("성별을 선택해주세요");
 			$("#genderCd").focus();
@@ -600,11 +632,17 @@ $(document).ready(function(){
 			var address = $("#postnum1").val();
 			var addr1_1 = $("#addr1_1").val();
 			var addr1_2 = $("#addr1_2").val();
+			
 			$("input:hidden[name='hidPostNum1']").val(address);
 			$("input:hidden[name='hidAddr1_1']").val(addr1_1);
 			$("input:hidden[name='hidAddr1_2']").val(addr1_2);
+		}if($("#pwd").val()==""){
+			alert("패스워드를 입력해주세요");
 		}
-			
+		else{
+			var custPassEnc = $("#pwd").val();
+			$("input:hidden[name='custPassEnc']").val(custPassEnc);
+		}
 		$("#mbrFrm").submit();
 	});
 	
@@ -649,6 +687,7 @@ $(document).ready(function(){
 	    <input type="hidden" name="agreePrv" 	id="agreeShr" 	    value="<%=agreeShr%>" />
 	    <input type="hidden" name="agreeMkt" 	id="agreeMkt" 	    value="<%=agreeMkt%>" />
 	    <input type="hidden" name="genderCd" 	id="genderCd" 	    value="" />
+	    <input type="hidden" name="job" 		id="job" 	    	value="" />
 	    <input type="hidden" name="certDiviCd" 	id="certDiviCd" 	value="" />
 	    <input type="hidden" name="fdCd"   		id="fdCd"   	    value="" />
 	    <input type="hidden" name="custStatCd"  id="custStatCd"   	value="<%=custStatCd%>" />      
@@ -667,7 +706,10 @@ $(document).ready(function(){
 		<input type="hidden" name="custId"	  	id="custId"			value=""/>        
 		<input type="hidden" name="custNmKor"	id="custNmKor"		value="<%=custNmKor%>"/>        
 		<input type="hidden" name="custphone"	id="custphone"		value="<%=custphone%>"/>        
-		<input type="hidden" name="hidPostNum1"		id="hidPostNum1"			value=""/>        
+		<input type="hidden" name="hidPwd"		id="hidPwd"		value=""/>        
+		<input type="hidden" name="hidPostNum1"		id="hidPostNum1"		value=""/>        
+		<input type="hidden" name="mobileRcpYn"		id="mobileRcpYn"		value="N"/><!-- SMS 수신동의/거부 -->        
+		<input type="hidden" name="emailYn"			id="emailYn"			value="N"/><!-- EMAIL 수신동의/거부 -->        
 		<input type="hidden" name="hidAddr1_1"		id="hidAddr1_1"			value=""/>        
 		<input type="hidden" name="hidAddr1_2"		id="hidAddr1_2"			value=""/>        
 <div class="join_step">	
@@ -679,14 +721,14 @@ $(document).ready(function(){
 	<caption>가입정보입력</caption>
 	<tbody>
 		<tr>
-			<th scope="row"><label for="id">아이디 <font color="red">*</font></label><span class="idSpan"></span><span class="chk"></span></th>
+			<th scope="row"><label for="id" style="float: left;">아이디 </label><span class="idSpan"></span><span class="chk"></span></th>
 			<td colspan="3">
 				<input type="text" name="id" id="id" maxlength="20">
 				<button type="button" name="btnDup" id="btnDup" class="btnChk">중복 확인</button>
 			</td>
 		</tr>
 		<tr>
-			<th scope="row"><label for="pwd">비밀번호<font color="red">*</font></label><span class="chk"></span></th>
+			<th scope="row"><label for="pwd">비밀번호</label><span class="chk"></span></th>
 			<td colspan="3"><input type="password" name="pwd" id="pwd" maxlength="20" ><div id="passSpan"></div>
 			
 				<span class="regDesc">· 영문(소/대문자), 숫자,특수문자 중 3종류를 조합하여 8~16자리로 사용하시기 바랍니다. <br />
@@ -694,23 +736,23 @@ $(document).ready(function(){
 			</td>
 		</tr>
 		<tr>
-			<th scope="row"><label for="pwd2">비밀번호 확인<font color="red">*</font></label><span class="chk"></span></th>
+			<th scope="row"><label for="pwd2">비밀번호 확인</label><span class="chk"></span></th>
 			<td colspan="3"><input type="password" name="pwd2" id="pwd2" maxlength="20"><div id="pwdChk"></div>
 				<span class="regDesc">· 재확인을 위해서입력하신비밀번호를 다시한번 입력해주세요.</span>
 			</td>
 		</tr>
 		<tr>
-			<th scope="row"><label for="username">성명<font color="red">*</font></label><span class="chk"></span></th>
+			<th scope="row"><label for="username">성명</label><span class="chk"></span></th>
 			<td><input type="hidden" id="custNmKor" name="custNmKor" value="<%=custNmKor%>"><%=custNmKor %></td>
 
-			<th scope="row"><label for="genderCd">성별<font color="red">*</font></label></th>
+			<th scope="row"><label for="genderCd">성별</label></th>
 			<td>
 				<input type="checkbox" name="genderCdM" id="genderCdM" value="M" ><span class="radio_txt"><label for="genderCdM">남성</label></span>
 				<input type="checkbox" name="genderCdF" id="genderCdF" value="F" ><span class="radio_txt"><label for="genderCdF">여성</label></span>
 			</td>
 		</tr>
 		<tr>
-			<th scope="row"><label for="email1">이메일<font color="red">*</font></label><span class="chk"></span></th>
+			<th scope="row"><label for="email1">이메일</label><span class="chk"></span></th>
 			<td colspan="3">
 				<input type="text" name="email1" id="email1" class="txtemail" maxlength="20">
 				<span class="txt">@</span>
@@ -725,23 +767,23 @@ $(document).ready(function(){
 					<option value="9"  selected="selected" >선택하세요</option>
 				</select>
 				<div class="sel_area">
-					<input type="radio" name="emailYn" id="emailYnY" value="Y"  ><span class="radio_txt"><label for="emailYnY">수신동의</label></span>
-					<input type="radio" name="emailYn" id="emailYnN" value="N" checked="checked" ><span class="radio_txt"><label for="emailYnN">수신거부</label></span>
+					<input type="checkbox" name="emailYnY" id="emailYnY" value="Y"  ><span class="radio_txt"><label for="emailYnY">수신동의</label></span>
+					<input type="checkbox" name="emailYnN" id="emailYnN" value="N" checked="checked" ><span class="radio_txt"><label for="emailYnN">수신거부</label></span>
 					</div>
 				<span class="regDesc">· 이메일 수신동의를 하시면 이벤트/할인쿠폰/기획전/상품안내를 받으실 수 있습니다.<br />
 	                     · 수신여부와 상관없이 예약,결제, 개인정보 등에 대한 내용은 발송 됩니다.</span>
 			</td>
 		</tr>		
 		<tr>
-			<th scope="row"><label for="mobileTel1">휴대폰번호<font color="red">*</font></label><span class="chk"></span></th>
+			<th scope="row"><label for="mobileTel1">휴대폰번호</label><span class="chk"></span></th>
 			<td colspan="3">
 				<c:set var="phoneNum" value="<%=custphone%>" />
 				<input type="text" name="mobiletel1"  class="txtcell" value="${fn:substring(phoneNum,0,3) }" maxlength="3" readonly>
 				<span class="txt">-</span><input type="text" name="mobileTel2" id="mobileTel2" value="${fn:substring(phoneNum,4,8) }"  class="txtcell" maxlength="4" title="휴대전화 중간 4자리" readonly>
 				<span class="txt">-</span><input type="text" name="mobileTel3" id="mobileTel3" value="${fn:substring(phoneNum,9,13) }"  class="txtcell" maxlength="4" title="휴대전화 마지막 4자리" readonly>
 				<div class="sel_area">
-					<input type="radio" name="mobileRcpYn" id="mobileRcpYnY" value="Y"  ><span class="radio_txt"><label for="mobileRcpYnY">수신동의</label></span>
-					<input type="radio" name="mobileRcpYn" id="mobileRcpYnN" value="N" checked="checked" ><span class="radio_txt"><label for="mobileRcpYnN">수신거부</label></span>
+					<input type="checkbox" name="mobileRcpYnY" id="mobileRcpYnY" value="Y"  ><span class="radio_txt"><label for="mobileRcpYnY">수신동의</label></span>
+					<input type="checkbox" name="mobileRcpYnN" id="mobileRcpYnN" value="N" checked="checked" ><span class="radio_txt"><label for="mobileRcpYnN">수신거부</label></span>
 				</div>
 				<span class="regDesc">· SMS 수신동의를 하시면 이벤트/상품안내를 받으실 수 있습니다.</span>
 			</td>
@@ -793,24 +835,17 @@ $(document).ready(function(){
 			<td colspan="3">
 				<select name="jobCd" id="jobCd">
 					<option value="">선택하세요</option>
-					<option value="10" >주부</option>
-					<option value="15" >공무원</option>
-					<option value="20" >교직자</option>
-					<option value="25" >전문직</option>
-					<option value="30" >사무직</option>
-					<option value="35" >의료인</option>
-					<option value="40" >법조인</option>
-					<option value="45" >군인</option>
-					<option value="5" >자영업</option>
-					<option value="50" >종교인</option>
-					<option value="55" >언론방송인</option>
-					<option value="60" >학생</option>
-					<option value="99" >기타</option>
+					<option value="주부" >주부</option>
+					<option value="공무원" >공무원</option>
+					<option value="군인" >군인</option>
+					<option value="자영업" >자영업</option>
+					<option value="학생" >학생</option>
+					<option value="기타" >기타</option>
 				</select>
 			</td>
 		</tr>	
 		<tr>
-			<th scope="row"><label for="birthYear">생년월일<font color="red">*</font></label><span class="chk"></span></th>
+			<th scope="row"><label for="birthYear">생년월일</label><span class="chk"></span></th>
 			<td colspan="3">
 				<select name="birthYear" id="birthYear" class="selDt">
 					<option value="" selected="selected">선택</option>
@@ -855,7 +890,7 @@ $(document).ready(function(){
 			<td>
 				<input type="checkbox" name="marryYnY" id="marryYnY" value="Y"  ><span class="radio_txt"><label for="marryYnY">예</label></span>
 				<input type="checkbox" name="marryYnN" id="marryYnN" value="N"  ><span class="radio_txt"><label for="marryYnN">아니오</label></span>
-				<input type="hidden" name="marryYn" id="marryYn" value="" />
+				<input type="hidden" name="marryYn" id="marryYn" value="N" />
 			</td>
 			<th scope="row"><label for="marryYear">결혼기념일</label></th>
 			<td>
@@ -875,7 +910,7 @@ $(document).ready(function(){
 				<select name="marryMonth" id="marryMonth" class="selDt" title="결혼기념일 월">
 					<option value="" selected="selected">선택</option>
          		
-          			<c:forEach begin="1" end="31" var="idx" step="1">
+          			<c:forEach begin="1" end="12" var="idx" step="1">
           			 <option value="<c:out value="${idx}" />">
 					<c:out value="${idx}" />
 					

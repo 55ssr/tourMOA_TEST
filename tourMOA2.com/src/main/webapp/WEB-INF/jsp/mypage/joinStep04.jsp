@@ -23,7 +23,13 @@
 			String birthDt = request.getParameter("birthDt");
 			String email = request.getParameter("email");
 			String genderCd = request.getParameter("genderCd");
+			String mobileRcpYn = request.getParameter("mobileRcpYn");
+			String marryYn = request.getParameter("marryYn");
+			String marryDt = request.getParameter("marryDt");
+			String emailYn = request.getParameter("emailYn");
 			String hidPostNum1 = request.getParameter("hidPostNum1");
+			String homeTel = request.getParameter("homeTel");
+			String job = request.getParameter("job");
 			String hidAddr1_1 = request.getParameter("hidAddr1_1");
 			String hidAddr1_2 = request.getParameter("hidAddr1_2");
 
@@ -32,15 +38,22 @@
 	$(document).ready(function(){			
 		$("#btnok").click(function(){
 			
-			var param  = "id="+$("#id").val()
+			var param  = "id="+$("input:hidden[id='custId']").val()
+				param += "&pwd="+$("#custPassEnc").val()
 				param += "&name="+$("#name").val()
 				param += "&phone="+$("#custphone").val() 
+				param += "&tel="+$("#homeTel").val() 
 				param += "&birthday="+$("#birthDt").val() 
 				param += "&email="+$("#email").val()
 				param += "&gender="+$("#genderCd").val()
 				param += "&postnum1="+$("#hidPostNum1").val()
-				param += "&addr1_1="+$("#hidAddr1_1").val()
-				param += "&addr1_2="+$("#hidAddr1_2").val()
+				param += "&addr11="+$("#hidAddr1_1").val()
+				param += "&addr12="+$("#hidAddr1_2").val()
+				param += "&marry="+$("#marryYn").val()
+				param += "&mdate="+$("#marryDt").val()
+				param += "&job="+$("#job").val()
+				param += "&emailYn="+$("#emailYn").val()
+				param += "&mobileRcpYn="+$("#mobileRcpYn").val()
 				param += "&agree1="+$("#agreeEss01").val()
 				param += "&agree2="+$("#agreeEss02").val();
 			
@@ -71,25 +84,25 @@
 	});	
 </script> 
 <form name="mbrFrm" id="mbrFrm" method="post" action="/mypage/joinStep05.do">
-	<input type="hidden" name="id" 				id="id" 				value="<%=custId %>" /><!-- 아이디 -->
+	<input type="hidden" name="custId" 				id="custId" 				value="<%=custId %>" /><!-- 아이디 -->
 	<input type="hidden" name="custPassEnc" 	id="custPassEnc" 		value="<%=custPassEnc %>" /><!-- 비밀번호 -->
 	<input type="hidden" name="name" 			id="name" 				value="<%=custNmKor%>" /><!-- 이름 -->
 	<input type="hidden" name="custphone" 		id="custphone" 		    value="<%=custphone%>" /><!-- 이름 -->
-	<input type="text" 	name="genderCd" 		id="genderCd" 			value="<%=genderCd%>" /><!-- 성별 -->
+	<input type="hidden" name="genderCd" 		id="genderCd" 			value="<%=genderCd%>" /><!-- 성별 -->
 	<input type="hidden" name="email" 			id="email" 				value="<%=email%>" /><!-- FULL 이메일 -->
 	<input type="hidden" name="email1" 			id="email1" 			value="" /><!-- 이메일 ID -->
 	<input type="hidden" name="email2" 			id="email2" 			value="" /><!-- 이메일 도메인 -->
-	<input type="hidden" name="emailYn" 		id="emailYn" 			value="" /><!-- 이메일 수신여부 -->
+	<input type="hidden" name="emailYn" 		id="emailYn" 			value="<%=emailYn %>" /><!-- 이메일 수신여부 -->
 	<input type="hidden" name="mobileTel" 		id="mobileTel" 			value="" /><!-- 전화번호 -->
 	<input type="hidden" name="mobileRcpYn" 	id="mobileRcpYn" 		value="" /><!-- 모바일 수신여부 -->
-	<input type="hidden" name="homeTel" 		id="homeTel" 			value="" /><!-- 집전화번호 -->
+	<input type="hidden" name="homeTel" 		id="homeTel" 			value="<%=homeTel %>" /><!-- 집전화번호 -->
 	<input type="hidden" name="zipCd" 			id="zipCd" 				value="" /><!-- 우편번호 -->
 	<input type="hidden" name="custAddr" 		id="custAddr" 			value="" /><!-- 기본주소 -->
 	<input type="hidden" name="custAddrDetail" 	id="custAddrDetail" 	value="" /><!-- 상세주소 -->
 	<input type="hidden" name="jobCd" 			id="jobCd" 				value="" /><!-- 직업코드 -->
 	<input type="hidden" name="birthDt" 		id="birthDt" 			value="<%=birthDt%>" /><!-- 생년월일 -->
-	<input type="hidden" name="marryYn" 		id="marryYn" 			value="" /><!-- 결혼여부 -->
-	<input type="hidden" name="marryDt" 		id="marryDt" 			value="" /><!-- 결혼년월일 -->
+	<input type="hidden" name="marryYn" 		id="marryYn" 			value="<%=marryYn %>" /><!-- 결혼여부 -->
+	<input type="hidden" name="marryDt" 		id="marryDt" 			value="<%=marryDt %>" /><!-- 결혼년월일 -->
 	<input type="hidden" name="agreeSav" 		id="agreeSav" 			value="" /><!-- 개인정보 수집 동의여부 -->
 	<input type="hidden" name="agreePrv" 		id="agreePrv" 			value="" /><!-- 개인정보 제3자 제공 및 공유에 대한 안내(선택)에 동의 -->
 	<input type="hidden" name="agreeMkt" 		id="agreeMkt" 			value="" /><!-- 마케팅동의여부 -->
@@ -110,6 +123,8 @@
 	<input type="hidden" name="prtEmail"		id="prtEmail"			value=""/> 
 	<input type="hidden" name="prtRelCd"		id="prtRelCd"			value=""/> 
 	<input type="hidden" name="prtRelAdd"		id="prtRelAdd"			value=""/>
+	<input type="hidden" name="job"				id="job"				value="<%=job%>"/>
+	<input type="hidden" name="mobileRcpYn"		id="mobileRcpYn"		value="<%=mobileRcpYn%>"/><!-- SMS 수신동의/거부 -->
 	<input type="hidden" name="agreeEss01" 		id="agreeEss01" 		value="<%=agreeEss01%>" />
     <input type="hidden" name="agreeEss02" 		id="agreeEss02" 		value="<%=agreeEss02%>" />
     <input type="hidden" name="hidPostNum1"		id="hidPostNum1"		value="<%=hidPostNum1%>"/>        

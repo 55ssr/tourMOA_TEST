@@ -10,6 +10,7 @@ import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import tourMOA.service.DefaultListVO;
 import tourMOA.service.GoodsService;
 import tourMOA.service.GoodsVO;
+import tourMOA.service.ManagerVO;
 
 @Service("goodsService")
 public class GoodsServiceImpl extends EgovAbstractServiceImpl implements GoodsService {
@@ -46,5 +47,56 @@ public class GoodsServiceImpl extends EgovAbstractServiceImpl implements GoodsSe
 	public int deleteGoods(GoodsVO vo) throws Exception {
 		return goodsDAO.deleteGoods(vo);
 	}
+
+	@Override
+	public GoodsVO selectUnitDetail(GoodsVO vo) throws Exception {
+		return goodsDAO.selectUnitDetail(vo);
+	}
+
+	@Override
+	public List<?> selectDetailImages(GoodsVO vo) throws Exception {
+		return goodsDAO.selectDetailImages(vo);
+	}
+
+	@Override
+	public ManagerVO selectManagerDetail(ManagerVO vo2) throws Exception {
+		return goodsDAO.selectManagerDetail(vo2);
+	}
+
+	@Override
+	public List<?> selectOptionList(GoodsVO vo) throws Exception {
+		return goodsDAO.selectOptionList(vo);
+	}
+
+	@Override
+	public String insertSlider(GoodsVO vo) throws Exception {
+		return goodsDAO.insertSlider(vo);
+	}
+
+	@Override
+	public int selectSliderTotal(DefaultListVO searchVO) throws Exception {
+		return goodsDAO.selectSliderTotal(searchVO);
+	}
+
+	@Override
+	public List<?> selectSliderList(DefaultListVO searchVO) {
+		return goodsDAO.selectSliderList(searchVO);
+	}
+
+	@Override
+	public GoodsVO adminSliderDetail(GoodsVO vo) {
+		return goodsDAO.adminSliderDetail(vo);
+	}
+
+	@Override
+	public int deleteSlider(GoodsVO vo) {
+		return goodsDAO.deleteSlider(vo);
+	}
+
+	@Override
+	public int updateSlider(GoodsVO vo) {
+		return goodsDAO.updateSlider(vo);
+	}
+
 
 }

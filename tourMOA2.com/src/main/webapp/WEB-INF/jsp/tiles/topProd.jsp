@@ -81,13 +81,13 @@ $(document).ready(function(){
 		<nav id="gnbsub1" data-loc="">
             <ul id="one">
             	<li class="tit"><span><a href="/product/detailList.do"></a></span></li>
-	            <li class="sub01"><a href="#">유럽</a></li>
-	            <li class="sub02"><a href="#">동남아</a></li>
-	            <li class="sub03"><a href="#">필리핀/푸켓</a></li>
-	            <li class="sub04"><a href="#">중국</a></li>
-	            <li class="sub05"><a href="#">홍콩/대만</a></li>
-	            <li class="sub06"><a href="#">일본</a></li>
-	            <li class="sub07"><a href="#">괌/사이판</a></li>
+	            <li class="sub01"><a href="/product/locMain.do">유럽</a></li>
+	            <li class="sub02"><a href="/product/locMain.do">동남아</a></li>
+	            <li class="sub03"><a href="/product/locMain.do">필리핀/푸켓</a></li>
+	            <li class="sub04"><a href="/product/locMain.do">중국</a></li>
+	            <li class="sub05"><a href="/product/locMain.do">홍콩/대만</a></li>
+	            <li class="sub06"><a href="/product/locMain.do">일본</a></li>
+	            <li class="sub07"><a href="/product/locMain.do">괌/사이판</a></li>
             </ul>
         </nav>
    
@@ -132,11 +132,11 @@ $(document).ready(function(){
 						<span>서유럽</span>
 						</th>
 							<td>
-							<a href="#">서유럽(8일 이하)</a>
-							<a href="#">서유럽(9일)</a>
-							<a href="#">서유럽(10일)</a>
-							<a href="#">서유럽(11일 이상)</a>
-							<a href="#">한나라 일주</a>
+							<a href="/product/locList.do">서유럽(8일 이하)</a>
+							<a href="/product/locList.do">서유럽(9일)</a>
+							<a href="/product/locList.do">서유럽(10일)</a>
+							<a href="/product/locList.do">서유럽(11일 이상)</a>
+							<a href="/product/locList.do">한나라 일주</a>
 							</td>
 					</tr>
 					
@@ -145,9 +145,9 @@ $(document).ready(function(){
 						<span>체코/오스트리아/동유럽</span>
 						</th>
 							<td>
-							<a href="/main/main.do">동유럽(9일 이하)</a>
-							<a href="#">동유럽(10일 이상)</a>
-							<a href="#">동유럽 + 서유럽</a>
+							<a href="/product/locList.do">동유럽(9일 이하)</a>
+							<a href="/product/locList.do">동유럽(10일 이상)</a>
+							<a href="/product/locList.do">동유럽 + 서유럽</a>
 							</td>
 					</tr>
 					
@@ -156,8 +156,8 @@ $(document).ready(function(){
 						<span>크로아티아/발칸/동유럽</span>
 						</th>
 							<td>
-							<a href="#">크로아티아/발칼일주</a>
-							<a href="#">크로아티아/발칸/동유럽</a>
+							<a href="/product/locList.do">크로아티아/발칼일주</a>
+							<a href="/product/locList.do">크로아티아/발칸/동유럽</a>
 							</td>
 					</tr>
 					
@@ -166,8 +166,8 @@ $(document).ready(function(){
 						<span>스페인/포르투갈/모로코</span>
 						</th>
 							<td>
-							<a href="#">스페인/포르투갈(9일 이하)</a>
-							<a href="#">스페인/포르투갈(10일 이상)</a>
+							<a href="/product/locList.do">스페인/포르투갈(9일 이하)</a>
+							<a href="/product/locList.do">스페인/포르투갈(10일 이상)</a>
 							</td>
 					</tr>
 			</table>

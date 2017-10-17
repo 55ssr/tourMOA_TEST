@@ -1,38 +1,375 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="/css/product-detaillist.css" />
-<link rel="stylesheet" href="/css/jquery-ui.css" /> 
-<script src="/js/jquery-1.11.2.min.js"></script>
-<script src="/js/ui.js" type="text/javascript"></script>
-<script>
-function fnMenuSelect() {
-}
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-$( document ).ready(function() {
-	$('#lnb').mouseleave(function(){
-        setTimeout(function() {
-        	$("#one > li").removeClass('on'); // 1depth 초기화
-        	$("ul.sub").css("display","none"); // 2depth 사라짐
-        	$("ul.sub > li").removeClass('on'); // 2depth 초기화
-            fnMenuSelect();
-        }, 3000);
-    });
-});
-</script>
+<script src="/js/jquery-2.2.2.js"></script>
+<script src="/js/jquery-ui.js"></script>
+<script src="/js/product/jquery.bxslider.js"></script>
+<script src="/js/ui.js" type="text/javascript"></script>
+
+   <script type="text/javascript">
+        $(document).ready(function () {
+            $('.w140').each(function () {
+                $(this).click(function () {
+                    $(this).addClass('on');            
+                    $(this).siblings().removeClass('on');  
+                });
+            });
+        });
+    </script>
 
 <div id="content">
-<div id="wrap">
-	<header>
-	<nav id="lnb"><!--[[ LNB Start ]]-->
-        <ul id="one">
-           	<a href="/customer/main.do"><li class="tit"></li></a>
-            <li class="lnb01"><a href="/customer/noticeList.do" >공지사항</a></li>
-            <li class="lnb06"><a href="/customer/episodeList.do" >여행이야기</a></li>
-            <li class="lnb02"><a href="/customer/faqList.do" >여행상담</a></li>
-            <li class="lnb03"><a href="/customer/praiseList.do" >고객의소리</a></li>
-            <li class="lnb04"><a href="/customer/ccmIs.do" >소비자중심경영</a></li>
-            <li class="lnb05"><a href="/customer/paymentArs.do" >서비스안내</a></li>
-        </ul>
-    </nav>
-    </header>
-</div>
-</div> 
+	<div id="theme_block">
+		<div id="haedline">
+			<div id="title">${vo.title}</div>
+			<div id="pNum"><span>[상품번호</span><span class="num">${vo.code}</span>]
+				<span class="dev_comm">상품코드를 일관성있게 만들어야함</span>
+			</div>
+		</div>
+		<div id="infoBox">
+            <ul class="infoTxt">
+                <li>
+                    <span class="tit">상품가격</span>
+                    <span class="txt price">
+                    	<fmt:formatNumber value="${vo.price}" groupingUsed="true" /> 원 ~ 
+                    	3,590,000 원
+                    	<span class="dev_comm">가격 범위는 같은 code 상품중에서 최저가와 최대가를 계산하여 출력해야 함</span>
+                    </span>
+                    <div class="sns">                    	
+						<span><a href="http://www.facebook.com" onclick="fnGoSns(this.href,'facebook',''); return false; "><img src="/images/product/detail/sns1.png" alt="페이스북 링크"></a></span>
+						<span><a href="http://twitter.com/" onclick="fnGoSns(this.href,'twitter',''); return false; "><img src="/images/product/detail/sns2.png" alt="트위터 링크"></a></span>
+                        <span><a href="#email" onclick="fnSendEmail(); return false;"><img src="/images/product/detail/mms.png" alt="상품 추천 메일보내기"></a></span>
+                    	<span><a href="#clipboard" onclick="fnCopyToClipboard(); return false;"><img src="/images/product/detail/co.png" alt="링크 복사하기"></a></span>
+                    </div>
+                </li>
+                <li><span class="tit">여행기간</span><span class="txt">${vo.period}</span></li>
+                <li><span class="tit">간략일정</span><span class="txt">${vo.schd}</span></li>
+                <li><span class="tit">상품설명</span><span class="txt">${vo.detail2}</span></li>
+				</ul>
+				
+			<div class="infoPhoto">
+				<span class="dev_comm">이미지파일명 데이터 베이스 화</span>
+				<ul class="slide_v1">
+					<li><img src="/images/product/detail/${vo.code}/${vo.images01}" alt=""></li>
+					<li><img src="/images/product/detail/${vo.code}/${vo.images02}" alt=""></li>
+					<li><img src="/images/product/detail/${vo.code}/${vo.images03}" alt=""></li>
+				</ul>
+			</div>
+		</div>
+			<div class="departure_month ">
+			<div class="tab_month">
+					<div class="w140" onclick="monthClick('2017','09')" id="div201709">
+						2017.09</div>
+					<div class="w140" onclick="monthClick('2017','10')" id="div201710">
+						2017.10</div>
+					<div class="w140" onclick="monthClick('2017','11')" id="div201711">
+						2017.11</div>
+					<div class="w140" onclick="monthClick('2017','12')" id="div201712">
+						2017.12</div>
+					<div class="w140" onclick="monthClick('2018','01')" id="div201801">
+						2018.01</div>
+					<div class="w140" onclick="monthClick('2018','02')" id="div201802">
+						2018.02</div>
+					<div class="w140" onclick="monthClick('2018','03')" id="div201803">
+						2018.03</div>
+				</div>
+		</div>
+			
+			<div class="month_list">
+				<table class="tbl_month">
+					<caption>
+						출발일 목록
+					</caption>
+					<tbody><tr>
+			<th>금</th>
+						<th class="sat">토</th>
+						<th class="sun">일</th>
+						<th>월</th>
+						<th>화</th>
+						<th>수</th>
+						<th>목</th>
+						<th>금</th>
+						<th class="sat">토</th>
+						<th class="sun">일</th>
+						<th>월</th>
+						<th>화</th>
+						<th>수</th>
+						<th>목</th>
+						<th>금</th>
+						<th class="sat">토</th>
+						<th class="sun">일</th>
+						<th>월</th>
+						<th>화</th>
+						<th>수</th>
+						<th>목</th>
+						<th>금</th>
+						<th class="sat">토</th>
+						<th class="sun">일</th>
+						<th>월</th>
+						<th>화</th>
+						<th>수</th>
+						<th>목</th>
+						<th>금</th>
+						<th class="sat">토</th>
+						</tr>
+		<tr>
+			<td>
+					<span>1</span>
+					</td>
+			<td>
+					<span>2</span>
+					</td>
+			<td>
+					<span>3</span>
+					</td>
+			<td>
+					<span>4</span>
+					</td>
+			<td>
+					<span>5</span>
+					</td>
+			<td>
+					<span>6</span>
+					</td>
+			<td>
+					<span>7</span>
+					</td>
+			<td>
+					<span>8</span>
+					</td>
+			<td>
+					<span>9</span>
+					</td>
+			<td>
+					<span>10</span>
+					</td>
+			<td>
+					<span>11</span>
+					</td>
+			<td>
+					<span>12</span>
+					</td>
+			<td>
+					<span>13</span>
+					</td>
+			<td>
+					<span>14</span>
+					</td>
+			<td>
+					<span>15</span>
+					</td>
+			<td>
+					<span>16</span>
+					</td>
+			<td>
+					<span>17</span>
+					</td>
+			<td>
+					<span>18</span>
+					</td>
+			<td>
+					<span>19</span>
+					</td>
+			<td>
+					<span>20</span>
+					</td>
+			<td>
+					<span>21</span>
+					</td>
+			<td>
+					<span>22</span>
+					</td>
+			<td>
+					<span>23</span>
+					</td>
+			<td>
+					<span>24</span>
+					</td>
+			<td>
+					<span>25</span>
+					</td>
+			<td>
+					<span>26</span>
+					</td>
+			<td>
+					<span>27</span>
+					</td>
+			<td>
+					<span>28</span>
+					</td>
+			<td>
+					<span>29</span>
+					</td>
+			<td>
+					<span>30</span>
+					</td>
+			</tr>
+	</tbody>
+				</table>
+			</div>
+			<div class="departure_block_btn">
+			<dl class="departure_date">
+				<dt>출발일</dt>
+				<dd id="dayTime" style="display:none"><button type="button" class="btn_date_del" id="dateDtlBtn" onclick="fnDayDelete()"><span>삭제</span></button></dd>
+			</dl>
+			
+			<ul class="pdt_condition">
+				<li><img src="/images/product/detail/icon1.png" alt=" "><span class="possible">예약가능</span></li>
+				<li><img src="/images/product/detail/icon2.png" alt=" "><span class="standby">예약대기</span></li>
+				<li><img src="/images/product/detail/icon3.png" alt=" "><span class="pdtclose">예약마감</span></li>
+				<li>
+				<button type="button" class="btn_condition" onclick="fnRsrvfilter()">예약가능 상품보기</button>
+				</li>
+			</ul>			
+		</div>
+		<div class="departure_list">
+		<table class="tablesorter tablesorter-default" role="grid" aria-labelledby="theCaption">
+			<caption>
+				행사 목록
+			</caption>
+			<colgroup>
+			<col style="width:70px">
+			<col style="width:150px">
+			<col style="width:120px">
+			<col style="width:400px">
+			<col style="width:120px">
+			<col style="width:120px">
+			<col style="width:120px">
+			</colgroup>
+			<thead>
+			<tr role="row" class="tablesorter-headerRow">
+				<th class="sorter-false tablesorter-header tablesorter-headerUnSorted" data-column="0" tabindex="0" scope="col" role="columnheader" aria-disabled="true" unselectable="on" aria-sort="none" style="user-select: none;"><div class="tablesorter-header-inner"><button type="button" class="btn_compare" "="" id="btnCompare" role-url="/product/compareUnit.do">비교</button></div></th><th data-column="1" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" aria-disabled="false" unselectable="on" aria-sort="none" aria-label="출/도착 시간: No sort applied, activate to apply an ascending sort" style="user-select: none;"><div class="tablesorter-header-inner">출/도착 시간</div></th>
+				<th data-column="2" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" aria-disabled="false" unselectable="on" aria-sort="none" aria-label="항공: No sort applied, activate to apply an ascending sort" style="user-select: none;"><div class="tablesorter-header-inner">항공</div></th>
+				<th data-column="3" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" aria-disabled="false" unselectable="on" aria-sort="none" aria-label="상품명: No sort applied, activate to apply an ascending sort" style="user-select: none;"><div class="tablesorter-header-inner">상품명</div></th>
+				<th data-column="4" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" aria-disabled="false" unselectable="on" aria-sort="none" aria-label="여행기간: No sort applied, activate to apply an ascending sort" style="user-select: none;"><div class="tablesorter-header-inner">여행기간</div></th>
+				<th data-column="5" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" aria-disabled="false" unselectable="on" aria-sort="none" aria-label="상품가격: No sort applied, activate to apply an ascending sort" style="user-select: none;"><div class="tablesorter-header-inner">상품가격</div></th>
+				<th data-column="6" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" aria-disabled="false" unselectable="on" aria-sort="none" aria-label="예약상태: No sort applied, activate to apply an ascending sort" style="user-select: none;"><div class="tablesorter-header-inner">예약상태</div></th>
+			</tr>
+			</thead>
+			<tbody aria-live="polite" aria-relevant="all">
+			<tr role="row">
+				<td><input type="checkbox" name="chk01" id="chk01" value="EMP5043-180504KE00" title="체크"></td>
+				<td><span class="depart_time">05/04 (금) 13:00</span>
+				<span class="arrive_time">05/13 (일) 17:00</span>
+				</td>
+				<td>
+					<img src="/images/product/detail/KE.png" alt="대한항공"><br>대한항공</td>
+				<td class="tit_pdt">
+				<span class="ico_block">
+					<span class="ico_pink">선착순</span>
+					<!-- <span class="ico_limited ">리미티드세일</span> -->
+					</span>
+				<a href="detailPackage.do">[프리미엄][대한항공직항][국내선 항공포함]_스페인/포르투갈 10일[KE]</a>
+				</td>
+				<td class="pdt_date">8박10일</td>
+				<td class="pdt_price">2,790,000<a href="#none" class="mini_price">&nbsp;<img src="/images/product/detail/tool.png" alt="요금안내">
+						<ul class="child_price">
+							<li>아동: 2,790,000</li>
+							<li>유아: 500,000</li>
+						</ul>
+					</a>
+				</td>
+				<td>
+				<span class="condition_standby">
+                                 	예약대기</span>										
+                              <span class="condition_hurryup">마감임박</span>
+                              </td>
+			</tr>
+			<tr role="row">
+				<td><input type="checkbox" name="chk01" id="chk01" value="EMP5043-180511KE00" title="체크"></td>
+				<td><span class="depart_time">05/11 (금) 13:00</span>
+				<span class="arrive_time">05/20 (일) 17:00</span>
+				</td>
+				<td>
+					<img src="/images/product/detail/KE.png" alt="대한항공"><br>대한항공</td>
+				<td class="tit_pdt">
+				<span class="ico_block">
+					<span class="ico_pink">선착순</span>
+					<!-- <span class="ico_limited ">리미티드세일</span> -->
+					</span>
+				<a href="detailPackage.do">[프리미엄][대한항공직항][국내선 항공포함]_스페인/포르투갈 10일[KE]</a>
+				</td>
+				<td class="pdt_date">8박10일</td>
+				<td class="pdt_price">2,790,000<a href="#none" class="mini_price">&nbsp;<img src="/images/product/detail/tool.png" alt="요금안내">
+						<ul class="child_price">
+							<li>아동: 2,790,000</li>
+							<li>유아: 500,000</li>
+						</ul>
+					</a>
+				</td>
+				<td>
+				<span class="condition_booking">
+                                 	예약가능</span>										
+                              <span class="condition_other">별도문의</span>
+                              </td>
+			</tr>
+			<tr role="row">
+				<td><input type="checkbox" name="chk01" id="chk01" value="EMP5043-180525KE00" title="체크"></td>
+				<td><span class="depart_time">05/25 (금) 13:00</span>
+				<span class="arrive_time">06/03 (일) 17:00</span>
+				</td>
+				<td>
+					<img src="/images/product/detail/tway.png" alt="티웨이"><br>티웨이항공</td>
+				<td class="tit_pdt">
+				<span class="ico_block">
+					<span class="ico_pink">선착순</span>
+					</span>
+				<a href="detailPackage.do">[프리미엄][국내선 항공포함]_스페인/포르투갈 10일[KE]</a>
+				</td>
+				<td class="pdt_date">7박9일</td>
+				<td class="pdt_price">2,490,000<a href="#none" class="mini_price">&nbsp;<img src="/images/product/detail/tool.png" alt="요금안내">
+						<ul class="child_price">
+							<li>아동: 2,490,000</li>
+							<li>유아: 400,000</li>
+						</ul>
+					</a>
+				</td>
+				<td>
+				<span class="condition_booking">예약가능</span>										
+                    <span class="condition_fix">출발확정</span>
+                   </td>
+        		</tr>
+                <tr role="row">
+				<td><input type="checkbox" name="chk01" id="chk01" value="EMP5023-171010AF00" title="체크"></td>
+				<td><span class="depart_time">10/10 (화) 09:30</span>
+				<span class="arrive_time">10/19 (목) 07:20</span>
+				</td>
+				<td>
+					<img src="/images/product/detail/af.png" alt="에어프랑스"><br>에어프랑스</td>
+				<td class="tit_pdt">
+				<span class="ico_block">
+					<span class="ico_darkgreen">특가</span>
+					</span>
+				<a href="#">[10月/놓치면마감] 스페인+포르투칼_2대맛기행 완벽정복 10일 AF</a>
+				</td>
+				<td class="pdt_date">8박10일</td>
+				<td class="pdt_price">1,590,000<a href="#none" class="mini_price">&nbsp;<img src="/images/product/detail/tool.png" alt="요금안내">
+						<ul class="child_price">
+							<li>아동: 1,590,000</li>
+							<li>유아: 0</li>
+						</ul>
+					</a>
+				</td>
+				<td>
+				<span class="condition_booking">
+                                 	예약가능</span>										
+                              <span class="condition_fix">출발확정</span>
+                              </td>
+			</tr>
+				</tbody>				
+
+			</table>
+
+		</div>
+			<div class="departure_other">
+				<a href="#">해당 지역 상품 리스트로 이동</a>
+			</div>
+			<div class="bt_info">
+					본 화면의 모든 상품가격은 항공운임(항공권) 등이 포함된 총 금액이며, 유류할증료는 유가와 환율에 따라 변동될 수 있습니다.
+			</div>
+         </div>
+  </div>
+
+  
+         
+	
+	

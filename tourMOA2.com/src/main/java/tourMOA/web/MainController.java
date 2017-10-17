@@ -10,6 +10,10 @@ public class MainController {
 	public String main() throws Exception{		
 		return "main/main";		
 	}
+	@RequestMapping("/main/airSearchPop.do")
+	public String airSearchPop() throws Exception{
+		return "main/airSearchPop";
+	}
 	
 	
 }

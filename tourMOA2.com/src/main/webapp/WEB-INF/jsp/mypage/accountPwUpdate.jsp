@@ -1,5 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator"%>
+
 	<link rel="stylesheet" href="/css/mypage.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+<script src="/js/jquery.simplemodal-1.4.4.js"></script>
+<script type="text/javascript" src="/js/jquery-2.1.1.js"></script>
+<script type="text/javascript" src="/js/jquery.validate.js"></script>
+<script type="text/javascript" src="/js/additional-methods.js"></script>
+<script type="text/javascript" src="/js/messages_ko.js"></script>
 	<script>
 		function fnMenuSelect() {
 		    //여행내역
@@ -89,63 +105,56 @@ $(document).ready(function(){
 		}
 	});
 	
-	$("#frm").validate({
-		submitHandler: function(){
-			
-			if($("#oldPw").val() == $("#newPw1").val()){
-				alert("현재 비밀번호와 새 비밀번호가 같을 수 없습니다");
-				return false;
-			}
-			
-			
-			if($("#custPassChk").val() == "N"){
-				alert("8~16자리 영문 (소/대문자), 숫자, 특수문자 중 3종류를 조합한 최소 8자리 이상으로 사용해 주세요.");
-				return false;
-			}
-						
-			var result = confirm("변경하시겠습니까?");
-			
-			if(result){
-				return true;
-			}else{
-				return false;
-			}
-		},		
-		rules: {
-			  //현재비번
-			  oldPw : "required"
-			  
-			  //새비번
-			, newPw1 : {
-			 	 	 required: true
-			}
-			
-			  //새비번확인
-			, newPw2 : {
-				 	 required: true
-				   , equalTo: "#newPw1"
-			}  
-			
-		}
-	});
+
 	
 	$("#btncancel").click(function(){
 		$("#frm")[0].reset();
  	});
 });
 </script>
+<script>
+	$(document).ready(function(){
+		 $("#btnok").click(function(){
+	
+		var form = "pwd="+$("input:password[id='newPw1']").val()
+			form += "&id="+$("input:hidden[id='userid']").val();
+		
+		$.ajax({
+			type: 'POST',
+			data: form,
+			url: "<c:url value='/mypage/accountPwUpdateProc.do' />",
+			dataType: 'JSON',
+			
+			success: function (data) {
+				if(data.du > 0) {
+					alert("변경 되었습니다.");
+					location.href="<c:url value='/main.do' />";
+				} else {
+					alert( "변경할 수 없습니다.");
+				}
+			},
+			error: function (error) {
+				alert("error111 : " + error);
+			}
+		});
+	 $("#frm").submit();
+		});
+	});
 
+
+</script>
 <section id="content" class="contentSub"><!--[[ content Start ]]-->
 
 		<div class="tit myinfo_tit" title="풍선머니"></div>
 		
-		<form name="frm" id="frm" method="post" action="/mypage/accountPwUpdateProc.do">
+		<form name="frm" id="frm" method="post" >
 		<input type="hidden" name="custPassChk" id="custPassChk" 	value="" />
 		<input type="hidden" name="custPassFg" id="custPassFg" 	value="Y" />
-		
+		<input type="hidden" name="userpwd" 	id="userpwd" 		value="${vo.pwd}" />
+		<input type="hidden" name="userid" 	id="userid" 		value="${vo.id}" />
 			<div class="passChangeBox">
 				<div class="cont_area">
-					<span class="pass_tit"><label for="txtpass">현재 비밀번호</label></span><span class="cont"><input type="password" id="oldPw" name="oldPw" class="input"></span>
+					<span class="pass_tit"><label for="txtpass">현재 비밀번호</label></span><span class="cont"><input type="password" id="pwd" name="pwd" class="input"></span>
 					<span class="pass_tit"><label for="txtpassN">새로운 비밀번호</label></span><span class="cont"><input type="password" id="newPw1" name="newPw1" class="input"></span>
 					<div class="txt_wrap_t">
 						<span class="txt">8~16자리의 영문(대소문자), 숫자, 특수문자를 조합하여 사용하실 수 있습니다.</span><span class="txt">비밀번호 입력 시 우측 보안등급을 참조하여 안전한 비밀번호를 사용하시기 바랍니다.</span>
@@ -158,7 +167,7 @@ $(document).ready(function(){
 			</div>
 			
 	        <div class="btnarea">
-	            <button type="submit" id="btnok" class="btnBlack btn_r" title="확인">확인</button>
+	            <button type="button" id="btnok" class="btnBlack btn_r" title="확인">확인</button>
 	            <button type="button" id="btncancel" class="btnGray" title="취소">취소</button>
 	        </div>  
 	        
@@ -170,5 +179,3 @@ $(document).ready(function(){
 			<span class="info">아이디와 주민등록번호, 생일, 전화번호 등 개인정보와 관련된 숫자, 연속된 숫자, 반복된 문자 등 다른사람이 쉽게 알아낼 수 있는 비밀번호는 개인정보 유출의 위험이 높으므로 사용을 자제해 주시기 바랍니다.</span>
 		</div>
     </section>
-    </div>
-    </div>

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import tourMOA.service.DefaultListVO;
+import tourMOA.service.EstimateService;
+import tourMOA.service.EstimateVO;
 import tourMOA.service.NoticeService;
 import tourMOA.service.NoticeVO;
 
@@ -20,6 +22,9 @@ import tourMOA.service.NoticeVO;
 public class CustomerController {
 	@Resource(name = "noticeService")
 	private NoticeService noticeService;
+	
+	@Resource(name = "estimateService")
+	private EstimateService estimateService;
 	
 
 	/*고객센터 메인페이지*/
@@ -37,9 +42,9 @@ public class CustomerController {
 		int recordCountPerPage = 10;
 		int pageSize = 5;
 		
+		
 		/*2.총 데이터 갯수*/
 		int totalCount = noticeService.selectNoticeTotal(searchVO);
-		
 		/*3. 화면 출력 할 페이지 번호*/
 		int pageIndex = searchVO.getPageIndex();
 		
@@ -65,10 +70,11 @@ public class CustomerController {
 		
 		searchVO.setFirstIndex(firstIndex);
 		searchVO.setLastIndex(lastIndex);
-						
-		List<?> noticeList = noticeService.selectNoticeList(searchVO);
 		
-
+		System.out.println("11");
+		List<?> noticeList = noticeService.selectNoticeList(searchVO);
+		System.out.println("22");
+		
 		model.addAttribute("totalCount", totalCount);
 		model.addAttribute("firstPage", firstPage);
 		model.addAttribute("lastPage", lastPage);
@@ -89,11 +95,18 @@ public class CustomerController {
 		return "customer/noticeWrite";
 	} 
 	
+	/*공지사항 View 화면*/
+	@RequestMapping("customer/noticeDetail.do")
+	public String noticeDetail() {
+		return "customer/noticeDetail";
+	}
+	
 	@RequestMapping("/noticeSave.do")
 	@ResponseBody public Map<String, Object> insertNotice(NoticeVO vo) throws Exception {
 		String result = "";
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		System.out.println("vo ======================== " + vo.getTitle());
+		System.out.println("vo ======================== " + vo.getAllview());
 		result = noticeService.insertNotice(vo);
 		if(result == null) result = "ok";
 		map.put("result", result);
@@ -125,10 +138,23 @@ public class CustomerController {
 		return "customer/estimateReq";
 	}
 	
+	/*견적문의 저장*/
 	@RequestMapping("customer/estimateReqSave.do")
-	public String insertEstimateReq() {
-		return "customer/estimateReqSave";
+	@ResponseBody public Map<String, Object> insertEstimateReq(EstimateVO vo) throws Exception {
+		
+		System.out.println("test");
+		String result="";
+		int cnt = 0;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		result = estimateService.insertEstimateReq(vo);
+		if(result == null) {
+			result = "ok";
+		}
+		map.put("result", result);
+		return map;
 	}
+	
 	
 	/*칭찬합시다*/
 	@RequestMapping("customer/praiseList.do")
