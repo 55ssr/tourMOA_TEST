@@ -10,21 +10,63 @@
 String searchKeyword = request.getParameter("searchKeyword");
 String searchCondition = request.getParameter("searchCondition");
 %>
-<script src="/js/jquery-ui.multidatespicker.js"></script>
 <script src="/js/jquery.number.min.js"></script>
 <link rel="stylesheet" href="/css/search-total.css" />
 <link rel="stylesheet" href="/css/goods-search.css" />
 <c:set var="existKeyword" value="<%=searchKeyword %>"/>
 <script>
+
 $(document).ready(function(){
-	var viewOpen = ${viewOpen };
-	if(viewOpen > 0){
+	
+	 $("#departDate").datepicker({
+	       	showButtonpanel : true,
+	           beforeShow:function( input, inst ) {
+	               var dp = $(inst.dpDiv);
+	               var offset = $(input).outerWidth(false) - dp.outerWidth(false) + 1;
+	               dp.css('margin-left', offset);
+	           }, showMonthAfterYear: true ,
+	           dateFormat : 'yymmdd',
+	           minDate: 1,
+	           currentText : '월전체'
+	           
+	       });
+});
+$(document).ready(function(){
+	   
+
+	var viewOpen = ${viewOpen};
+	if(viewOpen == true){
 		$("#rankWrap").css("display","none");
 		$("#if_SearchWrap").css("display","block");
 	}else{
 		$("#rankWrap").css("display","block");
 		$("#if_SearchWrap").css("display","none");
 	}
+	 //선택상품비교하기
+	$("#btnCompare").click(function(event){
+		
+		event.preventDefault();
+		
+		var checkedVal = "";
+		var cnt = 0;			
+		
+		$("input:checkbox[name='chk']:checked").each(function(){
+			cnt++;
+			checkedVal += ((checkedVal == "" ? "" : ",") + $(this).val());
+		});		
+		
+		if(cnt != 2){
+			alert("상품비교는 2개를 선택하셔야 가능합니다");
+			return true;
+		}else{
+			var roleUrl = $(this).attr('role-url');
+			roleUrl = "/product/compareMaster.do";
+			$(this).attr('role-url', roleUrl + "?compareGoodCd=" + checkedVal + "&menu=&did=");
+			showLayer(this);
+			$(this).attr('role-url', roleUrl);	//최초 URL로 복원
+		}		
+	});
+
 });
 </script>
 	<section id="content"><!--[[ content Start ]]-->
@@ -44,7 +86,7 @@ $(document).ready(function(){
                     </li></a>
                 </ul>
             </div>
-			<form name="searchforms" id="totalSearch" action="/search/searchKeyword.do" method="POST"  onSubmit="resultSearchKeyword(event); return false;">
+			<form name="searchforms" id="totalSearch" action="/search/searchKeyword.do" method="POST" >
 			<input type="hidden" name="sort" value="">
 			<input type="hidden" name="collection" value="">
 			<input type="hidden" name="realQuery" value="" />
@@ -52,7 +94,7 @@ $(document).ready(function(){
                 <span class="noti" >상품번호를 알고 계시다면, 상품번호로 간편하게 검색하세요!</span>
                 <div id="keywordSrh">
                 
-                    <input type="text" id="query2" name="query" title="키워드입력" value="" style="ime-mode:active;"    />
+                    <input type="text" id="searchKeyword" name="searchKeyword" title="키워드입력" value="" style="ime-mode:active;"    />
                     <input type="hidden" name="product" value="전체상품">                    
                     <span class="divide"></span>
                     <button type="submit" class="btnTotalSearch" title="검색"></button>
@@ -266,39 +308,47 @@ $(document).ready(function(){
 	            </c:if>
 	            &nbsp;
 	            &nbsp;에 대한 총 
-	             ${totalCount }
+	             ${goodsCnt }
 	             	건의 여행상품 검색 결과가 있습니다.
 	             </p>
              </span>
-            </div><!--[[ 검색결과 알림 notiWrap End ]]-->
+            </div>
+            <!--[[ 검색결과 알림 notiWrap End ]]-->
+            
         <div class="titleBox">     
         	<div class="title"><span class="bul"></span>결과 내 재검색</div>
         	<a class="bntOption" href="#">검색옵션<span class="spim"></span></a>
         </div>
         <div class="optionMenu" id="optionMenu">
 	        <form id="reSearch" action="/search/searchKeyword.do" method="post" onsubmit="resultReSearchList(event); return false;">
-	        		<input type="hidden" name="query" value="asfdasd"><div id="reWrap"><!--[[ 결과내재검색 reWrap Start ]]-->
-	        <div class="frm">
-	            <ul class="frm">
-	                <li>
+	        		<input type="hidden" name="query" value="asfdasd">
+	        		<!--[[ 결과내재검색 reWrap Start ]]-->
+	        		<div id="reWrap">
+	       			 <div class="frm">
+	           		 <ul class="frm">
+	               	 <li>
 	                    <span class="tit">출발월</span>
 	                    <select name="departMonth" id="departMonth" title="출발월선택">
 	                        <option value="">월별 전체 선택</option>
-	                            <option value="201710">2017년 10월</option>
-	                            <option value="201711">2017년 11월</option>
-	                            <option value="201712">2017년 12월</option>
-	                            <option value="201801">2018년 01월</option>
-	                            <option value="201802">2018년 02월</option>
-	                            <option value="201803">2018년 03월</option>
-	                            <option value="201804">2018년 04월</option>
-	                            <option value="201805">2018년 05월</option>
-	                            <option value="201806">2018년 06월</option>
-	                            <option value="201807">2018년 07월</option>
-	                            <option value="201808">2018년 08월</option>
-	                            <option value="201809">2018년 09월</option>
-	                            </select>
+	                        
+	                        
+                            <c:set var="year" value="${year}"/>
+                            <c:set var="month" value="${month}"/>
+	                            <c:forEach begin="1" end="12" var="plusMonth" step="1">
+	                            <!-- fmt: 두자리 수 맞춰주기 -->
+                            	<fmt:formatNumber var="monthDigits2" value="${month}" minIntegerDigits="2" type="number"/>
+	                            <option value="${year}년 ${monthDigits2}월"> ${year}년 ${monthDigits2}월</option>
+	                            <c:set var="month" value="${month+1}"/>
+	                            <c:if test="${month > '12'}">
+	                            <c:set var="month" value="${month-12}"/>
+	                            <c:set var="year" value="${year+1}"/>
+	                            </c:if>
+	                            </c:forEach>
+	                            
+	                            
+	                    </select>
 	                    <span class="tit">출발일</span>
-	                    <input type="text" name="departDate" id="departDate" title="일자개별선택" placeholder="일자개별선택" value="" class="term hasDatepicker">
+	                    <input type="text" name="departDate" id="departDate" title="일자개별선택" placeholder="일자개별선택" value="" class="term hasDatepicker" readonly>
 	                    <span class="tit">출발요일</span>
 	                    <span class="chk"><input type="checkbox" name="departWDay2" id="reweekall" value=""><label for="reweekall">전체</label></span>
 		                    <span class="chk"><input type="checkbox" name="departWDay2" id="reweek01" value="월"><label for="reweek01">월</label></span>
@@ -367,7 +417,7 @@ $(document).ready(function(){
             <div class="title title02 none" title="여행상품"></div>
             <div class="searchBar">
                 <span class="barL">
-                    <span>전체 0개 상품</span>
+                    <span>전체 ${goodsCnt }개 상품</span>
                     <select name="sort" id="sort" class="mgr10" title="정렬순서선택">
                     	<option value="">정렬순서</option>
                         <option value="AMTASC">낮은가격순</option>
@@ -412,7 +462,7 @@ $(document).ready(function(){
                             <li class="t03">
                                 <div class="productTop">
                                     <span class="path">${goodsList.gubun} &gt; ${goodsList.nation}</span>
-                                    <a href="/product/unitList.do?menu=${existCondition}&goodsCd=${goodsList.code}">
+                                    <a href="/product/unitList.do?menu=${existCondition}&code=${goodsList.code}">
                                     <span class="mark none"><span class="pie mint">특가</span></span>
                                     <span class="mark none"><span class="pie green">실속</span></span>
                                     <span class="mark none"><span class="pie blue">품격</span></span>
@@ -433,8 +483,8 @@ $(document).ready(function(){
                                         <span class="txt">${goodsList.schd }</span>
                                         <span class="line"></span>
                                         <span class="subTxt">
-											                                         롯데홈쇼핑&amp;노랑풍선 콜라보레이션
-											태국 패키지 여행에서 절대 누릴 수 없는 $300상당 최다 특전 혜택을 누려보세요</span>
+                                        ${goodsList.detail1 }
+										</span>
                                         <dl>
                                             <dt>이용항공</dt>
                                            <dd class="air">
@@ -442,7 +492,7 @@ $(document).ready(function(){
 					                       <img src="/images/air/LJ.png" alt="LJ">
 					                       <img src="/images/air/TW.png" alt="TW">
 					                       <img src="/images/air/XJ.png" alt="XJ">
-					                        	<img src="/images/air/ZE.png" alt="ZE">
+					                       <img src="/images/air/ZE.png" alt="ZE">
 					                        	</dd>
                                             <dd class="divide"></dd>
                                             <dt>상품번호</dt>
