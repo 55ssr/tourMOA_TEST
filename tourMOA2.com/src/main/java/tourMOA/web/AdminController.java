@@ -1,6 +1,9 @@
 package tourMOA.web;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -14,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -417,8 +421,8 @@ public class AdminController {
 		file.delete();
 		
 		System.out.println("vo=======================filename "+ vo.getFilename());
-		System.out.println("vo=======================unq "+ vo.getUnq());
-		vo.setTitle(null);
+		System.out.println("vo=======================unq "+ vo.getCode());
+		vo.setName(null);
 		
 		int cnt = goodsService.updateSlider(vo);
 		
@@ -430,6 +434,38 @@ public class AdminController {
 	}
 	
 	
+	@RequestMapping(value = "/downloadFile.do")
+	public void downloadFile(@RequestParam(value = "requestedFile") String requestedFile,
+				HttpServletResponse response) throws Exception {
+		String uploadPath = "c:/upload";
+		File uFile = new File(uploadPath, requestedFile);
+		int fSize = (int) uFile.length();
+
+		if (fSize > 0) {
+			BufferedInputStream in = new BufferedInputStream(new FileInputStream(uFile));
+			// String mimetype = servletContext.getMimeType(requestedFile);
+			String mimetype = "text/html";
+			response.setBufferSize(fSize);
+			response.setContentType(mimetype);
+			response.setHeader("Content-Disposition", "attachment; filename=\"" + requestedFile + "\"");
+			response.setContentLength(fSize);
+			FileCopyUtils.copy(in, response.getOutputStream());
+			in.close();
+			response.getOutputStream().flush();
+			response.getOutputStream().close();
+		} else {
+			//setContentType을 프로젝트 환경에 맞추어 변경
+			response.setContentType("application/x-msdownload");
+			PrintWriter printwriter = response.getWriter();
+			printwriter.println("<html>");
+			printwriter.println("<br><br><br><h2>Could not get file name:<br>"+ requestedFile + "</h2>");
+			printwriter.println("<br><br><br><center><h3><a href='javascripｔ: history.go(-1)'>Back</a></h3></center>");
+			printwriter.println("<br><br><br>© webAccess");
+			printwriter.println("</html>");
+			printwriter.flush();
+			printwriter.close();
+		}
+	}
 	
 	
 	

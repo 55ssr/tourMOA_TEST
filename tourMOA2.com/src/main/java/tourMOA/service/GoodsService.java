@@ -20,4 +20,5 @@ public interface GoodsService {
 	GoodsVO adminSliderDetail(GoodsVO vo);
 	int deleteSlider(GoodsVO vo);
 	int updateSlider(GoodsVO vo);
+	SliderVO selectSliderDetail(SliderVO vo3);
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import tourMOA.service.GoodsService;
 import tourMOA.service.GoodsVO;
 import tourMOA.service.ManagerVO;
+import tourMOA.service.SliderVO;
 
 @Controller
 public class ProductController {
@@ -63,7 +64,7 @@ public class ProductController {
 	
 	/*상품 예약페이지*/
 	@RequestMapping("product/detailPackage.do")
-	public String detailPackage(@RequestParam("unq") int unq, GoodsVO vo, ManagerVO vo2, Model model) throws Exception{
+	public String detailPackage(@RequestParam("unq") int unq, GoodsVO vo, ManagerVO vo2, SliderVO vo3, Model model) throws Exception{
 		
 		vo = goodsService.selectGoodsDetail(vo);
 		System.out.println(vo.getNation());
@@ -72,11 +73,20 @@ public class ProductController {
 		vo2.setCode(vo.getLocation());
 		System.out.println(vo2.getCode());
 		vo2 = goodsService.selectManagerDetail(vo2);
+		
+		vo3.setCode(vo.getNation());
+		vo3 = goodsService.selectSliderDetail(vo3);
+		
+		System.out.println("vo3.getCode()---------------"+vo3.getCode());
+		System.out.println("vo3.getCode()---------------"+vo3.getName());
+		System.out.println("vo3.getCode()---------------"+vo3.getFilename());
+		
 		List<?> imgList = goodsService.selectDetailImages(vo);
 		List<?> optList = goodsService.selectOptionList(vo);
 		
 		model.addAttribute("vo", vo);
 		model.addAttribute("vo2", vo2);
+		model.addAttribute("vo3", vo3);
 		model.addAttribute("imgList", imgList);
 		model.addAttribute("optList", optList);
 		
