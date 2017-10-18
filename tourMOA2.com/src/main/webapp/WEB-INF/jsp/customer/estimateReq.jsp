@@ -1,46 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
-<%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form"   uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="ui"     uri="http://egovframework.gov/ctl/ui"%>
 
 <link rel="stylesheet" href="/css/customer.css" />
-    <script>
-function fnMenuSelect() {
-	//공지사항
-	
-	
-	//여행이야기
-	
-	
-	//여행상담
-	$('.lnb02').addClass('lnb02 on'); $("ul.sub_2").css("display","block");       $('.sub02_03').addClass('sub02_03 on'); $('#one').show();
-	
-	//고객의소리
-	 
-	
-	//소비자중심경영
-	
-    
-    //서비스안내
-    
-}
 
-$( document ).ready(function() {
-	fnMenuSelect();
-	$('#lnb').mouseleave(function(){
-        setTimeout(function() {
-        	$("#one > li").removeClass('on'); // 1depth 초기화
-        	$("ul.sub").css("display","none"); // 2depth 사라짐
-        	$("ul.sub > li").removeClass('on'); // 2depth 초기화
-            fnMenuSelect();
-        }, 3000);
-    });
-});
-
-function loginConfirm(){
-	
-			document.location.href='/customer/complaintWrite.do';
-		 
-}
-</script>
     <section id="content"><!--[[ content Start ]]-->
     	<div class="estimate_form">
 			<h2 class="tit_estimate_inquiry"><img src="/images/customer/tit_customer_estimate_inquiry.png" alt="견적문의" /></h2>
@@ -51,7 +15,7 @@ function loginConfirm(){
 				</p>
 			</div>
 			
-			<form name="frm" id="frm" method="post" action="customer/estimateReqSave.do">
+			<form name="frm" id="frm" method="post">
 			<input type="hidden" name="userid" value="" />
 			<input type="hidden" name="phone" id="phone" value="" />			
 			<table class="tbl_horizontal_type bdb_type01">
@@ -90,7 +54,7 @@ function loginConfirm(){
 					<tbody>
 						<tr>
 							<th scope="row"><img src="/images/customer/03_bul01.png" alt="필수입력" class="ico_essential" />성함 | 단체명</th>
-							<td><input type="text" class="input_default" style="width:183px; height:16px;" name="name" id ="name" maxlength="40" /></td>
+							<td><input type="text" class="input_default" style="width:183px; height:16px;" name="name" id="name" maxlength="40" /></td>
 							<th scope="row"><img src="/images/customer/03_bul01.png" alt="필수입력" class="ico_essential" />이메일</th>
 							<td>
 								<input type="text" class="input_default input_space02" style="width:87px; height:16px;" name="cstEmail1" id="cstEmail1" maxlength="40"/><span class="txt_mail_division">@</span><input type="text" class="input_default input_space" style="width:87px; height:16px;" name="cstEmail2" id="cstEmail2" maxlength="40"/>
@@ -571,17 +535,15 @@ function loginConfirm(){
 										<li>
 											<input type="radio" name="schange" id="불가" value="SC1" checked="checked"/>
 											<label for="불가">불가</label>								
-										</li>
-								</span>
+										</li>								
 										<li>
-										<input type="radio" name="schange" id="3일 이내" value="SC2"/>
+											<input type="radio" name="schange" id="3일 이내" value="SC2"/>
 											<label for="3일 이내">3일 이내</label>
-								</span>
+								
 										</li>
 										<li>
-										<input type="radio" name="schange" id="7일 이내" value="SC3"/>
-											<label for="7일 이내">7일 이내</label>
-								</span>
+											<input type="radio" name="schange" id="7일 이내" value="SC3"/>
+											<label for="7일 이내">7일 이내</label>								
 										</li>
 									<!-- [출발일 변경 설정] End -->
 									</ul>
@@ -684,12 +646,12 @@ function loginConfirm(){
 					</div>
 					<div class="privacy_agree_box">
 						<p><input type="checkbox" id="inEstimateAgree" name= "inEstimateAgree"/><label for="inEstimateAgree">개인정보 수집/이용 동의</label></p>
-						<input type="submit" value="등록" class="bt_right bt_type bd_type02" id="btnOK">
+						<input type="button" value="등록" class="bt_right bt_type bd_type02" id="btnOK" onclick="fn_save(this.id)" />
 					</div>			
 				</form>			
 			</div>
 	</section>
-	<script type="text/javaScript" language="javascript" defer="defer">
+	<script type="text/javaScript" defer="defer">
 
 	var datepickerOption = {
 		beforeShow:function( input, inst ) {
@@ -756,8 +718,6 @@ function loginConfirm(){
 			}
 		});
 		
-		// 예식일 달력세팅
-		$("#venueDt1").datepicker(datepickerOption);
 		
 		// 여행기간 시작 달력세팅
 		$("#sdate").datepicker(datepickerFromOption);
@@ -773,54 +733,8 @@ function loginConfirm(){
 		// 핸드폰 마지막번호 숫자만 입력
 		$("#cstTel3").keyup(function () { 
 		    this.value = this.value.replace(/[^0-9\.]/g,'');
-		});
-		
-		// 예식시간 - 숫자만 입력, 24시 이상로 입력 Empty String 처리
-		$("#venueDt2").keyup(function () { 
-		    this.value = this.value.replace(/[^0-9\.]/g,'');
-		    this.value = Number(this.value) > 24 ? "" : this.value;
-		});
-		
-		// 예식분 - 숫자만 입력, 60이상으로 입력하면 Empty String 처리
-		$("#venueDt3").keyup(function () { 
-		    this.value = this.value.replace(/[^0-9\.]/g,'');
-		    this.value = Number(this.value) > 60 ? "" : this.value; 
-		});
-		
-	
-		// 기업/단체인 경우 여행인원 숫자만 입력
-		$("#rervAdtCnt:text").keyup(function () { 
-		    this.value = this.value.replace(/[^0-9\.]/g,'');
-		});
-		$("#rervChdCnt:text").keyup(function () { 
-		    this.value = this.value.replace(/[^0-9\.]/g,'');
-		});
-		$("#rervInfCnt:text").keyup(function () { 
-		    this.value = this.value.replace(/[^0-9\.]/g,'');
-		});
-		
-		
-		// 제주인 경우 여행형태에 라디오 이벤트 바인딩
-		var travrvTypeCd = "FFC";
-		if( travrvTypeCd == "FDMA" ) {
-			// 여행행태
-			var moveTypeArr = $("tr.tr_Item_moveType > td > ul > li");
-			for(var i=0; i<moveTypeArr.size(); i++) {
-				var val = moveTypeArr.eq(i).text().trim();
-				moveTypeArr.eq(i).find("input:radio").bind("click", function(e) {
-					fn_moveType( $(this).parent().text().trim() );
-				});
-			}
-		}
-		
-		// 등록버튼 클릭시 저장함수 호출
-		$("#btnOK").click(function(){
-			fn_save();
-			return false;
-		});
-		
-		
-		// 로딩시 컴포넌트 초기처리
+		});		
+
 		
 		// 통화 가능 시간 combo box disabled 처리
 		$("#ptime").attr("disabled",true);
@@ -850,8 +764,7 @@ function loginConfirm(){
 			}		
 			
  			/* showLayer(this); */
-		});
-		
+		});		
 	});
 	
 	
@@ -879,19 +792,10 @@ function loginConfirm(){
 		var cstTel2 = $("#cstTel2").val();
 		var cstTel3 = $("#cstTel3").val();
 		
-		var venueDt1 = $("#venueDt1").val();
-		var venueDt2 = $("#venueDt2").val();
-		var venueDt3 = $("#venueDt3").val();
-		
+	
 		$("#phone").val( cstTel1+"-"+cstTel2+"-"+cstTel3 );
 		$("#email").val( (cstEmail3 == "" ? cstEmail1+"@"+cstEmail2 : cstEmail1+"@"+cstEmail3) );
-		
-		if( $("#venueDtChk").is(":checked") ) {
-			$("#venueDt").val( "" );
-		} else {
-			$("#venueDt").val( (venueDt1+" "+venueDt2+":"+venueDt3+":00") );	
-		}
-		
+	
 		
 		// 선택된 여행타입
 		var travrvTypeCd = "FFC";
@@ -960,342 +864,64 @@ function loginConfirm(){
 				}
 				
 				itemObj.val(chkVal);
-				itemOther.val(chkOtherVal);
-				
-			}
+				itemOther.val(chkOtherVal);				
+			}			
+		}		
+	}	
+	// 저장하기
+	function fn_save(e) {		
+		var f = document.frm;	
+		//전화번호는  입력받은 값의 합으로 이루어지므로 각각의 값을 모두 더해준다.
+		var phoneVal = "cstTel1="+$("#cstTel1").val()+"&cstTel2="+$("#cstTel2").val()+"&cstTel3="+$("#cstTel3").val();
+		f.phone.value = phoneVal;
+		//fn_save값에 id값을 가져와서 유효성 테스트를 먼저 진행한다.
+		if(e=="btnOK"){
+			if(f.title.value == ""){
+				alert("제목을 입력해주세요.");
+				$("#title").focus();
+				return;
+			}/* else if(f.name.value == ""){
+				alert("성명|단체명을 입력해주세요.");
+				$("#name").focus();
+				return;
+			}else if(f.cstEmail1.value == ""){
+				alert("메일주소를 입력해주세요.");
+				$("#cstEmail1").focus();
+				return;
+			}else if(f.person.value == ""){
+				alert("여행인원을 선택해주세요.");
+				$("#person").focus();
+				return;
+			} */
 			
-		}
-		
-	}
-	
-	
-	// 저장
-	function fn_save() {
-		
-		// 입력값 설정
-		fn_setInputValue();
-		
-		var valArea1 = "FFC";
-		var valArea2 = $("input[name=floc]:checked").val()
-		var focusArea = "div_AreaDtl_"+valArea1+"_"+valArea2;
-		var focusName = "city";
-		var validateArr = [];
-		
-		// [자유여행 해외] 벨리데이션 체크
-		if( valArea1 == "FFC" ) {
+			//var form = new FormData(document.getElementById('frm'));
+			var param = "title="+$("input:text[name='title']").val();
+				//param +="&name="+$("#name").val();
 			
-			validateArr = [
-				  { title : "성명", name : "cstNm" }
-				, { title : "이메일주소", name : "cstEmail", type: "email", refId : "cstEmail1,cstEmail2", midText : "를" }
-				, { title : "연락처", name : "cstTel", type: "tel", refId : "cstTel1,cstTel2,cstTel3", midText : "를" }
-				, { title : "시간", name : "ptime", type: "condition", refName : "r_r_ptime", refVal : "C", msg : "시간을 선택해주세요." }
-				, { title : "성인인원", name : "rervAdtCnt" }
-				, { title : "여행경비", name : "travrvMny", midText : "를" }
-				, { title : "여행지역", name : "floc" }
-				, { title : "여행상세지역", name : "flocDetail", focusArea : focusArea, focusName : focusName }
-				, { title : "출발일", name : "sdate" }
-				, { title : "도착일", name : "edate" }
-				, { title : "개인정보 수집/이용", name : "inEstimateAgree", msg : "개인정보 수집/이용에 동의하셔야 견적문의를 하실 수 있습니다." }
-			];
+				alert(param);
 			
-		}
-		
-		else {
-		
-			validateArr = [
-				  { title : "성명", name : "cstNm" }
-				, { title : "이메일주소", name : "cstEmail", type: "email", refId : "cstEmail1,cstEmail2", midText : "를" }
-				, { title : "연락처", name : "cstTel", type: "tel", refId : "cstTel1,cstTel2,cstTel3", midText : "를" }
-				, { title : "시간", name : "ptime", type: "condition", refName : "r_r_ptime", refVal : "C", msg : "시간을 선택해주세요." }
-				, { title : "성인인원", name : "rervAdtCnt" }
-				, { title : "여행경비", name : "travrvMny", midText : "를" }
-				, { title : "여행지역", name : "floc" }
-				, { title : "여행상세지역", name : "flocDetail", focusArea : focusArea, focusName : focusName }
-				, { title : "출발일", name : "sdate" }
-				, { title : "도착일", name : "edate" }
-				, { title : "개인정보 수집/이용", name : "inEstimateAgree", msg : "개인정보 수집/이용에 동의하셔야 견적문의를 하실 수 있습니다." }
-			];
-		
-		}
-		
-		// 유효성검증 체크
-		if( !fn_validate( "frm", validateArr ) ) { 
-			return false;
-		}
-		
-		// 휴대폰인증여부 확인
-		if( $(".estimate_btn_confirm").val() == "인증하기" ) {
-			alert("휴대폰 인증을 진행해주세요.");
-			$(".estimate_btn_confirm").focus();
-			return false;
-		}
-		
-		
-		if( $("#rervChdCnt").val() == "" ) {
-			$("#rervChdCnt").val("0");	
-		}
-		if( $("#rervInfCnt").val() == "" ) {
-			$("#rervInfCnt").val("0");	
-		}
-		
-		
-		// 필요없는 파라미터는 제거후 저장
-		var frmArr = $("#frm").serializeArray();
-		for(var i=frmArr.length-1; i>=0; i--) {
-			if( frmArr[i].name.indexOf("chk_") > -1 || 
-				frmArr[i].name.indexOf("rdo_") > -1 || 
-				frmArr[i].name.indexOf("1") > -1 || 
-				frmArr[i].name.indexOf("2") > -1 || 
-				frmArr[i].name.indexOf("3") > -1 
-		    	) {
-				frmArr.splice(i,1);
-			}
-		}
-
-		var frmParam = "";
-		for(var i=0; i<frmArr.length; i++) {
-			frmParam+="&"+frmArr[i].name+"="+frmArr[i].value;
-		}
-		
-		var emailVal = $("#cstEmail").val();
-		var cfmMsg = "입력하신 내용으로 견적문의를 하시겠습니까?\n답변이 완료되면 ["+emailVal+"]으로 발송해드립니다.";
-
-		if( confirm(cfmMsg) ) {
 			$.ajax({
-				  type:"POST"	
-				, url: "/customer/estimateReqSave.do"
-				, data:$("#frm").serialize()
-				, dataType: 'json'
-				, async: true
-				, success:function(jsonResult) {
-					alert("견적문의가 완료되었습니다. \n담당자가 최대한 빠른시간내에 최적의 스케줄, 가격으로 견적을 발송해드리겠습니다. \n견적은 작성하신 메일로 발송됩니다.");
-					document.location.href="/customer/estimateReq.do";
-					return true;
-				}
-				, error: function() {
-					//alert("견적문의 요청이 실패하였습니다. \n새로고침 후 다시 시도해주세요.");
-				}
-		
-		 	});	
-		}
-		return false;
-
-	}
-	
-	// 유효성 검증
-	function fn_validate( formId, validateOptionArr ) {
-		
-		var retVal = true;
-		var defOption = {
-			  title : ""
-			, name : ""
-			, type : "default"
-			, refId : ""
-			, refName : ""
-			, refVal : ""
-			, focusArea : ""
-			, focusName : ""
-			, midText : "을"
-			, msg : ""
-			, minVal : 0
-			, minPreMsg : ""
-			, minUnitMsg : "명"
-			, minPostMsg : "이상 입력하여주세요."
-		};
-		
-		for( var i=0; i<validateOptionArr.length; i++ ) {
-			
-			var option = {};
-			var validateOption = validateOptionArr[i];
-			for(var key in defOption) option[key] = defOption[key];
-			for(var key in validateOption) option[key] = validateOption[key];
-			
-			if( typeof formId == "undefined" || formId == "" || formId == null ) {
-				alert( "Form Id is not Exists." );
-				retVal = false;
-				break;
-			}
-			if( option.title == "" ) {
-				alert( "Object Title is not Exists." );
-				retVal = false;
-				break;
-			}
-			if( option.name == "" ) {
-				alert( "Object Name is not Exists." );
-				retVal = false;
-				break;
-			}
-			
-			var obj = $("#"+formId).find("[name="+option.name+"]");
-			if( obj.length == 0 ) {
-				alert( "Object is not Exists." );
-				retVal = false;
-				break;
-			}
-			
-			
-			var msg = "";
-			var focusId = "";
-			
-			switch( option.type ) {
-			
-				case "default":
-					var objVal = obj.val();
-					if( obj.attr("type") == "checkbox" ) {
-						objVal = obj.is(":checked") ? "1" : "";
-					}
-					if( objVal == "" ) {
-						msg = option.title + option.midText + " 입력하여주세요.";
-						retVal = false;
-						break;
-					}
-					
-					if( option.minVal > Number(objVal) ) {
-						msg = option.title + option.minPreMsg + " " + option.minVal + option.minUnitMsg + " " + option.minPostMsg;
-						retVal = false;
-						break;
-					}
-					
-					break;
-					
-				case "email": 
-					var refIdArr = option.refId.split(",");
-					var refVal = option.refVal;
-					for( var j=0; j<refIdArr.length; j++ ) {
-						var objVal = $("#"+refIdArr[j]).val();
-						if( objVal == refVal ) {
-							msg = option.title + option.midText + " 입력하여주세요.";
-							retVal = false;
-							focusId = $("#"+refIdArr[j]).attr("id");
-							break;
-						}
-					}
-					break;
-					
-				case "tel":
-					var refIdArr = option.refId.split(",");
-					var refVal = option.refVal;
-					for( var j=0; j<refIdArr.length; j++ ) {
-						var objVal = $("#"+refIdArr[j]).val();
-						if( objVal == refVal ) {
-							msg = option.title + option.midText + " 입력하여주세요.";
-							retVal = false;
-							focusId = $("#"+refIdArr[j]).attr("id");
-							break;
-						}
-					}
-					break;
-					
-				case "condition": 
-					var refName = option.refName;
-					var refVal = option.refVal;									
-					if( $("[name="+refName+"]:checked").val() == refVal ) {
-						if( obj.val() == "" ) {
-							msg = option.title + option.midText + " 입력하여주세요.";
-							retVal = false;
-							break;
-						}
-					}
-					break;
-
-				case "sum":
-					var refIdArr = option.refId.split(",");
-					var minVal = option.minVal;
-					var sumVal = 0;
-					for( var j=0; j<refIdArr.length; j++ ) {
-						sumVal += Number($("#"+refIdArr[j]).val());
-					}
-					if( sumVal < minVal ) {
-						msg = option.title + option.minPreMsg + " " + option.minVal + option.minUnitMsg + " " + option.minPostMsg;
-						retVal = false;
-					}
-					
-					break;
-						
-				default : 
-					break;
-			}
-			
-			if( !retVal ) {
+				type: 'POST',
+				data: param,
+				url: "<c:url value='/estimateReqSave.do' />",
+				dataType: "json",
 				
-				if( option.msg != "" ) {
-					msg = option.msg;
-				}
-				alert( msg );
 				
-				if( option.focusArea != "" && option.focusName != "" ) {
-					$("#"+option.focusArea).find("[name="+option.focusName+"]").eq(0).focus();
-				} else if( focusId != "" ) {
-					$("#"+focusId).focus();
-				} else {
-					obj.focus();	
+				/* 처리되고나서 실행되는부분 */
+				success: function (data){
+					if(data.result == "ok"){
+						alert("견적문의가 등록되었습니다.");
+						location.href = "<c:url value='/estimateReq.do'/>";						
+					}else{
+						alert("견적문의가 등록되지 않았습니다. 다시 작성해주세요.");
+					}
+				},
+				error: function (error){
+					alert("error: " + error);
 				}
-				
-				break;
-			}
-			
+			});
+			f.submit();
 		}
-		
-		return retVal;
-		
-	}
-	
-	
-	// [function] 여행타입 변경
-	function fn_setTravrvType( flocCd ) {
-		var obj1 = document.getElementById("rdo_travrvTypeCd1");
-		var obj2 = document.getElementById("rdo_travrvTypeCd2");
-		var obj3 = document.getElementById("rdo_travrvTypeCd3");
-		var obj4 = document.getElementById("rdo_travrvTypeCd4");
-		var obj5 = document.getElementById("rdo_travrvTypeCd5");
-		var obj6 = document.getElementById("rdo_travrvTypeCd6");
-		
-		if( flocCd == "rdo_travrvTypeCd1" ) { // 자유여행내용
-			obj1.style.display = "block";	
-			obj2.style.display = "none";
-			obj3.style.display = "none";
-			obj4.style.display = "none";
-			obj5.style.display = "none";
-			obj6.style.display = "none";
-		} else if ( flocCd == "rdo_travrvTypeCd2" ){ // 허니문내용
-			obj1.style.display = "none";	
-			obj2.style.display = "block";
-			obj3.style.display = "none";
-			obj4.style.display = "none";
-			obj5.style.display = "none";
-			obj6.style.display = "none";
-		} else if ( flocCd == "rdo_travrvTypeCd3" ){ // 골프
-			obj1.style.display = "none";	
-			obj2.style.display = "none";
-			obj3.style.display = "block";
-			obj4.style.display = "none";
-			obj5.style.display = "none";
-			obj6.style.display = "none";
-		} else if ( flocCd == "rdo_travrvTypeCd4" ){ // 골프
-			obj1.style.display = "none";	
-			obj2.style.display = "none";
-			obj3.style.display = "none";
-			obj4.style.display = "block";
-			obj5.style.display = "none";
-			obj6.style.display = "none";
-		} else if ( flocCd == "rdo_travrvTypeCd5" ){ // 골프
-			obj1.style.display = "none";	
-			obj2.style.display = "none";
-			obj3.style.display = "none";
-			obj4.style.display = "none";
-			obj5.style.display = "block";
-			obj6.style.display = "none";
-		} 		
-		else{
-			obj1.style.display = "none";	
-			obj2.style.display = "none";
-			obj3.style.display = "none";
-			obj4.style.display = "none";
-			obj5.style.display = "none";
-			obj6.style.display = "block";
-		}
-		document.location.href='/customer/estimateReq.do?travrvTypeCd='+flocCd;
-		
 	}
 	
 	// [function] 1차 여행지역 변경
@@ -1314,77 +940,9 @@ function loginConfirm(){
 		} else {
 			msgText = "원하는 일정, 도시 등 간략 일정을 작성해 주세요.";
 		}
-		$("#contents").attr("placeholder", msgText );
-		
+			$("#contents").attr("placeholder", msgText );		
 	}
 
-	// [function] 예식일 미정 체크
-	function fn_venueDtChk() {
-		
-		if( $("#venueDtChk").is(":checked") ) {
-			
-			$("#venueDt1").val("");
-			$("#venueDt2").val("");
-			$("#venueDt3").val("");
-			$("#venueDt1").attr("disabled", true);
-			$("#venueDt2").attr("disabled", true);
-			$("#venueDt3").attr("disabled", true);
-			$("#venueDt1").datepicker("disable");
-			$("#venueDt1").attr("style", "width: 111px;background-color: rgb(235, 235, 228);cursor: default;");
-			
-		} else {
-			
-			$("#venueDt1").val("");
-			$("#venueDt2").val("");
-			$("#venueDt3").val("");
-			$("#venueDt1").attr("disabled", false);
-			$("#venueDt2").attr("disabled", false);
-			$("#venueDt3").attr("disabled", false);
-			$("#venueDt1").datepicker("enable");
-			$("#venueDt1").attr("style", "width: 111px;cursor: pointer;");
-			
-		}
-		
-	}
-	
-	
-	// [function] 제주인 경우 여행형태에 따라 항공권, 숙소, 여행지역, 렌터카영역의 입력처리
-	function fn_moveType( val ) {
-		
-		if( val == "에어카텔" ) {
-			$(".tr_Item_travrvAir").show();	// 항공권 - O
-			$(".tr_Item_accomm").show();	// 숙소 - O
-			$(".tr_Item_region").show();	// 지역 - O
-			$(".tr_Item_rentedCar").show();	// 렌터카 - O
-		} else if( val == "에어텔" ) {
-			$(".tr_Item_travrvAir").show();	// 항공권 - O
-			$(".tr_Item_accomm").show();	// 숙소 - O
-			$(".tr_Item_region").show();	// 지역 - O
-			$(".tr_Item_rentedCar").hide();	// 렌터카 - X
-		} else if( val == "카텔" ) {
-			$(".tr_Item_travrvAir").hide();	// 항공권 - X
-			$(".tr_Item_accomm").show();	// 숙소 - O
-			$(".tr_Item_region").show();	// 지역 - O
-			$(".tr_Item_rentedCar").show();	// 렌터카 - O
-		} else if( val == "에어카" ) {
-			$(".tr_Item_travrvAir").show();	// 항공권 - O
-			$(".tr_Item_accomm").hide();	// 숙소 - X
-			$(".tr_Item_region").hide();	// 지역 - X
-			$(".tr_Item_rentedCar").show();	// 렌터카 - O
-		} else if( val == "단체버스패키지" ) {
-			$(".tr_Item_travrvAir").hide();	// 항공권 - X
-			$(".tr_Item_accomm").hide();	// 숙소 - X
-			$(".tr_Item_region").hide();	// 지역 - X
-			$(".tr_Item_rentedCar").hide();	// 렌터카 - X
-		} else {
-			$(".tr_Item_travrvAir").hide();	// 항공권 - X
-			$(".tr_Item_accomm").hide();	// 숙소 - X
-			$(".tr_Item_region").hide();	// 지역 - X
-			$(".tr_Item_rentedCar").hide();	// 렌터카 - X
-		}
-		
-	}
-	
 	
 	function fn_ToggleEnable( objId ) {
 		
@@ -1393,13 +951,9 @@ function loginConfirm(){
 		} else {
 			$("#"+objId.replace("chk_","txt_")+"_Other").val("");
 			$("#"+objId.replace("chk_","txt_")+"_Other").attr("disabled",true);
-		}
-		
-	} 
-	
+		}		
+	} 	
 	function fn_ResetText( objId ) {
 		$("#"+objId).val("");
-	}
-	
-	
+	}	
 </script>

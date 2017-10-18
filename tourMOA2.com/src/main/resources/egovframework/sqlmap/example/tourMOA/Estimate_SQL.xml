@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Estimate">
+
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="estimateVO" type="tourMOA.service.EstimateVO"/>
+	
+	<insert id="estimateDAO.insertEstimateReq">
+		INSERT INTO estimate 
+			( unq
+			  , type
+			  , email
+			  , name
+			  , phone
+			  , person
+			  , money
+			  , ptime
+			  , floc
+			  , sdate
+			  , edate
+			  , schange
+			  , airline
+			  , stay
+			  , stayname
+			  , req
+			  , rdate
+			  , inestimateagree
+			  , title			  
+			  , userid
+			  , city
+			  , passage
+			  , reply
+			  )
+		VALUES ( SEQ_estimate_unq.nextval
+			  , 'A'
+			  , 'B'
+			  , 'C'
+			  , 'D'
+			  , '1'
+			  , '2'
+			  , 'F'
+			  , 'G'
+			  , 'H'
+			  , 'I'
+			  , 'J'
+			  , 'K'
+			  ,	'L'
+			  , 'M'
+			  , 'N'
+			  , sysdate
+			  , 'O'
+			  , '$title$'		  
+			  , 'Q'
+			  , 'R'
+			  , 'S'
+			  , 'T'
+			   )
+	</insert>
+</sqlMap>

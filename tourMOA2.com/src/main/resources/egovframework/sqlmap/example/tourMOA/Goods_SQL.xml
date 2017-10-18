@@ -5,6 +5,7 @@
 
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="goodsVO" type="tourMOA.service.GoodsVO"/>
+	<typeAlias  alias="sliderVO" type="tourMOA.service.SliderVO"/>
 	<typeAlias  alias="managerVO" type="tourMOA.service.ManagerVO"/>
 
 	<select id="goodsDAO.selectGoodsList" resultClass="egovMap">
@@ -257,10 +258,13 @@
 				rn >= #firstIndex# AND rn <![CDATA[<=]]> #lastIndex#
 	</select>
 	
-	<select id="goodsDAO.selectSliderDetail" resultClass="goodsVO">
+	<select id="goodsDAO.adminSliderDetail" resultClass="goodsVO">
 		SELECT code, name, filename FROM slider WHERE code = '$code$'
 	</select>
 	
+	<select id="goodsDAO.selectSliderDetail" resultClass="sliderVO">
+		SELECT code, name, filename FROM slider WHERE code = '$code$'
+	</select>
 	
 	
 	
@@ -303,10 +307,21 @@
 	</select>
 	
 	<select id="goodsDAO.selectOptionList" resultClass="egovMap">
-		SELECT code, title, img, rtime, price, expl
+		SELECT code, title, filename, rtime, price, expl
 			FROM opt
-			WHERE code = #unq#
+			WHERE code = '$nation$'
 	</select>
+	
+	<insert id="goodsDAO.insertOption">
+		INSERT INTO opt (code, title, img, rtime, price, expl)
+			VALUES (	'$code$'
+					,	'$title$'
+					,	'$img$'
+					,	'$rtime$'
+					,	'$price$'
+					,	'$expl$'
+					)
+	</insert>
 	
 </sqlMap>
 

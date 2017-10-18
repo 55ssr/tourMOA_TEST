@@ -10,11 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import tourMOA.service.DefaultListVO;
 import tourMOA.service.EstimateService;
 import tourMOA.service.EstimateVO;
+import tourMOA.service.GoodsVO;
 import tourMOA.service.NoticeService;
 import tourMOA.service.NoticeVO;
 
@@ -139,13 +141,15 @@ public class CustomerController {
 	}
 	
 	/*견적문의 저장*/
-	@RequestMapping("customer/estimateReqSave.do")
-	@ResponseBody public Map<String, Object> insertEstimateReq(EstimateVO vo) throws Exception {
-		
-		System.out.println("test");
+	@RequestMapping("estimateReqSave.do")
+	@ResponseBody public Map<String, Object> insertEstimateReq(EstimateVO vo) throws Exception {		
+	//public String insertEstimateReq(@RequestParam("title") int title, EstimateVO vo, Model model) throws Exception{	
 		String result="";
 		int cnt = 0;
 		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		System.out.println("title ====== " + vo.getTitle());
+		//System.out.println("name ======= " + vo.getName());
 		
 		result = estimateService.insertEstimateReq(vo);
 		if(result == null) {
@@ -153,6 +157,7 @@ public class CustomerController {
 		}
 		map.put("result", result);
 		return map;
+		//return "customer/estimateReq";
 	}
 	
 	

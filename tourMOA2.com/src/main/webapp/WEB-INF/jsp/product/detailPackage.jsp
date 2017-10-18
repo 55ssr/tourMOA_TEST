@@ -381,7 +381,6 @@ $(document).ready(function(){
 								<span>${vo2.mail}</span>
 							</div>
 						</div>
-						<span class="dev_comm">담당자 테이블 만들어서 매칭</span>
 					</li>
 					
 					<li class="lineNone">
@@ -469,10 +468,11 @@ $(document).ready(function(){
 							<div class="sliderkit-nav">
 								<div class="sliderkit-nav-clip" style="width: 190px; height: 360px; top: 25px; margin: 0px;">
 									<ul>
-										<c:forEach var="rs" items="${imgList}">
+										<c:set var="filename" value="${fn:split(vo3.filename,'／')}" />
+										<c:forEach var="fn" items="${filename}">
 											<li style="width: 190px; height: 120px;" class="">
 												<a href="#" rel="nofollow">
-													<img src="/images/nation/${rs.eng}/${rs.imgsm}" alt="이미지 설명">
+													<img src="/images/nation/${vo3.code}/${fn}" alt="이미지 설명">
 												</a>
 											</li>
 										</c:forEach>
@@ -492,9 +492,9 @@ $(document).ready(function(){
 							
 							<div class="sliderkit-panels">
 							
-								<c:forEach var="rs" items="${imgList}">
+								<c:forEach var="fn" items="${filename}">
 								<div class="sliderkit-panel">
-									<img src="/images/nation/${rs.eng}/${rs.imglg}" alt="이미지 설명">
+									<img src="/images/nation/${vo3.code}/${fn}" alt="이미지 설명">
 								</div>
 								</c:forEach>
 							</div>
@@ -583,7 +583,7 @@ $(document).ready(function(){
 									<tr>
 										<td class="td01">
 											<span class="pic">
-												<img src="/images/opt/${rs.img}" alt="${rs.title}">
+												<img src="/images/opt/${rs.filename}" alt="${rs.title}">
 											</span>
 											<span class="choice w180">
 												<span class="tit"></span>

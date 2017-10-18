@@ -1,14 +1,7 @@
 @CHARSET "UTF-8";
-@font-face {
-  font-family: 'NanumBold';
-  font-style: normal;
-  font-weight: normal;
-  src: url('/font/NanumGothic-Bold.eot');
-  src: url('/font/NanumGothic-Bold.eot?#iefix') format('embedded-opentype'),
-       url('/font/NanumGothic-Bold.woff2') format('woff2'),
-       url('/font/NanumGothic-Bold.woff') format('woff'),
-       url('/font/NanumGothic-Bold.ttf') format('truetype');
-}
+
+@import url('common.css');
+
 
 /* Safari 4.0 - 8.0 */
 @-webkit-keyframes banner {
@@ -71,7 +64,7 @@
        	  margin-top:10px;
        	  padding-left:10px;
           border: 0px;
-          width: 240px;
+          width: 230px;
           border-right: 1px solid #c0c0c0;
        	 }
       	 #searchBox img{

@@ -8,48 +8,242 @@
 <link rel="stylesheet" href="/css/sliderkit/sliderkit.css">
 <link rel="stylesheet" href="/css/popUpMain.css">
 <script type="text/javascript" src="/js/jquery.sliderkit.1.9.2.pack.js"></script>
-<script>
-function wrapWindowByMask(){
-	//화면의 높이와 너비를 구한다.
-	var maskHeight = $(document).height();  
-	var maskWidth = $(window).width();  
+<link rel="stylesheet" href="/css/popUpMain.css">
+	<style>
+	#airSearchPopWrap {  
+	  position:absolute;  
+	  z-index:9000;  
+	  background-color:#000;  
+	  display:none;  
+	  left:0;
+	  top:0;
+	}
+	.airSearchPop{
+	  display: none;
+	  position:absolute;  
+	  left:550px;
+	  top:100px;
+	  z-index:10000;
+	}
+	</style>
+	<script>
+	function wrapWindowByMask(){
+		//화면의 높이와 너비를 구한다.
+		var maskHeight = $(document).height();  
+		var maskWidth = $(window).width();  
 
-	//마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
-	$('#mask').css({'width':maskWidth,'height':maskHeight});  
+		//마스크의 높이와 너비를 화면 것으로 만들어 전체 화면을 채운다.
+		$('#airSearchPopWrap').css({'width':maskWidth,'height':maskHeight});  
 
-	//애니메이션 효과 - 일단 1초동안 까맣게 됐다가 80% 불투명도로 간다.
-	$('#mask').fadeIn(1000);      
-	$('#mask').fadeTo("slow",0.8);    
+		//애니메이션 효과 - 일단 1초동안 까맣게 됐다가 80% 불투명도로 간다.
+		$('#airSearchPopWrap').fadeIn(1000);      
+		$('#airSearchPopWrap').fadeTo("slow",0.8);    
 
-	//윈도우 같은 거 띄운다.
-	$('#popLayer_wrap').show();
-	$('#k1_yb_pop_wrap').show();
+		//윈도우 같은 거 띄운다.
+		$('.airSearchPop').show();
+	}
+
+	$(document).ready(function(){
+		//검은 막 띄우기
+		$('.openairSearchPopWrap').click(function(e){
+			e.preventDefault();
+			wrapWindowByMask();
+		});
+
+		//닫기 버튼을 눌렀을 때
+		$('.airSearchPop .airSearchPopClose').click(function (e) {  
+		    //링크 기본동작은 작동하지 않도록 한다.
+		    e.preventDefault();  
+		    $('#airSearchPopWrap, .airSearchPop').hide();  
+		});       
+
+		//검은 막을 눌렀을 때
+		$('#airSearchPopWrap').click(function () {  
+		    $(this).hide();  
+		    $('.airSearchPop').hide();   
+		});     
+		// 터치 스크린에서 검은 막 클릭 시 닫기 안됨.
+		$('#airSearchPopWrap').one('touchstart', function () {  
+		    $(this).unbind('click');
+		});
+	});
+	$(document).ready(function(){
+
+		$("#domintgubun").val("I");
+		$("#initform").val("RT");
+		$("#arrctycd1").val('');
+		$("#arrctynm1").val('');
+		$("#airSearchcity").attr("title","");
+		$("#airSearchcity").attr("placeholder","도착도시 검색");
+		$("#airSearchcity").val("");    		
+		$("#adtcount").val("1");
+		$("#chdcount").val("0");
+		$("#infcount").val("0");
+		$("#openday1").val("");
+		$("#openday_init").val("");
+		$("#prd_typ").val("");
+
+		$("ul.air_list li.st01 a").on("click",function(){
+			fn_domintgubun('I');
+		});
+		$("ul.air_list li.st02 a").on("click",function(){
+			fn_domintgubun('D');
+		});
+	    $("#openday_init").change(function(){
+						var v = $("#openday_init").val();
+						$("#openday1").val(v);
+					});	 	 
+		$("#adtcount").change(function(){
+						var v = $("#adtcount").val();
+						var chdcount =  $("#chdcountval").val();
+		    			if(isNaN(chdcount)){
+		    				chdcount = 0
+		    			}else{
+		    				chdcount = parseInt(chdcount);
+		    			}
+		    			var infcount = $("#infcountval").val();
+		    			if(isNaN(infcount)){
+		    				infcount = 0
+		    			}else{
+		    				infcount = parseInt(infcount);
+		    			}
+		    			v = parseInt(v);
+		    			if(v + chdcount > 9){
+		    				alert("성인과 소아의 인원수의 합은 9를 초과할 수 없습니다.");
+		    			}else if(v < infcount ){
+		    				alert("성인의 인원수보다 유아의 인원수가 클 수 없습니다.");
+		    			}else{
+		    				$("#adtcountval").val(v);
+		    			}			
+					});	 
+		$("#chdcount").change(function(){
+						var v = $("#chdcount").val();
+						var adtcount = $("#adtcountval").val();
+		    			if(isNaN(adtcount)){
+		    				adtcount = 0
+		    			}else{
+		    				adtcount = parseInt(adtcount);
+		    			}
+		    			v = parseInt(v);
+		    			if(v + adtcount > 9){
+		    				alert("성인과 소아의 인원수의 합은 9를 초과할 수 없습니다.");
+		    			}else{
+		    				$("#chdcountval").val(v);
+		    			}		
+					});		
+		$("#infcount").change(function(){
+						var v = $("#infcount").val();
+						var adtcount = $("#adtcountval").val();
+						if(isNaN(adtcount)){
+		    				adtcount = 0
+		    			}else{
+		    				adtcount = parseInt(adtcount);
+		    			}
+						v = parseInt(v);
+		    			if(v > adtcount ){
+		    				alert("성인의 인원수보다 유아의 인원수가 클 수 없습니다.\n성인 1인 당 유아 1인을 포함할 수 있습니다.");
+		    				setTimeout($("#infcount").val("0").prop("selected", true).trigger('change'),"500");
+		    			}else{
+		    				$("#infcountval").val(v);	
+		    			}
+					});
+		$("#depCtyCodeSelector").change(function(){//해외 출발 변경시
+						var cd = $("#depCtyCodeSelector").val();
+						var nm =  $("#depCtyCodeSelector option:selected").text();
+						var initform = $("#initform").val();
+						$("#depctycd1").val(cd);
+						$("#depctynm1").val(nm);
+						if(initform == 'RT'){
+							$("#arrctycd2").val(cd);
+							$("#arrctynm2").val(nm);
+						}
+					});
+		$("#domDepCtyCode").change(function(){//국내 출발 변경시
+				var cd = $("#domDepCtyCode").val();
+				var nm =  $("#domDepCtyCode option:selected").text();
+				var initform = $("#initform").val();
+				$("#depctycd1").val(cd);
+				$("#depctynm1").val(nm);
+				if(initform == 'RT'){
+					$("#arrctycd2").val(cd);
+					$("#arrctynm2").val(nm);
+			}
+		});	
+		$("#domArrCtyCode").change(function(){//국내 도착 변경시
+				var cd = $("#domArrCtyCode").val();
+				var nm =  $("#domArrCtyCode option:selected").text();
+				var initform = $("#initform").val();
+				$("#arrctycd1").val(cd);
+				$("#arrctynm1").val(nm);
+				if(initform == 'RT'){
+					$("#depctycd2").val(cd);
+					$("#depctynm2").val(nm);
+			}
+		});		
+		
+	});//ready 닫기
+	 // 왕복 / 편도 교체
+	function fn_initForm(v){
+	 	var opencase1 = $("#opencase1").val();
+		$("#initform").val(v);
+		var domintgubun = $("#domintgubun").val();
+		if(v == 'RT'){// 왕복
+			if(domintgubun == 'I')//해외
+			{
+				if(opencase1 == 'N'){//귀국일 미지정 미체크시
+					$("#opencaseYNBox").css("display","block");
+					$("#depdt2_1").css("display","block");
+				}else{//귀국일 미지정 체크시
+					$("#opencaseYNBox").css("display","block");
+					$("#opencaseY").css("display","block");	
+					$("#depdt2_1").css("display","block");
+				}
+			}
+			else //국내
+			{
+				$("#arrDtBox2").css("display","block");
+			}
+		}
+		else
+		{//편도
+				$("#opencaseYNBox").css("display","none");
+				$("#depdt2_1").css("display","none");
+				$("#opencaseY").css("display","none");
+				$("#arrDtBox2").css("display","none");
+				$("#depdt2_1").val("");
+				$("#depdt2_2").val("");
+				$("#depctycd2").val("");
+				$("#depctynm2").val("");
+				$("#arrctycd2").val("");
+				if(opencase1 == 'Y'){
+					$("#openChk").trigger('click');
+				}
+				$("#openday_init").val("").prop("selected", true).trigger('change');
+		}
+	}//function end
+
+
+	function closeLayer(e){
+		
+		    //링크 기본동작은 작동하지 않도록 한다.
+		    $('#airSearchPopWrap, .airSearchPop').hide();  
+
+	}
+	function fn_setCtyCdNm(n, cd, nm){
+		var initform = $("#initform").val();
+		if(initform == 'RT'){
+			$("#depctycd2").val(cd);
+			$("#depctynm2").val(nm);	
+		}
+		$("#arrctycd1").val(cd);
+		$("#arrctynm1").val(nm);
+		$("#airSearchcity").attr("title",nm);
+		$("#airSearchcity").attr("placeholder",nm);
+		$("#airSearchcity").val(nm);
 }
 
-$(document).ready(function(){
-	//검은 막 띄우기
-	$('#airSearchPop').click(function(e){
-		e.preventDefault();
-		wrapWindowByMask();
-	});
-
-	//닫기 버튼을 눌렀을 때
-	$('.layer_close').click(function () {  
-	    //링크 기본동작은 작동하지 않도록 한다.
-	    $(this).hide(); 
-	    $("#mask").hide();
-	    $('.window').hide();  
-	});       
-
-	//검은 막을 눌렀을 때
-	$('#mask').click(function () {  
-		$(this).hide();  
-	    $('.window').hide();  
-	});	
-	
-});
-
-
+</script>
+<script>
 /* 출발일 미 선택시 alert창  */
 function fn_depdt2Check(n){
 	if($('#depdt1_'+n).val() == '' || $('#depdt1_'+n).val() == '출발일자선택'){
@@ -102,7 +296,7 @@ $(document).ready(function(){
         }, 
         showMonthAfterYear: true , 
         beforeShowDay : function ( date ){
-    		var _date = new Date('10/14/2017');
+    		var _date = new Date();
     		
     	    if (date < _date)
     	        return [false];
@@ -145,7 +339,7 @@ $(document).ready(function(){
         }, 
         showMonthAfterYear: true , 
         beforeShowDay : function ( date ){
-    		var _date = new Date('10/12/2017');
+    		var _date = new Date();
     		if (date < _date)
     	        return [false];
     	    return [true];
@@ -255,7 +449,56 @@ $(document).ready(function(){
 <div id="main">
 	<div id="tt">
 		<div id="quickmenu">
-
+							<input type="hidden" id="adtcountval" name="adtcountval" value="1">
+							<input type="hidden" id="chdcountval" name="chdcountval" value="0">
+							<input type="hidden" id="infcountval" name="infcountval" value="0">
+							<input type="hidden" id="initform" name="initform" value="RT">
+							
+						    <input type="hidden" id="initform4" name="initform4" value="">
+                            <input type="hidden" id="domintgubun" name="domintgubun" value="I">
+                            <input type="hidden" id="depdomintgbn" name="depdomintgbn" value="D">
+                            
+                            <input type="hidden" id="tasktype" name="tasktype" value="B2C">
+                            <input type="hidden" id="servicecacheyn" name="servicecacheyn" value="Y">
+                            <input type="hidden" id="nonstop" name="nonstop" value="">
+                            <input type="hidden" id="viatype" name="viatype" value="">
+                            <input type="hidden" id="secrchType" name="secrchType" value="FARE">
+                            
+                            <input type="hidden" id="cabinclass" name="cabinclass" value="Y">
+                            
+                            <input type="hidden" id="availcount" name="availcount" value="250">
+                            <input type="hidden" id="KSESID" name="KSESID" value="air:b2c:SELK138AN:AA024::00">
+                            
+                            <input type="hidden" id="opencase1" name="opencase" value="N">
+                            <input type="hidden" id="opencase2" name="opencase" value="N">
+                            <input type="hidden" id="opencase3" name="opencase" value="N">
+                            
+                            <input type="hidden" id="depctycd1" name="depctycd" value="SEL">
+                            <input type="hidden" id="depctycd2" name="depctycd" value="">
+                            <input type="hidden" id="depctycd3" name="depctycd" value="">
+                            <input type="hidden" id="depctycd4" name="depctycd" value="">
+                            
+                            <input type="hidden" id="depctynm1" name="depctynm" value="인천/김포">
+                            <input type="hidden" id="depctynm2" name="depctynm" value="">
+                            <input type="hidden" id="depctynm3" name="depctynm" value="">
+                            <input type="hidden" id="depctynm4" name="depctynm" value="">
+                            
+                            <input type="hidden" id="arrctycd1" name="arrctycd" value="">
+                            <input type="hidden" id="arrctycd2" name="arrctycd" value="">
+                            <input type="hidden" id="arrctycd3" name="arrctycd" value="">
+                            <input type="hidden" id="arrctycd4" name="arrctycd" value="">
+                            
+                            <input type="hidden" id="arrctynm1" name="arrctynm" value="">
+                            <input type="hidden" id="arrctynm2" name="arrctynm" value="">
+                            <input type="hidden" id="arrctynm3" name="arrctynm" value="">
+                            <input type="hidden" id="arrctynm4" name="arrctynm" value="">
+                            
+    						<input type="hidden" id="depdt3" name="depdt3" value="">
+                           	<input type="hidden" id="depdt4" name="depdt4" value="">
+                        
+                          	<input type="hidden" id="openday1" name="openday"  value="">
+                            <input type="hidden" id="openday2" name="openday"  value="">
+                            <input type="hidden" id="openday3" name="openday"  value=""> 
 			<ul>
 				<li class="find"><p class="finder">여행상품 찾기</p>
 					<div class="find-content">
@@ -288,27 +531,34 @@ $(document).ready(function(){
 								type="button" id="domesticBtn" name="domesticBtn"
 								class="airportfind_domesticBtn" value="국내항공권" /> <br>
 							<!-- 왕복/편도 설정 id ="air_flightWay" VALUE = 왕복 : R 편도 : O  -->
-							<input type="radio" value="R" id="air_flightWay"
-								name="air_flightWay" checked="checked"
-								style="margin-left: 20px;" /> 왕복 <input type="radio" value="O"
-								id="air_flightWay" name="air_flightWay"
-								style="margin-left: 20px; margin-bottom: 20px;" /> 편도 <br>
+							<input type="radio"  id="air_flightWay" name="air_flightWay" checked="checked"	style="margin-left: 20px;" onclick="fn_initForm('RT')" /> 왕복 
+							<input type="radio"	 id="air_flightWay" name="air_flightWay" style="margin-left: 20px; margin-bottom: 20px;" onclick="fn_initForm('OW')" /> 편도 <br>
 							<p>출발</p>
 							<select class="airportfind-content-inside1">
 								<option>인천/김포</option>
 							</select> <input type="text" class="airportfind-content-inside2" id="depdt1_1" name="depdt1_1" readonly
 								placeholder="출발일자 선택" /> <br>
 							<p>
-								<span>도착 </span> <span> <input type="checkbox"
-									id="dontknow" value="" /> 귀국일 미지정
+								<span>도착 </span> 
+								<span id="opencaseYNBox">
+								 <input type="checkbox" id="dontknow" value="" /> 귀국일 미지정
 								</span>
 							</p>
 							<br>
 							<!-- 클릭 시 모달창이나 팝업창 띄워 검색하기 기능 -->
-							<input type="text" class="airportfind-content-inside1"	placeholder="도착도시 검색" id="airSearchPop" name="airSearchPop"/>
+							<a href="#" class="openairSearchPopWrap"><input type="text" class="airportfind-content-inside1"	id="airSearchcity" name="airSearchcity"placeholder="도착도시 검색" readonly/></a>
 							<input type="text" id="depdt2_1" name="depdt2_1" readonly class="airportfind-content-inside2 whenyoucome" onclick="fn_depdt2Check(1);"	placeholder="도착일자 선택" />
 							<select	class="airportfind-content-inside2 dontknowWhen">
 								<option>체류일 선택</option>
+								<option value="D07">최대7일체류</option>
+								<option value="D14">최대14일체류</option>
+								<option value="D45">최대45일체류</option>
+								<option value="M01">최대1개월체류</option>
+								<option value="M02">최대2개월체류</option>
+								<option value="M03">최대3개월체류</option>
+								<option value="M06">최대6개월체류</option>
+								<option value="D300">최대1년체류</option>
+								
 							</select>
 							<div class="kind_of_people">
 								<p>인원</p>
@@ -388,9 +638,28 @@ $(document).ready(function(){
 
 							<p>도착</p>
 							<!-- 클릭 시 모달창이나 팝업창 띄워 검색하기 기능 -->
-							<input type="text" class="domesticfind-content-inside1"
-								placeholder="도착도시 검색" /> <input type="text" id="depdt2_2" name="depdt2_2" readonly onclick="fn_depdt2Check(2);"
+							<select id="domArrCtyCode" class="domesticfind-content-inside1">
+													<option value="CJU">제주</option>
+													<option value="GMP">김포</option>
+													<option value="ICN">인천</option>
+													<option value="PUS">부산</option>
+													<option value="KWJ">광주</option>
+													<option value="TAE">대구</option>
+													<option value="MPK">목포</option>
+													<option value="RSU">여수</option>
+													<option value="USN">울산</option>
+													<option value="HIN">진주</option>
+													<option value="CJJ">청주</option>
+													<option value="KPO">포항</option>
+													<option value="MWX">무안</option>
+													<option value="WJU">원주</option>
+													<option value="KUV">군산</option>
+							</select>
+							<input type="text" id="depdt2_2" name="depdt2_2" readonly onclick="fn_depdt2Check(2);"
 								class="domesticfind-content-inside2" placeholder="도착일자 선택" />
+								<div class="input_ph" id="arrDtBox2" style="display: block;">
+									<input type="text" id="depdt2_2" name="" value="" class="input_txt" placeholder="도착일자 선택" readonly="" style="width:102px" onclick="fn_depdt2Check(2)">
+								</div>
 
 							<p>인원</p>
 							<!-- select id 성인 :adult 소아 :child 유아 : baby  -->
@@ -569,14 +838,14 @@ $(document).ready(function(){
 
 
 	<ul class="tab_type01">
-		<li class="on"><a href="#" class="decoNone">유럽</a></li>
-		<li><a href="#" class="decoNone">동남아</a></li>
-		<li><a href="#" class="decoNone">필리핀/푸켓</a></li>
-		<li><a href="#" class="decoNone">중국/홍콩/대만</a></li>
-		<li><a href="#" class="decoNone">일본 </a></li>
-		<li><a href="#" class="decoNone">괌/사이판</a></li>
-		<li><a href="#" class="decoNone">호주/뉴질랜드</a></li>
-		<li><a href="#" class="decoNone">미주/캐나다</a></li>
+		<li class="on"><a href="javascript:;" class="decoNone">유럽</a></li>
+		<li><a href="javascript:;" class="decoNone">동남아</a></li>
+		<li><a href="javascript:;" class="decoNone">필리핀/푸켓</a></li>
+		<li><a href="javascript:;" class="decoNone">중국/홍콩/대만</a></li>
+		<li><a href="javascript:;" class="decoNone">일본 </a></li>
+		<li><a href="javascript:;" class="decoNone">괌/사이판</a></li>
+		<li><a href="javascript:;" class="decoNone">호주/뉴질랜드</a></li>
+		<li><a href="javascript:;" class="decoNone">미주/캐나다</a></li>
 	</ul>
 
 
@@ -1301,18 +1570,9 @@ $(document).ready(function(){
 		유가와 환율에 따라 변동될 수 있습니다.</span>
 </div>
 
-<style>
-.tb_button {padding:1px;cursor:pointer;border-right: 1px solid #8b8b8b;border-left: 1px solid #FFF;border-bottom: 1px solid #fff;}
-.tb_button.hover {borer:2px outset #def; background-color: #f8f8f8 !important;}
-.ws_toolbar {z-index:100000}
-.ws_toolbar .ws_tb_btn {cursor:pointer;border:1px solid #555;padding:3px}   
-.tb_highlight{background-color:yellow} 
-.tb_hide {visibility:hidden}
-.ws_toolbar img {padding:2px;margin:0px}
-</style>
-<div id="mask"></div>
-<div id="popLayer_wrap" class="simplemodal-data" style="display:none;">
-<script type="text/javascript" src="/js/jquery.easing.1.3.min.js"></script>
+<div id="airSearchPopWrap"></div>
+<div class="airSearchPop">
+
 <!-- <script src="/js/jquery.film_roll.min.js"></script> -->
 <!-- <script src="/js/jquery-ui.js"></script> -->
 <script type="text/javascript">
@@ -1385,7 +1645,7 @@ function fn_citySearch(){
 <input type="hidden" id="htlcitycd" value="">
 
 <div class="k1_yb_pop_wrap" style="background-color: rgb(255, 255, 255);">
-	<h4>도시검색</h4>
+	<h4>도시검색 <a class="airSearchPopClose" href="javascript:;" style="float: right; color: white;">X</a></h4>
 	<div class="k1_yb_pop_contents" style="">
 		<!-- 도시 이름 검색 -->
 		<p class="k1_tac k1_mb30" style="float:left; width:100%; text-align:center; margin:0 auto;">여행하실 도시의 한글 이름 또는 영문이름을 입력하고 검색버튼을 클릭해주세요.</p>
@@ -1595,6 +1855,6 @@ function fn_citySearch(){
 		<!-- //도시 선택 -->
 
     </div>
-	<a class="close_pop" href="javascript:;" onclick="closeLayer();">팝업창 닫기</a>
+	
 </div>
 </div>

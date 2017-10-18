@@ -33,7 +33,7 @@
 	function fn_add() {
 		var addCity = document.frm.addCity.value;
 		document.frm.addCity.value = "";
-		if (document.frm.city.value != "") document.frm.city.value += ",";  
+		if (document.frm.city.value != "") document.frm.city.value += ",";
 		document.frm.city.value += addCity;
 	}
 	function fn_add2() {
@@ -217,18 +217,14 @@
 			<div class="btn-group col-sm-2" role="group" aria-label="First group">
 				<input type="text" class="form-control rounded-0 rounded-left" id="addCity" placeholder="도시 추가" aria-label="Input group example" aria-describedby="btnGroupAddon2">
 				<button type="button" class="btn btn-primary" onclick="fn_add()">+</button>
+			</div>
+			<div class="col-sm-8">
+				<input type="text" name="city" id="city" class="form-control" placeholder="오사카,도쿄,오키나와,...">
 			</div>	
 		</div>
 		
 		<div class="form-group row">
-			<label for="inputCitys" class="col-sm-2 col-form-label"></label>
-			<div class="col-sm-10">
-				<input type="text" name="city" id="city" class="form-control" placeholder="오사카,도쿄,오키나와,...">
-			</div>
-		</div>
-		
-		<div class="form-group row">
-			<label for="inputSimpleExp" class="col-sm-2 col-form-label">간략정보</label>
+			<label for="inputSimpleExp" class="col-sm-2 col-form-label">방문도시</label>
 			<div class="col-sm-10">
 				<input type="text" name="schd" id="schd" class="form-control" placeholder="ex)인천-보라카이-인천">
 			</div>
@@ -236,35 +232,34 @@
 		
 		<div class="form-group row">
 			<label for="usingAirline" class="col-sm-2 col-form-label">이용항공</label>
-			<div class="col-sm-10">
+			<div class="col-sm-2">
 				<input type="text" name="airline" id="airline" class="form-control" placeholder="이용항공">
+			</div>
+			<div class="col-sm-2">
+				<input type="text" name="fno" id="fno" class="form-control" placeholder="편명">
 			</div>
 		</div>
 		
 		<div class="form-group row">
 			<label for="priceAdult" class="col-sm-2 col-form-label">인원</label>
-			<div class="col-sm-10">
-				<div class="form-row align-items-center">
-					<div class="col-2">
-						<div class="input-group">
-							<input type="text" name="price" id="price" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="총 인원">
-							<span class="input-group-addon">명</span>
-						</div>
-					</div>
-					
-					<div class="col-2">
-						<div class="input-group">
-							<input type="text" name="pricech" id="pricech" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="남은 인원">
-							<span class="input-group-addon">명</span>
-						</div>
-					</div>
-					
-					<div class="col-2">
-						<div class="input-group">
-							<input type="text" name="pricein" id="pricein" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="출발가능 인원">
-							<span class="input-group-addon">명</span>
-						</div>
-					</div>
+			<div class="col-sm-2">
+				<div class="input-group">
+					<input type="text" name="price" id="price" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="총 인원">
+					<span class="input-group-addon">명</span>
+				</div>
+			</div>
+			
+			<div class="col-sm-2">
+				<div class="input-group">
+					<input type="text" name="pricech" id="pricech" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="남은 인원">
+					<span class="input-group-addon">명</span>
+				</div>
+			</div>
+			
+			<div class="col-sm-2">
+				<div class="input-group">
+					<input type="text" name="pricein" id="pricein" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="출발가능 인원">
+					<span class="input-group-addon">명</span>
 				</div>
 			</div>
 			
@@ -273,28 +268,28 @@
 		
 		<div class="form-group row">
 			<label for="priceAdult" class="col-sm-2 col-form-label">비용</label>
-			<div class="col-sm-10">
-				<div class="form-row align-items-center">
-					<div class="col-2">
-						<div class="input-group">
-							<input type="text" name="price" id="price" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="성인가">
-							<span class="input-group-addon">￦</span>
-						</div>
-					</div>
-					
-					<div class="col-2">
-						<div class="input-group">
-							<input type="text" name="pricech" id="pricech" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="아동가">
-							<span class="input-group-addon">￦</span>
-						</div>
-					</div>
-					
-					<div class="col-2">
-						<div class="input-group">
-							<input type="text" name="pricein" id="pricein" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="유아가">
-							<span class="input-group-addon">￦</span>
-						</div>
-					</div>
+			<div class="col-sm-2">
+				<div class="input-group"> <!-- 일반가 -->
+					<input type="text" name="price" id="price" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="성인가">
+					<span class="input-group-addon">￦</span>
+				</div>
+			</div>
+			<div class="col-sm-2">
+				<div class="input-group"> <!-- 아동가 -->
+					<input type="text" name="pricech" id="pricech" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="아동가">
+					<span class="input-group-addon">￦</span>
+				</div>
+			</div>
+			<div class="col-sm-2">
+				<div class="input-group"> <!-- 유아가 -->
+					<input type="text" name="pricein" id="pricein" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="유아가">
+					<span class="input-group-addon">￦</span>
+				</div>
+			</div>
+			<div class="col-sm-2">
+				<div class="input-group"> <!-- 유류할증료 -->
+					<input type="text" name="fuel" id="fuel" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="유류할증료">
+					<span class="input-group-addon">￦</span>
 				</div>
 			</div>
 			
@@ -303,26 +298,22 @@
 		<div class="form-group row">
 			<label for="priceAdult" class="col-sm-2 col-form-label">여행기간</label>
 			
-			<div class="col-sm-10">
-				<div class="form-row align-items-center">
-					<div class="col-2">
-						<div class="input-group">
-							<input type="text" name="period1" id="period1" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="1">
-							<span class="input-group-addon">박</span>
-						</div>
-					</div>
-					
-					<div class="col-2">
-						<div class="input-group">
-							<input type="text" name="period2" id="period2" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="2">
-							<span class="input-group-addon">일</span>
-						</div>
-					</div>
-					
-					<div class="col-auto">
-						<input type="hidden" name="period" id="period" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="(히든)">
-					</div>
+			<div class="col-sm-2">
+				<div class="input-group">
+					<input type="text" name="period1" id="period1" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="1">
+					<span class="input-group-addon">박</span>
 				</div>
+			</div>
+			
+			<div class="col-sm-2">
+				<div class="input-group">
+					<input type="text" name="period2" id="period2" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="2">
+					<span class="input-group-addon">일</span>
+				</div>
+			</div>
+			
+			<div class="col-sm-2">
+				<input type="hidden" name="period" id="period" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="(히든)">
 			</div>
 			
 		</div>
@@ -330,50 +321,42 @@
 		<div class="form-group row">
 			<label for="inputTitle" class="col-sm-2 col-form-label">출발일</label>
 			
-			<div class='col-sm-10'>
-				<div class="form-row align-items-center">
-					<div class='col-4'>
-						<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" data-link-field="dtp_input1">
-		                    <input class="form-control" size="16" type="text" value="" placeholder="한국 출발" readonly>
-		                    <span class="input-group-addon"><span class="fa fa-times" aria-hidden="true"></span></span>
-							<span class="input-group-addon"><span class="fa fa-calendar" aria-hidden="true"></span></span>
-		                </div>
-						<input type="hidden" id="dtp_input1" value="" />
-					</div>
-					<div class='col-4'>
-						<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" data-link-field="dtp_input1">
-		                    <input class="form-control" size="16" type="text" value="" placeholder="현지 도착" readonly>
-		                    <span class="input-group-addon"><span class="fa fa-times" aria-hidden="true"></span></span>
-							<span class="input-group-addon"><span class="fa fa-calendar" aria-hidden="true"></span></span>
-		                </div>
-						<input type="hidden" id="dtp_input1" value="" />
-					</div>
-				</div>
+			<div class='col-sm-3'>
+				<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" data-link-field="dtp_input1">
+                    <input class="form-control" size="16" type="text" value="" placeholder="한국 출발" readonly>
+                    <span class="input-group-addon"><span class="fa fa-times" aria-hidden="true"></span></span>
+					<span class="input-group-addon"><span class="fa fa-calendar" aria-hidden="true"></span></span>
+                </div>
+				<input type="hidden" id="dtp_input1" value="" />
+			</div>
+			<div class='col-sm-3'>
+				<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" data-link-field="dtp_input1">
+                    <input class="form-control" size="16" type="text" value="" placeholder="현지 도착" readonly>
+                    <span class="input-group-addon"><span class="fa fa-times" aria-hidden="true"></span></span>
+					<span class="input-group-addon"><span class="fa fa-calendar" aria-hidden="true"></span></span>
+                </div>
+				<input type="hidden" id="dtp_input1" value="" />
 			</div>
 				
 		</div>
 		
 		<div class="form-group row">
 			<label for="inputTitle" class="col-sm-2 col-form-label">도착일</label>
-			<div class='col-sm-10'>
-				<div class="form-row align-items-center">
-					<div class='col-4'>
-						<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" data-link-field="dtp_input1">
-		                    <input class="form-control" size="16" type="text" value="" placeholder="현지 출발" readonly>
-		                    <span class="input-group-addon"><span class="fa fa-times" aria-hidden="true"></span></span>
-							<span class="input-group-addon"><span class="fa fa-calendar" aria-hidden="true"></span></span>
-		                </div>
-						<input type="hidden" id="dtp_input1" value="" />
-					</div>
-					<div class='col-sm-4'>
-						<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" data-link-field="dtp_input1">
-		                    <input class="form-control" size="16" type="text" value="" placeholder="한국 도착" readonly>
-		                    <span class="input-group-addon"><span class="fa fa-times" aria-hidden="true"></span></span>
-							<span class="input-group-addon"><span class="fa fa-calendar" aria-hidden="true"></span></span>
-		                </div>
-						<input type="hidden" id="dtp_input1" value="" />
-					</div>
-				</div>
+			<div class='col-sm-3'>
+				<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" data-link-field="dtp_input1">
+                    <input class="form-control" size="16" type="text" value="" placeholder="현지 출발" readonly>
+                    <span class="input-group-addon"><span class="fa fa-times" aria-hidden="true"></span></span>
+					<span class="input-group-addon"><span class="fa fa-calendar" aria-hidden="true"></span></span>
+                </div>
+				<input type="hidden" id="dtp_input1" value="" />
+			</div>
+			<div class='col-sm-3'>
+				<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" data-link-field="dtp_input1">
+                    <input class="form-control" size="16" type="text" value="" placeholder="한국 도착" readonly>
+                    <span class="input-group-addon"><span class="fa fa-times" aria-hidden="true"></span></span>
+					<span class="input-group-addon"><span class="fa fa-calendar" aria-hidden="true"></span></span>
+                </div>
+				<input type="hidden" id="dtp_input1" value="" />
 			</div>
 		</div>
 		
@@ -412,27 +395,99 @@
 		</div> -->
 		
 		<div class="form-group row">
-			<label for="inputTitle" class="col-sm-2 col-form-label">간단 정보</label>
+			<label for="inputTitle" class="col-sm-2 col-form-label">간단정보</label>
 			<div class='col-sm-10'>
-				<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+				<textarea class="form-control" id="detail1" name="detail1" rows="3"></textarea>
 			</div>
 		</div>
 		
 		<div class="form-group row">
-			<label for="inputDetail" class="col-sm-2 col-form-label">상세정보</label>
+			<label for="inputDetail" class="col-sm-2 col-form-label">1. 상품안내</label>
 			<div class="col-sm-10">
 				<div class="form-control" id="summernote"></div>
 				<script>
 					$('#summernote').summernote({
-						height: 400,
+						height: 200,
 						minHeight: null,
 						maxHeight: null,
-						placeholder: '상세정보',
+						placeholder: '1. 상품안내',
 						tabsize: 2,
 						lang: 'ko-KR'
 					});
 				</script>
-				<textarea class="form-control" id="detail1" rows="6" hidden></textarea>
+				<textarea class="form-control" id="dinfo" name="dinfo" hidden></textarea>
+			</div>
+		</div>
+		
+		<div class="form-group row">
+			<label for="inputDetail" class="col-sm-2 col-form-label">2. 포함사항</label>
+			<div class="col-sm-10">
+				<div class="form-control" id="summernote2"></div>
+				<script>
+					$('#summernote2').summernote({
+						height: 200,
+						minHeight: null,
+						maxHeight: null,
+						placeholder: '2. 포함사항',
+						tabsize: 2,
+						lang: 'ko-KR'
+					});
+				</script>
+				<textarea class="form-control" id="incinfo" name="incinfo" hidden></textarea>
+			</div>
+		</div>
+		
+		<div class="form-group row">
+			<label for="inputDetail" class="col-sm-2 col-form-label">3. 불포함사항</label>
+			<div class="col-sm-10">
+				<div class="form-control" id="summernote3"></div>
+				<script>
+					$('#summernote3').summernote({
+						height: 200,
+						minHeight: null,
+						maxHeight: null,
+						placeholder: '3. 불포함사항',
+						tabsize: 2,
+						lang: 'ko-KR'
+					});
+				</script>
+				<textarea class="form-control" id="nincinfo" name="nincinfo" hidden></textarea>
+			</div>
+		</div>
+		
+		<div class="form-group row">
+			<label for="inputDetail" class="col-sm-2 col-form-label">4. 참고/전달사항</label>
+			<div class="col-sm-10">
+				<div class="form-control" id="summernote4"></div>
+				<script>
+					$('#summernote4').summernote({
+						height: 200,
+						minHeight: null,
+						maxHeight: null,
+						placeholder: '4. 참고/전달사항',
+						tabsize: 2,
+						lang: 'ko-KR'
+					});
+				</script>
+				<textarea class="form-control" id="ref" name="ref" hidden></textarea>
+			</div>
+		</div>
+		
+		<div class="form-group row">
+			<label for="inputDetail" class="col-sm-2 col-form-label">5. 일정표</label>
+			<div class="col-sm-10">
+				<div class="form-control" id="summernote5"></div>
+				<script>
+					$('#summernote5').summernote({
+						height: 200,
+						minHeight: null,
+						maxHeight: null,
+						placeholder: '5. 일정표',
+						tabsize: 2,
+						lang: 'ko-KR'
+					});
+				</script>
+				<textarea class="form-control" id="daily" name=""daily"" hidden></textarea>
 			</div>
 		</div>
 		
@@ -460,31 +515,33 @@
 			</script>
 		</div>
 		
-		<div class="form-group row">
+		<!-- <div class="form-group row">
 			<label for="selectWaypoint" class="col-sm-2 col-form-label">경유지</label>
 			<div class="btn-group col-sm-2" role="group" aria-label="First group">
 				<input type="text" class="form-control rounded-0 rounded-left" placeholder="경유지 추가" aria-label="Input group example" aria-describedby="btnGroupAddon2" id="viaSelect" disabled>
 				<button type="button" class="btn btn-primary" onclick="fn_add2()" disabled>+</button>
 			</div>	
-		</div>
+		</div> -->
 				
 		<div class="form-group row">
-			<label for="selectWaypoints" class="col-sm-2 col-form-label"></label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" name="vias" id="vias" placeholder="상해,뭄바이" disabled>
-			</div>
+			<label for="selectWaypoint" class="col-sm-2 col-form-label">경유지</label>
+				<div class="btn-group col-sm-2" role="group" aria-label="First group">
+					<input type="text" class="form-control rounded-0 rounded-left" placeholder="경유지 추가" aria-label="Input group example" aria-describedby="btnGroupAddon2" id="viaSelect" disabled>
+					<button type="button" class="btn btn-primary" onclick="fn_add2()" disabled>+</button>
+				</div>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" name="vias" id="vias" placeholder="상해,뭄바이" disabled>
+				</div>
 		</div>
 		
 		<div class="form-group row">
-			<label for="selectUse" class="col-sm-2 col-form-label">슬라이드 이미지</label>
+			<label for="selectUse" class="col-sm-2 col-form-label">쇼핑센터 방문</label>
 			<div class="col-sm-2">
-				
-				<input type="file" class="form-control-file" id="exampleFormControlFile1" multiple>
-			
+				<div class="input-group">
+					<input type="text" name="shop" id="shop" class="form-control" aria-label="Amount (to the nearest dollar)" value="0">
+					<span class="input-group-addon">회</span>
+				</div>
 			</div>
-			
-			
-			
 		</div>
 		
 		<div class="form-group row">

@@ -1,6 +1,9 @@
 package tourMOA.web;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -11,9 +14,11 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,6 +33,9 @@ import tourMOA.service.CategoryVO;
 import tourMOA.service.DefaultListVO;
 import tourMOA.service.GoodsService;
 import tourMOA.service.GoodsVO;
+import tourMOA.service.MemberService;
+import tourMOA.service.MemberVO;
+import tourMOA.service.OptionVO;
 
 @Controller
 public class AdminController {
@@ -48,6 +56,8 @@ public class AdminController {
 	public String admin() {
 		return "admin/admin";
 	}
+	@Resource(name="memberService")
+	private MemberService memberService;
 	
 	@RequestMapping("/adminComDetail.do")
 	public String adminComInfo() {
@@ -196,17 +206,17 @@ public class AdminController {
 	@ResponseBody public Map<String, String> multipartProcess(
 						MultipartHttpServletRequest multiRequest,
 						HttpServletResponse response, 
-						GoodsVO vo) throws Exception {
-
+						GoodsVO vo, String code) throws Exception {
 		String result="";
 		int cnt = 0;
+		String nPath = code;
 		
 		Map<String, String> map = new HashMap<String, String>();
 		
-		map = uploadFile(multiRequest);
+		map = uploadFile(multiRequest, nPath);	
 		vo.setFilename(map.get("filename"));
-		result = goodsService.insertSlider(vo);
-	
+		result = goodsService.insertSlider(vo);	
+		
 		if(result == null) result = "ok";
 		else result = "not";
 		
@@ -216,13 +226,14 @@ public class AdminController {
 	}
 	
 	
-	
 	/*
 	 *  파일업로드
 	 */
-	public static Map<String, String> uploadFile(MultipartHttpServletRequest multiRequest) throws Exception {
+	public static Map<String, String> uploadFile(MultipartHttpServletRequest multiRequest, String nPath) throws Exception {
+		
+		System.out.println("nPath ========================= " + nPath);
 		MultipartFile file;
-		String uploadFile = "c:/upload" , fulldir = "", filename="";
+		String uploadFile = "c:/upload/"+nPath , fulldir = "", filename="";
 		int cnt = 0;
 		Map<String, String> map = new HashMap<String, String>();
 		File saveFolder = new File(uploadFile);
@@ -240,6 +251,7 @@ public class AdminController {
 				file.transferTo(new File(fulldir));
 				filename += file.getOriginalFilename() + "／";
 				cnt++;
+				System.out.println("fulldir ************************** " + fulldir);
 			}
 		}
 		map.put("filename", filename);
@@ -321,11 +333,11 @@ public class AdminController {
 	@ResponseBody public Map<String, Object> deleteDataBoard(
 			HttpServletRequest request,
 			HttpServletResponse response, 
-			GoodsVO vo) throws Exception {
+			GoodsVO vo, String code) throws Exception {
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		//String uploadPath = egovMessageSource.getMessage("upload.path");
-		String uploadPath = "c:/upload";
+		String uploadPath = "c:/upload/" + code;
 		String fullPath = "";
 		
 		/*BoardVO 에 데이터 정보를 담아서 파일명을 읽어내기 위해서 detail service 실행*/
@@ -338,9 +350,11 @@ public class AdminController {
 			if(files.length() > 0) {
 				String[] f = files.split("／");
 				for(int i=0; i<f.length; i++) {
-					fullPath = uploadPath+"\\"+f[i];
+					fullPath = uploadPath+"/"+f[i];
 					File file = new File(fullPath);					
 					file.delete();
+					File dir = new File(uploadPath); // 디렉토리 삭제
+					dir.delete();
 				}
 			}
 		}
@@ -355,7 +369,7 @@ public class AdminController {
 	@ResponseBody public Map<String, String> updateDataBoard(
 								final MultipartHttpServletRequest multiRequest,
 								HttpServletResponse response, 
-								GoodsVO vo,
+								GoodsVO vo, String code,
 								Model model) throws Exception {
 		MultipartFile file;
 		String filePath = "";
@@ -364,7 +378,7 @@ public class AdminController {
 		Map<String, String> map = new HashMap<String, String>();
 		Map<String, MultipartFile> files = multiRequest.getFileMap();
 		
-		String uploadPath = "c:\\upload";
+		String uploadPath = "c:/upload/" + code;
 		//String uploadPath = egovMessageSource.getMessage("file.upload.path");
 		
 		System.out.println("name : " + vo.getName());
@@ -385,7 +399,7 @@ public class AdminController {
 			Entry<String, MultipartFile> entry = itr.next();
 			file = entry.getValue();
 			if (!"".equals(file.getOriginalFilename())) {
-				filePath = uploadPath + "\\" + file.getOriginalFilename();
+				filePath = uploadPath + "/" + file.getOriginalFilename();
 				file.transferTo(new File(filePath));
 				filename += file.getOriginalFilename() + "／";
 				cnt++;
@@ -407,18 +421,20 @@ public class AdminController {
 	@RequestMapping(value = "/updateFileDelete.do")
 	@ResponseBody public Map<String, String> updateFileDelete(
 														HttpServletResponse response, 
-														GoodsVO vo) throws Exception {
+														GoodsVO vo, String code) throws Exception {
 		
 		Map<String, String> map = new HashMap<String, String>();
-
-		String fullPath = "c:/upload";
-		fullPath = fullPath+"/"+vo.getFilename();
+		String fullPath = "";
+		String dirPath = "c:/upload/" + code;
+		fullPath = dirPath+"/"+vo.getFilename();
 		File file = new File(fullPath);
 		file.delete();
+		File dir = new File(dirPath);
+		dir.delete();
 		
 		System.out.println("vo=======================filename "+ vo.getFilename());
-		System.out.println("vo=======================unq "+ vo.getUnq());
-		vo.setTitle(null);
+		System.out.println("vo=======================unq "+ vo.getCode());
+		vo.setName(null);
 		
 		int cnt = goodsService.updateSlider(vo);
 		
@@ -430,8 +446,70 @@ public class AdminController {
 	}
 	
 	
+	@RequestMapping(value = "/downloadFile.do")
+	public void downloadFile(@RequestParam(value = "requestedFile") String requestedFile, String code,
+				HttpServletResponse response) throws Exception {
+		
+		System.out.println("code ########################### " + code);
+		String uploadPath = "c:/upload/" + code;
+		File uFile = new File(uploadPath, requestedFile);
+		int fSize = (int) uFile.length();
+
+		if (fSize > 0) {
+			BufferedInputStream in = new BufferedInputStream(new FileInputStream(uFile));
+			// String mimetype = servletContext.getMimeType(requestedFile);
+			String mimetype = "text/html";
+			response.setBufferSize(fSize);
+			response.setContentType(mimetype);
+			response.setHeader("Content-Disposition", "attachment; filename=\"" + requestedFile + "\"");
+			response.setContentLength(fSize);
+			FileCopyUtils.copy(in, response.getOutputStream());
+			in.close();
+			response.getOutputStream().flush();
+			response.getOutputStream().close();
+		} else {
+			//setContentType을 프로젝트 환경에 맞추어 변경
+			response.setContentType("application/x-msdownload");
+			PrintWriter printwriter = response.getWriter();
+			printwriter.println("<html>");
+			printwriter.println("<br><br><br><h2>Could not get file name:<br>"+ requestedFile + "</h2>");
+			printwriter.println("<br><br><br><center><h3><a href='javascripｔ: history.go(-1)'>Back</a></h3></center>");
+			printwriter.println("<br><br><br>© webAccess");
+			printwriter.println("</html>");
+			printwriter.flush();
+			printwriter.close();
+		}
+	}
 	
+	@RequestMapping("/adminOptionWrite.do")
+	public String adminOptionWrite() {
+		return "admin/Option/adminOptionWrite";
+	}
 	
+	@RequestMapping(value = "/adminOptionWriteSave.do")
+	@ResponseBody public Map<String, String> multipartProcess(
+						MultipartHttpServletRequest multiRequest,
+						HttpServletResponse response, 
+						GoodsVO vo) throws Exception {
+		
+		
+		System.out.println("asdf");
+		String result="";
+		int cnt = 0;
+		String nPath = "italy";
+		
+		Map<String, String> map = new HashMap<String, String>();
+		
+		map = uploadFile(multiRequest, nPath);	
+		vo.setFilename(map.get("filename"));
+		result = goodsService.insertSlider(vo);	
+		if(result == null) result = "ok";
+		else result = "not";
+		
+		map.put("cnt", map.get(cnt));
+		map.put("result", result);
+		return map;
+	}
 	
 	
 	
@@ -451,18 +529,95 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/adminMemberList.do")
-	public String adminMemberList() {
+	public String adminMemberList(@ModelAttribute("searchVO") SampleDefaultVO searchVO,Model model) throws Exception {
+		
+		/*1. 한 화면에 출력할 행 개수 , 한 화면에 출력할 페이지 개수 */ 
+			int recordCountPerPage = 10;
+			int pageSize = 5;
+		/*2. 총 데이터 개수 */
+			int totalCount = memberService.adminMemberTotal(searchVO);
+		/*3. 화면 출력할 페이지 번호 */
+			int pageIndex = searchVO.getPageIndex();		
+		/*4. 화면 출력할 페이징의 시작 번호 , 끝 번호 */
+			//  1,2,3,4,5  -> 1 / 6,7,8,9,10 -> 6 / 11,12,13,14,15 -> 11
+			int firstPage = ((int) Math.floor((pageIndex-1)/pageSize)*pageSize) + 1 ;
+			int lastPage = (firstPage + pageSize) - 1;
+		/*5. 화면 출력할 행(데이터)의 시작 번호, 끝 번호 */
+			int firstIndex = (pageIndex - 1) * 10 + 1;
+			int lastIndex = (firstIndex + recordCountPerPage) - 1;
+		/*6. 총 페이지 개수 */
+			int totalPage = (int) Math.ceil((double)totalCount / recordCountPerPage);
+		
+			/*7. [이전] / [다음] 처리할 변수 지정 */
+			int before = 0;    // 링크 없음
+			if(firstPage > 1) before = 1;
+			
+			int next = 0;      // 링크 없음
+			if(lastPage <= totalPage) next = 1;
+		/*7. 행번호 */
+			int number = totalCount - ((pageIndex-1) * recordCountPerPage);
+
+		searchVO.setFirstIndex(firstIndex);
+		searchVO.setLastIndex(lastIndex);
+			
+		List<?> list = memberService.adminMemberList(searchVO);	
+
+		model.addAttribute("totalCount", totalCount);  // 총 데이터 수량
+		model.addAttribute("firstPage", firstPage);	  
+		model.addAttribute("lastPage", lastPage);
+		model.addAttribute("totalPage", totalPage);   // 총 페이지 개수
+		model.addAttribute("before", before);		  // before 버튼 활성화 유무
+		model.addAttribute("next", next);			  // next 버튼 활성화 유무
+		model.addAttribute("number", number);		  // 출력 페이지 row 번호
+
+		model.addAttribute("resultList",list);
 		return "admin/Member/adminMemberList";
 	}
+	
+	
 	
 	@RequestMapping("/adminMemberWrite.do")
 	public String adminMemberWrite() {
 		return "admin/Member/adminMemberWrite";
 	}
+	@RequestMapping(value="/insertadminSave.do")
+	@ResponseBody public Map<String,Object> insertadminSave(MemberVO vo) throws Exception{
+		
+		String result = "";
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		System.out.println(vo.getId());
+		result = memberService.insertAdminJoin(vo);
+		if(result == null) result = "ok";
+		map.put("result", result);
+		
+		return map;
+	}
 	
 	@RequestMapping("/adminMemberDetail.do")
-	public String adminMemberDetail() {
+	public String adminMemberDetail(@RequestParam("id") String id,Model model,MemberVO vo) throws Exception {
+		vo = memberService.accountDetail(vo);	                                 
+		model.addAttribute("vo",vo);
 		return "admin/Member/adminMemberDetail";
+	}
+	
+	@RequestMapping(value = "/adminDetailUpdate.do")
+	@ResponseBody public Map<String, Object> adminDetailUpdate(MemberVO vo) throws Exception {
+		int detailupdate=0;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		detailupdate=memberService.adminDetailUpdate(vo);
+		map.put("du", detailupdate);	
+		
+		return map;
+		}
+	@RequestMapping(value = "/adminMemberDelete.do")
+	@ResponseBody public Map<String, Object> adminMemberDelete(MemberVO vo) throws Exception {
+		
+		int cnt = 0;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		cnt = memberService.adminMemberDelete(vo);
+		map.put("cnt", cnt);
+		return map;
 	}
 	
 	@RequestMapping("/adminGroupList.do")
