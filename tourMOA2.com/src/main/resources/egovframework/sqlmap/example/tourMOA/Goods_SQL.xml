@@ -307,10 +307,21 @@
 	</select>
 	
 	<select id="goodsDAO.selectOptionList" resultClass="egovMap">
-		SELECT code, title, img, rtime, price, expl
+		SELECT code, title, filename, rtime, price, expl
 			FROM opt
-			WHERE code = #unq#
+			WHERE code = '$nation$'
 	</select>
+	
+	<insert id="goodsDAO.insertOption">
+		INSERT INTO opt (code, title, img, rtime, price, expl)
+			VALUES (	'$code$'
+					,	'$title$'
+					,	'$img$'
+					,	'$rtime$'
+					,	'$price$'
+					,	'$expl$'
+					)
+	</insert>
 	
 </sqlMap>
 

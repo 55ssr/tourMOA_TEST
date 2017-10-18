@@ -74,6 +74,10 @@ public class ProductController {
 		System.out.println(vo2.getCode());
 		vo2 = goodsService.selectManagerDetail(vo2);
 		
+		if (vo.getNation().equals("italy")) {
+			System.out.println("////////////////////////////////이탈리아////////////////////////////////");
+			//String[] f = files.split("／");
+		}
 		vo3.setCode(vo.getNation());
 		vo3 = goodsService.selectSliderDetail(vo3);
 		
@@ -81,13 +85,11 @@ public class ProductController {
 		System.out.println("vo3.getCode()---------------"+vo3.getName());
 		System.out.println("vo3.getCode()---------------"+vo3.getFilename());
 		
-		List<?> imgList = goodsService.selectDetailImages(vo);
 		List<?> optList = goodsService.selectOptionList(vo);
 		
 		model.addAttribute("vo", vo);
 		model.addAttribute("vo2", vo2);
 		model.addAttribute("vo3", vo3);
-		model.addAttribute("imgList", imgList);
 		model.addAttribute("optList", optList);
 		
 		return "product/detailPackage";		

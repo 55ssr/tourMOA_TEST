@@ -42,10 +42,6 @@ public class GoodsDAO extends EgovAbstractDAO{
 		return (GoodsVO) select("goodsDAO.selectUnitDetail", vo);
 	}
 
-	public List<?> selectDetailImages(GoodsVO vo) {
-		return list("goodsDAO.selectDetailImages", vo);
-	}
-
 	public ManagerVO selectManagerDetail(ManagerVO vo2) {
 		return (ManagerVO) select("goodsDAO.selectManagerDetail", vo2);
 	}
@@ -80,6 +76,10 @@ public class GoodsDAO extends EgovAbstractDAO{
 
 	public SliderVO selectSliderDetail(SliderVO vo3) {
 		return (SliderVO) select("goodsDAO.selectSliderDetail", vo3);
+	}
+
+	public String insertOption(GoodsVO vo) {
+		return (String) insert("goodsDAO.insertOption", vo);
 	}
 
 

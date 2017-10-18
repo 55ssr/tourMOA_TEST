@@ -55,11 +55,6 @@ public class GoodsServiceImpl extends EgovAbstractServiceImpl implements GoodsSe
 	}
 
 	@Override
-	public List<?> selectDetailImages(GoodsVO vo) throws Exception {
-		return goodsDAO.selectDetailImages(vo);
-	}
-
-	@Override
 	public ManagerVO selectManagerDetail(ManagerVO vo2) throws Exception {
 		return goodsDAO.selectManagerDetail(vo2);
 	}
@@ -102,6 +97,11 @@ public class GoodsServiceImpl extends EgovAbstractServiceImpl implements GoodsSe
 	@Override
 	public SliderVO selectSliderDetail(SliderVO vo3) {
 		return goodsDAO.selectSliderDetail(vo3);
+	}
+
+	@Override
+	public String insertOption(GoodsVO vo) throws Exception {
+		return goodsDAO.insertOption(vo);
 	}
 
 
