@@ -5,9 +5,9 @@
 
 
 .title { position: relative; display: table; width: 1100px; height: 24px; margin: 0 auto 15px; }
-.title01 { background:url("/images/product/title01.png") no-repeat; }
-.title01_2 { background:url("/images/product/title01_2.png") no-repeat; }
-.title02 { background:url("/images/product/title02.png") no-repeat; }
+.title01 { background:url("/images/common/title01.png") no-repeat; }
+.title01_2 { background:url("/images/common/title01_2.png") no-repeat; }
+.title02 { background:url("/images/common/title02.png") no-repeat; }
 .title_plan { background:url("/images/product/title_plan.png") no-repeat; } /* 湲고쉷�� */
 .title_coupon { background:url("/images/product/title_coupon.png") no-repeat; } /* �좎씤荑좏룿 */
 .title_event { background:url("/images/product/title_event.png") no-repeat; } /* �대깽�� */

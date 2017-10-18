@@ -431,11 +431,16 @@ $(document).ready(function(){
 	});
 	/* TOP BTN */
 	$(window).scroll(function(){
-		if ($(this).scrollTop() > 500) {
-            $('#moveTopBtn').fadeIn();
-        } else {
-            $('#moveTopBtn').fadeOut();
-        }
+		if ($(this).scrollTop() > 230) {
+            $("#sidemenu").css({top: "20px", right: "-3px", height: "760px", position: "fixed"});
+				if ($(this).scrollTop() > 500) {
+		            $('#moveTopBtn').fadeIn();
+		        } else {
+		            $('#moveTopBtn').fadeOut();
+		        }
+		}else{
+			$("#sidemenu").css({top: "230px", right: "-3px", height: "760px", position: "absolute"});
+		}
 	});
 	 $('#moveTopBtn').click(function(){
 		 $('html, body').animate({
@@ -746,8 +751,7 @@ $(document).ready(function(){
 	<!-- right menu e -->
 
 </div>
-<div id="sidemenu" class="open sideMain"
-	style="top: 210px; right: -3px; height: 760px; position: absolute;">
+<div id="sidemenu" class="open sideMain" style="top: 230px; right: -3px; height: 760px; position: absolute;">
 	<!--[[ 우측 사이드메뉴 Start ]]-->
 	<div class="sidemenuBtn on"></div>
 	<ul class="after" style="display: none;">
@@ -825,7 +829,7 @@ $(document).ready(function(){
 		<li><a href="/promotion/event/2017/0828_ev_pmawards/"><img
 				src="/images/customer/snb_nav13.gif" alt="우수여행상품"></a></li>
 	</ul>
-	<a href="#" id="moveTopBtn"><img src="/images/productDetail/quick_top.png" alt="TOP버튼"></a>
+	<a href="#" id="moveTopBtn"><img src="/images/productDetail/quick_top.png" alt="TOP버튼" style="margin-left: 45px; margin-top: 10px;"></a>
 </div>
 
 <!-- 컨텐츠 별 크기 -->

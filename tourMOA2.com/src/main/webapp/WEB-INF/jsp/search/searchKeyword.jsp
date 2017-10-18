@@ -6,33 +6,38 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator"%>
+
 <%
 String searchKeyword = request.getParameter("searchKeyword");
 String searchCondition = request.getParameter("searchCondition");
 %>
-<script src="/js/jquery.number.min.js"></script>
 <link rel="stylesheet" href="/css/search-total.css" />
-<link rel="stylesheet" href="/css/goods-search.css" />
+<link rel="stylesheet" href="/css/goods-search.css" />  
+
+<script src="/js/jquery-ui.multidatespicker.js"></script>
+  
 <c:set var="existKeyword" value="<%=searchKeyword %>"/>
 <script>
-
 $(document).ready(function(){
-	
-	 $("#departDate").datepicker({
-	       	showButtonpanel : true,
-	           beforeShow:function( input, inst ) {
-	               var dp = $(inst.dpDiv);
-	               var offset = $(input).outerWidth(false) - dp.outerWidth(false) + 1;
-	               dp.css('margin-left', offset);
-	           }, showMonthAfterYear: true ,
-	           dateFormat : 'yymmdd',
-	           minDate: 1,
-	           currentText : '월전체'
-	           
-	       });
+	 /* DATE PICKER */
+	 /* 여행상품 찾기  출발 일월 */
+	$("#datepickers").multiDatesPicker({
+    	numberOfMonths: 3,
+    	dateFormat: "yymmdd",
+    	minDate: 1,
+    	altField: '#searchDateStart'
+		
+    });
+    
+    
+    $( "#searchDateStart" ).datepicker({
+    	dateFormat : 'yymmdd',
+    	/* numberOfMonths: 3, */ //3개월치 보여주기
+    	minDate:0 // 오늘 포함해서 선택가능 어제 이후 선택 불가능
+    }); 
+
 });
 $(document).ready(function(){
-	   
 
 	var viewOpen = ${viewOpen};
 	if(viewOpen == true){
@@ -42,6 +47,25 @@ $(document).ready(function(){
 		$("#rankWrap").css("display","block");
 		$("#if_SearchWrap").css("display","none");
 	}
+$("div#rank span.tab").on('click', function() {
+		var thisTab = this;
+
+		$('.sibal').not(function() {
+			$(this).removeClass('sibal');
+		});
+		$(thisTab).addClass('sibal');
+		
+	}); 
+	$("div#rank span.tab:first-child").on('click', function() {
+		$("div#rank ul.tab01").show();
+		$("div#rank ul.tab02").hide();
+	});
+	$("div#rank span.tab:nth-child(2)").on('click', function() {
+		$("div#rank ul.tab02").show();
+		$("div#rank ul.tab01").hide();
+	});
+	
+	
 	 //선택상품비교하기
 	$("#btnCompare").click(function(event){
 		
@@ -69,6 +93,8 @@ $(document).ready(function(){
 
 });
 </script>
+<div id ="wrap">
+
 	<section id="content"><!--[[ content Start ]]-->
 	
         <div id="searchWrap"><!--[[ 통합검색 searchWrap Start ]]-->
@@ -120,7 +146,8 @@ $(document).ready(function(){
         <div class="notiWrapCon">
 			
 	        <div id="rankWrap"><!--[[ 검색 전 인기검색어 rankWrap Start ]]-->
-	            <span class="tab">인기검색어</span><span class="tab" style="border-left: 1px solid #d6d6d6;width:547px">추천검색어</span>
+	            <span class="tab">인기검색어</span>
+	            <span class="tab" style="border-left: 1px solid #d6d6d6;width:547px">추천검색어</span>
 	            <ul class="rankList tab01" style="border-left:">
 	            <a href="/search/searchKeyword.do?query=오사카">
 	            <li>
@@ -348,7 +375,7 @@ $(document).ready(function(){
 	                            
 	                    </select>
 	                    <span class="tit">출발일</span>
-	                    <input type="text" name="departDate" id="departDate" title="일자개별선택" placeholder="일자개별선택" value="" class="term hasDatepicker" readonly>
+	                    <input type="text" name="searchDateStart" id="searchDateStart" title="일자 개별 선택" placeholder="일자개별선택" class="term">
 	                    <span class="tit">출발요일</span>
 	                    <span class="chk"><input type="checkbox" name="departWDay2" id="reweekall" value=""><label for="reweekall">전체</label></span>
 		                    <span class="chk"><input type="checkbox" name="departWDay2" id="reweek01" value="월"><label for="reweek01">월</label></span>
@@ -405,9 +432,174 @@ $(document).ready(function(){
 	            </ul>
 				</div>
 	            <div id="rank">
-	                <span class="tab on">인기검색어</span><span class="tab">추천검색어</span>
-	                <ul class="rankList tab01" style="display: block;"><a href="/search/searchKeyword.do?query=오사카"><li><span class="no grade">1</span><span class="name">오사카</span><span class="updown  new"></span><span class="num">0</span></li></a><a href="/search/searchKeyword.do?query=스페인 포르투갈 모로코"><li><span class="no grade">2</span><span class="name">스페인 포르투갈 모로코</span><span class="updown up"></span><span class="num">6</span></li></a><a href="/search/searchKeyword.do?query=오키나와"><li><span class="no grade">3</span><span class="name">오키나와</span><span class="updown down"></span><span class="num">2</span></li></a><a href="/search/searchKeyword.do?query=동유럽"><li><span class="no">4</span><span class="name">동유럽</span><span class="updown down"></span><span class="num">2</span></li></a><a href="/search/searchKeyword.do?query=장가계"><li><span class="no">5</span><span class="name">장가계</span><span class="updown down"></span><span class="num">2</span></li></a><a href="/search/searchKeyword.do?query=다낭"><li><span class="no">6</span><span class="name">다낭</span><span class="updown down"></span><span class="num">1</span></li></a><a href="/search/searchKeyword.do?query=미서부"><li><span class="no">7</span><span class="name">미서부</span><span class="updown down"></span><span class="num">1</span></li></a><a href="/search/searchKeyword.do?query=베트남"><li><span class="no">8</span><span class="name">베트남</span><span class="updown  new"></span><span class="num">0</span></li></a><a href="/search/searchKeyword.do?query=터키"><li><span class="no">9</span><span class="name">터키</span><span class="updown down"></span><span class="num">2</span></li></a><a href="/search/searchKeyword.do?query=호주"><li><span class="no">10</span><span class="name">호주</span><span class="updown  new"></span><span class="num">0</span></li></a></ul>
-	                <ul class="rankList tab02"><a href="/search/searchKeyword.do?query=제주도"><li><span class="no grade">1</span><span class="name">제주도</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=보라카이"><li><span class="no grade">2</span><span class="name">보라카이</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=코타키나발루"><li><span class="no grade">3</span><span class="name">코타키나발루</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=러시아"><li><span class="no">4</span><span class="name">러시아</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=괌"><li><span class="no">5</span><span class="name">괌</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=대만"><li><span class="no">6</span><span class="name">대만</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=사이판"><li><span class="no">7</span><span class="name">사이판</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=큐슈"><li><span class="no">8</span><span class="name">큐슈</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=서유럽"><li><span class="no">9</span><span class="name">서유럽</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=몽골"><li><span class="no">10</span><span class="name">몽골</span><span class="updown"></span><span class="num"></span></li></a></ul>
+	                <span class="tab sibal">인기검색어</span>
+	                <span class="tab">추천검색어</span>
+	                <ul class="rankList tab01" style="display: block;">
+	                <a href="/search/searchKeyword.do?query=오사카">
+		                <li>
+			                <span class="no grade">1</span>
+			                <span class="name">오사카</span>
+			                <span class="updown  new"></span>
+			                <span class="num">0</span></li>
+			            </li>
+			        </a>
+			        <a href="/search/searchKeyword.do?query=스페인 포르투갈 모로코">
+		                <li>
+		                	<span class="no grade">2</span>
+			                <span class="name">스페인 포르투갈 모로코</span>
+			                <span class="updown up"></span>
+			                <span class="num">6</span>
+		                </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?query=오키나와">
+		            <li>
+		            <span class="no grade">3</span>
+		            <span class="name">오키나와</span>
+		            <span class="updown down"></span>
+		            <span class="num">2</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?query=동유럽">
+		            <li>
+		            <span class="no">4</span>
+		            <span class="name">동유럽</span>
+		            <span class="updown down"></span>
+		            <span class="num">2</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?query=장가계">
+		            <li>
+		            <span class="no">5</span>
+		            <span class="name">장가계</span>
+		            <span class="updown down"></span>
+		            <span class="num">2</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?query=다낭">
+		            <li>
+		            <span class="no">6</span>
+		            <span class="name">다낭</span>
+		            <span class="updown down"></span>
+		            <span class="num">1</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?query=미서부">
+		            <li>
+		            <span class="no">7</span>
+		            <span class="name">미서부</span>
+		            <span class="updown down"></span>
+		            <span class="num">1</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?query=베트남">
+		            <li>
+		            <span class="no">8</span>
+		            <span class="name">베트남</span>
+		            <span class="updown  new"></span>
+		            <span class="num">0</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?query=터키">
+		            <li>
+		            <span class="no">9</span>
+		            <span class="name">터키</span>
+		            <span class="updown down"></span>
+		            <span class="num">2</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?query=호주">
+		            <li>
+		            <span class="no">10</span>
+		            <span class="name">호주</span>
+		            <span class="updown  new">
+		            </span>
+		            <span class="num">0</span>
+		            </li>
+		            </a>
+		            </ul>
+	                <ul class="rankList tab02" style="display: none;">
+	                <a href="/search/searchKeyword.do?query=오사카">
+		                <li>
+			                <span class="no grade">1</span>
+			                <span class="name">바바바바바바바바바</span>
+			                <span class="updown  new"></span>
+			                <span class="num">0</span></li>
+			            </li>
+			        </a>
+			        <a href="/search/searchKeyword.do?query=스페인 포르투갈 모로코">
+		                <li>
+		                	<span class="no grade">2</span>
+			                <span class="name">스페인 포르투갈 모로코</span>
+			                <span class="updown up"></span>
+			                <span class="num">6</span>
+		                </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?query=오키나와">
+		            <li>
+		            <span class="no grade">3</span>
+		            <span class="name">오키나와</span>
+		            <span class="updown down"></span>
+		            <span class="num">2</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?query=동유럽">
+		            <li>
+		            <span class="no">4</span>
+		            <span class="name">동유럽</span>
+		            <span class="updown down"></span>
+		            <span class="num">2</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?query=장가계">
+		            <li>
+		            <span class="no">5</span>
+		            <span class="name">장가계</span>
+		            <span class="updown down"></span>
+		            <span class="num">2</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?query=다낭">
+		            <li>
+		            <span class="no">6</span>
+		            <span class="name">다낭</span>
+		            <span class="updown down"></span>
+		            <span class="num">1</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?query=미서부">
+		            <li>
+		            <span class="no">7</span>
+		            <span class="name">미서부</span>
+		            <span class="updown down"></span>
+		            <span class="num">1</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?query=베트남">
+		            <li>
+		            <span class="no">8</span>
+		            <span class="name">베트남</span>
+		            <span class="updown  new"></span>
+		            <span class="num">0</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?query=터키">
+		            <li>
+		            <span class="no">9</span>
+		            <span class="name">터키</span>
+		            <span class="updown down"></span>
+		            <span class="num">2</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?query=호주">
+		            <li>
+		            <span class="no">10</span>
+		            <span class="name">호주</span>
+		            <span class="updown  new">
+		            </span>
+		            <span class="num">0</span>
+		            </li>
+		            </a>
+		            </ul>
 	            </div>
 	        </div><!--[[ 결과내재검색 reWrap End ]]-->        
 	        </form>
@@ -533,3 +725,4 @@ $(document).ready(function(){
     </section>
 
     <!--[[ content End ]]-->
+</div>
