@@ -416,6 +416,7 @@ $(document).ready(function(){
         <!--[[ 여행상품목록 Start ]]-->
             <div class="title title02 none" title="여행상품"></div>
             <div class="searchBar">
+            
                 <span class="barL">
                     <span>전체 ${goodsCnt }개 상품</span>
                     <select name="sort" id="sort" class="mgr10" title="정렬순서선택">
@@ -440,6 +441,17 @@ $(document).ready(function(){
                     <button type="button" id="btnCompare" title="선택상품비교하기">선택상품비교하기</button>
                 </span>
             </div>
+            <c:if test="${goodsCnt==0}">
+            <div class="listNoti"><!--[[ listWrap Start ]]-->
+                <div class="noti"><!--[[ listBar Start ]]-->
+                <span>검색된 결과가 없습니다.</span>
+                <p>검색어가 올바르게 입력되었는지 확인해 보세요.</p>
+                <p>일반적이고 포괄적인 단어로 재검색 해보세요.</p>
+                <p>검색어의 띄어쓰기를 조정해 보세요.</p>
+                <p>지역명 도는 국가명으로 검색해 보세요.</p>
+                </div>
+            </div>
+            </c:if>
             <div class="list"><!--[[ listWrap Start ]]-->
                 <ul class="listBar"><!--[[ listBar Start ]]-->
                 <c:set var="cnt" value="1" />
