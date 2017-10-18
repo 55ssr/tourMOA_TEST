@@ -1,4 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator"%>
 <link rel="stylesheet" href="/css/mypage.css" />
 <script>
 
@@ -9,7 +16,40 @@ function fn_btn(a) {
 }
 
 </script>
+	<script>
+	$(document).ready(function(){
+		$("#btnOK").click(function(){
+		
+			var form = "id="+$("input:hidden[id='userid']").val()
+				form += "&pwd="+$("input:password[id='custPw']").val();
+			alert(form);
+			
+			$.ajax({
+				
+				  type:'POST'
+				, data: form
+				, url:"<c:url value='/mypage/accountPwReaffirmDe.do'/>" 
+				, dataType: 'JSON'
+				
+				,success:function(data) {
+					if(data.cnt>0){
+						alert("Dddddd");
+						$("#frm").action="<c:url value='/mypage/accountDetail.do'/>";
+						$("#frm").submit();
+					}else {
+						alert("비밀번호가 일치하지 않습니다.");
+						return false;
+					}
+				}
+				, error: function(error) {
+					alert('Loading Error! '+error);
+				}
+			 });
+		});
+		
+	});
 	
+	</script> 
 	<script>
 	
 		function fnMenuSelect() {
@@ -40,7 +80,7 @@ function fn_btn(a) {
          <div class="sec_wrap sec_01" style="width:100%;"><!--[[ 메인상단 Start ]]-->
              <div class="para_01">
                  <p>안녕하세요. 즐거운 여행 되세요.</p>
-                 <form name="frmpwd" id="frmpwd" method="post" action="/mypage/accountPwUpdate.do">
+                 <form name="frmpwd" id="frmpwd" method="post" >
                  
                  <div class="btnArea">
                      <span class="btn"><a href="/mypage/accountPwReaffirm.do">개인정보관리</a></span>
@@ -120,8 +160,7 @@ function fn_btn(a) {
 			<span>고객님의 소중한 개인정보를 보호하기 위해</span>
 			<span>비밀번호를 다시 한번 확인합니다.</span>        
 		<form name="frm" id="frm" method="post" action="/mypage/accountDetail.do">
-		<input type="hidden" name="id" id="id" value="${sessionScope.loginCertification.id}"/>
-		<input type="hidden" name="pwd" id="pwd" value="${sessionScope.loginCertification.id}"/>
+		<input type="hidden" name="id" id="userid" value="${sessionScope.loginCertification.id}"/>
 		
 			<div class="cont_l">
 				<span class="pass_tit">아이디</span><span class="cont">${sessionScope.loginCertification.id}</span>
@@ -129,7 +168,7 @@ function fn_btn(a) {
 				<span class="cont"><input type="password" id="custPw" name="custPw"></span>
 			</div>
 			<div class="cont_r">
-				<button type="submit" id="btnOK">확인</button>
+				<button type="button" name="btnOK" id="btnOK">확인</button>
 			</div>
 		</form>
 		</div>

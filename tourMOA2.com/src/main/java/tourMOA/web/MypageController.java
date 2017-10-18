@@ -109,7 +109,7 @@ public class MypageController {
 		String result = "";
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		System.out.println(vo.getId());
-		result = memberService.insertMemberJoin(vo);
+		result = memberService.insertAdminJoin(vo);
 		if(result == null) result = "ok";
 		map.put("result", result);
 		
@@ -155,7 +155,7 @@ public class MypageController {
 	}
 	
 	/*마이페이지 회원정보 수정1단계*/
-	@RequestMapping("mypage/accountPwReaffirm.do")
+	/*@RequestMapping("mypage/accountPwReaffirm.do")
 	public String accountPwReaffirm(@RequestParam("id")String id, Model model,MemberVO vo) throws Exception{	
 		
 		id = vo.getId();
@@ -166,7 +166,7 @@ public class MypageController {
 		return "mypage/accountPwReaffirm";
 	}
 	
-	/*마이페이지 회원정보 수정 상세페이지단계*/
+	마이페이지 회원정보 수정 상세페이지단계
 	@RequestMapping("mypage/accountDetail.do")
 	public String accountDetail(@RequestParam("id")String id, Model model,MemberVO vo) throws Exception{		
 	
@@ -175,6 +175,42 @@ public class MypageController {
 			model.addAttribute("vo",vo);
 			
 		return "mypage/accountDetail";
+	}*/
+	
+	/*마이페이지 회원정보 수정1단계*/
+	@RequestMapping("mypage/accountPwReaffirm.do")
+	public String accountPwReaffirm( Model model,MemberVO vo) throws Exception{	
+		
+		return "mypage/accountPwReaffirm";
+	}
+	
+	@RequestMapping(value="/mypage/accountPwReaffirmDe.do")
+	@ResponseBody public Map<String, Object> accountPwReaffirmDe(@RequestParam("pwd")String pwd, Model model,MemberVO vo) throws Exception{	
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		int cnt=0;
+		cnt = memberService.accountPwReaffirm(vo);
+		
+		if(cnt >0){
+			map.put("cnt",cnt);
+		}
+		model.addAttribute("vo",vo);
+		return map;
+	}
+	
+	/*마이페이지 회원정보 수정 상세페이지단계*/
+	@RequestMapping("mypage/accountDetail.do")
+	public String accountDetail(Model model,MemberVO vo) throws Exception{		
+			/*int cnt=0;
+			cnt = memberService.accountPwReaffirm(vo);
+			if(cnt>0){
+				System.out.println(vo.getPwd());
+			}
+			System.out.println("==========="+vo.getId());*/
+			
+			vo = memberService.accountDetail(vo);	                                 
+			model.addAttribute("vo",vo);
+			
+			return "mypage/accountDetail";
 	}
 	@RequestMapping(value = "/mypage/accountDetailUpdate.do")
 	@ResponseBody public Map<String, Object> accountDetailUpdate(MemberVO vo) throws Exception {
