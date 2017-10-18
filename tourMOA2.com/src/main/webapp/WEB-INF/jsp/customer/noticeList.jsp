@@ -96,10 +96,9 @@
 					<th scope="col">등록일</th>
 				</tr>
 		</table>
-		<table>
+		<table >
 			<c:forEach var="result" items="${resultList}" varStatus="status">
 				<tr>
-
 					<td headers="번호"><span class="bul bul_yellow">상시공지</span></td>
 					<%-- <td headers="번호" >${number}</td>	 --%>
 					<td headers="제목" class="subject"><a
@@ -112,8 +111,23 @@
 			</tbody>
 		</table>
 	</div>
+<!-- --------------------------------------------------------------------------------- -->	
+	<!-- paging -->
+<div class="paging">
+ <!--  <a href="#" class="btn_arr first"><span class="hide">처음페이지</span></a> -->            
+  <a href="#" class="btn_arr prev"><span class="hide">이전페이지</span></a>     
+  <a href="#" class="on">1</a><!-- D : 활성화페이지일 경우 : on 처리 -->
+  <a href="#">2</a>
+  <a href="#">3</a>
+  <a href="#">4</a>
+  <a href="#">5</a>
+  <a href="#" class="btn_arr next"><span class="hide">다음페이지</span></a>             
+<!--   <a href="#" class="btn_arr last"><span class="hide">마지막페이지</span></a>  -->           
+</div>
+	<!-- //paging -->
+<!-- --------------------------------------------------------------------------------- -->
 	<!--[[ board area End ]]-->
-	<div class="board_navi_area">
+	<%-- <div class="board_navi_area">
 		<!-- [[ board navi Start ]] -->
 	<nav aria-label="Page navigation example">
 		<ul class="pagination justify-content-center">
@@ -168,8 +182,9 @@
 			</li>
 		</ul>
 	</nav>
-</div>
+</div> --%>
 <!--[[ board navi End ]]-->
+<!-- -------------------------------------------------------------------------------------------------------------------------------------- -->
 	<!-- <div class="board_navi_area">
 		[[ board navi Start ]]
 		<span class="paging"> <span class="first">&lt;</span><span

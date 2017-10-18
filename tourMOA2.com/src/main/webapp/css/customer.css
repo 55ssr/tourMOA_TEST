@@ -1004,3 +1004,23 @@ ul.multi_select>li>ul>li input{margin:0 8px 0 0;vertical-align:-1px}
 .est_tbl table {border:1px solid #ddd; }
 .est_tbl th, .est_tbl td {border:1px solid #ddd !important; padding:8px !important; height:auto !important; font-size:13px !important; color:#333 !important }
 .est_tbl th {background-color:#f2f2f2}
+
+
+/* 김훈영 커스텀 */
+ tr:nth-child(even) {background-color:#f7f8f9}
+
+
+.paging .hide {display:block; height: 0; width: 0; font-size: 0; line-height: 0; margin: 0; padding: 0; overflow:hidden;}
+.paging{padding:19px; text-align:center;}
+.paging a{display:inline-block; width:23px; height:23px; padding-top:2px; vertical-align:middle;}
+.paging a:hover{text-decoration:underline;}
+.paging .btn_arr{text-decoration:none;}
+.paging .btn_arr, .paging .on{margin:0 3px; padding-top:0; border:1px solid #ddd; border-radius:30px; /* background:url(/front/img/com/btn_paging.png) no-repeat; */}
+.paging .on{padding-top:1px; height:22px; color:#fff; font-weight:bold; background:#000;} /* {color: #a1a1a1; text-decoration: none; */
+.paging .on:hover{text-decoration:none;}
+
+/* 백그라운드일경우
+.paging .first{background-position:left top;}
+.paging .prev{background-position:-50px top;}
+.paging .next{background-position:-100px top;}
+.paging .last{background-position:-150px top;}*/
