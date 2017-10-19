@@ -23,4 +23,6 @@ public interface GoodsService {
 	String insertOption(OptionVO vo) throws Exception;
 	int selectOptionTotal(DefaultListVO searchVO);
 	List<?> adminOptionList(DefaultListVO searchVO);
+	int adminSliderConfirm(SliderVO vo) throws Exception;
+	OptionVO selectOptionDetail(OptionVO vo) throws Exception;
 }

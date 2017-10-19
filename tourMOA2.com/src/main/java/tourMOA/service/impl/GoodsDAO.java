@@ -91,5 +91,13 @@ public class GoodsDAO extends EgovAbstractDAO{
 		return list("goodsDAO.adminOptionList", searchVO);
 	}
 
+	public int adminSliderConfirm(SliderVO vo) {
+		return (int) select("goodsDAO.adminSliderConfirm", vo);
+	}
+
+	public OptionVO selectOptionDetail(OptionVO vo) {
+		return (OptionVO) select("goodsDAO.selectOptionDetail", vo);
+	}
+
 
 }
