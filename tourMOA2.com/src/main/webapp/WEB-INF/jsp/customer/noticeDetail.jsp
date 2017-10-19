@@ -79,5 +79,6 @@
 			<button id="btn_list" class="btnGray" title="목록보기"
 				onclick="document.location.href='/customer/noticeList.do?pageIndex=1&amp;searchCnd=&amp;searchWrd=&amp;searchNoticeCd=&amp;'">목록보기</button>
 		</div>
+		</div>
 </section>
 </div>

@@ -1015,7 +1015,8 @@ ul.multi_select>li>ul>li input{margin:0 8px 0 0;vertical-align:-1px}
 .paging a{display:inline-block; width:23px; height:23px; padding-top:2px; vertical-align:middle;}
 .paging a:hover{text-decoration:underline;}
 .paging .btn_arr{text-decoration:none;}
-.paging .btn_arr, .paging .on{margin:0 3px; padding-top:0; border:1px solid #ddd; border-radius:30px; /* background:url(/front/img/com/btn_paging.png) no-repeat; */}
+.paging .btn_arr, .paging .on{margin:0 3px; padding-top:0; border:1px solid #ddd; border-radius:30px; 
+/* background:url(/front/img/com/btn_paging.png) no-repeat; */}
 .paging .on{padding-top:1px; height:22px; color:#fff; font-weight:bold; background:#000;} /* {color: #a1a1a1; text-decoration: none; */
 .paging .on:hover{text-decoration:none;}
 

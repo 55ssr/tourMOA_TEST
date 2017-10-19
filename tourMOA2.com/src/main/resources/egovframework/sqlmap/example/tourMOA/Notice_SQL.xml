@@ -67,7 +67,7 @@
 			title,
 			centent,
 			hit,
-			rdate,
+			to_char(rdate, 'yyyy-mm-dd')as rdate,
 			upddate,
 			allview
 		FROM

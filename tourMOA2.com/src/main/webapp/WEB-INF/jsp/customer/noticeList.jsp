@@ -104,7 +104,7 @@
 					<td headers="제목" class="subject"><a
 						href="/customer/noticeDetail.do?noticeNo=20000002822&pageIndex=1&searchCnd=&searchWrd=&searchNoticeCd=">${result.title}<%--  - ${result.allview} --%></a>
 					</td>
-					<td headers="등록일">${result.rdate}</td>
+					<td headers="등록일">${fn:substring(result.rdate,0,10)}</td>
 				</tr>
 				<c:set var="number" value="${number-1}" />
 			</c:forEach>
@@ -113,40 +113,46 @@
 	</div>
 <!-- --------------------------------------------------------------------------------- -->	
 	<!-- paging -->
-<div class="paging">
- <!--  <a href="#" class="btn_arr first"><span class="hide">처음페이지</span></a> -->            
+<!-- <div class="paging">
+  <a href="#" class="btn_arr first"><span class="hide">처음페이지</span></a>            
   <a href="#" class="btn_arr prev"><span class="hide">이전페이지</span></a>     
-  <a href="#" class="on">1</a><!-- D : 활성화페이지일 경우 : on 처리 -->
+  <a href="#" class="on">1</a>D : 활성화페이지일 경우 : on 처리
   <a href="#">2</a>
   <a href="#">3</a>
   <a href="#">4</a>
   <a href="#">5</a>
   <a href="#" class="btn_arr next"><span class="hide">다음페이지</span></a>             
-<!--   <a href="#" class="btn_arr last"><span class="hide">마지막페이지</span></a>  -->           
-</div>
+  <a href="#" class="btn_arr last"><span class="hide">마지막페이지</span></a>            
+</div> -->
 	<!-- //paging -->
 <!-- --------------------------------------------------------------------------------- -->
 	<!--[[ board area End ]]-->
-	<%-- <div class="board_navi_area">
+	<div class="board_navi_area">
 		<!-- [[ board navi Start ]] -->
 	<nav aria-label="Page navigation example">
 		<ul class="pagination justify-content-center">
 		<c:if test="${before == 0}">
 			<li class="page-item disabled">
 				<a class="page-link" href="#" tabindex="-1" aria-label="Previous">
-					<span aria-hidden="true">&laquo;</span>
-					<span class="pre">Previous</span>
+					<span aria-hidden="true">&laquo;&laquo;</span>	
+					<span class="pre"><!-- Previous --></span>
 				</a>
 			</li>
 		</c:if>
 		<c:if test="${before > 0}"> 
 			<li class="page-item">
-				<a class="page-link" href="/customer/noticeList.do?pageIndex=${firstPage-1}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}" tabindex="-1" aria-label="Previous">
+				<a class="page-link" href="/customer/noticeList.do?pageIndex=${firstPage-1}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}" tabindex="-1" aria-label="">
 					<span aria-hidden="true">&laquo;</span>
-					<span class="pre">Previous</span>
+					<span class="pre"></span>
 				</a>
 			</li>
 		</c:if>
+		<li class="page-item">
+				<a class="page-link" href="/customer/noticeList.do?pageIndex=${firstPage}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}" tabindex="1" aria-label="">
+					<span aria-hidden="true">&laquo;</span>
+					<!-- <span class="pre">Previous</span> -->
+				</a>
+			</li>
 		
 		<c:forEach var="i" begin="${firstPage}" end="${lastPage}">
 			<c:if test="${i <= totalPage}">
@@ -156,36 +162,38 @@
 				<c:if test="${i != searchVO.pageIndex}">
 					<li class="page-item inline"><a class="page-link" href="/customer/noticeList.do?pageIndex=${i}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}">${i}</a></li>
 				</c:if>
+				&nbsp;
 			</c:if>
 		</c:forEach>
 		<c:if test="${next == 0}">
 			<li class="page-item disabled">
 				<a class="page-link" href="#" aria-label="Next">
 					<span aria-hidden="true">&raquo;</span>
-					<span class="pre">Next</span>
+					<span class="pre"><!-- Next --></span>
 				</a>
 			</li>
 		</c:if>
 		<c:if test="${next > 0}">
 			<li class="page-item">
-				<a class="page-link" href="/customer/noticeList.do?pageIndex=${lastPage+1}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}" aria-label="Next">
+				<a class="page-link" href="/customer/noticeList.do?pageIndex=${lastPage+1}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}" aria-label="">
 					<span aria-hidden="true">&raquo;</span>
-					<span class="pre">Next</span>
+					<span class="pre"></span>
 				</a>
 			</li>
 		</c:if>
 			<li class="page-item">
-				<a class="page-link" href="/customer/noticeList.do?pageIndex=${totalPage}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}" aria-label="Next">
+				<a class="page-link" href="/customer/noticeList.do?pageIndex=${totalPage}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}" aria-label="">
 					<span aria-hidden="true">&raquo;&raquo;</span>
-					<span class="pre">Next</span>
+					<!-- <span class="pre">Next</span> -->
 				</a>
 			</li>
 		</ul>
 	</nav>
-</div> --%>
+</div>
 <!--[[ board navi End ]]-->
+
 <!-- -------------------------------------------------------------------------------------------------------------------------------------- -->
-	<!-- <div class="board_navi_area">
+<!-- 	<div class="board_navi_area">
 		[[ board navi Start ]]
 		<span class="paging"> <span class="first">&lt;</span><span
 			class="pre">이전</span><span class="on"><a>1</a></span><span class=""><a
