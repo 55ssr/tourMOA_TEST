@@ -38,6 +38,9 @@ $(function(){
 				alert("error : " + error);
 			}
 		});
+		
+		
+		
 	});
 });
 </script>
@@ -107,7 +110,7 @@ detail</textarea>
 			<label for="selectUse" class="col-sm-2 col-form-label">슬라이드 이미지</label>
 			<div class="col-sm-2">
 				<!-- <input type="file" class="form-control-file" id="exampleFormControlFile1" multiple> -->
-				<input type="file" name="file1" size="70" /><br />
+				<input type="file" name="file1" size="70" />
 			</div>
 		</div>
 		
