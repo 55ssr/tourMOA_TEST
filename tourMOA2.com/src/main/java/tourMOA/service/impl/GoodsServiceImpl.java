@@ -11,6 +11,7 @@ import tourMOA.service.DefaultListVO;
 import tourMOA.service.GoodsService;
 import tourMOA.service.GoodsVO;
 import tourMOA.service.ManagerVO;
+import tourMOA.service.OptionVO;
 import tourMOA.service.SliderVO;
 
 @Service("goodsService")
@@ -100,8 +101,18 @@ public class GoodsServiceImpl extends EgovAbstractServiceImpl implements GoodsSe
 	}
 
 	@Override
-	public String insertOption(GoodsVO vo) throws Exception {
+	public String insertOption(OptionVO vo) throws Exception {
 		return goodsDAO.insertOption(vo);
+	}
+
+	@Override
+	public int selectOptionTotal(DefaultListVO searchVO) {
+		return goodsDAO.selectOptionTotal(searchVO);
+	}
+
+	@Override
+	public List<?> adminOptionList(DefaultListVO searchVO) {
+		return goodsDAO.adminOptionList(searchVO);
 	}
 
 

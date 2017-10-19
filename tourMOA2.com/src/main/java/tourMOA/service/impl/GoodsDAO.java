@@ -8,6 +8,7 @@ import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
 import tourMOA.service.DefaultListVO;
 import tourMOA.service.GoodsVO;
 import tourMOA.service.ManagerVO;
+import tourMOA.service.OptionVO;
 import tourMOA.service.SliderVO;
 
 
@@ -78,8 +79,16 @@ public class GoodsDAO extends EgovAbstractDAO{
 		return (SliderVO) select("goodsDAO.selectSliderDetail", vo3);
 	}
 
-	public String insertOption(GoodsVO vo) {
+	public String insertOption(OptionVO vo) {
 		return (String) insert("goodsDAO.insertOption", vo);
+	}
+
+	public int selectOptionTotal(DefaultListVO searchVO) {
+		return (int) select("goodsDAO.selectOptionTotal", searchVO);
+	}
+
+	public List<?> adminOptionList(DefaultListVO searchVO) {
+		return list("goodsDAO.adminOptionList", searchVO);
 	}
 
 
