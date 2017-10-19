@@ -7,45 +7,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 	<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
-	<h1>상품 관리</h1>
+	<h1>옵션 관리</h1>
 	<div class="row justify-content-between mb-3">
 		<div class="col-lg-6">
 			<div class="row">
-				<div class="col-lg-3">
-					<form name="frmGubun" id="frmGubun" action="/adminGoodsList.do">
-						<input type="hidden" name="searchKeyword" />
-						<select name="searchCondition" id="gubunSelect" class="form-control">
-							<option value=""> - 상품 구분 - </option>
-							<option id="자유여행" value="gubun"<c:if test="${param.searchKeyword =='자유여행'}">selected</c:if>>자유여행</option>
-							<option id="해외패키지" value="gubun"<c:if test="${param.searchKeyword =='해외패키지'}">selected</c:if>>해외패키지</option>
-						</select>
-					</form>
-					<script>
-					$("#gubunSelect").on("change", function(){
-						var id = $("#gubunSelect option:selected").attr("id");
-						$("#frmGubun input[name='searchKeyword']").val(id);
-						$("#frmGubun").submit();
-					});
-					</script>
-				</div>
-				
-				<div class="col-lg-3">
-					<form name="frmLocation" id="frmLocation" action="/adminGoodsList.do">
-						<input type="hidden" name="searchKeyword" />
-						<select name="searchCondition" class="form-control" id="locationSelect">
-							<option value=""> - 지역 구분 - </option>
-							<option id="서유럽" value="location"<c:if test="${param.searchKeyword =='서유럽'}">selected</c:if>>서유럽</option>
-							<option id="동남아" value="loaction"<c:if test="${param.searchKeyword =='동남아'}">selected</c:if>>동남아</option>
-						</select>
-					</form>
-					<script>
-					$("#locationSelect").on("change", function(){
-						var id = $("#locationSelect option:selected").attr("id");
-						$("#frmLocation input[name='searchKeyword']").val(id);
-						$("#frmLocation").submit();
-					});
-					</script>
-				</div>
 				<div class="col-lg-6">
 					<script>
 					function fn_select(e) {
@@ -86,7 +51,7 @@
 			</div>
 		</div>
 		<div class="col-lg-1">
-			<button type="button" class="w-100 btn btn-primary" onclick="location.href='/adminGoodsWrite.do'">등록</button>
+			<button type="button" class="w-100 btn btn-primary" onclick="location.href='/adminOptionWrite.do'">등록</button>
 		</div>
 	</div>
 	
@@ -95,33 +60,24 @@
 			<thead>
 				<tr>
 					<th>#</th>
-					<th>구분</th>
-					<th>상품명</th>
-					<th>지역</th>
 					<th>국가</th>
+					<th>제목</th>
+					<th>소요시간</th>
 					<th>비용</th>
-					<th>출발일</th>
-					<th>도착일</th>
-					<th>사용여부</th>
-					<th>등록일</th>
+					<th>파일</th>
 				</tr>
 			</thead>
 			<tbody>
-			
 			<c:forEach var="rs" items="${resultList}">
 				<tr>
 					<td>${number}</td>
-					<td>${rs.gubun}</td>
+					<td>${rs.code}</td>
 					<td>
-						<a href="#" onclick="fn_loc(${rs.unq})">${rs.title}</a>
+						<a href="#" onclick="fn_loc('${rs.code}')">${rs.title}</a>
 					</td>
-					<td>${rs.location}</td>
-					<td>${rs.nation}</td>
+					<td>${rs.rtime}</td>
 					<td>${rs.price}</td>
-					<td>${rs.sdate}</td>
-					<td>${rs.edate}</td>
-					<td>${rs.use}</td>
-					<td>${fn:substring(rs.rdate,0,10)}</td>
+					<td>${rs.filename}</td>
 				</tr>
 				<c:set var="number" value="${number-1}" />
 			</c:forEach>
@@ -187,12 +143,12 @@
 	
 	<script type="text/javascript">
 	function fn_loc(a) {
-		document.hiddenFrm.unq.value = a;
+		document.hiddenFrm.code.value = a;
 		document.hiddenFrm.submit();
 	}
 	</script>
-	<form action="/adminGoodsDetail.do" name="hiddenFrm" method="post">
-		<input type="hidden" name="unq" id="unq" />
+	<form action="/adminSliderDetail.do" name="hiddenFrm" method="post">
+		<input type="hidden" name="code" id="code" />
 	</form>
-	
+	  
     </main>

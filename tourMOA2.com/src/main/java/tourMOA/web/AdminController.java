@@ -14,6 +14,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -34,6 +35,7 @@ import tourMOA.service.GoodsService;
 import tourMOA.service.GoodsVO;
 import tourMOA.service.MemberService;
 import tourMOA.service.MemberVO;
+import tourMOA.service.OptionVO;
 
 @Controller
 public class AdminController {
@@ -204,17 +206,17 @@ public class AdminController {
 	@ResponseBody public Map<String, String> multipartProcess(
 						MultipartHttpServletRequest multiRequest,
 						HttpServletResponse response, 
-						GoodsVO vo) throws Exception {
-
+						GoodsVO vo, String code) throws Exception {
 		String result="";
 		int cnt = 0;
+		String nPath = code;
 		
 		Map<String, String> map = new HashMap<String, String>();
 		
-		map = uploadFile(multiRequest);
+		map = uploadFile(multiRequest, nPath);	
 		vo.setFilename(map.get("filename"));
-		result = goodsService.insertSlider(vo);
-	
+		result = goodsService.insertSlider(vo);	
+		
 		if(result == null) result = "ok";
 		else result = "not";
 		
@@ -224,13 +226,14 @@ public class AdminController {
 	}
 	
 	
-	
 	/*
 	 *  파일업로드
 	 */
-	public static Map<String, String> uploadFile(MultipartHttpServletRequest multiRequest) throws Exception {
+	public static Map<String, String> uploadFile(MultipartHttpServletRequest multiRequest, String nPath) throws Exception {
+		
+		System.out.println("nPath ========================= " + nPath);
 		MultipartFile file;
-		String uploadFile = "c:/upload" , fulldir = "", filename="";
+		String uploadFile = "c:/upload/"+nPath , fulldir = "", filename="";
 		int cnt = 0;
 		Map<String, String> map = new HashMap<String, String>();
 		File saveFolder = new File(uploadFile);
@@ -248,8 +251,15 @@ public class AdminController {
 				file.transferTo(new File(fulldir));
 				filename += file.getOriginalFilename() + "／";
 				cnt++;
+				System.out.println("filename ************************** " + filename);
+				System.out.println("fulldir ************************** " + fulldir);
 			}
 		}
+		
+		if (filename.length() > 0 && filename.charAt(filename.length()-1)=='／') {
+			filename = filename.substring(0, filename.length()-1);
+		}
+		
 		map.put("filename", filename);
 		map.put("cnt", Integer.toString(cnt));
 		return map;
@@ -329,11 +339,11 @@ public class AdminController {
 	@ResponseBody public Map<String, Object> deleteDataBoard(
 			HttpServletRequest request,
 			HttpServletResponse response, 
-			GoodsVO vo) throws Exception {
+			GoodsVO vo, String code) throws Exception {
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		//String uploadPath = egovMessageSource.getMessage("upload.path");
-		String uploadPath = "c:/upload";
+		String uploadPath = "c:/upload/" + code;
 		String fullPath = "";
 		
 		/*BoardVO 에 데이터 정보를 담아서 파일명을 읽어내기 위해서 detail service 실행*/
@@ -346,9 +356,11 @@ public class AdminController {
 			if(files.length() > 0) {
 				String[] f = files.split("／");
 				for(int i=0; i<f.length; i++) {
-					fullPath = uploadPath+"\\"+f[i];
+					fullPath = uploadPath+"/"+f[i];
 					File file = new File(fullPath);					
 					file.delete();
+					File dir = new File(uploadPath); // 디렉토리 삭제
+					dir.delete();
 				}
 			}
 		}
@@ -363,7 +375,7 @@ public class AdminController {
 	@ResponseBody public Map<String, String> updateDataBoard(
 								final MultipartHttpServletRequest multiRequest,
 								HttpServletResponse response, 
-								GoodsVO vo,
+								GoodsVO vo, String code,
 								Model model) throws Exception {
 		MultipartFile file;
 		String filePath = "";
@@ -372,7 +384,7 @@ public class AdminController {
 		Map<String, String> map = new HashMap<String, String>();
 		Map<String, MultipartFile> files = multiRequest.getFileMap();
 		
-		String uploadPath = "c:\\upload";
+		String uploadPath = "c:/upload/" + code;
 		//String uploadPath = egovMessageSource.getMessage("file.upload.path");
 		
 		System.out.println("name : " + vo.getName());
@@ -393,7 +405,7 @@ public class AdminController {
 			Entry<String, MultipartFile> entry = itr.next();
 			file = entry.getValue();
 			if (!"".equals(file.getOriginalFilename())) {
-				filePath = uploadPath + "\\" + file.getOriginalFilename();
+				filePath = uploadPath + "/" + file.getOriginalFilename();
 				file.transferTo(new File(filePath));
 				filename += file.getOriginalFilename() + "／";
 				cnt++;
@@ -415,14 +427,16 @@ public class AdminController {
 	@RequestMapping(value = "/updateFileDelete.do")
 	@ResponseBody public Map<String, String> updateFileDelete(
 														HttpServletResponse response, 
-														GoodsVO vo) throws Exception {
+														GoodsVO vo, String code) throws Exception {
 		
 		Map<String, String> map = new HashMap<String, String>();
-
-		String fullPath = "c:/upload";
-		fullPath = fullPath+"/"+vo.getFilename();
+		String fullPath = "";
+		String dirPath = "c:/upload/" + code;
+		fullPath = dirPath+"/"+vo.getFilename();
 		File file = new File(fullPath);
 		file.delete();
+		File dir = new File(dirPath);
+		dir.delete();
 		
 		System.out.println("vo=======================filename "+ vo.getFilename());
 		System.out.println("vo=======================unq "+ vo.getCode());
@@ -439,9 +453,11 @@ public class AdminController {
 	
 	
 	@RequestMapping(value = "/downloadFile.do")
-	public void downloadFile(@RequestParam(value = "requestedFile") String requestedFile,
+	public void downloadFile(@RequestParam(value = "requestedFile") String requestedFile, String code,
 				HttpServletResponse response) throws Exception {
-		String uploadPath = "c:/upload";
+		
+		System.out.println("code ########################### " + code);
+		String uploadPath = "c:/upload/" + code;
 		File uFile = new File(uploadPath, requestedFile);
 		int fSize = (int) uFile.length();
 
@@ -471,7 +487,84 @@ public class AdminController {
 		}
 	}
 	
+	@RequestMapping("/adminOptionList.do")
+	public String adminOptionList(@ModelAttribute("searchVO") DefaultListVO searchVO, Model model) throws Exception {
+
+		/*1. 한 화면에 출력 할 행 갯수, 한 화면에 출력할 페이지 갯수 */
+		int recordCountPerPage = 10;
+		int pageSize = 5;
+		
+		/*2.총 데이터 갯수*/
+		int totalCount = goodsService.selectOptionTotal(searchVO);
+		
+		/*3. 화면 출력 할 페이지 번호*/
+		int pageIndex = searchVO.getPageIndex();
+		
+		/*4. 화면 출력할 페이징의 시작 번호, 끝 번호*/
+		int firstPage = ((int) Math.floor((pageIndex-1)/pageSize)*pageSize) + 1;
+		int lastPage = firstPage + pageSize - 1;
+		
+		/*5. 화면 출력할 행(데이터)의 시작 번호, 끝 번호*/
+		int firstIndex = (pageIndex-1) * 10 + 1;
+		int lastIndex = firstIndex + (recordCountPerPage - 1);
+		
+		/*6. 총 페이지 갯수*/
+		int totalPage = (int) Math.ceil((double) totalCount / recordCountPerPage);
+		
+		/*7. [이전] / [다음] 처리 할 변수 지정*/
+		int before = 0; // 링크 없음
+		if (firstPage > 1) before = 1;
+		
+		int next = 0; // 링크 없음
+		if (lastPage < totalPage) next = 1;
+		/*8. 행번호*/
+		int number  = totalCount - ((pageIndex-1) * recordCountPerPage);
+		
+		searchVO.setFirstIndex(firstIndex);
+		searchVO.setLastIndex(lastIndex);
+						
+		List<?> optionList = goodsService.adminOptionList(searchVO);
+				
+		model.addAttribute("totalCount", totalCount);
+		model.addAttribute("firstPage", firstPage);
+		model.addAttribute("lastPage", lastPage);
+		model.addAttribute("totalPage", totalPage);
+		model.addAttribute("before", before);
+		model.addAttribute("next", next);
+		model.addAttribute("number", number);
+		
+		model.addAttribute("resultList", optionList);
+		return "admin/Option/adminOptionList";
+	}
 	
+	@RequestMapping("/adminOptionWrite.do")
+	public String adminOptionWrite() {
+		return "admin/Option/adminOptionWrite";
+	}
+	
+	@RequestMapping(value = "/adminOptionWriteSave.do")
+	@ResponseBody public Map<String, String> multipartProcess(
+						MultipartHttpServletRequest multiRequest,
+						HttpServletResponse response,
+						OptionVO vo, String code) throws Exception {
+		
+		String result="";
+		int cnt = 0;
+		String nPath = code + "/opt";
+		
+		Map<String, String> map = new HashMap<String, String>();
+		
+		map = uploadFile(multiRequest, nPath);	
+		System.out.println("map.get+++++++++++++++++++++"+map.get("filename"));
+		vo.setFilename(map.get("filename"));
+		result = goodsService.insertOption(vo);	
+		if(result == null) result = "ok";
+		else result = "not";
+		
+		map.put("cnt", map.get(cnt));
+		map.put("result", result);
+		return map;
+	}
 	
 	
 	

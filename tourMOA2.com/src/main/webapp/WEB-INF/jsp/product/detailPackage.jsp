@@ -381,7 +381,6 @@ $(document).ready(function(){
 								<span>${vo2.mail}</span>
 							</div>
 						</div>
-						<span class="dev_comm">담당자 테이블 만들어서 매칭</span>
 					</li>
 					
 					<li class="lineNone">
@@ -584,7 +583,7 @@ $(document).ready(function(){
 									<tr>
 										<td class="td01">
 											<span class="pic">
-												<img src="/images/opt/${rs.img}" alt="${rs.title}">
+												<img src="/images/opt/${rs.filename}" alt="${rs.title}">
 											</span>
 											<span class="choice w180">
 												<span class="tit"></span>

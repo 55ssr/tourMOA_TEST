@@ -7,6 +7,7 @@
 	<typeAlias  alias="goodsVO" type="tourMOA.service.GoodsVO"/>
 	<typeAlias  alias="sliderVO" type="tourMOA.service.SliderVO"/>
 	<typeAlias  alias="managerVO" type="tourMOA.service.ManagerVO"/>
+	<typeAlias  alias="optionVO" type="tourMOA.service.OptionVO"/>
 
 	<select id="goodsDAO.selectGoodsList" resultClass="egovMap">
 		SELECT b.* FROM (
@@ -303,13 +304,53 @@
 	<select id="goodsDAO.selectManagerDetail" resultClass="managerVO">
 		SELECT code, name, phone, mail, img
 			FROM manager
-			WHERE code = #code#
+			WHERE code = '$code$'
 	</select>
 	
 	<select id="goodsDAO.selectOptionList" resultClass="egovMap">
-		SELECT code, title, img, rtime, price, expl
+		SELECT code, title, filename, rtime, price, expl
 			FROM opt
-			WHERE code = #unq#
+			WHERE code = '$nation$'
+	</select>
+				
+	<insert id="goodsDAO.insertOption">
+		INSERT INTO opt (unq, code, title, filename, rtime, price, expl)
+			VALUES (SEQ_option_unq.nextval,
+					,'$code$'
+					,'$title$'
+					,'$filename$'
+					,'$rtime$'
+					,'$price$'
+					,'$expl$'
+					)
+	</insert>
+	
+	<select id="goodsDAO.adminOptionList" resultClass="egovMap">
+		SELECT b.* FROM (
+			SELECT 
+				rownum rn, a.* FROM (
+							SELECT	  unq, code, title, filename, rtime, price
+							FROM 
+									opt
+									
+							WHERE
+									1=1 
+									
+							<isNotNull property="searchCondition">
+								<isNotEmpty property="searchCondition">
+									AND $searchCondition$ LIKE '%' || #searchKeyword# || '%' 	
+								</isNotEmpty>
+							</isNotNull>		
+									
+							ORDER BY code
+									) a
+						) b
+		WHERE 
+				rn >= #firstIndex# AND rn <![CDATA[<=]]> #lastIndex#
+	</select>
+	
+	<select id="goodsDAO.selectOptionTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM opt
 	</select>
 	
 </sqlMap>

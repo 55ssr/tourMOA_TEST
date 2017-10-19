@@ -124,7 +124,7 @@ function fn_ajax(loc,msg) {
 				<c:forEach var="down" items="${filename}" varStatus="a">
 					<c:if test="${down != ''}">   
 						<p>
-							<a href="#" onclick="window.open(encodeURI('<c:url value='/downloadFile.do?'/>requestedFile=${down}'))">
+							<a href="#" onclick="window.open(encodeURI('<c:url value='/downloadFile.do?'/>requestedFile=${down}&code=${vo.code}'))">
 								${down}
 							</a>
 							<input type="button" value="삭제" onClick="fn_delFile('${vo.code}','${down}');" />
