@@ -88,6 +88,7 @@
 									, phone
 									, TO_CHAR(birthday, 'yyyy-mm-dd') birthday
 									, email
+									, TO_CHAR(rdate, 'yyyy-mm-dd') rdate
 							FROM 
 									member a 
 									
@@ -136,6 +137,7 @@
 							mobileRcpYn,
 							marry,
 							mdate,
+							rdate,
 							agree1,
 							agree2
 						) VALUES (
@@ -156,6 +158,7 @@
 							'$mobileRcpYn$',
 							'$marry$',
 							'$mdate$',
+							 sysdate,
 							'$agree1$',
 							'$agree2$'
 						)
@@ -178,6 +181,7 @@
 							mobileRcpYn,
 							marry,
 							mdate,
+							rdate
 						) VALUES (
 							SEQ_MEMBER_UNQ.nextval,
 							'$id$',
@@ -195,6 +199,7 @@
 							'$mobileRcpYn$',
 							'$marry$',
 							'$mdate$',
+							sysdate
 						)
 	</insert>
 	

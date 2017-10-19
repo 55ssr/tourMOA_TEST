@@ -9,3 +9,5 @@ CREATE TABLE NOTICE
   UPDDATE   TIMESTAMP(6),
   ALL_VIEW  CHAR(1 BYTE)                        NOT NULL
 );
+-- member 테이블 rdate 추가
+ALTER TABLE member ADD(rdate timestamp); -- add

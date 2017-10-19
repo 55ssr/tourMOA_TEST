@@ -1,16 +1,42 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form"   uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="ui"     uri="http://egovframework.gov/ctl/ui"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 	<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
+	<script>
+	function fn_detail(a) {
+	var f = document.hiddenFrm2;
+	f.rsvno.value = a;
+	f.submit();
+	}
+	
+	$(document).ready(function(){
+		$("#result").change(function(){
+			var f= document.testFrm;
+			alert($("#result option:selected").val());
+			f.submit();
+			
+		});
+			
+		
+	});
+</script>
 	<h1>결제 관리</h1>
 	<div class="row justify-content-between mb-3">
 		<div class="col-lg-6">
 			<div class="row">
 				<div class="col-lg-3">
-					<select class="form-control">
-						<option>입금전</option>
-						<option>입금완료</option>
-						<option>여행중</option>
-						<option>거래완료</option>
+				<form name="testFrm" id="testFrm" method="post" action="/adminPayList.do">
+					<select class="form-control" name="result" id="result">
+						<option value="">선택</option>
+						<option value="1">입금전</option>
+						<option value="2">입금완료</option>
+						<option value="3">여행중</option>
+						<option value="4">거래완료</option>
 					</select>
+				</form>
 				</div>
 				<div class="col-lg-3">
 					<select class="form-control">
@@ -21,22 +47,21 @@
 					</select>
 				</div>
 				<div class="col-lg-6">
+					<form name="frm" method="post" action="/adminPayList.do">
 					<div class="input-group">
 						<div class="input-group-btn">
-							<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							선택
-							</button>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#">상품명</a>
-								<a class="dropdown-item" href="#">지역</a>
-								<a class="dropdown-item" href="#">날짜</a>
-			        		</div>
+						
+							<select name="searchCondition" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<option value="title" class="dropdown-item">상품명</option>
+								<option value="airline" class="dropdown-item">항공</option>
+								<option value="nation" class="dropdown-item">지역</option>
+								<option value="result" class="dropdown-item">처리여부</option>
+							</select>
 			      		</div>
-						<input type="text" class="form-control" aria-label="Text input with dropdown button">
-						<span class="input-group-btn">
-							<button class="btn btn-secondary" type="button">Go!</button>
-						</span>
+						<input type="text" class="form-control" aria-label="Text input with dropdown button" name="searchKeyword"/>
+							<input type="submit" class="btn btn-secondary" value="검색"/>
 			      	</div>
+				</form>
 				</div>
 			</div>
 		</div>
@@ -67,152 +92,92 @@
 	
 	<div class="table-responsive">
 		<table class="table table-hover">
-			<thead>
 				<tr>
 					<th>#</th>
-					<th>구분</th>
+					<th>예약번호</th>
 					<th>국가</th>
-					<th>도시</th>
 					<th>상품명</th>
+					<th>성명</th>
 					<th>아이디</th>
-					<th>인원</th>
-					<th>금액</th>
+					<th>예약일시</th>
+					<th>예약인원</th>
 					<th>출발일</th>
 					<th>도착일</th>
-					<th>신청일</th>
-					<th>삭제</th>
+					<th>금액</th>
+					<th>처리여부</th>
 				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>6</td>
-					<td>자유여행</td>
-					<td>이탈리아</td>
-					<td>밀라노</td>
-					<td>
-						<a href="/adminGoodsDetail.do">이탈리아 9박 10일</a>
-					</td>
-					<td>MyId</td>
-					<td>성인1,아동1</td>
-					<td>100,0000</td>
-					<td>2017.12.03</td>
-					<td>2017.12.14</td>
-					<td>2017.10.13</td>
-					<td>
-						<button type="button" class="btn btn-danger btn-sm" onclick="">삭제</button>
-					</td>
-				</tr>
-				<tr>
-					<td>5</td>
-					<td>자유여행</td>
-					<td>이탈리아</td>
-					<td>밀라노</td>
-					<td>
-						<a href="/adminGoodsDetail.do">이탈리아 9박 10일</a>
-					</td>
-					<td>MyId</td>
-					<td>성인1,아동1</td>
-					<td>100,0000</td>
-					<td>2017.12.03</td>
-					<td>2017.12.14</td>
-					<td>2017.10.13</td>
-					<td>
-						<button type="button" class="btn btn-danger btn-sm" onclick="">삭제</button>
-					</td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>자유여행</td>
-					<td>이탈리아</td>
-					<td>밀라노</td>
-					<td>
-						<a href="/adminGoodsDetail.do">이탈리아 9박 10일</a>
-					</td>
-					<td>MyId</td>
-					<td>성인1,아동1</td>
-					<td>100,0000</td>
-					<td>2017.12.03</td>
-					<td>2017.12.14</td>
-					<td>2017.10.13</td>
-					<td>
-						<button type="button" class="btn btn-danger btn-sm" onclick="">삭제</button>
-					</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>자유여행</td>
-					<td>이탈리아</td>
-					<td>밀라노</td>
-					<td>
-						<a href="/adminGoodsDetail.do">이탈리아 9박 10일</a>
-					</td>
-					<td>MyId</td>
-					<td>성인1,아동1</td>
-					<td>100,0000</td>
-					<td>2017.12.03</td>
-					<td>2017.12.14</td>
-					<td>2017.10.13</td>
-					<td>
-						<button type="button" class="btn btn-danger btn-sm" onclick="">삭제</button>
-					</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>자유여행</td>
-					<td>이탈리아</td>
-					<td>밀라노</td>
-					<td>
-						<a href="/adminGoodsDetail.do">이탈리아 9박 10일</a>
-					</td>
-					<td>MyId</td>
-					<td>성인1,아동1</td>
-					<td>100,0000</td>
-					<td>2017.12.03</td>
-					<td>2017.12.14</td>
-					<td>2017.10.13</td>
-					<td>
-						<button type="button" class="btn btn-danger btn-sm" onclick="">삭제</button>
-					</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>자유여행</td>
-					<td>이탈리아</td>
-					<td>밀라노</td>
-					<td>
-						<a href="/adminGoodsDetail.do">이탈리아 9박 10일</a>
-					</td>
-					<td>MyId</td>
-					<td>성인1,아동1</td>
-					<td>100,0000</td>
-					<td>2017.12.03</td>
-					<td>2017.12.14</td>
-					<td>2017.10.13</td>
-					<td>
-						<button type="button" class="btn btn-danger btn-sm" onclick="">삭제</button>
-					</td>
-				</tr>
-			</tbody>
+				<c:forEach var="r" items="${resultList}" varStatus="status">
+           		<tr>
+		           		<td>${number}</td>
+		            	<td>
+		       <a href="#" onclick="fn_detail('${r.rsvno}')">${r.rsvno}</a>
+		          		</td>
+		            	<td>
+		            	${r.nation}
+		            	</td>
+		            	<td>
+		            	${r.title}
+		            	</td>
+		            	<td>${r.name}</td>
+		            	<td>${sessionScope.loginCertification.id}</td>
+		            	<td>
+		            	${r.rsvdate}
+		            	</td>
+		            	<td>
+		            	성인:${r.rsvanum}
+		            	청소년:${r.rsvcnum}
+		            	유아:${r.rsvbnum}
+		            	</td>
+		            	<td>
+		            	${r.sdate}
+		            	</td>
+		            	<td>
+		            	${r.edate}
+		            	</td>
+		            	<td>
+		            	${r.price}
+		            	</td>
+		            	<td>
+		            	${r.result}
+		            	</td>
+					<!-- 	<td>		            
+						 <button type="button" class="btn btn-danger btn-sm" onclick="">삭제</button>
+		            	</td> -->
+		            </tr>
+		            <c:set var="number" value="${number-1}"/> 
+				</c:forEach>
+				
 		</table>
-	</div>
 	
-	<nav aria-label="Page navigation example">
+	
+	 <nav aria-label="Page navigation example">
 		<ul class="pagination justify-content-center">
 			<li class="page-item disabled">
-				<a class="page-link" href="#" tabindex="-1" aria-label="Previous">
+			<li class="page-item"> 
+				<a class="page-link" href="adminPayList.do?pageIndex=${firstPage}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}" aria-label="Previous">
 					<span aria-hidden="true">&laquo;</span>
 					<span class="sr-only">Previous</span>
 				</a>
-			</li>
-			<li class="page-item"><a class="page-link" href="#">1</a></li>
-			<li class="page-item"><a class="page-link" href="#">2</a></li>
-			<li class="page-item"><a class="page-link" href="#">3</a></li>
-			<li class="page-item">
-				<a class="page-link" href="#" aria-label="Next">
+				</li>
+			
+			<c:forEach  var="i"  begin="${firstPage}"  end="${lastPage}">
+		    <c:if test="${i <= totalPage}">
+			<li class="page-item"><a class="page-link" href="adminPayList.do?pageIndex=${i}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}">${i}</a></li>
+		    	<c:if test="${i == searchVO.pageIndex}"></c:if>
+		    	<c:if test="${i != searchVO.pageIndex}">
+				</c:if>
+			</c:if>
+		</c:forEach>
+			<li class="page-item"> 
+				<a class="page-link" href="adminPayList.do?pageIndex=${lastPage}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}" >
 					<span aria-hidden="true">&raquo;</span>
 					<span class="sr-only">Next</span>
 				</a>
 			</li>
 		</ul>
-	</nav>
-    </main>
+	</nav> 
+<form name="hiddenFrm2" method="post" action="/adminPayList.do">
+	<input type="hidden" name="rsvno" id="rsvno"/>
+</form>
+</div>
+  </main>

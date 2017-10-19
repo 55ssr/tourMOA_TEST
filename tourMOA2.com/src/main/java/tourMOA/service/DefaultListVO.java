@@ -47,6 +47,19 @@ public class DefaultListVO implements Serializable {
 	
 	/** 검색조건 */
 	private String searchCondition = "";
+	private int result=0;
+	public int getResult() {
+		return result;
+	}
+
+
+
+	public void setResult(int result) {
+		this.result = result;
+	}
+
+
+
 	private String srchContn = "";
 	
 	/** 검색Keyword */
