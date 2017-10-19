@@ -36,6 +36,7 @@ import tourMOA.service.GoodsVO;
 import tourMOA.service.MemberService;
 import tourMOA.service.MemberVO;
 import tourMOA.service.OptionVO;
+import tourMOA.service.SliderVO;
 
 @Controller
 public class AdminController {
@@ -192,6 +193,17 @@ public class AdminController {
 	@RequestMapping("/adminSliderWrite.do")
 	public String adminSliderWrite() {
 		return "admin/Slider/adminSliderWrite";
+	}
+	
+	@RequestMapping("/adminSliderConfirm.do")
+	@ResponseBody public Map<String, Object> adminSliderConfirm (SliderVO vo) throws Exception {
+		System.out.println("vo.code ::::::::::::::: " + vo.getCode());
+		int cnt = 0;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		cnt = goodsService.adminSliderConfirm(vo);
+		System.out.println("cnt ::::::::::::::::::::: " + cnt);
+		map.put("cnt", cnt);
+		return map;
 	}
 	
 	
@@ -566,7 +578,13 @@ public class AdminController {
 		return map;
 	}
 	
-	
+	@RequestMapping("/selectOptionDetail.do")
+	public String selectOptionDetail(@RequestParam("unq") int unq, Model model, OptionVO vo) throws Exception {
+		vo = goodsService.selectOptionDetail(vo);
+		model.addAttribute("vo", vo);
+		return "admin/Option/adminOptionDetail";
+	}
+		
 	
 	@RequestMapping("/adminGoodsCommList.do")
 	public String adminGoodsCommList() {

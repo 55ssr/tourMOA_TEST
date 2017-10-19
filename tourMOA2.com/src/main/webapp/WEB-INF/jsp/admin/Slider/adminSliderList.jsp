@@ -15,21 +15,21 @@
 					<script>
 					function fn_select(e) {
 						if (e == "T") {
-							$("#frm #selectTitle").attr("selected", true);
-							$("#frm #selectCity").removeAttr("selected");
-							$("#selectedCond").text("상품명");
+							$("#frm #selectName").attr("selected", true);
+							$("#frm #selectCode").removeAttr("selected");
+							$("#selectedCond").text("국가");
 						}
 						if (e == "C") {
-							$("#frm #selectCity").attr("selected", true);
-							$("#frm #selectTitle").removeAttr("selected");
-							$("#selectedCond").text("도시");
+							$("#frm #selectCode").attr("selected", true);
+							$("#frm #selectName").removeAttr("selected");
+							$("#selectedCond").text("code");
 						}
 					}
 					</script>
-					<form name="frm" id="frm" action="/adminGoodsList.do">
+					<form name="frm" id="frm" action="/adminSliderList.do">
 						<select name="searchCondition" style="display:none">
-							<option id="selectTitle" value="title"></option>
-							<option id="selectCity" value="city"></option>
+							<option id="selectName" value="name"></option>
+							<option id="selectCode" value="code"></option>
 						</select>
 						<div class="input-group">
 							<div class="input-group-btn">
@@ -37,8 +37,8 @@
 								선택
 								</button>
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="#" onclick="fn_select('T')">상품명</a>
-									<a class="dropdown-item" href="#" onclick="fn_select('C')">도시</a>
+									<a class="dropdown-item" href="#" onclick="fn_select('T')">국가</a>
+									<a class="dropdown-item" href="#" onclick="fn_select('C')">code</a>
 				        		</div>
 				      		</div>
 							<input type="text" name="searchKeyword" class="form-control" aria-label="Text input with dropdown button">
@@ -60,7 +60,7 @@
 			<thead>
 				<tr>
 					<th>#</th>
-					<th>name</th>
+					<th>국가</th>
 					<th>code</th>
 					<th>files</th>
 				</tr>
@@ -94,7 +94,7 @@
 		</c:if>
 		<c:if test="${before > 0}"> 
 			<li class="page-item">
-				<a class="page-link" href="/adminGoodsList.do?pageIndex=${firstPage-1}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}" tabindex="-1" aria-label="Previous">
+				<a class="page-link" href="/adminSliderList.do?pageIndex=${firstPage-1}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}" tabindex="-1" aria-label="Previous">
 					<span aria-hidden="true">&laquo;</span>
 					<span class="sr-only">Previous</span>
 				</a>
@@ -104,10 +104,10 @@
 		<c:forEach var="i" begin="${firstPage}" end="${lastPage}">
 			<c:if test="${i <= totalPage}">
 				<c:if test="${i == searchVO.pageIndex}">
-					<li class="page-item disabled"><a class="page-link" href="/adminGoodsList.do?pageIndex=${i}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}">${i}</a></li>
+					<li class="page-item disabled"><a class="page-link" href="/adminSliderList.do?pageIndex=${i}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}">${i}</a></li>
 				</c:if>
 				<c:if test="${i != searchVO.pageIndex}">
-					<li class="page-item"><a class="page-link" href="/adminGoodsList.do?pageIndex=${i}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}">${i}</a></li>
+					<li class="page-item"><a class="page-link" href="/adminSliderList.do?pageIndex=${i}&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}">${i}</a></li>
 				</c:if>
 			</c:if>
 		</c:forEach>
