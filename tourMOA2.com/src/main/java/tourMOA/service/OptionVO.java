@@ -1,13 +1,22 @@
 package tourMOA.service;
 
 public class OptionVO {
-
+	
+	private int unq;
 	private String code;
 	private String title;
 	private String filename;
 	private String rtime;
 	private String price;
 	private String expl;
+	
+	
+	public int getUnq() {
+		return unq;
+	}
+	public void setUnq(int unq) {
+		this.unq = unq;
+	}
 	public String getCode() {
 		return code;
 	}
