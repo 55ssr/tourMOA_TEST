@@ -251,9 +251,15 @@ public class AdminController {
 				file.transferTo(new File(fulldir));
 				filename += file.getOriginalFilename() + "／";
 				cnt++;
+				System.out.println("filename ************************** " + filename);
 				System.out.println("fulldir ************************** " + fulldir);
 			}
 		}
+		
+		if (filename.length() > 0 && filename.charAt(filename.length()-1)=='／') {
+			filename = filename.substring(0, filename.length()-1);
+		}
+		
 		map.put("filename", filename);
 		map.put("cnt", Integer.toString(cnt));
 		return map;
@@ -481,6 +487,56 @@ public class AdminController {
 		}
 	}
 	
+	@RequestMapping("/adminOptionList.do")
+	public String adminOptionList(@ModelAttribute("searchVO") DefaultListVO searchVO, Model model) throws Exception {
+
+		/*1. 한 화면에 출력 할 행 갯수, 한 화면에 출력할 페이지 갯수 */
+		int recordCountPerPage = 10;
+		int pageSize = 5;
+		
+		/*2.총 데이터 갯수*/
+		int totalCount = goodsService.selectOptionTotal(searchVO);
+		
+		/*3. 화면 출력 할 페이지 번호*/
+		int pageIndex = searchVO.getPageIndex();
+		
+		/*4. 화면 출력할 페이징의 시작 번호, 끝 번호*/
+		int firstPage = ((int) Math.floor((pageIndex-1)/pageSize)*pageSize) + 1;
+		int lastPage = firstPage + pageSize - 1;
+		
+		/*5. 화면 출력할 행(데이터)의 시작 번호, 끝 번호*/
+		int firstIndex = (pageIndex-1) * 10 + 1;
+		int lastIndex = firstIndex + (recordCountPerPage - 1);
+		
+		/*6. 총 페이지 갯수*/
+		int totalPage = (int) Math.ceil((double) totalCount / recordCountPerPage);
+		
+		/*7. [이전] / [다음] 처리 할 변수 지정*/
+		int before = 0; // 링크 없음
+		if (firstPage > 1) before = 1;
+		
+		int next = 0; // 링크 없음
+		if (lastPage < totalPage) next = 1;
+		/*8. 행번호*/
+		int number  = totalCount - ((pageIndex-1) * recordCountPerPage);
+		
+		searchVO.setFirstIndex(firstIndex);
+		searchVO.setLastIndex(lastIndex);
+						
+		List<?> optionList = goodsService.adminOptionList(searchVO);
+				
+		model.addAttribute("totalCount", totalCount);
+		model.addAttribute("firstPage", firstPage);
+		model.addAttribute("lastPage", lastPage);
+		model.addAttribute("totalPage", totalPage);
+		model.addAttribute("before", before);
+		model.addAttribute("next", next);
+		model.addAttribute("number", number);
+		
+		model.addAttribute("resultList", optionList);
+		return "admin/Option/adminOptionList";
+	}
+	
 	@RequestMapping("/adminOptionWrite.do")
 	public String adminOptionWrite() {
 		return "admin/Option/adminOptionWrite";
@@ -489,20 +545,19 @@ public class AdminController {
 	@RequestMapping(value = "/adminOptionWriteSave.do")
 	@ResponseBody public Map<String, String> multipartProcess(
 						MultipartHttpServletRequest multiRequest,
-						HttpServletResponse response, 
-						GoodsVO vo) throws Exception {
+						HttpServletResponse response,
+						OptionVO vo, String code) throws Exception {
 		
-		
-		System.out.println("asdf");
 		String result="";
 		int cnt = 0;
-		String nPath = "italy";
+		String nPath = code + "/opt";
 		
 		Map<String, String> map = new HashMap<String, String>();
 		
 		map = uploadFile(multiRequest, nPath);	
+		System.out.println("map.get+++++++++++++++++++++"+map.get("filename"));
 		vo.setFilename(map.get("filename"));
-		result = goodsService.insertSlider(vo);	
+		result = goodsService.insertOption(vo);	
 		if(result == null) result = "ok";
 		else result = "not";
 		
