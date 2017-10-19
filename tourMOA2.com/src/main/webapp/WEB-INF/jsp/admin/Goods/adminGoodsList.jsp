@@ -99,7 +99,6 @@
 					<th>상품명</th>
 					<th>지역</th>
 					<th>국가</th>
-					<th>도시</th>
 					<th>비용</th>
 					<th>출발일</th>
 					<th>도착일</th>
@@ -118,7 +117,6 @@
 					</td>
 					<td>${rs.location}</td>
 					<td>${rs.nation}</td>
-					<td>${rs.city}</td>
 					<td>${rs.price}</td>
 					<td>${rs.sdate}</td>
 					<td>${rs.edate}</td>
