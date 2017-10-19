@@ -17,7 +17,7 @@ $(function(){
 		}
 		
 		var form = new FormData(document.getElementById("frm"));
-
+		
 		$.ajax({
 			type: 'POST',
 			data: form,
