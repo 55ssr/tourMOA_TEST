@@ -20,5 +20,7 @@ public interface GoodsService {
 	int deleteSlider(GoodsVO vo);
 	int updateSlider(GoodsVO vo);
 	SliderVO selectSliderDetail(SliderVO vo3);
-	String insertOption(GoodsVO vo) throws Exception;
+	String insertOption(OptionVO vo) throws Exception;
+	int selectOptionTotal(DefaultListVO searchVO);
+	List<?> adminOptionList(DefaultListVO searchVO);
 }
