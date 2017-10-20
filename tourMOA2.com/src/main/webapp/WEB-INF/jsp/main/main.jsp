@@ -68,6 +68,11 @@
 		});
 	});
 	$(document).ready(function(){
+		$("#searchBtn").click(function(){
+			document.searchFrm.submit();
+		});
+	});
+	$(document).ready(function(){
 
 		$("#domintgubun").val("I");
 		$("#initform").val("RT");
@@ -254,13 +259,15 @@ $(document).ready(function(){
 	 /* DATE PICKER */
 	 /* 여행상품 찾기  출발 일월 */
 	$("#departDate").datepicker({
+		
        	showButtonpanel : true,
            beforeShow:function( input, inst ) {
                var dp = $(inst.dpDiv);
                var offset = $(input).outerWidth(false) - dp.outerWidth(false) + 1;
                dp.css('margin-left', offset);
            }, showMonthAfterYear: true ,
-           dateFormat : 'yymmdd',
+           dateFormat : 'yy-mm-dd',
+           altField : "#departDate",
            minDate: 1,
            currentText : '월전체'
            
@@ -512,19 +519,29 @@ $(document).ready(function(){
 						<p>급이다른 여행을 탐색해 보세요.</p>
 						<br>
 						<p>상품유형</p>
-						<select class="find-content-inside1">
-							<option>유형을 선택하세요.</option>
+						<form name="searchFrm" method="post" action="/search/searchKeyword.do">
+						<select class="find-content-inside1" name="searchCondition" id="searchCodition">
+							<option value="">유형을 선택하세요.</option>
+                            <option value="해외패키지">해외패키지</option>
+                            <option value="자유여행">자유여행</option>
+                            <option value="국내여행">국내여행</option>
+                            <option value="허니문">허니문</option>
+                            <option value="골프">골프</option>
+                            <option value="크루즈">크루즈</option>
+                            <option value="성지순례">성지순례</option>
+                            <option value="대구출발">부산/대구출발</option>
 						</select>
 						<p>여행지역/호텔명</p>
-						<input class="find-content-inside1" type="text" id="" name=""
+						<input class="find-content-inside1" type="text" id="searchKeyword" name="searchKeyword"
 							placeholder="여행지역/호텔명을 입력하세요" />
 
 						<p>출발일월</p>
 
 						<input class="find-content-inside2" type="text" id="departDate" name="departDate" readonly placeholder="출발일월을 선택하세요."/>
 						<input type="button" id="searchBtn" name="searchBtn" value="검색하기" />
-
-					</div></li>
+						</form>
+					</div>
+				</li>
 
 
 
@@ -662,9 +679,7 @@ $(document).ready(function(){
 							</select>
 							<input type="text" id="depdt2_2" name="depdt2_2" readonly onclick="fn_depdt2Check(2);"
 								class="domesticfind-content-inside2" placeholder="도착일자 선택" />
-								<div class="input_ph" id="arrDtBox2" style="display: block;">
-									<input type="text" id="depdt2_2" name="" value="" class="input_txt" placeholder="도착일자 선택" readonly="" style="width:102px" onclick="fn_depdt2Check(2)">
-								</div>
+								
 
 							<p>인원</p>
 							<!-- select id 성인 :adult 소아 :child 유아 : baby  -->

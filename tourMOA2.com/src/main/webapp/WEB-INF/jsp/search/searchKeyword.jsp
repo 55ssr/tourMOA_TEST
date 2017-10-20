@@ -17,6 +17,7 @@ String searchCondition = request.getParameter("searchCondition");
 <script src="/js/jquery-ui.multidatespicker.js"></script>
   
 <c:set var="existKeyword" value="<%=searchKeyword %>"/>
+<c:set var="existCondition" value="<%=searchCondition %>"/>
 <script>
 $(document).ready(function(){
 	 /* DATE PICKER */
@@ -90,8 +91,336 @@ $("div#rank span.tab").on('click', function() {
 			$(this).attr('role-url', roleUrl);	//최초 URL로 복원
 		}		
 	});
+	 
+	 $("#viewCount").change(function(){
+		 var f=$("#viewCount option:selected").val();
+		 document.reSearch2.submit();
+	 });
 
 });
+
+</script>
+<script>
+
+
+$(document).ready(function(){
+	var startCount = 0;
+	
+    popKeyword();
+    popRecommend();
+    //결과내 검색 창 열고 닫기
+    $(".bntOption").click(function(event) {
+    	
+    	event.preventDefault();
+    	
+    	var bntOptionStr = $( '.bntOption' ).attr( 'class' );
+    	
+    	if(bntOptionStr == "bntOption"){
+    		$(".bntOption").attr('class','bntOption on');
+    		$("#optionMenu").hide();
+    		return false;
+    	}else{
+    		$(".bntOption").attr('class','bntOption');
+    		$("#optionMenu").show();
+    		return false;
+    	}
+
+    });
+    
+  //출발요일 전체 선택
+    $("#reweekall").click(function(event) {
+    	event.preventDefault();
+    	//클릭되었으면
+        if($("#reweekall").prop("checked")){
+            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
+            $("input[name='departWDay2']").prop("checked",true);
+            //클릭이 안되있으면
+        }else{
+            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
+            $("input[name='departWDay2']").prop("checked",false);
+        }		
+	});
+ 
+    
+    //결과내 검색 리셋
+    $(".btnReset").on("click",function(event) {  
+    	event.preventDefault();
+    	
+    	$("input[type=checkbox]").prop("checked",false); // 체크박스 해제
+    	$("input[type=radio]").removeAttr("checked"); // 라디오 선택 해제
+    	$("#departDate").attr("value","");  //날짜 삭제      
+    	$("#lowPrice").attr("value","");  //가격 삭제    
+    	$("#highPrice").attr("value","");  //가격 삭제    
+        $("form").each(function() {          	
+           	this.reset();  
+        });  
+   	});  
+  
+    
+    $("#sort").change(function(event) {
+    	event.preventDefault();
+    	$("#reSearch").attr('action','/search/searchKeyword.do').submit();
+    	resultReSearchList();
+    });
+    
+    $("#viewCount").change(function(event) {
+    	event.preventDefault();
+    	$("#reSearch").attr('action','/search/searchKeyword.do').submit();
+    	resultReSearchList();
+    });
+    
+    $("#departDate").datepicker({
+        beforeShow:function( input, inst ) {
+            var dp = $(inst.dpDiv);
+            var offset = $(input).outerWidth(false) - dp.outerWidth(false) + 1;
+            dp.css('margin-left', offset);
+        }, showMonthAfterYear: true ,
+        minDate: 1,
+        dateFormat : 'yymmdd'        
+    });
+    
+    var priceCheked = $('input:radio[name="price"]:checked').val();
+    
+    if(priceCheked =="pricetext" && typeof priceCheked != undefined ){
+		$("input:text[id='lowPrice']").prop('readonly', false);
+		$("input:text[id='highPrice']").prop('readonly', false); 
+		$("input:text[numberOnly]").number(true);
+	}else{
+		$("input:text[id='lowPrice']").prop("readonly",true);
+		$("input:text[id='highPrice']").prop("readonly",true); 
+	}
+	
+    $("input:radio[name='price']").click(function(){
+    	var value = $(this).val();
+    	if(value =="pricetext"){
+    		$("input:text[id='lowPrice']").prop('readonly', false);
+    		$("input:text[id='highPrice']").prop('readonly', false); 
+    		$("input:text[numberOnly]").number(true);
+    	}else{
+    		$("input:text[id='lowPrice']").prop("readonly",true);
+    		$("input:text[id='highPrice']").prop("readonly",true); 
+    	}
+    });	
+    
+    $("button[name='btnSchedule']").click(function(){
+        var dspCls = $(this).val();
+        dspCls = (dspCls.indexOf('detailFit.do') > -1 ? 'B' : 'A');
+        if(dspCls == 'B'){
+//             $(location).attr('href',$(this).attr('role-url'));
+            $(location).attr('href',$(this).val());
+        }else{
+            showLayer($(this));
+        }
+    });
+  
+  	//선택상품비교하기
+    $("#btnCompare").click(function(event){
+    	
+    	event.preventDefault();
+        
+        var checkedVal = "";
+        var cnt = 0;            
+        
+        $("input:checkbox[name='chk']:checked").each(function(){
+            cnt++;
+            checkedVal += ((checkedVal == "" ? "" : ",") + $(this).val());
+        });     
+        
+        if(cnt != 2){
+            alert("상품비교는 2개를 선택하셔야 가능합니다");
+            return true;
+        }else{
+            var roleUrl = $(this).attr('role-url');
+            roleUrl = "/product/compareMaster.do";
+            $(this).attr('role-url', roleUrl + "?compareGoodCd=" + checkedVal + "&menu=&did=");
+            showLayer(this);
+            $(this).attr('role-url', roleUrl);  //최초 URL로 복원
+        }       
+    });
+});
+
+
+function resultSearchList(serachCondition,categoryDepth1,categoryDepth2 ,categoryName2,departDate,lowPrice,highPrice,categoryYn){
+    pageNum = 1;
+    
+    startCount =0;
+    var viewCount = parseInt($('select[name="viewCount"]').val()); 
+    
+    lowPrice = replaceAll(lowPrice,",","");
+	highPrice = replaceAll(highPrice,",","");
+    
+    $.ajax({
+        url:"/search/incSearchNoti.do"
+        ,async:true
+        ,data:{
+              "serachCondition"       : serachCondition
+              ,"categoryDepth1" : categoryDepth1
+              ,"categoryDepth2" : categoryDepth2
+              ,"categoryName2" : categoryName2
+              ,"departDate" : departDate
+              ,"lowPrice" : lowPrice
+              ,"highPrice" : highPrice
+              ,"categoryYn" : categoryYn
+        }           
+        ,success:function(html){
+            $("#notiWrap").html(html);      
+            $.ajax({
+                url:"/search/incSearchList.do"
+                ,async:true
+                ,data:{
+                    "serachCondition"     : serachCondition
+                      ,"categoryDepth1" : categoryDepth1
+                      ,"categoryDepth2" : categoryDepth2
+                      ,"categoryName2" : categoryName2
+                      ,"departDate" : departDate
+                      ,"lowPrice" : lowPrice
+                      ,"highPrice" : highPrice
+                      ,"categoryYn" : categoryYn
+                      ,"startCount" : startCount
+                      ,"viewCount" : viewCount
+                }           
+                ,success:function(html){
+                    $("#product02").html(html);     
+            
+                }
+                ,error: function(html) {
+                    alert("검색결과가 없습니다.");
+                }
+            });
+        }
+        ,error: function(html) {
+            alert("검색결과가 없습니다.");
+        }
+    });
+}
+
+//전체 replace 함수 
+function replaceAll(str, searchStr, replaceStr) {
+
+    return str.split(searchStr).join(replaceStr);
+}
+
+function resultReSearchList(event){
+    
+	event.preventDefault();
+    
+    startCount =0;
+    
+    serachCondition =$('input:text[name="serachCondition"]').val();
+   	categoryDepth1 = $('input:hidden[name="categoryDepth1"]').val();
+   	categoryDepth2 = $('input:hidden[name="categoryDepth2"]').val();
+   	categoryName2 = $('input:hidden[name="categoryName2"]').val();
+    
+   	var wDay = "";
+	$("input:hidden[name='departWDay']").each(function (index) {
+		wDay += $(this).val() + "|";
+	});
+
+	departWDay = wDay;
+	
+    var wDay2 = "";
+	$("input:checkbox[name='departWDay2']:checked").each(function (index) {
+		wDay2 += $(this).val() + "|";
+	});
+
+	departWDay2 = wDay2;
+	
+	departMonth = $('select[name="departMonth"]').val(); 
+    departDate = $('input:text[name="departDate"]').val();
+    period = $('select[name="period"]').val(); 
+    departCity = $('select[name="departCity"]').val(); 
+    departCityNm =  $('#departCity option:selected').text();
+    keyword = $('input:text[name="keyword"]').val();
+    
+    
+    sort = $('select[name="sort"]').val();
+    
+    viewCount = $('select[name="viewCount"]').val();
+
+    var price = $('input:radio[name="price"]:checked').val();
+    
+    if(price == "p30hi"){
+        lowPrice = "";
+        highPrice = "300000"
+    }else if(price == "p3040"){
+    	lowPrice = "300000";
+    	highPrice = "400000"
+    }else if(price == "p4050"){
+    	lowPrice = "400000";
+    	highPrice = "500000"
+    }else if(price == "p50100"){
+    	lowPrice = "500000";
+    	highPrice = "1000000"
+    }else if(price == "p100200"){
+    	lowPrice = "1000000";
+    	highPrice = "2000000"
+    }else if(price == "p200lo"){
+    	lowPrice = "2000000";
+    	highPrice = ""
+    }else if(price == "pricetext"){
+    	lowPrice = replaceAll($('input:text[name="lowPrice"]').val(),",","");
+    	highPrice = replaceAll($('input:text[name="highPrice"]').val(),",","");
+    }else {
+    	lowPrice = replaceAll($('input:text[name="lowPrice"]').val(),",","");
+    	highPrice = replaceAll($('input:text[name="highPrice"]').val(),",","");
+    }
+   
+   
+	$.ajax({
+    	url:"/search/searchKeyword.do"
+    	,async:true
+    	,data:{
+    		  "serachCondition"		: serachCondition
+    		  ,"categoryDepth1" : categoryDepth1
+    		  ,"categoryDepth2" : categoryDepth2
+    		  ,"categoryName2" : categoryName2
+    		  ,"departDate" : departDate
+    		  ,"departMonth" : departMonth
+    		  ,"price" : price
+    		  ,"lowPrice" : lowPrice
+    		  ,"highPrice" : highPrice
+    		  ,"departWDay" : departWDay
+    		  ,"departWDay2" : departWDay2
+    		  ,"period" : period
+    		  ,"departCity" : departCity
+    		  ,"departCityNm" : departCityNm
+    		  ,"keyword" : keyword
+    		  ,"sort" : sort
+    		  ,"startCount" : startCount   
+    		  ,"viewCount" : viewCount    
+    	}        	
+    	,success:function(html){
+    	
+    		$(".notiWrap").html(html);    	
+    
+    	}
+    	,error: function(html) {
+    		//
+		}
+    });
+}
+
+function resultReSearchListPg(){
+    //var sf = document.reSearchform;
+    serachCondition =$('input:text[name="serachCondition"]').val();
+   	categoryDepth1 = $('input:text[name="categoryDepth1"]').val();
+   	categoryDepth2 = $('input:text[name="categoryDepth2"]').val();
+   	categoryName2 = $('input:text[name="categoryName2"]').val();
+    
+    var wDay = "";
+	$("input:hidden[name='departWDay']").each(function (index) {
+		wDay += $(this).val() + "|";
+	});
+
+	departWDay = wDay;
+	
+	var wDay2 = "";
+	$("input:checkbox[name='departWDay2']:checked").each(function (index) {
+		wDay2 += $(this).val() + "|";
+	});
+
+}
+
 </script>
 <div id ="wrap">
 
@@ -130,12 +459,12 @@ $("div#rank span.tab").on('click', function() {
                 <div class="relKeywordBox">
                 추천검색어 |
                 <span class="Keyword">
-                <a href="/search/searchKeyword.do?query=보라카이"><span>보라카이</span></a>
-                <a href="/search/searchKeyword.do?query=제주도"><span>제주도</span></a>
-                <a href="/search/searchKeyword.do?query=대만"><span>대만</span></a>
-                <a href="/search/searchKeyword.do?query=사이판"><span>사이판</span></a>
-                <a href="/search/searchKeyword.do?query=코타키나발루"><span>코타키나발루</span></a>
-                <a href="/search/searchKeyword.do?query=오키나와"><span>오키나와</span></a>
+                <a href="/search/searchKeyword.do?serachCondition=보라카이"><span>보라카이</span></a>
+                <a href="/search/searchKeyword.do?serachCondition=제주도"><span>제주도</span></a>
+                <a href="/search/searchKeyword.do?serachCondition=대만"><span>대만</span></a>
+                <a href="/search/searchKeyword.do?serachCondition=사이판"><span>사이판</span></a>
+                <a href="/search/searchKeyword.do?serachCondition=코타키나발루"><span>코타키나발루</span></a>
+                <a href="/search/searchKeyword.do?serachCondition=오키나와"><span>오키나와</span></a>
                 </span>
                </div>
             </div><!--[[ 키워드검색 tab01 End ]]-->
@@ -149,7 +478,7 @@ $("div#rank span.tab").on('click', function() {
 	            <span class="tab">인기검색어</span>
 	            <span class="tab" style="border-left: 1px solid #d6d6d6;width:547px">추천검색어</span>
 	            <ul class="rankList tab01" style="border-left:">
-	            <a href="/search/searchKeyword.do?query=오사카">
+	            <a href="/search/searchKeyword.do?serachCondition=오사카">
 	            <li>
 	            <span class="no grade">1</span>
 	            <span class="name">오사카</span>
@@ -157,7 +486,7 @@ $("div#rank span.tab").on('click', function() {
 	            <span class="num">0</span>
 	            </li>
 	            </a>
-	            <a href="/search/searchKeyword.do?query=장가계">
+	            <a href="/search/searchKeyword.do?serachCondition=장가계">
 	            <li>
 	            <span class="no grade">2</span>
 	            <span class="name">장가계</span>
@@ -165,7 +494,7 @@ $("div#rank span.tab").on('click', function() {
 	            <span class="num">0</span>
 	            </li>
 	            </a>
-	            <a href="/search/searchKeyword.do?query=북해도">
+	            <a href="/search/searchKeyword.do?serachCondition=북해도">
 	            <li>
 	            <span class="no grade">3</span>
 	            <span class="name">북해도</span>
@@ -173,7 +502,7 @@ $("div#rank span.tab").on('click', function() {
 	            <span class="num">0</span>
 	            </li>
 	            </a>
-	            <a href="/search/searchKeyword.do?query=다낭">
+	            <a href="/search/searchKeyword.do?serachCondition=다낭">
 	            <li>
 	            <span class="no">4</span>
 	            <span class="name">다낭</span>
@@ -181,7 +510,7 @@ $("div#rank span.tab").on('click', function() {
 	            <span class="num">0</span>
 	            </li>
 	            </a>
-	            <a href="/search/searchKeyword.do?query=서유럽">
+	            <a href="/search/searchKeyword.do?serachCondition=서유럽">
 	            <li>
 	            <span class="no">5</span>
 	            <span class="name">서유럽</span>
@@ -189,7 +518,7 @@ $("div#rank span.tab").on('click', function() {
 	            <span class="num">2</span>
 	            </li>
 	            </a>
-	            <a href="/search/searchKeyword.do?query=터키">
+	            <a href="/search/searchKeyword.do?serachCondition=터키">
 	            <li>
 	            <span class="no">6</span>
 	            <span class="name">터키</span>
@@ -197,7 +526,7 @@ $("div#rank span.tab").on('click', function() {
 	            <span class="num">0</span>
 	            </li>
 	            </a>
-	            <a href="/search/searchKeyword.do?query=라오스">
+	            <a href="/search/searchKeyword.do?serachCondition=라오스">
 	            <li>
 	            <span class="no">7</span>
 	            <span class="name">라오스</span>
@@ -205,7 +534,7 @@ $("div#rank span.tab").on('click', function() {
 	            <span class="num">0</span>
 	            </li>
 	            </a>
-	            <a href="/search/searchKeyword.do?query=미서부">
+	            <a href="/search/searchKeyword.do?serachCondition=미서부">
 	            <li>
 	            <span class="no">8</span>
 	            <span class="name">미서부</span>
@@ -213,7 +542,7 @@ $("div#rank span.tab").on('click', function() {
 	            <span class="num">3</span>
 	            </li>
 	            </a>
-	            <a href="/search/searchKeyword.do?query=홍콩">
+	            <a href="/search/searchKeyword.do?serachCondition=홍콩">
 	            <li>
 	            <span class="no">9</span>
 	            <span class="name">홍콩</span>
@@ -221,7 +550,7 @@ $("div#rank span.tab").on('click', function() {
 	            <span class="num">1</span>
 	            </li>
 	            </a>
-	            <a href="/search/searchKeyword.do?query=스페인 포르투갈 모로코">
+	            <a href="/search/searchKeyword.do?serachCondition=스페인 포르투갈 모로코">
 	            <li>
 	            <span class="no">10</span>
 	            <span class="name">스페인 포르투갈 모로코</span>
@@ -231,7 +560,7 @@ $("div#rank span.tab").on('click', function() {
 	            </a>
 	            </ul>
 	            <ul class="rankList tab02">
-	            <a href="/search/searchKeyword.do?query=보라카이">
+	            <a href="/search/searchKeyword.do?serachCondition=보라카이">
 	            <li>
 	            <span class="no grade">1</span>
 	            <span class="name">보라카이</span>
@@ -239,7 +568,7 @@ $("div#rank span.tab").on('click', function() {
 	            <span class="num"></span>
 	            </li>
 	            </a>
-	            <a href="/search/searchKeyword.do?query=제주도">
+	            <a href="/search/searchKeyword.do?serachCondition=제주도">
 	            <li>
 	            <span class="no grade">2</span>
 	            <span class="name">제주도</span>
@@ -247,7 +576,7 @@ $("div#rank span.tab").on('click', function() {
 	            <span class="num"></span>
 	            </li>
 	            </a>
-	            <a href="/search/searchKeyword.do?query=대만">
+	            <a href="/search/searchKeyword.do?serachCondition=대만">
 	            <li>
 	            <span class="no grade">3</span>
 	            <span class="name">대만</span>
@@ -255,7 +584,7 @@ $("div#rank span.tab").on('click', function() {
 	            <span class="num"></span>
 	            </li>
 	            </a>
-	            <a href="/search/searchKeyword.do?query=사이판">
+	            <a href="/search/searchKeyword.do?serachCondition=사이판">
 	            <li>
 	            <span class="no">4</span>
 	            <span class="name">사이판</span>
@@ -263,7 +592,7 @@ $("div#rank span.tab").on('click', function() {
 	            <span class="num"></span>
 	            </li>
 	            </a>
-	            <a href="/search/searchKeyword.do?query=코타키나발루">
+	            <a href="/search/searchKeyword.do?serachCondition=코타키나발루">
 	            <li>
 	            <span class="no">5</span>
 	            <span class="name">코타키나발루</span>
@@ -271,7 +600,7 @@ $("div#rank span.tab").on('click', function() {
 	            <span class="num"></span>
 	            </li>
 	            </a>
-	            <a href="/search/searchKeyword.do?query=오키나와">
+	            <a href="/search/searchKeyword.do?serachCondition=오키나와">
 	            <li>
 	            <span class="no">6</span>
 	            <span class="name">오키나와</span>
@@ -279,7 +608,7 @@ $("div#rank span.tab").on('click', function() {
 	            <span class="num"></span>
 	            </li>
 	            </a>
-	            <a href="/search/searchKeyword.do?query=괌">
+	            <a href="/search/searchKeyword.do?serachCondition=괌">
 	            <li>
 	            <span class="no">7</span>
 	            <span class="name">괌</span>
@@ -287,7 +616,7 @@ $("div#rank span.tab").on('click', function() {
 	            <span class="num"></span>
 	            </li>
 	            </a>
-	            <a href="/search/searchKeyword.do?query=몽골">
+	            <a href="/search/searchKeyword.do?serachCondition=몽골">
 	            <li>
 	            <span class="no">8</span>
 	            <span class="name">몽골</span>
@@ -295,7 +624,7 @@ $("div#rank span.tab").on('click', function() {
 	            <span class="num"></span>
 	            </li>
 	            </a>
-	            <a href="/search/searchKeyword.do?query=러시아">
+	            <a href="/search/searchKeyword.do?serachCondition=러시아">
 	            <li>
 	            <span class="no">9</span>
 	            <span class="name">러시아</span>
@@ -303,7 +632,7 @@ $("div#rank span.tab").on('click', function() {
 	            <span class="num"></span>
 	            </li>
 	            </a>
-	            <a href="/search/searchKeyword.do?query=동유럽">
+	            <a href="/search/searchKeyword.do?serachCondition=동유럽">
 	            <li>
 	            <span class="no">10</span>
 	            <span class="name">동유럽</span>
@@ -347,8 +676,7 @@ $("div#rank span.tab").on('click', function() {
         	<a class="bntOption" href="#">검색옵션<span class="spim"></span></a>
         </div>
         <div class="optionMenu" id="optionMenu">
-	        <form id="reSearch" action="/search/searchKeyword.do" method="post" onsubmit="resultReSearchList(event); return false;">
-	        		<input type="hidden" name="query" value="asfdasd">
+	        <form id="reSearch" action="/search/searchKeyword.do" method="post">
 	        		<!--[[ 결과내재검색 reWrap Start ]]-->
 	        		<div id="reWrap">
 	       			 <div class="frm">
@@ -395,7 +723,11 @@ $("div#rank span.tab").on('click', function() {
 	                    <span class="chkPrice"><label><input type="radio" name="price" id="price" value="p100200">100~200만원</label></span>
 	                    <span class="chkPrice"><label><input type="radio" name="price" id="price" value="p200lo">200만원 이상</label></span>
 	                    <span class="chkPrice"><label><input type="radio" name="price" id="price" value="pricetext">직접입력</label></span>
-	                    <span class="chkPrice"><input type="text" name="lowPrice" id="lowPrice" value="" numberonly="" readonly=""><span class="divide">~</span><input type="text" name="highPrice" id="highPrice" value="" numberonly="" readonly=""></span>
+	                    <span class="chkPrice">
+		                    <input type="text" name="lowPrice" id="lowPrice" value="" numberonly="" readonly="">
+		                    <span class="divide">~</span>
+		                    <input type="text" name="highPrice" id="highPrice" value="" numberonly="" readonly="">
+	                    </span>
 	                </li>
 	                <li>
 	                    <span class="tit">여행기간</span>
@@ -426,7 +758,8 @@ $("div#rank span.tab").on('click', function() {
 	                    </select>
 	                    <span class="tit">상세키워드</span>
 	                    <input type="text" name="keyword" id="keyword" value="">
-	                    <button class="btnReSearch" type="submit" title="재검색" onclick="resultReSearchList(); return false;">재검색</button>
+	                    
+	                    <button class="btnReSearch" type="submit" title="재검색" onclick="resultReSearchList(event) return false;">재검색</button>
 	                    <button type="reset" class="btnReset" title="초기화">초기화</button>
 	                </li>
 	            </ul>
@@ -435,7 +768,7 @@ $("div#rank span.tab").on('click', function() {
 	                <span class="tab sibal">인기검색어</span>
 	                <span class="tab">추천검색어</span>
 	                <ul class="rankList tab01" style="display: block;">
-	                <a href="/search/searchKeyword.do?query=오사카">
+	                <a href="/search/searchKeyword.do?serachCondition=오사카">
 		                <li>
 			                <span class="no grade">1</span>
 			                <span class="name">오사카</span>
@@ -443,7 +776,7 @@ $("div#rank span.tab").on('click', function() {
 			                <span class="num">0</span></li>
 			            </li>
 			        </a>
-			        <a href="/search/searchKeyword.do?query=스페인 포르투갈 모로코">
+			        <a href="/search/searchKeyword.do?serachCondition=스페인 포르투갈 모로코">
 		                <li>
 		                	<span class="no grade">2</span>
 			                <span class="name">스페인 포르투갈 모로코</span>
@@ -451,7 +784,7 @@ $("div#rank span.tab").on('click', function() {
 			                <span class="num">6</span>
 		                </li>
 		            </a>
-		            <a href="/search/searchKeyword.do?query=오키나와">
+		            <a href="/search/searchKeyword.do?serachCondition=오키나와">
 		            <li>
 		            <span class="no grade">3</span>
 		            <span class="name">오키나와</span>
@@ -459,7 +792,7 @@ $("div#rank span.tab").on('click', function() {
 		            <span class="num">2</span>
 		            </li>
 		            </a>
-		            <a href="/search/searchKeyword.do?query=동유럽">
+		            <a href="/search/searchKeyword.do?serachCondition=동유럽">
 		            <li>
 		            <span class="no">4</span>
 		            <span class="name">동유럽</span>
@@ -467,7 +800,7 @@ $("div#rank span.tab").on('click', function() {
 		            <span class="num">2</span>
 		            </li>
 		            </a>
-		            <a href="/search/searchKeyword.do?query=장가계">
+		            <a href="/search/searchKeyword.do?serachCondition=장가계">
 		            <li>
 		            <span class="no">5</span>
 		            <span class="name">장가계</span>
@@ -475,7 +808,7 @@ $("div#rank span.tab").on('click', function() {
 		            <span class="num">2</span>
 		            </li>
 		            </a>
-		            <a href="/search/searchKeyword.do?query=다낭">
+		            <a href="/search/searchKeyword.do?serachCondition=다낭">
 		            <li>
 		            <span class="no">6</span>
 		            <span class="name">다낭</span>
@@ -483,7 +816,7 @@ $("div#rank span.tab").on('click', function() {
 		            <span class="num">1</span>
 		            </li>
 		            </a>
-		            <a href="/search/searchKeyword.do?query=미서부">
+		            <a href="/search/searchKeyword.do?serachCondition=미서부">
 		            <li>
 		            <span class="no">7</span>
 		            <span class="name">미서부</span>
@@ -491,7 +824,7 @@ $("div#rank span.tab").on('click', function() {
 		            <span class="num">1</span>
 		            </li>
 		            </a>
-		            <a href="/search/searchKeyword.do?query=베트남">
+		            <a href="/search/searchKeyword.do?serachCondition=베트남">
 		            <li>
 		            <span class="no">8</span>
 		            <span class="name">베트남</span>
@@ -499,7 +832,7 @@ $("div#rank span.tab").on('click', function() {
 		            <span class="num">0</span>
 		            </li>
 		            </a>
-		            <a href="/search/searchKeyword.do?query=터키">
+		            <a href="/search/searchKeyword.do?serachCondition=터키">
 		            <li>
 		            <span class="no">9</span>
 		            <span class="name">터키</span>
@@ -507,7 +840,7 @@ $("div#rank span.tab").on('click', function() {
 		            <span class="num">2</span>
 		            </li>
 		            </a>
-		            <a href="/search/searchKeyword.do?query=호주">
+		            <a href="/search/searchKeyword.do?serachCondition=호주">
 		            <li>
 		            <span class="no">10</span>
 		            <span class="name">호주</span>
@@ -518,7 +851,7 @@ $("div#rank span.tab").on('click', function() {
 		            </a>
 		            </ul>
 	                <ul class="rankList tab02" style="display: none;">
-	                <a href="/search/searchKeyword.do?query=오사카">
+	                <a href="/search/searchKeyword.do?serachCondition=오사카">
 		                <li>
 			                <span class="no grade">1</span>
 			                <span class="name">바바바바바바바바바</span>
@@ -526,7 +859,7 @@ $("div#rank span.tab").on('click', function() {
 			                <span class="num">0</span></li>
 			            </li>
 			        </a>
-			        <a href="/search/searchKeyword.do?query=스페인 포르투갈 모로코">
+			        <a href="/search/searchKeyword.do?serachCondition=스페인 포르투갈 모로코">
 		                <li>
 		                	<span class="no grade">2</span>
 			                <span class="name">스페인 포르투갈 모로코</span>
@@ -534,7 +867,7 @@ $("div#rank span.tab").on('click', function() {
 			                <span class="num">6</span>
 		                </li>
 		            </a>
-		            <a href="/search/searchKeyword.do?query=오키나와">
+		            <a href="/search/searchKeyword.do?serachCondition=오키나와">
 		            <li>
 		            <span class="no grade">3</span>
 		            <span class="name">오키나와</span>
@@ -542,7 +875,7 @@ $("div#rank span.tab").on('click', function() {
 		            <span class="num">2</span>
 		            </li>
 		            </a>
-		            <a href="/search/searchKeyword.do?query=동유럽">
+		            <a href="/search/searchKeyword.do?serachCondition=동유럽">
 		            <li>
 		            <span class="no">4</span>
 		            <span class="name">동유럽</span>
@@ -550,7 +883,7 @@ $("div#rank span.tab").on('click', function() {
 		            <span class="num">2</span>
 		            </li>
 		            </a>
-		            <a href="/search/searchKeyword.do?query=장가계">
+		            <a href="/search/searchKeyword.do?serachCondition=장가계">
 		            <li>
 		            <span class="no">5</span>
 		            <span class="name">장가계</span>
@@ -558,7 +891,7 @@ $("div#rank span.tab").on('click', function() {
 		            <span class="num">2</span>
 		            </li>
 		            </a>
-		            <a href="/search/searchKeyword.do?query=다낭">
+		            <a href="/search/searchKeyword.do?serachCondition=다낭">
 		            <li>
 		            <span class="no">6</span>
 		            <span class="name">다낭</span>
@@ -566,7 +899,7 @@ $("div#rank span.tab").on('click', function() {
 		            <span class="num">1</span>
 		            </li>
 		            </a>
-		            <a href="/search/searchKeyword.do?query=미서부">
+		            <a href="/search/searchKeyword.do?serachCondition=미서부">
 		            <li>
 		            <span class="no">7</span>
 		            <span class="name">미서부</span>
@@ -574,7 +907,7 @@ $("div#rank span.tab").on('click', function() {
 		            <span class="num">1</span>
 		            </li>
 		            </a>
-		            <a href="/search/searchKeyword.do?query=베트남">
+		            <a href="/search/searchKeyword.do?serachCondition=베트남">
 		            <li>
 		            <span class="no">8</span>
 		            <span class="name">베트남</span>
@@ -582,7 +915,7 @@ $("div#rank span.tab").on('click', function() {
 		            <span class="num">0</span>
 		            </li>
 		            </a>
-		            <a href="/search/searchKeyword.do?query=터키">
+		            <a href="/search/searchKeyword.do?serachCondition=터키">
 		            <li>
 		            <span class="no">9</span>
 		            <span class="name">터키</span>
@@ -590,7 +923,7 @@ $("div#rank span.tab").on('click', function() {
 		            <span class="num">2</span>
 		            </li>
 		            </a>
-		            <a href="/search/searchKeyword.do?query=호주">
+		            <a href="/search/searchKeyword.do?serachCondition=호주">
 		            <li>
 		            <span class="no">10</span>
 		            <span class="name">호주</span>
@@ -605,12 +938,15 @@ $("div#rank span.tab").on('click', function() {
 	        </form>
         </div>
         <div id="product02">
+        
         <!--[[ 여행상품목록 Start ]]-->
+		<form action="<c:url value='/search/searchKeyword.do' />" name="reSearch2" method="post">
             <div class="title title02 none" title="여행상품"></div>
             <div class="searchBar">
-            
+			          
                 <span class="barL">
                     <span>전체 ${goodsCnt }개 상품</span>
+                    
                     <select name="sort" id="sort" class="mgr10" title="정렬순서선택">
                     	<option value="">정렬순서</option>
                         <option value="AMTASC">낮은가격순</option>
@@ -633,6 +969,10 @@ $("div#rank span.tab").on('click', function() {
                     <button type="button" id="btnCompare" title="선택상품비교하기">선택상품비교하기</button>
                 </span>
             </div>
+            <input type="hidden" name="searchKeyword" id="existKeyword" value="<%=searchKeyword%>">
+            <%-- <input type="hidden" name="searchCondition" id="existCondition" value="<%=searchCondition%>"> --%>
+		 </form>        
+		              
             <c:if test="${goodsCnt==0}">
             <div class="listNoti"><!--[[ listWrap Start ]]-->
                 <div class="noti"><!--[[ listBar Start ]]-->

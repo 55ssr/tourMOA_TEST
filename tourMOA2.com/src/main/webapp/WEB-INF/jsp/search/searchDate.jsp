@@ -7,10 +7,15 @@
 $(document).ready(function(){
 	$("#datepickers").multiDatesPicker({
 		numberOfMonths: 3,
-		dateFormat: "yymmdd",
+		dateFormat: "yy-mm-dd",
 		minDate: 1,
-		altField: '#searchDateStart'
+		altField: "#departDate"
 		
+	});
+	
+	$("#btnSearch").click(function(){
+		alert($("#departDate").val());
+		document.searchforms.submit();
 	});
 });
 </script>
@@ -36,12 +41,10 @@ $(document).ready(function(){
 			</li></a>
 		</ul>
 	</div>
-	<form name="searchforms" id="totalSearch"
-		action="/search/searchDate.do" method="POST"
-		onSubmit="resultSearchDepartDay(event); return false;">
-		<input type="hidden" name="sort" value=""> <input
-			type="hidden" name="collection" value=""> <input
-			type="hidden" name="realQuery" value="" />
+	<form name="searchforms" id="totalSearch" action="/search/searchKeyword.do" method="POST">
+		<input type="hidden" name="sort" value=""> 
+		<input type="hidden" name="departDate" id="departDate" value=""> 
+		<input type="hidden" name="realQuery" value="" />
 		<div class="tabview tab02 block">
 			<!--[[ 출발일검색 tab02 Start ]]-->
 			<div class="calendarBox">
@@ -66,7 +69,7 @@ $(document).ready(function(){
 							type="checkbox" name="departWDayTop" id="week07" value="일"><label
 							for="week07">일</label></span> <input type="hidden" name="departDate"
 							id="departDate" value="">
-						<button type="submit" class="btnSearch" title="검색">검색</button>
+						<button type="button" class="btnSearch" id="btnSearch" title="검색">검색</button>
 					</div>
 				</div>
 			</div>
