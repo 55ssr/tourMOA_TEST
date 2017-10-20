@@ -99,5 +99,13 @@ public class GoodsDAO extends EgovAbstractDAO{
 		return (OptionVO) select("goodsDAO.selectOptionDetail", vo);
 	}
 
+	public int updateOption(GoodsVO vo) {
+		return update("goodsDAO.updateOption", vo);
+	}
+
+	public int deleteOption(OptionVO vo) {
+		return delete("goodsDAO.deleteOption", vo);
+	}
+
 
 }
