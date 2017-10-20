@@ -6,7 +6,17 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <link rel="stylesheet" href="/css/customer.css" />
+
+
+
+
 <script>
+
+function fn_loc(a) {
+	document.frm.unq = a;
+	document.frm.submit();
+}
+
 	function fnMenuSelect() {
 		//공지사항
 		$('.lnb01').addClass('lnb01 on');
@@ -95,20 +105,24 @@
 					<th scope="col">제목</th>
 					<th scope="col">등록일</th>
 				</tr>
+			</tbody>
 		</table>
-		<table >
+		<table>
 			<c:forEach var="result" items="${resultList}" varStatus="status">
 				<tr>
-					<td headers="번호"><span class="bul bul_yellow">상시공지</span></td>
-					<%-- <td headers="번호" >${number}</td>	 --%>
-					<td headers="제목" class="subject"><a
-						href="/customer/noticeDetail.do?noticeNo=20000002822&pageIndex=1&searchCnd=&searchWrd=&searchNoticeCd=">${result.title}<%--  - ${result.allview} --%></a>
-					</td>
-					<td headers="등록일">${fn:substring(result.rdate,0,10)}</td>
+					<c:if test="${result.allview == 'Y'}">
+						<td headers="번호"><span class="bul bul_yellow">상시공지</span></td>
+					</c:if>
+					<c:if test="${result.allview == 'N'}">
+						<td headers="번호" >${number}</td>
+					</c:if>
+						<td headers="제목" class="subject">
+							<a href="noticeDetail.do" onclick="fn_loc(${result.unq})">${result.title}</a>
+						</td>
+						<td headers="등록일">${fn:substring(result.rdate,0,10)}</td>	
 				</tr>
 				<c:set var="number" value="${number-1}" />
 			</c:forEach>
-			</tbody>
 		</table>
 	</div>
 <!-- --------------------------------------------------------------------------------- -->	
@@ -133,7 +147,7 @@
 		<ul class="pagination justify-content-center">
 		<c:if test="${before == 0}">
 			<li class="page-item disabled">
-				<a class="page-link" href="#" tabindex="-1" aria-label="Previous">
+				<a class="page-link" href="/customer/noticeList.do?pageIndex=1&searchCondition=${searchVO.searchCondition}&searchKeyword=${searchVO.searchKeyword}" tabindex="-1" aria-label="Previous">
 					<span aria-hidden="true">&laquo;&laquo;</span>	
 					<span class="pre"><!-- Previous --></span>
 				</a>
@@ -221,5 +235,11 @@
 				title="마지막페이지">&gt;</a></span></span>
 	</div> -->
 	<!--[[ board navi End ]]-->
+	
+	<form id="hiddenFrm" name="hiddenFrm">
+<input type="hidden" id="unq" name="unq" />
+</form>
+
+
 </section>
 </div>

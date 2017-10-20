@@ -3,76 +3,83 @@
 
 <sqlMap namespace="Notice">
 
-	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
-	<typeAlias  alias="noticeVO" type="tourMOA.service.NoticeVO"/>
-	
+	<typeAlias alias="egovMap"
+		type="egovframework.rte.psl.dataaccess.util.EgovMap" />
+	<typeAlias alias="noticeVO" type="tourMOA.service.NoticeVO" />
+
 	<insert id="noticeDAO.insertNotice">
-		INSERT INTO notice 
-			( unq
-			  , gubun
-			  , title
-			  , content
-			  , hit
-			  , rdate
-			  , upddate
-			  , allview)
+		INSERT INTO notice
+		( unq
+		, gubun
+		, title
+		, content
+		, hit
+		,
+		rdate
+		, upddate
+		, allview)
 		VALUES ( SEQ_notice_unq.nextval
-			  , #gubun#
-			  , #title#
-			  , #content#
-			  , '0'
-			  , sysdate
-			  , sysdate
-			  , #allview# )
+		, #gubun#
+		,
+		#title#
+		, #content#
+		, '0'
+		, sysdate
+		, sysdate
+		, #allview# )
 	</insert>
-	
+
 	<select id="noticeDAO.selectNoticeList" resultClass="egovMap">
 		SELECT b.* FROM (
-			SELECT 
-				rownum rn, a.* FROM (
-							SELECT	  unq
-									, gubun
-									, title
-									, content
-									, hit
-									, rdate
-									, allview
-									, upddate 
-							FROM 
-									notice
-									
-							WHERE
-									1=1 
-									
-							<isNotNull property="searchCondition">
-								<isNotEmpty property="searchCondition">
-									AND $searchCondition$ LIKE '%' || #searchKeyword# || '%' 	
-								</isNotEmpty>
-							</isNotNull>		
-									
-							ORDER BY rdate DESC
-									) a
-						) b
-		WHERE 
-				rn >= #firstIndex# AND rn <![CDATA[<=]]> #lastIndex#
+		SELECT
+		rownum rn, a.* FROM (
+		SELECT unq
+		, gubun
+		, title
+		,
+		content
+		, hit
+		, rdate
+		, allview
+		, upddate
+		FROM
+		notice
+
+		WHERE
+		1=1
+
+		<isNotNull property="searchCondition">
+			<isNotEmpty property="searchCondition">
+				AND $searchCondition$ LIKE '%' ||
+				#searchKeyword# || '%'
+			</isNotEmpty>
+		</isNotNull>
+
+		ORDER BY allview DESC, rdate DESC     <!-- ORDER BY rdate DESC -->	<!-- ORDER BY allview DESC, rdate DESC -->
+		) a
+		) b
+		WHERE
+		rn >= #firstIndex# AND rn <![CDATA[<=]]>
+		#lastIndex#
 	</select>
-	
+
 	<select id="noticeDAO.selectNoticeTotal" resultClass="java.lang.Integer">
-		SELECT COUNT(*) FROM notice
+		SELECT
+		COUNT(*) FROM notice
 	</select>
-	
+
 	<select id="noticeDAO.selectNoticeDetail" resultClass="noticeVO">
 		SELECT
-			unq,
-			title,
-			centent,
-			hit,
-			to_char(rdate, 'yyyy-mm-dd')as rdate,
-			upddate,
-			allview
+		unq,
+		title,
+		centent,
+		hit,
+		to_char(rdate, 'yyyy-mm-dd')as rdate,
+		upddate,
+		allview
 		FROM
-			notice
+		notice
 		WHERE
-			unq= '$unq$'
+		unq= '$unq$'
 	</select>
 </sqlMap>

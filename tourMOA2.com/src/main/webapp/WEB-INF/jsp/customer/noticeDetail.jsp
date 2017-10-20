@@ -48,6 +48,7 @@
 			</ul>
 		</div>
 		<div class="viewContent nowrap">
+		
 			<p>
 				<span style="font-family: 맑은 고딕;"><span
 					style="font-size: 14px;">※ 항공사별 항공편에 대해 2017년 10월 이후 여객
@@ -78,6 +79,7 @@
 		<div class="btnarea">
 			<button id="btn_list" class="btnGray" title="목록보기"
 				onclick="document.location.href='/customer/noticeList.do?pageIndex=1&amp;searchCnd=&amp;searchWrd=&amp;searchNoticeCd=&amp;'">목록보기</button>
+		</div>
 		</div>
 		</div>
 </section>
