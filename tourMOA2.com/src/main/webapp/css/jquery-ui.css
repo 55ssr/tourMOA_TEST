@@ -118,7 +118,7 @@
 .ui-datepicker .ui-datepicker-prev {
 	top: 14px;
 	left: 20px;
-	background: url("../images/unit/calendar/calendar_btnL.jpg") no-repeat
+	background: url("/images/customer/calendar_btnL.png") no-repeat
 		right center;
 	cursor: pointer;
 }
@@ -126,7 +126,7 @@
 .ui-datepicker .ui-datepicker-next {
 	top: 14px;
 	right: 20px;
-	background: url("../images/unit/calendar/calendar_btnR.jpg") no-repeat
+	background: url("/images/customer/calendar_btnR.png") no-repeat
 		left center;
 	cursor: pointer;
 }
@@ -228,7 +228,7 @@
 	overflow: hidden;
 	border: none;
 	background-color: transparent;
-	background-image: url("../images/unit/calendar/calendar_close.jpg");
+	background-image: url("/images/customer/calendar_close.png");
 	background-repeat: no-repeat;
 	background-position: right center;
 	color: #6a6a6a;
@@ -1306,7 +1306,7 @@
 	height: 25px;
 	top: 100px;
 	left: 0px;
-	background: url("../images/detail/arrowL_off.jpg") center right
+	background: url("/images/detail/arrowL_off.jpg") center right
 		no-repeat;
 	cursor: pointer;
 }
@@ -1316,7 +1316,7 @@
 	height: 25px;
 	top: 100px;
 	right: 0px;
-	background: url("../images/detail/arrowR_off.png") center left no-repeat;
+	background: url("/images/detail/arrowR_off.png") center left no-repeat;
 	cursor: pointer;
 }
 
@@ -1325,7 +1325,7 @@
 	height: 25px;
 	top: 100px;
 	left: 0px;
-	background: url("../images/detail/arrowL_on.png") center right no-repeat;
+	background: url("/images/detail/arrowL_on.png") center right no-repeat;
 	cursor: pointer;
 }
 
@@ -1334,7 +1334,7 @@
 	height: 25px;
 	top: 100px;
 	right: 0px;
-	background: url("../images/detail/arrowR_on.jpg") center left no-repeat;
+	background: url("/images/detail/arrowR_on.jpg") center left no-repeat;
 	cursor: pointer;
 }
 

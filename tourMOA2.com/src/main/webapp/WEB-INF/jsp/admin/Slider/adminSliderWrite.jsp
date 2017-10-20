@@ -38,6 +38,34 @@ $(function(){
 			}
 		});
 	});
+	
+	$("#confirm").click(function(){
+
+		if($("#frm #code").val() == "") {
+			alert("영문 입력해주세요.");
+			return false;
+		}
+		
+		$.ajax({
+			type: 'POST',
+			data: "code="+$("#code").val(),
+			url: "<c:url value='/adminSliderConfirm.do' />",
+			dataType: "json",
+			success: function (data) {
+				if(data.cnt > 0) {
+					alert("중복된 코드가 있습니다.");
+				} else {
+					alert("사용 가능한 코드 입니다.");
+					$("#saveBtn").removeAttr("disabled");
+					$("#saveBtn").removeClass("btn-secondary");
+					$("#saveBtn").addClass("btn-primary");
+				}
+			},
+			error: function (error) {
+				alert("error : " + error);
+			}
+		});
+	});
 });
 </script>
 
@@ -71,23 +99,25 @@ $(function(){
 			<div class="col-sm-2">
 				<input type="text" name="code" id="code" class="form-control" placeholder="영문" value="test">
 			</div>
+			<div class="col-sm-2">
+				<button type="button" class="btn btn-primary" id="confirm">중복확인</button>
+			</div>
 		</div>
 	
 		<div class="form-group row">
 			<label for="selectUse" class="col-sm-2 col-form-label">슬라이드 이미지</label>
 			<div class="col-sm-2">
-				<!-- <input type="file" class="form-control-file" id="exampleFormControlFile1" multiple> -->
-				<input type="file" name="file1" size="70" /><br />
-				<input type="file" name="file2" size="70" /><br />
-				<input type="file" name="file3" size="70" /><br />
-				<input type="file" name="file4" size="70" /><br />
-				<input type="file" name="file5" size="70" /><br />		
+				<input type="file" name="file1" class="form-control-file mb-2" />
+				<input type="file" name="file2" class="form-control-file mb-2" />
+				<input type="file" name="file3" class="form-control-file mb-2" />
+				<input type="file" name="file4" class="form-control-file mb-2" />
+				<input type="file" name="file5" class="form-control-file mb-2" />		
 			</div>
 		</div>
 		
 		<div class="d-flex justify-content-center">
 			<div class="p-2">
-				<button type="button" class="btn btn-primary" id="saveBtn">Submit</button>
+				<button type="button" class="btn btn-secondary" id="saveBtn" disabled>Submit</button>
 			</div>
 		</div>
 		

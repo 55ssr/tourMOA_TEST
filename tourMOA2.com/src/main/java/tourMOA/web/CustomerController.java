@@ -142,14 +142,29 @@ public class CustomerController {
 	
 	/*견적문의 저장*/
 	@RequestMapping("estimateReqSave.do")
-	@ResponseBody public Map<String, Object> insertEstimateReq(EstimateVO vo) throws Exception {		
-	//public String insertEstimateReq(@RequestParam("title") int title, EstimateVO vo, Model model) throws Exception{	
+	@ResponseBody public Map<String, Object> insertEstimateReq(EstimateVO vo) throws Exception {			
 		String result="";
 		int cnt = 0;
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		
-		System.out.println("title ====== " + vo.getTitle());
-		//System.out.println("name ======= " + vo.getName());
+		System.out.println("email ====== " + vo.getEmail());
+		System.out.println("name ====== " + vo.getName());
+		System.out.println("phone ====== " + vo.getPhone());
+		System.out.println("person ====== " + vo.getPerson());
+		System.out.println("money ====== " + vo.getMoney());
+		System.out.println("ptime ====== " + vo.getPtime());
+		System.out.println("floc ====== " + vo.getFloc());
+		System.out.println("sdate ====== " + vo.getSdate());
+		System.out.println("edate ====== " + vo.getEdate());
+		System.out.println("schange ====== " + vo.getSchange());
+		System.out.println("airline ====== " + vo.getAirline());
+		System.out.println("stay ====== " + vo.getStay());
+		System.out.println("stayname ====== " + vo.getStayname());
+		System.out.println("req ====== " + vo.getReq());
+		System.out.println("inestimateagree ====== " + vo.getInestimateagree());
+		System.out.println("userid ====== " + vo.getUserid());
+		System.out.println("city ====== " + vo.getCity());
+		System.out.println("passage ====== " + vo.getPassage());
 		
 		result = estimateService.insertEstimateReq(vo);
 		if(result == null) {
@@ -157,7 +172,6 @@ public class CustomerController {
 		}
 		map.put("result", result);
 		return map;
-		//return "customer/estimateReq";
 	}
 	
 	

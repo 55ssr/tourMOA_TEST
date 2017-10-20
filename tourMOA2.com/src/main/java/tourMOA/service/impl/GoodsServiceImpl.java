@@ -116,7 +116,25 @@ public class GoodsServiceImpl extends EgovAbstractServiceImpl implements GoodsSe
 		return goodsDAO.adminOptionList(searchVO);
 	}
 
-	
+	@Override
+	public int adminSliderConfirm(SliderVO vo) throws Exception {
+		return goodsDAO.adminSliderConfirm(vo);
+	}
+
+	@Override
+	public OptionVO selectOptionDetail(OptionVO vo) throws Exception {
+		return goodsDAO.selectOptionDetail(vo);
+	}
+
+	@Override
+	public int updateOption(GoodsVO vo) {
+		return goodsDAO.updateOption(vo);
+	}
+
+	@Override
+	public int deleteOption(OptionVO vo) {
+		return goodsDAO.deleteOption(vo);
+	}
 
 
 }

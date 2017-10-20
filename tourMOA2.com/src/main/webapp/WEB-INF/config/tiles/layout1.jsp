@@ -40,7 +40,10 @@
 <link rel="stylesheet" href="/css/jquery-ui.css" />
 <link rel="stylesheet" href="/css/sliderkit/sliderkit.css" /> 
 
-<script src="/js/ui.js" type="text/javascript"></script>
+<!-- <script src="/js/ui.js" type="text/javascript"></script> -->
+<script src="/js/jquery.number.min.js"></script>
+<script src="/js/jquery-2.2.2.js"></script>
+<script src="/js/jquery-ui.js"></script>
 <script src="/js/jquery.cookie.js" type="text/javascript"></script>	
 <script src="/js/jquery.simplemodal-1.4.4.js"></script>
 <script src="/js/jquery.validate.js"></script>
