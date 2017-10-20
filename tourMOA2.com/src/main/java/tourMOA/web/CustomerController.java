@@ -162,11 +162,13 @@ public class CustomerController {
 		System.out.println("stayname ====== " + vo.getStayname());
 		System.out.println("req ====== " + vo.getReq());
 		System.out.println("inestimateagree ====== " + vo.getInestimateagree());
+		System.out.println("title ====== " + vo.getTitle());
 		System.out.println("userid ====== " + vo.getUserid());
 		System.out.println("city ====== " + vo.getCity());
 		System.out.println("passage ====== " + vo.getPassage());
 		
 		result = estimateService.insertEstimateReq(vo);
+		System.out.println("here~~~~");
 		if(result == null) {
 			result = "ok";
 		}

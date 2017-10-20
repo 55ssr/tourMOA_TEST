@@ -1,5 +1,7 @@
 package tourMOA.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -17,5 +19,10 @@ public class EstimateServiceImpl extends EgovAbstractServiceImpl implements Esti
 	@Override
 	public String insertEstimateReq(EstimateVO vo) throws Exception {
 		return estimateDAO.insertEstimateReq(vo);
+	}
+
+	@Override
+	public List<?> selectAdEstimateList(EstimateVO vo) throws Exception {
+		return estimateDAO.selectAdEstimateList(vo);
 	}
 }

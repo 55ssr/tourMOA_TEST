@@ -31,6 +31,8 @@ import egovframework.example.sample.service.SampleDefaultVO;
 import tourMOA.service.CategoryService;
 import tourMOA.service.CategoryVO;
 import tourMOA.service.DefaultListVO;
+import tourMOA.service.EstimateService;
+import tourMOA.service.EstimateVO;
 import tourMOA.service.GoodsService;
 import tourMOA.service.GoodsVO;
 import tourMOA.service.MemberService;
@@ -52,6 +54,9 @@ public class AdminController {
 	
 	@Resource(name = "multipartResolver")
 	CommonsMultipartResolver multipartResolver;
+	
+	@Resource(name = "estimateService")
+	private EstimateService estimateService;
 	
 	@RequestMapping("/admin.do")
 	public String admin() {
@@ -709,7 +714,11 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/adminEstimateList.do")
-	public String adminEstimateList() {
+	public String selectAdEstimateList(@ModelAttribute("searchVO")SampleDefaultVO searchVO, EstimateVO vo, Model model) throws Exception {
+		
+		List<?> list = estimateService.selectAdEstimateList(vo);
+		
+		model.addAttribute("rslist", list);
 		return "admin/Estimate/adminEstimateList";
 	}
 	
