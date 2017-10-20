@@ -7,13 +7,13 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-	<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
+<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
 	<h1>상품 등록</h1>
 	<div class="row justify-content-between mb-3">
 		<div class="col-lg-3">
 		</div>
 		<div class="col-lg-1">
-			<button type="button" class="w-100 btn btn-primary" onclick="location.href='/adminGoodsList.do'">목록</button>
+		<button type="button" class="w-100 btn btn-primary" onclick="location.href='/adminGoodsList.do'">목록</button>
 		</div>
 	</div>
 	
@@ -56,9 +56,15 @@
 			period += "일";
 			$("#period").val(period);
 			
-			/* 에디터의 내용을 hidden textarea 에 담는다 */
-			var detail1 = $(".note-codable + div").html();
-			$("#detail1").text(detail1);
+			/* 에디터의 내용을 hidden textarea 에 담는다 
+			dinfo, incinfo, nincinfo, ref, daily
+			*/
+			$("#dinfo").text($("label[for=dinfo]+div .note-codable + div").html());
+			$("#incinfo").text($("label[for=incinfo]+div .note-codable + div").html());
+			$("#nincinfo").text($("label[for=nincinfo]+div .note-codable + div").html());
+			$("#ref").text($("label[for=ref]+div .note-codable + div").html());
+			$("#daily").text($("label[for=daily]+div .note-codable + div").html());
+			
 			
 			if($("#frm #title").val() == "") {
 				alert("제목을 입력해주세요.");
@@ -152,8 +158,8 @@
 			<div class="col-sm-2">
 				<select class="form-control" name="gubun" id="gubun">
 					<option value="">-선택-</option>
-					<option value="자유여행">자유여행</option>
-					<option value="해외패키지">해외패키지</option>
+					<option value="pkg">해외패키지</option>
+					<option value="fit">자유여행</option>
 				</select>
 			</div>
 			<div class="btn-group col-sm-2" role="group" aria-label="First group">
@@ -185,7 +191,7 @@
 					<option value="eeurope">동유럽</option>
 					<option value="enasia">동남아</option>
 					<option value="easia">동아시아</option>
-					<option value="namerica">미주</option>
+					<option value="namerica">북미</option>
 				</select>
 			</div>
 			<div class="btn-group col-sm-2" role="group" aria-label="First group">
@@ -199,11 +205,14 @@
 			<div class="col-sm-2">
 				<select class="form-control" name="nation" id="nation">
 					<option value="">-선택-</option>
-					<option value="영국">영국</option>
-					<option value="프랑스">프랑스</option>
-					<option value="이탈리아">이탈리아</option>
-					<option value="독일">독일</option>
-					<option value="스페인">스페인</option>
+					<option value="uk">영국</option>
+					<option value="france">프랑스</option>
+					<option value="italy">이탈리아</option>
+					<option value="germany">독일</option>
+					<option value="spain">스페인</option>
+					<option value="japan">일본</option>
+					<option value="china">중국</option>
+					<option value="usa">미국</option>
 				</select>
 			</div>
 			<div class="btn-group col-sm-2" role="group" aria-label="First group">
@@ -402,7 +411,7 @@
 		</div>
 		
 		<div class="form-group row">
-			<label for="inputDetail" class="col-sm-2 col-form-label">1. 상품안내</label>
+			<label for="dinfo" class="col-sm-2 col-form-label">1. 상품안내</label>
 			<div class="col-sm-10">
 				<div class="form-control" id="summernote"></div>
 				<script>
@@ -420,7 +429,7 @@
 		</div>
 		
 		<div class="form-group row">
-			<label for="inputDetail" class="col-sm-2 col-form-label">2. 포함사항</label>
+			<label for="incinfo" class="col-sm-2 col-form-label">2. 포함사항</label>
 			<div class="col-sm-10">
 				<div class="form-control" id="summernote2"></div>
 				<script>
@@ -438,7 +447,7 @@
 		</div>
 		
 		<div class="form-group row">
-			<label for="inputDetail" class="col-sm-2 col-form-label">3. 불포함사항</label>
+			<label for="nincinfo" class="col-sm-2 col-form-label">3. 불포함사항</label>
 			<div class="col-sm-10">
 				<div class="form-control" id="summernote3"></div>
 				<script>
@@ -456,7 +465,7 @@
 		</div>
 		
 		<div class="form-group row">
-			<label for="inputDetail" class="col-sm-2 col-form-label">4. 참고/전달사항</label>
+			<label for="ref" class="col-sm-2 col-form-label">4. 참고/전달사항</label>
 			<div class="col-sm-10">
 				<div class="form-control" id="summernote4"></div>
 				<script>
@@ -474,7 +483,7 @@
 		</div>
 		
 		<div class="form-group row">
-			<label for="inputDetail" class="col-sm-2 col-form-label">5. 일정표</label>
+			<label for="daily" class="col-sm-2 col-form-label">5. 일정표</label>
 			<div class="col-sm-10">
 				<div class="form-control" id="summernote5"></div>
 				<script>
@@ -487,7 +496,7 @@
 						lang: 'ko-KR'
 					});
 				</script>
-				<textarea class="form-control" id="daily" name=""daily"" hidden></textarea>
+				<textarea class="form-control" id="daily" name="daily" hidden></textarea>
 			</div>
 		</div>
 		
@@ -495,18 +504,18 @@
 			<label for="selectDirect" class="col-sm-2 col-form-label">직항여부</label>
 			<div class="col-sm-2">
 				<select class="form-control" name="via" id="via">
-					<option value="Y">직항</option>
-					<option value="N">경유</option>
+					<option value="N">직항</option>
+					<option value="Y">경유</option>
 				</select>
 			</div>
 			<script>
 			$("#via").on("change", function(){
-				if ($(this).val() == "Y") {
+				if ($(this).val() == "N") {
 				 	$("#vias").attr("disabled",true);
 				 	$("#viaSelect").attr("disabled",true);
 				 	$("#viaSelect + button").attr("disabled",true);
 				}
-				if ($(this).val() == "N") {
+				if ($(this).val() == "Y") {
 				 	$("#vias").removeAttr("disabled");
 				 	$("#viaSelect").removeAttr("disabled");
 				 	$("#viaSelect + button").removeAttr("disabled");
@@ -514,14 +523,6 @@
 			});
 			</script>
 		</div>
-		
-		<!-- <div class="form-group row">
-			<label for="selectWaypoint" class="col-sm-2 col-form-label">경유지</label>
-			<div class="btn-group col-sm-2" role="group" aria-label="First group">
-				<input type="text" class="form-control rounded-0 rounded-left" placeholder="경유지 추가" aria-label="Input group example" aria-describedby="btnGroupAddon2" id="viaSelect" disabled>
-				<button type="button" class="btn btn-primary" onclick="fn_add2()" disabled>+</button>
-			</div>	
-		</div> -->
 				
 		<div class="form-group row">
 			<label for="selectWaypoint" class="col-sm-2 col-form-label">경유지</label>
@@ -545,6 +546,16 @@
 		</div>
 		
 		<div class="form-group row">
+			<label for="selectUse" class="col-sm-2 col-form-label">옵션 사용여부</label>
+			<div class="col-sm-2">
+				<select class="form-control" name="opt" id="opt">
+					<option value="Y" selected>사용</option>
+					<option value="N">중지</option>
+				</select>
+			</div>
+		</div>
+		
+		<div class="form-group row">
 			<label for="selectUse" class="col-sm-2 col-form-label">사용여부</label>
 			<div class="col-sm-2">
 				<select class="form-control" name="use" id="use">
@@ -562,22 +573,16 @@
 		
 	</form>
 	
-	
 <script type="text/javascript">
-    $('.form_datetime').datetimepicker({
-        language:  'ko',
-        weekStart: 1,
-        todayBtn:  1,
+	$('.form_datetime').datetimepicker({
+		language:  'ko',
+		weekStart: 1,
+		todayBtn:  1,
 		autoclose: 1,
 		todayHighlight: 1,
 		startView: 2,
 		forceParse: 0,
-        showMeridian: 1
-    });
-   </script>
-	
-	
-	
-	
-	
-    </main>
+		showMeridian: 1
+	});
+</script>
+</main>
