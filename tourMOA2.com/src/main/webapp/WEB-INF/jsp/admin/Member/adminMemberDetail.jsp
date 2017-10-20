@@ -334,7 +334,7 @@ $(document).ready(function(){
 		
 			<label for="inputUserId" class="col-sm-2 col-form-label">아이디</label>
 			<div class="col-sm-2">
-				<input type="text" class="form-control" value="${vo.id}" name="id" id="userid" placeholder="아이디">
+				<input type="text" class="form-control" value="${vo.id}" name="id" id="userid" placeholder="아이디" readonly>
 				<small id="passwordHelpInline" class="text-muted">
 					6자이상 14자 이하
 				</small>

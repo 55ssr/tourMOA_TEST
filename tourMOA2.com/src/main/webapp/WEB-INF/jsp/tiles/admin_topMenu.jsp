@@ -44,10 +44,10 @@
 				  결제관리
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-					<a class="dropdown-item" href="/adminPayList.do">입금전</a>
-					<a class="dropdown-item" href="/adminPayList.do">입금완료</a>
-					<a class="dropdown-item" href="/adminPayList.do">여행중</a>
-					<a class="dropdown-item" href="/adminPayList.do">거래완료</a>
+					<a class="dropdown-item" href="/adminPayList.do?result=1">입금전</a>
+					<a class="dropdown-item" href="/adminPayList.do?result=2">입금완료</a>
+					<a class="dropdown-item" href="/adminPayList.do?result=3">여행중</a>
+					<a class="dropdown-item" href="/adminPayList.do?result=4">거래완료</a>
 				</div>
 			</li>
 			<li class="nav-item dropdown">

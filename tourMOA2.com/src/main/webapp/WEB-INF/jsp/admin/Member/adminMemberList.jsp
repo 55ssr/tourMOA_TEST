@@ -50,7 +50,6 @@ function fn_detail(a) {
 	<div class="table-responsive">
 		<table class="table table-hover">
 				<tr>
-					<th> </th>
 					<th>#</th>
 					<th>아이디</th>
 					<th>이름</th>
@@ -58,10 +57,11 @@ function fn_detail(a) {
 					<th>번호</th>
 					<th>생일</th>
 					<th>이메일</th>
+					<th>가입일</th>
 				</tr>
 				<c:forEach var="r" items="${resultList}" varStatus="status">
            <tr>
-           		<td></td>
+           		
            		<td>${number}</td>
             	<td>
        <a href="#" onclick="fn_detail('${r.id}')">${r.id}</a>
@@ -76,7 +76,12 @@ function fn_detail(a) {
             	<td>
             	${r.birthday}
             	</td>
-            	<td>${r.email}</td>
+            	<td>
+            	${r.email}
+            	</td>
+            	<td>
+            	${r.rdate}
+            	</td>
             </tr>
             <c:set var="number" value="${number-1}"/> 
 		</c:forEach>
