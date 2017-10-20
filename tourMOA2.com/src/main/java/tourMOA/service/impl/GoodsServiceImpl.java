@@ -97,6 +97,7 @@ public class GoodsServiceImpl extends EgovAbstractServiceImpl implements GoodsSe
 
 	@Override
 	public SliderVO selectSliderDetail(SliderVO vo3) {
+		System.out.println("====goodsIMPL");
 		return goodsDAO.selectSliderDetail(vo3);
 	}
 

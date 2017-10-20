@@ -9,5 +9,6 @@
 		<typeAlias alias="defaultVO" type="tourMOA.service.DefaultListVO"/>
 		<typeAlias alias="memberVO" type="tourMOA.service.MemberVO"/>
 		<typeAlias alias="categoryVO" type="tourMOA.service.CategoryVO"/>
+		<typeAlias alias="reservVO" type="tourMOA.service.ReservVO"/>
     </typeAliases>
 </configuration>

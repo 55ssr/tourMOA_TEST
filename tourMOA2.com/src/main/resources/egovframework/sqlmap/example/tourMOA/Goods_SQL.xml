@@ -127,6 +127,58 @@
 				'$daily$'
 				)
 	</insert>
+	<insert id="reservDAO.detailPackagebtn">
+		INSERT INTO reserv(
+							unq,
+							rsvno,
+							code,
+							rsvdate,
+							gtitle,
+							sdate,
+							edate,
+							airline,
+							price,
+							period,
+							name,
+							ename,
+							payment,
+							result,
+							gender,
+							email,
+							phone,
+							tel,
+							birthday,
+							rsvanum,
+							rsvcnum,
+							rsvbnum
+							
+						)
+							VALUES(
+							SEQ_reserv_unq.nextval,
+							'$rsvno$',
+							'$code$',
+							'2017-08-04',
+							'454',
+							'2017-04-04',
+							'2017-04-01',
+							'dd',
+							'100',
+							'2q',
+							'$name$',
+							'ds',
+							'1',
+							'1',
+							'$gender$',
+							'$email$',
+							'$phone$',
+							'$tel$',
+							'$birthday$',
+							'$rsvanum$',
+							'$rsvcnum$',
+							'$rsvbnum$'
+						)
+	
+	</insert>
 	
 	<select id="goodsDAO.selectGoodsDetail" resultClass="goodsVO">
 		SELECT 
@@ -198,10 +250,7 @@
 				detail2,
 				airline,
 				person,
-				code,
-				images01,
-				images02,
-				images03
+				code
 		FROM
 			goods
 		WHERE
@@ -333,8 +382,7 @@
 	
 	<select id="goodsDAO.selectManagerDetail" resultClass="managerVO">
 		SELECT code, name, phone, mail, img
-			FROM manager
-			WHERE code = '$code$'
+			FROM manager WHERE code = '$code$'
 	</select>
 	
 	<select id="goodsDAO.selectOptionList" resultClass="egovMap">

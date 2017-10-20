@@ -6,9 +6,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator"%>
-<script src="https://code.jquery.com/jquery-latest.js"></script>
-<script src="/js/jquery-2.2.2.js"></script>
-<script src="/js/jquery-ui.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#logoutBtn").click(function(){

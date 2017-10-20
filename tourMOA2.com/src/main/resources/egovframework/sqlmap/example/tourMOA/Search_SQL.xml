@@ -29,14 +29,31 @@
 									code
 								FROM
 									goods
-									<!-- 두개 다 SEARCH 할 때 -->
+					<!--SEARCHCONDITION, SEARCHKEYWORD,출발일월을 다 SEARCH 할 때 -->
 					<isNotNull property="searchCondition">
 						<isNotEmpty property="searchCondition">
 					<isNotNull property="searchKeyword">
 						<isNotEmpty property="searchKeyword">
+					<isNotNull property="departDate">
+						<isNotEmpty property="departDate">
 						WHERE
 							gubun ='$searchCondition$'
-							AND title	LIKE '%' || '$searchKeyword$' || '%'	
+						AND 
+							(
+							   title	LIKE '%' || '$searchKeyword$' || '%'
+							OR city	    LIKE '%' || '$searchKeyword$' || '%'
+							OR gubun    LIKE '%' || '$searchKeyword$' || '%'
+							OR nation	LIKE '%' || '$searchKeyword$' || '%'
+							OR period	LIKE '%' || '$searchKeyword$' || '%'
+							OR code 	LIKE '%' || '$searchKeyword$' || '%'
+							OR airline 	LIKE '%' || '$searchKeyword$' || '%'
+							)
+						AND
+						<![CDATA[ 
+							'$departDate$' <=	 sdate 
+											]]> 		
+						</isNotEmpty>
+					</isNotNull>
 						</isNotEmpty>
 					</isNotNull>
 						</isNotEmpty>
@@ -45,24 +62,64 @@
 					<!-- SELECT OPTION 만으로  SEARCH 할 때 -->
 					<isNotNull property="searchCondition">
 						<isNotEmpty property="searchCondition">
+					<isNull property="searchKeyword">
+						<isEmpty property="searchKeyword">
+					<isNull property="departDate">
+						<isEmpty property="departDate">
 					
 						WHERE
 							gubun ='$searchCondition$'
-					
+						</isEmpty>
+					</isNull>
+						</isEmpty>
+					</isNull>
 						</isNotEmpty>
 					</isNotNull>
 					
 					<!-- INPUT KEYWORD 만으로  SEARCH 할 때 -->
 					<isNotNull property="searchKeyword">
 						<isNotEmpty property="searchKeyword">
+					<isNull property="searchCondition">
+						<isEmpty property="searchCondition">
+					<isNull property="departDate">
+						<isEmpty property="departDate">
+					
+						
 						WHERE
 							
-							title	LIKE '%' || '$searchKeyword$' || '%'
+							   title	LIKE '%' || '$searchKeyword$' || '%'
 							OR city	    LIKE '%' || '$searchKeyword$' || '%'
-							OR nation	LIKE '%' || '$searchKeyword$' || '%'	
+							OR gubun    LIKE '%' || '$searchKeyword$' || '%'
+							OR nation	LIKE '%' || '$searchKeyword$' || '%'
+							OR period	LIKE '%' || '$searchKeyword$' || '%'
+							OR code 	LIKE '%' || '$searchKeyword$' || '%'
+							OR airline 	LIKE '%' || '$searchKeyword$' || '%'
+
+						</isEmpty>
+					</isNull>	
+						</isEmpty>
+					</isNull>
 						</isNotEmpty>
 					</isNotNull>
+					
+					<!-- INPUT departDate 만으로  SEARCH 할 때 -->
+					<isNotNull property="departDate">
+				<isNotEmpty property="departDate">
+			<isEqual property="searchKeyword" compareProperty="searchKeyword"  compareValue="">
+			<isEqual property="searchCondition" compareProperty="searchCondition"  compareValue="">
+					
 						
+						WHERE
+							
+				<![CDATA[ 
+							'$departDate$' <=	 sdate 
+															]]> 	
+
+			
+			</isEqual>
+			</isEqual>
+						</isNotEmpty>
+					</isNotNull>
 							ORDER BY sdate ASC
 											) a
 							) b
@@ -75,47 +132,97 @@
  	</select>
  	
  	<select id = "searchDAO.selectSearchKeywordTotal" resultClass ="java.lang.Integer">
-		<isNotNull property="searchCondition">
-		<isNotEmpty property="searchCondition">
-		<isNotNull property="searchKeyword">
-		<isNotEmpty property="searchKeyword">
-
 		SELECT COUNT(*) FROM goods
+		
+		
+		<isNotNull property="searchCondition">
+			<isNotEmpty property="searchCondition">
+		<isNotNull property="searchKeyword">
+			<isNotEmpty property="searchKeyword">
+		<isNotNull property="departDate">
+			<isNotEmpty property="departDate">
 		
 						WHERE
 							gubun ='$searchCondition$'
 				
-				AND title	LIKE '%' || '$searchKeyword$' || '%'	
-				OR city	    LIKE '%' || '$searchKeyword$' || '%'
-				OR nation	LIKE '%' || '$searchKeyword$' || '%'
-	
-		</isNotEmpty>
+				   AND 
+				           (
+				   			   title	LIKE '%' || '$searchKeyword$' || '%'
+							OR city	    LIKE '%' || '$searchKeyword$' || '%'
+							OR gubun    LIKE '%' || '$searchKeyword$' || '%'
+							OR nation	LIKE '%' || '$searchKeyword$' || '%'
+							OR period	LIKE '%' || '$searchKeyword$' || '%'
+							OR code 	LIKE '%' || '$searchKeyword$' || '%'
+							OR airline 	LIKE '%' || '$searchKeyword$' || '%'
+							)
+				  AND
+				<![CDATA[ 
+				
+							'$departDate$' <=	 sdate 
+											]]> 
+			</isNotEmpty>
+		</isNotNull>				
+			</isNotEmpty>
 		</isNotNull>
-		</isNotEmpty>
+			</isNotEmpty>
 		</isNotNull>
 		
 		<isNotNull property="searchCondition">
-		<isNotEmpty property="searchCondition">
-		
-		SELECT COUNT(*) FROM goods
+			<isNotEmpty property="searchCondition">
+		<isNull property="searchKeyword">
+			<isEmpty property="searchKeyword">
+		<isNull property="departDate">
+			<isEmpty property="departDate">
 		
 						WHERE
 							gubun ='$searchCondition$'
 		
-		</isNotEmpty>
+			</isEmpty>
+		</isNull>
+			</isEmpty>
+		</isNull>
+			</isNotEmpty>
 		</isNotNull>
 		
-		<isNotNull property="searchKeyword">
-		<isNotEmpty property="searchKeyword">
 		
-		SELECT COUNT(*) FROM goods
+		<isNotNull property="searchKeyword">
+			<isNotEmpty property="searchKeyword">
+		<isNull property="searchCondition">
+			<isEmpty property="searchCondition">
+		<isNull property="departDate">
+			<isEmpty property="departDate">
+		
 		
 						WHERE
 				   title	LIKE '%' || '$searchKeyword$' || '%'	
 				OR city	    LIKE '%' || '$searchKeyword$' || '%'
 				OR nation	LIKE '%' || '$searchKeyword$' || '%'
 		
-		</isNotEmpty>
+			</isEmpty>
+		</isNull>
+			</isEmpty>
+		</isNull>
+			</isNotEmpty>
 		</isNotNull>
+		
+			<!-- INPUT departDate 만으로  SEARCH 할 때 -->
+			<isNotNull property="departDate">
+				<isNotEmpty property="departDate">
+			<isEqual property="searchKeyword" compareProperty="searchKeyword"  compareValue="">
+			<isEqual property="searchCondition" compareProperty="searchCondition"  compareValue="">
+					
+						
+						WHERE
+							
+				<![CDATA[ 
+							'$departDate$' <=	 sdate 
+															]]> 	
+
+					</isEqual>
+					</isEqual>
+				</isNotEmpty>
+			</isNotNull>
+			
+		
 	</select>
 </sqlMap>

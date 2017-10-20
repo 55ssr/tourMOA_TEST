@@ -147,22 +147,22 @@ CREATE TABLE popup
 CREATE TABLE reserv
 (
 	unq number NOT NULL,
-	rsvno varchar2(20) NOT NULL,
-	rsvdate date NOT NULL,
-	rsvanum number NOT NULL,
-	rsvcnum number,
-	rsvbnum number,
-	gtitle varchar2(100) NOT NULL,
-	sdate date NOT NULL,
-	edate date NOT NULL,
-	airline varchar2(50) NOT NULL,
-	price number NOT NULL,
-	name varchar2(20) NOT NULL,
-	ename varchar2(50) NOT NULL,
-	birthday date NOT NULL,
-	payment char(1) NOT NULL,
-	result char(1) NOT NULL,
-	cancel char(1),
+	rsvno varchar2(20) NOT NULL, --예약번호
+	rsvdate date NOT NULL,--예약일
+	rsvanum number NOT NULL,--성인
+	rsvcnum number,--청소년
+	rsvbnum number,--유아
+	gtitle varchar2(100) NOT NULL,--상품명
+	sdate date NOT NULL,--출발일
+	edate date NOT NULL,--도착일
+	airline varchar2(50) NOT NULL,--항공사
+	price number NOT NULL,--가격
+	name varchar2(20) NOT NULL,--이름
+	ename varchar2(50) NOT NULL,--영문이름
+	birthday date NOT NULL,--생일
+	payment char(1) NOT NULL,--결제방법
+	result char(1) NOT NULL,--처리여부(1~6)
+	cancel char(1),--취소/환불
 	PRIMARY KEY (unq)
 );
 
