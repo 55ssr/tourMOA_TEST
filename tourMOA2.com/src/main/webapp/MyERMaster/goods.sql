@@ -124,3 +124,4 @@ INSERT INTO goods (	unq,title,gubun,location,nation,city,price,pricech,pricein,f
 			)
 			
 ------------------------------ INSERT DATA END ------------------------------
+			

@@ -88,42 +88,54 @@
 				$("#frm #pricein").focus();
 				return false;
 			}
+			if($("#frm #fuel").val() == "") {
+				alert("유류할증료를 입력해주세요.");
+				$("#frm #fuel").focus();
+				return false;
+			}
 			
 			
 			/* var gender = $(":input:radio[id=gender]:checked").val(); */
 			
-			/*
-			price 컬럼에 0 값을 넣기 위해서..
-			if ($("#price").val() == "") {
-				$("#price").val("0");
-			}
-			if ($("#pricech").val() == "") {
-				$("#pricech").val("0");
-			}
-			if ($("#pricein").val() == "") {
-				$("#pricein").val("0");
-			} */
 			
-			var param = "gubun="+$("#gubun").val()
-				param +="&code="+$("#code").val()
-				param +="&title="+$("#title").val()
-				param +="&location="+$("#location").val()
-				param +="&nation="+$("#nation").val()
-				param +="&city="+$("#city").val()
-				param +="&schd="+$("#schd").val()
-				param +="&airline="+$("#airline").val()
-				param +="&detail1="+$("#detail1").val()
-				param +="&via="+$("#via").val()
-				param +="&vias="+$("#vias").val()
-				param +="&use="+$("#use").val()
-				param +="&sdate="+$("#sdate").val()
-				param +="&edate="+$("#edate").val()
-				param +="&period="+$("#period").val()
-				param +="&period1="+$("#period1").val()
-				param +="&period2="+$("#period2").val()
-				param +="&price="+$("#price").val()
-				param +="&pricech="+$("#pricech").val()
-				param +="&pricein="+$("#pricein").val();
+			var param ="price="+$("#price").val()
+				param+="&pricech="+$("#pricech").val()
+				param+="&pricein="+$("#pricein").val()
+				param+="&fuel="+$("#fuel").val()
+				param+="&person="+$("#person").val()
+				param+="&rem="+$("#rem").val()
+				param+="&minp="+$("#minp").val()
+				param+="&shop="+$("#shop").val()
+				param+="&title="+$("#title").val()
+				param+="&gubun="+$("#gubun").val()
+				param+="&nation="+$("#nation").val()
+				param+="&city="+$("#city").val()
+				param+="&sdate="+$("input:hidden[name='sdate']").val()
+				param+="&edate="+$("input:hidden[name='edate']").val()
+				param+="&period="+$("#period").val()
+				param+="&schd="+$("#schd").val()
+				param+="&detail1="+$("#detail1").val()
+				param+="&detail2="
+				param+="&airline="+$("#airline").val()
+				param+="&code="+$("#code").val()
+				param+="&period1="+$("#period1").val()
+				param+="&period2="+$("#period2").val()
+				param+="&via="+$("#via").val()
+				param+="&vias="+$("#vias").val()
+				param+="&use="+$("#use").val()
+				param+="&location="+$("#location").val()
+				param+="&rdate="+$("#rdate").val()
+				param+="&fno="+$("#fno").val()
+				param+="&sadate="+$("input:hidden[name='sadate']").val()
+				param+="&eadate="+$("input:hidden[name='eadate']").val()
+				param+="&finfo="
+				param+="&dinfo="+$("#dinfo").val()
+				param+="&incinfo="+$("#incinfo").val()
+				param+="&nincinfo="+$("#nincinfo").val()
+				param+="&ref="+$("#ref").val()
+				param+="&opt="+$("#opt").val()
+				param+="&daily="+$("#daily").val();
+
 			
 			alert(param);
 			
@@ -134,8 +146,8 @@
 				data: param,
 				url: "<c:url value='/adminGoodsWriteSave.do' />",
 				dataType: "json",
-				processData: false,
-				contentType: false,
+				/* processData: false,
+				contentType: false, */
 				success: function (data) {
 					if(data.result == "ok") {
 						alert("저장됐습니다.");
@@ -151,7 +163,8 @@
 		});
 	});
 	</script>
-	<form name="frm" id="frm" method="post" enctype="multipart/form-data">
+	<form name="frm" id="frm">
+	<%-- <form name="frm" id="frm" method="post" enctype="multipart/form-data"> --%>
 		<input type="hidden" name="unq" value="" />
 		<div class="form-group row">
 			<label for="inputGoodsType" class="col-sm-2 col-form-label">상품구분</label>
@@ -253,21 +266,21 @@
 			<label for="priceAdult" class="col-sm-2 col-form-label">인원</label>
 			<div class="col-sm-2">
 				<div class="input-group">
-					<input type="text" name="price" id="price" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="총 인원">
+					<input type="text" name="person" id="person" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="총 인원">
 					<span class="input-group-addon">명</span>
 				</div>
 			</div>
 			
 			<div class="col-sm-2">
 				<div class="input-group">
-					<input type="text" name="pricech" id="pricech" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="남은 인원">
+					<input type="text" name="rem" id="rem" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="남은 인원">
 					<span class="input-group-addon">명</span>
 				</div>
 			</div>
 			
 			<div class="col-sm-2">
 				<div class="input-group">
-					<input type="text" name="pricein" id="pricein" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="출발가능 인원">
+					<input type="text" name="minp" id="minp" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="출발가능 인원">
 					<span class="input-group-addon">명</span>
 				</div>
 			</div>
@@ -336,15 +349,15 @@
                     <span class="input-group-addon"><span class="fa fa-times" aria-hidden="true"></span></span>
 					<span class="input-group-addon"><span class="fa fa-calendar" aria-hidden="true"></span></span>
                 </div>
-				<input type="hidden" id="dtp_input1" value="" />
+				<input type="hidden" id="dtp_input1" name="sdate" value="" />
 			</div>
 			<div class='col-sm-3'>
-				<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" data-link-field="dtp_input1">
+				<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" data-link-field="dtp_input2">
                     <input class="form-control" size="16" type="text" value="" placeholder="현지 도착" readonly>
                     <span class="input-group-addon"><span class="fa fa-times" aria-hidden="true"></span></span>
 					<span class="input-group-addon"><span class="fa fa-calendar" aria-hidden="true"></span></span>
                 </div>
-				<input type="hidden" id="dtp_input1" value="" />
+				<input type="hidden" id="dtp_input2" name="sadate" value="" />
 			</div>
 				
 		</div>
@@ -352,20 +365,20 @@
 		<div class="form-group row">
 			<label for="inputTitle" class="col-sm-2 col-form-label">도착일</label>
 			<div class='col-sm-3'>
-				<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" data-link-field="dtp_input1">
+				<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" data-link-field="dtp_input3">
                     <input class="form-control" size="16" type="text" value="" placeholder="현지 출발" readonly>
                     <span class="input-group-addon"><span class="fa fa-times" aria-hidden="true"></span></span>
 					<span class="input-group-addon"><span class="fa fa-calendar" aria-hidden="true"></span></span>
                 </div>
-				<input type="hidden" id="dtp_input1" value="" />
+				<input type="hidden" id="dtp_input3" name="edate" value="" />
 			</div>
 			<div class='col-sm-3'>
-				<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" data-link-field="dtp_input1">
+				<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" data-link-field="dtp_input4">
                     <input class="form-control" size="16" type="text" value="" placeholder="한국 도착" readonly>
                     <span class="input-group-addon"><span class="fa fa-times" aria-hidden="true"></span></span>
 					<span class="input-group-addon"><span class="fa fa-calendar" aria-hidden="true"></span></span>
                 </div>
-				<input type="hidden" id="dtp_input1" value="" />
+				<input type="hidden" id="dtp_input4" name="eadate" value="" />
 			</div>
 		</div>
 		
