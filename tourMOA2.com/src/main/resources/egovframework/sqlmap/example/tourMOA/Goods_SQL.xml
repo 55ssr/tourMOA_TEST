@@ -274,8 +274,8 @@
 		<!-- 파일 하나 지울때 -->
 		<isNull property="name">
 			<isEmpty property="name">
-				UPDATE slider SET filename = replace(filename,#filename#,'')
-				WHERE code = #code#
+				UPDATE slider SET filename = replace(filename,'$filename$','')
+				WHERE code = '$code$'
 			</isEmpty>
 		</isNull>
 		<!-- 일반 수정 -->
@@ -309,25 +309,25 @@
 	</select>
 	
 	<select id="goodsDAO.selectOptionList" resultClass="egovMap">
-		SELECT code, title, filename, rtime, price, expl
+		SELECT code, title, filename, rtime, pay, expl
 			FROM opt
 			WHERE code = '$nation$'
 	</select>
 				
 	<insert id="goodsDAO.insertOption">
-		INSERT INTO opt (unq, code, title, filename, rtime, price, expl)
+		INSERT INTO opt (unq, code, title, filename, rtime, pay, expl)
 			VALUES (SEQ_option_unq.nextval
 					,'$code$'
 					,'$title$'
 					,'$filename$'
 					,'$rtime$'
-					,'$price$'
+					,'$pay$'
 					,'$expl$'
 					)
 	</insert>
 	
 	<select id="goodsDAO.selectOptionDetail" resultClass="optionVO">
-		SELECT unq, code, title, filename, rtime, price, expl
+		SELECT unq, code, title, filename, rtime, pay, expl
 			FROM opt WHERE unq = '$unq$'
 	</select>
 	
@@ -335,7 +335,7 @@
 		SELECT b.* FROM (
 			SELECT 
 				rownum rn, a.* FROM (
-							SELECT	  unq, code, title, filename, rtime, price
+							SELECT	  unq, code, title, filename, rtime, pay
 							FROM 
 									opt
 									
@@ -359,6 +359,32 @@
 		SELECT COUNT(*) FROM opt
 	</select>
 	
+	<delete id="goodsDAO.deleteOption">
+		DELETE FROM opt WHERE unq = '$unq$'
+	</delete>
+	
+	<update id="goodsDAO.updateOption">
+		<!-- 파일 하나 지울때 -->
+		<isNull property="rtime">
+			<isEmpty property="rtime">
+				UPDATE opt SET filename = replace(filename,'$filename$','')
+				WHERE unq = '$unq$'
+			</isEmpty>
+		</isNull>
+		<!-- 일반 수정 -->
+		<isNotNull property="rtime">
+			<isNotEmpty property="rtime">
+				UPDATE opt SET
+					title = '$title$',
+					rtime = '$rtime$',
+					pay = '$pay$',
+					expl = '$expl$',
+					filename = filename || '$filename$'
+				WHERE
+					unq = '$unq$'
+			</isNotEmpty>
+		</isNotNull>
+	</update>
 </sqlMap>
 
 
