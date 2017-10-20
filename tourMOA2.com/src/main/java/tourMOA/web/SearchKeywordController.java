@@ -29,6 +29,7 @@ public class SearchKeywordController {
 	@RequestMapping("search/searchKeyword.do")
 	public String searchKeyword(@ModelAttribute("searchVO") DefaultListVO searchVO
 			, Model model) throws Exception{
+		System.out.println("controller START");
 		int viewCount = searchVO.getViewCount();
 		
 		int recordCountPerPage = viewCount;
@@ -39,26 +40,39 @@ public class SearchKeywordController {
 		int month = today.get(Calendar.MONTH ) + 1;
 		
 		/*String yearNmonth = year+"년 "+month+"월";*/
-			
 		searchVO.setFirstIndex(firstIndex);
 		searchVO.setLastIndex(lastIndex);
 		
 		boolean tfKeyword = false;
+		
 		String existKeyword = searchVO.getSearchKeyword();
 		String existCondition = searchVO.getSearchCondition();
+		
 		int lowPrice = searchVO.getLowPrice();
 		int highPrice = searchVO.getHighPrice();
+		
 		String[] date;
-		String existDepartDate = searchVO.getDepartDate();
-		System.out.println(existDepartDate.indexOf(','));
-		if(existDepartDate.indexOf(',') > -1){
-				System.out.println("if START");
-				date=existDepartDate.split(",");
-				System.out.println("dateArray="+date[0]);
-				searchVO.setDepartDate(date[0]);
-				System.out.println("if END");
+		String existDepartDate="";
+		
+		System.out.println(searchVO.getDepartDate());
+		
+		if(searchVO.getDepartDate()!=null){
+			
+			System.out.println("if Start");
+			existDepartDate = searchVO.getDepartDate();
+			System.out.println(existDepartDate.indexOf(','));
+			
+			if(existDepartDate.indexOf(',') > -1){
+					System.out.println("if START");
+					date=existDepartDate.split(",");
+					System.out.println("dateArray="+date[0]);
+					searchVO.setDepartDate(date[0]);
+					System.out.println("if END");
+			}
+			System.out.println(existDepartDate);
+			
+			
 		}
-		System.out.println(existDepartDate);
 		
 		System.out.println(lowPrice+"===="+highPrice);
 		if((existKeyword).equals("") && (existCondition).equals("") && (existDepartDate).equals("")){
