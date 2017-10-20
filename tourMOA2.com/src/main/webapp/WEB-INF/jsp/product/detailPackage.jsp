@@ -1550,7 +1550,7 @@ function fnView(obj){
                     <input type="hidden" name="search_txt" id="search_txt">
                     <span id="inputAir">
          		    	<img src="/images/air/${fn:substring(vo.fno,0,2)}.png" alt="${vo.airline}">
-	                   			아시아나항공</span>
+	                   			${vo.airline}</span>
                     <ul>
                     	<li style="background: rgb(249, 251, 251);">
 		                        <img src="/images/air/${fn:substring(vo.fno,0,2)}.png" alt="${vo.airline}">
