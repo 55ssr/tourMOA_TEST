@@ -48,8 +48,33 @@ public class GoodsVO {
 	private String imgs;
 	private String imgl;
 	private String filename;
+	//
+	private String expl;
+	private String rtime;
+	private String pay;
 	
 	
+	
+	
+	
+	public String getExpl() {
+		return expl;
+	}
+	public void setExpl(String expl) {
+		this.expl = expl;
+	}
+	public String getRtime() {
+		return rtime;
+	}
+	public void setRtime(String rtime) {
+		this.rtime = rtime;
+	}
+	public String getPay() {
+		return pay;
+	}
+	public void setPay(String pay) {
+		this.pay = pay;
+	}
 	public int getUnq() {
 		return unq;
 	}
