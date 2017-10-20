@@ -11,6 +11,9 @@
 $(function(){
 
 	$("#saveBtn").click(function(){
+		/* 에디터의 내용을 hidden textarea 에 담는다 */
+		var expl = $(".note-codable + div").html();
+		$("#expl").text(expl);
 
 		if($("#frm #title").val() == "") {
 			alert("제목을 입력해주세요.");
@@ -94,20 +97,32 @@ $(function(){
 		<div class="form-group row">
 			<label for="inputSimpleExp" class="col-sm-2 col-form-label">비용</label>
 			<div class="col-sm-2">
-				<input type="text" name="price" id="price" class="form-control" placeholder="비용" value="€50">
+				<input type="text" name="pay" id="pay" class="form-control" placeholder="비용" value="€50">
 			</div>
 		</div>
 		
 		<div class="form-group row">
 			<label for="inputTitle" class="col-sm-2 col-form-label">비고</label>
 			<div class='col-sm-10'>
-				<textarea class="form-control" id="expl" name="expl" rows="3">비고내용 explain
-detail</textarea>
+			
+				<div class="form-control" id="summernote"></div>
+				<script>
+					$('#summernote').summernote({
+						height: 400,
+						minHeight: null,
+						maxHeight: null,
+						placeholder: '비고',
+						tabsize: 2,
+						lang: 'ko-KR'
+					});
+				</script>
+				
+				<textarea class="form-control" id="expl" name="expl" rows="3" hidden></textarea>
 			</div>
 		</div>
 	
 		<div class="form-group row">
-			<label for="selectUse" class="col-sm-2 col-form-label">슬라이드 이미지</label>
+			<label for="selectUse" class="col-sm-2 col-form-label">이미지 파일</label>
 			<div class="col-sm-2">
 				<!-- <input type="file" class="form-control-file" id="exampleFormControlFile1" multiple> -->
 				<input type="file" name="file1" size="70" />

@@ -17,7 +17,8 @@
 			
 			<form name="frm" id="frm" method="post">
 			<input type="hidden" name="userid" value="" />
-			<input type="hidden" name="phone" id="phone" value="" />			
+			<input type="hidden" name="phone" id="phone" value="" />
+			<input type="hidden" name="email" id="email" value="" />			
 			<table class="tbl_horizontal_type bdb_type01">
 				<caption>여행타입 선택</caption>
 				<colgroup>
@@ -91,7 +92,7 @@
 									<option value="018" >018</option>
 									<option value="019" >019</option>
 								</select><!-- [공통코드 - 국번리스트] End --><span class="space">-</span><input type="text" class="input_default" style="width:84px; height:16px;" name="cstTel2" id="cstTel2" maxlength="4" /><span class="space">-</span><input type="text" class="input_default" style="width:84px; height:16px;" name="cstTel3" id="cstTel3" maxlength="4" />
-								<input type="button" value="인증하기" class="estimate_btn_confirm" role-w="550" role-h="378" role-url="/customer/prcEstimateSmsPopup.do" />
+								<input type="button" value="인증하기" class="estimate_btn_confirm" role-w="550" role-h="378" />
 							</td>
 							<th scope="row"><img src="/images/customer/03_bul01.png" alt="필수입력" class="ico_essential" />통화가능시간</th>
 							<td>
@@ -103,15 +104,15 @@
 										<!-- [공통코드 - 시간리스트] Start -->							
 										<select class="sel_default" style="width:132px" name="ptime" id="ptime">
 											<option value="">시간선택</option>
-											<option value="TM1" >09:00~10:00</option>
-											<option value="TM2" >10:00~11:00</option>
-											<option value="TM3" >11:00~12:00</option>
-											<option value="TM4" >12:00~13:00</option>
-											<option value="TM5" >13:00~14:00</option>
-											<option value="TM6" >14:00~15:00</option>
-											<option value="TM7" >15:00~16:00</option>
-											<option value="TM8" >16:00~17:00</option>
-											<option value="TM9" >17:00~18:00</option>
+											<option value="09:00~10:00" >09:00~10:00</option>
+											<option value="10:00~11:00" >10:00~11:00</option>
+											<option value="11:00~12:00" >11:00~12:00</option>
+											<option value="12:00~13:00" >12:00~13:00</option>
+											<option value="13:00~14:00" >13:00~14:00</option>
+											<option value="14:00~15:00" >14:00~15:00</option>
+											<option value="15:00~16:00" >15:00~16:00</option>
+											<option value="16:00~17:00" >16:00~17:00</option>
+											<option value="17:00~18:00" >17:00~18:00</option>
 										</select>
 										<!-- [공통코드 - 시간리스트] End -->
 									</li>
@@ -124,8 +125,8 @@
 							<td>
 								<span class="txt_sel">성인
 									<!-- [공통코드 - 여행인원리스트] Start --> 
-									<select class="sel_default input_space03" style="width:77px" id="rervAdtCnt" name="person">
-										<option value="">선택</option>
+									<select class="sel_default input_space03" style="width:77px" id="person" name="person">
+										<option value="" >선택</option>
 										<option value="1" >1명</option>
 										<option value="2" >2명</option>
 										<option value="3" >3명</option>
@@ -148,13 +149,13 @@
 							<td>
 								<span class="txt_sel">1인당 
 									<!-- [공통코드 - 여행경비리스트] Start -->
-									<select class="sel_default" style="width:203px" name="money" id="travrvMny">
+									<select class="sel_default" style="width:203px" name="money" id="money">
 										<option value="">선택</option>
-										<option value="IT1" >30만원 미만</option>
-										<option value="IT2" >30만 ~ 50만원</option>
-										<option value="IT3" >50만 ~ 70만원</option>
-										<option value="IT4" >70만 ~ 100만원</option>
-										<option value="IT5" >100만원 이상</option>
+										<option value="1" >30만원 미만</option>
+										<option value="2" >30만 ~ 50만원</option>
+										<option value="3" >50만 ~ 70만원</option>
+										<option value="4" >70만 ~ 100만원</option>
+										<option value="5" >100만원 이상</option>
 									</select>
 									<!-- [공통코드 - 여행경비리스트] End -->
 								</span>
@@ -170,53 +171,55 @@
 					<caption>여행 기본 정보 입력</caption>
 					<colgroup>
 						<col style="width:130px" />
-						<col style="width:970px" />
+						<col style="width:420px" />
+						<col style="width:130px" />
+						<col style="width:420px" />
 					</colgroup>
 					<tbody>
 			<!-- [여행타입 : 자유여행[제주], 하이호주 - 여행지역 비활성화] Start -->
 						<tr id="tr_floc" >
 					<!-- [여행타입 : 자유여행[제주], 하이호주 - 여행지역 비활성화] End -->
 							<th scope="row"><img src="/images/customer/03_bul01.png" alt="필수입력" class="ico_essential" />여행지역</th>
-							<td>
+							<td colspan="3">
 								<input type="hidden" name="flocDetail" id="flocDetail" value="">
 								<div id="div_Area_FFC" class="div_Area" style="">
 									<div class="country_select">
 										<ul class="sub_choice_in">
 										<!-- [여행지역 1차 설정] Start -->
 											<li>
-												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_55" value="55" onclick="fn_setflocFst('FFC','55')" checked="checked" >
+												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_55" value="유럽/지중해" onclick="fn_setflocFst('FFC','55')" >
 												<label for="rdo_FFC_55">유럽/지중해</label>
 											</li>
 											<li>
-												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_58" value="58" onclick="fn_setflocFst('FFC','58')">
+												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_58" value="동남아" onclick="fn_setflocFst('FFC','58')">
 												<label for="rdo_FFC_58">동남아</label>
 											</li>
 											<li>
-												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_56" value="56" onclick="fn_setflocFst('FFC','56')">
+												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_56" value="일본" onclick="fn_setflocFst('FFC','56')">
 												<label for="rdo_FFC_56">일본</label>
 											</li>
 											<li>
-												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_300" value="300" onclick="fn_setflocFst('FFC','300')">
+												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_300" value="중국" onclick="fn_setflocFst('FFC','300')">
 												<label for="rdo_FFC_300">중국</label>
 											</li>
 											<li>
-												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_57" value="57" onclick="fn_setflocFst('FFC','57')">
+												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_57" value="홍콩/마카오/대만" onclick="fn_setflocFst('FFC','57')">
 												<label for="rdo_FFC_57">홍콩/마카오/대만</label>
 											</li>
 											<li>
-												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_59" value="59" onclick="fn_setflocFst('FFC','59')">
+												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_59" value="미주/하와이" onclick="fn_setflocFst('FFC','59')">
 												<label for="rdo_FFC_59">미주/하와이</label>
 											</li>
 											<li>
-												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_60" value="60" onclick="fn_setflocFst('FFC','60')">
+												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_60" value="호주" onclick="fn_setflocFst('FFC','60')">
 												<label for="rdo_FFC_60">호주</label>
 											</li>
 											<li>
-												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_295" value="295" onclick="fn_setflocFst('FFC','295')">
+												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_295" value="몰디브" onclick="fn_setflocFst('FFC','295')">
 												<label for="rdo_FFC_295">몰디브</label>
 											</li>
 											<li>
-												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_11" value="11" onclick="fn_setflocFst('FFC','11')">
+												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_11" value="괌/사이판" onclick="fn_setflocFst('FFC','11')">
 												<label for="rdo_FFC_11">괌/사이판</label>
 											</li>
 										<!-- [여행지역 1차 설정] End -->
@@ -224,303 +227,303 @@
 									</div>
 									<!-- [여행지역 2차 설정] Start -->	
 									<div class="sub_country_select" id="div_AreaDtl_FFC_55" style="">
-											<ul class="sub_choice_in">
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_55_160" value="160">
-											<label for="chk_FFC_55_160">프랑스</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_55_161" value="161">
-											<label for="chk_FFC_55_161">스위스</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_55_162" value="162">
-											<label for="chk_FFC_55_162">이탈리아</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_55_163" value="163">
-											<label for="chk_FFC_55_163">영국</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_55_164" value="164">
-											<label for="chk_FFC_55_164">스페인/포르투갈</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_55_165" value="165">
-											<label for="chk_FFC_55_165">독일</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_55_166" value="166">
-											<label for="chk_FFC_55_166">체코(프라하)</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_55_167" value="167">
-											<label for="chk_FFC_55_167">오스트리아</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_55_168" value="168">
-											<label for="chk_FFC_55_168">헝가리</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_55_169" value="169">
-											<label for="chk_FFC_55_169">크로아티아</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_55_170" value="170">
-											<label for="chk_FFC_55_170">그리스(산토리니)</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_55_275" value="275">
-											<label for="chk_FFC_55_275">북유럽</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_55_276" value="276">
-											<label for="chk_FFC_55_276">기타지역</label>
-										</li>
-									</ul>
+										<ul class="sub_choice_in">
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_55_160" value="프랑스"/>
+												<label for="chk_FFC_55_160">프랑스</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_55_161" value="스위스"/>
+												<label for="chk_FFC_55_161">스위스</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_55_162" value="이탈리아"/>
+												<label for="chk_FFC_55_162">이탈리아</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_55_163" value="영국"/>
+												<label for="chk_FFC_55_163">영국</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_55_164" value="스페인/포르투갈"/>
+												<label for="chk_FFC_55_164">스페인/포르투갈</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_55_165" value="독일"/>
+												<label for="chk_FFC_55_165">독일</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_55_166" value="체코(프라하)"/>
+												<label for="chk_FFC_55_166">체코(프라하)</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_55_167" value="오스트리아"/>
+												<label for="chk_FFC_55_167">오스트리아</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_55_168" value="헝가리"/>
+												<label for="chk_FFC_55_168">헝가리</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_55_169" value="크로아티아"/>
+												<label for="chk_FFC_55_169">크로아티아</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_55_170" value="그리스(산토리니)"/>
+												<label for="chk_FFC_55_170">그리스(산토리니)</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_55_275" value="북유럽"/>
+												<label for="chk_FFC_55_275">북유럽</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_55_276" value="기타지역"/>
+												<label for="chk_FFC_55_276">기타지역</label>
+											</li>
+										</ul>
+									</div>
+									<div class="sub_country_select" id="div_AreaDtl_FFC_58" style="display:none;">
+										<ul class="sub_choice_in">
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_58_104" value="싱가포르"/>
+												<label for="chk_FFC_58_104">싱가포르</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_58_105" value="코타키나발루"/>
+												<label for="chk_FFC_58_105">코타키나발루</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_58_106" value="페낭"/>
+												<label for="chk_FFC_58_106">페낭</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_58_107" value="랑카위"/>
+												<label for="chk_FFC_58_107">랑카위</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_58_108" value="발리"/>
+												<label for="chk_FFC_58_108">발리</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_58_109" value="롬복"/>
+												<label for="chk_FFC_58_109">롬복</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_58_277" value="하노이"/>
+												<label for="chk_FFC_58_277">하노이</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_58_278" value="호치민"/>
+												<label for="chk_FFC_58_278">호치민</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_58_279" value="다낭"/>
+												<label for="chk_FFC_58_279">다낭</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_58_280" value="나트랑"/>
+												<label for="chk_FFC_58_280">나트랑</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_58_281" value="씨엠립"/>
+												<label for="chk_FFC_58_281">씨엠립</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_58_282" value="세부"/>
+												<label for="chk_FFC_58_282">세부</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_58_283" value="보라카이"/>
+												<label for="chk_FFC_58_283">보라카이</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_58_284" value="마닐라"/>
+												<label for="chk_FFC_58_284">마닐라</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_58_285" value="보홀"/>
+												<label for="chk_FFC_58_285">보홀</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_58_286" value="방콕/파타야"/>
+												<label for="chk_FFC_58_286">방콕/파타야</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_58_287" value="푸켓/카오락"/>
+												<label for="chk_FFC_58_287">푸켓/카오락</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_58_288" value="치앙마이"/>
+												<label for="chk_FFC_58_288">치앙마이</label>
+											</li>
+										</ul>
+									</div>
+									<div class="sub_country_select" id="div_AreaDtl_FFC_56" style="display:none;">
+										<ul class="sub_choice_in">
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_56_95" value="북해도"/>
+												<label for="chk_FFC_56_95">북해도</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_56_96" value="동경"/>
+												<label for="chk_FFC_56_96">동경</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_56_97" value="간사이/나고야"/>
+												<label for="chk_FFC_56_97">간사이/나고야</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_56_98" value="큐슈"/>
+												<label for="chk_FFC_56_98">큐슈</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_56_99" value="오키나와"/>
+												<label for="chk_FFC_56_99">오키나와</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_56_171" value="기타지역"/>
+												<label for="chk_FFC_56_171">기타지역</label>
+											</li>
+										</ul>
+									</div>
+									<div class="sub_country_select" id="div_AreaDtl_FFC_300" style="display:none;">
+										<ul class="sub_choice_in">
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_300_301" value="북경"/>
+												<label for="chk_FFC_300_301">북경</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_300_302" value="상해"/>
+												<label for="chk_FFC_300_302">상해</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_300_303" value="청도"/>
+												<label for="chk_FFC_300_303">청도</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_300_304" value="하이난"/>
+												<label for="chk_FFC_300_304">하이난</label>
+											</li>
+										</ul>
+									</div>
+									<div class="sub_country_select" id="div_AreaDtl_FFC_57" style="display:none;">
+										<ul class="sub_choice_in">
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_57_100" value="홍콩"/>
+												<label for="chk_FFC_57_100">홍콩</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_57_101" value="마카오"/>
+												<label for="chk_FFC_57_101">마카오</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_57_102" value="타이페이"/>
+												<label for="chk_FFC_57_102">타이페이</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_57_103" value="타이중"/>
+												<label for="chk_FFC_57_103">타이중</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_57_299" value="까오슝"/>
+												<label for="chk_FFC_57_299">까오슝 </label>
+											</li>
+										</ul>
+									</div>
+									<div class="sub_country_select" id="div_AreaDtl_FFC_59" style="display:none;">
+										<ul class="sub_choice_in">
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_59_111" value="오아후"/>
+												<label for="chk_FFC_59_111">오아후</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_59_112" value="마우이"/>
+												<label for="chk_FFC_59_112">마우이</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_59_263" value="빅아일랜드"/>
+												<label for="chk_FFC_59_263">빅아일랜드</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_59_289" value="라스베이거스&오아후"/>
+												<label for="chk_FFC_59_289">라스베이거스&오아후</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_59_290" value="미서부"/>
+												<label for="chk_FFC_59_290">미서부</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_59_291" value="미동부"/>
+												<label for="chk_FFC_59_291">미동부</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_59_292" value="2개이상 연계지역(미본토)"/>
+												<label for="chk_FFC_59_292">2개이상 연계지역(미본토)</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_59_293" value="기타지역"/>
+												<label for="chk_FFC_59_293">기타지역</label>
+											</li>
+										</ul>
+									</div>
+									<div class="sub_country_select" id="div_AreaDtl_FFC_60" style="display:none;">
+										<ul class="sub_choice_in">
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_60_113" value="시드니/골드코스트"/>
+												<label for="chk_FFC_60_113">시드니/골드코스트</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_60_114" value="멜버른/케언즈"/>
+												<label for="chk_FFC_60_114">멜버른/케언즈</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_60_115" value="울룰루/태즈매니아"/>
+												<label for="chk_FFC_60_115">울룰루/태즈매니아</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_60_294" value="기타지역"/>
+												<label for="chk_FFC_60_294">기타지역</label>
+											</li>
+										</ul>
+									</div>
+									<div class="sub_country_select" id="div_AreaDtl_FFC_295" style="display:none;">
+										<ul class="sub_choice_in">
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_295_296" value="올인크루시브"/>
+												<label for="chk_FFC_295_296">올인크루시브</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_295_297" value="하프보드(HB)"/>
+												<label for="chk_FFC_295_297">하프보드(HB)</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_295_298" value="기타"/>
+												<label for="chk_FFC_295_298">기타</label>
+											</li>
+										</ul>
+									</div>
+									<div class="sub_country_select" id="div_AreaDtl_FFC_11" style="display:none;">
+										<ul class="sub_choice_in">
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_11_12" value="괌"/>
+												<label for="chk_FFC_11_12">괌</label>
+											</li>
+											<li>
+												<input type="checkbox" name="city" id="chk_FFC_11_13" value="사이판"/>
+												<label for="chk_FFC_11_13">사이판</label>
+											</li>
+										</ul>
+									</div>
+								<!-- [여행지역 2차 설정] End -->
 								</div>
-								<div class="sub_country_select" id="div_AreaDtl_FFC_58" style="display:none;">
-									<ul class="sub_choice_in">
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_58_104" value="104">
-											<label for="chk_FFC_58_104">싱가포르</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_58_105" value="105">
-											<label for="chk_FFC_58_105">코타키나발루</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_58_106" value="106">
-											<label for="chk_FFC_58_106">페낭</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_58_107" value="107">
-											<label for="chk_FFC_58_107">랑카위</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_58_108" value="108">
-											<label for="chk_FFC_58_108">발리</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_58_109" value="109">
-											<label for="chk_FFC_58_109">롬복</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_58_277" value="277">
-											<label for="chk_FFC_58_277">하노이</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_58_278" value="278">
-											<label for="chk_FFC_58_278">호치민</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_58_279" value="279">
-											<label for="chk_FFC_58_279">다낭</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_58_280" value="280">
-											<label for="chk_FFC_58_280">나트랑</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_58_281" value="281">
-											<label for="chk_FFC_58_281">씨엠립</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_58_282" value="282">
-											<label for="chk_FFC_58_282">세부</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_58_283" value="283">
-											<label for="chk_FFC_58_283">보라카이</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_58_284" value="284">
-											<label for="chk_FFC_58_284">마닐라</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_58_285" value="285">
-											<label for="chk_FFC_58_285">보홀</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_58_286" value="286">
-											<label for="chk_FFC_58_286">방콕/파타야</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_58_287" value="287">
-											<label for="chk_FFC_58_287">푸켓/카오락</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_58_288" value="288">
-											<label for="chk_FFC_58_288">치앙마이</label>
-										</li>
-									</ul>
-								</div>
-								<div class="sub_country_select" id="div_AreaDtl_FFC_56" style="display:none;">
-									<ul class="sub_choice_in">
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_56_95" value="95">
-											<label for="chk_FFC_56_95">북해도</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_56_96" value="96">
-											<label for="chk_FFC_56_96">동경</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_56_97" value="97">
-											<label for="chk_FFC_56_97">간사이/나고야</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_56_98" value="98">
-											<label for="chk_FFC_56_98">큐슈</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_56_99" value="99">
-											<label for="chk_FFC_56_99">오키나와</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_56_171" value="171">
-											<label for="chk_FFC_56_171">기타지역</label>
-										</li>
-									</ul>
-								</div>
-								<div class="sub_country_select" id="div_AreaDtl_FFC_300" style="display:none;">
-									<ul class="sub_choice_in">
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_300_301" value="301">
-											<label for="chk_FFC_300_301">북경</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_300_302" value="302">
-											<label for="chk_FFC_300_302">상해</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_300_303" value="303">
-											<label for="chk_FFC_300_303">청도</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_300_304" value="304">
-											<label for="chk_FFC_300_304">하이난</label>
-										</li>
-									</ul>
-								</div>
-								<div class="sub_country_select" id="div_AreaDtl_FFC_57" style="display:none;">
-									<ul class="sub_choice_in">
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_57_100" value="100">
-											<label for="chk_FFC_57_100">홍콩</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_57_101" value="101">
-											<label for="chk_FFC_57_101">마카오</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_57_102" value="102">
-											<label for="chk_FFC_57_102">타이페이</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_57_103" value="103">
-											<label for="chk_FFC_57_103">타이중</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_57_299" value="299">
-											<label for="chk_FFC_57_299">까오슝 </label>
-										</li>
-									</ul>
-								</div>
-								<div class="sub_country_select" id="div_AreaDtl_FFC_59" style="display:none;">
-									<ul class="sub_choice_in">
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_59_111" value="111">
-											<label for="chk_FFC_59_111">오아후</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_59_112" value="112">
-											<label for="chk_FFC_59_112">마우이</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_59_263" value="263">
-											<label for="chk_FFC_59_263">빅아일랜드</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_59_289" value="289">
-											<label for="chk_FFC_59_289">라스베이거스&오아후</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_59_290" value="290">
-											<label for="chk_FFC_59_290">미서부</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_59_291" value="291">
-											<label for="chk_FFC_59_291">미동부</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_59_292" value="292">
-											<label for="chk_FFC_59_292">2개이상 연계지역(미본토)</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_59_293" value="293">
-											<label for="chk_FFC_59_293">기타지역</label>
-										</li>
-									</ul>
-								</div>
-								<div class="sub_country_select" id="div_AreaDtl_FFC_60" style="display:none;">
-									<ul class="sub_choice_in">
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_60_113" value="113">
-											<label for="chk_FFC_60_113">시드니/골드코스트</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_60_114" value="114">
-											<label for="chk_FFC_60_114">멜버른/케언즈</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_60_115" value="115">
-											<label for="chk_FFC_60_115">울룰루/태즈매니아</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_60_294" value="294">
-											<label for="chk_FFC_60_294">기타지역</label>
-										</li>
-									</ul>
-								</div>
-								<div class="sub_country_select" id="div_AreaDtl_FFC_295" style="display:none;">
-									<ul class="sub_choice_in">
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_295_296" value="296">
-											<label for="chk_FFC_295_296">올인크루시브</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_295_297" value="297">
-											<label for="chk_FFC_295_297">하프보드(HB)</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_295_298" value="298">
-											<label for="chk_FFC_295_298">기타</label>
-										</li>
-									</ul>
-								</div>
-								<div class="sub_country_select" id="div_AreaDtl_FFC_11" style="display:none;">
-									<ul class="sub_choice_in">
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_11_12" value="12">
-											<label for="chk_FFC_11_12">괌</label>
-										</li>
-										<li>
-											<input type="checkbox" name="city" id="chk_FFC_11_13" value="13">
-											<label for="chk_FFC_11_13">사이판</label>
-										</li>
-									</ul>
-								</div>
-							<!-- [여행지역 2차 설정] End -->
-							</div>
-						</td>
-					</tr>
-					<!-- [여행타입:하이호주인 경우 상품명 설정] Start -->
-					<!-- [여행타입:하이호주인 경우 상품명 설정] End -->
-					<!-- [여행타입:하이호주가 아닌 경우 여행기간 설정] Start -->
-					<tr>
-						<th scope="row"><img src="/images/customer/03_bul01.png" alt="필수입력" class="ico_essential" />여행기간</th>
-							<td>
+							</td>
+						</tr>
+						<!-- [여행타입:하이호주인 경우 상품명 설정] Start -->
+						<!-- [여행타입:하이호주인 경우 상품명 설정] End -->
+						<!-- [여행타입:하이호주가 아닌 경우 여행기간 설정] Start -->
+						<tr>
+							<th scope="row"><img src="/images/customer/03_bul01.png" alt="필수입력" class="ico_essential" />여행기간</th>
+							<td colspan="3">
 								<span class="date_sel">
 									<label for="in_start">출발일</label>
 									<input type="text" id="sdate" name="sdate" class="input_date input_space02" style="width:111px; height:16px;" readonly="readonly"/>
@@ -533,16 +536,16 @@
 									<ul class="sub_choice_in">
 									<!-- [출발일 변경 설정] Start -->
 										<li>
-											<input type="radio" name="schange" id="불가" value="SC1" checked="checked"/>
+											<input type="radio" name="schange" id="불가" value="불가" checked="checked"/>
 											<label for="불가">불가</label>								
 										</li>								
 										<li>
-											<input type="radio" name="schange" id="3일 이내" value="SC2"/>
+											<input type="radio" name="schange" id="3일 이내" value="3일 이내"/>
 											<label for="3일 이내">3일 이내</label>
 								
 										</li>
 										<li>
-											<input type="radio" name="schange" id="7일 이내" value="SC3"/>
+											<input type="radio" name="schange" id="7일 이내" value="7일 이내"/>
 											<label for="7일 이내">7일 이내</label>								
 										</li>
 									<!-- [출발일 변경 설정] End -->
@@ -574,65 +577,85 @@
 										<label for="chk_Item_FFC_29_11">제주항공</label>
 									</li>
 								</ul>
-								</td>								
+							</td>
+							<th scope="row"><img src="/images/customer/03_bul01.png" alt="필수입력" class="ico_essential" />경유지</th>
+							<td>
+								<ul class="sub_choice_in">
+								<!-- [출발일 변경 설정] Start -->
+									<li>
+										<input type="radio" name="passage" id="불가" value="불가"/>
+										<label for="불가">불가</label>								
+									</li>								
+									<li>
+										<input type="radio" name="passage" id="가능" value="가능"/>
+										<label for="가능">가능</label>
+							
+									</li>
+									<li>
+										<input type="radio" name="passage" id="미선택" value="미선택"/>
+										<label for="미선택">미선택</label>								
+									</li>
+								<!-- [출발일 변경 설정] End -->
+								</ul>
+							</td>							
+						</tr>
+						<tr id="tr_Item_FFC_30" class="tr_Item tr_Item_FFC tr_Item_accomm" style="">
+							<th scope="row">숙소<input type="hidden" class="item_korName" name="accommNm" id="accommNm" value="숙소">
+								<input type="hidden" class="item_title" name="accomm" id="accomm" value="">
+								<input type="hidden" class="item_other" name="accommOther" id="accommOther" value="">
+							</th>
+							<td colspan="3">
+								<ul class="sub_choice_in">
+									<li>
+										<input type="checkbox" name="stay" id="chk_Item_FFC_30_25" value="민박,호스텔">
+										<label for="chk_Item_FFC_30_25">민박,호스텔</label>
+										<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="stayname" 
+											id="txt_Item_FFC_30_25_Other" maxlength="40" value="">
+									</li>
+									<li>
+										<input type="checkbox" name="stay" id="chk_Item_FFC_30_26" value="투어리스트급호텔(3성급)">
+										<label for="chk_Item_FFC_30_26">투어리스트급호텔(3성급)</label>
+										<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="stayname" 
+											id="txt_Item_FFC_30_26_Other" maxlength="40" value="">
+									</li>
+									<li>
+										<input type="checkbox" name="stay" id="chk_Item_FFC_30_27" value="일급호텔(4성급)">
+										<label for="chk_Item_FFC_30_27">일급호텔(4성급)</label>
+										<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="stayname" 
+											id="txt_Item_FFC_30_27_Other" maxlength="40" value="">
+									</li>
+									<li>
+										<input type="checkbox" name="stay" id="chk_Item_FFC_30_29" value="특급호텔(5성급)">
+										<label for="chk_Item_FFC_30_29">특급호텔(5성급)</label>
+										<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="stayname" 
+											id="txt_Item_FFC_30_29_Other" maxlength="40" value="">
+									</li>
+									<li>
+										<input type="checkbox" name="stay" id="chk_Item_FFC_30_110" value="숙박필요없음">
+										<label for="chk_Item_FFC_30_110">숙박필요없음</label>
+										<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="stayname" 
+											id="txt_Item_FFC_30_110_Other" maxlength="40" value="">
+									</li>
+									<li class="clearfix"></li>
+									<li>
+										<input type="checkbox" name="stay" id="chk_Item_FFC_30_111" value="111" onclick="fn_ToggleEnable(this.id);">
+										<label for="chk_Item_FFC_30_111">원하는숙박</label>
+										<input type="text" class="input_default input_space02 item_val" style="width:180px; height:16px;" name="stayname"
+											onclick="fn_ResetText(this.id);"
+											id="txt_Item_FFC_30_111_Other" maxlength="40" value="숙박명" disabled="disabled">
+									</li>
+								</ul>	
+								</td>
 							</tr>
-							<tr id="tr_Item_FFC_30" class="tr_Item tr_Item_FFC tr_Item_accomm" style="">
-								<th scope="row">숙소<input type="hidden" class="item_korName" name="accommNm" id="accommNm" value="숙소">
-									<input type="hidden" class="item_title" name="accomm" id="accomm" value="">
-									<input type="hidden" class="item_other" name="accommOther" id="accommOther" value="">
-								</th>
-								<td>
-									<ul class="sub_choice_in">
-										<li>
-											<input type="checkbox" name="stay" id="chk_Item_FFC_30_25" value="25">
-											<label for="chk_Item_FFC_30_25">민박,호스텔</label>
-											<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="stayOther" 
-												id="txt_Item_FFC_30_25_Other" maxlength="40" value="">
-										</li>
-										<li>
-											<input type="checkbox" name="stay" id="chk_Item_FFC_30_26" value="26">
-											<label for="chk_Item_FFC_30_26">투어리스트급호텔(3성급)</label>
-											<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="stayOther" 
-												id="txt_Item_FFC_30_26_Other" maxlength="40" value="">
-										</li>
-										<li>
-											<input type="checkbox" name="stay" id="chk_Item_FFC_30_27" value="27">
-											<label for="chk_Item_FFC_30_27">일급호텔(4성급)</label>
-											<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="stayOther" 
-												id="txt_Item_FFC_30_27_Other" maxlength="40" value="">
-										</li>
-										<li>
-											<input type="checkbox" name="stay" id="chk_Item_FFC_30_29" value="29">
-											<label for="chk_Item_FFC_30_29">특급호텔(5성급)</label>
-											<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="stayOther" 
-												id="txt_Item_FFC_30_29_Other" maxlength="40" value="">
-										</li>
-										<li>
-											<input type="checkbox" name="stay" id="chk_Item_FFC_30_110" value="110">
-											<label for="chk_Item_FFC_30_110">숙박필요없음</label>
-											<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="stayOther" 
-												id="txt_Item_FFC_30_110_Other" maxlength="40" value="">
-										</li>
-										<li class="clearfix"></li>
-										<li>
-											<input type="checkbox" name="stay" id="chk_Item_FFC_30_111" value="111" onclick="fn_ToggleEnable(this.id);">
-											<label for="chk_Item_FFC_30_111">원하는숙박</label>
-											<input type="text" class="input_default input_space02 item_val" style="width:180px; height:16px;" name="stayOther"
-												onclick="fn_ResetText(this.id);"
-												id="txt_Item_FFC_30_111_Other" maxlength="40" value="숙박명" disabled="disabled">
-										</li>
-									</ul>	
-									</td>
-								</tr>
-								<!-- [항목 설정 End] -->
-								<tr>
-									<th scope="row">요청사항</th>
-									<td>
-										<textarea cols="5" rows="5" style="width:908px; height:128px" placeholder="도시, 체류일정을 구체적으로 작성해 주세요.ex) 파리 2일 - 프라하 2일 - 비엔나 1일" class="text_default" id="contents" name="contents"></textarea>
-									</td>
-								</tr>
-							</tbody>
-						</table>
+							<!-- [항목 설정 End] -->
+							<tr>
+								<th scope="row">요청사항</th>
+								<td colspan="3">
+									<textarea cols="5" rows="5" style="width:908px; height:128px" placeholder="도시, 체류일정을 구체적으로 작성해 주세요.ex) 파리 2일 - 프라하 2일 - 비엔나 1일" class="text_default" id="req" name="req"></textarea>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 					</div>
 					<div class="box_type">
 						<em>개인정보 수집/이용 동의 안내</em>
@@ -645,12 +668,12 @@
 						</ul>
 					</div>
 					<div class="privacy_agree_box">
-						<p><input type="checkbox" id="inEstimateAgree" name= "inEstimateAgree"/><label for="inEstimateAgree">개인정보 수집/이용 동의</label></p>
+						<p><input type="checkbox" id="inestimateagree" name= "inestimateagree"/><label for="inestimateagree">개인정보 수집/이용 동의</label></p>
 						<input type="button" value="등록" class="bt_right bt_type bd_type02" id="btnOK" onclick="fn_save(this.id)" />
 					</div>			
 				</form>			
 			</div>
-	</section>
+		</section>
 	<script type="text/javaScript" defer="defer">
 
 	var datepickerOption = {
@@ -867,20 +890,26 @@
 				itemOther.val(chkOtherVal);				
 			}			
 		}		
-	}	
+	}
+	
+	
 	// 저장하기
-	function fn_save(e) {		
+	function fn_save(e) {
+		//이메일주소와 전화번호를 가져와서 #phone와 #email에 넣어준다.
+		fn_setInputValue();
 		var f = document.frm;	
-		//전화번호는  입력받은 값의 합으로 이루어지므로 각각의 값을 모두 더해준다.
-		var phoneVal = "cstTel1="+$("#cstTel1").val()+"&cstTel2="+$("#cstTel2").val()+"&cstTel3="+$("#cstTel3").val();
-		f.phone.value = phoneVal;
+		
+		//전화번호는  입력받은 값의 합으로 이루어지므로 각각의 값을 모두 더해준다.(비효율적이므로 적용하지 않음)
+		/* var phoneVal = "cstTel1="+$("#cstTel1").val()+"&cstTel2="+$("#cstTel2").val()+"&cstTel3="+$("#cstTel3").val();
+		f.phone.value = phoneVal; */
 		//fn_save값에 id값을 가져와서 유효성 테스트를 먼저 진행한다.
+		
 		if(e=="btnOK"){
-			if(f.title.value == ""){
+			/* if(f.title.value == ""){
 				alert("제목을 입력해주세요.");
 				$("#title").focus();
 				return;
-			}/* else if(f.name.value == ""){
+			} else if(f.name.value == ""){
 				alert("성명|단체명을 입력해주세요.");
 				$("#name").focus();
 				return;
@@ -888,17 +917,68 @@
 				alert("메일주소를 입력해주세요.");
 				$("#cstEmail1").focus();
 				return;
-			}else if(f.person.value == ""){
+			}else if(f.cstTel2.value == ""){
+				alert("전화번호를 입력해주세요.");
+				$("#cstTel2").focus();
+				return;
+			}else if(f.cstTel3.value == ""){
+				alert("전화번호를 입력해주세요.");
+				$("#cstTel3").focus();
+				return;
+			}
+			else if(f.person.value == ""){
 				alert("여행인원을 선택해주세요.");
 				$("#person").focus();
+				return;
+			}else if(f.sdate.value == ""){
+				alert("출발일을 선택해주세요.");
+				$("#sdate").focus();
+				return;
+			}else if(f.edate.value == ""){
+				alert("도착일을 선택해주세요.");
+				$("#edate").focus();
 				return;
 			} */
 			
 			//var form = new FormData(document.getElementById('frm'));
-			var param = "title="+$("input:text[name='title']").val();
-				//param +="&name="+$("#name").val();
 			
-				alert(param);
+			var cityVal = "";
+		      $("input:checkbox[name='city']").each(function() {
+		         if($(this).is(':checked')){
+		            if(cityVal!="") cityVal += ",";
+		        	 cityVal += $(this).val();}
+		      });	      
+		     alert(cityVal);
+		     
+		     var stayVal = "";
+		      $("input:checkbox[name='stay']").each(function() {
+		         if($(this).is(':checked')){
+		            if(stayVal!="") stayVal += ",";
+		        	 stayVal += $(this).val();}
+		      });	      
+		     alert(stayVal);
+			
+			var param ="email="+$("input:hidden[name='email']").val()
+				param +="&phone="+$("input:hidden[name='phone']").val()
+				param +="&name="+$("input:text[name='name']").val()
+				param +="&person="+$("select[name='person']").val()
+				param +="&money="+$("#money").val()
+				param +="&ptime="+$("#ptime").val() 
+				param +="&floc="+$("input:radio[name='floc']").val()
+				param +="&sdate="+$("input:text[name='sdate']").val()
+				param +="&edate="+$("input:text[name='edate']").val()
+				param +="&schange="+$("input:radio[name='schange']").val()
+				param +="&airline="+$("input:radio[name='airline']").val()
+				param +="&stay="+stayVal;
+				param +="&stayname="+$("input:text[name='stayname']").val()
+				param +="&inestimateagree="+$("input:checkbox[name='inestimateagree']").val()
+				param +="&title="+$("input:text[name='title']").val()
+				param +="&userid="+$("input:text[name='userid']").val()
+				param +="&city="+cityVal;
+				param +="&passage="+$("input:radio[name='passage']").val()
+				param +="&req="+$("#req").val() ;
+			
+				alert(param);		
 			
 			$.ajax({
 				type: 'POST',
@@ -940,7 +1020,7 @@
 		} else {
 			msgText = "원하는 일정, 도시 등 간략 일정을 작성해 주세요.";
 		}
-			$("#contents").attr("placeholder", msgText );		
+			$("#req").attr("placeholder", msgText );		
 	}
 
 	

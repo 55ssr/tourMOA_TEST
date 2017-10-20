@@ -36,6 +36,7 @@ import tourMOA.service.GoodsVO;
 import tourMOA.service.MemberService;
 import tourMOA.service.MemberVO;
 import tourMOA.service.OptionVO;
+import tourMOA.service.SliderVO;
 
 @Controller
 public class AdminController {
@@ -194,6 +195,17 @@ public class AdminController {
 		return "admin/Slider/adminSliderWrite";
 	}
 	
+	@RequestMapping("/adminSliderConfirm.do")
+	@ResponseBody public Map<String, Object> adminSliderConfirm (SliderVO vo) throws Exception {
+		System.out.println("vo.code ::::::::::::::: " + vo.getCode());
+		int cnt = 0;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		cnt = goodsService.adminSliderConfirm(vo);
+		System.out.println("cnt ::::::::::::::::::::: " + cnt);
+		map.put("cnt", cnt);
+		return map;
+	}
+	
 	
 	
 	
@@ -321,7 +333,6 @@ public class AdminController {
 	
 	@RequestMapping("/adminSliderDetail.do")
 	public String adminSliderDetail(@RequestParam("code") String code, Model model, GoodsVO vo) throws Exception {
-		System.out.println("d");
 		vo = goodsService.adminSliderDetail(vo);
 		System.out.println("code" + vo.getCode());
 		System.out.println("name" + vo.getName());
@@ -336,7 +347,7 @@ public class AdminController {
 	
 	
 	@RequestMapping(value = "/deleteSlider.do")
-	@ResponseBody public Map<String, Object> deleteDataBoard(
+	@ResponseBody public Map<String, Object> deleteSlider (
 			HttpServletRequest request,
 			HttpServletResponse response, 
 			GoodsVO vo, String code) throws Exception {
@@ -372,7 +383,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value ="/updateSlider.do")
-	@ResponseBody public Map<String, String> updateDataBoard(
+	@ResponseBody public Map<String, String> updateSlider (
 								final MultipartHttpServletRequest multiRequest,
 								HttpServletResponse response, 
 								GoodsVO vo, String code,
@@ -422,27 +433,40 @@ public class AdminController {
 		System.out.println("cnt -> " + cnt);
 		System.out.println("cntUpdate -> " + cntUpdate);
 		return map;
-		}
+	}
 	
 	@RequestMapping(value = "/updateFileDelete.do")
 	@ResponseBody public Map<String, String> updateFileDelete(
 														HttpServletResponse response, 
 														GoodsVO vo, String code) throws Exception {
+		/* for updateOption s */
+		String option = "";
+		if (vo.getExpl() != null) option = "/opt";
+		/* for updateOption e */
 		
 		Map<String, String> map = new HashMap<String, String>();
 		String fullPath = "";
-		String dirPath = "c:/upload/" + code;
+		String dirPath = "c:/upload/" + code + option;
 		fullPath = dirPath+"/"+vo.getFilename();
 		File file = new File(fullPath);
 		file.delete();
 		File dir = new File(dirPath);
 		dir.delete();
 		
-		System.out.println("vo=======================filename "+ vo.getFilename());
-		System.out.println("vo=======================unq "+ vo.getCode());
-		vo.setName(null);
+		vo.setName(null);	//updateSlider
+		vo.setRtime(null);	//updateOption 
 		
-		int cnt = goodsService.updateSlider(vo);
+		int cnt = 0;
+		if (option.equals("/opt")) {
+			System.out.println("updateOption start");
+			cnt = goodsService.updateOption(vo);
+			System.out.println("updateOption end");
+		} else {
+			System.out.println("updateSlider start");
+			cnt = goodsService.updateSlider(vo);
+			System.out.println("updateSlider end");
+		}
+		
 		
 		
 		map.put("cnt", Integer.toString(cnt));
@@ -557,6 +581,7 @@ public class AdminController {
 		map = uploadFile(multiRequest, nPath);	
 		System.out.println("map.get+++++++++++++++++++++"+map.get("filename"));
 		vo.setFilename(map.get("filename"));
+		System.out.println("getFilename OOOOOOOOOOOOOOOOOOOOOO " + vo.getFilename());
 		result = goodsService.insertOption(vo);	
 		if(result == null) result = "ok";
 		else result = "not";
@@ -565,6 +590,109 @@ public class AdminController {
 		map.put("result", result);
 		return map;
 	}
+	
+	@RequestMapping("/selectOptionDetail.do")
+	public String selectOptionDetail(@RequestParam("unq") int unq, Model model, OptionVO vo) throws Exception {
+		vo = goodsService.selectOptionDetail(vo);
+		model.addAttribute("vo", vo);
+		return "admin/Option/adminOptionDetail";
+	}
+	
+	@RequestMapping(value = "/deleteOption.do")
+	@ResponseBody public Map<String, Object> deleteOption(
+								HttpServletRequest request,
+								HttpServletResponse response, 
+								OptionVO vo, String code) throws Exception {
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		//String uploadPath = egovMessageSource.getMessage("upload.path");
+		String uploadPath = "c:/upload/" + code + "/opt";
+		String fullPath = "";
+		
+		/*OptionVO 에 데이터 정보를 담아서 파일명을 읽어내기 위해서 detail service 실행*/
+		OptionVO optionDetail = goodsService.selectOptionDetail(vo);
+		int cnt = goodsService.deleteOption(vo);
+		
+		if(cnt > 0) {
+			String files = optionDetail.getFilename();	//파일명 읽기 위해서 detail 서비스 실행
+			if(files.length() > 0) {
+				fullPath = uploadPath+"/"+files;
+				File file = new File(fullPath);					
+				file.delete();
+				File dir = new File(uploadPath); // 디렉토리 삭제
+				dir.delete();
+			}
+		}
+		map.put("cnt", cnt);
+		return map;
+	}
+	
+	@RequestMapping(value ="/updateOption.do")
+	@ResponseBody public Map<String, String> updateOption(
+								final MultipartHttpServletRequest multiRequest,
+								HttpServletResponse response, 
+								GoodsVO vo, String code,
+								Model model) throws Exception {
+		MultipartFile file;
+		String filePath = "";
+		int cnt = 0;
+		
+		Map<String, String> map = new HashMap<String, String>();
+		Map<String, MultipartFile> files = multiRequest.getFileMap();
+		
+		String uploadPath = "c:/upload/" + code + "/opt";
+		//String uploadPath = egovMessageSource.getMessage("file.upload.path");
+		
+		System.out.println("title : " + vo.getTitle());
+		System.out.println("path : " + uploadPath);
+		
+		// 폴더의 존재 유무 및 생성
+		
+		File saveFolder = new File(uploadPath);
+		if (!saveFolder.exists() || saveFolder.isFile()) {
+			saveFolder.mkdirs();
+		}
+		
+		Iterator<Entry<String, MultipartFile>> itr = files.entrySet().iterator();
+		
+		String filename = "";
+		
+		while (itr.hasNext()) {
+			Entry<String, MultipartFile> entry = itr.next();
+			file = entry.getValue();
+			if (!"".equals(file.getOriginalFilename())) {
+				filePath = uploadPath + "/" + file.getOriginalFilename();
+				file.transferTo(new File(filePath));
+				filename = file.getOriginalFilename();
+				System.out.println("filename : " + filename);
+				cnt++;
+			}
+		}
+		System.out.println("filename : " + filename);
+		
+		vo.setFilename(filename);
+		
+		int cntUpdate = goodsService.updateOption(vo);
+		
+		map.put("cnt", Integer.toString(cnt));
+		map.put("cntUpdate", Integer.toString(cntUpdate));
+		System.out.println("cnt -> " + cnt);
+		System.out.println("cntUpdate -> " + cntUpdate);
+		return map;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

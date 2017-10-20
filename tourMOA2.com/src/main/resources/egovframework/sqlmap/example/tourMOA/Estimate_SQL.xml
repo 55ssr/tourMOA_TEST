@@ -9,7 +9,6 @@
 	<insert id="estimateDAO.insertEstimateReq">
 		INSERT INTO estimate 
 			( unq
-			  , type
 			  , email
 			  , name
 			  , phone
@@ -30,31 +29,28 @@
 			  , userid
 			  , city
 			  , passage
-			  , reply
 			  )
 		VALUES ( SEQ_estimate_unq.nextval
-			  , 'A'
-			  , 'B'
-			  , 'C'
-			  , 'D'
-			  , '1'
-			  , '2'
-			  , 'F'
-			  , 'G'
-			  , 'H'
-			  , 'I'
-			  , 'J'
-			  , 'K'
-			  ,	'L'
-			  , 'M'
-			  , 'N'
+			  , '$email$'
+			  , '$name$'
+			  , '$phone$'
+			  , '$person$'
+			  , '$money$'
+			  , '$ptime$'
+			  , '$floc$'
+			  , '$sdate$'
+			  , '$edate$'
+			  , '$schange$'
+			  , '$airline$'
+			  , '$stay$'
+			  , '$stayname$'
+			  , '$req$'
 			  , sysdate
-			  , 'O'
-			  , '$title$'		  
-			  , 'Q'
-			  , 'R'
-			  , 'S'
-			  , 'T'
+			  , '$inestimateagree$'
+			  , '$title$'			  
+			  , '$userid$'
+			  , '$city$'
+			  , '$passage$'
 			   )
 	</insert>
 </sqlMap>

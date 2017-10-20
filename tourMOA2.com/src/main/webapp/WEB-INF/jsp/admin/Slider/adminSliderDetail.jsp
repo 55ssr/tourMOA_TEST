@@ -32,11 +32,14 @@ function fn_delFile(a,b) {
 			alert("error : " + error);
 		}
 	});
+	
 }
+
 
 $(function(){
 	
 	$("#modBtn").click(function(){
+		
 		var loc = "<c:url value='/updateSlider.do' />";
 		var msg = "수정";
 		fn_ajax(loc,msg);
@@ -109,41 +112,45 @@ function fn_ajax(loc,msg) {
 		<div class="form-group row">
 			<label for="inputSimpleExp" class="col-sm-2 col-form-label">국가 추가</label>
 			<div class="col-sm-2">
-				<input type="text" name="name" id="name" class="form-control" placeholder="한글" value="${vo.name}">
+				<input type="text" name="name" id="name" class="form-control" placeholder="한글" value="${vo.name}" readOnly>
 			</div>
 			<div class="col-sm-2">
-				<input type="text" name="code" id="code" class="form-control" placeholder="영문" value="${vo.code}">
+				<input type="text" name="code" id="code" class="form-control" placeholder="영문" value="${vo.code}" readOnly>
 			</div>
 		</div>
 	
 		<div class="form-group row">
 			<label for="selectUse" class="col-sm-2 col-form-label">슬라이드 이미지</label>
-			<div class="col-sm-2">
-				
-				<c:set var="filename" value="${fn:split(vo.filename,'／')}" />
+			
+			<c:if test="${vo.filename != null}">
+				<c:set var="filename" value="${fn:split(vo.filename,'／')}" />				
 				<c:forEach var="down" items="${filename}" varStatus="a">
-					<c:if test="${down != ''}">   
-						<p>
-							<a href="#" onclick="window.open(encodeURI('<c:url value='/downloadFile.do?'/>requestedFile=${down}&code=${vo.code}'))">
-								${down}
-							</a>
-							<input type="button" value="삭제" onClick="fn_delFile('${vo.code}','${down}');" />
-						</p>
-					</c:if>
-					
-					<c:if test="${vo.filename == null}">
-						파일없음
-					</c:if>
-					
+					<div class="col-auto">
+						<c:if test="${down != ''}">
+							
+							<div class="btn-group" role="group" aria-label="Basic example">
+								<button type="button" class="btn btn-secondary" onclick="window.open(encodeURI('<c:url value='/downloadFile.do?'/>requestedFile=${down}&code=${vo.code}'))">${down}</button>
+								<button type="button" class="btn btn-danger" onClick="fn_delFile('${vo.code}','${down}');">삭제</button>
+							</div>
+							
+						</c:if>
+					</div>
 				</c:forEach>
-				
-				
-				
-				<input type="file" name="file1" size="70" /><br />
-				<input type="file" name="file2" size="70" /><br />
-				<input type="file" name="file3" size="70" /><br />
-				<input type="file" name="file4" size="70" /><br />
-				<input type="file" name="file5" size="70" /><br />		
+			</c:if>
+			
+			<c:if test="${vo.filename == null}">
+				파일없음
+			</c:if>
+		</div>
+		
+		<div class="form-group row">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-10">	
+				<input type="file" name="file1" class="form-control-file mb-2" />
+				<input type="file" name="file2" class="form-control-file mb-2" />
+				<input type="file" name="file3" class="form-control-file mb-2" />
+				<input type="file" name="file4" class="form-control-file mb-2" />
+				<input type="file" name="file5" class="form-control-file mb-2" />		
 			</div>
 		</div>
 		
