@@ -4,6 +4,7 @@
 <%@ taglib prefix="ui"     uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 	<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
 	<script>
 	function fn_detail(a) {
@@ -93,18 +94,18 @@
 	<div class="table-responsive">
 		<table class="table table-hover">
 				<tr>
-					<th>#</th>
-					<th>예약번호</th>
-					<th>국가</th>
-					<th>상품명</th>
-					<th>성명</th>
-					<th>아이디</th>
-					<th>예약일시</th>
-					<th>예약인원</th>
-					<th>출발일</th>
-					<th>도착일</th>
-					<th>금액</th>
-					<th>처리여부</th>
+					<th width="5%">#</th>
+					<th width="5%">예약번호</th>
+					<th width="5%">국가</th>
+					<th width="18%">상품명</th>
+					<th width="5%">성명</th>
+					<th width="9%">번호</th>
+					<th width="10%">예약일시</th>
+					<th width="10%">예약인원</th>
+					<th width="10%">출발일</th>
+					<th width="10%">도착일</th>
+					<th width="8%">금액</th>
+					<th width="5%">처리여부</th>
 				</tr>
 				<c:forEach var="r" items="${resultList}" varStatus="status">
            		<tr>
@@ -119,7 +120,7 @@
 		            	${r.title}
 		            	</td>
 		            	<td>${r.name}</td>
-		            	<td>${sessionScope.loginCertification.id}</td>
+		            	<td>${r.phone}</td>
 		            	<td>
 		            	${r.rsvdate}
 		            	</td>

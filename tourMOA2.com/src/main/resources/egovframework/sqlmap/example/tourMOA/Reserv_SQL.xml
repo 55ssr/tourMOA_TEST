@@ -20,12 +20,13 @@
 			SELECT 
 				rownum rn, a.* FROM (
 							SELECT	 
-									 a.rsvno
+									 distinct a.rsvno
 									, TO_CHAR(a.rsvdate, 'yyyy-mm-dd') rsvdate
 									, TO_CHAR(a.edate, 'yyyy-mm-dd') edate
 									, TO_CHAR(a.sdate, 'yyyy-mm-dd') sdate
 									, a.price
 									, a.name
+									, a.phone
 									, a.rsvanum
 									, a.rsvcnum
 									, a.rsvbnum
@@ -36,8 +37,8 @@
 									reserv a ,goods b
 									
 							WHERE
-									a.unq = b.unq 
-								AND  1=1 
+									a.code = b.code 
+								 
 								<isNotNull property="result">
 								<isNotEmpty property="result">
 								AND result = '$result$'

@@ -1,7 +1,16 @@
-  <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator"%>
+<%
+			String code = request.getParameter("code");
+%>
     <link rel="stylesheet" type="text/css" href="/css/reserv.css">
-    <section id="content"><!--[[ content Start ]]-->
+    <section id="content1"><!--[[ content Start ]]-->
         <div class="tit reserve_tit" title="예약하기">
             <div class="res_tit_step">
                 <span class="step_on">1</span>
@@ -25,17 +34,21 @@
 
 		<!-- (ssl) -->
         <!-- <form name="frm" id="frm" method="post" action="/product/insertReserve.do"> --><!--[[ 입력폼 Start ]]-->
-        <form name="frm" id="frm" method="post" action="/mypage/insertReserve.do">        
-        <input type="hidden" name="evCd" 			value="ACP1024-171105ZA00">        
-        <input type="hidden" name="goodsCd" 		value="ACP1024">
-        <input type="hidden" name="mgmUserId" 		value="129">
-        <input type="hidden" name="mgmUserNm" 		value="신유미">
-        <input type="hidden" name="mgmDeptCd" 		value="AD22">
-        <input type="hidden" name="mgmDeptNm" 		value="동남아2팀">
-        <input type="hidden" name="menu" 			value="pkg">
+        <form name="frm" id="frm" method="post" action="/admin/Pay/adminPayList.do">        
+        <input type="hidden" name="evCd" 			value="">        
+        <input type="hidden" name="code" id=code 	value="<%=code%>"/>        
+        <input type="hidden" name="goodsCd" 		value="">
+        <input type="hidden" name="mgmUserId" 		value="">
+        <input type="hidden" name="hidtel" id="hidtel" 		value="">
+        <input type="hidden" name="hidphone" id="hidphone" 		value="">
+        <input type="hidden" name="email" id="email" 		value="">
+        <input type="hidden" name="mgmUserNm" 		value="">
+        <input type="hidden" name="mgmDeptCd" 		value="">
+        <input type="hidden" name="mgmDeptNm" 		value="">
+        <input type="hidden" name="menu" 			value="">
         <input type="hidden" name="loc" 			value="">
         <input type="hidden" name="pid" 			value="">
-        <input type="hidden" name="did" 			value="315"> 
+        <input type="hidden" name="did" 			value=""> 
         <input type="hidden" name="promotionTypeCd" 			value=""> 
         <input type="hidden" name="promotionNo" 			value=""> 
         <input type="hidden" name="webDisplayCls" 	value="A"> 
@@ -43,12 +56,223 @@
         <input type="hidden" name="nonCustYn"		value="">
         <input type="hidden" name="repreNo"			value="">
         
-
         <div class="res_step">
+        
+        <script>
+    	$(document).ready(function() {
+			$("#btnok").click(function(){
+				if(!$("#privacy_check1").prop("checked")){
+					alert("여행 약관에 동의하셔야 합니다.");
+					$("#privacy_check1").focus();
+					return false;
+				}else if(!$("#privacy_check2").prop("checked")){
+					alert("개인정보 수집이용에 동의하셔야 합니다.");
+					$("#privacy_check2").focus();
+					return false;
+				}else if(!$("#privacy_check3").prop("checked")){
+					alert("개인정보 제3자 제공 및 공유에 동의하셔야 합니다.");
+					$("#privacy_check3").focus();
+					return false;
+				}else if(!$("#privacy_check4").prop("checked")){
+					alert("개인정보 취급위탁 제공 및 공유에 동의하셔야 합니다.");
+					$("#privacy_check4").focus();
+					return false;
+				}
+			});
+    	});
+        </script>
+		<script>
+		//여행자정보 입력란 자동 추가
+		function addInput(){
+		
+			var fitGoods = "JWP1008";
+			fitGoods = fitGoods.substring(2,3);
+			
+			var fitStrCost ="";
+			if(fitGoods == 'F'){
+				fitStrCost ="예상경비";
+			}else{
+				fitStrCost ="여행경비";
+			}
+			
+			var adtNum = $("#selAdult option:selected").val();	//성인Cnt
+			var chdNum = $("#selKids option:selected").val();	//아동Cnt	
+			var infNum = $("#selBaby option:selected").val();	//유아Cnt
+			
+			var adtPrice = ${vo.price};
+			var chdPrice = ${vo.pricech};
+			var infPrice = ${vo.pricein};
+			
+			adtNum = parseInt(adtNum);
+			chdNum = parseInt(chdNum);
+			infNum = parseInt(infNum);
+			
+			adtPrice = parseInt(adtPrice);
+			chdPrice = parseInt(chdPrice);
+			infPrice = parseInt(infPrice);
+			
+			var totPrice = commaNum((adtPrice*adtNum) + (chdPrice*chdNum) + (infPrice*infNum));	
+			
+			//총 가격
+			var summary = '';
+			summary = summary +	'<span class="sbj">총 '+fitStrCost+'</span><span class="sum">' + totPrice + '원</span>';
+			summary = summary +	'<div class="sum_desc">';
+			summary = summary +	'(<span>성인</span><span>${vo.price}</span>x<span>'+adtNum+'</span>명 + <span>아동</span><span>${vo.pricech}</span>x<span>'+chdNum+'</span>명 + <span>유아</span><span>${vo.pricein}</span>x<span>'+ infNum +'</span>명)';
+			summary = summary +	'</div>';
+			
+			$("#priceSummary").html(summary);
+		
+		}
+		function setTourInfoSeq() {
+			$.each($('.tourist'), function(idx, itm) {
+				var seq = idx+1;
+				$(this).find('.tourer').text("여행자 "+seq);
+				$(this).find('input[name=tourNo]').val(seq);
+				
+				var $inputKorNM = $(this).find('input[name=resNmKor]');
+				var idKorNM = $inputKorNM.attr('name')+seq;
+				$inputKorNM.attr('id', idKorNM).parent().prev().find('label').attr('for', idKorNM);
+				
+				var $inputFirstEngNM = $(this).find('input[name=resNmFirstEng]');
+				var idFirstEngNM = $inputFirstEngNM.attr('name')+seq;
+				$inputFirstEngNM.attr('id', idFirstEngNM).parent().prev().find('label').attr('for', idFirstEngNM);
+
+			});
+			
+			$.each($('td.input[name=adtPassPort], td.input[name=chdPassPort], td.input[name=infPassPort]'), function(idx, itm){
+				var seq = idx+1;
+				var thisName = $(itm).attr('name');
+				
+				$(itm).find('input:radio').attr('name', thisName+seq);
+				
+				$(itm).find('input:radio:eq(0)').attr('id', thisName+'Y'+seq);
+				$(itm).find('label:eq(0)').attr('for', thisName+'Y'+seq);
+				
+				$(itm).find('input:radio:eq(1)').attr('id', thisName+'N'+seq);
+				$(itm).find('label:eq(1)').attr('for', thisName+'N'+seq);
+			});
+			
+			addInput();
+		}
+
+		function addTourist(flagAgeDiv) {
+			var strTourist = '';
+			var strAgeDiv = '';
+			var selectorTourist = '';
+			var nmPassPort = '';
+			
+			var fitGoods = "";
+			fitGoods = fitGoods.substring(2,3);
+			
+			var fitStrCost ="";
+			if(fitGoods == 'F'){
+				fitStrCost ="예상가격";
+			}else{
+				fitStrCost ="상품가격";
+			}
+			
+			var data = {'flagAgeDiv' : flagAgeDiv};
+			if (flagAgeDiv === 'C') {
+				selectorTourist = 'chdTourist';
+				data.strAgeDiv = '아동(총 '+fitStrCost+' : <span class="yl">${vo.pricech} </span>)';
+				data.goodsPrice = '629000';
+				data.bafAmt = '0';
+				data.taxAmt = '0';
+				data.nmPassPort = 'chdPassPort';
+			} else if (flagAgeDiv === 'I') {
+				selectorTourist = 'infTourist';
+				data.strAgeDiv = '유아(총 '+fitStrCost+' : <span class="yl">${vo.pricein}</span>)';
+				data.goodsPrice = '62900';
+				data.bafAmt = '0';
+				data.taxAmt = '0';
+				data.nmPassPort = 'infPassPort';
+			} else {
+				selectorTourist = 'adtTourist';
+				data.strAgeDiv = '성인(총 '+fitStrCost+' : <span class="yl">${vo.price}</span>)';
+				data.goodsPrice = '629000';
+				data.bafAmt = '0';
+				data.taxAmt = '0';
+				data.nmPassPort = 'adtPassPort';
+			}
+
+			$( TrimPath.processDOMTemplate("tmpTourist", data) ).appendTo('#'+selectorTourist);
+		}
+		</script>
+        	<script>
+        	$(document).ready(function() {
+				$("#btnok").click(function(){
+					 //email 
+					 var email = $("input:text[id='email1']").val() + "@" + $("input:text[id='email2']").val();
+					 $("input:hidden[id='email']").val(email); 
+					
+						 //휴대전화
+						var phone = $("input:text[name='hphone1']").val() + "-" + $("input:text[name='hphone2']").val() + "-" + $("input:text[name='hphone3']").val();
+						$("input:hidden[name='hidphone']").val(phone); 
+						
+						//자택전화
+						if($("#homeTel1 option:selected").val() != "" && $("input:text[name='homeTel2']").val() != "" && $("input:text[name='homeTel3']").val() != ""){
+							var homeTel = $("#homeTel1 option:selected").val() + "-" + $("input:text[name='homeTel2']").val() + "-" + $("input:text[name='homeTel3']").val();
+							$("input:hidden[name='hidtel']").val(homeTel);
+						}
+						
+						 //생일
+						
+							var birthYear = $("#birthYear option:selected").val();
+							var birthMonth = $("#birthMonth option:selected").val();
+							var birthDay = $("#birthDay option:selected").val();
+							
+							var birth = birthYear+"-"+birthMonth+"-"+birthDay; 
+							
+							
+							 $("input:hidden[name='hidbirth']").val(birth); 
+					 
+					 var form = "name="+$("#custNmKor").val()
+							form += "&gender=" +$("#genderCd option:selected").val()
+							form += "&code=" +$("input:hidden[id='code']").val()
+							form += "&email=" + $("input:hidden[id='email']").val()
+							form += "&phone=" +$("input:hidden[id='hidphone']").val()
+							form += "&birthday=" +birth
+							form += "&tel=" +$("input:hidden[name='hidtel']").val()
+							form += "&rsvanum=" +$("#selAdult").val()
+							form += "&rsvcnum=" +$("#selKids").val()
+							form += "&rsvbnum=" +$("#selBaby").val();
+							alert(form);
+					
+					$.ajax({
+						type: 'POST',
+						data: form,
+						url: "<c:url value='/product/detailPackagebtn.do' />",
+						dataType: 'JSON',
+						
+						success: function (data) {
+							if(data.cnt =="ok") {
+								alert("넘김.");
+								location.href="/main.do";
+							} else {
+								alert( "XXXXXXXXXXXXXX");
+							}
+						},
+						error: function (error) {
+							alert("error111 : " + error);
+						}
+					});
+        		});
+        	});
+        	</script>
         	
-        	<!--  예약동의 추가 -->
            	<script>
 				$(document).ready(function() {
+					$("#email3").change(function(){
+						
+						if ( $(this).val() !='9' && $(this).val() !='0' && $(this).val() !=''){
+							$("#email2").val($(this).val());
+						}else{
+							$("#email2").focus();
+							$("#email2").val("");
+						}
+						
+					});
+				
 					$(".privacy_agree").hide(); 
 					$("ul.reserve_tab li:first").addClass("active").show(); 
 					$(".privacy_agree:first").show(); 
@@ -189,7 +413,7 @@
                 <span class="pol_head">제20조 기타사항</span>
                 <span class="pol_head2">1. 이 계약에 명시되지 아니한 사항 또는 이 계약의 해석에 관하여 다툼이 있는 경우에는 여행업자 또는 여행자가 합의하여 결정하되, 합의가 이루어지지 아니한 경우에는 관계법령 및 일반관례에 따릅니다.</span>
                 <span class="pol_head2">2. 특수지역에의 여행으로서 정당한 사유가 있는 경우에는 이 표준약관의 내용과 달리 정할 수 있습니다.</span>
-
+</div>
 						</div>
 						<div class="privacy_check">
 							<input type="checkbox" name="privacy_check" id="privacy_check1" value="2"/><label for="privacy_check1">여행약관에 동의합니다.</label>
@@ -446,21 +670,21 @@
                 <tbody>
                     <tr>
                         <th scope="row">상품명</th>
-                        <td>★어서WAT 앙코르WAT ★ 돌아온 ZA항공 캄보디아/앙코르왓 5일[전세기]</span></td>
+                        <td>${vo.title}</td>
                         <th scope="row">예약유형</th>
-                        <td><span class="yl">일반예약</span>[<span class="yl">3명</span> 예약가능]</span></td>
+                        <td><span class="yl">일반예약</span>[<span class="yl">3명</span> 예약가능]</td>
 	                        </tr>
                     <tr>
                         <th scope="row">출발일</th>
-                        <td>2017년 11월 05일(일) [22:50]</td>
+                        <td>${vo.sdate}</td>
                         <th scope="row">여행기간</th>
-                        <td>3박5일</td>
+                        <td>${vo.period}</td>
                     </tr>
                     <tr>
                         <th scope="row">도착일</th>
-                        <td>2017년 11월 09일(목) [05:25]</td>
+                        <td>${vo.edate}</td>
                         <th scope="row">이용항공</th>
-                        <td>스카이앙코르항공</td>
+                        <td>${vo.airline}</td>
                     </tr>
                     <tr>
                         <th scope="row" class="h_top">
@@ -469,23 +693,15 @@
                             <ul>
                                 <li><strong>총 여행경비</strong> (항공권포함, 유류할증료 등은 변동가능)</li>
                                 <li>
-                                    <span class="box grBox">성인</span><span class="price">413,400원</span>
-                                    <span class="box ylBox">아동</span><span class="price">413,400원</span>
-                                    <span class="box gyBox">유아</span><span class="price">150,000원</span>
+                                    <span class="box grBox">성인</span><span class="price">${vo.price}</span>
+                                    <span class="box ylBox">아동</span><span class="price">${vo.pricech}</span>
+                                    <span class="box gyBox">유아</span><span class="price">${vo.pricein}</span>
                                 </li>
                                 <li>
-                                    <span class="tiny_info">[성인] 기본여행경비   : 399,000원 / 유류할증료 : 14,400원 / 제세공과금 : 0원</span>
-                                    <span class="tiny_info">[아동] 기본여행경비   : 399,000원 / 유류할증료 : 14,400원 / 제세공과금 : 0원</span>
-                                    <span class="tiny_info">[유아] 기본여행경비   : 150,000원 / 유류할증료 : 0원 / 제세공과금 : 0원</span>               
-                                    <input type="hidden" name="adtPrice" value="399000">
-                                    <input type="hidden" name="chdPrice" value="399000">
-                                    <input type="hidden" name="infPrice" value="150000">
-                                    <input type="hidden" name="bafAdtCost" value="14400">
-                                    <input type="hidden" name="bafChdCost" value="14400">
-                                    <input type="hidden" name="bafInfCost" value="0">
-                                    <input type="hidden" name="airtaxAdtCost" value="0">
-                                    <input type="hidden" name="airtaxChdCost" value="0">
-                                    <input type="hidden" name="airtaxInfCost" value="0">
+                                    <span class="tiny_info">[성인] 기본여행경비   : ${vo.price-vo.fuel}원 / 유류할증료 : ${vo.fuel}원 / 제세공과금 : 0원</span>
+                                    <span class="tiny_info">[아동] 기본여행경비   : ${vo.pricech-vo.fuel}원 / 유류할증료 : ${vo.fuel}원 / 제세공과금 : 0원</span>
+                                    <span class="tiny_info">[유아] 기본여행경비   : ${vo.pricein-vo.fuel}원 / 유류할증료 : 0원 / 제세공과금 : 0원</span>               
+                                  
                                 </li>
                             </ul>
                         </td>
@@ -503,173 +719,62 @@
 	                        <input type="text" name="custNmKor" id="custNmKor" value="">
 	                        	<span class="txt">/</span>
                            	<span class="txt">
-	                        	<select name="gender" id="gender" class="selDt" title="성별">
+	                        	<select name="genderCd" id="genderCd" class="selDt" title="성별">
 	                        		<option>선택</option>
+	                        		<option value="M">남자</option>
+	                        		<option value="F">여자</option>
 	                        	</select>                
-                           	</span>
+                           	</span> 
                         </td>      
-                        <th scope="row"><label class="chk" for="birthYy">생년월일</label></th>
-                        <td colspan="3" class="input">
-                        <select name="birthYy" id="birthYy" class="selDt"  >      
-	                                                                 
-		                        <option value="2017" >2017</option>
-		                        <option value="2016" >2016</option>
-		                        <option value="2015" >2015</option>
-		                        <option value="2014" >2014</option>
-		                        <option value="2013" >2013</option>
-		                        <option value="2012" >2012</option>
-		                        <option value="2011" >2011</option>
-		                        <option value="2010" >2010</option>
-		                        <option value="2009" >2009</option>
-		                        <option value="2008" >2008</option>
-		                        <option value="2007" >2007</option>
-		                        <option value="2006" >2006</option>
-		                        <option value="2005" >2005</option>
-		                        <option value="2004" >2004</option>
-		                        <option value="2003" >2003</option>
-		                        <option value="2002" >2002</option>
-		                        <option value="2001" >2001</option>
-		                        <option value="2000" >2000</option>
-		                        <option value="1999" >1999</option>
-		                        <option value="1998" >1998</option>
-		                        <option value="1997" >1997</option>
-		                        <option value="1996" >1996</option>
-		                        <option value="1995" >1995</option>
-		                        <option value="1994" >1994</option>
-		                        <option value="1993" >1993</option>
-		                        <option value="1992" >1992</option>
-		                        <option value="1991" >1991</option>
-		                        <option value="1990" >1990</option>
-		                        <option value="1989" >1989</option>
-		                        <option value="1988" >1988</option>
-		                        <option value="1987" >1987</option>
-		                        <option value="1986" >1986</option>
-		                        <option value="1985" >1985</option>
-		                        <option value="1984" >1984</option>
-		                        <option value="1983" >1983</option>
-		                        <option value="1982" >1982</option>
-		                        <option value="1981" >1981</option>
-		                        <option value="1980" >1980</option>
-		                        <option value="1979" >1979</option>
-		                        <option value="1978" >1978</option>
-		                        <option value="1977" >1977</option>
-		                        <option value="1976" >1976</option>
-		                        <option value="1975" >1975</option>
-		                        <option value="1974" >1974</option>
-		                        <option value="1973" >1973</option>
-		                        <option value="1972" >1972</option>
-		                        <option value="1971" >1971</option>
-		                        <option value="1970" >1970</option>
-		                        <option value="1969" >1969</option>
-		                        <option value="1968" >1968</option>
-		                        <option value="1967" >1967</option>
-		                        <option value="1966" >1966</option>
-		                        <option value="1965" >1965</option>
-		                        <option value="1964" >1964</option>
-		                        <option value="1963" >1963</option>
-		                        <option value="1962" >1962</option>
-		                        <option value="1961" >1961</option>
-		                        <option value="1960" >1960</option>
-		                        <option value="1959" >1959</option>
-		                        <option value="1958" >1958</option>
-		                        <option value="1957" >1957</option>
-		                        <option value="1956" >1956</option>
-		                        <option value="1955" >1955</option>
-		                        <option value="1954" >1954</option>
-		                        <option value="1953" >1953</option>
-		                        <option value="1952" >1952</option>
-		                        <option value="1951" >1951</option>
-		                        <option value="1950" >1950</option>
-		                        <option value="1949" >1949</option>
-		                        <option value="1948" >1948</option>
-		                        <option value="1947" >1947</option>
-		                        <option value="1946" >1946</option>
-		                        <option value="1945" >1945</option>
-		                        <option value="1944" >1944</option>
-		                        <option value="1943" >1943</option>
-		                        <option value="1942" >1942</option>
-		                        <option value="1941" >1941</option>
-		                        <option value="1940" >1940</option>
-		                        <option value="1939" >1939</option>
-		                        <option value="1938" >1938</option>
-		                        <option value="1937" >1937</option>
-		                        <option value="1936" >1936</option>
-		                        <option value="1935" >1935</option>
-		                        <option value="1934" >1934</option>
-		                        <option value="1933" >1933</option>
-		                        <option value="1932" >1932</option>
-		                        <option value="1931" >1931</option>
-		                        <option value="1930" >1930</option>
-		                        <option value="1929" >1929</option>
-		                        <option value="1928" >1928</option>
-		                        <option value="1927" >1927</option>
-		                        <option value="1926" >1926</option>
-		                        <option value="1925" >1925</option>
-		                        <option value="1924" >1924</option>
-		                        <option value="1923" >1923</option>
-		                        <option value="1922" >1922</option>
-		                        <option value="1921" >1921</option>
-		                        <option value="1920" >1920</option>
-		                        <option value="1919" >1919</option>
-		                        <option value="1918" >1918</option>
-		                        <option value="1917" >1917</option>
-		                        </select><span class="txt">년</span><span class="spacer"></span>
-	                            <select name="birthMm" id="birthMm" class="selDt"  title="생월"  > 
-	                                                       
-		                        <option value="1" >1</option>
-		                        <option value="2" >2</option>
-		                        <option value="3" >3</option>
-		                        <option value="4" >4</option>
-		                        <option value="5" >5</option>
-		                        <option value="6" >6</option>
-		                        <option value="7" >7</option>
-		                        <option value="8" >8</option>
-		                        <option value="9" >9</option>
-		                        <option value="10" >10</option>
-		                        <option value="11" >11</option>
-		                        <option value="12" >12</option>
-		                        </select><span class="txt">월</span><span class="spacer"></span>
-	                            <select name="birthDd" id="birthDd" class="selDt"  title="생일"  >	
-	                            					
-		                        <option value="1" >1</option>
-		                        <option value="2" >2</option>
-		                        <option value="3" >3</option>
-		                        <option value="4" >4</option>
-		                        <option value="5" >5</option>
-		                        <option value="6" >6</option>
-		                        <option value="7" >7</option>
-		                        <option value="8" >8</option>
-		                        <option value="9" >9</option>
-		                        <option value="10" >10</option>
-		                        <option value="11" >11</option>
-		                        <option value="12" >12</option>
-		                        <option value="13" >13</option>
-		                        <option value="14" >14</option>
-		                        <option value="15" >15</option>
-		                        <option value="16" >16</option>
-		                        <option value="17" >17</option>
-		                        <option value="18" >18</option>
-		                        <option value="19" >19</option>
-		                        <option value="20" >20</option>
-		                        <option value="21" >21</option>
-		                        <option value="22" >22</option>
-		                        <option value="23" >23</option>
-		                        <option value="24" >24</option>
-		                        <option value="25" >25</option>
-		                        <option value="26" >26</option>
-		                        <option value="27" >27</option>
-		                        <option value="28" >28</option>
-		                        <option value="29" >29</option>
-		                        <option value="30" >30</option>
-		                        <option value="31" >31</option>
-		                        </select><span class="txt">일</span>
-                       		</td>
-                    </tr>
+                    <th scope="row"><label for="birthday">생년월일</label><span class="chk"></span></th>
+					<td colspan="3">
+					<c:set var="birthsplit" value=""/>
+					
+				<select name="birthYear" id="birthYear" class="selDt">
+					<option value="" selected="selected"></option>
+         				 <c:set var="today" value="<%=new java.util.Date()%>" />
+         		 
+         		 <fmt:formatDate value="${today}" pattern="yyyy" var="start"/> 
+          		
+          		<c:forEach begin="0" end="60" var="idx" step="1">
+          			 <option value="<c:out value="${start - idx}" />">
+					<c:out value="${start - idx}" /></option>
+         		 </c:forEach>
+		</select>
+
+					
+				<span class="txt">년</span>
+				<select name="birthMonth" id="birthMonth" class="selDt" title="생년">
+					<option value="" selected="selected"></option>
+         		
+          			<c:forEach begin="1" end="12" var="idx" step="1">
+          			 <option value="<c:out value="${idx}" />">
+					<c:out value="${idx}" />
+					
+					</option>
+         		 </c:forEach>
+		</select>
+				<span class="txt">월</span>
+				<select name="birthDay" id="birthDay" class="selDt" title="생월">
+					<option value="" selected="selected"></option>
+         		
+          			<c:forEach begin="1" end="31" var="idx" step="1">
+          			 <option value="<c:out value="${idx}" />">
+					<c:out value="${idx}" />
+					
+					</option>
+         		 </c:forEach>
+				</select>
+				<span class="txt">일</span>
+			</td>
+		</tr>
+		
                     <tr>
                         <th scope="row" class="input"><label class="chk" for="email1">이메일</label></th>
                         <td colspan="3" class="input">
-                            <input type="text" name="email1" id="email1" class="txtemail" value=""><span class="txt">@</span><input type="text" name="email2" id="email2" class="txtemail"  value="" title="이메일서버">
-                            <select name="selectemail" id="selectemail" class="selemail" title="이메일서버선택" onchange="fn_mail()"  >
+                            <input type="text" name="email1" id="email1" class="txtemail" value=""><span class="txt">@</span>
+                            <input type="text" name="email2" id="email2" class="txtemail"  value="" title="이메일서버">
+                            <select name="email3" id="email3" class="selemail" title="이메일서버선택">
                                 <option>선택하세요</option>
                                 <option value="naver.com">네이버</option>
                                 <option value="hanmail.net">한메일</option>
@@ -711,15 +816,7 @@
                         </td>
                         <th scope="row" class="input"><label class="chk" for="cellNo1">휴대폰번호</label></th>
                         <td class="input">
-                            <select name="hphone1" id="hphone1" class="sel_w selprefix">
-                                <option value="">선택</option>
-                                <option value="010" >010</option>
-                                <option value="011" >011</option>
-                                <option value="016" >016</option>
-                                <option value="017" >017</option>
-                                <option value="018" >018</option>
-                                <option value="019" >019</option>
-                                </select>
+                            <input type="text" name="hphone1" id="hphone1"value=""   onkeydown="return showKeyCode(event);" class="txtcell" maxlength="4"  title="휴대전화 첫번째">
                             <span class="txt">-</span>
                             <input type="text" name="hphone2" id="hphone2" value=""  onkeydown="return showKeyCode(event);" class="txtcell" maxlength="4"  title="휴대전화 두번째">
                             <span class="txt">-</span>
@@ -733,106 +830,32 @@
                                 <li><span class="strong"></span> 고객님도 여행에 참여 하십니까? <input type="radio" name="chkJoinYN" id="chkJoinY"  value="Y"><span class="radio_txt"><label for="chkJoinY">예</label></span><input type="radio" name="chkJoinYN" id="chkJoinN"  value="N"><span class="radio_txt"><label for="chkJoinN">아니요</label></span></li>
                                 <li><span class="txt">여행자 총 인원:</span>
                                     <span class="seltxt"><label for="selAdult">성인<span class="ageTip">만12세이상</span></label></span>
-                                    <select name="adtCnt" id="selAdult" data-flag="adt/A">                            					
-			                        <option value="1" >1명</option>
-			                        <option value="2" >2명</option>
-			                        <option value="3" >3명</option>
-			                        <option value="4" >4명</option>
-			                        <option value="5" >5명</option>
-			                        <option value="6" >6명</option>
-			                        <option value="7" >7명</option>
-			                        <option value="8" >8명</option>
-			                        <option value="9" >9명</option>
-			                        <option value="10" >10명</option>
-			                        <option value="11" >11명</option>
-			                        <option value="12" >12명</option>
-			                        <option value="13" >13명</option>
-			                        <option value="14" >14명</option>
-			                        <option value="15" >15명</option>
-			                        <option value="16" >16명</option>
-			                        <option value="17" >17명</option>
-			                        <option value="18" >18명</option>
-			                        <option value="19" >19명</option>
-			                        <option value="20" >20명</option>
-			                        <option value="21" >21명</option>
-			                        <option value="22" >22명</option>
-			                        <option value="23" >23명</option>
-			                        <option value="24" >24명</option>
-			                        <option value="25" >25명</option>
-			                        <option value="26" >26명</option>
-			                        <option value="27" >27명</option>
-			                        <option value="28" >28명</option>
-			                        <option value="29" >29명</option>
-			                        <option value="30" >30명</option>
-			                        </select>
+										
+									<select name="adtCnt" id="selAdult" class="selDt">
+										<option value="1" selected="selected">1명</option>
+					          		<c:forEach begin="2" end="15" var="idx" step="1">
+					          			 <option value="<c:out value="${idx}" />">
+										<c:out value="${idx}" /></option>
+					         		 </c:forEach>
+							</select>
                                     <span class="seltxt tip" role="4"><label for="selKids">아동<span class="ageTip">만12세미만<img class="chdTip" src="/images/detail/icon_question.png" alt="안내"></span></label></span>
-                                    <select name="chdCnt" id="selKids" data-flag="chd/C">	
-                                        <option value="0">0명</option>                            					
-				                        <option value="1" >1명</option>
-				                        <option value="2" >2명</option>
-				                        <option value="3" >3명</option>
-				                        <option value="4" >4명</option>
-				                        <option value="5" >5명</option>
-				                        <option value="6" >6명</option>
-				                        <option value="7" >7명</option>
-				                        <option value="8" >8명</option>
-				                        <option value="9" >9명</option>
-				                        <option value="10" >10명</option>
-				                        <option value="11" >11명</option>
-				                        <option value="12" >12명</option>
-				                        <option value="13" >13명</option>
-				                        <option value="14" >14명</option>
-				                        <option value="15" >15명</option>
-				                        <option value="16" >16명</option>
-				                        <option value="17" >17명</option>
-				                        <option value="18" >18명</option>
-				                        <option value="19" >19명</option>
-				                        <option value="20" >20명</option>
-				                        <option value="21" >21명</option>
-				                        <option value="22" >22명</option>
-				                        <option value="23" >23명</option>
-				                        <option value="24" >24명</option>
-				                        <option value="25" >25명</option>
-				                        <option value="26" >26명</option>
-				                        <option value="27" >27명</option>
-				                        <option value="28" >28명</option>
-				                        <option value="29" >29명</option>
-				                        <option value="30" >30명</option>
-				                        </select>
+                                    <select name="chdCnt" id="selKids" class="selDt">
+										<option value="0" selected="selected">0명</option>
+					          		<c:forEach begin="1" end="15" var="idx" step="1">
+					          			 <option value="<c:out value="${idx}" />">
+										<c:out value="${idx}" /></option>
+					         		 </c:forEach>
+							</select>
+                                       
                                     <span class="seltxt tip" role="5"><label for="selBaby">유아<span class="ageTip">만2세미만<img class="infTip" src="/images/detail/icon_question.png" alt="안내"></span></label></span>
-                                    <select name="infCnt" id="selBaby" data-flag="inf/I">
-                                        <option value="0">0명</option>                            					
-				                        <option value="1" >1명</option>
-				                        <option value="2" >2명</option>
-				                        <option value="3" >3명</option>
-				                        <option value="4" >4명</option>
-				                        <option value="5" >5명</option>
-				                        <option value="6" >6명</option>
-				                        <option value="7" >7명</option>
-				                        <option value="8" >8명</option>
-				                        <option value="9" >9명</option>
-				                        <option value="10" >10명</option>
-				                        <option value="11" >11명</option>
-				                        <option value="12" >12명</option>
-				                        <option value="13" >13명</option>
-				                        <option value="14" >14명</option>
-				                        <option value="15" >15명</option>
-				                        <option value="16" >16명</option>
-				                        <option value="17" >17명</option>
-				                        <option value="18" >18명</option>
-				                        <option value="19" >19명</option>
-				                        <option value="20" >20명</option>
-				                        <option value="21" >21명</option>
-				                        <option value="22" >22명</option>
-				                        <option value="23" >23명</option>
-				                        <option value="24" >24명</option>
-				                        <option value="25" >25명</option>
-				                        <option value="26" >26명</option>
-				                        <option value="27" >27명</option>
-				                        <option value="28" >28명</option>
-				                        <option value="29" >29명</option>
-				                        <option value="30" >30명</option>
-				                        </select>
+                                     <select name="infCnt" id="selBaby" class="selDt">
+										<option value="0" selected="selected">0명</option>
+					          		<c:forEach begin="1" end="15" var="idx" step="1">
+					          			 <option value="<c:out value="${idx}" />">
+										<c:out value="${idx}" /></option>
+					         		 </c:forEach>
+							</select>
+                                       
 		                            <span class="tooltip" >
 			                            <span class="period role04">2005.11.06 ~ 2015.11.05</span>
 			                            <span class="period role05">2015.11.06 ~ 2017.11.05</span>
@@ -848,20 +871,20 @@
             <span class="regDesc">아동/유아 기준은 항공사마다 상이하여, 예약 후 최종 확정됩니다.</span>
  
             <span class="h1">04.여행자 정보</span>
-            <div id="adtTourist">
+		  <div id="adtTourist">
             	<div class="tourist">
 		            <span class="tourer">여행자 1</span>
 		            <input type="hidden" name="ageDivi" value = "A">
-		            <input type="hidden" name="goodsPrice" value ="399000">
-		            <input type="hidden" name="bafAmt" value="14400">
-		            <input type="hidden" name="taxAmt" value="0">
+		            <input type="hidden" name="goodsPrice" value ="159000">
+		            <input type="hidden" name="bafAmt" value="0">
+		            <input type="hidden" name="taxAmt" value="60000">
 		            <input type="hidden" name="tourNo" value="1">
 		            <table>
 		                <caption>여행자정보입력</caption>
 		                <tbody>
 		                    <tr>
 		                        <th scope="row" class="input">연령분류</th>
-		                        <td class="input">성인(총 여행경비   : <span class="yl">413,400원</span>)</td>
+		                        <td class="input">성인(총 예상경비   : <span class="yl">${vo.price}원</span>)</td>
 		                        <td class="input"></td>
 		                        <td class="input"></td>
 		                    </tr>
@@ -878,6 +901,8 @@
 		            </table>
 	            </div>
             </div>
+
+
             
             <div id="chdTourist">
             </div>
@@ -912,12 +937,16 @@
 		                </tbody>
 		            </table>            	
             	<span class="h1">07.결제 정보</span>
-            	<div class="summary" id="priceSummary">
-            </div>            
+            <div class="summary" id="priceSummary">			
+            	<%-- <span class="sbj">총 여행경비</span>
+           	<span class="sum"> totPrice + '원</span>';
+            	 <div class="sum_desc"> (<span>성인</span><span>${vo.price}</span>x<span></span>명 + <span>아동</span><span>${vo.pricech}</span>x<span>chdNum</span>명 + <span>유아</span><span>${vo.pricein}</span>x<span>infNum</span>명)  </div>
+            	 --%>
+            	 </div>            
             <span class="regDesc">본 상품 가격에는 “항공운임 등 총액(항공권)”이 포함되어 있는 가격이며 유류할증료와 제세공과금은 유가와 환율에 따라 변동될 수 있습니다.</span>
 		            <span class="regDesc">담당자와 상담을 하신 후에 최종 예약이 성립되면 예약금 결제 진행을 부탁드립니다. 예약금은 일정표를 참고해주시거나, 담당자에게 안내 받으실 수 있습니다.</span>
 		            <span class="regDesc">최종 예약 성립 후 담당자와 약속한 시간내에 예약금을 입금하지 않을 경우 임의 취소 될 수 있습니다.</span>
-            	</div>
+            </div>
         <div class="btnarea">
             <button type="button" id="btnok" class="btnBlack btn_r">확인</button>
             <button type="button" id="btnproc" class="btnBlack btn_r none">처리중</button>

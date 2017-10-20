@@ -99,6 +99,58 @@
 				sysdate
 				)
 	</insert>
+	<insert id="reservDAO.detailPackagebtn">
+		INSERT INTO reserv(
+							unq,
+							rsvno,
+							code,
+							rsvdate,
+							gtitle,
+							sdate,
+							edate,
+							airline,
+							price,
+							period,
+							name,
+							ename,
+							payment,
+							result,
+							gender,
+							email,
+							phone,
+							tel,
+							birthday,
+							rsvanum,
+							rsvcnum,
+							rsvbnum
+							
+						)
+							VALUES(
+							SEQ_reserv_unq.nextval,
+							'$rsvno$',
+							'$code$',
+							'2017-08-04',
+							'454',
+							'2017-04-04',
+							'2017-04-01',
+							'dd',
+							'100',
+							'2q',
+							'$name$',
+							'ds',
+							'1',
+							'1',
+							'$gender$',
+							'$email$',
+							'$phone$',
+							'$tel$',
+							'$birthday$',
+							'$rsvanum$',
+							'$rsvcnum$',
+							'$rsvbnum$'
+						)
+	
+	</insert>
 	
 	<select id="goodsDAO.selectGoodsDetail" resultClass="goodsVO">
 		SELECT 

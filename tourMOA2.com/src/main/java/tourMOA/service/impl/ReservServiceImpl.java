@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import egovframework.example.sample.service.SampleDefaultVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import tourMOA.service.DefaultListVO;
+import tourMOA.service.GoodsVO;
 import tourMOA.service.ReservService;
+import tourMOA.service.ReservVO;
 
 @Service("reservService")
 public class ReservServiceImpl extends EgovAbstractServiceImpl implements ReservService {
@@ -25,5 +27,10 @@ public class ReservServiceImpl extends EgovAbstractServiceImpl implements Reserv
 	@Override
 	public int adminPayTotal(DefaultListVO searchVO) throws Exception {
 		return reservDAO.adminPayTotal(searchVO);
+	}
+	
+	@Override
+	public String detailPackagebtn(ReservVO vo) throws Exception {
+		return reservDAO.detailPackagebtn(vo);
 	}
 }

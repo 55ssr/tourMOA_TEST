@@ -11,3 +11,16 @@ CREATE TABLE NOTICE
 );
 -- member 테이블 rdate 추가
 ALTER TABLE member ADD(rdate timestamp); -- add
+
+-- reserv 테이블 email추가
+ALTER TABLE reserv ADD(email varchar2(50)); -- add
+-- reserv 테이블 phone추가
+ALTER TABLE reserv ADD(phone varchar2(20)); -- add
+-- reserv 테이블 tel추가
+ALTER TABLE reserv ADD(tel varchar2(50)); -- add
+-- reserv 테이블 period추가
+ALTER TABLE reserv ADD(period varchar2(50)); -- add
+-- reserv 테이블 gender추가
+ALTER TABLE reserv ADD(gender char(1)); -- add
+-- reserv 테이블 code추가
+ALTER TABLE reserv ADD(code varchar2(50)); -- add

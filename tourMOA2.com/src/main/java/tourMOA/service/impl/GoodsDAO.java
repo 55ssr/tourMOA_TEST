@@ -76,6 +76,7 @@ public class GoodsDAO extends EgovAbstractDAO{
 	}
 
 	public SliderVO selectSliderDetail(SliderVO vo3) {
+		System.out.println("====goodsDAO");
 		return (SliderVO) select("goodsDAO.selectSliderDetail", vo3);
 	}
 
@@ -90,6 +91,8 @@ public class GoodsDAO extends EgovAbstractDAO{
 	public List<?> adminOptionList(DefaultListVO searchVO) {
 		return list("goodsDAO.adminOptionList", searchVO);
 	}
+
+	
 
 
 }

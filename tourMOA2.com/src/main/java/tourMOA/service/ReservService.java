@@ -10,4 +10,5 @@ public interface ReservService {
 
 	int adminPayTotal(DefaultListVO searchVO) throws Exception;
 
+	String detailPackagebtn(ReservVO vo) throws Exception;
 }

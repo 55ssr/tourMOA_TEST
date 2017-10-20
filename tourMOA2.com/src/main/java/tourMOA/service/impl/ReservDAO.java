@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 import egovframework.example.sample.service.SampleDefaultVO;
 import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
 import tourMOA.service.DefaultListVO;
+import tourMOA.service.GoodsVO;
+import tourMOA.service.ReservVO;
 
 @Repository("reservDAO")
 public class ReservDAO extends EgovAbstractDAO{
@@ -17,5 +19,8 @@ public class ReservDAO extends EgovAbstractDAO{
 
 	public List<?> adminPayList(DefaultListVO searchVO) {
 		return list("reservDAO.adminPayList",searchVO);
+	}
+	public String detailPackagebtn(ReservVO vo) {
+		return (String) insert("reservDAO.detailPackagebtn", vo);
 	}
 }
