@@ -1,69 +1,79 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator"%>
+
+<%
+String searchKeyword = request.getParameter("searchKeyword");
+String searchCondition = request.getParameter("searchCondition");
+%>
+<link rel="stylesheet" href="/css/search-total.css" />
+<link rel="stylesheet" href="/css/goods-search.css" />  
 
 <script src="/js/jquery-ui.multidatespicker.js"></script>
-<script src="/js/jquery.number.min.js"></script>
+  
+<c:set var="existKeyword" value="<%=searchKeyword %>"/>
+<c:set var="existCondition" value="<%=searchCondition %>"/>
 <script>
 $(document).ready(function(){
-	popKeyword(); // 인기검색어 DIV
-	popRecommend(); //추천검색어 DIV
-	popRecommendStr(); //추천검색어 String
-	popLikeStr(); //연관검색어
-	
-    
-	//가격별 검색 직업입력 부분 숫자 처리
-	$("input:text[numberOnly]").number(true);
-	
-	//출발요일 전체 선택
-    $("#weekall").click(function(event) {
-    	
-    	event.preventDefault();
-    	
-    	//클릭되었으면
-        if($("#weekall").prop("checked")){
-            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
-            $("input[name='departWDayTop']").prop("checked",true);
-            //클릭이 안되있으면
-        }else{
-            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
-            $("input[name='departWDayTop']").prop("checked",false);
-        }
-		
-	});
-	
-	
-  
-    $("#datepickers").multiDatesPicker({
+	 /* DATE PICKER */
+	 /* 여행상품 찾기  출발 일월 */
+	$("#datepickers").multiDatesPicker({
     	numberOfMonths: 3,
     	dateFormat: "yymmdd",
     	minDate: 1,
-    	altField: '#departDate'
+    	altField: '#searchDateStart'
+		
     });
     
     
-    $( "#departDate" ).datepicker({
-    	dateFormat : 'yymmdd'
+    $( "#searchDateStart" ).datepicker({
+    	dateFormat : 'yymmdd',
+    	/* numberOfMonths: 3, */ //3개월치 보여주기
+    	minDate:0 // 오늘 포함해서 선택가능 어제 이후 선택 불가능
     }); 
-  
-    
-    $("button[name='btnSchedule']").click(function(event){
-    	
-    	event.preventDefault();
-    	
-		var dspCls = $(this).val();
-		if(dspCls == 'B'){
-			$(location).attr('href',$(this).attr('role-url'));
-		}else{
-			showLayer($(this));
-		}
+
+});
+$(document).ready(function(){
+
+	var viewOpen = ${viewOpen};
+	if(viewOpen == true){
+		$("#rankWrap").css("display","none");
+		$("#if_SearchWrap").css("display","block");
+	}else{
+		$("#rankWrap").css("display","block");
+		$("#if_SearchWrap").css("display","none");
+	}
+$("div#rank span.tab").on('click', function() {
+		var thisTab = this;
+
+		$('.sibal').not(function() {
+			$(this).removeClass('sibal');
+		});
+		$(thisTab).addClass('sibal');
+		
+	}); 
+	$("div#rank span.tab:first-child").on('click', function() {
+		$("div#rank ul.tab01").show();
+		$("div#rank ul.tab02").hide();
 	});
-  
-  //선택상품비교하기
+	$("div#rank span.tab:nth-child(2)").on('click', function() {
+		$("div#rank ul.tab02").show();
+		$("div#rank ul.tab01").hide();
+	});
+	
+	
+	 //선택상품비교하기
 	$("#btnCompare").click(function(event){
 		
 		event.preventDefault();
 		
 		var checkedVal = "";
-		var cnt = 0;
+		var cnt = 0;			
 		
 		$("input:checkbox[name='chk']:checked").each(function(){
 			cnt++;
@@ -81,337 +91,15 @@ $(document).ready(function(){
 			$(this).attr('role-url', roleUrl);	//최초 URL로 복원
 		}		
 	});
+	 
+	 $("#viewCount").change(function(){
+		 var f=$("#viewCount option:selected").val();
+		 document.reSearch2.submit();
+	 });
+
 });
 
-function resultSearch(query,categoryDepth1,categoryDepth2 ,categoryName2,departDate,price,lowPrice,highPrice){
-	lowPrice = replaceAll(lowPrice,",","");
-	highPrice = replaceAll(highPrice,",","");
-	pageNum = 1;
-	$.ajax({
-    	url:"/search/incSearch.do"
-    	,async:true
-    	,data:{
-    		  "query"		: query
-    		  ,"categoryDepth1" : categoryDepth1
-    		  ,"categoryDepth2" : categoryDepth2
-    		  ,"categoryName2" : categoryName2
-    		  ,"departDate" : departDate
-    		  ,"price" : price
-    		  ,"lowPrice" : lowPrice
-    		  ,"highPrice" : highPrice
-    	}        	
-    	,success:function(html){
-    		$(".notiWrapCon").html(html);    	
-    
-    	}
-    	,error: function(html) {
-			//alert("incMaster");
-		}
-    });
-}
-
-//전체 replace 함수 
-function replaceAll(str, searchStr, replaceStr) {
-
-    return str.split(searchStr).join(replaceStr);
-}
-
-//가격별 검색 
-function resultSearchDepartDay(event){
-	
-	event.preventDefault();
-	
-	var query = $("input:text[name='query']").val();
-	
-	var urlStr = "/search/incSearch.do";
-	$.ajax({
-    	url:urlStr,
-    	data:{	
-			"query"		:  query
-	  	}  
-    	,success:function(html){
-    		$(".notiWrapCon").empty();
-  			$(".notiWrapCon").html(html);
-		}
-    	,error: function(html) {
-			
-		}
-    });
-}
-
-
-//출발일 검색 
-function resultSearchDepartDay(){
-	var departDate = $("input:hidden[name='departDate']").val();
-	var departWDay = $("input:checkbox[name='departWDay']").val();
-	
-	departDate =replaceAll(departDate.replace(/ /gi, ''),',','|');
-	
-	var wDay = "";
-	$("input:checkbox[name='departWDayTop']:checked").each(function (index) {
-		wDay += $(this).val() + "|";
-	});
-	
-	var departWDay = wDay;	
-
-	if(departDate == "" && departWDay == "" ){
-		alert("출발일 또는 출발요일을 선택하세요.");
-		return false;
-	}
-	
-	var urlStr = "/search/incSearch.do";
-	$.ajax({
-    	url:urlStr,
-    	data:{	
-			"departDate"		:  departDate
-			,"departWDay" : departWDay
-			,"query"		:  ''
-	  	}  
-    	,success:function(html){
-    		$(".notiWrapCon").empty();
-  			$(".notiWrapCon").html(html);
-		}
-    	,error: function(html) {
-			
-		}
-    });
-}
-
-
-$(document).on("keyup", "input:text[numberOnly]", function() {
-	$(this).number(true);
-	
-});
 </script>
-<script>
-function fn_popup(){
-	var url = "/ctgRegPop.do";
-	window.open(url,"ctgReg","width=500,height=500,resizeble=yes,left=500,top=200");	
-}
-</script>
-<body style="text-align:center; margin:0 auto; display:inline; padding-top:100px;">
-
-	<section id="content"><!--[[ content Start ]]-->
-
-        <div id="searchWrap"><!--[[ 통합검색 searchWrap Start ]]-->
-            <div class="title" title="검색하기"></div>
-            <div class="tab">
-                <ul>
-                    <a href="/search/searchKeyword.do" ><li class="t01 on">
-                        <p>키워드검색</p>
-                    </li></a>
-                    <a href="/search/searchDate.do" ><li class="t02 ">
-                        <p>출발일검색</p>
-                    </li></a>
-                    <a href="/search/searchPrice.do" ><li class="t03 ">
-                        <p>가격별검색</p>
-                    </li></a>
-                </ul>
-            </div>
-			<form name="searchforms" id="totalSearch" action="/search/searchKeyword.do" method="POST"  onSubmit="resultSearchKeyword(event); return false;">
-			<input type="hidden" name="sort" value="">
-			<input type="hidden" name="collection" value="">
-			<input type="hidden" name="realQuery" value="" />
-            <div class="tabview tab01 block"><!--[[ 키워드검색 tab01 Start ]]-->
-                <span class="noti" >상품번호를 알고 계시다면, 상품번호로 간편하게 검색하세요!</span>
-                <div id="keywordSrh">
-                
-                    <input type="text" id="query2" name="query" title="키워드입력" value="" style="ime-mode:active;"    />
-                    <input type="hidden" name="product" value="전체상품">                    
-                    <span class="divide"></span>
-                    <button type="submit" class="btnTotalSearch" title="검색"></button>
-                    <!-- <a href="/search/searchKeyword.do" onclick="document.forms['searchform'].submit(); return false;"><img src="/images/top_search.png" alt="검색"></a> -->
-                </div>
-                <div id="ark2" ></div>
-                <div class="relKeywordBox">
-                추천검색어 |
-                <span class="Keyword">
-                <a href="/search/searchKeyword.do?query=보라카이"><span>보라카이</span></a>
-                <a href="/search/searchKeyword.do?query=제주도"><span>제주도</span></a>
-                <a href="/search/searchKeyword.do?query=대만"><span>대만</span></a>
-                <a href="/search/searchKeyword.do?query=사이판"><span>사이판</span></a>
-                <a href="/search/searchKeyword.do?query=코타키나발루"><span>코타키나발루</span></a>
-                <a href="/search/searchKeyword.do?query=오키나와"><span>오키나와</span></a>
-                </span>
-               </div>
-            </div><!--[[ 키워드검색 tab01 End ]]-->
-			</form>
-
-        </div><!--[[ 통합검색 searchWrap End ]]-->
-        
-        <div class="notiWrapCon">
-	        <div id="rankWrap"><!--[[ 검색 전 인기검색어 rankWrap Start ]]-->
-	            <span class="tab">인기검색어</span><span class="tab" style="border-left: 1px solid #d6d6d6;width:547px">추천검색어</span>
-	            <ul class="rankList tab01" style="border-left:">
-	            <a href="/search/searchKeyword.do?query=오사카">
-	            <li>
-	            <span class="no grade">1</span>
-	            <span class="name">오사카</span>
-	            <span class="updown  new"></span>
-	            <span class="num">0</span>
-	            </li>
-	            </a>
-	            <a href="/search/searchKeyword.do?query=장가계">
-	            <li>
-	            <span class="no grade">2</span>
-	            <span class="name">장가계</span>
-	            <span class="updown  new"></span>
-	            <span class="num">0</span>
-	            </li>
-	            </a>
-	            <a href="/search/searchKeyword.do?query=북해도">
-	            <li>
-	            <span class="no grade">3</span>
-	            <span class="name">북해도</span>
-	            <span class="updown"></span>
-	            <span class="num">0</span>
-	            </li>
-	            </a>
-	            <a href="/search/searchKeyword.do?query=다낭">
-	            <li>
-	            <span class="no">4</span>
-	            <span class="name">다낭</span>
-	            <span class="updown"></span>
-	            <span class="num">0</span>
-	            </li>
-	            </a>
-	            <a href="/search/searchKeyword.do?query=서유럽">
-	            <li>
-	            <span class="no">5</span>
-	            <span class="name">서유럽</span>
-	            <span class="updown up"></span>
-	            <span class="num">2</span>
-	            </li>
-	            </a>
-	            <a href="/search/searchKeyword.do?query=터키">
-	            <li>
-	            <span class="no">6</span>
-	            <span class="name">터키</span>
-	            <span class="updown"></span>
-	            <span class="num">0</span>
-	            </li>
-	            </a>
-	            <a href="/search/searchKeyword.do?query=라오스">
-	            <li>
-	            <span class="no">7</span>
-	            <span class="name">라오스</span>
-	            <span class="updown  new"></span>
-	            <span class="num">0</span>
-	            </li>
-	            </a>
-	            <a href="/search/searchKeyword.do?query=미서부">
-	            <li>
-	            <span class="no">8</span>
-	            <span class="name">미서부</span>
-	            <span class="updown down"></span>
-	            <span class="num">3</span>
-	            </li>
-	            </a>
-	            <a href="/search/searchKeyword.do?query=홍콩">
-	            <li>
-	            <span class="no">9</span>
-	            <span class="name">홍콩</span>
-	            <span class="updown down"></span>
-	            <span class="num">1</span>
-	            </li>
-	            </a>
-	            <a href="/search/searchKeyword.do?query=스페인 포르투갈 모로코">
-	            <li>
-	            <span class="no">10</span>
-	            <span class="name">스페인 포르투갈 모로코</span>
-	            <span class="updown  new"></span>
-	            <span class="num">0</span>
-	            </li>
-	            </a>
-	            </ul>
-	            <ul class="rankList tab02">
-	            <a href="/search/searchKeyword.do?query=보라카이">
-	            <li>
-	            <span class="no grade">1</span>
-	            <span class="name">보라카이</span>
-	            <span class="updown"></span>
-	            <span class="num"></span>
-	            </li>
-	            </a>
-	            <a href="/search/searchKeyword.do?query=제주도">
-	            <li>
-	            <span class="no grade">2</span>
-	            <span class="name">제주도</span>
-	            <span class="updown"></span>
-	            <span class="num"></span>
-	            </li>
-	            </a>
-	            <a href="/search/searchKeyword.do?query=대만">
-	            <li>
-	            <span class="no grade">3</span>
-	            <span class="name">대만</span>
-	            <span class="updown"></span>
-	            <span class="num"></span>
-	            </li>
-	            </a>
-	            <a href="/search/searchKeyword.do?query=사이판">
-	            <li>
-	            <span class="no">4</span>
-	            <span class="name">사이판</span>
-	            <span class="updown"></span>
-	            <span class="num"></span>
-	            </li>
-	            </a>
-	            <a href="/search/searchKeyword.do?query=코타키나발루">
-	            <li>
-	            <span class="no">5</span>
-	            <span class="name">코타키나발루</span>
-	            <span class="updown"></span>
-	            <span class="num"></span>
-	            </li>
-	            </a>
-	            <a href="/search/searchKeyword.do?query=오키나와">
-	            <li>
-	            <span class="no">6</span>
-	            <span class="name">오키나와</span>
-	            <span class="updown"></span>
-	            <span class="num"></span>
-	            </li>
-	            </a>
-	            <a href="/search/searchKeyword.do?query=괌">
-	            <li>
-	            <span class="no">7</span>
-	            <span class="name">괌</span>
-	            <span class="updown"></span>
-	            <span class="num"></span>
-	            </li>
-	            </a>
-	            <a href="/search/searchKeyword.do?query=몽골">
-	            <li>
-	            <span class="no">8</span>
-	            <span class="name">몽골</span>
-	            <span class="updown"></span>
-	            <span class="num"></span>
-	            </li>
-	            </a>
-	            <a href="/search/searchKeyword.do?query=러시아">
-	            <li>
-	            <span class="no">9</span>
-	            <span class="name">러시아</span>
-	            <span class="updown"></span>
-	            <span class="num"></span>
-	            </li>
-	            </a>
-	            <a href="/search/searchKeyword.do?query=동유럽">
-	            <li>
-	            <span class="no">10</span>
-	            <span class="name">동유럽</span>
-	            <span class="updown"></span>
-	            <span class="num"></span>
-	            </li>
-	            </a>
-	            </ul>
-	        </div>
-	        <!--[[ 검색 전 인기검색어 rankWrap End ]]-->
-<!--         </div>
-        <div class="notiWrapCon"><script src="/js/ui.js"></script>
-<script src="/js/jquery.number.min.js"></script>
-<script src="/js/jquery-ui.js"></script>
 <script>
 
 
@@ -552,7 +240,7 @@ $(document).ready(function(){
 });
 
 
-function resultSearchList(query,categoryDepth1,categoryDepth2 ,categoryName2,departDate,lowPrice,highPrice,categoryYn){
+function resultSearchList(serachCondition,categoryDepth1,categoryDepth2 ,categoryName2,departDate,lowPrice,highPrice,categoryYn){
     pageNum = 1;
     
     startCount =0;
@@ -565,7 +253,7 @@ function resultSearchList(query,categoryDepth1,categoryDepth2 ,categoryName2,dep
         url:"/search/incSearchNoti.do"
         ,async:true
         ,data:{
-              "query"       : query
+              "serachCondition"       : serachCondition
               ,"categoryDepth1" : categoryDepth1
               ,"categoryDepth2" : categoryDepth2
               ,"categoryName2" : categoryName2
@@ -580,7 +268,7 @@ function resultSearchList(query,categoryDepth1,categoryDepth2 ,categoryName2,dep
                 url:"/search/incSearchList.do"
                 ,async:true
                 ,data:{
-                    "query"     : query
+                    "serachCondition"     : serachCondition
                       ,"categoryDepth1" : categoryDepth1
                       ,"categoryDepth2" : categoryDepth2
                       ,"categoryName2" : categoryName2
@@ -618,7 +306,7 @@ function resultReSearchList(event){
     
     startCount =0;
     
-    query =$('input:text[name="query"]').val();
+    serachCondition =$('input:text[name="serachCondition"]').val();
    	categoryDepth1 = $('input:hidden[name="categoryDepth1"]').val();
    	categoryDepth2 = $('input:hidden[name="categoryDepth2"]').val();
    	categoryName2 = $('input:hidden[name="categoryName2"]').val();
@@ -679,10 +367,10 @@ function resultReSearchList(event){
    
    
 	$.ajax({
-    	url:"/search/incSearch.do"
+    	url:"/search/searchKeyword.do"
     	,async:true
     	,data:{
-    		  "query"		: query
+    		  "serachCondition"		: serachCondition
     		  ,"categoryDepth1" : categoryDepth1
     		  ,"categoryDepth2" : categoryDepth2
     		  ,"categoryName2" : categoryName2
@@ -703,7 +391,7 @@ function resultReSearchList(event){
     	}        	
     	,success:function(html){
     	
-    		$(".notiWrapCon").html(html);    	
+    		$(".notiWrap").html(html);    	
     
     	}
     	,error: function(html) {
@@ -714,7 +402,7 @@ function resultReSearchList(event){
 
 function resultReSearchListPg(){
     //var sf = document.reSearchform;
-    query =$('input:text[name="query"]').val();
+    serachCondition =$('input:text[name="serachCondition"]').val();
    	categoryDepth1 = $('input:text[name="categoryDepth1"]').val();
    	categoryDepth2 = $('input:text[name="categoryDepth2"]').val();
    	categoryName2 = $('input:text[name="categoryName2"]').val();
@@ -731,151 +419,291 @@ function resultReSearchListPg(){
 		wDay2 += $(this).val() + "|";
 	});
 
-	departWDay2 = wDay2;
-	departMonth = $('select[name="departMonth"]').val(); 
-    departDate = $('input:text[name="departDate"]').val();
-    period = $('select[name="period"]').val(); 
-    departCity = $('select[name="departCity"]').val(); 
-    departCityNm =  $('#departCity option:selected').text();
-    keyword = $('input:text[name="keyword"]').val();
-    sort = $('select[name="sort"]').val();
-    startCount = parseInt($("#startCount").val());
-    
-    viewCount = $('select[name="viewCount"]').val();
-
-    var price = $('input:radio[name="price"]:checked').val();
-    
-    if(price == "p30hi"){
-        lowPrice = "";
-        highPrice = "300000";
-    }else if(price == "p3040"){
-    	lowPrice = "300000";
-    	highPrice = "400000";
-    }else if(price == "p4050"){
-    	lowPrice = "400000";
-    	highPrice = "500000";
-    }else if(price == "p50100"){
-    	lowPrice = "500000";
-    	highPrice = "1000000";
-    }else if(price == "p100200"){
-    	lowPrice = "1000000";
-    	highPrice = "2000000";
-    }else if(price == "p200lo"){
-    	lowPrice = "2000000";
-    	highPrice = "";
-    }else if(price == "pricetext"){
-    	lowPrice = replaceAll($('input:text[name="lowPrice"]').val(),",","");
-    	highPrice = replaceAll($('input:text[name="highPrice"]').val(),",","");
-    }else {
-    	lowPrice = replaceAll($('input:text[name="lowPrice"]').val(),",","");
-    	highPrice = replaceAll($('input:text[name="highPrice"]').val(),",","");
-    }
-   
-        
-    pageNum = 1;
-    
-    pageNum = 1;
-	$.ajax({
-    	url:"/search/incSearchListPg.do"
-    	,async:true
-    	,data:{
-    		  "query"		: query
-    		  ,"categoryDepth1" : categoryDepth1
-    		  ,"categoryDepth2" : categoryDepth2
-    		  ,"categoryName2" : categoryName2
-    		  ,"departDate" : departDate
-    		  ,"departMonth" : departMonth
-    		  ,"price" : price
-    		  ,"lowPrice" : lowPrice
-    		  ,"highPrice" : highPrice
-    		  ,"departWDay" : departWDay
-    		  ,"departWDay2" : departWDay2
-    		  ,"period" : period
-    		  ,"departCity" : departCity
-    		  ,"departCityNm" : departCityNm
-    		  ,"keyword" : keyword
-    		  ,"sort" : sort
-    		  ,"startCount" : startCount   
-    		  ,"viewCount" : viewCount    		  
-    	}        	
-    	,success:function(html){
-    	
-    		$(".listBar").append(html);    	
-    
-    	}
-    	,error: function(html) {
-			//
-		}
-    });
 }
 
-
-
-function paging(){
-	
-	var totCnt = parseInt($("#totCount").val());
-	var startCount = parseInt($("#startCount").val());
-	var viewCount = parseInt($('select[name="viewCount"]').val()); 
-	var page = parseInt(startCount + viewCount);	
-	
-	var totPage = Math.ceil(totCnt/viewCount);
-	
-	if(totPage*viewCount >= startCount+viewCount){
-		$(".morelist").show();
-	}else{
-		$(".morelist").hide();
-	}
-	
-
- 	startCount + viewCount + 1;
-	
-	$("#startCount").val(parseInt(page));
-	
-	resultReSearchListPg();
-	
-}
-
-$(document).on("keyup", "input:text[numberOnly]", function() {
-	$(this).number(true);
-});
 </script>
+<div id ="wrap">
 
-<div id="notiWrap">[[ 검색결과 알림 notiWrap Start ]]
+	<section id="content"><!--[[ content Start ]]-->
+	
+        <div id="searchWrap"><!--[[ 통합검색 searchWrap Start ]]-->
+            <div class="title" title="검색하기"></div>
+            <div class="tab">
+                <ul>
+                    <a href="/search/searchKeyword.do" ><li class="t01 on">
+                        <p>키워드검색</p>
+                    </li></a>
+                    <a href="/search/searchDate.do" ><li class="t02 ">
+                        <p>출발일검색</p>
+                    </li></a>
+                    <a href="/search/searchPrice.do" ><li class="t03 ">
+                        <p>가격별검색</p>
+                    </li></a>
+                </ul>
+            </div>
+			<form name="searchforms" id="totalSearch" action="/search/searchKeyword.do" method="POST" >
+			<input type="hidden" name="sort" value="">
+			<input type="hidden" name="collection" value="">
+			<input type="hidden" name="realQuery" value="" />
+            <div class="tabview tab01 block"><!--[[ 키워드검색 tab01 Start ]]-->
+                <span class="noti" >상품번호를 알고 계시다면, 상품번호로 간편하게 검색하세요!</span>
+                <div id="keywordSrh">
+                
+                    <input type="text" id="searchKeyword" name="searchKeyword" title="키워드입력" value="" style="ime-mode:active;"    />
+                    <input type="hidden" name="product" value="전체상품">                    
+                    <span class="divide"></span>
+                    <button type="submit" class="btnTotalSearch" title="검색"></button>
+                    <!-- <a href="/search/searchKeyword.do" onclick="document.forms['searchform'].submit(); return false;"><img src="/images/top_search.png" alt="검색"></a> -->
+                </div>
+                <div id="ark2" ></div>
+                <div class="relKeywordBox">
+                추천검색어 |
+                <span class="Keyword">
+                <a href="/search/searchKeyword.do?serachCondition=보라카이"><span>보라카이</span></a>
+                <a href="/search/searchKeyword.do?serachCondition=제주도"><span>제주도</span></a>
+                <a href="/search/searchKeyword.do?serachCondition=대만"><span>대만</span></a>
+                <a href="/search/searchKeyword.do?serachCondition=사이판"><span>사이판</span></a>
+                <a href="/search/searchKeyword.do?serachCondition=코타키나발루"><span>코타키나발루</span></a>
+                <a href="/search/searchKeyword.do?serachCondition=오키나와"><span>오키나와</span></a>
+                </span>
+               </div>
+            </div><!--[[ 키워드검색 tab01 End ]]-->
+			</form>
 
-            <span class=""><p class="keywd">
-            'asfdasd'&nbsp;
-            &nbsp;에 대한 총 
-             0
-             건의 여행상품 검색 결과가 있습니다.</p></span>
-            </div>[[ 검색결과 알림 notiWrap End ]]
+        </div><!--[[ 통합검색 searchWrap End ]]-->
+        
+        <div class="notiWrapCon">
+			
+	        <div id="rankWrap"><!--[[ 검색 전 인기검색어 rankWrap Start ]]-->
+	            <span class="tab">인기검색어</span>
+	            <span class="tab" style="border-left: 1px solid #d6d6d6;width:547px">추천검색어</span>
+	            <ul class="rankList tab01" style="border-left:">
+	            <a href="/search/searchKeyword.do?serachCondition=오사카">
+	            <li>
+	            <span class="no grade">1</span>
+	            <span class="name">오사카</span>
+	            <span class="updown  new"></span>
+	            <span class="num">0</span>
+	            </li>
+	            </a>
+	            <a href="/search/searchKeyword.do?serachCondition=장가계">
+	            <li>
+	            <span class="no grade">2</span>
+	            <span class="name">장가계</span>
+	            <span class="updown  new"></span>
+	            <span class="num">0</span>
+	            </li>
+	            </a>
+	            <a href="/search/searchKeyword.do?serachCondition=북해도">
+	            <li>
+	            <span class="no grade">3</span>
+	            <span class="name">북해도</span>
+	            <span class="updown"></span>
+	            <span class="num">0</span>
+	            </li>
+	            </a>
+	            <a href="/search/searchKeyword.do?serachCondition=다낭">
+	            <li>
+	            <span class="no">4</span>
+	            <span class="name">다낭</span>
+	            <span class="updown"></span>
+	            <span class="num">0</span>
+	            </li>
+	            </a>
+	            <a href="/search/searchKeyword.do?serachCondition=서유럽">
+	            <li>
+	            <span class="no">5</span>
+	            <span class="name">서유럽</span>
+	            <span class="updown up"></span>
+	            <span class="num">2</span>
+	            </li>
+	            </a>
+	            <a href="/search/searchKeyword.do?serachCondition=터키">
+	            <li>
+	            <span class="no">6</span>
+	            <span class="name">터키</span>
+	            <span class="updown"></span>
+	            <span class="num">0</span>
+	            </li>
+	            </a>
+	            <a href="/search/searchKeyword.do?serachCondition=라오스">
+	            <li>
+	            <span class="no">7</span>
+	            <span class="name">라오스</span>
+	            <span class="updown  new"></span>
+	            <span class="num">0</span>
+	            </li>
+	            </a>
+	            <a href="/search/searchKeyword.do?serachCondition=미서부">
+	            <li>
+	            <span class="no">8</span>
+	            <span class="name">미서부</span>
+	            <span class="updown down"></span>
+	            <span class="num">3</span>
+	            </li>
+	            </a>
+	            <a href="/search/searchKeyword.do?serachCondition=홍콩">
+	            <li>
+	            <span class="no">9</span>
+	            <span class="name">홍콩</span>
+	            <span class="updown down"></span>
+	            <span class="num">1</span>
+	            </li>
+	            </a>
+	            <a href="/search/searchKeyword.do?serachCondition=스페인 포르투갈 모로코">
+	            <li>
+	            <span class="no">10</span>
+	            <span class="name">스페인 포르투갈 모로코</span>
+	            <span class="updown  new"></span>
+	            <span class="num">0</span>
+	            </li>
+	            </a>
+	            </ul>
+	            <ul class="rankList tab02">
+	            <a href="/search/searchKeyword.do?serachCondition=보라카이">
+	            <li>
+	            <span class="no grade">1</span>
+	            <span class="name">보라카이</span>
+	            <span class="updown"></span>
+	            <span class="num"></span>
+	            </li>
+	            </a>
+	            <a href="/search/searchKeyword.do?serachCondition=제주도">
+	            <li>
+	            <span class="no grade">2</span>
+	            <span class="name">제주도</span>
+	            <span class="updown"></span>
+	            <span class="num"></span>
+	            </li>
+	            </a>
+	            <a href="/search/searchKeyword.do?serachCondition=대만">
+	            <li>
+	            <span class="no grade">3</span>
+	            <span class="name">대만</span>
+	            <span class="updown"></span>
+	            <span class="num"></span>
+	            </li>
+	            </a>
+	            <a href="/search/searchKeyword.do?serachCondition=사이판">
+	            <li>
+	            <span class="no">4</span>
+	            <span class="name">사이판</span>
+	            <span class="updown"></span>
+	            <span class="num"></span>
+	            </li>
+	            </a>
+	            <a href="/search/searchKeyword.do?serachCondition=코타키나발루">
+	            <li>
+	            <span class="no">5</span>
+	            <span class="name">코타키나발루</span>
+	            <span class="updown"></span>
+	            <span class="num"></span>
+	            </li>
+	            </a>
+	            <a href="/search/searchKeyword.do?serachCondition=오키나와">
+	            <li>
+	            <span class="no">6</span>
+	            <span class="name">오키나와</span>
+	            <span class="updown"></span>
+	            <span class="num"></span>
+	            </li>
+	            </a>
+	            <a href="/search/searchKeyword.do?serachCondition=괌">
+	            <li>
+	            <span class="no">7</span>
+	            <span class="name">괌</span>
+	            <span class="updown"></span>
+	            <span class="num"></span>
+	            </li>
+	            </a>
+	            <a href="/search/searchKeyword.do?serachCondition=몽골">
+	            <li>
+	            <span class="no">8</span>
+	            <span class="name">몽골</span>
+	            <span class="updown"></span>
+	            <span class="num"></span>
+	            </li>
+	            </a>
+	            <a href="/search/searchKeyword.do?serachCondition=러시아">
+	            <li>
+	            <span class="no">9</span>
+	            <span class="name">러시아</span>
+	            <span class="updown"></span>
+	            <span class="num"></span>
+	            </li>
+	            </a>
+	            <a href="/search/searchKeyword.do?serachCondition=동유럽">
+	            <li>
+	            <span class="no">10</span>
+	            <span class="name">동유럽</span>
+	            <span class="updown"></span>
+	            <span class="num"></span>
+	            </li>
+	            </a>
+	            </ul>
+	        </div>
+<!--[[ 검색 전 인기검색어 rankWrap End ]]-->
+		 
+		
+			
+			<div id="if_SearchWrap">
+					
+			
+			<div id="notiWrap"><!--[[ 검색결과 알림 notiWrap Start ]]-->
+
+            <span class="">
+	            <p class="keywd">
+	            <c:if test="${existCondition==''}">
+	            '${existKeyword}'
+	            </c:if>
+	            <c:if test="${existKeyword==''}">
+	            '${existCondition}'
+	            </c:if>
+	            <c:if test="${existKeyword!=''&& existCondition!=''}">
+	            '${existKeyword}'
+	            </c:if>
+	            &nbsp;
+	            &nbsp;에 대한 총 
+	             ${goodsCnt }
+	             	건의 여행상품 검색 결과가 있습니다.
+	             </p>
+             </span>
+            </div>
+            <!--[[ 검색결과 알림 notiWrap End ]]-->
+            
         <div class="titleBox">     
         	<div class="title"><span class="bul"></span>결과 내 재검색</div>
         	<a class="bntOption" href="#">검색옵션<span class="spim"></span></a>
         </div>
         <div class="optionMenu" id="optionMenu">
-	        <form id="reSearch" action="/search/searchKeyword.do" method="post" onsubmit="resultReSearchList(event); return false;">
-	        		<input type="hidden" name="query" value="asfdasd"><div id="reWrap">[[ 결과내재검색 reWrap Start ]]
-	        <div class="frm">
-	            <ul class="frm">
-	                <li>
+	        <form id="reSearch" action="/search/searchKeyword.do" method="post">
+	        		<!--[[ 결과내재검색 reWrap Start ]]-->
+	        		<div id="reWrap">
+	       			 <div class="frm">
+	           		 <ul class="frm">
+	               	 <li>
 	                    <span class="tit">출발월</span>
 	                    <select name="departMonth" id="departMonth" title="출발월선택">
 	                        <option value="">월별 전체 선택</option>
-	                            <option value="201710">2017년 10월</option>
-	                            <option value="201711">2017년 11월</option>
-	                            <option value="201712">2017년 12월</option>
-	                            <option value="201801">2018년 01월</option>
-	                            <option value="201802">2018년 02월</option>
-	                            <option value="201803">2018년 03월</option>
-	                            <option value="201804">2018년 04월</option>
-	                            <option value="201805">2018년 05월</option>
-	                            <option value="201806">2018년 06월</option>
-	                            <option value="201807">2018년 07월</option>
-	                            <option value="201808">2018년 08월</option>
-	                            <option value="201809">2018년 09월</option>
-	                            </select>
+	                        
+	                        
+                            <c:set var="year" value="${year}"/>
+                            <c:set var="month" value="${month}"/>
+	                            <c:forEach begin="1" end="12" var="plusMonth" step="1">
+	                            <!-- fmt: 두자리 수 맞춰주기 -->
+                            	<fmt:formatNumber var="monthDigits2" value="${month}" minIntegerDigits="2" type="number"/>
+	                            <option value="${year}년 ${monthDigits2}월"> ${year}년 ${monthDigits2}월</option>
+	                            <c:set var="month" value="${month+1}"/>
+	                            <c:if test="${month > '12'}">
+	                            <c:set var="month" value="${month-12}"/>
+	                            <c:set var="year" value="${year+1}"/>
+	                            </c:if>
+	                            </c:forEach>
+	                            
+	                            
+	                    </select>
 	                    <span class="tit">출발일</span>
-	                    <input type="text" name="departDate" id="departDate" title="일자개별선택" placeholder="일자개별선택" value="" class="term hasDatepicker">
+	                    <input type="text" name="searchDateStart" id="searchDateStart" title="일자 개별 선택" placeholder="일자개별선택" class="term">
 	                    <span class="tit">출발요일</span>
 	                    <span class="chk"><input type="checkbox" name="departWDay2" id="reweekall" value=""><label for="reweekall">전체</label></span>
 		                    <span class="chk"><input type="checkbox" name="departWDay2" id="reweek01" value="월"><label for="reweek01">월</label></span>
@@ -895,7 +723,11 @@ $(document).on("keyup", "input:text[numberOnly]", function() {
 	                    <span class="chkPrice"><label><input type="radio" name="price" id="price" value="p100200">100~200만원</label></span>
 	                    <span class="chkPrice"><label><input type="radio" name="price" id="price" value="p200lo">200만원 이상</label></span>
 	                    <span class="chkPrice"><label><input type="radio" name="price" id="price" value="pricetext">직접입력</label></span>
-	                    <span class="chkPrice"><input type="text" name="lowPrice" id="lowPrice" value="" numberonly="" readonly=""><span class="divide">~</span><input type="text" name="highPrice" id="highPrice" value="" numberonly="" readonly=""></span>
+	                    <span class="chkPrice">
+		                    <input type="text" name="lowPrice" id="lowPrice" value="" numberonly="" readonly="">
+		                    <span class="divide">~</span>
+		                    <input type="text" name="highPrice" id="highPrice" value="" numberonly="" readonly="">
+	                    </span>
 	                </li>
 	                <li>
 	                    <span class="tit">여행기간</span>
@@ -926,24 +758,195 @@ $(document).on("keyup", "input:text[numberOnly]", function() {
 	                    </select>
 	                    <span class="tit">상세키워드</span>
 	                    <input type="text" name="keyword" id="keyword" value="">
-	                    <button class="btnReSearch" type="submit" title="재검색" onclick="resultReSearchList(); return false;">재검색</button>
+	                    
+	                    <button class="btnReSearch" type="submit" title="재검색" onclick="resultReSearchList(event) return false;">재검색</button>
 	                    <button type="reset" class="btnReset" title="초기화">초기화</button>
 	                </li>
 	            </ul>
 				</div>
 	            <div id="rank">
-	                <span class="tab on">인기검색어</span><span class="tab">추천검색어</span>
-	                <ul class="rankList tab01" style="display: block;"><a href="/search/searchKeyword.do?query=오사카"><li><span class="no grade">1</span><span class="name">오사카</span><span class="updown  new"></span><span class="num">0</span></li></a><a href="/search/searchKeyword.do?query=스페인 포르투갈 모로코"><li><span class="no grade">2</span><span class="name">스페인 포르투갈 모로코</span><span class="updown up"></span><span class="num">6</span></li></a><a href="/search/searchKeyword.do?query=오키나와"><li><span class="no grade">3</span><span class="name">오키나와</span><span class="updown down"></span><span class="num">2</span></li></a><a href="/search/searchKeyword.do?query=동유럽"><li><span class="no">4</span><span class="name">동유럽</span><span class="updown down"></span><span class="num">2</span></li></a><a href="/search/searchKeyword.do?query=장가계"><li><span class="no">5</span><span class="name">장가계</span><span class="updown down"></span><span class="num">2</span></li></a><a href="/search/searchKeyword.do?query=다낭"><li><span class="no">6</span><span class="name">다낭</span><span class="updown down"></span><span class="num">1</span></li></a><a href="/search/searchKeyword.do?query=미서부"><li><span class="no">7</span><span class="name">미서부</span><span class="updown down"></span><span class="num">1</span></li></a><a href="/search/searchKeyword.do?query=베트남"><li><span class="no">8</span><span class="name">베트남</span><span class="updown  new"></span><span class="num">0</span></li></a><a href="/search/searchKeyword.do?query=터키"><li><span class="no">9</span><span class="name">터키</span><span class="updown down"></span><span class="num">2</span></li></a><a href="/search/searchKeyword.do?query=호주"><li><span class="no">10</span><span class="name">호주</span><span class="updown  new"></span><span class="num">0</span></li></a></ul>
-	                <ul class="rankList tab02"><a href="/search/searchKeyword.do?query=제주도"><li><span class="no grade">1</span><span class="name">제주도</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=보라카이"><li><span class="no grade">2</span><span class="name">보라카이</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=코타키나발루"><li><span class="no grade">3</span><span class="name">코타키나발루</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=러시아"><li><span class="no">4</span><span class="name">러시아</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=괌"><li><span class="no">5</span><span class="name">괌</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=대만"><li><span class="no">6</span><span class="name">대만</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=사이판"><li><span class="no">7</span><span class="name">사이판</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=큐슈"><li><span class="no">8</span><span class="name">큐슈</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=서유럽"><li><span class="no">9</span><span class="name">서유럽</span><span class="updown"></span><span class="num"></span></li></a><a href="/search/searchKeyword.do?query=몽골"><li><span class="no">10</span><span class="name">몽골</span><span class="updown"></span><span class="num"></span></li></a></ul>
+	                <span class="tab sibal">인기검색어</span>
+	                <span class="tab">추천검색어</span>
+	                <ul class="rankList tab01" style="display: block;">
+	                <a href="/search/searchKeyword.do?serachCondition=오사카">
+		                <li>
+			                <span class="no grade">1</span>
+			                <span class="name">오사카</span>
+			                <span class="updown  new"></span>
+			                <span class="num">0</span></li>
+			            </li>
+			        </a>
+			        <a href="/search/searchKeyword.do?serachCondition=스페인 포르투갈 모로코">
+		                <li>
+		                	<span class="no grade">2</span>
+			                <span class="name">스페인 포르투갈 모로코</span>
+			                <span class="updown up"></span>
+			                <span class="num">6</span>
+		                </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?serachCondition=오키나와">
+		            <li>
+		            <span class="no grade">3</span>
+		            <span class="name">오키나와</span>
+		            <span class="updown down"></span>
+		            <span class="num">2</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?serachCondition=동유럽">
+		            <li>
+		            <span class="no">4</span>
+		            <span class="name">동유럽</span>
+		            <span class="updown down"></span>
+		            <span class="num">2</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?serachCondition=장가계">
+		            <li>
+		            <span class="no">5</span>
+		            <span class="name">장가계</span>
+		            <span class="updown down"></span>
+		            <span class="num">2</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?serachCondition=다낭">
+		            <li>
+		            <span class="no">6</span>
+		            <span class="name">다낭</span>
+		            <span class="updown down"></span>
+		            <span class="num">1</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?serachCondition=미서부">
+		            <li>
+		            <span class="no">7</span>
+		            <span class="name">미서부</span>
+		            <span class="updown down"></span>
+		            <span class="num">1</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?serachCondition=베트남">
+		            <li>
+		            <span class="no">8</span>
+		            <span class="name">베트남</span>
+		            <span class="updown  new"></span>
+		            <span class="num">0</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?serachCondition=터키">
+		            <li>
+		            <span class="no">9</span>
+		            <span class="name">터키</span>
+		            <span class="updown down"></span>
+		            <span class="num">2</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?serachCondition=호주">
+		            <li>
+		            <span class="no">10</span>
+		            <span class="name">호주</span>
+		            <span class="updown  new">
+		            </span>
+		            <span class="num">0</span>
+		            </li>
+		            </a>
+		            </ul>
+	                <ul class="rankList tab02" style="display: none;">
+	                <a href="/search/searchKeyword.do?serachCondition=오사카">
+		                <li>
+			                <span class="no grade">1</span>
+			                <span class="name">바바바바바바바바바</span>
+			                <span class="updown  new"></span>
+			                <span class="num">0</span></li>
+			            </li>
+			        </a>
+			        <a href="/search/searchKeyword.do?serachCondition=스페인 포르투갈 모로코">
+		                <li>
+		                	<span class="no grade">2</span>
+			                <span class="name">스페인 포르투갈 모로코</span>
+			                <span class="updown up"></span>
+			                <span class="num">6</span>
+		                </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?serachCondition=오키나와">
+		            <li>
+		            <span class="no grade">3</span>
+		            <span class="name">오키나와</span>
+		            <span class="updown down"></span>
+		            <span class="num">2</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?serachCondition=동유럽">
+		            <li>
+		            <span class="no">4</span>
+		            <span class="name">동유럽</span>
+		            <span class="updown down"></span>
+		            <span class="num">2</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?serachCondition=장가계">
+		            <li>
+		            <span class="no">5</span>
+		            <span class="name">장가계</span>
+		            <span class="updown down"></span>
+		            <span class="num">2</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?serachCondition=다낭">
+		            <li>
+		            <span class="no">6</span>
+		            <span class="name">다낭</span>
+		            <span class="updown down"></span>
+		            <span class="num">1</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?serachCondition=미서부">
+		            <li>
+		            <span class="no">7</span>
+		            <span class="name">미서부</span>
+		            <span class="updown down"></span>
+		            <span class="num">1</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?serachCondition=베트남">
+		            <li>
+		            <span class="no">8</span>
+		            <span class="name">베트남</span>
+		            <span class="updown  new"></span>
+		            <span class="num">0</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?serachCondition=터키">
+		            <li>
+		            <span class="no">9</span>
+		            <span class="name">터키</span>
+		            <span class="updown down"></span>
+		            <span class="num">2</span>
+		            </li>
+		            </a>
+		            <a href="/search/searchKeyword.do?serachCondition=호주">
+		            <li>
+		            <span class="no">10</span>
+		            <span class="name">호주</span>
+		            <span class="updown  new">
+		            </span>
+		            <span class="num">0</span>
+		            </li>
+		            </a>
+		            </ul>
 	            </div>
-	        </div>[[ 결과내재검색 reWrap End ]]        
+	        </div><!--[[ 결과내재검색 reWrap End ]]-->        
 	        </form>
         </div>
-        <div id="product02">[[ 여행상품목록 Start ]]
+        <div id="product02">
+        
+        <!--[[ 여행상품목록 Start ]]-->
+		<form action="<c:url value='/search/searchKeyword.do' />" name="reSearch2" method="post">
             <div class="title title02 none" title="여행상품"></div>
             <div class="searchBar">
+			          
                 <span class="barL">
-                    <span>전체 0개 상품</span>
+                    <span>전체 ${goodsCnt }개 상품</span>
+                    
                     <select name="sort" id="sort" class="mgr10" title="정렬순서선택">
                     	<option value="">정렬순서</option>
                         <option value="AMTASC">낮은가격순</option>
@@ -966,17 +969,100 @@ $(document).on("keyup", "input:text[numberOnly]", function() {
                     <button type="button" id="btnCompare" title="선택상품비교하기">선택상품비교하기</button>
                 </span>
             </div>
-            <div class="listNoti">[[ listWrap Start ]]
-                <div class="noti">[[ listBar Start ]]
+            <input type="hidden" name="searchKeyword" id="existKeyword" value="<%=searchKeyword%>">
+            <%-- <input type="hidden" name="searchCondition" id="existCondition" value="<%=searchCondition%>"> --%>
+		 </form>        
+		              
+            <c:if test="${goodsCnt==0}">
+            <div class="listNoti"><!--[[ listWrap Start ]]-->
+                <div class="noti"><!--[[ listBar Start ]]-->
                 <span>검색된 결과가 없습니다.</span>
                 <p>검색어가 올바르게 입력되었는지 확인해 보세요.</p>
                 <p>일반적이고 포괄적인 단어로 재검색 해보세요.</p>
                 <p>검색어의 띄어쓰기를 조정해 보세요.</p>
                 <p>지역명 도는 국가명으로 검색해 보세요.</p>
                 </div>
-            </div> -->
-        </div><!--[[ 여행상품목록 End ]]-->        
+            </div>
+            </c:if>
+            <div class="list"><!--[[ listWrap Start ]]-->
+                <ul class="listBar"><!--[[ listBar Start ]]-->
+                <c:set var="cnt" value="1" />
+                <c:forEach var="goodsList" items="${searchKeyword}" varStatus="status">
+                <c:if test="${cnt%2==0 }">
+                  <li class="odd">
+                </c:if>
+                 <c:if test="${cnt%2!=0 }">
+                  <li class="">
+                </c:if>
+                        <ul>
+                            <li class="t01">
+                                <input type="checkbox" name="chk" value="ATP2049" title="체크">
+                            </li>
+                            <li class="t02">
+                               <span class="pic">
+                                <img src="https://dimgcdn.ybtour.co.kr/TN/f8/f8a688ca85305af2f836ba1acc6c7c0f.tn.410x280.jpg" alt="">
+                                    </span>
+                            </li>
+                            <li class="t03">
+                                <div class="productTop">
+                                    <span class="path">${goodsList.gubun} &gt; ${goodsList.nation}</span>
+                                    <a href="/product/unitList.do?menu=${existCondition}&code=${goodsList.code}">
+                                    <span class="mark none"><span class="pie mint">특가</span></span>
+                                    <span class="mark none"><span class="pie green">실속</span></span>
+                                    <span class="mark none"><span class="pie blue">품격</span></span>
+                                    <span class="mark none"><span class="pie pink">선착순</span></span>
+                                    <span class="mark none"><span class="pie hotel">특급호텔</span></span>
+                                    <span class="mark none"><span class="pie besthotel">초특급호텔</span></span>
+                                    <span class="product">
+                                       ${goodsList.title}
+                                             </span>
+                                    </a>
+                                </div>
+                                
+                                <div class="productL">
+                                		
+                                		
+                                		
+                                        <span class="tit">여행코스</span><span class="period">${goodsList.bak}박${goodsList.bak+1}일</span>
+                                        <span class="txt">${goodsList.schd }</span>
+                                        <span class="line"></span>
+                                        <span class="subTxt">
+                                        ${goodsList.detail1 }
+										</span>
+                                        <dl>
+                                            <dt>이용항공</dt>
+                                           <dd class="air">
+                                           <img src="/images/air/7C.png" alt="7C">
+					                       <img src="/images/air/LJ.png" alt="LJ">
+					                       <img src="/images/air/TW.png" alt="TW">
+					                       <img src="/images/air/XJ.png" alt="XJ">
+					                       <img src="/images/air/ZE.png" alt="ZE">
+					                        	</dd>
+                                            <dd class="divide"></dd>
+                                            <dt>상품번호</dt>
+                                            <dd class="pNum">${goodsList.code}</dd>
+                                        </dl>
+                                    </div>
+                                <div class="productR">
+                                    <span class="vline"></span>
+                                    <span class="price">${goodsList.price}<p>원</p><p class="black">~</p></span>
+                                    <span class="period"></span>
+                                    <button type="button" name="btnSchedule" id="btnSchedule1" value="/product/unitList.do?menu=pkg&amp;did=851&amp;goodsCd=ATP2049" role-url="/product/unitListPop.do?menu=pkg&amp;did=851&amp;goodsCd=ATP2049" title="출발일보기">출발일보기</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <c:set var="cnt" value="${cnt+1 }" />
+                    </c:forEach>
+                    </ul><!--[[ listBar End ]]-->
+            </div>
+            
         </div>
+		</div>
+        </div>
+        <!--[[ 여행상품목록 End ]]-->    
+       
     </section>
 
     <!--[[ content End ]]-->
+</div>

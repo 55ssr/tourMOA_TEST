@@ -9,7 +9,7 @@ public class EstimateVO {
 	private String email;
 	private int person;
 	private String type;
-	private int money;
+	private String money;
 	private String floc;
 	private String city;
 	private String sdate;
@@ -26,6 +26,7 @@ public class EstimateVO {
 	private String reply;
 	private String redate;
 	private String manager;
+	private String inestimateagree;
 	public int getUnq() {
 		return unq;
 	}
@@ -73,13 +74,7 @@ public class EstimateVO {
 	}
 	public void setType(String type) {
 		this.type = type;
-	}
-	public int getMoney() {
-		return money;
-	}
-	public void setMoney(int money) {
-		this.money = money;
-	}
+	}	
 	public String getFloc() {
 		return floc;
 	}
@@ -175,5 +170,17 @@ public class EstimateVO {
 	}
 	public void setManager(String manager) {
 		this.manager = manager;
+	}
+	public String getMoney() {
+		return money;
+	}
+	public void setMoney(String money) {
+		this.money = money;
+	}
+	public String getInestimateagree() {
+		return inestimateagree;
+	}
+	public void setInestimateagree(String inestimateagree) {
+		this.inestimateagree = inestimateagree;
 	}
 }

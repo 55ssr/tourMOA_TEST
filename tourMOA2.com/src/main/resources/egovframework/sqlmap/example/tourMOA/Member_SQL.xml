@@ -35,9 +35,11 @@
 			WHERE id = '$id$' AND pwd = '$pwd$'
 	
 	</select>
+	
 	 <select id="memberDAO.accountDetail" resultClass="MemberVO">
 		SELECT 
 				id,
+				pwd,
 				name,
 				gender,
 				email,
@@ -47,20 +49,73 @@
 				addr12,
 				to_char(birthday,'yyyy-mm-dd')as birthday ,
 				tel,
+				emailYn,
+				mobileRcpYn,
 				marry,
+				mdate,
 				job
 		FROM  
 				MEMBER
 		WHERE id = '$id$'
 	</select>
 	
-	<select id="memberDAO.accountPwReaffirm" resultClass="MemberVO">
-		SELECT id,pwd FROM MEMBER WHERE id='$id$'
+	<select id="memberDAO.accountPwReaffirm" resultClass="java.lang.Integer">
+		SELECT 
+			COUNT(*)
+		FROM 
+			MEMBER 
+		WHERE 
+			id='$id$' AND pwd ='$pwd$'
 	</select>
-	 
+	
 	<select id="memberDAO.accountPwUpdate" resultClass="MemberVO">
-		SELECT pwd,id
-		 FROM MEMBER WHERE id='$id$' 
+		SELECT 
+			id,pwd
+		 FROM 
+		 	MEMBER 
+		 WHERE 
+		 	id='$id$' 
+	</select>
+	
+	<select id="memberDAO.adminMemberList" resultClass="egovMap">
+	SELECT b.* FROM (
+			SELECT 
+				rownum rn, a.* FROM (
+							SELECT	  unq
+									, id
+									, name
+									, gender
+									, phone
+									, TO_CHAR(birthday, 'yyyy-mm-dd') birthday
+									, email
+									, TO_CHAR(rdate, 'yyyy-mm-dd') rdate
+							FROM 
+									member a 
+									
+							WHERE
+									1=1 
+									
+							<isNotNull property="searchCondition">
+								<isNotEmpty property="searchCondition">
+									AND $searchCondition$ LIKE '%' || #searchKeyword# || '%' 	
+								</isNotEmpty>
+							</isNotNull>		
+									ORDER BY name
+									) a
+						) b
+		WHERE 
+				rn >= #firstIndex# AND rn <![CDATA[<=]]> #lastIndex#
+	
+	</select>
+	
+	<select id="memberDAO.adminMemberTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM member
+		WHERE 1=1
+			<isNotNull property="searchCondition">
+				<isNotEmpty property="searchCondition">
+				AND  $searchCondition$ LIKE '%' || #searchKeyword# || '%'
+				</isNotEmpty>
+			</isNotNull>
 	</select>
 	
 	<insert id="memberDAO.insertMemberJoin">
@@ -82,6 +137,7 @@
 							mobileRcpYn,
 							marry,
 							mdate,
+							rdate,
 							agree1,
 							agree2
 						) VALUES (
@@ -102,8 +158,48 @@
 							'$mobileRcpYn$',
 							'$marry$',
 							'$mdate$',
+							 sysdate,
 							'$agree1$',
 							'$agree2$'
+						)
+	</insert>
+	<insert id="memberDAO.insertAdminJoin">
+		INSERT INTO MEMBER (	
+							unq,
+							id,
+							pwd,
+							name,
+							gender,
+							email,
+							phone,
+							job,
+							postnum1,
+							addr11,
+							addr12,
+							birthday,
+							emailYn,
+							mobileRcpYn,
+							marry,
+							mdate,
+							rdate
+						) VALUES (
+							SEQ_MEMBER_UNQ.nextval,
+							'$id$',
+							'$pwd$',
+							'$name$',
+							'$gender$',
+							'$email$',
+							'$phone$',
+							'$job$',
+							'$postnum1$',
+							'$addr11$',
+							'$addr12$',
+							'$birthday$',
+							'$emailYn$',
+							'$mobileRcpYn$',
+							'$marry$',
+							'$mdate$',
+							sysdate
 						)
 	</insert>
 	
@@ -119,13 +215,36 @@
 			addr12='$addr12$',
 			birthday= '$birthday$' ,
 			tel='$tel$',
+			mdate = '$mdate$',
+			emailYn = '$emailYn$',
+			mobileRcpYn = '$mobileRcpYn$',
+			marry='$marry$',
+			job='$job$'
+	    WHERE
+	    	id = '$id$'
+	</update>
+	<update id="memberDAO.adminDetailUpdate">
+		UPDATE
+			MEMBER
+		SET
+			pwd = '$pwd$',
+			gender='$gender$',
+			email='$email$',
+			phone='$phone$',
+			postnum1='$postnum1$',
+			addr11='$addr11$',
+			addr12='$addr12$',
+			birthday= '$birthday$' ,
+			mdate = '$mdate$',
+			emailYn = '$emailYn$',
+			mobileRcpYn = '$mobileRcpYn$',
 			marry='$marry$',
 			job='$job$'
 	    WHERE
 	    	id = '$id$'
 	</update>
 	<update id="memberDAO.accountPwUpdateProc">
-		UPDATE
+		UPDATE	
 			MEMBER
 		SET
 			pwd ='$pwd$'
@@ -133,4 +252,9 @@
 			id = '$id$'
 	
 	</update>
+	<delete  id="memberDAO.adminMemberDelete">
+		DELETE FROM member 
+			WHERE
+				id = '$id$'		
+	</delete>
 </sqlMap>

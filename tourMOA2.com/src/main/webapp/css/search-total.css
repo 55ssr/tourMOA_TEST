@@ -5,7 +5,7 @@
 /* �듯빀寃��� */
 #searchWrap {
 	width: 1100px;
-	margin: 25px auto 0;
+	margin: 25px auto 0;  
 }
 
 #searchWrap .title {
@@ -117,7 +117,7 @@
 #searchWrap .tabview.tab01 #keywordSrh>input {
 	float: left;
 	width: 480px;
-	height: 30px; border : none;
+	border : none;
 	border: 0;
 	margin: 0 0 0 0;
 	padding: 9px 10px 10px 10px;
@@ -165,6 +165,7 @@
 }
 
 #searchWrap .relKeywordBox {
+	padding: 10px 0 10px 0;
 	width: 700px;
 	margin: 0 auto;
 	font-size: 13px;
@@ -274,21 +275,21 @@
 }
 
 .calendarBox .calendarWrap .calendar table.calendar_body tr td.orange {
-	background: url("/images/unit/calendar/calendar_orange.png") center
+	background: url("/images/customer/calendar_orange.png") center
 		center no-repeat;
 	background-size: contain;
 	color: #fff;
 }
 
 .calendarBox .calendarWrap .calendar table.calendar_body tr td.mint {
-	background: url("/images/unit/calendar/calendar_mint.png") center center
+	background: url("/images/customer/calendar_mint.png") center center
 		no-repeat;
 	background-size: contain;
 	color: #fff;
 }
 
 .calendarBox .calendarWrap .calendar table.calendar_body tr td.gray {
-	background: url("/images/unit/calendar/calendar_gray.png") center center
+	background: url("/images/customer/calendar_gray.png") center center
 		no-repeat;
 	background-size: contain;
 	color: #fff;
@@ -304,12 +305,12 @@
 
 .calendarBox>button.calendar_prev {
 	left: 450px;
-	background: url("/images/calendarL.png") center center no-repeat;
+	background: url("/images/customer/calendarL.png") center center no-repeat;
 }
 
 .calendarBox>button.calendar_next {
 	right: 450px;
-	background: url("/images/calendarR.png") center center no-repeat;
+	background: url("/images/customer/calendarR.png") center center no-repeat;
 }
 
 .calendarBox>span.divide {
@@ -334,7 +335,7 @@
 	display: block;
 	width: 360px;
 	height: 270px;
-	background: url("/images/sub/visual_blind.png") repeat;
+	background: url("/images/customer/visual_blind.png") repeat;
 	z-index: 9;
 }
 
@@ -364,7 +365,7 @@
 	left: 7px;
 	width: 28px;
 	height: 28px;
-	background: url("/images/unit/calendar/calendar_selected.png") center
+	background: url("/images/customer/calendar_selected.png") center
 		center no-repeat;
 	background-size: contain;
 	z-index: 999999999;
@@ -682,7 +683,7 @@
 
 .spim {
 	overflow: hidden;
-	background: url("/images/area/sp_layout.png") center center no-repeat;
+	background: url("/images/common/sp_layout.png") center center no-repeat;
 	white-space: nowrap;
 	vertical-align: middle;
 }
@@ -944,7 +945,7 @@ input[type="text"].research_box {
 	border-right: 1px solid #d6d6d6;
 }
 
-#reWrap #rank .tab.on {
+#reWrap #rank .tab.sibal {
 	background: #fff;
 	border-bottom: none !important;
 	z-index: 1;
@@ -1135,7 +1136,7 @@ input[type="text"].research_box {
 	width: 15px;
 	height: 100%;
 	margin: 0 15px;
-	background: url('/images/totPage/totSearch_icon01.png') 7px center
+	background: url('/images/totPage/totSearch_icon01.png')     center
 		no-repeat;
 }
 
@@ -1164,12 +1165,13 @@ input[type="text"].research_box {
 
 .searchBar {
 	margin-top: 0 !important;
+	position: relative; width: 1100px; height: 50px; margin: 40px auto 0; border-top: 1px solid #ecedee;
 }
 
 .ui-datepicker .ui-datepicker-calendar .ui-state-highlight a {
 	width: 17px;
 	height: 17px;
-	background: url("/images/unit/calendar/calendar_orange.png") center 2px
+	background: url("/images/customer/calendar_orange.png") center 2px
 		no-repeat;
 	margin: 0 auto;
 	text-align: center;

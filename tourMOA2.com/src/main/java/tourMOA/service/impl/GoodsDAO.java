@@ -8,6 +8,8 @@ import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
 import tourMOA.service.DefaultListVO;
 import tourMOA.service.GoodsVO;
 import tourMOA.service.ManagerVO;
+import tourMOA.service.OptionVO;
+import tourMOA.service.SliderVO;
 
 
 @Repository("goodsDAO")
@@ -41,10 +43,6 @@ public class GoodsDAO extends EgovAbstractDAO{
 		return (GoodsVO) select("goodsDAO.selectUnitDetail", vo);
 	}
 
-	public List<?> selectDetailImages(GoodsVO vo) {
-		return list("goodsDAO.selectDetailImages", vo);
-	}
-
 	public ManagerVO selectManagerDetail(ManagerVO vo2) {
 		return (ManagerVO) select("goodsDAO.selectManagerDetail", vo2);
 	}
@@ -66,7 +64,7 @@ public class GoodsDAO extends EgovAbstractDAO{
 	}
 
 	public GoodsVO adminSliderDetail(GoodsVO vo) {
-		return (GoodsVO) select("goodsDAO.selectSliderDetail", vo);
+		return (GoodsVO) select("goodsDAO.adminSliderDetail", vo);
 	}
 
 	public int deleteSlider(GoodsVO vo) {
@@ -75,6 +73,39 @@ public class GoodsDAO extends EgovAbstractDAO{
 
 	public int updateSlider(GoodsVO vo) {
 		return update("goodsDAO.updateSlider", vo);
+	}
+
+	public SliderVO selectSliderDetail(SliderVO vo3) {
+		System.out.println("====goodsDAO");
+		return (SliderVO) select("goodsDAO.selectSliderDetail", vo3);
+	}
+
+	public String insertOption(OptionVO vo) {
+		return (String) insert("goodsDAO.insertOption", vo);
+	}
+
+	public int selectOptionTotal(DefaultListVO searchVO) {
+		return (int) select("goodsDAO.selectOptionTotal", searchVO);
+	}
+
+	public List<?> adminOptionList(DefaultListVO searchVO) {
+		return list("goodsDAO.adminOptionList", searchVO);
+	}
+
+	public int adminSliderConfirm(SliderVO vo) {
+		return (int) select("goodsDAO.adminSliderConfirm", vo);
+	}
+
+	public OptionVO selectOptionDetail(OptionVO vo) {
+		return (OptionVO) select("goodsDAO.selectOptionDetail", vo);
+	}
+
+	public int updateOption(GoodsVO vo) {
+		return update("goodsDAO.updateOption", vo);
+	}
+
+	public int deleteOption(OptionVO vo) {
+		return delete("goodsDAO.deleteOption", vo);
 	}
 
 

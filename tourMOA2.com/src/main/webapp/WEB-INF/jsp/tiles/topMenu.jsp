@@ -6,9 +6,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator"%>
-<script src="https://code.jquery.com/jquery-latest.js"></script>
-<script src="/js/jquery-2.2.2.js"></script>
-<script src="/js/jquery-ui.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#logoutBtn").click(function(){
@@ -27,6 +24,11 @@ $(document).ready(function(){
 				alert('Loading Error! '+error);
 			}
 		 });
+	});
+	$("#searchBtnMain").click(function(){
+		
+		document.searchFrmMain.submit();
+		
 	});
 });
 function fn_detail(a) {
@@ -65,13 +67,23 @@ function fn_detail(a) {
 				<a href="/main.do">
 					<img src="/images/common/TourMOA_Logo220.png" alt="로고">
 				</a>
-				<div id="searchBox">
-					<select class="searchCondition">
-						<option>전체 상품</option>
-					</select>
-					<input type="text" id="searchInputMain" class="search" placeholder="search">
-					<a href="#"><img alt="검색" src="/images/customer/top_search.png"></a>
-				</div>
+				<form name="searchFrmMain" method="post" action="/search/searchKeyword.do">
+					<div id="searchBox">
+						<select class="searchCondition" name="searchCondition" id="searchCondition">
+							<option value="">전체 상품</option>
+                            <option value="해외패키지">해외패키지</option>
+                            <option value="자유여행">자유여행</option>
+                            <option value="국내여행">국내여행</option>
+                            <option value="허니문">허니문</option>
+                            <option value="골프">골프</option>
+                            <option value="크루즈">크루즈</option>
+                            <option value="성지순례">성지순례</option>
+                            <option value="대구출발">부산/대구출발</option>
+						</select>
+						<input type="text" id="searchKeyword" name="searchKeyword" class="search" placeholder="search" value="">
+						<a href="#" id="searchBtnMain"><img alt="검색" src="/images/customer/top_search.png"></a>
+					</div>
+				</form>
 			</div>
 		</div>
 <form name="hiddenFrm2" method="post" action="<c:url value='mypage/accountPwReaffirm.do'/>">

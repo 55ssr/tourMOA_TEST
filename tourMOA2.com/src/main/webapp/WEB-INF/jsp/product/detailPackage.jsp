@@ -1,23 +1,32 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-<script src="/js/jquery-2.2.2.js"></script>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator"%>
+<!-- <script src="/js/jquery-2.2.2.js"></script>
 <script src="/js/jquery-ui.js"></script>
 <script src="/js/jquery.simplemodal-1.4.4.js"></script>
 <script src="/js/jquery.cookie.js"></script>
 <script src="/fp/flowplayer.min.js"></script>
 <script src="/js/ui.js"></script>
 <script src="/js/jquery.sliderkit.1.9.2.pack.js"></script>
-
-
+ -->
 
 
 
 <script>
+function fnSaveWishProc(unq){
+	var f =document.frm;
+	f.unq.value=unq;
+	f.submit();
+}
+</script>
+<script>
 $(document).ready(function() {
-
+	
 	//옵션사항 이미지 없을경우 
 	$("#infoWrap .info05 .cont05 .type03 span.pic img").each(function(){
 		if($(this).attr("src") == "" || $(this).attr("src") == undefined){
@@ -127,18 +136,7 @@ function fnSelectIncRvw(vUrl){
 	$("#listWrap").load(vUrl);
 } 
   
-function fnInitRvw(){
-	
-	var rvwInitUrl = "/product/selectPdtRvwList.do?pageIndex=1&goodsCd=EWP1007&evCd=EWP1007-171015AZ00&dspId=731";
-	fnSelectIncRvw(rvwInitUrl);
-}
-
 </script>
-
-
-
-
-
 
 
 <script type="text/javascript">
@@ -201,18 +199,6 @@ $(document).ready(function() {
 		}
 	});
 });
-
-
-$(document).ready(function(){
-	
-	$("#btnReserve"),$("#btnReserves").click(function(e){
-		$(".simplemodal-container").dialog("open");
-		e.preventDefault();
-		/* showLoginRsvLayer(encodeURIComponent("/product/reserveStep01.do?")); */
-		
-	});
-	
-});
 </script>
 
 <div id="wrap">
@@ -252,7 +238,7 @@ $(document).ready(function(){
 					</span>
 					<span class="dev_comm">평점과 상품평 계산!</span>
 				</span>
-				
+
 				<div class="basicL">
 					<ul class="basicL01">
 						<li class="lineBlack h36"></li>
@@ -323,7 +309,7 @@ $(document).ready(function(){
 	                        <span class="tit">기본상품가</span>
 	                        <span class="txt txt07"><fmt:formatNumber value="${vo.price-vo.fuel}" groupingUsed="true" /><p class="won">원</p></span>
 	                        <span class="txt txt07"><fmt:formatNumber value="${vo.pricech-vo.fuel}" groupingUsed="true" /><p class="won">원</p></span>
-			                        <span class="txt txt07"><fmt:formatNumber value="${vo.pricein-vo.fuel}" groupingUsed="true" /><p class="won">원</p></span>	                        	
+			                        <span class="txt txt07"><fmt:formatNumber value="${vo.pricein}" groupingUsed="true" /><p class="won">원</p></span>	                        	
 	                        	</li>
 	                    <li>
 	                        <span class="tit">유류할증료</span>
@@ -343,7 +329,10 @@ $(document).ready(function(){
 	                    </li>
                     </ul>
 				</div>
-				
+				<form name="frm" method="post" action="/product/reserveStep01.do">
+				<input type ="hidden" name="unq" id="unq" value="" />
+				<input type ="hidden" name="code" id="code" value="${vo.code}" />
+				</form>
 				<ul class="basicR">
 					<li class="lineBlack h37 pd0">
 					<span class="ico ico01" onclick="fnSendEmail(); return false;">
@@ -381,7 +370,6 @@ $(document).ready(function(){
 								<span>${vo2.mail}</span>
 							</div>
 						</div>
-						<span class="dev_comm">담당자 테이블 만들어서 매칭</span>
 					</li>
 					
 					<li class="lineNone">
@@ -469,10 +457,11 @@ $(document).ready(function(){
 							<div class="sliderkit-nav">
 								<div class="sliderkit-nav-clip" style="width: 190px; height: 360px; top: 25px; margin: 0px;">
 									<ul>
-										<c:forEach var="rs" items="${imgList}">
+										<c:set var="filename" value="${fn:split(vo3.filename,'／')}" />
+										<c:forEach var="fn" items="${filename}">
 											<li style="width: 190px; height: 120px;" class="">
 												<a href="#" rel="nofollow">
-													<img src="/images/nation/${rs.eng}/${rs.imgsm}" alt="이미지 설명">
+													<img src="/images/nation/${vo3.code}/${fn}" alt="이미지 설명">
 												</a>
 											</li>
 										</c:forEach>
@@ -492,9 +481,9 @@ $(document).ready(function(){
 							
 							<div class="sliderkit-panels">
 							
-								<c:forEach var="rs" items="${imgList}">
+								<c:forEach var="fn" items="${filename}">
 								<div class="sliderkit-panel">
-									<img src="/images/nation/${rs.eng}/${rs.imglg}" alt="이미지 설명">
+									<img src="/images/nation/${vo3.code}/${fn}" alt="이미지 설명">
 								</div>
 								</c:forEach>
 							</div>
@@ -583,7 +572,7 @@ $(document).ready(function(){
 									<tr>
 										<td class="td01">
 											<span class="pic">
-												<img src="/images/opt/${rs.img}" alt="${rs.title}">
+												<img src="/images/opt/${rs.filename}" alt="${rs.title}">
 											</span>
 											<span class="choice w180">
 												<span class="tit"></span>
@@ -1550,7 +1539,7 @@ function fnView(obj){
                     <input type="hidden" name="search_txt" id="search_txt">
                     <span id="inputAir">
          		    	<img src="/images/air/${fn:substring(vo.fno,0,2)}.png" alt="${vo.airline}">
-	                   			아시아나항공</span>
+	                   			${vo.airline}</span>
                     <ul>
                     	<li style="background: rgb(249, 251, 251);">
 		                        <img src="/images/air/${fn:substring(vo.fno,0,2)}.png" alt="${vo.airline}">
@@ -1585,7 +1574,7 @@ function fnView(obj){
 	           	<div class="aside08">
                 <!--  <button type="button" name="btnCalculator" id="btnCalculator" role-w="550" role-h="600" role-url="/product/calculator.do?evAdtPrice=2790000&evChdPrice=2232000&evInfPrice=558000" class="btnCalculator" title="요금계산기">요금계산기</button>-->
 	<button type="button" onclick="fnSaveWishProc('E','/product/detailPackage.do?menu=pkg&amp;did=7423&amp;evCd=NCP5208-170922OZ00','NCP5208','NCP5208-170922OZ00','false'); return false;" class="btnCalculator">관심상품등록</button>
-				<button type="button" name="btnReserves" id="btnReserves" class="btnReserveS" title="예약하기">예약하기</button>           			
+				<button type="button" name="btnReserves" id="btnReserves" class="btnReserveS" title="예약하기" onclick="fnSaveWishProc('${vo.unq}'); return false;">예약하기</button>           			
 		</div>
 
             <div class="aside09">

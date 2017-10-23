@@ -1,9 +1,12 @@
 package tourMOA.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import egovframework.example.sample.service.SampleDefaultVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import tourMOA.service.MemberService;
 import tourMOA.service.MemberVO;
@@ -33,7 +36,6 @@ public class MemberServiceImpl extends EgovAbstractServiceImpl implements Member
 
 	@Override
 	public int findPwRe(MemberVO vo) throws Exception {
-		// TODO Auto-generated method stub
 		return memberDAO.findPwRe(vo);
 	}
 
@@ -54,7 +56,7 @@ public class MemberServiceImpl extends EgovAbstractServiceImpl implements Member
 	}
 
 	@Override
-	public MemberVO accountPwReaffirm(MemberVO vo) throws Exception {
+	public int accountPwReaffirm(MemberVO vo) throws Exception {
 		return memberDAO.accountPwReaffirm(vo);
 	}
 
@@ -73,6 +75,34 @@ public class MemberServiceImpl extends EgovAbstractServiceImpl implements Member
 		return memberDAO.findIdDetail(vo);
 	}
 
+	@Override
+	public MemberVO accountPw(MemberVO vo) throws Exception {
+		return memberDAO.accountPw(vo);
+	}
 
+	@Override
+	public int adminMemberTotal(SampleDefaultVO searchVO) throws Exception {
+		return memberDAO.adminMemberTotal(searchVO);
+	}
+
+	@Override
+	public List<?> adminMemberList(SampleDefaultVO searchVO) throws Exception {
+		return memberDAO.adminMemberList(searchVO);
+	}
+
+	@Override
+	public String insertAdminJoin(MemberVO vo) throws Exception {
+		return memberDAO.insertAdminJoin(vo);
+	}
+
+	@Override
+	public int adminMemberDelete(MemberVO vo) throws Exception {
+		return memberDAO.adminMemberDelete(vo);
+	}
+
+	@Override
+	public int adminDetailUpdate(MemberVO vo) throws Exception {
+		return memberDAO.adminDetailUpdate(vo);
+	}
 
 }

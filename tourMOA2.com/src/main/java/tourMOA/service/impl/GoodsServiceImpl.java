@@ -11,6 +11,8 @@ import tourMOA.service.DefaultListVO;
 import tourMOA.service.GoodsService;
 import tourMOA.service.GoodsVO;
 import tourMOA.service.ManagerVO;
+import tourMOA.service.OptionVO;
+import tourMOA.service.SliderVO;
 
 @Service("goodsService")
 public class GoodsServiceImpl extends EgovAbstractServiceImpl implements GoodsService {
@@ -54,11 +56,6 @@ public class GoodsServiceImpl extends EgovAbstractServiceImpl implements GoodsSe
 	}
 
 	@Override
-	public List<?> selectDetailImages(GoodsVO vo) throws Exception {
-		return goodsDAO.selectDetailImages(vo);
-	}
-
-	@Override
 	public ManagerVO selectManagerDetail(ManagerVO vo2) throws Exception {
 		return goodsDAO.selectManagerDetail(vo2);
 	}
@@ -96,6 +93,47 @@ public class GoodsServiceImpl extends EgovAbstractServiceImpl implements GoodsSe
 	@Override
 	public int updateSlider(GoodsVO vo) {
 		return goodsDAO.updateSlider(vo);
+	}
+
+	@Override
+	public SliderVO selectSliderDetail(SliderVO vo3) {
+		System.out.println("====goodsIMPL");
+		return goodsDAO.selectSliderDetail(vo3);
+	}
+
+	@Override
+	public String insertOption(OptionVO vo) throws Exception {
+		return goodsDAO.insertOption(vo);
+	}
+
+	@Override
+	public int selectOptionTotal(DefaultListVO searchVO) {
+		return goodsDAO.selectOptionTotal(searchVO);
+	}
+
+	@Override
+	public List<?> adminOptionList(DefaultListVO searchVO) {
+		return goodsDAO.adminOptionList(searchVO);
+	}
+
+	@Override
+	public int adminSliderConfirm(SliderVO vo) throws Exception {
+		return goodsDAO.adminSliderConfirm(vo);
+	}
+
+	@Override
+	public OptionVO selectOptionDetail(OptionVO vo) throws Exception {
+		return goodsDAO.selectOptionDetail(vo);
+	}
+
+	@Override
+	public int updateOption(GoodsVO vo) {
+		return goodsDAO.updateOption(vo);
+	}
+
+	@Override
+	public int deleteOption(OptionVO vo) {
+		return goodsDAO.deleteOption(vo);
 	}
 
 

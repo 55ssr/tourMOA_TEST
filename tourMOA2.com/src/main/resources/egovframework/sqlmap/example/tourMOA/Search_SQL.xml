@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Search">
+
+	<typeAlias alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="defaultVO" type="tourMOA.service.DefaultListVO"/>
+	
+	<select id="searchDAO.selectSearchProductList" resultClass="egovMap">
+
+		SELECT b.* FROM (
+			SELECT rownum rn, a.* FROM (
+							SELECT
+									unq,
+									title,
+									gubun,
+									nation,
+									city,
+									price,
+									to_char(sdate,'yyyy-mm-dd') as sdate,
+									to_char(edate,'yyyy-mm-dd') as edate,
+									to_date(to_char(edate,'yyyymmdd'))-to_date(to_char(sdate,'yyyymmdd')) as bak,
+									period,
+									schd,
+									detail1,
+									detail2,
+									airline,
+									person,
+									code
+								FROM
+									goods
+					<!--SEARCHCONDITION, SEARCHKEYWORD,출발일월을 다 SEARCH 할 때 -->
+					<isNotNull property="searchCondition">
+						<isNotEmpty property="searchCondition">
+					<isNotNull property="searchKeyword">
+						<isNotEmpty property="searchKeyword">
+					<isNotNull property="departDate">
+						<isNotEmpty property="departDate">
+						WHERE
+							gubun ='$searchCondition$'
+						AND 
+							(
+							   title	LIKE '%' || '$searchKeyword$' || '%'
+							OR city	    LIKE '%' || '$searchKeyword$' || '%'
+							OR gubun    LIKE '%' || '$searchKeyword$' || '%'
+							OR nation	LIKE '%' || '$searchKeyword$' || '%'
+							OR period	LIKE '%' || '$searchKeyword$' || '%'
+							OR code 	LIKE '%' || '$searchKeyword$' || '%'
+							OR airline 	LIKE '%' || '$searchKeyword$' || '%'
+							)
+						AND
+						<![CDATA[ 
+							'$departDate$' <=	 sdate 
+											]]> 		
+						</isNotEmpty>
+					</isNotNull>
+						</isNotEmpty>
+					</isNotNull>
+						</isNotEmpty>
+					</isNotNull>
+					
+					<!-- SELECT OPTION 만으로  SEARCH 할 때 -->
+					<isNotNull property="searchCondition">
+						<isNotEmpty property="searchCondition">
+					<isNull property="searchKeyword">
+						<isEmpty property="searchKeyword">
+					<isNull property="departDate">
+						<isEmpty property="departDate">
+					
+						WHERE
+							gubun ='$searchCondition$'
+						</isEmpty>
+					</isNull>
+						</isEmpty>
+					</isNull>
+						</isNotEmpty>
+					</isNotNull>
+					
+					<!-- INPUT KEYWORD 만으로  SEARCH 할 때 -->
+					<isNotNull property="searchKeyword">
+						<isNotEmpty property="searchKeyword">
+					<isNull property="searchCondition">
+						<isEmpty property="searchCondition">
+					<isNull property="departDate">
+						<isEmpty property="departDate">
+					
+						
+						WHERE
+							
+							   title	LIKE '%' || '$searchKeyword$' || '%'
+							OR city	    LIKE '%' || '$searchKeyword$' || '%'
+							OR gubun    LIKE '%' || '$searchKeyword$' || '%'
+							OR nation	LIKE '%' || '$searchKeyword$' || '%'
+							OR period	LIKE '%' || '$searchKeyword$' || '%'
+							OR code 	LIKE '%' || '$searchKeyword$' || '%'
+							OR airline 	LIKE '%' || '$searchKeyword$' || '%'
+
+						</isEmpty>
+					</isNull>	
+						</isEmpty>
+					</isNull>
+						</isNotEmpty>
+					</isNotNull>
+					
+					<!-- INPUT departDate 만으로  SEARCH 할 때 -->
+					<isNotNull property="departDate">
+				<isNotEmpty property="departDate">
+			<isEqual property="searchKeyword" compareProperty="searchKeyword"  compareValue="">
+			<isEqual property="searchCondition" compareProperty="searchCondition"  compareValue="">
+					
+						
+						WHERE
+							
+				<![CDATA[ 
+							'$departDate$' <=	 sdate 
+															]]> 	
+
+			
+			</isEqual>
+			</isEqual>
+						</isNotEmpty>
+					</isNotNull>
+							ORDER BY sdate ASC
+											) a
+							) b
+					WHERE
+						rn >= '$firstIndex$'
+			<![CDATA[ 
+						AND rn <= '$lastIndex$'
+			]]> 		
+				
+ 	</select>
+ 	
+ 	<select id = "searchDAO.selectSearchKeywordTotal" resultClass ="java.lang.Integer">
+		SELECT COUNT(*) FROM goods
+		
+		
+		<isNotNull property="searchCondition">
+			<isNotEmpty property="searchCondition">
+		<isNotNull property="searchKeyword">
+			<isNotEmpty property="searchKeyword">
+		<isNotNull property="departDate">
+			<isNotEmpty property="departDate">
+		
+						WHERE
+							gubun ='$searchCondition$'
+				
+				   AND 
+				           (
+				   			   title	LIKE '%' || '$searchKeyword$' || '%'
+							OR city	    LIKE '%' || '$searchKeyword$' || '%'
+							OR gubun    LIKE '%' || '$searchKeyword$' || '%'
+							OR nation	LIKE '%' || '$searchKeyword$' || '%'
+							OR period	LIKE '%' || '$searchKeyword$' || '%'
+							OR code 	LIKE '%' || '$searchKeyword$' || '%'
+							OR airline 	LIKE '%' || '$searchKeyword$' || '%'
+							)
+				  AND
+				<![CDATA[ 
+				
+							'$departDate$' <=	 sdate 
+											]]> 
+			</isNotEmpty>
+		</isNotNull>				
+			</isNotEmpty>
+		</isNotNull>
+			</isNotEmpty>
+		</isNotNull>
+		
+		<isNotNull property="searchCondition">
+			<isNotEmpty property="searchCondition">
+		<isNull property="searchKeyword">
+			<isEmpty property="searchKeyword">
+		<isNull property="departDate">
+			<isEmpty property="departDate">
+		
+						WHERE
+							gubun ='$searchCondition$'
+		
+			</isEmpty>
+		</isNull>
+			</isEmpty>
+		</isNull>
+			</isNotEmpty>
+		</isNotNull>
+		
+		
+		<isNotNull property="searchKeyword">
+			<isNotEmpty property="searchKeyword">
+		<isNull property="searchCondition">
+			<isEmpty property="searchCondition">
+		<isNull property="departDate">
+			<isEmpty property="departDate">
+		
+		
+						WHERE
+				   title	LIKE '%' || '$searchKeyword$' || '%'	
+				OR city	    LIKE '%' || '$searchKeyword$' || '%'
+				OR nation	LIKE '%' || '$searchKeyword$' || '%'
+		
+			</isEmpty>
+		</isNull>
+			</isEmpty>
+		</isNull>
+			</isNotEmpty>
+		</isNotNull>
+		
+			<!-- INPUT departDate 만으로  SEARCH 할 때 -->
+			<isNotNull property="departDate">
+				<isNotEmpty property="departDate">
+			<isEqual property="searchKeyword" compareProperty="searchKeyword"  compareValue="">
+			<isEqual property="searchCondition" compareProperty="searchCondition"  compareValue="">
+					
+						
+						WHERE
+							
+				<![CDATA[ 
+							'$departDate$' <=	 sdate 
+															]]> 	
+
+					</isEqual>
+					</isEqual>
+				</isNotEmpty>
+			</isNotNull>
+			
+		
+	</select>
+</sqlMap>

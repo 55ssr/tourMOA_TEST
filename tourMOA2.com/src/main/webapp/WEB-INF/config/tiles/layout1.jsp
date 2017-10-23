@@ -40,7 +40,10 @@
 <link rel="stylesheet" href="/css/jquery-ui.css" />
 <link rel="stylesheet" href="/css/sliderkit/sliderkit.css" /> 
 
-<script src="/js/ui.js" type="text/javascript"></script>
+<!-- <script src="/js/ui.js" type="text/javascript"></script> -->
+<script src="/js/jquery.number.min.js"></script>
+<script src="/js/jquery-2.2.2.js"></script>
+<script src="/js/jquery-ui.js"></script>
 <script src="/js/jquery.cookie.js" type="text/javascript"></script>	
 <script src="/js/jquery.simplemodal-1.4.4.js"></script>
 <script src="/js/jquery.validate.js"></script>
@@ -52,8 +55,8 @@
 <script src="/js/sessionCheck.js"></script><!-- 새벽 배포이후 빼기로 -->
 <script src="/js/naverLogin_implicit-1.0.2.js"></script>
 <script src="/js/yb.mobileCheck.js" type="text/javascript"></script>
-<script type="text/javascript" src="/js/yb.core.js"></script>
-<script type="text/javascript" src="/js/yb.certification.js"></script>
+<!-- <script type="text/javascript" src="/js/yb.core.js"></script>
+<script type="text/javascript" src="/js/yb.certification.js"></script> -->
 <!-- Kim Kookjin 추가 e -->
 </head>
 <body>
