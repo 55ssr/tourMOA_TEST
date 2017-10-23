@@ -18,7 +18,9 @@
 			<form name="frm" id="frm" method="post">
 			<input type="hidden" name="userid" value="" />
 			<input type="hidden" name="phone" id="phone" value="" />
-			<input type="hidden" name="email" id="email" value="" />			
+			<input type="hidden" name="email" id="email" value="" />
+			<input type="hidden" name="inestimateagree" id="inestimateagree" value="" />
+						
 			<table class="tbl_horizontal_type bdb_type01">
 				<caption>여행타입 선택</caption>
 				<colgroup>
@@ -126,7 +128,7 @@
 								<span class="txt_sel">성인
 									<!-- [공통코드 - 여행인원리스트] Start --> 
 									<select class="sel_default input_space03" style="width:77px" id="person" name="person">
-										<option value="" >선택</option>
+										<option value="0" >선택</option>
 										<option value="1" >1명</option>
 										<option value="2" >2명</option>
 										<option value="3" >3명</option>
@@ -151,11 +153,11 @@
 									<!-- [공통코드 - 여행경비리스트] Start -->
 									<select class="sel_default" style="width:203px" name="money" id="money">
 										<option value="">선택</option>
-										<option value="1" >30만원 미만</option>
-										<option value="2" >30만 ~ 50만원</option>
-										<option value="3" >50만 ~ 70만원</option>
-										<option value="4" >70만 ~ 100만원</option>
-										<option value="5" >100만원 이상</option>
+										<option value="30만원 미만" >30만원 미만</option>
+										<option value="30만 ~ 50만원" >30만 ~ 50만원</option>
+										<option value="50만 ~ 70만원" >50만 ~ 70만원</option>
+										<option value="70만 ~ 100만원" >70만 ~ 100만원</option>
+										<option value="100만원 이상" >100만원 이상</option>
 									</select>
 									<!-- [공통코드 - 여행경비리스트] End -->
 								</span>
@@ -578,21 +580,21 @@
 									</li>
 								</ul>
 							</td>
-							<th scope="row"><img src="/images/customer/03_bul01.png" alt="필수입력" class="ico_essential" />경유지</th>
+							<th scope="row">경유지</th>
 							<td>
 								<ul class="sub_choice_in">
 								<!-- [출발일 변경 설정] Start -->
 									<li>
-										<input type="radio" name="passage" id="불가" value="불가"/>
+										<input type="radio" name="passage" id="불가" value="N"/>
 										<label for="불가">불가</label>								
 									</li>								
 									<li>
-										<input type="radio" name="passage" id="가능" value="가능"/>
+										<input type="radio" name="passage" id="가능" value="Y"/>
 										<label for="가능">가능</label>
 							
 									</li>
 									<li>
-										<input type="radio" name="passage" id="미선택" value="미선택"/>
+										<input type="radio" name="passage" id="미선택" value="R"/>
 										<label for="미선택">미선택</label>								
 									</li>
 								<!-- [출발일 변경 설정] End -->
@@ -609,36 +611,26 @@
 									<li>
 										<input type="checkbox" name="stay" id="chk_Item_FFC_30_25" value="민박,호스텔">
 										<label for="chk_Item_FFC_30_25">민박,호스텔</label>
-										<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="stayname" 
-											id="txt_Item_FFC_30_25_Other" maxlength="40" value="">
 									</li>
 									<li>
 										<input type="checkbox" name="stay" id="chk_Item_FFC_30_26" value="투어리스트급호텔(3성급)">
 										<label for="chk_Item_FFC_30_26">투어리스트급호텔(3성급)</label>
-										<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="stayname" 
-											id="txt_Item_FFC_30_26_Other" maxlength="40" value="">
 									</li>
 									<li>
 										<input type="checkbox" name="stay" id="chk_Item_FFC_30_27" value="일급호텔(4성급)">
 										<label for="chk_Item_FFC_30_27">일급호텔(4성급)</label>
-										<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="stayname" 
-											id="txt_Item_FFC_30_27_Other" maxlength="40" value="">
 									</li>
 									<li>
 										<input type="checkbox" name="stay" id="chk_Item_FFC_30_29" value="특급호텔(5성급)">
 										<label for="chk_Item_FFC_30_29">특급호텔(5성급)</label>
-										<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="stayname" 
-											id="txt_Item_FFC_30_29_Other" maxlength="40" value="">
 									</li>
 									<li>
 										<input type="checkbox" name="stay" id="chk_Item_FFC_30_110" value="숙박필요없음">
-										<label for="chk_Item_FFC_30_110">숙박필요없음</label>
-										<input type="text" class="input_default input_space02 item_val" style="width:90px;display: none;" name="stayname" 
-											id="txt_Item_FFC_30_110_Other" maxlength="40" value="">
+										<label for="chk_Item_FFC_30_110">숙박필요없음</label>										
 									</li>
 									<li class="clearfix"></li>
 									<li>
-										<input type="checkbox" name="stay" id="chk_Item_FFC_30_111" value="111" onclick="fn_ToggleEnable(this.id);">
+										<input type="checkbox" name="chk_stayname" id="chk_Item_FFC_30_111" value="" onclick="fn_ToggleEnable(this.id);">
 										<label for="chk_Item_FFC_30_111">원하는숙박</label>
 										<input type="text" class="input_default input_space02 item_val" style="width:180px; height:16px;" name="stayname"
 											onclick="fn_ResetText(this.id);"
@@ -668,7 +660,8 @@
 						</ul>
 					</div>
 					<div class="privacy_agree_box">
-						<p><input type="checkbox" id="inestimateagree" name= "inestimateagree"/><label for="inestimateagree">개인정보 수집/이용 동의</label></p>
+						<!-- <p><input type="checkbox" id="agree" name="agree" /><label for="agree">개인정보 수집/이용 동의</label></p> -->
+						<p><input type="checkbox" id="agree" name="agree" /><label for="agree">개인정보 수집/이용 동의</label></p>
 						<input type="button" value="등록" class="bt_right bt_type bd_type02" id="btnOK" onclick="fn_save(this.id)" />
 					</div>			
 				</form>			
@@ -905,7 +898,7 @@
 		//fn_save값에 id값을 가져와서 유효성 테스트를 먼저 진행한다.
 		
 		if(e=="btnOK"){
-			/* if(f.title.value == ""){
+			if(f.title.value == ""){
 				alert("제목을 입력해주세요.");
 				$("#title").focus();
 				return;
@@ -938,16 +931,27 @@
 				alert("도착일을 선택해주세요.");
 				$("#edate").focus();
 				return;
-			} */
+			}
+			
+			if(!$("#agree").prop("checked")){
+				alert("개인정보 수집 및 이용에 동의하셔야 합니다.");
+				return false;
+			}else {
+				$("#inestimateagree").val('Y');
+			}
 			
 			//var form = new FormData(document.getElementById('frm'));
+			
 			
 			var cityVal = "";
 		      $("input:checkbox[name='city']").each(function() {
 		         if($(this).is(':checked')){
 		            if(cityVal!="") cityVal += ",";
 		        	 cityVal += $(this).val();}
-		      });	      
+		      });
+		      
+		     /* cityVal = $("input:hidden[name='city']").val(); */
+		     
 		     alert(cityVal);
 		     
 		     var stayVal = "";
@@ -957,11 +961,25 @@
 		        	 stayVal += $(this).val();}
 		      });	      
 		     alert(stayVal);
-			
+		     
+		    
+		   /*   if($("#agree").is(":checked"))	$("input:hidden[name='inestimateagree']").val("Y");
+			 else	$("input:hidden[name='inestimateagree']").val("N"); */
+		     /*  if($("#agree").prop(":checked",false)){
+		    	 $("input:hidden[name='inestimateagree']").val('Y');
+		     	}
+				else{
+					$("input:hidden[name='inestimateagree']").val('N');
+				} */
+		     
+			 var a = $("input:hidden[name='inestimateagree']").val();
+		     alert(a);
+		     
+		     		
 			var param ="email="+$("input:hidden[name='email']").val()
 				param +="&phone="+$("input:hidden[name='phone']").val()
 				param +="&name="+$("input:text[name='name']").val()
-				param +="&person="+$("select[name='person']").val()
+				param +="&person="+$("#person").val()
 				param +="&money="+$("#money").val()
 				param +="&ptime="+$("#ptime").val() 
 				param +="&floc="+$("input:radio[name='floc']").val()
@@ -970,13 +988,13 @@
 				param +="&schange="+$("input:radio[name='schange']").val()
 				param +="&airline="+$("input:radio[name='airline']").val()
 				param +="&stay="+stayVal;
-				param +="&stayname="+$("input:text[name='stayname']").val()
-				param +="&inestimateagree="+$("input:checkbox[name='inestimateagree']").val()
+				param +="&stayname="+$("#txt_Item_FFC_30_111_Other").val()
+				param +="&inestimateagree="+$("input:hidden[name='inestimateagree']").val()
 				param +="&title="+$("input:text[name='title']").val()
 				param +="&userid="+$("input:text[name='userid']").val()
 				param +="&city="+cityVal;
 				param +="&passage="+$("input:radio[name='passage']").val()
-				param +="&req="+$("#req").val() ;
+				param +="&req="+$("#req").val();
 			
 				alert(param);		
 			
@@ -985,13 +1003,14 @@
 				data: param,
 				url: "<c:url value='/estimateReqSave.do' />",
 				dataType: "json",
-				
+				processData: false,
+				contentType: false,
 				
 				/* 처리되고나서 실행되는부분 */
 				success: function (data){
 					if(data.result == "ok"){
 						alert("견적문의가 등록되었습니다.");
-						location.href = "<c:url value='/estimateReq.do'/>";						
+						location.href = "<c:url value='/customer/estimateReq.do'/>";						
 					}else{
 						alert("견적문의가 등록되지 않았습니다. 다시 작성해주세요.");
 					}

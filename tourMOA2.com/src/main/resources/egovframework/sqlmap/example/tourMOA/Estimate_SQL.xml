@@ -53,4 +53,18 @@
 			  , '$passage$'
 			   )
 	</insert>
+	
+	<select id="estimateDAO.selectAdEstimateList" resultClass="egovMap">
+		SELECT
+			floc
+			, sdate
+			, edate
+			, TO_CHAR(rdate,'yyyy-mm-dd hh:mm') rdate
+			, title			  
+			, userid			
+		FROM
+			estimate
+		<!-- WHERE 1=1 : isNotNull 사용할 때만 쓴다. --> 
+			
+	</select>
 </sqlMap>
