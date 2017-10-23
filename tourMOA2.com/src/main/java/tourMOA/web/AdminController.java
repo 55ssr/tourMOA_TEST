@@ -30,6 +30,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import egovframework.example.sample.service.SampleDefaultVO;
 import tourMOA.service.CategoryService;
 import tourMOA.service.CategoryVO;
+import tourMOA.service.CommVO;
 import tourMOA.service.DefaultListVO;
 import tourMOA.service.GoodsService;
 import tourMOA.service.GoodsVO;
@@ -38,6 +39,9 @@ import tourMOA.service.MemberVO;
 import tourMOA.service.ReservService;
 import tourMOA.service.OptionVO;
 import tourMOA.service.SliderVO;
+
+
+
 
 @Controller
 public class AdminController {
@@ -701,7 +705,51 @@ public class AdminController {
 	
 	
 	@RequestMapping("/adminGoodsCommList.do")
-	public String adminGoodsCommList() {
+	public String adminGoodsCommList(DefaultListVO searchVO, Model model) throws Exception {
+		/*1. 한 화면에 출력 할 행 갯수, 한 화면에 출력할 페이지 갯수 */
+		int recordCountPerPage = 10;
+		int pageSize = 5;
+		
+		/*2.총 데이터 갯수*/
+		int totalCount = goodsService.selectCommTotal(searchVO);
+		
+		/*3. 화면 출력 할 페이지 번호*/
+		int pageIndex = searchVO.getPageIndex();
+		
+		/*4. 화면 출력할 페이징의 시작 번호, 끝 번호*/
+		int firstPage = ((int) Math.floor((pageIndex-1)/pageSize)*pageSize) + 1;
+		int lastPage = firstPage + pageSize - 1;
+		
+		/*5. 화면 출력할 행(데이터)의 시작 번호, 끝 번호*/
+		int firstIndex = (pageIndex-1) * 10 + 1;
+		int lastIndex = firstIndex + (recordCountPerPage - 1);
+		
+		/*6. 총 페이지 갯수*/
+		int totalPage = (int) Math.ceil((double) totalCount / recordCountPerPage);
+		
+		/*7. [이전] / [다음] 처리 할 변수 지정*/
+		int before = 0; // 링크 없음
+		if (firstPage > 1) before = 1;
+		
+		int next = 0; // 링크 없음
+		if (lastPage < totalPage) next = 1;
+		/*8. 행번호*/
+		int number  = totalCount - ((pageIndex-1) * recordCountPerPage);
+		
+		searchVO.setFirstIndex(firstIndex);
+		searchVO.setLastIndex(lastIndex);
+						
+		List<?> resultList = goodsService.selectCommList(searchVO);
+		
+		model.addAttribute("totalCount", totalCount);
+		model.addAttribute("firstPage", firstPage);
+		model.addAttribute("lastPage", lastPage);
+		model.addAttribute("totalPage", totalPage);
+		model.addAttribute("before", before);
+		model.addAttribute("next", next);
+		model.addAttribute("number", number);
+		
+		model.addAttribute("resultList", resultList);
 		return "admin/GoodsComm/adminGoodsCommList";
 	}
 	
@@ -710,10 +758,49 @@ public class AdminController {
 		return "admin/GoodsComm/adminGoodsCommWrite";
 	}
 	
+	@RequestMapping("/adminGoodsCommWriteSave.do")
+	@ResponseBody public Map<String, Object> insertComm (CommVO vo) throws Exception{
+		
+		String result = "";
+		System.out.println("vo c: " +vo.getCtitle());
+		System.out.println("vo g: " +vo.getGtitle());
+		System.out.println("vo ct: " +vo.getContent());
+		System.out.println("vo gubun: " +vo.getGubun());
+		System.out.println("vo author: " +vo.getAuthor());
+		System.out.println("vo pid: " +vo.getPid());
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		result = goodsService.insertComm(vo);
+		System.out.println("ssdsdsss");
+		if (result == null) result = "ok";
+		map.put("result", result);
+		return map;
+	}
+	
 	@RequestMapping("/adminGoodsCommDetail.do")
-	public String adminGoodsCommDetail() {
+	public String selectCommDetail(CommVO vo, Model model) throws Exception{
+		vo = goodsService.selectCommDetail(vo);
+		model.addAttribute("vo", vo);
 		return "admin/GoodsComm/adminGoodsCommDetail";
 	}
+	
+	/*
+	@RequestMapping("/adminGoodsDetail.do")
+	public String adminGoodsDetail(@RequestParam("unq") int unq, GoodsVO vo,Model model) throws Exception{
+		vo = goodsService.selectGoodsDetail(vo);
+		model.addAttribute("vo", vo);
+		return "admin/Goods/adminGoodsDetail";
+	}
+	*/
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@RequestMapping("/adminMemberList.do")
 	public String adminMemberList(@ModelAttribute("searchVO") SampleDefaultVO searchVO,Model model) throws Exception {
