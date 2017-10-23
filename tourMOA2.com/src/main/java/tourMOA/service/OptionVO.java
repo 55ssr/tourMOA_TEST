@@ -7,10 +7,8 @@ public class OptionVO {
 	private String title;
 	private String filename;
 	private String rtime;
-	private String price;
+	private String pay;
 	private String expl;
-	
-	
 	public int getUnq() {
 		return unq;
 	}
@@ -41,11 +39,11 @@ public class OptionVO {
 	public void setRtime(String rtime) {
 		this.rtime = rtime;
 	}
-	public String getPrice() {
-		return price;
+	public String getPay() {
+		return pay;
 	}
-	public void setPrice(String price) {
-		this.price = price;
+	public void setPay(String pay) {
+		this.pay = pay;
 	}
 	public String getExpl() {
 		return expl;
@@ -53,6 +51,8 @@ public class OptionVO {
 	public void setExpl(String expl) {
 		this.expl = expl;
 	}
+	
+	
 	
 	
 	

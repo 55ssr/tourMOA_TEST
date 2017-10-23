@@ -122,21 +122,25 @@ function fn_ajax(loc,msg) {
 		<div class="form-group row">
 			<label for="selectUse" class="col-sm-2 col-form-label">슬라이드 이미지</label>
 			
+			<c:if test="${vo.filename != null}">
 				<c:set var="filename" value="${fn:split(vo.filename,'／')}" />				
 				<c:forEach var="down" items="${filename}" varStatus="a">
-					<div class="col-sm-2">
+					<div class="col-auto">
 						<c:if test="${down != ''}">
-								<a href="#" onclick="window.open(encodeURI('<c:url value='/downloadFile.do?'/>requestedFile=${down}&code=${vo.code}'))">
-									${down}
-								</a>
-								<button type="button" class="btn btn-danger btn-sm" onClick="fn_delFile('${vo.code}','${down}');" />삭제</button>
-						</c:if>
-						
-						<c:if test="${vo.filename == null}">
-							파일없음
+							
+							<div class="btn-group" role="group" aria-label="Basic example">
+								<button type="button" class="btn btn-secondary" onclick="window.open(encodeURI('<c:url value='/downloadFile.do?'/>requestedFile=${down}&code=${vo.code}'))">${down}</button>
+								<button type="button" class="btn btn-danger" onClick="fn_delFile('${vo.code}','${down}');">삭제</button>
+							</div>
+							
 						</c:if>
 					</div>
 				</c:forEach>
+			</c:if>
+			
+			<c:if test="${vo.filename == null}">
+				파일없음
+			</c:if>
 		</div>
 		
 		<div class="form-group row">

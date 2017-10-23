@@ -105,6 +105,4 @@ public class MemberServiceImpl extends EgovAbstractServiceImpl implements Member
 		return memberDAO.adminDetailUpdate(vo);
 	}
 
-
-
 }

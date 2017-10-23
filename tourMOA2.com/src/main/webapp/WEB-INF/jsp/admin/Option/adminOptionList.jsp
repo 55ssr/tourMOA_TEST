@@ -76,7 +76,7 @@
 						<a href="#" onclick="fn_loc('${rs.unq}')">${rs.title}</a>
 					</td>
 					<td>${rs.rtime}</td>
-					<td>${rs.price}</td>
+					<td>${rs.pay}</td>
 					<td>${rs.filename}</td>
 				</tr>
 				<c:set var="number" value="${number-1}" />

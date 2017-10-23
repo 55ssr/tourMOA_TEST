@@ -37,6 +37,7 @@ import tourMOA.service.GoodsService;
 import tourMOA.service.GoodsVO;
 import tourMOA.service.MemberService;
 import tourMOA.service.MemberVO;
+import tourMOA.service.ReservService;
 import tourMOA.service.OptionVO;
 import tourMOA.service.SliderVO;
 
@@ -51,6 +52,9 @@ public class AdminController {
 	
 	@Resource(name="goodsService")
 	private GoodsService goodsService;
+	
+	@Resource(name="reservService")
+	private ReservService reservService;
 	
 	@Resource(name = "multipartResolver")
 	CommonsMultipartResolver multipartResolver;
@@ -338,7 +342,6 @@ public class AdminController {
 	
 	@RequestMapping("/adminSliderDetail.do")
 	public String adminSliderDetail(@RequestParam("code") String code, Model model, GoodsVO vo) throws Exception {
-		System.out.println("d");
 		vo = goodsService.adminSliderDetail(vo);
 		System.out.println("code" + vo.getCode());
 		System.out.println("name" + vo.getName());
@@ -353,7 +356,7 @@ public class AdminController {
 	
 	
 	@RequestMapping(value = "/deleteSlider.do")
-	@ResponseBody public Map<String, Object> deleteDataBoard(
+	@ResponseBody public Map<String, Object> deleteSlider (
 			HttpServletRequest request,
 			HttpServletResponse response, 
 			GoodsVO vo, String code) throws Exception {
@@ -389,7 +392,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value ="/updateSlider.do")
-	@ResponseBody public Map<String, String> updateDataBoard(
+	@ResponseBody public Map<String, String> updateSlider (
 								final MultipartHttpServletRequest multiRequest,
 								HttpServletResponse response, 
 								GoodsVO vo, String code,
@@ -439,27 +442,40 @@ public class AdminController {
 		System.out.println("cnt -> " + cnt);
 		System.out.println("cntUpdate -> " + cntUpdate);
 		return map;
-		}
+	}
 	
 	@RequestMapping(value = "/updateFileDelete.do")
 	@ResponseBody public Map<String, String> updateFileDelete(
 														HttpServletResponse response, 
 														GoodsVO vo, String code) throws Exception {
+		/* for updateOption s */
+		String option = "";
+		if (vo.getExpl() != null) option = "/opt";
+		/* for updateOption e */
 		
 		Map<String, String> map = new HashMap<String, String>();
 		String fullPath = "";
-		String dirPath = "c:/upload/" + code;
+		String dirPath = "c:/upload/" + code + option;
 		fullPath = dirPath+"/"+vo.getFilename();
 		File file = new File(fullPath);
 		file.delete();
 		File dir = new File(dirPath);
 		dir.delete();
 		
-		System.out.println("vo=======================filename "+ vo.getFilename());
-		System.out.println("vo=======================unq "+ vo.getCode());
-		vo.setName(null);
+		vo.setName(null);	//updateSlider
+		vo.setRtime(null);	//updateOption 
 		
-		int cnt = goodsService.updateSlider(vo);
+		int cnt = 0;
+		if (option.equals("/opt")) {
+			System.out.println("updateOption start");
+			cnt = goodsService.updateOption(vo);
+			System.out.println("updateOption end");
+		} else {
+			System.out.println("updateSlider start");
+			cnt = goodsService.updateSlider(vo);
+			System.out.println("updateSlider end");
+		}
+		
 		
 		
 		map.put("cnt", Integer.toString(cnt));
@@ -574,6 +590,7 @@ public class AdminController {
 		map = uploadFile(multiRequest, nPath);	
 		System.out.println("map.get+++++++++++++++++++++"+map.get("filename"));
 		vo.setFilename(map.get("filename"));
+		System.out.println("getFilename OOOOOOOOOOOOOOOOOOOOOO " + vo.getFilename());
 		result = goodsService.insertOption(vo);	
 		if(result == null) result = "ok";
 		else result = "not";
@@ -589,7 +606,104 @@ public class AdminController {
 		model.addAttribute("vo", vo);
 		return "admin/Option/adminOptionDetail";
 	}
+	
+	@RequestMapping(value = "/deleteOption.do")
+	@ResponseBody public Map<String, Object> deleteOption(
+								HttpServletRequest request,
+								HttpServletResponse response, 
+								OptionVO vo, String code) throws Exception {
 		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		//String uploadPath = egovMessageSource.getMessage("upload.path");
+		String uploadPath = "c:/upload/" + code + "/opt";
+		String fullPath = "";
+		
+		/*OptionVO 에 데이터 정보를 담아서 파일명을 읽어내기 위해서 detail service 실행*/
+		OptionVO optionDetail = goodsService.selectOptionDetail(vo);
+		int cnt = goodsService.deleteOption(vo);
+		
+		if(cnt > 0) {
+			String files = optionDetail.getFilename();	//파일명 읽기 위해서 detail 서비스 실행
+			if(files.length() > 0) {
+				fullPath = uploadPath+"/"+files;
+				File file = new File(fullPath);					
+				file.delete();
+				File dir = new File(uploadPath); // 디렉토리 삭제
+				dir.delete();
+			}
+		}
+		map.put("cnt", cnt);
+		return map;
+	}
+	
+	@RequestMapping(value ="/updateOption.do")
+	@ResponseBody public Map<String, String> updateOption(
+								final MultipartHttpServletRequest multiRequest,
+								HttpServletResponse response, 
+								GoodsVO vo, String code,
+								Model model) throws Exception {
+		MultipartFile file;
+		String filePath = "";
+		int cnt = 0;
+		
+		Map<String, String> map = new HashMap<String, String>();
+		Map<String, MultipartFile> files = multiRequest.getFileMap();
+		
+		String uploadPath = "c:/upload/" + code + "/opt";
+		//String uploadPath = egovMessageSource.getMessage("file.upload.path");
+		
+		System.out.println("title : " + vo.getTitle());
+		System.out.println("path : " + uploadPath);
+		
+		// 폴더의 존재 유무 및 생성
+		
+		File saveFolder = new File(uploadPath);
+		if (!saveFolder.exists() || saveFolder.isFile()) {
+			saveFolder.mkdirs();
+		}
+		
+		Iterator<Entry<String, MultipartFile>> itr = files.entrySet().iterator();
+		
+		String filename = "";
+		
+		while (itr.hasNext()) {
+			Entry<String, MultipartFile> entry = itr.next();
+			file = entry.getValue();
+			if (!"".equals(file.getOriginalFilename())) {
+				filePath = uploadPath + "/" + file.getOriginalFilename();
+				file.transferTo(new File(filePath));
+				filename = file.getOriginalFilename();
+				System.out.println("filename : " + filename);
+				cnt++;
+			}
+		}
+		System.out.println("filename : " + filename);
+		
+		vo.setFilename(filename);
+		
+		int cntUpdate = goodsService.updateOption(vo);
+		
+		map.put("cnt", Integer.toString(cnt));
+		map.put("cntUpdate", Integer.toString(cntUpdate));
+		System.out.println("cnt -> " + cnt);
+		System.out.println("cntUpdate -> " + cntUpdate);
+		return map;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@RequestMapping("/adminGoodsCommList.do")
 	public String adminGoodsCommList() {
@@ -703,9 +817,51 @@ public class AdminController {
 		return "admin/Group/adminGroupList";
 	}
 	
-	@RequestMapping("/adminPayList.do")
-	public String adminPayList() {
-		return "admin/Pay/adminPayList";
+		@RequestMapping("/adminPayList.do")
+		public String adminPayList(@ModelAttribute("searchVO") DefaultListVO searchVO,Model model) throws Exception {
+				
+				/*1. 한 화면에 출력할 행 개수 , 한 화면에 출력할 페이지 개수 */ 
+					int recordCountPerPage = 10;
+					int pageSize = 5;
+				/*2. 총 데이터 개수 */
+					int totalCount = reservService.adminPayTotal(searchVO);
+				/*3. 화면 출력할 페이지 번호 */
+					int pageIndex = searchVO.getPageIndex();		
+				/*4. 화면 출력할 페이징의 시작 번호 , 끝 번호 */
+					//  1,2,3,4,5  -> 1 / 6,7,8,9,10 -> 6 / 11,12,13,14,15 -> 11
+					int firstPage = ((int) Math.floor((pageIndex-1)/pageSize)*pageSize) + 1 ;
+					int lastPage = (firstPage + pageSize) - 1;
+				/*5. 화면 출력할 행(데이터)의 시작 번호, 끝 번호 */
+					int firstIndex = (pageIndex - 1) * 10 + 1;
+					int lastIndex = (firstIndex + recordCountPerPage) - 1;
+				/*6. 총 페이지 개수 */
+					int totalPage = (int) Math.ceil((double)totalCount / recordCountPerPage);
+				
+					/*7. [이전] / [다음] 처리할 변수 지정 */
+					int before = 0;    // 링크 없음
+					if(firstPage > 1) before = 1;
+					
+					int next = 0;      // 링크 없음
+					if(lastPage <= totalPage) next = 1;
+				/*7. 행번호 */
+					int number = totalCount - ((pageIndex-1) * recordCountPerPage);
+
+				searchVO.setFirstIndex(firstIndex);
+				searchVO.setLastIndex(lastIndex);
+					
+				List<?> list = reservService.adminPayList(searchVO);	
+
+				model.addAttribute("totalCount", totalCount);  // 총 데이터 수량
+				model.addAttribute("firstPage", firstPage);	  
+				model.addAttribute("lastPage", lastPage);
+				model.addAttribute("totalPage", totalPage);   // 총 페이지 개수
+				model.addAttribute("before", before);		  // before 버튼 활성화 유무
+				model.addAttribute("next", next);			  // next 버튼 활성화 유무
+				model.addAttribute("number", number);		  // 출력 페이지 row 번호
+
+				model.addAttribute("resultList",list);
+			
+			return "admin/Pay/adminPayList";
 	}
 		
 	@RequestMapping("/adminAllBoardList.do")

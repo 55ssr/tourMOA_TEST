@@ -49,95 +49,176 @@
 	
 	<insert id="goodsDAO.insertGoods">
 		INSERT INTO goods (	unq,
-							title,
-							gubun,
-							location,
-							nation,
-							city,
 							price,
 							pricech,
 							pricein,
+							fuel,
+							person,
+							rem,
+							minp,
+							shop,
+							title,
+							gubun,
+							nation,
+							city,
 							sdate,
 							edate,
 							period,
+							schd,
+							detail1,
+							detail2,
+							airline,
+							code,
 							period1,
 							period2,
 							via,
 							vias,
 							use,
-							schd,
-							detail1,
-							detail2,
-							airline,
-							person,
-							code,
-							rdate
+							location,
+							rdate,
+							fno,
+							sadate,
+							eadate,
+							finfo,
+							dinfo,
+							incinfo,
+							nincinfo,
+							ref,
+							opt,
+							daily
 							) 
 		VALUES (SEQ_goods_unq.nextval,
-				'$title$',
-				'$gubun$',
-				'$location$',
-				'$nation$',
-				'$city$',
 				'$price$',
 				'$pricech$',
 				'$pricein$',
-				'$sdate$',
-				'$edate$',
+				'$fuel$',
+				'$person$',
+				'$rem$',
+				'$minp$',
+				'$shop$',
+				'$title$',
+				'$gubun$',
+				'$nation$',
+				'$city$',
+				TO_DATE('$sdate$', 'YYYY-MM-DD HH24:MI:SS') sdate,
+				TO_DATE('$edate$', 'YYYY-MM-DD HH24:MI:SS') edate,
 				'$period$',
+				'$schd$',
+				'$detail1$',
+				'$detail2$',
+				'$airline$',
+				'$code$',
 				'$period1$',
 				'$period2$',
 				'$via$',
 				'$vias$',
 				'$use$',
-				'$schd$',
-				'$detail1$',
-				'$detail2$',
-				'$airline$',
-				'$person$',
-				'$code$',
-				sysdate
+				'$location$',
+				sysdate,
+				'$fno$',
+				TO_DATE('$sadate$', 'YYYY-MM-DD HH24:MI:SS') sadate,
+				TO_DATE('$eadate$', 'YYYY-MM-DD HH24:MI:SS') eadate,
+				'$finfo$',
+				'$dinfo$',
+				'$incinfo$',
+				'$nincinfo$',
+				'$ref$',
+				'$opt$',
+				'$daily$'
 				)
+	</insert>
+	<insert id="reservDAO.detailPackagebtn">
+		INSERT INTO reserv(
+							unq,
+							rsvno,
+							code,
+							rsvdate,
+							gtitle,
+							sdate,
+							edate,
+							airline,
+							price,
+							period,
+							name,
+							ename,
+							payment,
+							result,
+							gender,
+							email,
+							phone,
+							tel,
+							birthday,
+							rsvanum,
+							rsvcnum,
+							rsvbnum
+							
+						)
+							VALUES(
+							SEQ_reserv_unq.nextval,
+							'$rsvno$',
+							'$code$',
+							'2017-08-04',
+							'454',
+							'2017-04-04',
+							'2017-04-01',
+							'dd',
+							'100',
+							'2q',
+							'$name$',
+							'ds',
+							'1',
+							'1',
+							'$gender$',
+							'$email$',
+							'$phone$',
+							'$tel$',
+							'$birthday$',
+							'$rsvanum$',
+							'$rsvcnum$',
+							'$rsvbnum$'
+						)
+	
 	</insert>
 	
 	<select id="goodsDAO.selectGoodsDetail" resultClass="goodsVO">
 		SELECT 
 				unq,
-				title,
-				gubun,
-				location,
-				nation,
-				city,
 				price,
 				pricech,
 				pricein,
 				fuel,
-				sdate,
-				sadate,
-				edate,
-				eadate,
+				person,
+				rem,
+				minp,
+				shop,
+				title,
+				gubun,
+				nation,
+				city,
+				TO_CHAR(sdate, 'YYYY"년 "MM"월 "DD"일 - "HH24:MI PM') sdate,
+				TO_CHAR(edate, 'YYYY"년 "MM"월 "DD"일 - "HH24:MI PM') edate,
 				period,
+				schd,
+				detail1,
+				detail2,
+				airline,
+				code,
 				period1,
 				period2,
 				via,
 				vias,
 				use,
-				schd,
-				detail1,
-				detail2,
-				airline,
-				person,
-				rem,
-				minp,
+				location,
 				fno,
+				TO_CHAR(sadate, 'YYYY"년 "MM"월 "DD"일 - "HH24:MI PM') sadate,
+				TO_CHAR(eadate, 'YYYY"년 "MM"월 "DD"일 - "HH24:MI PM') eadate,
+				finfo,
 				dinfo,
 				incinfo,
 				nincinfo,
 				ref,
 				opt,
-				daily,
-				shop,
-				code
+				daily
 		FROM
 			goods
 		WHERE
@@ -169,10 +250,7 @@
 				detail2,
 				airline,
 				person,
-				code,
-				images01,
-				images02,
-				images03
+				code
 		FROM
 			goods
 		WHERE
@@ -274,8 +352,8 @@
 		<!-- 파일 하나 지울때 -->
 		<isNull property="name">
 			<isEmpty property="name">
-				UPDATE slider SET filename = replace(filename,#filename#,'')
-				WHERE code = #code#
+				UPDATE slider SET filename = replace(filename,'$filename$','')
+				WHERE code = '$code$'
 			</isEmpty>
 		</isNull>
 		<!-- 일반 수정 -->
@@ -304,30 +382,29 @@
 	
 	<select id="goodsDAO.selectManagerDetail" resultClass="managerVO">
 		SELECT code, name, phone, mail, img
-			FROM manager
-			WHERE code = '$code$'
+			FROM manager WHERE code = '$code$'
 	</select>
 	
 	<select id="goodsDAO.selectOptionList" resultClass="egovMap">
-		SELECT code, title, filename, rtime, price, expl
+		SELECT code, title, filename, rtime, pay, expl
 			FROM opt
 			WHERE code = '$nation$'
 	</select>
 				
 	<insert id="goodsDAO.insertOption">
-		INSERT INTO opt (unq, code, title, filename, rtime, price, expl)
+		INSERT INTO opt (unq, code, title, filename, rtime, pay, expl)
 			VALUES (SEQ_option_unq.nextval
 					,'$code$'
 					,'$title$'
 					,'$filename$'
 					,'$rtime$'
-					,'$price$'
+					,'$pay$'
 					,'$expl$'
 					)
 	</insert>
 	
 	<select id="goodsDAO.selectOptionDetail" resultClass="optionVO">
-		SELECT unq, code, title, filename, rtime, price, expl
+		SELECT unq, code, title, filename, rtime, pay, expl
 			FROM opt WHERE unq = '$unq$'
 	</select>
 	
@@ -335,7 +412,7 @@
 		SELECT b.* FROM (
 			SELECT 
 				rownum rn, a.* FROM (
-							SELECT	  unq, code, title, filename, rtime, price
+							SELECT	  unq, code, title, filename, rtime, pay
 							FROM 
 									opt
 									
@@ -359,6 +436,32 @@
 		SELECT COUNT(*) FROM opt
 	</select>
 	
+	<delete id="goodsDAO.deleteOption">
+		DELETE FROM opt WHERE unq = '$unq$'
+	</delete>
+	
+	<update id="goodsDAO.updateOption">
+		<!-- 파일 하나 지울때 -->
+		<isNull property="rtime">
+			<isEmpty property="rtime">
+				UPDATE opt SET filename = replace(filename,'$filename$','')
+				WHERE unq = '$unq$'
+			</isEmpty>
+		</isNull>
+		<!-- 일반 수정 -->
+		<isNotNull property="rtime">
+			<isNotEmpty property="rtime">
+				UPDATE opt SET
+					title = '$title$',
+					rtime = '$rtime$',
+					pay = '$pay$',
+					expl = '$expl$',
+					filename = filename || '$filename$'
+				WHERE
+					unq = '$unq$'
+			</isNotEmpty>
+		</isNotNull>
+	</update>
 </sqlMap>
 
 

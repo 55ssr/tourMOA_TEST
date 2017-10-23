@@ -97,6 +97,7 @@ public class GoodsServiceImpl extends EgovAbstractServiceImpl implements GoodsSe
 
 	@Override
 	public SliderVO selectSliderDetail(SliderVO vo3) {
+		System.out.println("====goodsIMPL");
 		return goodsDAO.selectSliderDetail(vo3);
 	}
 
@@ -123,6 +124,16 @@ public class GoodsServiceImpl extends EgovAbstractServiceImpl implements GoodsSe
 	@Override
 	public OptionVO selectOptionDetail(OptionVO vo) throws Exception {
 		return goodsDAO.selectOptionDetail(vo);
+	}
+
+	@Override
+	public int updateOption(GoodsVO vo) {
+		return goodsDAO.updateOption(vo);
+	}
+
+	@Override
+	public int deleteOption(OptionVO vo) {
+		return goodsDAO.deleteOption(vo);
 	}
 
 

@@ -3,82 +3,57 @@ package tourMOA.service;
 public class GoodsVO {
 
 	private int unq;
-	private String title;
-	private String gubun;
-	private String nation;
-	private String city;
 	private int price;
 	private int pricech;
 	private int pricein;
 	private int fuel;
+	private int person;
+	private int rem;
+	private int minp;
+	private int shop;
+	private String title;
+	private String gubun;
+	private String nation;
+	private String city;
 	private String sdate;
-	private String sadate;
 	private String edate;
-	private String eadate;
 	private String period;
 	private String schd;
 	private String detail1;
 	private String detail2;
 	private String airline;
-	private int person;
-	private int rem;
-	private int minp;
 	private String code;
-	private String location;
 	private String period1;
 	private String period2;
 	private String via;
 	private String vias;
 	private String use;
-	private String images01;
-	private String images02;
-	private String images03;
+	private String location;
+	private String rdate;
 	private String fno;
+	private String sadate;
+	private String eadate;
+	private String finfo;
 	private String dinfo;
 	private String incinfo;
 	private String nincinfo;
-	private String imgsm;
-	private String imglg;
 	private String ref;
 	private String opt;
 	private String daily;
-	private int shop;
-	//
+	//for slider
 	private String name;
 	private String imgs;
 	private String imgl;
 	private String filename;
-	
-	
+	//for option
+	private String expl;
+	private String rtime;
+	private String pay;
 	public int getUnq() {
 		return unq;
 	}
 	public void setUnq(int unq) {
 		this.unq = unq;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getGubun() {
-		return gubun;
-	}
-	public void setGubun(String gubun) {
-		this.gubun = gubun;
-	}
-	public String getNation() {
-		return nation;
-	}
-	public void setNation(String nation) {
-		this.nation = nation;
-	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
 	}
 	public int getPrice() {
 		return price;
@@ -104,29 +79,65 @@ public class GoodsVO {
 	public void setFuel(int fuel) {
 		this.fuel = fuel;
 	}
+	public int getPerson() {
+		return person;
+	}
+	public void setPerson(int person) {
+		this.person = person;
+	}
+	public int getRem() {
+		return rem;
+	}
+	public void setRem(int rem) {
+		this.rem = rem;
+	}
+	public int getMinp() {
+		return minp;
+	}
+	public void setMinp(int minp) {
+		this.minp = minp;
+	}
+	public int getShop() {
+		return shop;
+	}
+	public void setShop(int shop) {
+		this.shop = shop;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getGubun() {
+		return gubun;
+	}
+	public void setGubun(String gubun) {
+		this.gubun = gubun;
+	}
+	public String getNation() {
+		return nation;
+	}
+	public void setNation(String nation) {
+		this.nation = nation;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
 	public String getSdate() {
 		return sdate;
 	}
 	public void setSdate(String sdate) {
 		this.sdate = sdate;
 	}
-	public String getSadate() {
-		return sadate;
-	}
-	public void setSadate(String sadate) {
-		this.sadate = sadate;
-	}
 	public String getEdate() {
 		return edate;
 	}
 	public void setEdate(String edate) {
 		this.edate = edate;
-	}
-	public String getEadate() {
-		return eadate;
-	}
-	public void setEadate(String eadate) {
-		this.eadate = eadate;
 	}
 	public String getPeriod() {
 		return period;
@@ -158,35 +169,11 @@ public class GoodsVO {
 	public void setAirline(String airline) {
 		this.airline = airline;
 	}
-	public int getPerson() {
-		return person;
-	}
-	public void setPerson(int person) {
-		this.person = person;
-	}
-	public int getRem() {
-		return rem;
-	}
-	public void setRem(int rem) {
-		this.rem = rem;
-	}
-	public int getMinp() {
-		return minp;
-	}
-	public void setMinp(int minp) {
-		this.minp = minp;
-	}
 	public String getCode() {
 		return code;
 	}
 	public void setCode(String code) {
 		this.code = code;
-	}
-	public String getLocation() {
-		return location;
-	}
-	public void setLocation(String location) {
-		this.location = location;
 	}
 	public String getPeriod1() {
 		return period1;
@@ -218,29 +205,41 @@ public class GoodsVO {
 	public void setUse(String use) {
 		this.use = use;
 	}
-	public String getImages01() {
-		return images01;
+	public String getLocation() {
+		return location;
 	}
-	public void setImages01(String images01) {
-		this.images01 = images01;
+	public void setLocation(String location) {
+		this.location = location;
 	}
-	public String getImages02() {
-		return images02;
+	public String getRdate() {
+		return rdate;
 	}
-	public void setImages02(String images02) {
-		this.images02 = images02;
-	}
-	public String getImages03() {
-		return images03;
-	}
-	public void setImages03(String images03) {
-		this.images03 = images03;
+	public void setRdate(String rdate) {
+		this.rdate = rdate;
 	}
 	public String getFno() {
 		return fno;
 	}
 	public void setFno(String fno) {
 		this.fno = fno;
+	}
+	public String getSadate() {
+		return sadate;
+	}
+	public void setSadate(String sadate) {
+		this.sadate = sadate;
+	}
+	public String getEadate() {
+		return eadate;
+	}
+	public void setEadate(String eadate) {
+		this.eadate = eadate;
+	}
+	public String getFinfo() {
+		return finfo;
+	}
+	public void setFinfo(String finfo) {
+		this.finfo = finfo;
 	}
 	public String getDinfo() {
 		return dinfo;
@@ -260,18 +259,6 @@ public class GoodsVO {
 	public void setNincinfo(String nincinfo) {
 		this.nincinfo = nincinfo;
 	}
-	public String getImgsm() {
-		return imgsm;
-	}
-	public void setImgsm(String imgsm) {
-		this.imgsm = imgsm;
-	}
-	public String getImglg() {
-		return imglg;
-	}
-	public void setImglg(String imglg) {
-		this.imglg = imglg;
-	}
 	public String getRef() {
 		return ref;
 	}
@@ -289,12 +276,6 @@ public class GoodsVO {
 	}
 	public void setDaily(String daily) {
 		this.daily = daily;
-	}
-	public int getShop() {
-		return shop;
-	}
-	public void setShop(int shop) {
-		this.shop = shop;
 	}
 	public String getName() {
 		return name;
@@ -320,6 +301,28 @@ public class GoodsVO {
 	public void setFilename(String filename) {
 		this.filename = filename;
 	}
+	public String getExpl() {
+		return expl;
+	}
+	public void setExpl(String expl) {
+		this.expl = expl;
+	}
+	public String getRtime() {
+		return rtime;
+	}
+	public void setRtime(String rtime) {
+		this.rtime = rtime;
+	}
+	public String getPay() {
+		return pay;
+	}
+	public void setPay(String pay) {
+		this.pay = pay;
+	}
+	
+	
+	
+	
 	
 	
 	

@@ -7,13 +7,13 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-	<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
+<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
 	<h1>상품 등록</h1>
 	<div class="row justify-content-between mb-3">
 		<div class="col-lg-3">
 		</div>
 		<div class="col-lg-1">
-			<button type="button" class="w-100 btn btn-primary" onclick="location.href='/adminGoodsList.do'">목록</button>
+		<button type="button" class="w-100 btn btn-primary" onclick="location.href='/adminGoodsList.do'">목록</button>
 		</div>
 	</div>
 	
@@ -56,9 +56,15 @@
 			period += "일";
 			$("#period").val(period);
 			
-			/* 에디터의 내용을 hidden textarea 에 담는다 */
-			var detail1 = $(".note-codable + div").html();
-			$("#detail1").text(detail1);
+			/* 에디터의 내용을 hidden textarea 에 담는다 
+			dinfo, incinfo, nincinfo, ref, daily
+			*/
+			$("#dinfo").text($("label[for=dinfo]+div .note-codable + div").html());
+			$("#incinfo").text($("label[for=incinfo]+div .note-codable + div").html());
+			$("#nincinfo").text($("label[for=nincinfo]+div .note-codable + div").html());
+			$("#ref").text($("label[for=ref]+div .note-codable + div").html());
+			$("#daily").text($("label[for=daily]+div .note-codable + div").html());
+			
 			
 			if($("#frm #title").val() == "") {
 				alert("제목을 입력해주세요.");
@@ -82,42 +88,54 @@
 				$("#frm #pricein").focus();
 				return false;
 			}
+			if($("#frm #fuel").val() == "") {
+				alert("유류할증료를 입력해주세요.");
+				$("#frm #fuel").focus();
+				return false;
+			}
 			
 			
 			/* var gender = $(":input:radio[id=gender]:checked").val(); */
 			
-			/*
-			price 컬럼에 0 값을 넣기 위해서..
-			if ($("#price").val() == "") {
-				$("#price").val("0");
-			}
-			if ($("#pricech").val() == "") {
-				$("#pricech").val("0");
-			}
-			if ($("#pricein").val() == "") {
-				$("#pricein").val("0");
-			} */
 			
-			var param = "gubun="+$("#gubun").val()
-				param +="&code="+$("#code").val()
-				param +="&title="+$("#title").val()
-				param +="&location="+$("#location").val()
-				param +="&nation="+$("#nation").val()
-				param +="&city="+$("#city").val()
-				param +="&schd="+$("#schd").val()
-				param +="&airline="+$("#airline").val()
-				param +="&detail1="+$("#detail1").val()
-				param +="&via="+$("#via").val()
-				param +="&vias="+$("#vias").val()
-				param +="&use="+$("#use").val()
-				param +="&sdate="+$("#sdate").val()
-				param +="&edate="+$("#edate").val()
-				param +="&period="+$("#period").val()
-				param +="&period1="+$("#period1").val()
-				param +="&period2="+$("#period2").val()
-				param +="&price="+$("#price").val()
-				param +="&pricech="+$("#pricech").val()
-				param +="&pricein="+$("#pricein").val();
+			var param ="price="+$("#price").val()
+				param+="&pricech="+$("#pricech").val()
+				param+="&pricein="+$("#pricein").val()
+				param+="&fuel="+$("#fuel").val()
+				param+="&person="+$("#person").val()
+				param+="&rem="+$("#rem").val()
+				param+="&minp="+$("#minp").val()
+				param+="&shop="+$("#shop").val()
+				param+="&title="+$("#title").val()
+				param+="&gubun="+$("#gubun").val()
+				param+="&nation="+$("#nation").val()
+				param+="&city="+$("#city").val()
+				param+="&sdate="+$("input:hidden[name='sdate']").val()
+				param+="&edate="+$("input:hidden[name='edate']").val()
+				param+="&period="+$("#period").val()
+				param+="&schd="+$("#schd").val()
+				param+="&detail1="+$("#detail1").val()
+				param+="&detail2="
+				param+="&airline="+$("#airline").val()
+				param+="&code="+$("#code").val()
+				param+="&period1="+$("#period1").val()
+				param+="&period2="+$("#period2").val()
+				param+="&via="+$("#via").val()
+				param+="&vias="+$("#vias").val()
+				param+="&use="+$("#use").val()
+				param+="&location="+$("#location").val()
+				param+="&rdate="+$("#rdate").val()
+				param+="&fno="+$("#fno").val()
+				param+="&sadate="+$("input:hidden[name='sadate']").val()
+				param+="&eadate="+$("input:hidden[name='eadate']").val()
+				param+="&finfo="
+				param+="&dinfo="+$("#dinfo").val()
+				param+="&incinfo="+$("#incinfo").val()
+				param+="&nincinfo="+$("#nincinfo").val()
+				param+="&ref="+$("#ref").val()
+				param+="&opt="+$("#opt").val()
+				param+="&daily="+$("#daily").val();
+
 			
 			alert(param);
 			
@@ -128,8 +146,8 @@
 				data: param,
 				url: "<c:url value='/adminGoodsWriteSave.do' />",
 				dataType: "json",
-				processData: false,
-				contentType: false,
+				/* processData: false,
+				contentType: false, */
 				success: function (data) {
 					if(data.result == "ok") {
 						alert("저장됐습니다.");
@@ -145,15 +163,16 @@
 		});
 	});
 	</script>
-	<form name="frm" id="frm" method="post" enctype="multipart/form-data">
+	<form name="frm" id="frm">
+	<%-- <form name="frm" id="frm" method="post" enctype="multipart/form-data"> --%>
 		<input type="hidden" name="unq" value="" />
 		<div class="form-group row">
 			<label for="inputGoodsType" class="col-sm-2 col-form-label">상품구분</label>
 			<div class="col-sm-2">
 				<select class="form-control" name="gubun" id="gubun">
 					<option value="">-선택-</option>
-					<option value="자유여행">자유여행</option>
-					<option value="해외패키지">해외패키지</option>
+					<option value="pkg">해외패키지</option>
+					<option value="fit">자유여행</option>
 				</select>
 			</div>
 			<div class="btn-group col-sm-2" role="group" aria-label="First group">
@@ -185,7 +204,7 @@
 					<option value="eeurope">동유럽</option>
 					<option value="enasia">동남아</option>
 					<option value="easia">동아시아</option>
-					<option value="namerica">미주</option>
+					<option value="namerica">북미</option>
 				</select>
 			</div>
 			<div class="btn-group col-sm-2" role="group" aria-label="First group">
@@ -199,11 +218,14 @@
 			<div class="col-sm-2">
 				<select class="form-control" name="nation" id="nation">
 					<option value="">-선택-</option>
-					<option value="영국">영국</option>
-					<option value="프랑스">프랑스</option>
-					<option value="이탈리아">이탈리아</option>
-					<option value="독일">독일</option>
-					<option value="스페인">스페인</option>
+					<option value="uk">영국</option>
+					<option value="france">프랑스</option>
+					<option value="italy">이탈리아</option>
+					<option value="germany">독일</option>
+					<option value="spain">스페인</option>
+					<option value="japan">일본</option>
+					<option value="china">중국</option>
+					<option value="usa">미국</option>
 				</select>
 			</div>
 			<div class="btn-group col-sm-2" role="group" aria-label="First group">
@@ -244,21 +266,21 @@
 			<label for="priceAdult" class="col-sm-2 col-form-label">인원</label>
 			<div class="col-sm-2">
 				<div class="input-group">
-					<input type="text" name="price" id="price" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="총 인원">
+					<input type="text" name="person" id="person" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="총 인원">
 					<span class="input-group-addon">명</span>
 				</div>
 			</div>
 			
 			<div class="col-sm-2">
 				<div class="input-group">
-					<input type="text" name="pricech" id="pricech" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="남은 인원">
+					<input type="text" name="rem" id="rem" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="남은 인원">
 					<span class="input-group-addon">명</span>
 				</div>
 			</div>
 			
 			<div class="col-sm-2">
 				<div class="input-group">
-					<input type="text" name="pricein" id="pricein" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="출발가능 인원">
+					<input type="text" name="minp" id="minp" class="form-control" aria-label="Amount (to the nearest dollar)" placeholder="출발가능 인원">
 					<span class="input-group-addon">명</span>
 				</div>
 			</div>
@@ -327,15 +349,15 @@
                     <span class="input-group-addon"><span class="fa fa-times" aria-hidden="true"></span></span>
 					<span class="input-group-addon"><span class="fa fa-calendar" aria-hidden="true"></span></span>
                 </div>
-				<input type="hidden" id="dtp_input1" value="" />
+				<input type="hidden" id="dtp_input1" name="sdate" value="" />
 			</div>
 			<div class='col-sm-3'>
-				<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" data-link-field="dtp_input1">
+				<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" data-link-field="dtp_input2">
                     <input class="form-control" size="16" type="text" value="" placeholder="현지 도착" readonly>
                     <span class="input-group-addon"><span class="fa fa-times" aria-hidden="true"></span></span>
 					<span class="input-group-addon"><span class="fa fa-calendar" aria-hidden="true"></span></span>
                 </div>
-				<input type="hidden" id="dtp_input1" value="" />
+				<input type="hidden" id="dtp_input2" name="sadate" value="" />
 			</div>
 				
 		</div>
@@ -343,20 +365,20 @@
 		<div class="form-group row">
 			<label for="inputTitle" class="col-sm-2 col-form-label">도착일</label>
 			<div class='col-sm-3'>
-				<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" data-link-field="dtp_input1">
+				<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" data-link-field="dtp_input3">
                     <input class="form-control" size="16" type="text" value="" placeholder="현지 출발" readonly>
                     <span class="input-group-addon"><span class="fa fa-times" aria-hidden="true"></span></span>
 					<span class="input-group-addon"><span class="fa fa-calendar" aria-hidden="true"></span></span>
                 </div>
-				<input type="hidden" id="dtp_input1" value="" />
+				<input type="hidden" id="dtp_input3" name="edate" value="" />
 			</div>
 			<div class='col-sm-3'>
-				<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" data-link-field="dtp_input1">
+				<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" data-link-field="dtp_input4">
                     <input class="form-control" size="16" type="text" value="" placeholder="한국 도착" readonly>
                     <span class="input-group-addon"><span class="fa fa-times" aria-hidden="true"></span></span>
 					<span class="input-group-addon"><span class="fa fa-calendar" aria-hidden="true"></span></span>
                 </div>
-				<input type="hidden" id="dtp_input1" value="" />
+				<input type="hidden" id="dtp_input4" name="eadate" value="" />
 			</div>
 		</div>
 		
@@ -402,7 +424,7 @@
 		</div>
 		
 		<div class="form-group row">
-			<label for="inputDetail" class="col-sm-2 col-form-label">1. 상품안내</label>
+			<label for="dinfo" class="col-sm-2 col-form-label">1. 상품안내</label>
 			<div class="col-sm-10">
 				<div class="form-control" id="summernote"></div>
 				<script>
@@ -420,7 +442,7 @@
 		</div>
 		
 		<div class="form-group row">
-			<label for="inputDetail" class="col-sm-2 col-form-label">2. 포함사항</label>
+			<label for="incinfo" class="col-sm-2 col-form-label">2. 포함사항</label>
 			<div class="col-sm-10">
 				<div class="form-control" id="summernote2"></div>
 				<script>
@@ -438,7 +460,7 @@
 		</div>
 		
 		<div class="form-group row">
-			<label for="inputDetail" class="col-sm-2 col-form-label">3. 불포함사항</label>
+			<label for="nincinfo" class="col-sm-2 col-form-label">3. 불포함사항</label>
 			<div class="col-sm-10">
 				<div class="form-control" id="summernote3"></div>
 				<script>
@@ -456,7 +478,7 @@
 		</div>
 		
 		<div class="form-group row">
-			<label for="inputDetail" class="col-sm-2 col-form-label">4. 참고/전달사항</label>
+			<label for="ref" class="col-sm-2 col-form-label">4. 참고/전달사항</label>
 			<div class="col-sm-10">
 				<div class="form-control" id="summernote4"></div>
 				<script>
@@ -474,7 +496,7 @@
 		</div>
 		
 		<div class="form-group row">
-			<label for="inputDetail" class="col-sm-2 col-form-label">5. 일정표</label>
+			<label for="daily" class="col-sm-2 col-form-label">5. 일정표</label>
 			<div class="col-sm-10">
 				<div class="form-control" id="summernote5"></div>
 				<script>
@@ -487,7 +509,7 @@
 						lang: 'ko-KR'
 					});
 				</script>
-				<textarea class="form-control" id="daily" name=""daily"" hidden></textarea>
+				<textarea class="form-control" id="daily" name="daily" hidden></textarea>
 			</div>
 		</div>
 		
@@ -495,18 +517,18 @@
 			<label for="selectDirect" class="col-sm-2 col-form-label">직항여부</label>
 			<div class="col-sm-2">
 				<select class="form-control" name="via" id="via">
-					<option value="Y">직항</option>
-					<option value="N">경유</option>
+					<option value="N">직항</option>
+					<option value="Y">경유</option>
 				</select>
 			</div>
 			<script>
 			$("#via").on("change", function(){
-				if ($(this).val() == "Y") {
+				if ($(this).val() == "N") {
 				 	$("#vias").attr("disabled",true);
 				 	$("#viaSelect").attr("disabled",true);
 				 	$("#viaSelect + button").attr("disabled",true);
 				}
-				if ($(this).val() == "N") {
+				if ($(this).val() == "Y") {
 				 	$("#vias").removeAttr("disabled");
 				 	$("#viaSelect").removeAttr("disabled");
 				 	$("#viaSelect + button").removeAttr("disabled");
@@ -514,14 +536,6 @@
 			});
 			</script>
 		</div>
-		
-		<!-- <div class="form-group row">
-			<label for="selectWaypoint" class="col-sm-2 col-form-label">경유지</label>
-			<div class="btn-group col-sm-2" role="group" aria-label="First group">
-				<input type="text" class="form-control rounded-0 rounded-left" placeholder="경유지 추가" aria-label="Input group example" aria-describedby="btnGroupAddon2" id="viaSelect" disabled>
-				<button type="button" class="btn btn-primary" onclick="fn_add2()" disabled>+</button>
-			</div>	
-		</div> -->
 				
 		<div class="form-group row">
 			<label for="selectWaypoint" class="col-sm-2 col-form-label">경유지</label>
@@ -545,6 +559,16 @@
 		</div>
 		
 		<div class="form-group row">
+			<label for="selectUse" class="col-sm-2 col-form-label">옵션 사용여부</label>
+			<div class="col-sm-2">
+				<select class="form-control" name="opt" id="opt">
+					<option value="Y" selected>사용</option>
+					<option value="N">중지</option>
+				</select>
+			</div>
+		</div>
+		
+		<div class="form-group row">
 			<label for="selectUse" class="col-sm-2 col-form-label">사용여부</label>
 			<div class="col-sm-2">
 				<select class="form-control" name="use" id="use">
@@ -562,22 +586,16 @@
 		
 	</form>
 	
-	
 <script type="text/javascript">
-    $('.form_datetime').datetimepicker({
-        language:  'ko',
-        weekStart: 1,
-        todayBtn:  1,
+	$('.form_datetime').datetimepicker({
+		language:  'ko',
+		weekStart: 1,
+		todayBtn:  1,
 		autoclose: 1,
 		todayHighlight: 1,
 		startView: 2,
 		forceParse: 0,
-        showMeridian: 1
-    });
-   </script>
-	
-	
-	
-	
-	
-    </main>
+		showMeridian: 1
+	});
+</script>
+</main>
