@@ -1,5 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-	<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+<script>
+$(document).ready(function(){
+	$("#modBtn").click(function(){
+		if ( $("#frm #gtitle").val() == "" ) {
+			alert("상품 제목을 입력해주세요");
+			$("#gtitle").focus();
+			return false;
+		}
+		
+	});
+		
+});
+</script>
+<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
 	<h1>상품평 수정</h1>
 	<div class="row justify-content-between mb-3">
 		<div class="col-lg-3">
@@ -9,26 +29,29 @@
 		</div>
 	</div>
 	
-	<form>
-		
+	<form name="frm" id="frm">
+		<input type="hidden" name="unq" id="unq" />
 		<div class="form-group row">
 			<label for="inputGoodsTitle" class="col-sm-2 col-form-label">상품명</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control form-control-lg" id="inputGoodsTitle" placeholder="상품명">
-			</div>
-		</div>
-		
-		<div class="form-group row">
-			<label for="inputGoodsNo" class="col-sm-2 col-form-label">상품번호</label>
-			<div class="col-sm-2">
-				<input type="text" class="form-control" id="inputGoodsNo" placeholder="상품번호">
+				<input type="text" class="form-control form-control-lg" id="gtitle" name="gtitle" 
+				placeholder="상품명" value="${vo.gtitle}">
 			</div>
 		</div>
 		
 		<div class="form-group row">
 			<label for="inputTitle" class="col-sm-2 col-form-label">제목</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" id="inputTitle" placeholder="제목">
+				<input type="text" class="form-control" id="ctitle" name="ctitle" 
+				placeholder="제목" value="${vo.ctitle}">
+			</div>
+		</div>
+		
+		<div class="form-group row">
+			<label for="inputTitle" class="col-sm-2 col-form-label">작성자</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="author" name="author" 
+				placeholder="작성자" value="${vo.author}">
 			</div>
 		</div>
 		
@@ -39,25 +62,31 @@
 				<div class="form-control" id="summernote"></div>
 				<script>
 					$('#summernote').summernote({
-						height: 400,
+						height: 300,
 						minHeight: null,
 						maxHeight: null,
 						placeholder: '상세내용',
 						tabsize: 2,
-						height: 100,
 						lang: 'ko-KR'
 					});
 				</script>
+				<textarea name="content" id="content" hidden>${vo.content}</textarea>
 			</div>
 		</div>
 		
 		<div class="d-flex justify-content-center">
 			<div class="p-2">
-				<button type="submit" class="btn btn-primary">Modify</button>
-				<button type="submit" class="btn btn-danger">Delete</button>
+				<button type="button" class="btn btn-primary" id="modBtn">Modify</button>
+				<button type="button" class="btn btn-danger" id="delBtn">Delete</button>
 			</div>
 		</div>
 		
 	</form>
-	
-    </main>
+
+</main>
+<script>
+$(document).ready(function(){
+	var contentField = $("#content").text();
+	$('#summernote').summernote('code', contentField);
+});
+</script>

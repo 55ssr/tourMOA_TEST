@@ -49,9 +49,10 @@
 			<div class="infoPhoto">
 				<span class="dev_comm">이미지파일명 데이터 베이스 화</span>
 				<ul class="slide_v1">
-					<li><img src="/images/product/detail/${vo.code}/${vo.images01}" alt=""></li>
+					<%-- <li><img src="/images/product/detail/${vo.code}/${vo.images01}" alt=""></li>
 					<li><img src="/images/product/detail/${vo.code}/${vo.images02}" alt=""></li>
-					<li><img src="/images/product/detail/${vo.code}/${vo.images03}" alt=""></li>
+					<li><img src="/images/product/detail/${vo.code}/${vo.images03}" alt=""></li> --%>
+					<li><img src="/images/product/detail/${vo.code}/images.jpg" alt=""></li>
 				</ul>
 			</div>
 		</div>

@@ -8,6 +8,7 @@
 	<typeAlias  alias="sliderVO" type="tourMOA.service.SliderVO"/>
 	<typeAlias  alias="managerVO" type="tourMOA.service.ManagerVO"/>
 	<typeAlias  alias="optionVO" type="tourMOA.service.OptionVO"/>
+	<typeAlias  alias="commVO" type="tourMOA.service.CommVO"/>
 
 	<select id="goodsDAO.selectGoodsList" resultClass="egovMap">
 		SELECT b.* FROM (
@@ -462,6 +463,61 @@
 			</isNotEmpty>
 		</isNotNull>
 	</update>
+	
+	<insert id="goodsDAO.insertComm">
+		INSERT INTO comm (unq, gubun, ctitle, gtitle, author, content, rdate, pid)
+			VALUES (SEQ_comm_unq.nextval,
+					'$gubun$',
+					'$ctitle$',
+					'$gtitle$',
+					'$author$',
+					'$content$',
+					sysdate,
+					'102'
+					)
+	</insert>
+	
+	<select id="goodsDAO.selectCommList" resultClass="egovMap">
+		SELECT b.* FROM (
+			SELECT 
+				rownum rn, a.* FROM (
+							SELECT	  unq
+									, gubun
+									, ctitle
+									, gtitle
+									, author
+									, pid
+									<!-- , DECODE(use,'Y',('사용'),('중지')) use -->
+									, rdate
+							FROM 
+									comm
+									
+							WHERE
+									1=1 
+									
+							<isNotNull property="searchCondition">
+								<isNotEmpty property="searchCondition">
+									AND $searchCondition$ LIKE '%' || #searchKeyword# || '%' 	
+								</isNotEmpty>
+							</isNotNull>		
+									
+							ORDER BY rdate DESC
+									) a
+						) b
+		WHERE 
+				rn >= #firstIndex# AND rn <![CDATA[<=]]> #lastIndex#
+	</select>
+	
+	<select id="goodsDAO.selectCommTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM comm
+	</select>
+	
+	<select id="goodsDAO.selectCommDetail" resultClass="commVO">
+		SELECT unq, gubun, gtitle, ctitle, author, content, pid
+			FROM comm 
+			WHERE unq = '$unq$'
+	</select>
+	
 </sqlMap>
 
 
