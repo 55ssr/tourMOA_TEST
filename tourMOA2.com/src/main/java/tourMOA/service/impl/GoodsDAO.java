@@ -125,5 +125,9 @@ public class GoodsDAO extends EgovAbstractDAO{
 		return (CommVO) select("goodsDAO.selectCommDetail", vo);
 	}
 
+	public List<?> selectGoodsSearchList(DefaultListVO searchVO) {
+		return list("goodsDAO.selectGoodsSearchList", searchVO);
+	}
+
 
 }

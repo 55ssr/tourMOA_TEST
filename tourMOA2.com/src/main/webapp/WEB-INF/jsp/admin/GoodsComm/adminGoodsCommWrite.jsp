@@ -8,6 +8,47 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <script>
+
+$("input#searchKeyword").keydown(function (key) {
+    if(key.keyCode == 13){//키가 13이면 실행 (엔터는 13)
+    	fn_search();	
+    }
+});
+
+function fn_search() {
+	alert("검색 시작");
+	if( $("input#searchKeyword").val() == "" ) {
+		alert("검색어를 입력해주세요.");
+		return false;
+	}
+	
+	var param = "searchCondition="+$("#searchCondition").val()
+		param+= "&searchKeyword="+$("#searchKeyword").val();
+	
+	alert(param);
+	
+	$.ajax({
+		type: "POST",
+		data: param,
+		url: "<c:url value='/adminGoodsCommSearch.do' />",
+		dataType: "json",
+		/* processData: false,
+		contentType: false, */
+		success: function (data) {
+			if(data.result.length > 0) {
+				alert("검색완료");
+				
+			} else {
+				alert("저장 실패");
+			}
+		},
+		error: function (error) {
+			alert("error : " + error);
+		}
+	});
+}
+
+
 $(function(){
 		
 	$("#saveBtn").click(function(){
@@ -63,6 +104,21 @@ $(function(){
 		</div>
 	</div>
 	
+	
+	<form id="searchFrm" name="searchFrm">
+		<div class="form-group row">
+			<label for="inputGoodsTitle" class="col-sm-2 col-form-label">상품명 검색</label>
+			<div class="col-sm-8">
+				<%-- <c:forEach var="rs" items="${resultList}">-<br></c:forEach> --%>
+				<input type="hidden" class="form-control form-control-lg" id="searchCondition" name="searchCondition" value="title" />
+				<input type="text" class="form-control form-control-lg" id="searchKeyword" name="searchKeyword" placeholder="상품명 검색" />
+			</div>
+			<div class="col-sm-2">
+				<button type="button" class="btn btn-primary btn-lg w-100" onclick="fn_search()">검색</button>
+			</div>
+		</div>
+	</form>
+	
 	<form name="frm" id="frm">
 		<input type="hidden" id="gubun" name="gubun" />
 		<div class="form-group row">
@@ -115,7 +171,6 @@ $(function(){
 </main>
 <script>
 $(function(){
-	
 	$("#gtitle").val("gtitle");
 	$("#ctitle").val("ctitle");
 	$("#author").val("author");

@@ -491,7 +491,7 @@
 					'$author$',
 					'$content$',
 					sysdate,
-					'102'
+					'26'
 					)
 	</insert>
 	
@@ -536,6 +536,17 @@
 			WHERE unq = '$unq$'
 	</select>
 	
+	<select id="goodsDAO.selectGoodsSearchList" resultClass="egovMap">
+		SELECT title 
+			FROM goods 
+			WHERE 1=1
+			<isNotNull property="searchCondition">
+				<isNotEmpty property="searchCondition">
+					AND $searchCondition$ LIKE '%' || '$searchKeyword$' || '%' 	
+				</isNotEmpty>
+			</isNotNull>		
+							
+	</select>
 </sqlMap>
 
 

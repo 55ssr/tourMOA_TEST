@@ -763,10 +763,30 @@ public class AdminController {
 		return "admin/GoodsComm/adminGoodsCommWrite";
 	}
 	
+	@RequestMapping("/adminGoodsCommSearch.do")
+	@ResponseBody Map<String, Object> adminGoodsCommSearch (
+							@ModelAttribute("searchVO") DefaultListVO searchVO, Model model)
+							throws Exception {
+
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		List<?> result = goodsService.selectGoodsSearchList(searchVO);
+		//if (result.size() > 0)	result = "ok";				
+		
+		map.put("result", result);
+		model.addAttribute("resultList", result);
+		return map;
+	}
+	
 	@RequestMapping("/adminGoodsCommWriteSave.do")
 	@ResponseBody public Map<String, Object> insertComm (CommVO vo) throws Exception{
 		
 		String result = "";
+		
+		/*vo2 = goodsService.selectGoodsDetail(vo2);
+		vo2.getTitle();
+		System.out.println("vo2 t: " +vo2.getTitle());
+		vo.setGtitle(vo2.getTitle());*/
+		
 		System.out.println("vo c: " +vo.getCtitle());
 		System.out.println("vo g: " +vo.getGtitle());
 		System.out.println("vo ct: " +vo.getContent());

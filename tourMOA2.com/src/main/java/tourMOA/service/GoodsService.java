@@ -33,4 +33,5 @@ public interface GoodsService {
 	List<?> selectCommList(DefaultListVO searchVO) throws Exception;
 	int selectCommTotal(DefaultListVO searchVO) throws Exception;
 	CommVO selectCommDetail(CommVO vo) throws Exception;
+	List<?> selectGoodsSearchList(DefaultListVO searchVO) throws Exception;
 }
