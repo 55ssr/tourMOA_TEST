@@ -7,17 +7,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
-	<h1>상품 등록</h1>
-	<div class="row justify-content-between mb-3">
-		<div class="col-lg-3">
-		</div>
-		<div class="col-lg-1">
-		<button type="button" class="w-100 btn btn-primary" onclick="location.href='/adminGoodsList.do'">목록</button>
-		</div>
-	</div>
-	
-	<script> //도시 추가 인풋창 누적 하기	
+<script> //도시 추가 인풋창 누적 하기	
 	$(document).ready(function(){
 	    $("input#addCity").keydown(function (key) {
 	        if(key.keyCode == 13){//키가 13이면 실행 (엔터는 13)
@@ -42,9 +32,9 @@
 		if (document.frm.vias.value != "") document.frm.vias.value += ",";  
 		document.frm.vias.value += viaSelect;
 	}
-	</script>
-	
-	<script type="text/javascript">
+</script>
+
+<script type="text/javascript">
 	$(function(){
 		
 		$("#saveBtn").click(function(){
@@ -135,7 +125,7 @@
 				param+="&ref="+$("#ref").val()
 				param+="&opt="+$("#opt").val()
 				param+="&daily="+$("#daily").val();
-
+	
 			
 			alert(param);
 			
@@ -162,7 +152,20 @@
 			});
 		});
 	});
-	</script>
+</script>
+	
+<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
+	<h1>상품 등록</h1>
+	<div class="row justify-content-between mb-3">
+		<div class="col-lg-3">
+		</div>
+		<div class="col-lg-1">
+		<button type="button" class="w-100 btn btn-primary" onclick="location.href='/adminGoodsList.do'">목록</button>
+		</div>
+	</div>
+	
+	div
+	
 	<form name="frm" id="frm">
 	<%-- <form name="frm" id="frm" method="post" enctype="multipart/form-data"> --%>
 		<input type="hidden" name="unq" value="" />

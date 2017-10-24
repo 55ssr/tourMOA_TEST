@@ -482,18 +482,7 @@
 		</isNotNull>
 	</update>
 	
-	<insert id="goodsDAO.insertComm">
-		INSERT INTO comm (unq, gubun, ctitle, gtitle, author, content, rdate, pid)
-			VALUES (SEQ_comm_unq.nextval,
-					'$gubun$',
-					'$ctitle$',
-					'$gtitle$',
-					'$author$',
-					'$content$',
-					sysdate,
-					'26'
-					)
-	</insert>
+	
 	
 	<select id="goodsDAO.selectCommList" resultClass="egovMap">
 		SELECT b.* FROM (
@@ -536,6 +525,23 @@
 			WHERE unq = '$unq$'
 	</select>
 	
+	 
+	<!-- 상품평 등록  -->
+	<insert id="goodsDAO.insertComm">
+		INSERT INTO comm (unq, gubun, ctitle, gtitle, author, content, rdate, pid)
+			VALUES (SEQ_comm_unq.nextval,
+					'$gubun$',
+					'$ctitle$',
+					'$gtitle$',
+					'$author$',
+					'$content$',
+					sysdate,
+					'26'
+					)
+	</insert>
+	
+	<!-- 
+	어드민 상품평 등록:서치 (필요 없음)
 	<select id="goodsDAO.selectGoodsSearchList" resultClass="egovMap">
 		SELECT title 
 			FROM goods 
@@ -544,9 +550,10 @@
 				<isNotEmpty property="searchCondition">
 					AND $searchCondition$ LIKE '%' || '$searchKeyword$' || '%' 	
 				</isNotEmpty>
-			</isNotNull>		
+			</isNotNull>
 							
-	</select>
+	</select> 
+	-->
 </sqlMap>
 
 
