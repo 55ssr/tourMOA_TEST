@@ -157,8 +157,36 @@ public class AdminController {
 
 	@RequestMapping("/adminGoodsWrite.do")
 	public String adminGoodsWrite(DefaultListVO searchVO, Model model) throws Exception {
+		
+		System.out.println(searchVO.getSrchKeywd()+ " =-==================");
+		
+		String location = searchVO.getSrchKeywd();
+		
+		if (searchVO.getSrchContn() == null || searchVO.getSrchContn().equals("") || searchVO.getSrchKeywd() == null
+				|| searchVO.getSrchKeywd().equals("")) {
+
+			searchVO.setSrchContn("hctgcd");
+			searchVO.setSrchKeywd("0");
+		}	
+		
 		List<?> list = categoryService.selectCategoryList(searchVO);
+		List<?> list2 = null;
+		
+		if (list.size() > 0) {
+			
+			searchVO.setSrchContn("hctgcd");
+			searchVO.setSrchKeywd(location);
+
+			list2 = categoryService.selectCategoryList1(searchVO);
+			if (list2.size() > 0)
+			System.out.println(list2.get(0)+ " ::::::  list2");
+			
+		}
+		
 		model.addAttribute("resultList", list);
+		model.addAttribute("resultList2", list2);
+		
+		
 		return "admin/Goods/adminGoodsWrite";
 	}
 
