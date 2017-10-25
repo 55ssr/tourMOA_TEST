@@ -24,7 +24,6 @@ function fn_btn(a) {
 		
 			var form = "id="+$("input:hidden[id='userid']").val()
 				form += "&pwd="+$("input:password[id='custPw']").val();
-			alert(form);
 			
 			$.ajax({
 				
@@ -35,7 +34,6 @@ function fn_btn(a) {
 				
 				,success:function(data) {
 					if(data.cnt>0){
-						alert("Dddddd");
 						$("#frm").action="<c:url value='/mypage/accountDetail.do'/>";
 						$("#frm").submit();
 					}else {
@@ -51,7 +49,6 @@ function fn_btn(a) {
 		$("#testBtn").click(function(){
 		
 			var form = "id="+$("input:hidden[id='userid']").val()
-			alert(form);
 			
 			$.ajax({
 				
@@ -62,7 +59,6 @@ function fn_btn(a) {
 				
 				,success:function(data) {
 					if(data.cnt>0){
-						alert("Dddddd");
 						$("#frm").action="<c:url value='/mypage/reserveList.do'/>";
 						$("#frm").submit();
 					}else {
@@ -121,7 +117,7 @@ function fn_btn(a) {
              <div class="para_02">
              <form name="frm" id="frm" method="post" action="/mypage/reserveList.do" >
                 <ul> 
-                    <li class="" id="testBtn" ><p>여행상품<br />예약내역<br /><a href="#" >0</a>건</p></li>                        
+                    <li class="" id="testBtn" ><p>여행상품<br />예약내역<br /><a href="#" >1</a>건</p></li>                        
                   	<li><p>해외항공권<br />예약내역<br /><a href="#"  onclick="airMenuSubmit('http://air.ybtour.co.kr/air/b2c/AIR/AAA/AIRAAALST0100000010.k1?KSESID=air:b2c:SELK138AN:AA024::00&domintgubun=I','_self'); return false;">0</a>건</p></li>
                     <li><p>국내항공권<br />예약내역<br /><a href="#"  onclick="airMenuSubmit('http://air.ybtour.co.kr/air/b2c/AIR/AAA/AIRAAALST0100000010.k1?KSESID=air:b2c:SELK138AN:AA024::00&domintgubun=D','_self'); return false;" >0</a>건</p></li>
                     <li class=""><p>관심상품<br /><a href="/mypage/wishList.do">0</a>건</p></li>
@@ -131,7 +127,6 @@ function fn_btn(a) {
                 </ul>
                 </form>
                  </div>
-                 
             </div>
         </div><!--[[ 메인상단 End ]]-->
    </section>

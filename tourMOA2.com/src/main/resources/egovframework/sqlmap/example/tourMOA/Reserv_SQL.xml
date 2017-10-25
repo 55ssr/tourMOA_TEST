@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
 
-<sqlMap namespace="Reserv">
+<sqlMap namespace="ReservSpace">
 
 	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="reservVO" type="tourMOA.service.ReservVO"/>
+	<typeAlias  alias="goodsVO" type="tourMOA.service.GoodsVO"/>
 	
 	<select id="reservDAO.adminPayTotal" resultClass="java.lang.Integer">
 		SELECT COUNT(*) FROM reserv
@@ -39,11 +40,8 @@
 							WHERE
 									a.code = b.code 
 								 
-								<isNotNull property="result">
-								<isNotEmpty property="result">
 								AND result = '1'
-								</isNotEmpty>
-								</isNotNull>	
+									
 							<isNotNull property="searchCondition">
 								<isNotEmpty property="searchCondition">
 									AND $searchCondition$ LIKE '%' || #searchKeyword# || '%' 	
@@ -67,23 +65,22 @@
 	</select>
 	
 	<select id="reservDAO.reserveList" resultClass="reservVO">
-
 							SELECT	 
-									 TO_CHAR(rsvdate, 'yyyy-mm-dd') rsvdate
-									, TO_CHAR(edate, 'yyyy-mm-dd') edate
-									, TO_CHAR(sdate, 'yyyy-mm-dd') sdate
-									, price
-									, rsvanum
-									, rsvcnum
-									, rsvbnum
-									, result
-									,id
+									  TO_CHAR(a.rsvdate, 'yyyy-mm-dd') rsvdate
+									, TO_CHAR(a.edate, 'yyyy-mm-dd') edate
+									, TO_CHAR(a.sdate, 'yyyy-mm-dd') sdate
+									, a.price
+									, a.rsvanum
+									, a.rsvcnum
+									, a.rsvbnum
+									, a.result
+									
+									
 							FROM 
-										reserv 
+									reserv a
 							WHERE
-									id = 'tt'
-	
-	
+									
+									a.id ='tt'
 	</select>
 	
 	</sqlMap>

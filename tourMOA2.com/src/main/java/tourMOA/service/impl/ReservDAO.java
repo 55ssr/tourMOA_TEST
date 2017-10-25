@@ -4,10 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import egovframework.example.sample.service.SampleDefaultVO;
 import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
 import tourMOA.service.DefaultListVO;
-import tourMOA.service.GoodsVO;
 import tourMOA.service.ReservVO;
 
 @Repository("reservDAO")

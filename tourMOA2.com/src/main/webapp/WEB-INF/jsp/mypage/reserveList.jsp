@@ -143,7 +143,7 @@
             </div>
             <div class="para_02">
                 <ul> 
-                    <li class=" sel"><p>여행상품<br />예약내역<br /><a href="/mypage/reserveList.do">0</a>건</p></li>                        
+                    <li class=" sel"><p>여행상품<br />예약내역<br /><a href="/mypage/reserveList.do">1</a>건</p></li>                        
                   	<li><p>해외항공권<br />예약내역<br /><a href="#"  onclick="airMenuSubmit('http://air.ybtour.co.kr/air/b2c/AIR/AAA/AIRAAALST0100000010.k1?KSESID=air:b2c:SELK138AN:AA024::00&domintgubun=I','_self'); return false;">0</a>건</p></li>
                     <li><p>국내항공권<br />예약내역<br /><a href="#"  onclick="airMenuSubmit('http://air.ybtour.co.kr/air/b2c/AIR/AAA/AIRAAALST0100000010.k1?KSESID=air:b2c:SELK138AN:AA024::00&domintgubun=D','_self'); return false;" >0</a>건</p></li>
                     <li class=""><p>관심상품<br /><a href="/mypage/wishList.do">0</a>건</p></li>
@@ -277,12 +277,12 @@
                 <caption>여행예약내역</caption>
                 <colgroup>
 					<col style="width: 130px;">
-					<col style="width: 360px;">
+					<col style="width: 400px;">
+					<col style="width: 120px;">
+					<col style="width: 120px;">
+					<col style="width: 90px;">
 					<col style="width: 90px;">
 					<col style="width: 60px;">
-					<col style="width: 120px;">
-					<col style="width: 120px;">
-					<col style="width: 130px;">
 					<col style="width: 140px;">
                 </colgroup>
                 <tbody>
@@ -298,12 +298,17 @@
                 </tr>
                 <tr>
 	                <td>${vo.rsvdate}</td>
+	                <td>[한폭의그림 이태리] 친퀘테레/오르비에또+로마아울렛포함 
+	                		이태리완전일주 8일</td>
 	                <td>${vo.sdate}</td>
 	                <td>${vo.edate}</td>
 	                <td>${vo.rsvanum}</td>
 	                <td>${vo.price}</td>
 	                <td>${vo.result}</td>
-	                <td>상품후기 작성하기</td>
+	                <td>
+	                <a href="episodeWrite.do"><input type="button" name="btn" id="btn" value="후기작성" ></a>
+	                <input type="hidden" name="id" id="userid" value="${sessionScope.loginCertification.id}"/>
+	                </td>
                 </tr>      
 			     </tbody>
             </table>

@@ -74,19 +74,46 @@
 						2018.03</div>
 				</div>
 		</div> -->
+			<div class="departure_month slider">
+			<div class="tab_month slick-initialized slick-slider">
+			<button type="button" data-role="none" class="slick-prev slick-arrow slick-disabled" aria-label="Previous" role="button" aria-disabled="true" style="display: block;">Previous</button>
+				<!--class="month_on"  -->
+					<div aria-live="polite" class="slick-list">
+					<div class="slick-track" role="listbox" style="opacity: 1; width: 1144px; transform: translate3d(0px, 0px, 0px);">
+					<div onclick="monthClick('2017','10')" id="div201710" class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide00" style="width: 143px;">
+						2017.10</div><div onclick="monthClick('2017','11')" id="div201711" class="slick-slide slick-active month_on" data-slick-index="1" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide01" style="width: 143px;">
+						2017.11</div><div onclick="monthClick('2017','12')" id="div201712" class="slick-slide slick-active" data-slick-index="2" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide02" style="width: 143px;">
+						2017.12</div><div onclick="monthClick('2018','01')" id="div201801" class="slick-slide slick-active " data-slick-index="3" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide03" style="width: 143px;">
+						2018.01</div><div onclick="monthClick('2018','02')" id="div201802" class="slick-slide slick-active" data-slick-index="4" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide04" style="width: 143px;">
+						2018.02</div><div onclick="monthClick('2018','03')" id="div201803" class="slick-slide slick-active" data-slick-index="5" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide05" style="width: 143px;">
+						2018.03</div><div onclick="monthClick('2018','04')" id="div201804" class="slick-slide slick-active" data-slick-index="6" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide06" style="width: 143px;">
+						2018.04</div><div onclick="monthClick('2018','05')" id="div201805" class="slick-slide" data-slick-index="7" aria-hidden="true" tabindex="-1" role="option" aria-describedby="slick-slide07" style="width: 143px;">
+						2018.05</div>
+						</div>
+						</div>
+				<!--class="month_on"  -->
+					
+				<!--class="month_on"  -->
+					
+				<!--class="month_on"  -->
+					
+				<!--class="month_on"  -->
+					
+				<!--class="month_on"  -->
+					
+				<!--class="month_on"  -->
+					
+				<!--class="month_on"  -->
+					
+				<button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: block;" aria-disabled="false">Next</button></div>
+			</div>
 			
-			<div class="month_list">
-				<table class="tbl_month">
-					<caption>
-						출발일 목록
-					</caption>
-					<tbody><tr>
-			<th>금</th>
-						<th class="sat">토</th>
-						<th class="sun">일</th>
-						<th>월</th>
-						<th>화</th>
-						<th>수</th>
+			<div class="month_list"><table class="tbl_month">
+		<caption>
+		출발일 목록
+		</caption>
+		<tbody><tr>
+			<th>수</th>
 						<th>목</th>
 						<th>금</th>
 						<th class="sat">토</th>
@@ -111,102 +138,266 @@
 						<th>목</th>
 						<th>금</th>
 						<th class="sat">토</th>
+						<th class="sun">일</th>
+						<th>월</th>
+						<th>화</th>
+						<th>수</th>
+						<th>목</th>
 						</tr>
 		<tr>
-			<td>
-					<span>1</span>
+			<td class="pdt_possible" title="예약가능">
+					<a href="javascript:none;" onclick="fnReturnDay('01');">1</a>
 					</td>
-			<td>
-					<span>2</span>
+			<td class="pdt_close" title="예약마감">
+					<a href="javascript:none;" onclick="fnReturnDay('02');">2</a>
 					</td>
-			<td>
-					<span>3</span>
+			<td class="pdt_possible" title="예약가능">
+					<a href="javascript:none;" onclick="fnReturnDay('03');">3</a>
 					</td>
-			<td>
-					<span>4</span>
+			<td class="pdt_possible" title="예약가능">
+					<a href="javascript:none;" onclick="fnReturnDay('04');">4</a>
 					</td>
-			<td>
-					<span>5</span>
+			<td class="pdt_possible" title="예약가능">
+					<a href="javascript:none;" onclick="fnReturnDay('05');">5</a>
 					</td>
-			<td>
-					<span>6</span>
+			<td class="pdt_possible" title="예약가능">
+					<a href="javascript:none;" onclick="fnReturnDay('06');">6</a>
 					</td>
-			<td>
-					<span>7</span>
+			<td class="pdt_possible" title="예약가능">
+					<a href="javascript:none;" onclick="fnReturnDay('07');">7</a>
 					</td>
-			<td>
-					<span>8</span>
+			<td class="pdt_possible" title="예약가능">
+					<a href="javascript:none;" onclick="fnReturnDay('08');">8</a>
 					</td>
-			<td>
-					<span>9</span>
+			<td class="pdt_standby" title="예약대기">
+					<a href="javascript:none;" onclick="fnReturnDay('09');">9</a>
 					</td>
-			<td>
-					<span>10</span>
+			<td class="pdt_close" title="예약마감">
+					<a href="javascript:none;" onclick="fnReturnDay('10');">10</a>
 					</td>
-			<td>
-					<span>11</span>
+			<td class="pdt_possible" title="예약가능">
+					<a href="javascript:none;" onclick="fnReturnDay('11');">11</a>
 					</td>
-			<td>
-					<span>12</span>
+			<td class="pdt_possible" title="예약가능">
+					<a href="javascript:none;" onclick="fnReturnDay('12');">12</a>
 					</td>
-			<td>
-					<span>13</span>
+			<td class="pdt_possible" title="예약가능">
+					<a href="javascript:none;" onclick="fnReturnDay('13');">13</a>
 					</td>
-			<td>
-					<span>14</span>
+			<td class="pdt_possible" title="예약가능">
+					<a href="javascript:none;" onclick="fnReturnDay('14');">14</a>
 					</td>
-			<td>
-					<span>15</span>
+			<td class="pdt_possible" title="예약가능">
+					<a href="javascript:none;" onclick="fnReturnDay('15');">15</a>
 					</td>
-			<td>
-					<span>16</span>
+			<td class="pdt_possible" title="예약가능">
+					<a href="javascript:none;" onclick="fnReturnDay('16');">16</a>
 					</td>
-			<td>
-					<span>17</span>
+			<td class="pdt_standby" title="예약대기">
+					<a href="javascript:none;" onclick="fnReturnDay('17');">17</a>
 					</td>
-			<td>
-					<span>18</span>
+			<td class="pdt_standby" title="예약대기">
+					<a href="javascript:none;" onclick="fnReturnDay('18');">18</a>
 					</td>
-			<td>
-					<span>19</span>
+			<td class="pdt_possible" title="예약가능">
+					<a href="javascript:none;" onclick="fnReturnDay('19');">19</a>
 					</td>
-			<td>
-					<span>20</span>
+			<td class="pdt_possible" title="예약가능">
+					<a href="javascript:none;" onclick="fnReturnDay('20');">20</a>
 					</td>
-			<td>
-					<span>21</span>
+			<td class="pdt_possible" title="예약가능">
+					<a href="javascript:none;" onclick="fnReturnDay('21');">21</a>
 					</td>
-			<td>
-					<span>22</span>
+			<td class="pdt_possible" title="예약가능">
+					<a href="javascript:none;" onclick="fnReturnDay('22');">22</a>
 					</td>
-			<td>
-					<span>23</span>
+			<td class="pdt_possible" title="예약가능">
+					<a href="javascript:none;" onclick="fnReturnDay('23');">23</a>
 					</td>
-			<td>
-					<span>24</span>
+			<td class="pdt_close" title="예약마감">
+					<a href="javascript:none;" onclick="fnReturnDay('24');">24</a>
 					</td>
-			<td>
-					<span>25</span>
+			<td class="pdt_possible" title="예약가능">
+					<a href="javascript:none;" onclick="fnReturnDay('25');">25</a>
 					</td>
-			<td>
-					<span>26</span>
+			<td class="pdt_possible" title="예약가능">
+					<a href="javascript:none;" onclick="fnReturnDay('26');">26</a>
 					</td>
-			<td>
-					<span>27</span>
+			<td class="pdt_possible" title="예약가능">
+					<a href="javascript:none;" onclick="fnReturnDay('27');">27</a>
 					</td>
-			<td>
-					<span>28</span>
+			<td class="pdt_possible" title="예약가능">
+					<a href="javascript:none;" onclick="fnReturnDay('28');">28</a>
 					</td>
-			<td>
-					<span>29</span>
+			<td class="pdt_possible" title="예약가능">
+					<a href="javascript:none;" onclick="fnReturnDay('29');">29</a>
 					</td>
-			<td>
-					<span>30</span>
+			<td class="pdt_possible" title="예약가능">
+					<a href="javascript:none;" onclick="fnReturnDay('30');">30</a>
 					</td>
 			</tr>
-	</tbody>
-				</table>
-			</div>
+	</tbody></table>
+ 
+ 
+ <script type="text/javaScript" language="javascript">
+$(document).ready(function(){
+	settingButton();
+	fnChangeUnitList("2017","11","","");
+});
+
+/* ********************************************************
+ * 월(클릭 이벤트)
+ ******************************************************** */
+function monthClick(year, month){
+	fnMonthEvent("CHP1028",
+			"1",
+			year,
+			month,
+			"",
+			"" );	
+}
+
+/* ********************************************************
+ * 예약가능상품 필터
+ ******************************************************** */
+function fnRsrvfilter(){
+
+	//달력
+	fnMonthEvent("CHP1028",
+					"1",
+					"2017",
+					"11",
+					"Y",
+					"");
+}
+
+/* ********************************************************
+ * 예약가능상품전체보기 필터
+ ******************************************************** */
+function fnRsrvAllfilter(){
+
+	//달력
+	fnMonthEvent("CHP1028",
+					"1",
+					"2017",
+					"11",
+					"",
+					"");
+}
+
+
+/* ********************************************************
+ * 월(클릭 이벤트)
+ ******************************************************** */
+/* function fnMonthEvent(goodsCd,compId,year, month, evRsrvYn,webDisplayCls){
+	 var pageUrl = (location.href).split('/')[3];
+	    
+	    var ajaxUrl = "";
+	    if(pageUrl == 'mypage'){
+	    	ajaxUrl = "/mypage/unitCalEvList.do";
+	    }else{
+	    	ajaxUrl = "/product/unitCalEvList.do";
+	    }
+	   	 $.ajax({
+	   	    	url:ajaxUrl
+	   			,async:false
+	   	       	,data:{
+	   	    		"goodsCd" 			: goodsCd,
+	   	    		"compId" 			: compId,
+	   	       		"year" 				: year,
+	   	       		"month" 				: month, 
+	   	       		"evRsrvYn"			: evRsrvYn,
+	   	       		"menu"				: "pkg",
+	   	       		"loc"					: "453",
+	   	      		"pid"					: "7409",
+	   	      		"did"					: "7410",
+	   	      		"compareBtnYn"		: "",
+	   	       		"webDisplayCls"		: webDisplayCls,
+	   	       	}       	
+	   	    	,success:function(html){
+	   	    		$(".month_list").html(html);
+	   	    		$("#dayTime").attr("style", "display:none");
+	   	    		settingButton();
+	   	    	}
+	   	    	,error: function(html) {
+	   				alert("fnMonthEvent 에러 발생");
+	   			}
+	   	    });
+	   	$("#dayTime").html(dayHtml);
+} */
+
+/* ********************************************************
+ * 행사리스트
+ ******************************************************** */	
+/* function fnChangeUnitList(year, month, date ,evRsrvYn){
+    var pageUrl = (location.href).split('/')[3];
+    
+    var ajaxUrl = "";
+    if(pageUrl == 'mypage'){
+    	ajaxUrl = "/mypage/unitMonList.do";
+    }else{
+    	ajaxUrl = "/product/unitMonList.do"
+    }	
+    $.ajax({
+    	url		:	ajaxUrl
+       	,async	:	false
+    	,data:{
+    		"menu"			: "pkg",
+    		"goodsCd" 		: "CHP1028",
+    		"compId" 		: "1",
+      		"year" 			: year,
+      		"month" 			: month, 
+      		"startDate"		: date,
+      		"evRsrvYn"		: evRsrvYn,
+      		"loc"				: "453",
+      		"pid"				: "7409",
+      		"did"				: "7410",
+      		"compareBtnYn"	: ""
+    	}        	
+    	,success:function(html){
+    		$(".departure_list").html(html);
+    	}
+    	,error: function(html) {
+			alert("fnChangeUnitList 에러 발생");
+		}
+    });
+    
+} */
+
+/* ********************************************************
+ * 결과연월일 반환
+ ******************************************************** */
+var dayHtml = "<button type=\"button\" class=\"btn_date_del\" id=\"dateDtlBtn\" onclick=\"fnDayDelete()\"><span>삭제</span></button>";
+function fnReturnDay(day){
+	$("#dayTime").html("11."+day+ dayHtml);
+	fnChangeUnitList("2017","11",day,"");
+	$("#dayTime").attr("style", "display:block");
+}
+
+function fnDayDelete(){
+	$("#dayTime").html(dayHtml);
+	fnChangeUnitList("2017","11","","");
+	$("#dayTime").attr("style", "display:none");
+}
+
+function settingButton(){
+	if("" != ""){
+		$(".btn_condition").attr("onclick", "fnRsrvAllfilter()");
+		$(".btn_condition").text("전체 상품보기");
+	}else{
+		if("pkg" == "fit" || "pkg" == "hym"){
+			$(".btn_condition").attr("onclick", "fnRsrvfilter()");
+			$(".btn_condition").text("예약접수가능 상품보기");
+		}else{
+			$(".btn_condition").attr("onclick", "fnRsrvfilter()");
+			$(".btn_condition").text("예약가능 상품보기");
+		}
+	}
+}
+</script>
+ 
+ </div>
+
 			<div class="departure_block_btn">
 			<dl class="departure_date">
 				<dt>출발일</dt>

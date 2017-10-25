@@ -213,7 +213,7 @@ public class MypageController {
 	}
 	
 	/*마이페이지 예약내역 출력*/
-	@RequestMapping("mypage/reserveListDe.do")
+	@RequestMapping(value="/mypage/reserveListDe.do")
 	@ResponseBody public Map<String, Object> reserveListDe(ReservVO vo) throws Exception {
 		
 		System.out.println("ddddddddd"+vo.getId());
@@ -228,14 +228,18 @@ public class MypageController {
 		return map;
 	}
 	@RequestMapping("mypage/reserveList.do")
-	public String reserveList(@RequestParam("hiddenID")String id,ReservVO vo,Model model) throws Exception{	
-		vo.setId(id);
-		System.out.println("33333333333"+id);
+	public String reserveList(ReservVO vo,Model model) throws Exception{	
+		System.out.println("111111111111111");
 		vo=reservService.reserveList(vo);
+		System.out.println("2222222222");
 		model.addAttribute("vo",vo);
 		return "mypage/reserveList";
 	}
-	
+	/*여행후기*/
+	@RequestMapping("mypage/episodeWrite.do")
+	public String episodeWrite() {
+		return "mypage/episodeWrite";
+	}
 	/*마이페이지 회원정보 수정 상세페이지단계*/
 	@RequestMapping("mypage/accountDetail.do")
 	public String accountDetail(Model model,MemberVO vo) throws Exception{		
