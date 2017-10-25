@@ -26,4 +26,9 @@ public class NoticeDAO extends EgovAbstractDAO {
 	public NoticeVO selectNoticeDetail(NoticeVO vo) {
 		return (NoticeVO) select("noticeDAO.selectNoticeDetail", vo);
 	}
+
+	public List<?> selectStoryList(DefaultListVO searchVO) {
+		// TODO Auto-generated method stub
+		return list("noticeDAO.selectStoryList",searchVO);
+	}
 }

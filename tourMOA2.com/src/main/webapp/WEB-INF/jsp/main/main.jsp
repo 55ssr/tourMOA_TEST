@@ -1526,25 +1526,16 @@ $(document).ready(function(){
 		베스트 여행후기 <a href="/customer/episodeList.do" class="time_more">더보기</a>
 	</h2>
 	<ul class="review_list">
-		<li><a href="/customer/episodeView.do?travrvNo=20000005619">
-				<img
-				src="http://cimg.cdn.ybtour.co.kr/attachHome/MN/TR/201709/201709141525296081705004002025.jpg"
-				alt=" ★호주,뉴질랜드여행이 아니면 알 수 없는 것들 ★">
-				<h3 class="tit">★호주,뉴질랜드여행이 아니면 알 수 없는 것들 ★</h3>
-				<p>지극히 평범한 삶에서 벗어나고 싶은 욕망과 일상 탈출을 꿈꾸던 그런 날이면 " 열심히 일한 당신 떠나라"하고
-					부추기지 않아도 문득 어디론가 훌쩍 떠나고픈 욕망에 사로 잡힌다. 어찌 보면 한두번의 여행으론 치유가 되지 않을 열병
-					같은 것인지도 모르지만 그럼에도 늘 만병통치약처럼 일상탈출을 꿈꾼다.</p>
-		</a></li>
-
-		<li><a href="/customer/episodeView.do?travrvNo=20000005675">
-				<img
-				src="http://cimg.cdn.ybtour.co.kr/attachHome/MN/TR/201709/201709141525297311705004002098.jpg"
-				alt=" 추억이 깃든 나의 동유럽 여행 일기 ! [김대호 인솔자님 수고하셨어요♡-♡]  ">
-				<h3 class="tit">추억이 깃든 나의 동유럽 여행 일기 ! [김대호 인솔자님 수고하셨어요♡-♡]</h3>
-				<p>(크로아티아) 자그레브 - 플리트비체 – (슬로베니아) 블레드 – (오스트리아) 짤츠캄머굿 – 짤츠부르크 –
-					(체코) 체스키크롬로프 – 프라하 – (오스트리아) 비엔나 – (헝가리) 부다페스트 발칸반도와 동유럽까지 5개국을
-					다녀오는 여행을 다녀왔어요. 저는 오랜 시간 우정을 나눈 여고동창 친구와 처음으로 장거리 여행</p>
-		</a></li>
+		<c:forEach var="storyList" items="${storyList}" varStatus="status">
+					<li>
+						<a href="/customer/noticeDetail.do?unq=${storyList.unq}">
+							<img src="/images/tp-main/story${storyList.unq}.png"
+							alt=" ★호주,뉴질랜드여행이 아니면 알 수 없는 것들 ★">
+							<h3 class="tit">${storyList.title}</h3>
+							<p>${storyList.storycontent}</p>
+						</a>
+					</li>
+				</c:forEach>
 
 	</ul>
 </div>

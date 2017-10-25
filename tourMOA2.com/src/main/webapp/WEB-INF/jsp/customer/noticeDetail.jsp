@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <script>
 	function fileDownloadCount() {
@@ -52,8 +57,22 @@
 			${vo.content}
 			<!-- 목록 -->
 			<div class="btnarea">
-				<button id="btn_list" class="btnGray" title="목록보기"
+			<c:choose>
+							
+				<c:when test="${vo.unq ==7 ||vo.unq ==8}">
+					<button id="btn_list" class="btnGray" title="목록보기"
+					onclick="document.location.href='/customer/episodeList.do'">목록보기</button>
+					
+					
+				</c:when>
+				
+				<c:otherwise>
+					<button id="btn_list" class="btnGray" title="목록보기"
 					onclick="document.location.href='/customer/noticeList.do?pageIndex=1&amp;searchCnd=&amp;searchWrd=&amp;searchNoticeCd=&amp;'">목록보기</button>
+				</c:otherwise>
+				
+			</c:choose>
+				
 			</div>
 		</div>
 	</div>

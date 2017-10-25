@@ -22,8 +22,10 @@ public class MainController {
 		DefaultListVO searchVO = new DefaultListVO();
 		searchVO.setLastIndex(3);
 		List<?> noticeList = noticeService.selectNoticeList(searchVO);
+		List<?> storyList = noticeService.selectStoryList(searchVO);
 		
 		model.addAttribute("noticeList", noticeList);
+		model.addAttribute("storyList", storyList);
 		
 		return "main/main";		
 	}

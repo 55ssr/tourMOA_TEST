@@ -202,7 +202,8 @@ table.cat_area td.on a { color: #ffffff; }
 
 
 
-
+ul.pagination {display: block; width: 1100px;  margin-left: 40%;}
+li.page-item{float: left; margin-left: 30px;}
 
 /* 게시판 리스트 */
 .board_area{ position: relative; display: block; width: 100%; margin: 30px 0 42px 0;}
@@ -233,7 +234,7 @@ span.answer_f { color: #00b5b0; }
 span.answer_p { color: #303030; }
 
 /* 게시판 상세*/
-.board_view { display: table; width: 100%; margin: 30px 0;  border-top: 2px solid #555555; border-bottom: 2px solid #555555; }
+.board_view { display: inline-block; width: 100%; margin: 30px 0;  border-top: 2px solid #555555; border-bottom: 2px solid #555555; }
 .board_view .viewListBox { width: 100%; font-size: 14px; font-weight: 600; color: #333333; } 
 .board_view .viewListBox ul.viewList_tit { display: block; height: 56px; padding: 0 40px 0 40px;  font-size: 14px; font-weight: 600;  line-height: 56px; border-bottom: 1px solid #d1d1d1; }
 .board_view .viewListBox ul.viewAns_tit { display: block; height: 70px; padding: 0 40px 0 40px; font-size: 14px; font-weight: normal; line-height: 70px; border-bottom: 1px solid #e7e8e9; background: #f8f9fa;}
@@ -858,13 +859,14 @@ ul.multi_select>li>ul>li input{margin:0 8px 0 0;vertical-align:-1px}
 .right_travel_quick>ul>li>a>img{float:left; width:210px; height:139px}
 .right_travel_quick>ul>li>a>span.txt{float:left; display:block; width:168px; padding:10px 20px; border:1px solid #ececec; border-top:0 none; font-size:12px; font-family:'NanumBold'; color:#666; line-height:16px}
 .btn_go_top{display:block; width:48px; height:10px; margin-left:142px; padding:30px 10px; vertical-align:middle; font-size:13px; color:#fff !important; background:#393939 url("/images/common/bg_btn_go_top.gif") no-repeat 45px 32px; text-indent:4px}
-.travel_banner{padding:30px 0}
+.travel_banner{padding:100px 0}
 
 /* best 여행후기 롤링 */
+div.tbl_wrap{width: 1100px; margin:0 auto;}
 .travel_episode_best{margin-bottom:40px}
 .travel_episode_best .bes_kit{display:none; position:relative; text-align:left}
 .travel_episode_best .bes_kit:after{content:""; display:block; clear:both}
-.travel_episode_best .bes_kit{width:1100px; height:325px}
+.travel_episode_best .bes_kit{width:1500px; height:325px;margin-left: 430px;margin-top: 30px;}
 .travel_episode_best .bes_kit .sliderkit-nav{position:absolute; left:0; bottom:0; width:1100px; padding:0 70px; z-index:10; text-align:center}
 .travel_episode_best .sliderkit .sliderkit-nav-clip{position:relative; overflow:hidden; width:960px !important; margin:0 auto}
 .travel_episode_best .sliderkit .sliderkit-btn{z-index:10}

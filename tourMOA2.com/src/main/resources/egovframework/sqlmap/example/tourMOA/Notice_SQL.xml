@@ -27,6 +27,7 @@
 	</insert>
 
 	<select id="noticeDAO.selectNoticeList" resultClass="egovMap">
+	
 		SELECT b.* FROM (
 		SELECT
 		rownum rn, a.* FROM (
@@ -42,7 +43,7 @@
 		notice
 
 		WHERE
-		1=1
+		gubun = 'notice'
 
 		<isNotNull property="searchCondition">
 			<isNotEmpty property="searchCondition">
@@ -57,6 +58,39 @@
 		WHERE
 		rn >= #firstIndex# AND rn <![CDATA[<=]]>
 		#lastIndex#
+	</select>
+	<select id="noticeDAO.selectStoryList" resultClass="egovMap">
+	
+		SELECT b.* FROM (
+		SELECT
+		rownum rn, a.* FROM (
+		SELECT unq
+		, gubun
+		, title
+		, content
+		, hit
+		, storycontent
+		, TO_CHAR(rdate,'yyyy-mm-dd') rdate
+		, allview
+		, TO_CHAR(upddate,'yyyy-mm-dd') upddate
+		FROM
+		notice
+
+		WHERE
+		gubun = 'story'
+
+		<isNotNull property="searchCondition">
+			<isNotEmpty property="searchCondition">
+				AND $searchCondition$ LIKE '%' ||
+				#searchKeyword# || '%'
+			</isNotEmpty>
+		</isNotNull>
+
+		ORDER BY unq ASC     <!-- ORDER BY rdate DESC -->	<!-- ORDER BY allview DESC, rdate DESC -->
+		) a
+		) b
+		WHERE
+		rn >= #firstIndex# AND rn <![CDATA[<=]]> '2'
 	</select>
 
 	<select id="noticeDAO.selectNoticeTotal" resultClass="java.lang.Integer">
