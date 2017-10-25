@@ -47,7 +47,7 @@
 					<li><img src="/images/product/detail/de-s2.PNG" alt=""></li>
 					<li><img src="/images/product/detail/de-s3.PNG" alt=""></li>
 				</ul>
-				</div>
+			</div>
 			</div>
 		<!-- 	<div class="departure_month ">
 			<div class="tab_month">

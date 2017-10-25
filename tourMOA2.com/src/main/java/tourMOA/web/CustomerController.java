@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import tourMOA.service.DefaultListVO;
 import tourMOA.service.EstimateService;
 import tourMOA.service.EstimateVO;
-import tourMOA.service.GoodsVO;
 import tourMOA.service.NoticeService;
 import tourMOA.service.NoticeVO;
 
@@ -99,10 +98,13 @@ public class CustomerController {
 	
 	/*공지사항 View 화면*/
 	@RequestMapping("customer/noticeDetail.do")
-	public String noticeDetail() {
+	public String noticeDetail(@RequestParam("unq")int unq,NoticeVO vo, Model model) throws Exception {
+		System.out.println("vo ======================== " + vo.getUnq());
+		vo = noticeService.selectNoticeDetail(vo);
+		
+		model.addAttribute("vo", vo);
 		return "customer/noticeDetail";
 	}
-	
 	@RequestMapping("/noticeSave.do")
 	@ResponseBody public Map<String, Object> insertNotice(NoticeVO vo) throws Exception {
 		String result = "";
@@ -141,33 +143,15 @@ public class CustomerController {
 	}
 	
 	/*견적문의 저장*/
-	@RequestMapping("estimateReqSave.do")
-	@ResponseBody public Map<String, Object> insertEstimateReq(EstimateVO vo) throws Exception {			
+	@RequestMapping("customer/estimateReqSave.do")
+	@ResponseBody public Map<String, Object> insertEstimateReq(EstimateVO vo) throws Exception {
+		
+		System.out.println("test");
 		String result="";
-		int cnt = 0;
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		
-		System.out.println("email ====== " + vo.getEmail());
-		System.out.println("name ====== " + vo.getName());
-		System.out.println("phone ====== " + vo.getPhone());
-		System.out.println("person ====== " + vo.getPerson());
-		System.out.println("money ====== " + vo.getMoney());
-		System.out.println("ptime ====== " + vo.getPtime());
-		System.out.println("floc ====== " + vo.getFloc());
-		System.out.println("sdate ====== " + vo.getSdate());
-		System.out.println("edate ====== " + vo.getEdate());
-		System.out.println("schange ====== " + vo.getSchange());
-		System.out.println("airline ====== " + vo.getAirline());
-		System.out.println("stay ====== " + vo.getStay());
-		System.out.println("stayname ====== " + vo.getStayname());
-		System.out.println("req ====== " + vo.getReq());
-		System.out.println("inestimateagree ====== " + vo.getInestimateagree());
-		System.out.println("title ====== " + vo.getTitle());
-		System.out.println("userid ====== " + vo.getUserid());
-		System.out.println("city ====== " + vo.getCity());
-		System.out.println("passage ====== " + vo.getPassage());
-		
 		result = estimateService.insertEstimateReq(vo);
+
 		System.out.println("here~~~~"+result);
 		if(result == null) {
 			result = "ok";

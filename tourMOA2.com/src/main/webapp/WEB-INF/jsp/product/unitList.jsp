@@ -29,7 +29,6 @@
 		<div id="haedline">
 			<div id="title">${vo.title}</div>
 			<div id="pNum"><span>[상품번호</span><span class="num">${vo.code}</span>]
-				<span class="dev_comm">상품코드를 일관성있게 만들어야함</span>
 			</div>
 		</div>
 		<div id="infoBox">
@@ -39,7 +38,6 @@
                     <span class="txt price">
                     	<fmt:formatNumber value="${vo.price}" groupingUsed="true" /> 원 ~ 
                     	3,590,000 원
-                    	<span class="dev_comm">가격 범위는 같은 code 상품중에서 최저가와 최대가를 계산하여 출력해야 함</span>
                     </span>
                     <div class="sns">                    	
 						<span><a href="http://www.facebook.com" onclick="fnGoSns(this.href,'facebook',''); return false; "><img src="/images/product/detail/sns1.png" alt="페이스북 링크"></a></span>
@@ -50,37 +48,21 @@
                 </li>
                 <li><span class="tit">여행기간</span><span class="txt">${vo.period}</span></li>
                 <li><span class="tit">간략일정</span><span class="txt">${vo.schd}</span></li>
-                <li><span class="tit">상품설명</span><span class="txt">${vo.detail2}</span></li>
+                <li><span class="tit">상품설명</span><span class="txt">
+                ${vo.detail1}
+                </span>
+                </li>
 				</ul>
 				
+				
 			<div class="infoPhoto">
-				<span class="dev_comm">이미지파일명 데이터 베이스 화</span>
 				<ul class="slide_v1">
-					<%-- <li><img src="/images/product/detail/${vo.code}/${vo.images01}" alt=""></li>
-					<li><img src="/images/product/detail/${vo.code}/${vo.images02}" alt=""></li>
-					<li><img src="/images/product/detail/${vo.code}/${vo.images03}" alt=""></li> --%>
-					<li><img src="/images/product/detail/${vo.code}/images.jpg" alt=""></li>
+					<li><img src="/images/product/detail/de-s1.PNG" alt=""></li>
+					<li><img src="/images/product/detail/de-s2.PNG" alt=""></li>
+					<li><img src="/images/product/detail/de-s3.PNG" alt=""></li>
 				</ul>
 			</div>
-		</div>
-		<!-- 	<div class="departure_month ">
-			<div class="tab_month">
-					<div class="w140" onclick="monthClick('2017','09')" id="div201709">
-						2017.09</div>
-					<div class="w140" onclick="monthClick('2017','10')" id="div201710">
-						2017.10</div>
-					<div class="w140" onclick="monthClick('2017','11')" id="div201711">
-						2017.11</div>
-					<div class="w140" onclick="monthClick('2017','12')" id="div201712">
-						2017.12</div>
-					<div class="w140" onclick="monthClick('2018','01')" id="div201801">
-						2018.01</div>
-					<div class="w140" onclick="monthClick('2018','02')" id="div201802">
-						2018.02</div>
-					<div class="w140" onclick="monthClick('2018','03')" id="div201803">
-						2018.03</div>
-				</div>
-		</div> -->
+			</div>
 			<div class="departure_month slider">
 			<div class="tab_month slick-initialized slick-slider">
 			<button type="button" data-role="none" class="slick-prev slick-arrow slick-disabled" aria-label="Previous" role="button" aria-disabled="true" style="display: block;">Previous</button>
@@ -88,16 +70,29 @@
 					<div aria-live="polite" class="slick-list">
 					<div class="slick-track" role="listbox" style="opacity: 1; width: 1144px; transform: translate3d(0px, 0px, 0px);">
 							<c:set var="year" value="${year}"/>
-                            <c:set var="month" value="${month}"/>
+                            <c:set var="monthDigits" value="${month}"/>
 	                            <c:forEach begin="1" end="8" var="plusYear" step="1">
 	                            <!-- fmt: 두자리 수 맞춰주기 -->
-                            	<fmt:formatNumber var="monthDigits2" value="${month}" minIntegerDigits="2" type="number"/>
-	                            <div onclick="monthClick('${year}','${monthDigits2}')" id="div201710" class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide00" style="width: 143px;">
-								${year}.${monthDigits2}
-								</div>
-	                            <c:set var="month" value="${month+1}"/>
-	                            <c:if test="${month > '12'}">
-	                            <c:set var="month" value="${month-12}"/>
+                           		<fmt:formatNumber var="monthDigits2" value="${monthDigits}" minIntegerDigits="2" type="number"/>
+	                            
+									<c:choose>
+							
+										<c:when test="${monthDigits2 == month}">
+											<div onclick="monthClick('${year}','${monthDigits2}')" id="div201710" class="slick-slide slick-current slick-active month_on" data-slick-index="0" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide00" style="width: 143px;">
+												${year}.${monthDigits2}
+											</div>
+										</c:when>
+										
+										<c:otherwise>
+											<div onclick="monthClick('${year}','${monthDigits2}')" id="div201710" class="slick-slide slick-current slick-active " data-slick-index="0" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide00" style="width: 143px;">
+												${year}.${monthDigits2}
+											</div>
+										</c:otherwise>
+										
+									</c:choose>
+	                            <c:set var="monthDigits" value="${monthDigits+1}"/>
+	                            <c:if test="${monthDigits > '12'}">
+	                            <c:set var="monthDigits" value="${monthDigits-12}"/>
 	                            <c:set var="year" value="${year+1}"/>
 	                            </c:if>
 	                   			</c:forEach>
@@ -135,18 +130,40 @@
 			<c:set var="maximumday" value="${maximumday}"/>
 			<!-- 월별 1일 -->
 			<c:set var="minimumday2" value="${minimumday}"/>
-			<c:set var="weekList" value="${weekList}"/> --%>
+			 --%>
+			<c:set var="weekList" value="${weekList}"/>
 			
 			<tbody>
 						<tr>
-						<c:forEach begin="${minimumday}" end="${maximumday}" var="seMonth" step="1">
-						<th><%-- ${weekList[${seMonth]} --%></th>
+						<c:forEach begin="${minimumday-1}" end="${maximumday-1}" var="seMonth" step="1">
+						<%-- <th>${weekList[seMonth]}</th> --%>
+<%-- 						<c:if test="${seMonth%7==6}">
+						<th class="sat">${weekList[seMonth]}</th>
+						</c:if>
+						<c:if test="${seMonth%7==0}">
+						<th>${weekList[seMonth]}</th>
+						<th class="sun">${weekList[seMonth]}</th>
+						</c:if> --%>
+						<c:choose>
+						
+							<c:when test="${seMonth%7==6}">
+								<th class="sat">${weekList[seMonth]}</th>
+							</c:when>
+							<c:when test="${seMonth%7==0}">
+								<th class="sun">${weekList[seMonth]}</th>
+							</c:when>
+							
+							<c:otherwise>
+								<th>${weekList[seMonth]}</th>
+							</c:otherwise>
+						</c:choose>
+						
 						</c:forEach>
 						</tr>
 						
 						
 						<tr>
-						<c:forEach begin="${minimumday2}" end="${maximumday}" var="numMonth" step="1">
+						<c:forEach begin="${minimumday}" end="${maximumday}" var="numMonth" step="1">
 						<%-- <c:if test="${minimumday == '예약가능'}">
 						<th class="sat">${minimumday}</th>
 						<td class="pdt_possible" title="예약가능">
@@ -158,9 +175,26 @@
 						onclick="fnReturnDay('${minimumday}');">${minimumday}</a>
 						</td>
 						</c:if> --%>
-						<td class="pdt_possible" title="예약가능">
-						<a href="javascript:none;" onclick="fnReturnDay('${numMonth}');">${numMonth}</a>
-						</td>
+						
+						<c:choose>
+						
+							<c:when test="${numMonth<date}">
+								<td>
+								<span>${numMonth}</span>
+								</td>
+							</c:when>
+							<%-- <c:when test="${numMonth<date}">
+								
+							</c:when> --%>
+							
+							<c:otherwise>
+								<td class="pdt_possible" title="예약가능">
+								<a href="javascript:none;" onclick="fnReturnDay('${numMonth}');">${numMonth}</a>
+								</td>
+							</c:otherwise>
+						</c:choose>
+						
+						
 						<c:set var="minimumday2" value="${minimumday2+1}"/>
 						</c:forEach>
 			
@@ -372,115 +406,42 @@ function settingButton(){
 			</tr>
 			</thead>
 			<tbody aria-live="polite" aria-relevant="all">
+			<c:forEach items="${unitList}" var="unitList">
 			<tr role="row">
-				<td><input type="checkbox" name="chk01" id="chk01" value="EMP5043-180504KE00" title="체크"></td>
-				<td><span class="depart_time">05/04 (금) 13:00</span>
-				<span class="arrive_time">05/13 (일) 17:00</span>
+				<td><input type="checkbox" name="chk01" id="chk01" value="${unitList.code}" title="체크"></td>
+				<td><span class="depart_time">${unitList.sdate}</span>
+				<span class="arrive_time">${unitList.edate}</span>
 				</td>
 				<td>
-					<img src="/images/product/detail/KE.png" alt="대한항공"><br>대한항공</td>
+					<img src="/images/air/${unitList.airline}.png" alt="${unitList.airline}"><br>${unitList.airline}</td>
 				<td class="tit_pdt">
 				<span class="ico_block">
 					<span class="ico_pink">선착순</span>
 					<!-- <span class="ico_limited ">리미티드세일</span> -->
 					</span>
-				<a href="detailPackage.do">[프리미엄][대한항공직항][국내선 항공포함]_스페인/포르투갈 10일[KE]</a>
+				<a href="detailPackage.do">${unitList.title}</a>
 				</td>
-				<td class="pdt_date">8박10일</td>
-				<td class="pdt_price">2,790,000<a href="#none" class="mini_price">&nbsp;<img src="/images/product/detail/tool.png" alt="요금안내">
+				<td class="pdt_date">${unitList.period}</td>
+
+				<td class="pdt_price">${unitList.price}<a href="#none" class="mini_price">&nbsp;<img src="/images/product/detail/tool.png" alt="요금안내">
 						<ul class="child_price">
-							<li>아동: 2,790,000</li>
-							<li>유아: 500,000</li>
+							<li>아동: ${unitList.pricech}</li>
+							<li>유아: ${unitList.pricein}</li>
 						</ul>
 					</a>
 				</td>
 				<td>
-				<span class="condition_standby">
-                                 	예약대기</span>										
-                              <span class="condition_hurryup">마감임박</span>
-                              </td>
-			</tr>
-			<tr role="row">
-				<td><input type="checkbox" name="chk01" id="chk01" value="EMP5043-180511KE00" title="체크"></td>
-				<td><span class="depart_time">05/11 (금) 13:00</span>
-				<span class="arrive_time">05/20 (일) 17:00</span>
-				</td>
-				<td>
-					<img src="/images/product/detail/KE.png" alt="대한항공"><br>대한항공</td>
-				<td class="tit_pdt">
-				<span class="ico_block">
-					<span class="ico_pink">선착순</span>
-					<!-- <span class="ico_limited ">리미티드세일</span> -->
-					</span>
-				<a href="detailPackage.do">[프리미엄][대한항공직항][국내선 항공포함]_스페인/포르투갈 10일[KE]</a>
-				</td>
-				<td class="pdt_date">8박10일</td>
-				<td class="pdt_price">2,790,000<a href="#none" class="mini_price">&nbsp;<img src="/images/product/detail/tool.png" alt="요금안내">
-						<ul class="child_price">
-							<li>아동: 2,790,000</li>
-							<li>유아: 500,000</li>
-						</ul>
-					</a>
-				</td>
-				<td>
-				<span class="condition_booking">
-                                 	예약가능</span>										
-                              <span class="condition_other">별도문의</span>
-                              </td>
-			</tr>
-			<tr role="row">
-				<td><input type="checkbox" name="chk01" id="chk01" value="EMP5043-180525KE00" title="체크"></td>
-				<td><span class="depart_time">05/25 (금) 13:00</span>
-				<span class="arrive_time">06/03 (일) 17:00</span>
-				</td>
-				<td>
-					<img src="/images/product/detail/tway.png" alt="티웨이"><br>티웨이항공</td>
-				<td class="tit_pdt">
-				<span class="ico_block">
-					<span class="ico_pink">선착순</span>
-					</span>
-				<a href="detailPackage.do">[프리미엄][국내선 항공포함]_스페인/포르투갈 10일[KE]</a>
-				</td>
-				<td class="pdt_date">7박9일</td>
-				<td class="pdt_price">2,490,000<a href="#none" class="mini_price">&nbsp;<img src="/images/product/detail/tool.png" alt="요금안내">
-						<ul class="child_price">
-							<li>아동: 2,490,000</li>
-							<li>유아: 400,000</li>
-						</ul>
-					</a>
-				</td>
-				<td>
-				<span class="condition_booking">예약가능</span>										
-                    <span class="condition_fix">출발확정</span>
-                   </td>
-        		</tr>
-                <tr role="row">
-				<td><input type="checkbox" name="chk01" id="chk01" value="EMP5023-171010AF00" title="체크"></td>
-				<td><span class="depart_time">10/10 (화) 09:30</span>
-				<span class="arrive_time">10/19 (목) 07:20</span>
-				</td>
-				<td>
-					<img src="/images/product/detail/af.png" alt="에어프랑스"><br>에어프랑스</td>
-				<td class="tit_pdt">
-				<span class="ico_block">
-					<span class="ico_darkgreen">특가</span>
-					</span>
-				<a href="#">[10月/놓치면마감] 스페인+포르투칼_2대맛기행 완벽정복 10일 AF</a>
-				</td>
-				<td class="pdt_date">8박10일</td>
-				<td class="pdt_price">1,590,000<a href="#none" class="mini_price">&nbsp;<img src="/images/product/detail/tool.png" alt="요금안내">
-						<ul class="child_price">
-							<li>아동: 1,590,000</li>
-							<li>유아: 0</li>
-						</ul>
-					</a>
-				</td>
-				<td>
-				<span class="condition_booking">
-                                 	예약가능</span>										
-                              <span class="condition_fix">출발확정</span>
-                              </td>
-			</tr>
+				<c:if test="${unitList.use=='사용'}">
+				<span class="condition_standby">예약대기</span>										
+                <span class="condition_hurryup">마감임박</span>
+				</c:if>
+												
+				<c:if test="${unitList.use=='중지'}">
+				<span class="condition_booking">예약접수</span>	
+				</c:if>	
+                </td>
+				</tr>
+                			</c:forEach>
 				</tbody>				
 
 			</table>

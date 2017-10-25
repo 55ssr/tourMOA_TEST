@@ -32,6 +32,7 @@
 		.tab_type01>li:first-child{background: 0 none; }
 		.tab_type01>li{float: left; width: auto !important; height: 28px; background: url(/images/tp-main/bg_tab_line.gif) no-repeat left center; }
 		h2.titMain{clear:both; position: relative; width: 1100px; padding-bottom: 13px; margin: 45px auto 20px; background:  url(/images/tp-main/bg_tit.gif) no-repeat 0 100%; font-family: 'Nanum Gothic'; height: 24px; line-height: 1; color: #444; letter-spacing: -0.09em; font-size:23px; font-weight: bolder;}
+		h2.titHalf{clear:both; position: relative; padding-bottom: 13px; margin: 45px auto 20px; background:  url(/images/tp-main/bg_tit.gif) no-repeat 0 100%; font-family: 'Nanum Gothic'; height: 24px; line-height: 1; color: #444; letter-spacing: -0.09em; font-size:23px; font-weight: bolder;}
         #tt{width: 1100px; height: auto; margin: 0 auto; }
         #wrap{width: 100%; height: auto; margin: 0 auto; }
         

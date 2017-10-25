@@ -51,13 +51,45 @@
 								<isNotEmpty property="searchCondition">
 									AND $searchCondition$ LIKE '%' || #searchKeyword# || '%' 	
 								</isNotEmpty>
-							</isNotNull>		
+							</isNotNull>	
+							
+							
 									
 							ORDER BY rdate DESC
 									) a
 						) b
 		WHERE 
 				rn >= #firstIndex# AND rn <![CDATA[<=]]> #lastIndex#
+	</select>
+	
+	<select id="goodsDAO.selectUnitList" resultClass="egovMap">
+		SELECT b.* FROM (
+			SELECT 
+				rownum rn, a.* FROM (
+							SELECT	  unq
+									, city
+									, airline
+									, title
+									, period
+									, TO_CHAR(price,'L9,999,999') price
+									, TO_CHAR(pricech,'L9,999,999') pricech
+									, TO_CHAR(pricein,'L9,999,999') pricein
+									, TO_CHAR(sdate, 'mm"/"dd "("DY")" hh":"mi') sdate
+									, TO_CHAR(edate, 'mm"/"dd "("DY")" hh":"mi') edate
+									, DECODE(use,'Y',('사용'),('중지')) use
+									, rdate
+							FROM 
+									goods
+									
+							WHERE
+							
+							
+									code LIKE '$code$' || '%'
+									
+							ORDER BY rdate DESC
+									) a
+						) b
+		
 	</select>
 	
 	<select id="goodsDAO.selectGoodsTotal" resultClass="java.lang.Integer">
@@ -248,6 +280,7 @@
 				unq,
 				title,
 				gubun,
+				detail1,
 				location,
 				nation,
 				city,

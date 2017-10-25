@@ -1,4 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <!-- <script src="/js/jquery-2.2.2.js"></script>
 <script src="/js/jquery-ui.js"></script> -->
 <script src="/js/mainJS.js"></script>
@@ -1516,7 +1523,7 @@ $(document).ready(function(){
 </div>
 <div class="best_block">
 	<h2 class="titMain">
-		베스트 여행후기 <a href="#" class="time_more">더보기</a>
+		베스트 여행후기 <a href="/customer/episodeList.do" class="time_more">더보기</a>
 	</h2>
 	<ul class="review_list">
 		<li><a href="/customer/episodeView.do?travrvNo=20000005619">
@@ -1545,26 +1552,28 @@ $(document).ready(function(){
 	<div class="info_block">
 		<!-- 공지사항 -->
 		<div class="notice_block">
-			<h2 class="titMain">
-				공지사항 <a href="#" class="time_more">더보기</a>
+			<h2 class="titHalf">
+				공지사항 <a href="/customer/noticeList.do" class="time_more" style="right:0px;">더보기</a>
 			</h2>
 			<ul class="notice_list">
-				<li><a href="/customer/noticeView.do?noticeNo=20000002903">
-						[국내선] 아시아나항공 출발임박 특가 안내</a> <span class="date">2017-09-29</span></li>
-				<li><a href="/customer/noticeView.do?noticeNo=20000002902">
-						[이스타항공] 10/6, 10/9 인천-홍콩 노선 운항시각 변경 안내</a> <span class="date">2017-09-29</span>
-				</li>
-				<li><a href="/customer/noticeView.do?noticeNo=20000002901">
-						[홍콩익스프레스항공] 10월 2일 - 7일 운항 취소 안내</a> <span class="date">2017-09-28</span>
-				</li>
+				<c:forEach var="notice" items="${noticeList}" varStatus="status">
+					<li>
+						<a href="/customer/noticeDetail.do?unq=${notice.unq}">
+							${notice.title }
+						</a>
+						<span class="date">
+							${notice.upddate}
+						</span>
+					</li>
+				</c:forEach>
 			</ul>
 		</div>
 		<!-- //공지사항-->
 
 		<!-- 자주하는 질문 -->
 		<div class="faq_block">
-			<h2 class="titMain">
-				자주하는 질문 <a href="#" class="time_more">더보기</a>
+			<h2 class="titHalf">
+				자주하는 질문 <a href="/customer/noticeList.do" class="time_more" style="right:0px;">더보기</a>
 			</h2>
 			<ul class="faq_list">
 				<li><a href="/customer/faqList.do?searchCateCd=TPD"><img
