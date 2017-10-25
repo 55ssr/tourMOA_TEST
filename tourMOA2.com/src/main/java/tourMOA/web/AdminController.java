@@ -876,11 +876,36 @@ public class AdminController {
 		
 		model.addAttribute("rslist", list);
 		return "admin/Estimate/adminEstimateList";
-	}
+	}	
+	
 	
 	@RequestMapping("/adminEstimateDetail.do")
-	public String adminEstimateDetail() {
+	public String adminEstimateDetail(EstimateVO vo, Model model) throws Exception {		
+		int unq = vo.getUnq();
+		System.out.println("~~~~~"+unq);
+		vo = estimateService.adminEstimateDetail(vo);
+		model.addAttribute("vo",vo);
 		return "admin/Estimate/adminEstimateDetail";
+	}
+	
+	
+	@RequestMapping("/adminEstimateDetailUpdate.do")
+	@ResponseBody public Map<String, String> adminEstimateDetailUpdate(EstimateVO vo) throws Exception {
+		System.out.println("test");
+		String result="";
+		int cnt = 0;
+		
+		System.out.println();
+		
+		Map<String, String> map = new HashMap<String, String>();
+		
+		cnt = estimateService.adminEstimateDetailUpdate(vo);
+		
+		if(cnt > 0) {
+			result = "ok";
+		}
+		map.put("result", result);
+		return map;
 	}
 	
 	/*카테고리 리스트 VIEW*/

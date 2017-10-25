@@ -996,18 +996,20 @@
 				param +="&passage="+$("input:radio[name='passage']").val()
 				param +="&req="+$("#req").val();
 			
-				alert(param);		
+				alert(param);						
 			
 			$.ajax({
 				type: 'POST',
 				data: param,
 				url: "<c:url value='/estimateReqSave.do' />",
 				dataType: "json",
-				processData: false,
-				contentType: false,
+				/* processData: false,
+				contentType: false, */
+				
 				
 				/* 처리되고나서 실행되는부분 */
 				success: function (data){
+					
 					if(data.result == "ok"){
 						alert("견적문의가 등록되었습니다.");
 						location.href = "<c:url value='/customer/estimateReq.do'/>";						
@@ -1015,7 +1017,7 @@
 						alert("견적문의가 등록되지 않았습니다. 다시 작성해주세요.");
 					}
 				},
-				error: function (error){
+				error: function (error){					
 					alert("error: " + error);
 				}
 			});

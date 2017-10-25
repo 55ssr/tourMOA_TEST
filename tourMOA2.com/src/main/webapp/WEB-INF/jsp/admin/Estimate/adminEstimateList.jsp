@@ -4,12 +4,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <script>
-	function fn_Detail(){
-		var f = document.frm;
-		var url = "/adminEstimateDetail.do";
-		f.method="POST";
-		f.action = url;
-		f.submit();
+	function fn_Detail(e){		
+		var f2 = document.frm2;
+		f2.unq.value = e;
+		alert(e);
+		f2.method="POST";
+		f2.submit();
 	}
 </script>
 	<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
@@ -29,13 +29,13 @@
 				</tr>
 			</thead>
 			<tbody>				
-				<c:forEach var="rs" items="${rslist}" varStatus="status">
-				<input type="hidden" name="unq" id="unq" value="${rs.unq}" />		
+				<c:forEach var="rs" items="${rslist}" varStatus="status">\
+							
 				<tr>
 					<td>${status.count}</td>
 					<td>${rs.floc}</td>
 					<td>
-						<a href="#" onClick="fn_Detail()" >${rs.title}</a>
+						<a href="#" onClick="fn_Detail(${rs.unq})" >${rs.title}</a>
 					</td>
 					<td>${rs.sdate}</td>
 					<td>${rs.edate}</td>
@@ -46,6 +46,9 @@
 			</tbody>
 		</table>
 		</form>
+		<form name="frm2" id="frm2" method="POST" action="/adminEstimateDetail.do">
+			<input type="hidden" name="unq" id="unq" value="" />
+		</form>		
 	</div>	
 	<nav aria-label="Page navigation example">
 		<ul class="pagination justify-content-center">

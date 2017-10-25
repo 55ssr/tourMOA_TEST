@@ -80,9 +80,17 @@ public class DefaultListVO implements Serializable {
 	/** recordCountPerPage */
 	private int recordCountPerPage = 10;
 	private int rcordCntPg = 10;
-
 	
+	/** lastIndex */
+	private int viewCount = 20;
 
+	/** 가격검색 */
+	private int lowPrice;
+	private int highPrice;
+	
+	/** 출발 날짜별 검색 */
+	private String departDate;
+	
 	public String getNexCd() {
 		return nexCd;
 	}
@@ -320,5 +328,53 @@ public class DefaultListVO implements Serializable {
 	@Override
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);
+	}
+
+
+
+	public int getViewCount() {
+		return viewCount;
+	}
+
+
+
+	public void setViewCount(int viewCount) {
+		this.viewCount = viewCount;
+	}
+
+
+
+	public int getLowPrice() {
+		return lowPrice;
+	}
+
+
+
+	public void setLowPrice(int lowPrice) {
+		this.lowPrice = lowPrice;
+	}
+
+
+
+	public int getHighPrice() {
+		return highPrice;
+	}
+
+
+
+	public void setHighPrice(int highPrice) {
+		this.highPrice = highPrice;
+	}
+
+
+
+	public String getDepartDate() {
+		return departDate;
+	}
+
+
+
+	public void setDepartDate(String departDate) {
+		this.departDate = departDate;
 	}	
 }

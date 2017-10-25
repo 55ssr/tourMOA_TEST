@@ -18,4 +18,13 @@ public class EstimateDAO extends EgovAbstractDAO{
 		List<?> list = list("estimateDAO.selectAdEstimateList",vo);
 		return list;
 	}
+
+	public EstimateVO adminEstimateDetail(EstimateVO vo) {
+		return (EstimateVO) select("estimateDAO.adminEstimateDetail",vo);
+	}
+
+	public int adminEstimateDetailUpdate(EstimateVO vo) {
+		return update("estimateDAO.adminEstimateDetailUpdate",vo);
+	}
+	
 }

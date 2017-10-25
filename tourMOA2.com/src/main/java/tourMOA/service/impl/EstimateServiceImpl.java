@@ -25,4 +25,14 @@ public class EstimateServiceImpl extends EgovAbstractServiceImpl implements Esti
 	public List<?> selectAdEstimateList(EstimateVO vo) throws Exception {
 		return estimateDAO.selectAdEstimateList(vo);
 	}
+
+	@Override
+	public EstimateVO adminEstimateDetail(EstimateVO vo) throws Exception {
+		return estimateDAO.adminEstimateDetail(vo);
+	}
+
+	@Override
+	public int adminEstimateDetailUpdate(EstimateVO vo) throws Exception {
+		return estimateDAO.adminEstimateDetailUpdate(vo);
+	}			
 }

@@ -168,7 +168,7 @@ public class CustomerController {
 		System.out.println("passage ====== " + vo.getPassage());
 		
 		result = estimateService.insertEstimateReq(vo);
-		System.out.println("here~~~~");
+		System.out.println("here~~~~"+result);
 		if(result == null) {
 			result = "ok";
 		}
