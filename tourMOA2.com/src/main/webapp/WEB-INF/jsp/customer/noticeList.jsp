@@ -239,7 +239,5 @@ function fn_loc(a) {
 	<form id="hiddenFrm1" name="hiddenFrm1" method="post" action="/customer/noticeDetail.do">
 		<input type="hidden" id="unq" name="unq" />
 	</form>
-
-
 </section>
 </div>

@@ -48,39 +48,13 @@
 			</ul>
 		</div>
 		<div class="viewContent nowrap">
-		
-			<p>
-				<span style="font-family: 맑은 고딕;"><span
-					style="font-size: 14px;">※ 항공사별 항공편에 대해 2017년 10월 이후 여객
-						유류할증료(Fuel Surcharge), 항공 운임이 다음과 같이 조정 될 예정입니다.</span></span>
-			</p>
-
-			<p>
-				<span style="font-family: 맑은 고딕;"><span
-					style="color: rgb(0, 0, 255);"><strong><span
-							style="font-size: 14px;">&nbsp;&nbsp; (10월 1일부터는&nbsp;변경된
-								금액으로&nbsp;발권 진행하오니 9월 29일(금) 17:00시까지 결제 완료해주시기 바랍니다)</span></strong></span></span>
-			</p>
-
-			<p>
-				<span style="font-family: 맑은 고딕;"><span
-					style="color: rgb(0, 0, 255);"><strong>&nbsp;&nbsp;<span
-							style="font-size: 14px;"> (9월 29일 17:00시 이후 결제건부터는 인상된
-								유류할증료로 결제 진행 됩니다)</span></strong></span></span>
-			</p>
-
-			<p>
-				<span style="font-family: 맑은 고딕;"><span
-					style="color: rgb(0, 0, 255);"><strong><span
-							style="font-size: 14px;">&nbsp;&nbsp; (단, 델타항공은 9월 29일부터
-								인상되므로, 9월 28일(목) 17:00시까지 결제 완료 해주시기 바랍니다)</span></strong></span></span>
-			</p>
+		${vo.content}
 			<!-- 목록 -->
 		<div class="btnarea">
 			<button id="btn_list" class="btnGray" title="목록보기"
 				onclick="document.location.href='/customer/noticeList.do?pageIndex=1&amp;searchCnd=&amp;searchWrd=&amp;searchNoticeCd=&amp;'">목록보기</button>
 		</div>
-		</div>
-		</div>
+	</div>
+</div>
 </section>
 </div>
