@@ -10,6 +10,7 @@ import egovframework.example.sample.service.SampleDefaultVO;
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import tourMOA.service.MemberService;
 import tourMOA.service.MemberVO;
+import tourMOA.service.ReservVO;
 
 @Service("memberService")
 public class MemberServiceImpl extends EgovAbstractServiceImpl implements MemberService {

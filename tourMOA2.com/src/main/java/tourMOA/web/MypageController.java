@@ -16,6 +16,8 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import tourMOA.service.MemberService;
 import tourMOA.service.MemberVO;
+import tourMOA.service.ReservService;
+import tourMOA.service.ReservVO;
 
 @Controller
 public class MypageController {
@@ -26,6 +28,9 @@ public class MypageController {
 	
 	@Resource(name ="memberService")
 	private MemberService memberService; 
+	@Resource(name ="reservService")
+	private ReservService reservService; 
+	
 	/*마이페이지 메인*/
 	@RequestMapping("mypage/main.do")
 	public String main() throws Exception{		
@@ -184,6 +189,16 @@ public class MypageController {
 		return "mypage/accountPwReaffirm";
 	}
 	
+	/*마이페이지 비밀번호 변경*/
+	@RequestMapping("mypage/accountPwUpdate.do")
+	public String accountPwUpdate(@RequestParam("hiddenID") String id,Model model,MemberVO vo) throws Exception{
+		vo.setId(id);
+		vo = memberService.accountPwUpdate(vo);	 
+		model.addAttribute("vo",vo);
+		
+		return "mypage/accountPwUpdate";
+	}
+	
 	@RequestMapping(value="/mypage/accountPwReaffirmDe.do")
 	@ResponseBody public Map<String, Object> accountPwReaffirmDe(@RequestParam("pwd")String pwd, Model model,MemberVO vo) throws Exception{	
 		HashMap<String, Object> map = new HashMap<String, Object>();
@@ -197,6 +212,34 @@ public class MypageController {
 		return map;
 	}
 	
+	/*마이페이지 예약내역 출력*/
+	@RequestMapping(value="/mypage/reserveListDe.do")
+	@ResponseBody public Map<String, Object> reserveListDe(ReservVO vo) throws Exception {
+		
+		System.out.println("ddddddddd"+vo.getId());
+		int cnt=0;
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		System.out.println("22222222222222"+vo.getId());
+		cnt = reservService.reserveListDe(vo);	
+		if(cnt >0){
+			map.put("cnt",cnt);
+		}
+	
+		return map;
+	}
+	@RequestMapping("mypage/reserveList.do")
+	public String reserveList(ReservVO vo,Model model) throws Exception{	
+		System.out.println("111111111111111");
+		vo=reservService.reserveList(vo);
+		System.out.println("2222222222");
+		model.addAttribute("vo",vo);
+		return "mypage/reserveList";
+	}
+	/*여행후기*/
+	@RequestMapping("mypage/episodeWrite.do")
+	public String episodeWrite() {
+		return "mypage/episodeWrite";
+	}
 	/*마이페이지 회원정보 수정 상세페이지단계*/
 	@RequestMapping("mypage/accountDetail.do")
 	public String accountDetail(Model model,MemberVO vo) throws Exception{		
@@ -229,11 +272,6 @@ public class MypageController {
 		return "mypage/login";
 	}
 	
-	/*마이페이지 비회원 예약코드 출력*/
-	@RequestMapping("mypage/reserveList.do")
-	public String reserveList() throws Exception{		
-		return "mypage/reserveList";
-	}
 	
 	/*마이페이지 관심상품 출력*/
 	@RequestMapping("mypage/wishList.do")
@@ -259,15 +297,6 @@ public class MypageController {
 		return "mypage/myPostList";
 	}
 	
-	/*마이페이지 비밀번호 변경*/
-	@RequestMapping("mypage/accountPwUpdate.do")
-	public String accountPwUpdate(@RequestParam("hiddenID") String id,Model model,MemberVO vo) throws Exception{
-		vo.setId(id);
-		vo = memberService.accountPwUpdate(vo);	 
-		model.addAttribute("vo",vo);
-		
-	return "mypage/accountPwUpdate";
-	}
 	
 	/*마이페이지 비밀번호 변경적용*/
 	@RequestMapping(value = "mypage/accountPwUpdateProc.do")

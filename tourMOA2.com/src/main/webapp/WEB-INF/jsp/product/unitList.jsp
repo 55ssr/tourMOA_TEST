@@ -1,6 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator"%>
 
+<link rel="stylesheet" href="/css/main-unit.css" />
 <script src="/js/jquery-2.2.2.js"></script>
 <script src="/js/jquery-ui.js"></script>
 <script src="/js/product/jquery.bxslider.js"></script>
@@ -56,21 +63,46 @@
 				</ul>
 			</div>
 		</div>
+		<!-- 	<div class="departure_month ">
+			<div class="tab_month">
+					<div class="w140" onclick="monthClick('2017','09')" id="div201709">
+						2017.09</div>
+					<div class="w140" onclick="monthClick('2017','10')" id="div201710">
+						2017.10</div>
+					<div class="w140" onclick="monthClick('2017','11')" id="div201711">
+						2017.11</div>
+					<div class="w140" onclick="monthClick('2017','12')" id="div201712">
+						2017.12</div>
+					<div class="w140" onclick="monthClick('2018','01')" id="div201801">
+						2018.01</div>
+					<div class="w140" onclick="monthClick('2018','02')" id="div201802">
+						2018.02</div>
+					<div class="w140" onclick="monthClick('2018','03')" id="div201803">
+						2018.03</div>
+				</div>
+		</div> -->
 			<div class="departure_month slider">
 			<div class="tab_month slick-initialized slick-slider">
 			<button type="button" data-role="none" class="slick-prev slick-arrow slick-disabled" aria-label="Previous" role="button" aria-disabled="true" style="display: block;">Previous</button>
 				<!--class="month_on"  -->
 					<div aria-live="polite" class="slick-list">
 					<div class="slick-track" role="listbox" style="opacity: 1; width: 1144px; transform: translate3d(0px, 0px, 0px);">
-					<div onclick="monthClick('2017','10')" id="div201710" class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide00" style="width: 143px;">
-						2017.10</div><div onclick="monthClick('2017','11')" id="div201711" class="slick-slide slick-active month_on" data-slick-index="1" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide01" style="width: 143px;">
-						2017.11</div><div onclick="monthClick('2017','12')" id="div201712" class="slick-slide slick-active" data-slick-index="2" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide02" style="width: 143px;">
-						2017.12</div><div onclick="monthClick('2018','01')" id="div201801" class="slick-slide slick-active " data-slick-index="3" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide03" style="width: 143px;">
-						2018.01</div><div onclick="monthClick('2018','02')" id="div201802" class="slick-slide slick-active" data-slick-index="4" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide04" style="width: 143px;">
-						2018.02</div><div onclick="monthClick('2018','03')" id="div201803" class="slick-slide slick-active" data-slick-index="5" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide05" style="width: 143px;">
-						2018.03</div><div onclick="monthClick('2018','04')" id="div201804" class="slick-slide slick-active" data-slick-index="6" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide06" style="width: 143px;">
-						2018.04</div><div onclick="monthClick('2018','05')" id="div201805" class="slick-slide" data-slick-index="7" aria-hidden="true" tabindex="-1" role="option" aria-describedby="slick-slide07" style="width: 143px;">
-						2018.05</div>
+							<c:set var="year" value="${year}"/>
+                            <c:set var="month" value="${month}"/>
+	                            <c:forEach begin="1" end="8" var="plusYear" step="1">
+	                            <!-- fmt: 두자리 수 맞춰주기 -->
+                            	<fmt:formatNumber var="monthDigits2" value="${month}" minIntegerDigits="2" type="number"/>
+	                            <div onclick="monthClick('${year}','${monthDigits2}')" id="div201710" class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide00" style="width: 143px;">
+								${year}.${monthDigits2}
+								</div>
+	                            <c:set var="month" value="${month+1}"/>
+	                            <c:if test="${month > '12'}">
+	                            <c:set var="month" value="${month-12}"/>
+	                            <c:set var="year" value="${year+1}"/>
+	                            </c:if>
+	                   			</c:forEach>
+						
+					
 						</div>
 						</div>
 				<!--class="month_on"  -->
@@ -90,135 +122,55 @@
 				<button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: block;" aria-disabled="false">Next</button></div>
 			</div>
 			
-			<div class="month_list"><table class="tbl_month">
-		<caption>
-		출발일 목록
-		</caption>
-		<tbody><tr>
-			<th>수</th>
-						<th>목</th>
-						<th>금</th>
-						<th class="sat">토</th>
-						<th class="sun">일</th>
-						<th>월</th>
-						<th>화</th>
-						<th>수</th>
-						<th>목</th>
-						<th>금</th>
-						<th class="sat">토</th>
-						<th class="sun">일</th>
-						<th>월</th>
-						<th>화</th>
-						<th>수</th>
-						<th>목</th>
-						<th>금</th>
-						<th class="sat">토</th>
-						<th class="sun">일</th>
-						<th>월</th>
-						<th>화</th>
-						<th>수</th>
-						<th>목</th>
-						<th>금</th>
-						<th class="sat">토</th>
-						<th class="sun">일</th>
-						<th>월</th>
-						<th>화</th>
-						<th>수</th>
-						<th>목</th>
+			<div class="month_list">
+			<table class="tbl_month">
+			<caption>
+			출발일 목록
+			</caption>
+		<%-- 	<!-- 월별 요일 -->			
+			<c:set var="day_of_week" value="${day_of_week}"/>
+			<!-- 월별 1일 -->
+			<c:set var="minimumday" value="${minimumday}"/>
+			<!-- 월별 마지막일 -->
+			<c:set var="maximumday" value="${maximumday}"/>
+			<!-- 월별 1일 -->
+			<c:set var="minimumday2" value="${minimumday}"/>
+			<c:set var="weekList" value="${weekList}"/> --%>
+			
+			<tbody>
+						<tr>
+						<c:forEach begin="${minimumday}" end="${maximumday}" var="seMonth" step="1">
+						<th><%-- ${weekList[${seMonth]} --%></th>
+						</c:forEach>
 						</tr>
-		<tr>
-			<td class="pdt_possible" title="예약가능">
-					<a href="javascript:none;" onclick="fnReturnDay('01');">1</a>
-					</td>
-			<td class="pdt_close" title="예약마감">
-					<a href="javascript:none;" onclick="fnReturnDay('02');">2</a>
-					</td>
-			<td class="pdt_possible" title="예약가능">
-					<a href="javascript:none;" onclick="fnReturnDay('03');">3</a>
-					</td>
-			<td class="pdt_possible" title="예약가능">
-					<a href="javascript:none;" onclick="fnReturnDay('04');">4</a>
-					</td>
-			<td class="pdt_possible" title="예약가능">
-					<a href="javascript:none;" onclick="fnReturnDay('05');">5</a>
-					</td>
-			<td class="pdt_possible" title="예약가능">
-					<a href="javascript:none;" onclick="fnReturnDay('06');">6</a>
-					</td>
-			<td class="pdt_possible" title="예약가능">
-					<a href="javascript:none;" onclick="fnReturnDay('07');">7</a>
-					</td>
-			<td class="pdt_possible" title="예약가능">
-					<a href="javascript:none;" onclick="fnReturnDay('08');">8</a>
-					</td>
-			<td class="pdt_standby" title="예약대기">
-					<a href="javascript:none;" onclick="fnReturnDay('09');">9</a>
-					</td>
-			<td class="pdt_close" title="예약마감">
-					<a href="javascript:none;" onclick="fnReturnDay('10');">10</a>
-					</td>
-			<td class="pdt_possible" title="예약가능">
-					<a href="javascript:none;" onclick="fnReturnDay('11');">11</a>
-					</td>
-			<td class="pdt_possible" title="예약가능">
-					<a href="javascript:none;" onclick="fnReturnDay('12');">12</a>
-					</td>
-			<td class="pdt_possible" title="예약가능">
-					<a href="javascript:none;" onclick="fnReturnDay('13');">13</a>
-					</td>
-			<td class="pdt_possible" title="예약가능">
-					<a href="javascript:none;" onclick="fnReturnDay('14');">14</a>
-					</td>
-			<td class="pdt_possible" title="예약가능">
-					<a href="javascript:none;" onclick="fnReturnDay('15');">15</a>
-					</td>
-			<td class="pdt_possible" title="예약가능">
-					<a href="javascript:none;" onclick="fnReturnDay('16');">16</a>
-					</td>
-			<td class="pdt_standby" title="예약대기">
-					<a href="javascript:none;" onclick="fnReturnDay('17');">17</a>
-					</td>
-			<td class="pdt_standby" title="예약대기">
+						
+						
+						<tr>
+						<c:forEach begin="${minimumday2}" end="${maximumday}" var="numMonth" step="1">
+						<%-- <c:if test="${minimumday == '예약가능'}">
+						<th class="sat">${minimumday}</th>
+						<td class="pdt_possible" title="예약가능">
+						<a href="javascript:none;" onclick="fnReturnDay('${minimumday}');">${minimumday}</a>
+						</td>
+						</c:if>
+						<c:if test="${minimumday == '예약마감'}">
+						<td class="pdt_close" title="예약마감">
+						onclick="fnReturnDay('${minimumday}');">${minimumday}</a>
+						</td>
+						</c:if> --%>
+						<td class="pdt_possible" title="예약가능">
+						<a href="javascript:none;" onclick="fnReturnDay('${numMonth}');">${numMonth}</a>
+						</td>
+						<c:set var="minimumday2" value="${minimumday2+1}"/>
+						</c:forEach>
+			
+					<!-- <td class="pdt_standby" title="예약대기">
 					<a href="javascript:none;" onclick="fnReturnDay('18');">18</a>
-					</td>
-			<td class="pdt_possible" title="예약가능">
-					<a href="javascript:none;" onclick="fnReturnDay('19');">19</a>
-					</td>
-			<td class="pdt_possible" title="예약가능">
-					<a href="javascript:none;" onclick="fnReturnDay('20');">20</a>
-					</td>
-			<td class="pdt_possible" title="예약가능">
-					<a href="javascript:none;" onclick="fnReturnDay('21');">21</a>
-					</td>
-			<td class="pdt_possible" title="예약가능">
-					<a href="javascript:none;" onclick="fnReturnDay('22');">22</a>
-					</td>
-			<td class="pdt_possible" title="예약가능">
-					<a href="javascript:none;" onclick="fnReturnDay('23');">23</a>
-					</td>
-			<td class="pdt_close" title="예약마감">
-					<a href="javascript:none;" onclick="fnReturnDay('24');">24</a>
-					</td>
-			<td class="pdt_possible" title="예약가능">
-					<a href="javascript:none;" onclick="fnReturnDay('25');">25</a>
-					</td>
-			<td class="pdt_possible" title="예약가능">
-					<a href="javascript:none;" onclick="fnReturnDay('26');">26</a>
-					</td>
-			<td class="pdt_possible" title="예약가능">
-					<a href="javascript:none;" onclick="fnReturnDay('27');">27</a>
-					</td>
-			<td class="pdt_possible" title="예약가능">
-					<a href="javascript:none;" onclick="fnReturnDay('28');">28</a>
-					</td>
-			<td class="pdt_possible" title="예약가능">
-					<a href="javascript:none;" onclick="fnReturnDay('29');">29</a>
-					</td>
-			<td class="pdt_possible" title="예약가능">
-					<a href="javascript:none;" onclick="fnReturnDay('30');">30</a>
-					</td>
+					</td> -->
+			
 			</tr>
-	</tbody></table>
+	</tbody>
+	</table>
  
  
  <script type="text/javaScript" language="javascript">

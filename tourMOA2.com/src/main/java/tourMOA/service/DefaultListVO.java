@@ -117,7 +117,7 @@ public class DefaultListVO implements Serializable {
 	}
 
 	/** 가격 검색 */
-	private int lowPrice;
+	private int lowPrice;  
 	private int highPrice;
 	
 	public int getLowPrice() {

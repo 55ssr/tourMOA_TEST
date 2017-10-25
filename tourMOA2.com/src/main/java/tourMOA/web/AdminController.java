@@ -15,10 +15,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,6 +38,7 @@ import tourMOA.service.GoodsVO;
 import tourMOA.service.MemberService;
 import tourMOA.service.MemberVO;
 import tourMOA.service.ReservService;
+import tourMOA.service.ReservVO;
 import tourMOA.service.OptionVO;
 import tourMOA.service.SliderVO;
 
@@ -956,9 +955,9 @@ public class AdminController {
 
 		searchVO.setFirstIndex(firstIndex);
 		searchVO.setLastIndex(lastIndex);
-
+		System.out.println("111111111111111111111");
 		List<?> list = reservService.adminPayList(searchVO);
-
+		System.out.println("22222222");
 		model.addAttribute("totalCount", totalCount); // 총 데이터 수량
 		model.addAttribute("firstPage", firstPage);
 		model.addAttribute("lastPage", lastPage);

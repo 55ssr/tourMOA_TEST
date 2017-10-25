@@ -272,6 +272,8 @@
 			goods
 		WHERE
 			code = '$code$'
+			OR
+			unq = '$unq$'
 	</select>
 	
 	<update id="goodsDAO.updateGoods">
@@ -405,25 +407,24 @@
 	</select>
 	
 	<select id="goodsDAO.selectOptionList" resultClass="egovMap">
-		SELECT code, title, filename, rtime, pay, expl
+		SELECT code, title, filename, rtime, expl
 			FROM opt
 			WHERE code = '$nation$'
 	</select>
 				
 	<insert id="goodsDAO.insertOption">
-		INSERT INTO opt (unq, code, title, filename, rtime, pay, expl)
+		INSERT INTO opt (unq, code, title, filename, rtime,  expl)
 			VALUES (SEQ_option_unq.nextval
 					,'$code$'
 					,'$title$'
 					,'$filename$'
 					,'$rtime$'
-					,'$pay$'
 					,'$expl$'
 					)
 	</insert>
 	
 	<select id="goodsDAO.selectOptionDetail" resultClass="optionVO">
-		SELECT unq, code, title, filename, rtime, pay, expl
+		SELECT unq, code, title, filename, rtime, expl
 			FROM opt WHERE unq = '$unq$'
 	</select>
 	
@@ -431,7 +432,7 @@
 		SELECT b.* FROM (
 			SELECT 
 				rownum rn, a.* FROM (
-							SELECT	  unq, code, title, filename, rtime, pay
+							SELECT	  unq, code, title, filename, rtime
 							FROM 
 									opt
 									
@@ -473,7 +474,6 @@
 				UPDATE opt SET
 					title = '$title$',
 					rtime = '$rtime$',
-					pay = '$pay$',
 					expl = '$expl$',
 					filename = filename || '$filename$'
 				WHERE

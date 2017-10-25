@@ -11,4 +11,8 @@ public interface ReservService {
 	int adminPayTotal(DefaultListVO searchVO) throws Exception;
 
 	String detailPackagebtn(ReservVO vo) throws Exception;
+
+	ReservVO reserveList(ReservVO vo) throws Exception;
+
+	int reserveListDe(ReservVO vo) throws Exception;
 }
