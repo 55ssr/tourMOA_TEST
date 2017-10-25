@@ -184,7 +184,7 @@ $(document).ready(function(){
                     <div class="cont01 mgt20">
                         <ul>
                         	<li>
-	                                <a href="/product/unitList.do?menu=pkg&amp;did=60&amp;goodsCd=EEP2018">
+	                                <a href="/product/unitList.do?code=102">
 	                                <span class="pic">
 	                                <img src="https://dimgcdn.ybtour.co.kr/TN/5f/5fed74d174520acd1a1d274f98a7610d.tn.410x280.jpg" alt="이미지설명">
 	                                	</span>	                                

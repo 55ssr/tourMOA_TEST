@@ -63,5 +63,11 @@ public class CategoryServiceImpl  extends EgovAbstractServiceImpl implements Cat
 	@Override
 	public int selectCategoryTotal(SampleDefaultVO searchVO) throws Exception {
 		return categoryDAO.selectCategoryTotal(searchVO);
+	}
+
+	@Override
+	public List<?> selectCategoryList1(DefaultListVO vo) throws Exception {
+		List<?> list = categoryDAO.selectCategoryList1(vo);
+		return list;
 	}	
 }

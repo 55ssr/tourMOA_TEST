@@ -41,4 +41,5 @@ public interface MemberService {
 	int adminDetailUpdate(MemberVO vo) throws Exception;
 
 
+
 }

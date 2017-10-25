@@ -1,4 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 	<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
 	<h1>상품평 관리</h1>
 	<div class="row justify-content-between mb-3">
@@ -56,78 +64,23 @@
 				</tr>
 			</thead>
 			<tbody>
+				<c:forEach var="rs" items="${resultList}">
 				<tr>
-					<td>6</td>
-					<td>자유여행</td>
+					<td>${number}</td>
+					<td>${rs.gubun}</td>
 					<td>
-						<a href="/adminGoodsDetail.do">서유럽 9박 10일</a>
+						<a href="#" onclick="fn_loc('g',${rs.pid})">${rs.gtitle}</a>
 					</td>
 					<td>
-						<a href="/adminGoodsCommDetail.do">오사카 짱짱이다</a>
+						<a href="#" onclick="fn_loc('c',${rs.unq})">${rs.ctitle}</a>
 					</td>
-					<td>강진규</td>
-					<td>2017.12.13</td>
+					<td>${rs.author}</td>
+					<td>
+						${fn:substring(rs.rdate,0,10)}
+					</td>
 				</tr>
-				<tr>
-					<td>5</td>
-					<td>자유여행</td>
-					<td>
-						<a href="/adminGoodsDetail.do">남아공 9박 10일</a>
-					</td>
-					<td>
-						<a href="/adminGoodsCommDetail.do">후쿠오카 짱짱이다</a>
-					</td>
-					<td>강진규</td>
-					<td>2017.12.13</td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>자유여행</td>
-					<td>
-						<a href="/adminGoodsDetail.do">러시아 99박 910일</a>
-					</td>
-					<td>
-						<a href="/adminGoodsCommDetail.do">모스크바 짱짱이다</a>
-					</td>
-					<td>강진규</td>
-					<td>2017.12.13</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>자유여행</td>
-					<td>
-						<a href="/adminGoodsDetail.do">서유럽 9박 10일</a>
-					</td>
-					<td>
-						<a href="/adminGoodsCommDetail.do">오사카 짱짱이다</a>
-					</td>
-					<td>강진규</td>
-					<td>2017.12.13</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>자유여행</td>
-					<td>
-						<a href="/adminGoodsDetail.do">서유럽 9박 10일</a>
-					</td>
-					<td>
-						<a href="/adminGoodsCommDetail.do">오사카 짱짱이다</a>
-					</td>
-					<td>강진규</td>
-					<td>2017.12.13</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>자유여행</td>
-					<td>
-						<a href="/adminGoodsDetail.do">서유럽 9박 10일</a>
-					</td>
-					<td>
-						<a href="/adminGoodsCommDetail.do">오사카 짱짱이다</a>
-					</td>
-					<td>강진규</td>
-					<td>2017.12.13</td>
-				</tr>
+				<c:set var="number" value="${number-1}" />
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>
@@ -151,4 +104,22 @@
 			</li>
 		</ul>
 	</nav>
-    </main>
+	<form action="/adminGoodsDetail.do" name="hiddenFrm" id="hiddenFrm" method="post">
+		<input type="hidden" name="unq" id="unq" />
+	</form>
+	<script>
+		function fn_loc(a, b) {
+			alert(a +" / " + b);
+			var f = document.hiddenFrm;
+			if (a == "g") {
+				f.unq.value = b;
+				f.submit();
+			} else {
+				f.action = "/adminGoodsCommDetail.do";
+				f.unq.value = b;
+				f.submit();	
+			}
+		}
+	</script>
+
+</main>

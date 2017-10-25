@@ -1,6 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator"%>
 
+<link rel="stylesheet" href="/css/main-unit.css" />
 <script src="/js/jquery-2.2.2.js"></script>
 <script src="/js/jquery-ui.js"></script>
 <script src="/js/product/jquery.bxslider.js"></script>
@@ -22,7 +29,6 @@
 		<div id="haedline">
 			<div id="title">${vo.title}</div>
 			<div id="pNum"><span>[상품번호</span><span class="num">${vo.code}</span>]
-				<span class="dev_comm">상품코드를 일관성있게 만들어야함</span>
 			</div>
 		</div>
 		<div id="infoBox">
@@ -32,7 +38,6 @@
                     <span class="txt price">
                     	<fmt:formatNumber value="${vo.price}" groupingUsed="true" /> 원 ~ 
                     	3,590,000 원
-                    	<span class="dev_comm">가격 범위는 같은 code 상품중에서 최저가와 최대가를 계산하여 출력해야 함</span>
                     </span>
                     <div class="sns">                    	
 						<span><a href="http://www.facebook.com" onclick="fnGoSns(this.href,'facebook',''); return false; "><img src="/images/product/detail/sns1.png" alt="페이스북 링크"></a></span>
@@ -43,169 +48,324 @@
                 </li>
                 <li><span class="tit">여행기간</span><span class="txt">${vo.period}</span></li>
                 <li><span class="tit">간략일정</span><span class="txt">${vo.schd}</span></li>
-                <li><span class="tit">상품설명</span><span class="txt">${vo.detail2}</span></li>
+                <li><span class="tit">상품설명</span><span class="txt">
+                ${vo.detail1}
+                </span>
+                </li>
 				</ul>
 				
+				
 			<div class="infoPhoto">
-				<span class="dev_comm">이미지파일명 데이터 베이스 화</span>
 				<ul class="slide_v1">
-					<li><img src="/images/product/detail/${vo.code}/${vo.images01}" alt=""></li>
-					<li><img src="/images/product/detail/${vo.code}/${vo.images02}" alt=""></li>
-					<li><img src="/images/product/detail/${vo.code}/${vo.images03}" alt=""></li>
+					<li><img src="/images/product/detail/de-s1.PNG" alt=""></li>
+					<li><img src="/images/product/detail/de-s2.PNG" alt=""></li>
+					<li><img src="/images/product/detail/de-s3.PNG" alt=""></li>
 				</ul>
 			</div>
-		</div>
-			<div class="departure_month ">
-			<div class="tab_month">
-					<div class="w140" onclick="monthClick('2017','09')" id="div201709">
-						2017.09</div>
-					<div class="w140" onclick="monthClick('2017','10')" id="div201710">
-						2017.10</div>
-					<div class="w140" onclick="monthClick('2017','11')" id="div201711">
-						2017.11</div>
-					<div class="w140" onclick="monthClick('2017','12')" id="div201712">
-						2017.12</div>
-					<div class="w140" onclick="monthClick('2018','01')" id="div201801">
-						2018.01</div>
-					<div class="w140" onclick="monthClick('2018','02')" id="div201802">
-						2018.02</div>
-					<div class="w140" onclick="monthClick('2018','03')" id="div201803">
-						2018.03</div>
-				</div>
-		</div>
+			</div>
+			<div class="departure_month slider">
+			<div class="tab_month slick-initialized slick-slider">
+			<button type="button" data-role="none" class="slick-prev slick-arrow slick-disabled" aria-label="Previous" role="button" aria-disabled="true" style="display: block;">Previous</button>
+				<!--class="month_on"  -->
+					<div aria-live="polite" class="slick-list">
+					<div class="slick-track" role="listbox" style="opacity: 1; width: 1144px; transform: translate3d(0px, 0px, 0px);">
+							<c:set var="year" value="${year}"/>
+                            <c:set var="monthDigits" value="${month}"/>
+	                            <c:forEach begin="1" end="8" var="plusYear" step="1">
+	                            <!-- fmt: 두자리 수 맞춰주기 -->
+                           		<fmt:formatNumber var="monthDigits2" value="${monthDigits}" minIntegerDigits="2" type="number"/>
+	                            
+									<c:choose>
+							
+										<c:when test="${monthDigits2 == month}">
+											<div onclick="monthClick('${year}','${monthDigits2}')" id="div201710" class="slick-slide slick-current slick-active month_on" data-slick-index="0" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide00" style="width: 143px;">
+												${year}.${monthDigits2}
+											</div>
+										</c:when>
+										
+										<c:otherwise>
+											<div onclick="monthClick('${year}','${monthDigits2}')" id="div201710" class="slick-slide slick-current slick-active " data-slick-index="0" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide00" style="width: 143px;">
+												${year}.${monthDigits2}
+											</div>
+										</c:otherwise>
+										
+									</c:choose>
+	                            <c:set var="monthDigits" value="${monthDigits+1}"/>
+	                            <c:if test="${monthDigits > '12'}">
+	                            <c:set var="monthDigits" value="${monthDigits-12}"/>
+	                            <c:set var="year" value="${year+1}"/>
+	                            </c:if>
+	                   			</c:forEach>
+						
+					
+						</div>
+						</div>
+				<!--class="month_on"  -->
+					
+				<!--class="month_on"  -->
+					
+				<!--class="month_on"  -->
+					
+				<!--class="month_on"  -->
+					
+				<!--class="month_on"  -->
+					
+				<!--class="month_on"  -->
+					
+				<!--class="month_on"  -->
+					
+				<button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: block;" aria-disabled="false">Next</button></div>
+			</div>
 			
 			<div class="month_list">
-				<table class="tbl_month">
-					<caption>
-						출발일 목록
-					</caption>
-					<tbody><tr>
-			<th>금</th>
-						<th class="sat">토</th>
-						<th class="sun">일</th>
-						<th>월</th>
-						<th>화</th>
-						<th>수</th>
-						<th>목</th>
-						<th>금</th>
-						<th class="sat">토</th>
-						<th class="sun">일</th>
-						<th>월</th>
-						<th>화</th>
-						<th>수</th>
-						<th>목</th>
-						<th>금</th>
-						<th class="sat">토</th>
-						<th class="sun">일</th>
-						<th>월</th>
-						<th>화</th>
-						<th>수</th>
-						<th>목</th>
-						<th>금</th>
-						<th class="sat">토</th>
-						<th class="sun">일</th>
-						<th>월</th>
-						<th>화</th>
-						<th>수</th>
-						<th>목</th>
-						<th>금</th>
-						<th class="sat">토</th>
+			<table class="tbl_month">
+			<caption>
+			출발일 목록
+			</caption>
+		<%-- 	<!-- 월별 요일 -->			
+			<c:set var="day_of_week" value="${day_of_week}"/>
+			<!-- 월별 1일 -->
+			<c:set var="minimumday" value="${minimumday}"/>
+			<!-- 월별 마지막일 -->
+			<c:set var="maximumday" value="${maximumday}"/>
+			<!-- 월별 1일 -->
+			<c:set var="minimumday2" value="${minimumday}"/>
+			 --%>
+			<c:set var="weekList" value="${weekList}"/>
+			
+			<tbody>
+						<tr>
+						<c:forEach begin="${minimumday-1}" end="${maximumday-1}" var="seMonth" step="1">
+						<%-- <th>${weekList[seMonth]}</th> --%>
+<%-- 						<c:if test="${seMonth%7==6}">
+						<th class="sat">${weekList[seMonth]}</th>
+						</c:if>
+						<c:if test="${seMonth%7==0}">
+						<th>${weekList[seMonth]}</th>
+						<th class="sun">${weekList[seMonth]}</th>
+						</c:if> --%>
+						<c:choose>
+						
+							<c:when test="${seMonth%7==6}">
+								<th class="sat">${weekList[seMonth]}</th>
+							</c:when>
+							<c:when test="${seMonth%7==0}">
+								<th class="sun">${weekList[seMonth]}</th>
+							</c:when>
+							
+							<c:otherwise>
+								<th>${weekList[seMonth]}</th>
+							</c:otherwise>
+						</c:choose>
+						
+						</c:forEach>
 						</tr>
-		<tr>
-			<td>
-					<span>1</span>
-					</td>
-			<td>
-					<span>2</span>
-					</td>
-			<td>
-					<span>3</span>
-					</td>
-			<td>
-					<span>4</span>
-					</td>
-			<td>
-					<span>5</span>
-					</td>
-			<td>
-					<span>6</span>
-					</td>
-			<td>
-					<span>7</span>
-					</td>
-			<td>
-					<span>8</span>
-					</td>
-			<td>
-					<span>9</span>
-					</td>
-			<td>
-					<span>10</span>
-					</td>
-			<td>
-					<span>11</span>
-					</td>
-			<td>
-					<span>12</span>
-					</td>
-			<td>
-					<span>13</span>
-					</td>
-			<td>
-					<span>14</span>
-					</td>
-			<td>
-					<span>15</span>
-					</td>
-			<td>
-					<span>16</span>
-					</td>
-			<td>
-					<span>17</span>
-					</td>
-			<td>
-					<span>18</span>
-					</td>
-			<td>
-					<span>19</span>
-					</td>
-			<td>
-					<span>20</span>
-					</td>
-			<td>
-					<span>21</span>
-					</td>
-			<td>
-					<span>22</span>
-					</td>
-			<td>
-					<span>23</span>
-					</td>
-			<td>
-					<span>24</span>
-					</td>
-			<td>
-					<span>25</span>
-					</td>
-			<td>
-					<span>26</span>
-					</td>
-			<td>
-					<span>27</span>
-					</td>
-			<td>
-					<span>28</span>
-					</td>
-			<td>
-					<span>29</span>
-					</td>
-			<td>
-					<span>30</span>
-					</td>
+						
+						
+						<tr>
+						<c:forEach begin="${minimumday}" end="${maximumday}" var="numMonth" step="1">
+						<%-- <c:if test="${minimumday == '예약가능'}">
+						<th class="sat">${minimumday}</th>
+						<td class="pdt_possible" title="예약가능">
+						<a href="javascript:none;" onclick="fnReturnDay('${minimumday}');">${minimumday}</a>
+						</td>
+						</c:if>
+						<c:if test="${minimumday == '예약마감'}">
+						<td class="pdt_close" title="예약마감">
+						onclick="fnReturnDay('${minimumday}');">${minimumday}</a>
+						</td>
+						</c:if> --%>
+						
+						<c:choose>
+						
+							<c:when test="${numMonth<date}">
+								<td>
+								<span>${numMonth}</span>
+								</td>
+							</c:when>
+							<%-- <c:when test="${numMonth<date}">
+								
+							</c:when> --%>
+							
+							<c:otherwise>
+								<td class="pdt_possible" title="예약가능">
+								<a href="javascript:none;" onclick="fnReturnDay('${numMonth}');">${numMonth}</a>
+								</td>
+							</c:otherwise>
+						</c:choose>
+						
+						
+						<c:set var="minimumday2" value="${minimumday2+1}"/>
+						</c:forEach>
+			
+					<!-- <td class="pdt_standby" title="예약대기">
+					<a href="javascript:none;" onclick="fnReturnDay('18');">18</a>
+					</td> -->
+			
 			</tr>
 	</tbody>
-				</table>
-			</div>
+	</table>
+ 
+ 
+ <script type="text/javaScript" language="javascript">
+$(document).ready(function(){
+	settingButton();
+	fnChangeUnitList("2017","11","","");
+});
+
+/* ********************************************************
+ * 월(클릭 이벤트)
+ ******************************************************** */
+function monthClick(year, month){
+	fnMonthEvent("CHP1028",
+			"1",
+			year,
+			month,
+			"",
+			"" );	
+}
+
+/* ********************************************************
+ * 예약가능상품 필터
+ ******************************************************** */
+function fnRsrvfilter(){
+
+	//달력
+	fnMonthEvent("CHP1028",
+					"1",
+					"2017",
+					"11",
+					"Y",
+					"");
+}
+
+/* ********************************************************
+ * 예약가능상품전체보기 필터
+ ******************************************************** */
+function fnRsrvAllfilter(){
+
+	//달력
+	fnMonthEvent("CHP1028",
+					"1",
+					"2017",
+					"11",
+					"",
+					"");
+}
+
+
+/* ********************************************************
+ * 월(클릭 이벤트)
+ ******************************************************** */
+/* function fnMonthEvent(goodsCd,compId,year, month, evRsrvYn,webDisplayCls){
+	 var pageUrl = (location.href).split('/')[3];
+	    
+	    var ajaxUrl = "";
+	    if(pageUrl == 'mypage'){
+	    	ajaxUrl = "/mypage/unitCalEvList.do";
+	    }else{
+	    	ajaxUrl = "/product/unitCalEvList.do";
+	    }
+	   	 $.ajax({
+	   	    	url:ajaxUrl
+	   			,async:false
+	   	       	,data:{
+	   	    		"goodsCd" 			: goodsCd,
+	   	    		"compId" 			: compId,
+	   	       		"year" 				: year,
+	   	       		"month" 				: month, 
+	   	       		"evRsrvYn"			: evRsrvYn,
+	   	       		"menu"				: "pkg",
+	   	       		"loc"					: "453",
+	   	      		"pid"					: "7409",
+	   	      		"did"					: "7410",
+	   	      		"compareBtnYn"		: "",
+	   	       		"webDisplayCls"		: webDisplayCls,
+	   	       	}       	
+	   	    	,success:function(html){
+	   	    		$(".month_list").html(html);
+	   	    		$("#dayTime").attr("style", "display:none");
+	   	    		settingButton();
+	   	    	}
+	   	    	,error: function(html) {
+	   				alert("fnMonthEvent 에러 발생");
+	   			}
+	   	    });
+	   	$("#dayTime").html(dayHtml);
+} */
+
+/* ********************************************************
+ * 행사리스트
+ ******************************************************** */	
+/* function fnChangeUnitList(year, month, date ,evRsrvYn){
+    var pageUrl = (location.href).split('/')[3];
+    
+    var ajaxUrl = "";
+    if(pageUrl == 'mypage'){
+    	ajaxUrl = "/mypage/unitMonList.do";
+    }else{
+    	ajaxUrl = "/product/unitMonList.do"
+    }	
+    $.ajax({
+    	url		:	ajaxUrl
+       	,async	:	false
+    	,data:{
+    		"menu"			: "pkg",
+    		"goodsCd" 		: "CHP1028",
+    		"compId" 		: "1",
+      		"year" 			: year,
+      		"month" 			: month, 
+      		"startDate"		: date,
+      		"evRsrvYn"		: evRsrvYn,
+      		"loc"				: "453",
+      		"pid"				: "7409",
+      		"did"				: "7410",
+      		"compareBtnYn"	: ""
+    	}        	
+    	,success:function(html){
+    		$(".departure_list").html(html);
+    	}
+    	,error: function(html) {
+			alert("fnChangeUnitList 에러 발생");
+		}
+    });
+    
+} */
+
+/* ********************************************************
+ * 결과연월일 반환
+ ******************************************************** */
+var dayHtml = "<button type=\"button\" class=\"btn_date_del\" id=\"dateDtlBtn\" onclick=\"fnDayDelete()\"><span>삭제</span></button>";
+function fnReturnDay(day){
+	$("#dayTime").html("11."+day+ dayHtml);
+	fnChangeUnitList("2017","11",day,"");
+	$("#dayTime").attr("style", "display:block");
+}
+
+function fnDayDelete(){
+	$("#dayTime").html(dayHtml);
+	fnChangeUnitList("2017","11","","");
+	$("#dayTime").attr("style", "display:none");
+}
+
+function settingButton(){
+	if("" != ""){
+		$(".btn_condition").attr("onclick", "fnRsrvAllfilter()");
+		$(".btn_condition").text("전체 상품보기");
+	}else{
+		if("pkg" == "fit" || "pkg" == "hym"){
+			$(".btn_condition").attr("onclick", "fnRsrvfilter()");
+			$(".btn_condition").text("예약접수가능 상품보기");
+		}else{
+			$(".btn_condition").attr("onclick", "fnRsrvfilter()");
+			$(".btn_condition").text("예약가능 상품보기");
+		}
+	}
+}
+</script>
+ 
+ </div>
+
 			<div class="departure_block_btn">
 			<dl class="departure_date">
 				<dt>출발일</dt>
@@ -246,115 +406,42 @@
 			</tr>
 			</thead>
 			<tbody aria-live="polite" aria-relevant="all">
+			<c:forEach items="${unitList}" var="unitList">
 			<tr role="row">
-				<td><input type="checkbox" name="chk01" id="chk01" value="EMP5043-180504KE00" title="체크"></td>
-				<td><span class="depart_time">05/04 (금) 13:00</span>
-				<span class="arrive_time">05/13 (일) 17:00</span>
+				<td><input type="checkbox" name="chk01" id="chk01" value="${unitList.code}" title="체크"></td>
+				<td><span class="depart_time">${unitList.sdate}</span>
+				<span class="arrive_time">${unitList.edate}</span>
 				</td>
 				<td>
-					<img src="/images/product/detail/KE.png" alt="대한항공"><br>대한항공</td>
+					<img src="/images/air/${unitList.airline}.png" alt="${unitList.airline}"><br>${unitList.airline}</td>
 				<td class="tit_pdt">
 				<span class="ico_block">
 					<span class="ico_pink">선착순</span>
 					<!-- <span class="ico_limited ">리미티드세일</span> -->
 					</span>
-				<a href="detailPackage.do">[프리미엄][대한항공직항][국내선 항공포함]_스페인/포르투갈 10일[KE]</a>
+				<a href="detailPackage.do">${unitList.title}</a>
 				</td>
-				<td class="pdt_date">8박10일</td>
-				<td class="pdt_price">2,790,000<a href="#none" class="mini_price">&nbsp;<img src="/images/product/detail/tool.png" alt="요금안내">
+				<td class="pdt_date">${unitList.period}</td>
+
+				<td class="pdt_price">${unitList.price}<a href="#none" class="mini_price">&nbsp;<img src="/images/product/detail/tool.png" alt="요금안내">
 						<ul class="child_price">
-							<li>아동: 2,790,000</li>
-							<li>유아: 500,000</li>
+							<li>아동: ${unitList.pricech}</li>
+							<li>유아: ${unitList.pricein}</li>
 						</ul>
 					</a>
 				</td>
 				<td>
-				<span class="condition_standby">
-                                 	예약대기</span>										
-                              <span class="condition_hurryup">마감임박</span>
-                              </td>
-			</tr>
-			<tr role="row">
-				<td><input type="checkbox" name="chk01" id="chk01" value="EMP5043-180511KE00" title="체크"></td>
-				<td><span class="depart_time">05/11 (금) 13:00</span>
-				<span class="arrive_time">05/20 (일) 17:00</span>
-				</td>
-				<td>
-					<img src="/images/product/detail/KE.png" alt="대한항공"><br>대한항공</td>
-				<td class="tit_pdt">
-				<span class="ico_block">
-					<span class="ico_pink">선착순</span>
-					<!-- <span class="ico_limited ">리미티드세일</span> -->
-					</span>
-				<a href="detailPackage.do">[프리미엄][대한항공직항][국내선 항공포함]_스페인/포르투갈 10일[KE]</a>
-				</td>
-				<td class="pdt_date">8박10일</td>
-				<td class="pdt_price">2,790,000<a href="#none" class="mini_price">&nbsp;<img src="/images/product/detail/tool.png" alt="요금안내">
-						<ul class="child_price">
-							<li>아동: 2,790,000</li>
-							<li>유아: 500,000</li>
-						</ul>
-					</a>
-				</td>
-				<td>
-				<span class="condition_booking">
-                                 	예약가능</span>										
-                              <span class="condition_other">별도문의</span>
-                              </td>
-			</tr>
-			<tr role="row">
-				<td><input type="checkbox" name="chk01" id="chk01" value="EMP5043-180525KE00" title="체크"></td>
-				<td><span class="depart_time">05/25 (금) 13:00</span>
-				<span class="arrive_time">06/03 (일) 17:00</span>
-				</td>
-				<td>
-					<img src="/images/product/detail/tway.png" alt="티웨이"><br>티웨이항공</td>
-				<td class="tit_pdt">
-				<span class="ico_block">
-					<span class="ico_pink">선착순</span>
-					</span>
-				<a href="detailPackage.do">[프리미엄][국내선 항공포함]_스페인/포르투갈 10일[KE]</a>
-				</td>
-				<td class="pdt_date">7박9일</td>
-				<td class="pdt_price">2,490,000<a href="#none" class="mini_price">&nbsp;<img src="/images/product/detail/tool.png" alt="요금안내">
-						<ul class="child_price">
-							<li>아동: 2,490,000</li>
-							<li>유아: 400,000</li>
-						</ul>
-					</a>
-				</td>
-				<td>
-				<span class="condition_booking">예약가능</span>										
-                    <span class="condition_fix">출발확정</span>
-                   </td>
-        		</tr>
-                <tr role="row">
-				<td><input type="checkbox" name="chk01" id="chk01" value="EMP5023-171010AF00" title="체크"></td>
-				<td><span class="depart_time">10/10 (화) 09:30</span>
-				<span class="arrive_time">10/19 (목) 07:20</span>
-				</td>
-				<td>
-					<img src="/images/product/detail/af.png" alt="에어프랑스"><br>에어프랑스</td>
-				<td class="tit_pdt">
-				<span class="ico_block">
-					<span class="ico_darkgreen">특가</span>
-					</span>
-				<a href="#">[10月/놓치면마감] 스페인+포르투칼_2대맛기행 완벽정복 10일 AF</a>
-				</td>
-				<td class="pdt_date">8박10일</td>
-				<td class="pdt_price">1,590,000<a href="#none" class="mini_price">&nbsp;<img src="/images/product/detail/tool.png" alt="요금안내">
-						<ul class="child_price">
-							<li>아동: 1,590,000</li>
-							<li>유아: 0</li>
-						</ul>
-					</a>
-				</td>
-				<td>
-				<span class="condition_booking">
-                                 	예약가능</span>										
-                              <span class="condition_fix">출발확정</span>
-                              </td>
-			</tr>
+				<c:if test="${unitList.use=='사용'}">
+				<span class="condition_standby">예약대기</span>										
+                <span class="condition_hurryup">마감임박</span>
+				</c:if>
+												
+				<c:if test="${unitList.use=='중지'}">
+				<span class="condition_booking">예약접수</span>	
+				</c:if>	
+                </td>
+				</tr>
+                			</c:forEach>
 				</tbody>				
 
 			</table>

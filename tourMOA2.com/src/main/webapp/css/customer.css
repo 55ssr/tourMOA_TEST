@@ -1,9 +1,9 @@
 @CHARSET "UTF-8";
 @import url('common.css');
 
-#wrap #content { position: relative; display: block; width: 1100px; height: 100%; margin: 0 auto; }
-#wrap #content input[type="radio"] { cursor: pointer; }
-#wrap #content input[type="checkbox"] { cursor: pointer; }
+section#contentInNoticeList { position: relative; display: block; width: 1100px; height: 100%; margin: 0 auto; }
+section#contentInNoticeList input[type="radio"] { cursor: pointer; }
+section#contentInNoticeList input[type="checkbox"] { cursor: pointer; }
 
 /* LNB */
 nav#lnb { position: relative; width: 1100px; height: 105px; border-bottom: 1px solid #e6e6e6; margin: 0 auto; z-index: 3; }
@@ -132,36 +132,36 @@ nav#lnb #one li ul.sub li.on { color: #ffba00; }
 .sec_04 span.txt { width: 120px; color: #777777; line-height: 13px; margin-bottom: 12px;}
 
 /* 고객센터 타이틀 */
-#content .tit { position: relative; display: table; width: 1100px; height: 24px; margin: 50px 0 25px 0; }
-#content .tit_txt { position: absolute; display: block; width: 700px; margin-top: 9px; font-size: 14px; font-weight: normal; color: #999999; }
+section#contentInNoticeList  .tit { position: relative; display: table; width: 1100px; height: 24px; margin: 50px 0 25px 0; }
+section#contentInNoticeList  .tit_txt { position: absolute; display: block; width: 700px; margin-top: 9px; font-size: 14px; font-weight: normal; color: #999999; }
 
-#content .notice_tit { background: url("/images/customer/tit_notice.png") no-repeat ; }
-#content .faq_tit { background: url("/images/customer/tit_faq.png") no-repeat ; }
-#content .qna_tit { background: url("/images/customer/tit_qna.png") no-repeat ; }
-#content .praise_tit { background: url("/images/customer/tit_praise.png") no-repeat ; }
-#content .best_guide_tit { background: url("/images/customer/tit_guide.png") no-repeat ; }
-#content .csreport_tit { background: url("/images/customer/tit_csreport.png") no-repeat ; }
-#content .rsch_tit { background: url("/images/customer/tit_research.png") no-repeat ; }
-#content .cs_proc_tit { background: url("/images/customer/tit_csprocessing.png") no-repeat ; }
-#content .ccm_tit { background: url("/images/customer/tit_ccm.png") no-repeat ; }
-#content .prize_tit { background: url("/images/customer/tit_prize.png") no-repeat ; }
-#content .payment_tit { background: url("/images/customer/tit_payment.png") no-repeat ; }
-#content .gift_tit { background: url("/images/customer/tit_gift.png") no-repeat ; }
-#content .contact_tit { background: url("/images/customer/tit_cscenter.png") no-repeat ; margin-bottom: 20px; }
-#content .contact_tel_tit { background: url("/images/customer/tit_contact_tel.png") no-repeat ; margin-bottom: 20px; }
-#content .mycolsult_tit { background:url("/images/mypage/tit_qna.png") no-repeat }
-#content .notice_sub { padding-left: 126px; }
-#content .faq_sub { padding-left: 168px; }
-#content .qna_sub { padding-left: 152px; }
-#content .praise_sub { padding-left: 150px; }
-#content .csreport_sub { padding-left: 230px; }
-#content .rsch_sub { padding-left: 186px; }
-#content .payment_sub { padding-left: 168px; }
-#content .gift_sub { padding-left: 206px; }
-#content .contact_sub { padding-left: 183px; }
-#content .ccm_sub { padding-left: 217px; }
-#content textarea { font-size: 14px; line-height: 20px; }
-#content .y_highlight { display: inline; color: #ffc200; }
+section#contentInNoticeList  .notice_tit { background: url("/images/customer/tit_notice.png") no-repeat ; }
+section#contentInNoticeList  .faq_tit { background: url("/images/customer/tit_faq.png") no-repeat ; }
+section#contentInNoticeList  .qna_tit { background: url("/images/customer/tit_qna.png") no-repeat ; }
+section#contentInNoticeList  .praise_tit { background: url("/images/customer/tit_praise.png") no-repeat ; }
+section#contentInNoticeList  .best_guide_tit { background: url("/images/customer/tit_guide.png") no-repeat ; }
+section#contentInNoticeList  .csreport_tit { background: url("/images/customer/tit_csreport.png") no-repeat ; }
+section#contentInNoticeList  .rsch_tit { background: url("/images/customer/tit_research.png") no-repeat ; }
+section#contentInNoticeList  .cs_proc_tit { background: url("/images/customer/tit_csprocessing.png") no-repeat ; }
+section#contentInNoticeList  .ccm_tit { background: url("/images/customer/tit_ccm.png") no-repeat ; }
+section#contentInNoticeList  .prize_tit { background: url("/images/customer/tit_prize.png") no-repeat ; }
+section#contentInNoticeList  .payment_tit { background: url("/images/customer/tit_payment.png") no-repeat ; }
+section#contentInNoticeList  .gift_tit { background: url("/images/customer/tit_gift.png") no-repeat ; }
+section#contentInNoticeList  .contact_tit { background: url("/images/customer/tit_cscenter.png") no-repeat ; margin-bottom: 20px; }
+section#contentInNoticeList  .contact_tel_tit { background: url("/images/customer/tit_contact_tel.png") no-repeat ; margin-bottom: 20px; }
+section#contentInNoticeList  .mycolsult_tit { background:url("/images/mypage/tit_qna.png") no-repeat }
+section#contentInNoticeList  .notice_sub { padding-left: 126px; }
+section#contentInNoticeList  .faq_sub { padding-left: 168px; }
+section#contentInNoticeList  .qna_sub { padding-left: 152px; }
+section#contentInNoticeList  .praise_sub { padding-left: 150px; }
+section#contentInNoticeList  .csreport_sub { padding-left: 230px; }
+section#contentInNoticeList  .rsch_sub { padding-left: 186px; }
+section#contentInNoticeList  .payment_sub { padding-left: 168px; }
+section#contentInNoticeList  .gift_sub { padding-left: 206px; }
+section#contentInNoticeList  .contact_sub { padding-left: 183px; }
+section#contentInNoticeList  .ccm_sub { padding-left: 217px; }
+section#contentInNoticeList  textarea { font-size: 14px; line-height: 20px; }
+section#contentInNoticeList  .y_highlight { display: inline; color: #ffc200; }
 
 
 
@@ -205,7 +205,7 @@ table.cat_area td.on a { color: #ffffff; }
 
 
 /* 게시판 리스트 */
-.board_area{ position: relative; display: block; width: 100%; margin: 30px 0 42px 0; }
+.board_area{ position: relative; display: block; width: 100%; margin: 30px 0 42px 0;}
 .board_area table { width: 100%; font-size: 14px; color: #333333; }
 .board_area table tr.even{ background: #f7f8f9; }
 .board_area table tr th { height: 56px; border-top: 2px solid #555555; border-bottom: 2px solid #555555; text-align: center; vertical-align: middle; font-weight: 600; }
@@ -1001,6 +1001,28 @@ ul.multi_select>li>ul>li input{margin:0 8px 0 0;vertical-align:-1px}
 .add_files ul>li>a{font-size:14px; color:#666; line-height:14px}
 
 /* 견적 테이블 (에디터) */
+table#noticeWrite{width: 60%; border:1;}
 .est_tbl table {border:1px solid #ddd; }
 .est_tbl th, .est_tbl td {border:1px solid #ddd !important; padding:8px !important; height:auto !important; font-size:13px !important; color:#333 !important }
 .est_tbl th {background-color:#f2f2f2}
+
+
+/* 김훈영 커스텀 */
+ tr:nth-child(even) {background-color:#f7f8f9}
+
+
+.paging .hide {display:block; height: 0; width: 0; font-size: 0; line-height: 0; margin: 0; padding: 0; overflow:hidden;}
+.paging{padding:19px; text-align:center;}
+.paging a{display:inline-block; width:23px; height:23px; padding-top:2px; vertical-align:middle;}
+.paging a:hover{text-decoration:underline;}
+.paging .btn_arr{text-decoration:none;}
+.paging .btn_arr, .paging .on{margin:0 3px; padding-top:0; border:1px solid #ddd; border-radius:30px; 
+/* background:url(/front/img/com/btn_paging.png) no-repeat; */}
+.paging .on{padding-top:1px; height:22px; color:#fff; font-weight:bold; background:#000;} /* {color: #a1a1a1; text-decoration: none; */
+.paging .on:hover{text-decoration:none;}
+
+/* 백그라운드일경우
+.paging .first{background-position:left top;}
+.paging .prev{background-position:-50px top;}
+.paging .next{background-position:-100px top;}
+.paging .last{background-position:-150px top;}*/

@@ -61,7 +61,10 @@
 			</li>
 		</ul>
 	</div>
-	<a class="btn btn-bd-yellow d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" href="/main.do">투어모아</a>
+	<a class="btn btn-primary mb-md-0" href="/main.do">
+		<i class="fa fa-home" aria-hidden="true"></i>
+		투어모아
+	</a>
 </nav>
 
 

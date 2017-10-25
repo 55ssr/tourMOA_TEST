@@ -6,6 +6,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator"%>
+
+<fmt:parseDate var="parsedSdate" value="${vo.sdate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+<fmt:parseDate var="parsedEdate" value="${vo.edate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+<fmt:parseDate var="parsedSAdate" value="${vo.sadate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+<fmt:parseDate var="parsedEAdate" value="${vo.eadate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+
 <!-- <script src="/js/jquery-2.2.2.js"></script>
 <script src="/js/jquery-ui.js"></script>
 <script src="/js/jquery.simplemodal-1.4.4.js"></script>
@@ -245,26 +251,22 @@ $(document).ready(function() {
 							<li>
 								<span class="tit">출발일</span>
 								<span class="txt txt01">한국 출발 
-									<fmt:parseDate var="parsedDate" value="${vo.sdate}" pattern="yyyy-MM-dd HH:mm:ss"/>
-									<fmt:formatDate value="${parsedDate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
+									<fmt:formatDate value="${parsedSdate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
 									 - ${vo.fno}
 								</span>
 								
 								<span class="txt txt02">현지 도착 
-									<fmt:parseDate var="parsedDate" value="${vo.sadate}" pattern="yyyy-MM-dd HH:mm:ss"/>
-									<fmt:formatDate value="${parsedDate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
+									<fmt:formatDate value="${parsedSAdate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
 								</span>
 							</li>
 							<li>
 								<span class="tit">도착일</span>
 								<span class="txt txt01">현지 출발 
-									<fmt:parseDate var="parsedDate" value="${vo.edate}" pattern="yyyy-MM-dd HH:mm:ss"/>
-									<fmt:formatDate value="${parsedDate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
+									<fmt:formatDate value="${parsedEdate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
 									 - ${vo.fno}
 								</span>
-								<span class="txt txt02">현지 도착 
-									<fmt:parseDate var="parsedDate" value="${vo.eadate}" pattern="yyyy-MM-dd HH:mm:ss"/>
-									<fmt:formatDate value="${parsedDate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
+								<span class="txt txt02">현지 도착  
+									<fmt:formatDate value="${parsedEAdate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
 								</span>
 							</li>
 							<li>
@@ -309,20 +311,20 @@ $(document).ready(function() {
 	                        <span class="tit">기본상품가</span>
 	                        <span class="txt txt07"><fmt:formatNumber value="${vo.price-vo.fuel}" groupingUsed="true" /><p class="won">원</p></span>
 	                        <span class="txt txt07"><fmt:formatNumber value="${vo.pricech-vo.fuel}" groupingUsed="true" /><p class="won">원</p></span>
-			                        <span class="txt txt07"><fmt:formatNumber value="${vo.pricein}" groupingUsed="true" /><p class="won">원</p></span>	                        	
-	                        	</li>
+	                        <span class="txt txt07"><fmt:formatNumber value="${vo.pricein}" groupingUsed="true" /><p class="won">원</p></span>	                        	
+                       	</li>
 	                    <li>
 	                        <span class="tit">유류할증료</span>
 	                        <span class="txt txt08"><fmt:formatNumber value="${vo.fuel}" groupingUsed="true" /><p class="won">원</p></span>
 	                        <span class="txt txt08"><fmt:formatNumber value="${vo.fuel}" groupingUsed="true" /><p class="won">원</p></span>
-			                        <span class="txt txt08"><fmt:formatNumber value="${vo.fuel}" groupingUsed="true" /><p class="won">원</p></span>
-	                        	</li>
+	                        <span class="txt txt08"><fmt:formatNumber value="${vo.fuel}" groupingUsed="true" /><p class="won">원</p></span>
+                       	</li>
 	                   	<li class="lineBlack">
 	                        <span class="tit">총상품가격</span>
-	                        <span class="txt txt09 price"><fmt:formatNumber value="${vo.price}" groupingUsed="true" /><p>원</p></span>
-	                     	<span class="txt txt09 price"><fmt:formatNumber value="${vo.pricech}" groupingUsed="true" /><p>원</p></span>
-									<span class="txt txt09 price"><fmt:formatNumber value="${vo.pricein}" groupingUsed="true" /><p>원</p></span>
-								</li>
+	                        <span class="txt txt09 price"><fmt:formatNumber value="${vo.price}" groupingUsed="true" /><p class="won">원</p></span>
+	                     	<span class="txt txt09 price"><fmt:formatNumber value="${vo.pricech}" groupingUsed="true" /><p class="won">원</p></span>
+							<span class="txt txt09 price"><fmt:formatNumber value="${vo.pricein}" groupingUsed="true" /><p class="won">원</p></span>
+						</li>
 	                    <li class="lineNone">
 	                        <span class="noti">유류할증료는 유가와 환율에 따라 변동될 수 있습니다.</span>
 							<span class="noti">아동/유아 기준은 항공사마다 상이하여, 예약 후 최종 확정됩니다.</span>
@@ -396,8 +398,7 @@ $(document).ready(function() {
 						</span>
 						<span class="air air01 typeAir"><label for="aircord1" style="cursor:default">${vo.airline}</label></span>
                            <span class="air air02">
-								<fmt:parseDate var="parsedDate" value="${vo.sdate}" pattern="yyyy-MM-dd HH:mm:ss"/>
-								<fmt:formatDate value="${parsedDate}" type="time" pattern="HH:mm"/> -
+								<fmt:formatDate value="${parsedSdate}" type="time" pattern="HH:mm"/> -
                            </span>
                            <span class="air air03 price1"><fmt:formatNumber value="${vo.price}" groupingUsed="true" /><p>원</p></span>
                            <span class="air air04">
@@ -407,10 +408,9 @@ $(document).ready(function() {
 	                            	
 	                            	
 									<jsp:useBean id="toDay" class="java.util.Date" />
-									                                         
-									<fmt:parseDate var="regDate" value="${vo.sdate}" pattern="yyyy-MM-dd HH:mm:ss" />                                         
+									                                                                                  
 									<fmt:parseNumber value="${toDay.time / (1000*60*60*24)}" integerOnly="true" var="nowDays" scope="request"/>
-									<fmt:parseNumber value="${regDate.time / (1000*60*60*24)}" integerOnly="true" var="oldDays" scope="request" />
+									<fmt:parseNumber value="${parsedSdate.time / (1000*60*60*24)}" integerOnly="true" var="oldDays" scope="request" />
 									
 									<!-- 출발일 2일전부터 예약 마감 -->
 									<c:if test="${oldDays - nowDays <= 2}">
@@ -1506,12 +1506,10 @@ function fnView(obj){
                 <span class="tit">출발일 - ${vo.fno}</span>
                 <button type="button" name="btnSchedule" role-w="1160" role-h="800" role-url="/product/unitListPop.do?menu=pkg&amp;did=7423&amp;goodsCd=NCP5208" class="btn" title="퀵메뉴 다른출발일보기">다른출발일보기</button>
 				<span class="txt txt01">한국출발 
-                	<fmt:parseDate var="parsedDate" value="${vo.sdate}" pattern="yyyy-MM-dd HH:mm:ss"/>
-					<fmt:formatDate value="${parsedDate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
+					<fmt:formatDate value="${parsedSdate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
 				</span>
 				<span class="txt txt02">현지도착 
-					<fmt:parseDate var="parsedDate" value="${vo.sadate}" pattern="yyyy-MM-dd HH:mm:ss"/>
-					<fmt:formatDate value="${parsedDate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
+					<fmt:formatDate value="${parsedSAdate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
 				</span>
                 
             </div>
@@ -1519,12 +1517,10 @@ function fnView(obj){
             <div class="aside04">
                 <span class="tit">도착일 - ${vo.fno}</span>
 				<span class="txt txt01">현지출발 
-					<fmt:parseDate var="parsedDate" value="${vo.edate}" pattern="yyyy-MM-dd HH:mm:ss"/>
-					<fmt:formatDate value="${parsedDate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
+					<fmt:formatDate value="${parsedEdate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
 				</span>
 				<span class="txt txt02">한국도착 
-					<fmt:parseDate var="parsedDate" value="${vo.eadate}" pattern="yyyy-MM-dd HH:mm:ss"/>
-					<fmt:formatDate value="${parsedDate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
+					<fmt:formatDate value="${parsedEAdate}" type="both" pattern="yyyy년 MM월 dd일(E) HH:mm"/>
 				</span>
             </div>
 
@@ -1538,8 +1534,9 @@ function fnView(obj){
                 <div class="seletboxAir">
                     <input type="hidden" name="search_txt" id="search_txt">
                     <span id="inputAir">
-         		    	<img src="/images/air/${fn:substring(vo.fno,0,2)}.png" alt="${vo.airline}">
-	                   			${vo.airline}</span>
+         		    	<img src="/images/air/${fn:substring(vo.fno,0,2)}.png" alt="${vo.airline}" />
+               			${vo.airline}
+               		</span>
                     <ul>
                     	<li style="background: rgb(249, 251, 251);">
 		                        <img src="/images/air/${fn:substring(vo.fno,0,2)}.png" alt="${vo.airline}">
@@ -1558,8 +1555,7 @@ function fnView(obj){
 										                            
 	                            </span>
 		                          	<span class="date">
-		                          	<fmt:parseDate var="parsedDate" value="${vo.sdate}" pattern="yyyy-MM-dd HH:mm:ss"/>
-									<fmt:formatDate value="${parsedDate}" type="both" pattern="yyyy-MM-dd (E) HH:mm"/>
+									<fmt:formatDate value="${parsedSdate}" type="both" pattern="yyyy-MM-dd (E) HH:mm"/>
 					 				- ${vo.fno}</span>
 	                            <span class="price"><fmt:formatNumber value="${vo.price}" groupingUsed="true" />원</span>
 	                        </li>

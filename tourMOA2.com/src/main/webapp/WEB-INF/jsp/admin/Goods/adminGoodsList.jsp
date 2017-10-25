@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
@@ -16,8 +17,10 @@
 						<input type="hidden" name="searchKeyword" />
 						<select name="searchCondition" id="gubunSelect" class="form-control">
 							<option value=""> - 상품 구분 - </option>
-							<option id="자유여행" value="gubun"<c:if test="${param.searchKeyword =='자유여행'}">selected</c:if>>자유여행</option>
-							<option id="해외패키지" value="gubun"<c:if test="${param.searchKeyword =='해외패키지'}">selected</c:if>>해외패키지</option>
+							<option id="fit" value="gubun"<c:if test="${param.searchKeyword =='fit'}">selected</c:if>>자유여행</option>
+							<option id="pkg" value="gubun"<c:if test="${param.searchKeyword =='pkg'}">selected</c:if>>해외패키지</option>
+							<option id="hym" value="gubun"<c:if test="${param.searchKeyword =='hym'}">selected</c:if>>허니문</option>
+							<option id="golf" value="gubun"<c:if test="${param.searchKeyword =='golf'}">selected</c:if>>골프</option>
 						</select>
 					</form>
 					<script>
@@ -34,8 +37,11 @@
 						<input type="hidden" name="searchKeyword" />
 						<select name="searchCondition" class="form-control" id="locationSelect">
 							<option value=""> - 지역 구분 - </option>
-							<option id="서유럽" value="location"<c:if test="${param.searchKeyword =='서유럽'}">selected</c:if>>서유럽</option>
-							<option id="동남아" value="loaction"<c:if test="${param.searchKeyword =='동남아'}">selected</c:if>>동남아</option>
+							<option id="weurope" value="location"<c:if test="${param.searchKeyword =='weurope'}">selected</c:if>>서유럽</option>
+							<option id="china" value="location"<c:if test="${param.searchKeyword =='china'}">selected</c:if>>중국</option>
+							<option id="japan" value="location"<c:if test="${param.searchKeyword =='japan'}">selected</c:if>>일본</option>
+							<option id="namerica" value="location"<c:if test="${param.searchKeyword =='namerica'}">selected</c:if>>북미</option>
+							<option id="enasia" value="location"<c:if test="${param.searchKeyword =='enasia'}">selected</c:if>>동남아</option>
 						</select>
 					</form>
 					<script>

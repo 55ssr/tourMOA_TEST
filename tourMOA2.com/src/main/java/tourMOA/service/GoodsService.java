@@ -2,9 +2,12 @@ package tourMOA.service;
 
 import java.util.List;
 
+import tourMOA.service.CommVO;
+
 public interface GoodsService {
 
 	List<?> selectGoodsList (DefaultListVO vo) throws Exception;
+	List<?> selectUnitList (GoodsVO vo) throws Exception;
 	String insertGoods(GoodsVO vo) throws Exception;
 	int selectGoodsTotal(DefaultListVO searchVO) throws Exception;
 	GoodsVO selectGoodsDetail(GoodsVO vo) throws Exception;
@@ -27,4 +30,9 @@ public interface GoodsService {
 	OptionVO selectOptionDetail(OptionVO vo) throws Exception;
 	int updateOption(GoodsVO vo);
 	int deleteOption(OptionVO vo);
+	String insertComm(CommVO vo) throws Exception;
+	List<?> selectCommList(DefaultListVO searchVO) throws Exception;
+	int selectCommTotal(DefaultListVO searchVO) throws Exception;
+	CommVO selectCommDetail(CommVO vo) throws Exception;
+	List<?> selectGoodsSearchList(DefaultListVO searchVO) throws Exception;
 }

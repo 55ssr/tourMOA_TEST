@@ -31,6 +31,8 @@ ALTER TABLE goods ADD(minp number);
 -- 유류할증료 추가 - 강
 ALTER TABLE goods ADD(fuel number);
 -- 상품안내 추가 (최상단) - 강
+ALTER TABLE goods ADD(finfo varchar2(4000));
+-- 상품안내 추가 (최상단) - 강
 ALTER TABLE goods ADD(dinfo varchar2(4000));
 -- 상품안내 추가 (포함사항) - 강
 ALTER TABLE goods ADD(incinfo varchar2(4000));
