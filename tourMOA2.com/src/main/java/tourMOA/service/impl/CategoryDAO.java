@@ -49,8 +49,8 @@ public class CategoryDAO extends EgovAbstractDAO {
 		return (int) select("categoryDAO.selectCategoryTotal",searchVO);
 	}
 
-	public List<?> selectCategoryList1(DefaultListVO searchVO) {
-		List<?> list = list("categoryDAO.selectCategoryList1",searchVO);
+	public List<?> selectCategoryList1(DefaultListVO vo) {
+		List<?> list = list("categoryDAO.selectCategoryList1",vo);
 		return list;
 	}
 }

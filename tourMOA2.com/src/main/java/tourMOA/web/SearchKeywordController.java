@@ -49,7 +49,7 @@ public class SearchKeywordController {
 		String existCondition = searchVO.getSearchCondition();
 		
 		int lowPrice = searchVO.getLowPrice();
-		int highPrice = searchVO.getHighPrice();
+		int highPrice = searchVO.getHighPrice();  
 		
 		String[] date;
 		String existDepartDate="";

@@ -104,15 +104,67 @@ public class DefaultListVO implements Serializable {
 		this.edate = edate;
 	}
 
+
+
+	public String getDepartDate() {
+		return departDate;
+	}
+
+
+
+	public void setDepartDate(String departDate) {
+		this.departDate = departDate;
+	}
+
+	/** 가격 검색 */
+	private int lowPrice;  
+	private int highPrice;
+	
+	public int getLowPrice() {
+		return lowPrice;
+	}
+
+
+
+	public void setLowPrice(int lowPrice) {
+		this.lowPrice = lowPrice;
+	}
+
+
+
+	public int getHighPrice() {
+		return highPrice;
+	}
+
+
+
+	public void setHighPrice(int highPrice) {
+		this.highPrice = highPrice;
+	}
+
+
+
+	public int getViewCount() {
+		return viewCount;
+	}
+
+
+
+	public void setViewCount(int viewCount) {
+		this.viewCount = viewCount;
+	}
+
+
+
 	private int lastIndex = 1;
 	private int lstIdx = 1;
 
 	/** recordCountPerPage */
 	private int recordCountPerPage = 10;
 	private int rcordCntPg = 10;
+
 	
-	
-	
+
 	public String getNexCd() {
 		return nexCd;
 	}
@@ -350,29 +402,5 @@ public class DefaultListVO implements Serializable {
 	@Override
 	public String toString() {
 		return ToStringBuilder.reflectionToString(this);
-	}
-
-
-
-	public int getViewCount() {
-		return viewCount;
-	}
-
-
-
-	public void setViewCount(int viewCount) {
-		this.viewCount = viewCount;
-	}
-
-
-
-	public String getDepartDate() {
-		return departDate;
-	}
-
-
-
-	public void setDepartDate(String departDate) {
-		this.departDate = departDate;
 	}	
 }

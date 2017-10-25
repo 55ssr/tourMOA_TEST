@@ -16,6 +16,6 @@ public interface CategoryService {
 	int selectCategoryLowLevlCnt(String ctgcd) throws Exception;
 	int deleteCategory(CategoryVO vo) throws Exception;
 	int selectCategoryTotal(SampleDefaultVO searchVO) throws Exception;
-	List<?> selectCategoryList1(DefaultListVO searchVO) throws Exception;
+	List<?> selectCategoryList1(DefaultListVO vo) throws Exception;
 	
 }

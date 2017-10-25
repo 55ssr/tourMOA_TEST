@@ -33,4 +33,15 @@ public class ReservServiceImpl extends EgovAbstractServiceImpl implements Reserv
 	public String detailPackagebtn(ReservVO vo) throws Exception {
 		return reservDAO.detailPackagebtn(vo);
 	}
+
+
+	@Override
+	public ReservVO reserveList(ReservVO vo) throws Exception {
+		return reservDAO.reserveList(vo);
+	}
+
+	@Override
+	public int reserveListDe(ReservVO vo) throws Exception {
+		return reservDAO.reserveListDe(vo);
+	}
 }
