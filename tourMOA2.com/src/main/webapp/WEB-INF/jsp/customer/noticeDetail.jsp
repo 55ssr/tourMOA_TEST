@@ -40,11 +40,11 @@
 		<!--[[ board contents Start ]]-->
 		<div class="viewListBox">
 			<ul class="viewList_tit">
-				<li class="subject"><span class="bul bul_yellow">상시공지</span>
-					&nbsp;&nbsp;&nbsp;[해외항공][2017년 10월 유류할증료 변경 안내-외국계항공사]</li>
+				<li class="subject"><span class="bul bul_yellow">${vo.gubun}</span>
+					&nbsp;&nbsp;&nbsp;${vo.title}</li>
 				<li class="author">[투어모아]</li>
-				<li class="dt">2017-10-12</li>
-				<li class="click">조회수 1</li>
+				<li class="dt">${vo.rdate}</li>
+				<li class="click">조회수 ${vo.hit}</li>
 			</ul>
 		</div>
 		<div class="viewContent nowrap">

@@ -97,10 +97,13 @@ public class CustomerController {
 	
 	/*공지사항 View 화면*/
 	@RequestMapping("customer/noticeDetail.do")
-	public String noticeDetail() {
+	public String noticeDetail(NoticeVO vo, Model model) throws Exception {
+		System.out.println("vo ======================== " + vo.getUnq());
+		vo = noticeService.selectNoticeDetail(vo);
+		
+		model.addAttribute("vo", vo);
 		return "customer/noticeDetail";
 	}
-	
 	@RequestMapping("/noticeSave.do")
 	@ResponseBody public Map<String, Object> insertNotice(NoticeVO vo) throws Exception {
 		String result = "";

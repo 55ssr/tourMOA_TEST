@@ -14,14 +14,12 @@
 		, title
 		, content
 		, hit
-		,
-		rdate
+		, rdate
 		, upddate
 		, allview)
 		VALUES ( SEQ_notice_unq.nextval
 		, #gubun#
-		,
-		#title#
+		, #title#
 		, #content#
 		, '0'
 		, sysdate
@@ -36,8 +34,7 @@
 		SELECT unq
 		, gubun
 		, title
-		,
-		content
+		, content
 		, hit
 		, rdate
 		, allview
@@ -66,20 +63,23 @@
 	<select id="noticeDAO.selectNoticeTotal" resultClass="java.lang.Integer">
 		SELECT
 		COUNT(*) FROM notice
+		
+		
 	</select>
 
 	<select id="noticeDAO.selectNoticeDetail" resultClass="noticeVO">
 		SELECT
-		unq,
-		title,
-		centent,
-		hit,
-		to_char(rdate, 'yyyy-mm-dd')as rdate,
-		upddate,
-		allview
-		FROM
-		notice
-		WHERE
-		unq= '$unq$'
+				unq,
+				gubun,
+				title,
+				content,
+				hit,
+				to_char(rdate, 'yyyy-mm-dd')as rdate,
+				upddate,
+				allview
+			FROM
+				notice
+			WHERE
+				unq= '$unq$'
 	</select>
 </sqlMap>

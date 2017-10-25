@@ -7,14 +7,12 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <link rel="stylesheet" href="/css/customer.css" />
 
-
-
-
 <script>
 
 function fn_loc(a) {
-	document.frm.unq = a;
-	document.frm.submit();
+	document.hiddenFrm1.unq.value = a;
+	alert(document.hiddenFrm1.unq.value);
+	document.hiddenFrm1.submit();
 }
 
 	function fnMenuSelect() {
@@ -117,7 +115,7 @@ function fn_loc(a) {
 						<td headers="번호" >${number}</td>
 					</c:if>
 						<td headers="제목" class="subject">
-							<a href="noticeDetail.do" onclick="fn_loc(${result.unq})">${result.title}</a>
+							<a href="#" onclick="fn_loc('${result.unq}')">${result.title}</a>
 						</td>
 						<td headers="등록일">${fn:substring(result.rdate,0,10)}</td>	
 				</tr>
@@ -125,21 +123,6 @@ function fn_loc(a) {
 			</c:forEach>
 		</table>
 	</div>
-<!-- --------------------------------------------------------------------------------- -->	
-	<!-- paging -->
-<!-- <div class="paging">
-  <a href="#" class="btn_arr first"><span class="hide">처음페이지</span></a>            
-  <a href="#" class="btn_arr prev"><span class="hide">이전페이지</span></a>     
-  <a href="#" class="on">1</a>D : 활성화페이지일 경우 : on 처리
-  <a href="#">2</a>
-  <a href="#">3</a>
-  <a href="#">4</a>
-  <a href="#">5</a>
-  <a href="#" class="btn_arr next"><span class="hide">다음페이지</span></a>             
-  <a href="#" class="btn_arr last"><span class="hide">마지막페이지</span></a>            
-</div> -->
-	<!-- //paging -->
-<!-- --------------------------------------------------------------------------------- -->
 	<!--[[ board area End ]]-->
 	<div class="board_navi_area">
 		<!-- [[ board navi Start ]] -->
@@ -204,6 +187,23 @@ function fn_loc(a) {
 		</ul>
 	</nav>
 </div>
+
+<!-- --------------------------------------------------------------------------------- -->	
+	<!-- paging -->
+<!-- <div class="paging">
+  <a href="#" class="btn_arr first"><span class="hide">처음페이지</span></a>            
+  <a href="#" class="btn_arr prev"><span class="hide">이전페이지</span></a>     
+  <a href="#" class="on">1</a>D : 활성화페이지일 경우 : on 처리
+  <a href="#">2</a>
+  <a href="#">3</a>
+  <a href="#">4</a>
+  <a href="#">5</a>
+  <a href="#" class="btn_arr next"><span class="hide">다음페이지</span></a>             
+  <a href="#" class="btn_arr last"><span class="hide">마지막페이지</span></a>            
+</div> -->
+	<!-- //paging -->
+<!-- --------------------------------------------------------------------------------- -->
+
 <!--[[ board navi End ]]-->
 
 <!-- -------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -236,9 +236,9 @@ function fn_loc(a) {
 	</div> -->
 	<!--[[ board navi End ]]-->
 	
-	<form id="hiddenFrm" name="hiddenFrm">
-<input type="hidden" id="unq" name="unq" />
-</form>
+	<form id="hiddenFrm1" name="hiddenFrm1" method="post" action="/customer/noticeDetail.do">
+		<input type="hidden" id="unq" name="unq" />
+	</form>
 
 
 </section>
