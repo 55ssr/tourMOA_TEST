@@ -9,4 +9,4 @@ CREATE TABLE manager
 );
 
 -- 담당자 등록 - 강
-INSERT INTO manager (code, name, phone, mail, img) VALUES ('westeu','공유','010-1111-1111','zeroU@mail.com','img01.jpg')
+INSERT INTO manager (code, name, phone, mail, img) VALUES ('A0101','공유','010-1111-1111','zeroU@mail.com','img01.jpg')

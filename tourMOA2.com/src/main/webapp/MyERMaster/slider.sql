@@ -8,10 +8,6 @@ CREATE TABLE slider
 	filename varchar2(4000),
 	PRIMARY KEY (code)
 );
-INSERT INTO slider VALUES ('italy', '이탈리아', 'img01.jpg');
-INSERT INTO slider VALUES ('italy', '이탈리아', 'img02.jpg');
-INSERT INTO slider VALUES ('italy', '이탈리아', 'img03.jpg');
-INSERT INTO slider VALUES ('italy', '이탈리아', 'img04.jpg');
-INSERT INTO slider VALUES ('italy', '이탈리아', 'img05.jpg');
+
 -- 데이터 추가 - 강
-INSERT INTO slider VALUES ('italy','이탈리아','img01.jpg／img02.jpg／img03.jpg／img04.jpg／img05.jpg');
+INSERT INTO slider VALUES ('A010101','이탈리아','img01.jpg／img02.jpg／img03.jpg／img04.jpg／img05.jpg');

@@ -24,5 +24,5 @@ INSERT INTO comm VALUES (SEQ_comm_unq.nextval,
 						 'author',
 						 'content',
 						 sysdate,
-						 '102'
+						 '2'
 						)
