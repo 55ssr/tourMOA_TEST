@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import tourMOA.service.DefaultListVO;
 import tourMOA.service.EstimateService;
 import tourMOA.service.EstimateVO;
 
@@ -22,8 +23,8 @@ public class EstimateServiceImpl extends EgovAbstractServiceImpl implements Esti
 	}
 
 	@Override
-	public List<?> selectAdEstimateList(EstimateVO vo) throws Exception {
-		return estimateDAO.selectAdEstimateList(vo);
+	public List<?> selectAdEstimateList(DefaultListVO searchVO) throws Exception {
+		return estimateDAO.selectAdEstimateList(searchVO);
 	}
 
 	@Override
@@ -34,5 +35,10 @@ public class EstimateServiceImpl extends EgovAbstractServiceImpl implements Esti
 	@Override
 	public int adminEstimateDetailUpdate(EstimateVO vo) throws Exception {
 		return estimateDAO.adminEstimateDetailUpdate(vo);
+	}
+
+	@Override
+	public int adminEstimateTotal(DefaultListVO searchVO) throws Exception {
+		return estimateDAO.adminEstimateTotal(searchVO);
 	}			
 }

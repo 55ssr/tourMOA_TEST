@@ -14,10 +14,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -975,12 +973,52 @@ public class AdminController {
 	}
 
 	@RequestMapping("/adminEstimateList.do")
-	public String selectAdEstimateList(@ModelAttribute("searchVO") SampleDefaultVO searchVO, EstimateVO vo, Model model)
+	public String selectAdEstimateList(@ModelAttribute("searchVO") DefaultListVO searchVO,  Model model)
 			throws Exception {
 
-		List<?> list = estimateService.selectAdEstimateList(vo);
+		/* 1. 한 화면에 출력할 행 개수 , 한 화면에 출력할 페이지 개수 */
+		int recordCountPerPage = 10;
+		int pageSize = 5;
+		/* 2. 총 데이터 개수 */
+		int totalCount = estimateService.adminEstimateTotal(searchVO);
+		/* 3. 화면 출력할 페이지 번호 */
+		int pageIndex = searchVO.getPageIndex();
+		/* 4. 화면 출력할 페이징의 시작 번호 , 끝 번호 */
+		// 1,2,3,4,5 -> 1 / 6,7,8,9,10 -> 6 / 11,12,13,14,15 -> 11
+		int firstPage = ((int) Math.floor((pageIndex - 1) / pageSize) * pageSize) + 1;
+		int lastPage = (firstPage + pageSize) - 1;
+		/* 5. 화면 출력할 행(데이터)의 시작 번호, 끝 번호 */
+		int firstIndex = (pageIndex - 1) * 10 + 1;
+		int lastIndex = (firstIndex + recordCountPerPage) - 1;
+		/* 6. 총 페이지 개수 */
+		int totalPage = (int) Math.ceil((double) totalCount / recordCountPerPage);
 
+		/* 7. [이전] / [다음] 처리할 변수 지정 */
+		int before = 0; // 링크 없음
+		if (firstPage > 1)
+			before = 1;
+
+		int next = 0; // 링크 없음
+		if (lastPage <= totalPage)
+			next = 1;
+		/* 7. 행번호 */
+		int number = totalCount - ((pageIndex - 1) * recordCountPerPage);
+
+		searchVO.setFirstIndex(firstIndex);
+		searchVO.setLastIndex(lastIndex);
+		List<?> list = estimateService.selectAdEstimateList(searchVO);
+
+		System.out.println("here~~~");
 		model.addAttribute("rslist", list);
+		
+		model.addAttribute("totalCount", totalCount); // 총 데이터 수량
+		model.addAttribute("firstPage", firstPage);
+		model.addAttribute("lastPage", lastPage);
+		model.addAttribute("totalPage", totalPage); // 총 페이지 개수
+		model.addAttribute("before", before); // before 버튼 활성화 유무
+		model.addAttribute("next", next); // next 버튼 활성화 유무
+		model.addAttribute("number", number); // 출력 페이지 row 번호
+	
 		return "admin/Estimate/adminEstimateList";
 	}
 
@@ -996,24 +1034,26 @@ public class AdminController {
 	
 	
 	@RequestMapping("/adminEstimateDetailUpdate.do")
-	@ResponseBody public Map<String, String> adminEstimateDetailUpdate(EstimateVO vo) throws Exception {
-		System.out.println("test");
+	@ResponseBody public Map<String, Object> adminEstimateDetailUpdate(EstimateVO vo) throws Exception {
 		String result="";
-		int cnt = 0;
 		
-		System.out.println();
+		int cnt = 0;		
 		
-		Map<String, String> map = new HashMap<String, String>();
+		System.out.println("unq~~~~"+vo.getUnq());
+		System.out.println("reply~~~~"+vo.getReply());
+		System.out.println("result~~~~"+vo.getResult());
+		System.out.println("manager~~~~"+vo.getManager());
+		
+		Map<String, Object> map = new HashMap<String, Object>();
 		
 		cnt = estimateService.adminEstimateDetailUpdate(vo);
 		
 		if(cnt > 0) {
 			result = "ok";
 		}
-		map.put("result", result);
+		map.put("cnt", cnt);
 		return map;
 	}
-	
 	
 	/* 카테고리 리스트 VIEW */
 	@RequestMapping("/adminCategoryList.do")
