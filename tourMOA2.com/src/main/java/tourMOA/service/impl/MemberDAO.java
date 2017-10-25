@@ -85,4 +85,5 @@ public class MemberDAO extends EgovAbstractDAO{
 		return update("memberDAO.adminDetailUpdate",vo);
 	}
 
+
 }

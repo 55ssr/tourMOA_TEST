@@ -48,7 +48,7 @@
 				</ul>
 				</div>
 			</div>
-			<div class="departure_month ">
+		<!-- 	<div class="departure_month ">
 			<div class="tab_month">
 					<div class="w140" onclick="monthClick('2017','09')" id="div201709">
 						2017.09</div>
@@ -65,7 +65,7 @@
 					<div class="w140" onclick="monthClick('2018','03')" id="div201803">
 						2018.03</div>
 				</div>
-		</div>
+		</div> -->
 			
 			<div class="month_list">
 				<table class="tbl_month">
@@ -306,7 +306,7 @@
 				<span class="ico_block">
 					<span class="ico_pink">선착순</span>
 					</span>
-				<a href="detailPackage.do">[프리미엄][국내선 항공포함]_스페인/포르투갈 10일[KE]</a>
+				<a href="detailPackage.do?unq=21">[프리미엄][국내선 항공포함]_스페인/포르투갈 10일[KE]</a>
 				</td>
 				<td class="pdt_date">7박9일</td>
 				<td class="pdt_price">2,490,000<a href="#none" class="mini_price">&nbsp;<img src="/images/product/detail/tool.png" alt="요금안내">

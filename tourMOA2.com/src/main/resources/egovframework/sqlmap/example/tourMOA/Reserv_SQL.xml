@@ -41,7 +41,7 @@
 								 
 								<isNotNull property="result">
 								<isNotEmpty property="result">
-								AND result = '$result$'
+								AND result = '1'
 								</isNotEmpty>
 								</isNotNull>	
 							<isNotNull property="searchCondition">
@@ -54,6 +54,35 @@
 						) b
 		WHERE 
 				rn >=  #firstIndex# AND rn <![CDATA[<=]]> #lastIndex#
+	
+	</select>
+	
+	<select id="reservDAO.reserveListDe" resultClass="java.lang.Integer">
+		SELECT 
+			COUNT(*)
+		FROM 
+			reserv 
+		WHERE 
+			id='$id$'
+	</select>
+	
+	<select id="reservDAO.reserveList" resultClass="reservVO">
+
+							SELECT	 
+									 TO_CHAR(rsvdate, 'yyyy-mm-dd') rsvdate
+									, TO_CHAR(edate, 'yyyy-mm-dd') edate
+									, TO_CHAR(sdate, 'yyyy-mm-dd') sdate
+									, price
+									, rsvanum
+									, rsvcnum
+									, rsvbnum
+									, result
+									,id
+							FROM 
+										reserv 
+							WHERE
+									id = 'tt'
+	
 	
 	</select>
 	

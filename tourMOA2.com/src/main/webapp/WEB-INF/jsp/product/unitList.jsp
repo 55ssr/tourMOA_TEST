@@ -56,7 +56,7 @@
 				</ul>
 			</div>
 		</div>
-			<div class="departure_month ">
+		<!-- 	<div class="departure_month ">
 			<div class="tab_month">
 					<div class="w140" onclick="monthClick('2017','09')" id="div201709">
 						2017.09</div>
@@ -73,7 +73,7 @@
 					<div class="w140" onclick="monthClick('2018','03')" id="div201803">
 						2018.03</div>
 				</div>
-		</div>
+		</div> -->
 			
 			<div class="month_list">
 				<table class="tbl_month">

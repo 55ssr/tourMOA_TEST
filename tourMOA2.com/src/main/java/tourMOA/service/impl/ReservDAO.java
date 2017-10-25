@@ -23,4 +23,12 @@ public class ReservDAO extends EgovAbstractDAO{
 	public String detailPackagebtn(ReservVO vo) {
 		return (String) insert("reservDAO.detailPackagebtn", vo);
 	}
+
+	public ReservVO reserveList(ReservVO vo) {
+		return (ReservVO) select("reservDAO.reserveList",vo);
+	}
+
+	public int reserveListDe(ReservVO vo) {
+		return (int) select("reservDAO.reserveListDe",vo);
+	}
 }
