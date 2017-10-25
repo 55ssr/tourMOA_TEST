@@ -4,6 +4,7 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -156,38 +157,40 @@ public class AdminController {
 	}
 
 	@RequestMapping("/adminGoodsWrite.do")
-	public String adminGoodsWrite(DefaultListVO searchVO, Model model) throws Exception {
+	public String adminGoodsWrite(DefaultListVO vo, Model model) throws Exception {
 		
-		System.out.println(searchVO.getSrchKeywd()+ " =-==================");
-		
-		String location = searchVO.getSrchKeywd();
-		
-		if (searchVO.getSrchContn() == null || searchVO.getSrchContn().equals("") || searchVO.getSrchKeywd() == null
-				|| searchVO.getSrchKeywd().equals("")) {
-
-			searchVO.setSrchContn("hctgcd");
-			searchVO.setSrchKeywd("0");
+		if (vo.getSrchContn() == null || vo.getSrchContn().equals("") 
+		 || vo.getSrchKeywd() == null || vo.getSrchKeywd().equals("")) {
+			vo.setSrchContn("hctgcd");
+			vo.setSrchKeywd("0");
 		}	
 		
-		List<?> list = categoryService.selectCategoryList(searchVO);
-		List<?> list2 = null;
-		
-		if (list.size() > 0) {
-			
-			searchVO.setSrchContn("hctgcd");
-			searchVO.setSrchKeywd(location);
-
-			list2 = categoryService.selectCategoryList1(searchVO);
-			if (list2.size() > 0)
-			System.out.println(list2.get(0)+ " ::::::  list2");
-			
-		}
-		
+		List<?> list = categoryService.selectCategoryList(vo);
 		model.addAttribute("resultList", list);
-		model.addAttribute("resultList2", list2);
-		
-		
 		return "admin/Goods/adminGoodsWrite";
+	}
+	
+	@RequestMapping("/adminGoodsWriteCategory.do")
+	@ResponseBody public Map<String, Object> adminGoodsWriteCategory (
+								@RequestParam(value="srchKeywd", required=false) String srchKeywd,
+								@RequestParam(value="srchContn", required=false) String srchContn,
+								DefaultListVO vo, Model model
+								) throws Exception {
+		
+		System.out.println(srchContn + "######################" );
+		System.out.println(srchKeywd + "######################" );
+
+		System.out.println(vo.getSrchKeywd() + "@@@@@@@@@@@@@ ");
+		
+		vo.setSrchContn(srchContn);
+		vo.setSrchKeywd(srchKeywd);
+		
+		List<?> list = categoryService.selectCategoryList1(vo);
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("list", list);
+		model.addAttribute("result", list);
+		return map;
 	}
 
 	@RequestMapping("/adminGoodsWriteSave.do")
