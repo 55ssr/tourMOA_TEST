@@ -10,6 +10,7 @@ import tourMOA.service.GoodsVO;
 import tourMOA.service.ManagerVO;
 import tourMOA.service.OptionVO;
 import tourMOA.service.SliderVO;
+import tourMOA.service.CommVO;
 
 
 @Repository("goodsDAO")
@@ -106,6 +107,26 @@ public class GoodsDAO extends EgovAbstractDAO{
 
 	public int deleteOption(OptionVO vo) {
 		return delete("goodsDAO.deleteOption", vo);
+	}
+
+	public String insertComm(CommVO vo) {
+		return (String) insert("goodsDAO.insertComm", vo);
+	}
+
+	public List<?> selectCommList(DefaultListVO searchVO) {
+		return list("goodsDAO.selectCommList", searchVO);
+	}
+
+	public int selectCommTotal(DefaultListVO searchVO) {
+		return (int) select("goodsDAO.selectCommTotal", searchVO);
+	}
+
+	public CommVO selectCommDetail(CommVO vo) {
+		return (CommVO) select("goodsDAO.selectCommDetail", vo);
+	}
+
+	public List<?> selectGoodsSearchList(DefaultListVO searchVO) {
+		return list("goodsDAO.selectGoodsSearchList", searchVO);
 	}
 
 

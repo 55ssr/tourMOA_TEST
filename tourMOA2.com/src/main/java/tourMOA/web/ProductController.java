@@ -73,7 +73,7 @@ public class ProductController {
 	@RequestMapping("product/detailPackage.do")
 	public String detailPackage(@RequestParam("unq") int unq, GoodsVO vo, ManagerVO vo2, SliderVO vo3, Model model) throws Exception{
 		vo = goodsService.selectGoodsDetail(vo);
-		System.out.println(vo.getNation());
+		System.out.println("getNation...." + vo.getNation());
 		
 		vo2.setCode(vo.getLocation());
 		System.out.println(vo2.getCode());
@@ -85,14 +85,14 @@ public class ProductController {
 		}
 		vo3.setCode(vo.getNation());
 		System.out.println("====Con1");
-/*		vo3 = goodsService.selectSliderDetail(vo3);*/
+		vo3 = goodsService.selectSliderDetail(vo3);
 		
 		System.out.println("ddddddd"+vo);
 		List<?> optList = goodsService.selectOptionList(vo);
 		
 		model.addAttribute("vo", vo);
 		model.addAttribute("vo2", vo2);
-		/*model.addAttribute("vo3", vo3);*/
+		model.addAttribute("vo3", vo3);
 		model.addAttribute("optList", optList);
 		
 		return "product/detailPackage";		

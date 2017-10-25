@@ -1,10 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+<fmt:parseDate var="parsedSdate" value="${vo.sdate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+<fmt:parseDate var="parsedEdate" value="${vo.edate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+<fmt:parseDate var="parsedSAdate" value="${vo.sadate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+<fmt:parseDate var="parsedEAdate" value="${vo.eadate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 
 	<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
 	<h1>상품 수정</h1>
@@ -88,6 +94,10 @@
 			$("#ref").text($("label[for=ref]+div .note-codable + div").html());
 			$("#daily").text($("label[for=daily]+div .note-codable + div").html());
 			
+			/* 경유여부 Y(직항) 일때 경유지 내용을 적었더라도 값 변경 */
+			if ( $("#via option[value=Y]").prop("selected") ) {
+				$("#vias").val(null);
+				}
 			
 			if($("#frm #title").val() == "") {
 				alert("제목을 입력해주세요.");
@@ -137,7 +147,7 @@
 			param+="&pricech="+$("#pricech").val()
 			param+="&pricein="+$("#pricein").val()
 			param+="&fuel="+$("#fuel").val()
-			param+="&person="+$("#person").val()
+			param+="&person="+gfnRemoveComma($("#person").val())
 			param+="&rem="+$("#rem").val()
 			param+="&minp="+$("#minp").val()
 			param+="&shop="+$("#shop").val()
@@ -209,7 +219,12 @@
 					<option value="pkg">해외패키지</option>
 					<option value="fit">자유여행</option>
 				</select>
+				<script>
+				var $gubun = "${vo.gubun}";
+				$("#gubun option[value="+$gubun+"]").attr("selected", true);
+				</script>
 			</div>
+			
 			<div class="btn-group col-sm-2" role="group" aria-label="First group">
 				<input type="text" class="form-control rounded-0 rounded-left" placeholder="구분 추가" aria-label="Input group example" aria-describedby="btnGroupAddon2">
 				<button type="button" class="btn btn-primary">+</button>
@@ -241,6 +256,10 @@
 					<option value="easia">동아시아</option>
 					<option value="namerica">북미</option>
 				</select>
+				<script>
+				var $location = "${vo.location}";
+				$("#location option[value="+$location+"]").attr("selected", true);
+				</script>
 			</div>
 			<div class="btn-group col-sm-2" role="group" aria-label="First group">
 				<input type="text" class="form-control rounded-0 rounded-left" placeholder="지역 추가" aria-label="Input group example" aria-describedby="btnGroupAddon2">
@@ -262,6 +281,10 @@
 					<option value="china">중국</option>
 					<option value="usa">미국</option>
 				</select>
+				<script>
+				var $nation = "${vo.nation}";
+				$("#nation option[value="+$nation+"]").attr("selected", true);
+				</script>
 			</div>
 			<div class="btn-group col-sm-2" role="group" aria-label="First group">
 				<input type="text" class="form-control rounded-0 rounded-left" placeholder="국가 추가" aria-label="Input group example" aria-describedby="btnGroupAddon2">
@@ -301,7 +324,7 @@
 			<label for="priceAdult" class="col-sm-2 col-form-label">인원</label>
 			<div class="col-sm-2">
 				<div class="input-group">
-					<input type="text" name="person" id="person" class="form-control" aria-label="Amount (to the nearest dollar)"
+					<input type="text" name="person" id="person" class="form-control pressEvent" aria-label="Amount (to the nearest dollar)"
 					 placeholder="총 인원"  value="${vo.person}" />
 					<span class="input-group-addon">명</span>
 				</div>
@@ -390,22 +413,26 @@
 			<div class='col-sm-3'>
 				<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" 
 				data-link-field="dtp_input1">
-                    <input class="form-control" size="16" type="text" 
-                    placeholder="한국 출발" readonly value="${vo.sdate}">
+					
+                    <input class="form-control" size="16" type="text" placeholder="한국 출발" readonly 
+                    value='<fmt:formatDate value="${parsedSdate}" type="both" pattern="yyyy년 MM월 d일 - HH:mm a"/>'>
+
                     <span class="input-group-addon"><span class="fa fa-times" aria-hidden="true"></span></span>
 					<span class="input-group-addon"><span class="fa fa-calendar" aria-hidden="true"></span></span>
                 </div>
-				<input type="hidden" id="dtp_input1" name="sdate" value="" />
+				<input type="hidden" id="dtp_input1" name="sdate" value="${vo.sdate}" />
 			</div>
 			<div class='col-sm-3'>
 				<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" 
 				data-link-field="dtp_input2">
-                    <input class="form-control" size="16" type="text" 
-                    placeholder="현지 도착" readonly value="${vo.sadate}">
+				
+                    <input class="form-control" size="16" type="text" placeholder="현지 도착" readonly 
+                    value='<fmt:formatDate value="${parsedSAdate}" type="both" pattern="yyyy년 MM월 d일 - HH:mm a"/>'>
+                    
                     <span class="input-group-addon"><span class="fa fa-times" aria-hidden="true"></span></span>
 					<span class="input-group-addon"><span class="fa fa-calendar" aria-hidden="true"></span></span>
                 </div>
-				<input type="hidden" id="dtp_input2" name="sadate" value="" />
+				<input type="hidden" id="dtp_input2" name="sadate" value="${vo.sadate}" />
 			</div>
 				
 		</div>
@@ -415,22 +442,26 @@
 			<div class='col-sm-3'>
 				<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" 
 				data-link-field="dtp_input3">
-                    <input class="form-control" size="16" type="text" 
-                    placeholder="현지 출발" readonly value="${vo.edate}">
+				
+                    <input class="form-control" size="16" type="text" placeholder="현지 출발" readonly 
+                    value='<fmt:formatDate value="${parsedEdate}" type="both" pattern="yyyy년 MM월 d일 - HH:mm a"/>'>
+                    
                     <span class="input-group-addon"><span class="fa fa-times" aria-hidden="true"></span></span>
 					<span class="input-group-addon"><span class="fa fa-calendar" aria-hidden="true"></span></span>
                 </div>
-				<input type="hidden" id="dtp_input3" name="edate" value="" />
+				<input type="hidden" id="dtp_input3" name="edate" value="${vo.edate}" />
 			</div>
 			<div class='col-sm-3'>
 				<div class="input-group date form_datetime" data-date-format="yyyy년 MM d일 - HH:ii p" 
 				data-link-field="dtp_input4">
-                    <input class="form-control" size="16" type="text" 
-                    placeholder="한국 도착" readonly value="${vo.eadate}">
+				
+                    <input class="form-control" size="16" type="text" placeholder="한국 도착" readonly 
+                    value='<fmt:formatDate value="${parsedEAdate}" type="both" pattern="yyyy년 MM월 d일 - HH:mm a"/>'>
+                    
                     <span class="input-group-addon"><span class="fa fa-times" aria-hidden="true"></span></span>
 					<span class="input-group-addon"><span class="fa fa-calendar" aria-hidden="true"></span></span>
                 </div>
-				<input type="hidden" id="dtp_input4" name="eadate" value="" />
+				<input type="hidden" id="dtp_input4" name="eadate" value="${vo.eadate}" />
 			</div>
 		</div>
 		
@@ -535,18 +566,18 @@
 			<label for="selectDirect" class="col-sm-2 col-form-label">직항여부</label>
 			<div class="col-sm-2">
 				<select class="form-control" name="via" id="via">
-					<option value="N">직항</option>
-					<option value="Y">경유</option>
+					<option value="Y">직항</option>
+					<option value="N">경유</option>
 				</select>
 			</div>
 			<script>
 			$("#via").on("change", function(){
-				if ($(this).val() == "N") {
+				if ($(this).val() == "Y") {
 				 	$("#vias").attr("disabled",true);
 				 	$("#viaSelect").attr("disabled",true);
 				 	$("#viaSelect + button").attr("disabled",true);
 				}
-				if ($(this).val() == "Y") {
+				if ($(this).val() == "N") {
 				 	$("#vias").removeAttr("disabled");
 				 	$("#viaSelect").removeAttr("disabled");
 				 	$("#viaSelect + button").removeAttr("disabled");
@@ -599,7 +630,7 @@
 		<div class="d-flex justify-content-center">
 			<div class="p-2">
 				<button type="button" class="btn btn-primary" id="saveBtn">수정</button>
-				<button type="button" class="btn btn-primary" id="delBtn">삭제</button>
+				<button type="button" class="btn btn-danger" id="delBtn">삭제</button>
 			</div>
 		</div>
 		
@@ -617,9 +648,36 @@
 		showMeridian: 1
 	});
 	
-	/* 페이지가 열릴 때 textarea에 담긴 detail1 값을 에디터로 옮김 */
+	
+	function numberWithCommas(x) {
+	    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
+
+	
+	/* 셀렉트 박스 옵션 선택하기 s*/
+	
+	var $via = "${vo.via}";		// 경유지유무
+	$("#via option[value="+$via+"]").attr("selected", "true");
+	if ( $("#via option[value=N]").prop("selected") ) {		// 경유지 Y 이면 vias disabled 삭제
+		$("#vias").removeAttr("disabled");
+	 	$("#viaSelect").removeAttr("disabled");
+	 	$("#viaSelect + button").removeAttr("disabled");
+		}
+	
+	var $opt = "${vo.opt}";		// 옵션유무
+	$("#opt option[value="+$opt+"]").prop("selected", true);
+	
+	var $use = "${vo.use}";		// 사용여부
+	$("#use option[value="+$use+"]").attr("selected", "true");
+	
+	
+	/* 셀렉트 박스 옵션 선택하기 e*/
+	
+	
+	
 	$( document ).ready(function() {
 		
+		/* 페이지가 열릴 때 textarea에 담긴 값을 에디터로 옮김 s*/
 		for (var i=1; i<=5; i++) {
 			/* 에디터 html모드 활성화 */
 			$('#summernote'+i).summernote('codeview.toggle');
@@ -639,10 +697,139 @@
 			/* 에디터 html모드 비활성화 */
 			$('#summernote'+i).summernote('codeview.toggle');
 		}
+		/* 페이지가 열릴 때 textarea에 담긴 값을 에디터로 옮김 e*/
 		
-		$("h1").focus();
+		
+		
+		$(window).scrollTop(0); // 맨 위로 이동하기
 	});
 	
 	
 </script>
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<script>
+	
+	//1. 키이벤트 정의
+     $('#person').keyup(function (e){
+      gfnFormObjNumberEvent(this,e.keyCode,"yes");
+     });
+     
+     
+/**
+ * 숫자 체크 [숫자 .(190) ,(188), 탭(9), ctrl+v : 86, 백스페이스 : 8, ctrl+c : 67, ctrl+v : 17, shift+tab : 16, ctrl+tab : 18]
+ * @param obj
+ * @returns {Boolean}
+ */
+function gfnFormObjNumberEvent(obj, keyValue, addComma) {
+ var objValue = obj.value;
+ var sMaxValue = obj.maxValue;
+ if((keyValue >= 48 && keyValue <= 57) || keyValue == 45 || keyValue == 46
+   || keyValue == 190 || keyValue == 188 || keyValue == 9 || keyValue == 86 
+   || keyValue == 8 || keyValue == 67 || keyValue == 17 || keyValue == 16 || keyValue == 18) {
+  //return true;
+ } else {
+  alert("숫자만 입력이 가능합니다.");
+  if(objValue != null && objValue.length > 0) {
+   objValue = objValue.substring(0, objValue.length -1);
+   obj.value = objValue;
+  }
+  obj.focus();
+  event.returnValue = false;
+ }
+ if(sMaxValue != null && Number(objValue) > Number(sMaxValue)) {
+  alert(sMaxValue + " 이하로 입력하세요!!");
+  obj.value = "";
+  obj.focus();
+  event.returnValue = false;
+ }
+ 
+ var lastValue = String.fromCharCode(keyValue);
+ var vallen = objValue.length;
+ var setValue = gfnRemoveComma(objValue);
+ if(addComma == 'yes') {
+  returnvalue = gfnxxxAddComma(setValue);
+  obj.value = returnvalue;
+  obj.focus();
+  return true;
+ }
+ return true;
+}
+
+//숫자형 문자열에 자리수 ','를 추가
+function gfnxxxAddComma(numStr) {
+ var body = String(Number(numStr));
+ 
+ if(body == "0")
+  body = "";
+ 
+ body  = (body.indexOf('-') > -1 || body.indexOf('+') > -1) ? body.substring(1) : body;
+ body  = (body.indexOf('.') > -1) ? body.substring(0, body.indexOf('.')) : body;
+ 
+ var head = (numStr == body) ? "" : numStr.substring(0, numStr.indexOf(body));
+ var tail = (numStr == body) ? "" : numStr.substring(numStr.indexOf(body) + body.length);
+ 
+ while (body.length > 3) {
+  tail = ',' + body.substring(body.length - 3) + tail;
+  body = body.substring(0, body.length - 3);
+ }
+ return head + body + tail;
+}
+
+/**
+ * 콤마(,) 삭제
+ */
+function gfnRemoveComma(value){
+ return value.replace(/^\$|,/g, "") + "";
+}
+	
+</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </main>
