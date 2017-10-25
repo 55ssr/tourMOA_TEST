@@ -7,17 +7,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
-	<h1>상품 등록</h1>
-	<div class="row justify-content-between mb-3">
-		<div class="col-lg-3">
-		</div>
-		<div class="col-lg-1">
-		<button type="button" class="w-100 btn btn-primary" onclick="location.href='/adminGoodsList.do'">목록</button>
-		</div>
-	</div>
-	
-	<script> //도시 추가 인풋창 누적 하기	
+<script> //도시 추가 인풋창 누적 하기	
 	$(document).ready(function(){
 	    $("input#addCity").keydown(function (key) {
 	        if(key.keyCode == 13){//키가 13이면 실행 (엔터는 13)
@@ -42,9 +32,9 @@
 		if (document.frm.vias.value != "") document.frm.vias.value += ",";  
 		document.frm.vias.value += viaSelect;
 	}
-	</script>
-	
-	<script type="text/javascript">
+</script>
+
+<script type="text/javascript">
 	$(function(){
 		
 		$("#saveBtn").click(function(){
@@ -135,7 +125,7 @@
 				param+="&ref="+$("#ref").val()
 				param+="&opt="+$("#opt").val()
 				param+="&daily="+$("#daily").val();
-
+	
 			
 			alert(param);
 			
@@ -162,7 +152,37 @@
 			});
 		});
 	});
-	</script>
+</script>
+
+<script>
+	$(document).ready(function(){
+		$("#gubun").change(function(){
+			alert(this.value);
+			var param = "srchKeywd="+(this.value);
+			alert(param);
+			
+			$.ajax({
+				type: "POST",
+				data: param,
+				url: "<c:url value='/adminGoodsWrite.do' />",
+				dataType: "json",
+				success: function (data) {},
+				error: function (error) {}
+			});
+		});
+	});
+</script>
+
+<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
+	<h1>상품 등록</h1>
+	<div class="row justify-content-between mb-3">
+		<div class="col-lg-3">
+		</div>
+		<div class="col-lg-1">
+		<button type="button" class="w-100 btn btn-primary" onclick="location.href='/adminGoodsList.do'">목록</button>
+		</div>
+	</div>
+	
 	<form name="frm" id="frm">
 	<%-- <form name="frm" id="frm" method="post" enctype="multipart/form-data"> --%>
 		<input type="hidden" name="unq" value="" />
@@ -170,9 +190,10 @@
 			<label for="inputGoodsType" class="col-sm-2 col-form-label">상품구분</label>
 			<div class="col-sm-2">
 				<select class="form-control" name="gubun" id="gubun">
-					<option value="">-선택-</option>
-					<option value="pkg">해외패키지</option>
-					<option value="fit">자유여행</option>
+						<option value="">-선택-</option>
+					<c:forEach var="rs" items="${resultList}">
+						<option value="${rs.ctgcd}">${rs.ctgnm}</option>
+					</c:forEach>
 				</select>
 			</div>
 			<div class="btn-group col-sm-2" role="group" aria-label="First group">
@@ -200,11 +221,11 @@
 			<div class="col-sm-2">
 				<select class="form-control" name="location" id="location">
 					<option value="">-선택-</option>
-					<option value="weurope">서유럽</option>
-					<option value="eeurope">동유럽</option>
-					<option value="enasia">동남아</option>
-					<option value="easia">동아시아</option>
-					<option value="namerica">북미</option>
+					
+					<c:forEach var="rs2" items="${resultList2}">
+					<option value="weurope">${rs2.ctgnm}</option>
+					</c:forEach>
+										
 				</select>
 			</div>
 			<div class="btn-group col-sm-2" role="group" aria-label="First group">
