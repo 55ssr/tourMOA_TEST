@@ -42,7 +42,7 @@ function loginConfirm(){
 
 </script>
     <section id="content"><!--[[ content Start ]]-->
-        <div class="tit faq_tit" title="자주하는질문"><span class="tit_txt faq_sub">고객님이 많이 문의하시는 질문 및 답변을 모아두었습니다.</span></div>        
+                
         <form name="searchForm" id="searchForm" action="/customer/faqList.do" method="post" onsubmit="return frmSubmit();">
 			<input type="hidden" name="searchCateCd" id="searchCateCd" value="" />	
 	        <div class="board_search"><!--[[ Search Form Start ]]-->	            
@@ -58,7 +58,7 @@ function loginConfirm(){
 	            <button id="btn_search" title="검색" >검색</button>	            
 	        </div><!--[[ Search Form End ]]-->
 		</form>
-        <table class="cat_area"><!--[[ tab Start ]]-->
+        <table class="cat_area" style="width:1100px; margin: 0 auto"><!--[[ tab Start ]]-->
             <caption>FAQ 카테고리</caption>
             <tbody>
                <tr>
@@ -77,7 +77,7 @@ function loginConfirm(){
         </table><!--[[ tab End ]]-->
 
         <div class="board_area"><!--[[ faq board area Start ]]-->
-            <div class="faq_area">            
+            <div class="faq_area" style="width: 1100px; margin: 0 auto;">            
             	<div class="faq_list">
                     <ul class="que" id="que_20000000221">
                         <li class="aq"><img src="/images/customer/question.png" alt="질문"></li>
