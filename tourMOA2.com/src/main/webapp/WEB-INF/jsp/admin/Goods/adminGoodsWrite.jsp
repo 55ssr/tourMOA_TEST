@@ -127,7 +127,7 @@
 				param+="&daily="+$("#daily").val();
 	
 			
-			alert(param);
+			/* alert(param); */
 			
 			/* var form = new FormData(document.getElementById("frm")); */
 						

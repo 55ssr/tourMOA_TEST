@@ -242,7 +242,7 @@ $(document).ready(function() {
 					<span class="txt under">
 						<a href="#reviewWrap" id="rAvg">0건</a>
 					</span>
-					<span class="dev_comm">평점과 상품평 계산!</span>
+					<!-- <span class="dev_comm">평점과 상품평 계산!</span> -->
 				</span>
 
 				<div class="basicL">

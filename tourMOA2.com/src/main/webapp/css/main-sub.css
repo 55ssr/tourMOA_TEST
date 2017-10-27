@@ -64,7 +64,7 @@
 
 /* ì‚¬ì´ë“œ ë¸”ë¼ì¸ë“œ */
 .film_roll_child{position:relative; float:left; vertical-align:middle; z-index:100; margin:0; padding:0;}
-.film_dark_curtain { position: absolute; top: 0; left: 0; display: block; width: 100%; height: 100%; background:url("/images/sub/visual_blind.png") repeat; text-indent:-9999em; z-index: 101; }
+.film_dark_curtain { position: absolute; top: 0; left: 0; display: block; width: 100%; height: 100%; background:url("/images/tp-main/visual_blind.jpg") repeat; text-indent:-9999em; z-index: 101; }
 .film_roll_child.active .film_dark_curtain{height:0;}
 
 /* prev/next */

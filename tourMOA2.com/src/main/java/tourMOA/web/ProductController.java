@@ -130,16 +130,16 @@ public class ProductController {
 			System.out.println("////////////////////////////////이탈리아////////////////////////////////");
 			//String[] f = files.split("／");
 		}
-		/*vo3.setCode(vo.getNation());
+		vo3.setCode(vo.getNation());
 		System.out.println("====Con1");
-		vo3 = goodsService.selectSliderDetail(vo3);*/
+		vo3 = goodsService.selectSliderDetail(vo3);
 		
 		System.out.println("ddddddd"+vo);
 		List<?> optList = goodsService.selectOptionList(vo);
 		
 		model.addAttribute("vo", vo);
 		model.addAttribute("vo2", vo2);
-		/*model.addAttribute("vo3", vo3);*/
+		model.addAttribute("vo3", vo3);
 		model.addAttribute("optList", optList);
 		
 		return "product/detailPackage";		

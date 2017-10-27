@@ -1001,7 +1001,7 @@
 			$.ajax({
 				type: 'POST',
 				data: param,
-				url: "<c:url value='/estimateReqSave.do' />",
+				url: "<c:url value='/customer/estimateReqSave.do' />",  
 				dataType: "json",
 				/* processData: false,
 				contentType: false, */

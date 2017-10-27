@@ -419,7 +419,7 @@ function settingButton(){
 					<span class="ico_pink">선착순</span>
 					<!-- <span class="ico_limited ">리미티드세일</span> -->
 					</span>
-				<a href="detailPackage.do">${unitList.title}</a>
+				<a href="detailPackage.do?unq=2">${unitList.title}</a>
 				</td>
 				<td class="pdt_date">${unitList.period}</td>
 
