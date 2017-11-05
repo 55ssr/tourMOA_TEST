@@ -15,6 +15,8 @@ function fn_btn(a) {
 	f.submit();
 }
 
+
+
 </script>
 	<script>
 	$(document).ready(function(){
@@ -22,7 +24,6 @@ function fn_btn(a) {
 		
 			var form = "id="+$("input:hidden[id='userid']").val()
 				form += "&pwd="+$("input:password[id='custPw']").val();
-			alert(form);
 			
 			$.ajax({
 				
@@ -33,11 +34,35 @@ function fn_btn(a) {
 				
 				,success:function(data) {
 					if(data.cnt>0){
-						alert("Dddddd");
 						$("#frm").action="<c:url value='/mypage/accountDetail.do'/>";
 						$("#frm").submit();
 					}else {
 						alert("비밀번호가 일치하지 않습니다.");
+						return false;
+					}
+				}
+				, error: function(error) {
+					alert('Loading Error! '+error);
+				}
+			 });
+		});
+		$("#testBtn").click(function(){
+			
+			var form = "id="+$("input:hidden[id='userid']").val()
+			
+			$.ajax({
+				
+				  type:'POST'
+				, data: form
+				, url:"<c:url value='/mypage/reserveListDe.do'/>" 
+				, dataType: 'JSON'
+				
+				,success:function(data) {
+					if(data.cnt>0){
+						$("#frm1").action="<c:url value='/mypage/reserveList.do'/>";
+						$("#frm1").submit();
+					}else {
+						alert("no.");
 						return false;
 					}
 				}
@@ -86,18 +111,22 @@ function fn_btn(a) {
                      <span class="btn"><a href="/mypage/accountPwReaffirm.do">개인정보관리</a></span>
                      <span class="btn"><a href="#" onclick="fn_btn('${vo.id}')">비밀번호변경</a></span>
                      <input type="hidden" name="hiddenID" id="hiddenID" value="" />
-                 </form>
-                 </div>
-             </div>
+               
+               	  </div>
+             </form>
              <div class="para_02">
+             <form name="frm1" id="frm1" method="post" action="/mypage/reserveList.do" >
                 <ul> 
-                    <li class=""><p>여행상품<br />예약내역<br /><a href="/mypage/reserveList.do">0</a>건</p></li>                        
+                    <li class="" id="testBtn" ><p>여행상품<br />예약내역<br /><a href="#" >1</a>건</p></li>                        
                   	<li><p>해외항공권<br />예약내역<br /><a href="#"  onclick="airMenuSubmit('http://air.ybtour.co.kr/air/b2c/AIR/AAA/AIRAAALST0100000010.k1?KSESID=air:b2c:SELK138AN:AA024::00&domintgubun=I','_self'); return false;">0</a>건</p></li>
                     <li><p>국내항공권<br />예약내역<br /><a href="#"  onclick="airMenuSubmit('http://air.ybtour.co.kr/air/b2c/AIR/AAA/AIRAAALST0100000010.k1?KSESID=air:b2c:SELK138AN:AA024::00&domintgubun=D','_self'); return false;" >0</a>건</p></li>
                     <li class=""><p>관심상품<br /><a href="/mypage/wishList.do">0</a>건</p></li>
                     <li class=""><p>상담문의<br /><a href="/mypage/inquiryList.do">0</a>건</p></li>
-                    <li class="last"><p>여행이야기<br /><a href="/mypage/myPostList.do">0</a>건</p></li>                       
+                    <li class="last"><p>여행이야기<br /><a href="/mypage/myPostList.do">0</a>건</p></li>  
+                    <input type="hidden" name="hiddenID" id="hiddenID" value="${vo.id}" />                     
                 </ul>
+                </form>
+                 </div>
             </div>
         </div><!--[[ 메인상단 End ]]-->
    </section>

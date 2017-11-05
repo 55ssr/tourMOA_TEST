@@ -301,7 +301,21 @@ function loginConfirm(){
 			
 			<div class="board_navi_area"><!--[[ board navi Start ]]-->
 		        <span class="paging">           
-		            <span class="first">&lt;</span><span class="pre">이전</span><span class="on"><a>1</a></span><span class=""><a href="/customer/episodeList.do?pageIndex=2&searchCnd=&searchWrd=&srchParam=&srchParamContent=&bestYn=" title="2">2</a></span><span class=""><a href="/customer/episodeList.do?pageIndex=3&searchCnd=&searchWrd=&srchParam=&srchParamContent=&bestYn=" title="3">3</a></span><span class=""><a href="/customer/episodeList.do?pageIndex=4&searchCnd=&searchWrd=&srchParam=&srchParamContent=&bestYn=" title="4">4</a></span><span class=""><a href="/customer/episodeList.do?pageIndex=5&searchCnd=&searchWrd=&srchParam=&srchParamContent=&bestYn=" title="5">5</a></span><span class=""><a href="/customer/episodeList.do?pageIndex=6&searchCnd=&searchWrd=&srchParam=&srchParamContent=&bestYn=" title="6">6</a></span><span class=""><a href="/customer/episodeList.do?pageIndex=7&searchCnd=&searchWrd=&srchParam=&srchParamContent=&bestYn=" title="7">7</a></span><span class=""><a href="/customer/episodeList.do?pageIndex=8&searchCnd=&searchWrd=&srchParam=&srchParamContent=&bestYn=" title="8">8</a></span><span class=""><a href="/customer/episodeList.do?pageIndex=9&searchCnd=&searchWrd=&srchParam=&srchParamContent=&bestYn=" title="9">9</a></span><span class=""><a href="/customer/episodeList.do?pageIndex=10&searchCnd=&searchWrd=&srchParam=&srchParamContent=&bestYn=" title="10">10</a></span><span class="next on"><a href="/customer/episodeList.do?pageIndex=2&searchCnd=&searchWrd=&srchParam=&srchParamContent=&bestYn="  title="다음페이지">다음</a></span><span class="last on"><a href="/customer/episodeList.do?pageIndex=2594&searchCnd=&searchWrd=&srchParam=&srchParamContent=&bestYn=" title="마지막페이지">&gt;</a></span></span>
+		            <span class="first"><a>&lt;</a></span>
+		            <span class="pre"><a>이전</a></span>
+		            <span>
+		             <a href="/customer/episodeList.do?pageIndex=2&searchCnd=&searchWrd=&srchParam=&srchParamContent=&bestYn=" title="1">1
+		             </a></span>
+		            <span class="">
+		            <a href="/customer/episodeList.do?pageIndex=2&searchCnd=&searchWrd=&srchParam=&srchParamContent=&bestYn=" title="2">
+		            2
+		            </a>
+		            </span>
+		            <span class="">
+		            <a href="/customer/episodeList.do?pageIndex=3&searchCnd=&searchWrd=&srchParam=&srchParamContent=&bestYn=" title="3">
+		            3
+		            </a>
+		            </span><span class=""><a href="/customer/episodeList.do?pageIndex=4&searchCnd=&searchWrd=&srchParam=&srchParamContent=&bestYn=" title="4">4</a></span><span class=""><a href="/customer/episodeList.do?pageIndex=5&searchCnd=&searchWrd=&srchParam=&srchParamContent=&bestYn=" title="5">5</a></span><span class=""><a href="/customer/episodeList.do?pageIndex=6&searchCnd=&searchWrd=&srchParam=&srchParamContent=&bestYn=" title="6">6</a></span><span class=""><a href="/customer/episodeList.do?pageIndex=7&searchCnd=&searchWrd=&srchParam=&srchParamContent=&bestYn=" title="7">7</a></span><span class=""><a href="/customer/episodeList.do?pageIndex=8&searchCnd=&searchWrd=&srchParam=&srchParamContent=&bestYn=" title="8">8</a></span><span class=""><a href="/customer/episodeList.do?pageIndex=9&searchCnd=&searchWrd=&srchParam=&srchParamContent=&bestYn=" title="9">9</a></span><span class=""><a href="/customer/episodeList.do?pageIndex=10&searchCnd=&searchWrd=&srchParam=&srchParamContent=&bestYn=" title="10">10</a></span><span class="next"><a href="/customer/episodeList.do?pageIndex=2&searchCnd=&searchWrd=&srchParam=&srchParamContent=&bestYn="  title="다음페이지">다음</a></span><span class="last"><a href="/customer/episodeList.do?pageIndex=2594&searchCnd=&searchWrd=&srchParam=&srchParamContent=&bestYn=" title="마지막페이지">&gt;</a></span></span>
 		        <span class="board_btn">
 		            <button id="btnWrite" class="btnGray" title="확인" >글쓰기</button>
 		        </span>

@@ -3,7 +3,6 @@ package tourMOA.service.impl;
 import java.util.List;
 
 import javax.annotation.Resource;
-
 import org.springframework.stereotype.Service;
 
 import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
@@ -36,4 +35,11 @@ public class NoticeServiceImpl extends EgovAbstractServiceImpl implements Notice
 	public NoticeVO selectNoticeDetail(NoticeVO vo) throws Exception {
 		return noticeDAO.selectNoticeDetail(vo);
 	}
+
+	@Override
+	public List<?> selectStoryList(DefaultListVO searchVO) throws Exception {
+		// TODO Auto-generated method stub
+		return noticeDAO.selectStoryList(searchVO);
+	}
+
 }

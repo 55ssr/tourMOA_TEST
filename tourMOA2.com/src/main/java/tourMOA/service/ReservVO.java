@@ -3,6 +3,7 @@ package tourMOA.service;
 public class ReservVO {
 	private int unq;
 	private int rsvno;
+	private String id;
 	private String gender;
 	private String email;
 	private String phone;
@@ -19,12 +20,18 @@ public class ReservVO {
 	private int price;
 	private String name;
 	private String code;
-
 	private String ename;
 	private String birthday;
 	private int result;
 	private int cancel;
 
+	public String getId() {
+		return id;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getCode() {
 		return code;
 	}

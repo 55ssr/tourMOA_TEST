@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<link rel="stylesheet" type="text/css" href="/css/product-detail.css">
 <script src="/js/jquery-ui.js"></script>
 <script src="/js/product/jquery.bxslider.js"></script>
 <script src="/js/ui.js" type="text/javascript"></script>

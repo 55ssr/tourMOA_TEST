@@ -36,7 +36,7 @@
         <!-- <form name="frm" id="frm" method="post" action="/product/insertReserve.do"> --><!--[[ 입력폼 Start ]]-->
         <form name="frm" id="frm" method="post" action="/admin/Pay/adminPayList.do">        
         <input type="hidden" name="evCd" 			value="">        
-        <input type="hidden" name="code" id=code 	value="<%=code%>"/>        
+        <input type="hidden" name="code" id="code" 	value="<%=code%>"/>        
         <input type="hidden" name="goodsCd" 		value="">
         <input type="hidden" name="mgmUserId" 		value="">
         <input type="hidden" name="hidtel" id="hidtel" 		value="">

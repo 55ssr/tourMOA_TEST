@@ -129,5 +129,10 @@ public class GoodsDAO extends EgovAbstractDAO{
 		return list("goodsDAO.selectGoodsSearchList", searchVO);
 	}
 
+	public List<?> selectUnitList(GoodsVO vo) {
+		// TODO Auto-generated method stub
+		return list("goodsDAO.selectUnitList",vo);
+	}
+
 
 }

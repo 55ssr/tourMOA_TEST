@@ -100,7 +100,7 @@
 							<td>
 								<ul class="sub_choice_in">
 									<li><input type="radio" id="r_r_ptime01" name="r_r_ptime" value="X" onclick="clickptimeButton('X');"/><label for="r_r_ptime01">안함</label></li>
-									<li><input type="radio" id="r_r_ptime02" name="r_r_ptime" value="" checked="checked" onclick="clickptimeButton('');"/><label for="r_r_ptime02">상관없음</label></li>
+									<li><input type="radio" id="r_r_ptime02" name="r_r_ptime" value="O" onclick="clickptimeButton('');"/><label for="r_r_ptime02">상관없음</label></li>
 									<li class="last">
 										<input type="radio" id="r_r_ptime03" name="r_r_ptime" value="C" onclick="clickptimeButton('C');"/><label for="r_r_ptime03" class="input_space04">선택</label>
 										<!-- [공통코드 - 시간리스트] Start -->							
@@ -189,7 +189,7 @@
 										<ul class="sub_choice_in">
 										<!-- [여행지역 1차 설정] Start -->
 											<li>
-												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_55" value="유럽/지중해" onclick="fn_setflocFst('FFC','55')" >
+												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_55" value="유럽,지중해" onclick="fn_setflocFst('FFC','55')" >
 												<label for="rdo_FFC_55">유럽/지중해</label>
 											</li>
 											<li>
@@ -205,11 +205,11 @@
 												<label for="rdo_FFC_300">중국</label>
 											</li>
 											<li>
-												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_57" value="홍콩/마카오/대만" onclick="fn_setflocFst('FFC','57')">
+												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_57" value="홍콩,마카오,대만" onclick="fn_setflocFst('FFC','57')">
 												<label for="rdo_FFC_57">홍콩/마카오/대만</label>
 											</li>
 											<li>
-												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_59" value="미주/하와이" onclick="fn_setflocFst('FFC','59')">
+												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_59" value="미주,하와이" onclick="fn_setflocFst('FFC','59')">
 												<label for="rdo_FFC_59">미주/하와이</label>
 											</li>
 											<li>
@@ -221,7 +221,7 @@
 												<label for="rdo_FFC_295">몰디브</label>
 											</li>
 											<li>
-												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_11" value="괌/사이판" onclick="fn_setflocFst('FFC','11')">
+												<input type="radio" name="floc" class="flocFst" id="rdo_FFC_11" value="괌,사이판" onclick="fn_setflocFst('FFC','11')">
 												<label for="rdo_FFC_11">괌/사이판</label>
 											</li>
 										<!-- [여행지역 1차 설정] End -->
@@ -538,7 +538,7 @@
 									<ul class="sub_choice_in">
 									<!-- [출발일 변경 설정] Start -->
 										<li>
-											<input type="radio" name="schange" id="불가" value="불가" checked="checked"/>
+											<input type="radio" name="schange" id="불가" value="불가"/>
 											<label for="불가">불가</label>								
 										</li>								
 										<li>
@@ -567,15 +567,15 @@
 							<td>
 								<ul class="sub_choice_in">
 									<li>
-										<input type="radio" name="airline" id="chk_Item_FFC_29_10" value="대한항공">
+										<input type="radio" name="airline" id="chk_Item_FFC_29_10" value="대한항공"/>
 										<label for="chk_Item_FFC_29_10">대한항공</label>
 									</li>
 									<li>
-										<input type="radio" name="airline" id="chk_Item_FFC_29_11" value="아시아나">
+										<input type="radio" name="airline" id="chk_Item_FFC_29_11" value="아시아나"/>
 										<label for="chk_Item_FFC_29_11">아시아나</label>
 									</li>
 									<li>
-										<input type="radio" name="airline" id="chk_Item_FFC_29_11" value="제주항공">
+										<input type="radio" name="airline" id="chk_Item_FFC_29_11" value="제주항공"/>
 										<label for="chk_Item_FFC_29_11">제주항공</label>
 									</li>
 								</ul>
@@ -982,11 +982,11 @@
 				param +="&person="+$("#person").val()
 				param +="&money="+$("#money").val()
 				param +="&ptime="+$("#ptime").val() 
-				param +="&floc="+$("input:radio[name='floc']").val()
+				param +="&floc="+$("input:radio[name='floc']:checked").val()
 				param +="&sdate="+$("input:text[name='sdate']").val()
 				param +="&edate="+$("input:text[name='edate']").val()
-				param +="&schange="+$("input:radio[name='schange']").val()
-				param +="&airline="+$("input:radio[name='airline']").val()
+				param +="&schange="+$("input:radio[name='schange']:checked").val()
+				param +="&airline="+$("input:radio[name='airline']:checked").val()
 				param +="&stay="+stayVal;
 				param +="&stayname="+$("#txt_Item_FFC_30_111_Other").val()
 				param +="&inestimateagree="+$("input:hidden[name='inestimateagree']").val()
@@ -996,18 +996,20 @@
 				param +="&passage="+$("input:radio[name='passage']").val()
 				param +="&req="+$("#req").val();
 			
-				alert(param);		
+				alert(param);						
 			
 			$.ajax({
 				type: 'POST',
 				data: param,
-				url: "<c:url value='/estimateReqSave.do' />",
+				url: "<c:url value='/customer/estimateReqSave.do' />",  
 				dataType: "json",
-				processData: false,
-				contentType: false,
+				/* processData: false,
+				contentType: false, */
+				
 				
 				/* 처리되고나서 실행되는부분 */
 				success: function (data){
+					
 					if(data.result == "ok"){
 						alert("견적문의가 등록되었습니다.");
 						location.href = "<c:url value='/customer/estimateReq.do'/>";						
@@ -1015,7 +1017,7 @@
 						alert("견적문의가 등록되지 않았습니다. 다시 작성해주세요.");
 					}
 				},
-				error: function (error){
+				error: function (error){					
 					alert("error: " + error);
 				}
 			});

@@ -1,5 +1,8 @@
 package tourMOA.web;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import tourMOA.service.DefaultListVO;
 import tourMOA.service.GoodsService;
 import tourMOA.service.GoodsVO;
 import tourMOA.service.ManagerVO;
@@ -58,14 +62,57 @@ public class ProductController {
 
 	@RequestMapping("product/unitList.do")
 	public String unitList(@RequestParam("code") String code, GoodsVO vo, Model model) throws Exception{
+		GregorianCalendar yearList = new GregorianCalendar();
+		
+		int year =yearList.get(Calendar.YEAR);
+		int month =yearList.get(Calendar.MONTH)+1;
+		int date = yearList.get(Calendar.DATE);
+		int maximumday =yearList.getActualMaximum(Calendar.DAY_OF_MONTH);
+		int minimumday = yearList.getActualMinimum(Calendar.DAY_OF_MONTH);
+		
+		
+		
+		//달의 첫째 요일 구하기
+		int day_of_week = yearList.getActualMinimum(Calendar.DAY_OF_WEEK);
+		//String[] dayList = new String[maximumday];
+		String weekList[] = new String[maximumday];
+		
+		
+		//배열은 0부터 시작해야하고 minimumday는 1부터 해야하기때문에 -1을하고 i%7이 1일때 일요일이 되야하지만 더해준다
+		for(int i = minimumday-1; i <= maximumday-1; i++) {
+			System.out.println(i%7);
+			
+			if(i % 7 == 1) weekList[i]="월";
+			if(i % 7 == 2) weekList[i]="화";
+			if(i % 7 == 3) weekList[i]="수";
+			if(i % 7 == 4) weekList[i]="목";
+			if(i % 7 == 5) weekList[i]="금";
+			if(i % 7 == 6) weekList[i]="토";
+			if(i % 7 == 0) weekList[i]="일";
+		}
+		
+		List<?> unitList = goodsService.selectUnitList(vo);
+		
+		model.addAttribute("unitList", unitList);
+		
+		
 		vo = goodsService.selectUnitDetail(vo);
 		model.addAttribute("vo", vo);
+		model.addAttribute("day_of_week", day_of_week);
+		model.addAttribute("date", date);
+		model.addAttribute("year", year);
+		model.addAttribute("month", month);
+		model.addAttribute("maximumday", maximumday);
+		model.addAttribute("minimumday", minimumday);
+		model.addAttribute("weekList", weekList);
 		return "product/unitList";
 	}
 	
 	/*상품 예약리스트페이지*/
 	@RequestMapping("product/detailList.do")
-	public String detailList() throws Exception{		
+	public String detailList(@RequestParam("unq") String unq, GoodsVO vo, Model model) throws Exception{
+		vo = goodsService.selectUnitDetail(vo);
+		model.addAttribute("vo", vo);	
 		return "product/detailList";		
 	}
 	

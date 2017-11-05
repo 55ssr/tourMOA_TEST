@@ -55,16 +55,76 @@
 	</insert>
 	
 	<select id="estimateDAO.selectAdEstimateList" resultClass="egovMap">
-		SELECT
-			floc
+		SELECT b.* FROM (
+			SELECT 
+				rownum rn, a.* FROM (
+							SELECT	 
+								unq
+								,floc
+								, sdate
+								, edate
+								, TO_CHAR(rdate,'yyyy-mm-dd hh:mm') rdate
+								, title			  
+								, userid
+								, result
+							FROM 
+								estimate									
+							WHERE
+								1=1 									
+							<isNotNull property="searchCondition">
+								<isNotEmpty property="searchCondition">
+									AND $searchCondition$ LIKE '%' || #searchKeyword# || '%' 	
+								</isNotEmpty>
+							</isNotNull>		
+									
+							ORDER BY rdate DESC
+									) a
+						) b
+				WHERE 
+					rn >= #firstIndex# AND rn <![CDATA[<=]]> #lastIndex#	
+		
+		<!-- WHERE 1=1 : isNotNull 사용할 때만 쓴다. --> 			
+	</select>
+	
+	<select id="estimateDAO.adminEstimateTotal" resultClass="java.lang.Integer">
+		SELECT COUNT(*) FROM estimate
+	</select>
+	
+	<select id="estimateDAO.adminEstimateDetail" resultClass="estimateVO">
+		SELECT unq
+			, email
+			, name
+			, phone
+			, person
+			, money
+			, ptime
+			, floc
 			, sdate
 			, edate
+			, schange
+			, airline
+			, stay
+			, stayname
+			, req
 			, TO_CHAR(rdate,'yyyy-mm-dd hh:mm') rdate
+			, inestimateagree
 			, title			  
-			, userid			
-		FROM
-			estimate
-		<!-- WHERE 1=1 : isNotNull 사용할 때만 쓴다. --> 
-			
+			, userid
+			, city
+			, passage
+			, result
+			, TO_CHAR(redate,'yyyy-mm-dd hh:mm') redate
+			, reply
+			, manager
+		  FROM estimate
+		  WHERE unq='$unq$' 
 	</select>
+	<update id="estimateDAO.adminEstimateDetailUpdate">
+		UPDATE estimate SET 
+					result = '$result$'
+					, reply = '$reply$'
+					, manager = '$manager$'
+					, redate = sysdate					
+		WHERE unq = '$unq$'
+	</update>
 </sqlMap>

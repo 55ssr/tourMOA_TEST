@@ -7,6 +7,7 @@ import tourMOA.service.CommVO;
 public interface GoodsService {
 
 	List<?> selectGoodsList (DefaultListVO vo) throws Exception;
+	List<?> selectUnitList (GoodsVO vo) throws Exception;
 	String insertGoods(GoodsVO vo) throws Exception;
 	int selectGoodsTotal(DefaultListVO searchVO) throws Exception;
 	GoodsVO selectGoodsDetail(GoodsVO vo) throws Exception;

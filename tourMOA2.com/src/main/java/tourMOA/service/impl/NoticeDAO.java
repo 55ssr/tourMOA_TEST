@@ -9,22 +9,26 @@ import tourMOA.service.DefaultListVO;
 import tourMOA.service.NoticeVO;
 
 @Repository("noticeDAO")
-public class NoticeDAO extends EgovAbstractDAO{
+public class NoticeDAO extends EgovAbstractDAO {
 
 	public List<?> selectNoticeList(DefaultListVO searchVO) {
-		return list("noticeDAO.selectNoticeList",searchVO);
+		return list("noticeDAO.selectNoticeList", searchVO);
 	}
 
 	public String insertNotice(NoticeVO vo) {
-		return (String) insert("noticeDAO.insertNotice",vo);
+		return (String) insert("noticeDAO.insertNotice", vo);
 	}
 
 	public int selectNoticeTotal(DefaultListVO searchVO) {
-		return (int) select("noticeDAO.selectNoticeTotal",searchVO);
+		return (int) select("noticeDAO.selectNoticeTotal", searchVO);
 	}
 
 	public NoticeVO selectNoticeDetail(NoticeVO vo) {
 		return (NoticeVO) select("noticeDAO.selectNoticeDetail", vo);
 	}
 
+	public List<?> selectStoryList(DefaultListVO searchVO) {
+		// TODO Auto-generated method stub
+		return list("noticeDAO.selectStoryList",searchVO);
+	}
 }

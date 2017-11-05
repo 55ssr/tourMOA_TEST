@@ -51,13 +51,45 @@
 								<isNotEmpty property="searchCondition">
 									AND $searchCondition$ LIKE '%' || #searchKeyword# || '%' 	
 								</isNotEmpty>
-							</isNotNull>		
+							</isNotNull>	
+							
+							
 									
 							ORDER BY rdate DESC
 									) a
 						) b
 		WHERE 
 				rn >= #firstIndex# AND rn <![CDATA[<=]]> #lastIndex#
+	</select>
+	
+	<select id="goodsDAO.selectUnitList" resultClass="egovMap">
+		SELECT b.* FROM (
+			SELECT 
+				rownum rn, a.* FROM (
+							SELECT	  unq
+									, city
+									, airline
+									, title
+									, period
+									, TO_CHAR(price,'L9,999,999') price
+									, TO_CHAR(pricech,'L9,999,999') pricech
+									, TO_CHAR(pricein,'L9,999,999') pricein
+									, TO_CHAR(sdate, 'mm"/"dd "("DY")" hh":"mi') sdate
+									, TO_CHAR(edate, 'mm"/"dd "("DY")" hh":"mi') edate
+									, DECODE(use,'Y',('사용'),('중지')) use
+									, rdate
+							FROM 
+									goods
+									
+							WHERE
+							
+							
+									code LIKE '$code$' || '%'
+									
+							ORDER BY rdate DESC
+									) a
+						) b
+		
 	</select>
 	
 	<select id="goodsDAO.selectGoodsTotal" resultClass="java.lang.Integer">
@@ -248,6 +280,7 @@
 				unq,
 				title,
 				gubun,
+				detail1,
 				location,
 				nation,
 				city,
@@ -272,6 +305,8 @@
 			goods
 		WHERE
 			code = '$code$'
+			OR
+			unq = '$unq$'
 	</select>
 	
 	<update id="goodsDAO.updateGoods">
@@ -405,25 +440,24 @@
 	</select>
 	
 	<select id="goodsDAO.selectOptionList" resultClass="egovMap">
-		SELECT code, title, filename, rtime, pay, expl
+		SELECT code, title, filename, rtime, expl
 			FROM opt
 			WHERE code = '$nation$'
 	</select>
 				
 	<insert id="goodsDAO.insertOption">
-		INSERT INTO opt (unq, code, title, filename, rtime, pay, expl)
+		INSERT INTO opt (unq, code, title, filename, rtime,  expl)
 			VALUES (SEQ_option_unq.nextval
 					,'$code$'
 					,'$title$'
 					,'$filename$'
 					,'$rtime$'
-					,'$pay$'
 					,'$expl$'
 					)
 	</insert>
 	
 	<select id="goodsDAO.selectOptionDetail" resultClass="optionVO">
-		SELECT unq, code, title, filename, rtime, pay, expl
+		SELECT unq, code, title, filename, rtime, expl
 			FROM opt WHERE unq = '$unq$'
 	</select>
 	
@@ -431,7 +465,7 @@
 		SELECT b.* FROM (
 			SELECT 
 				rownum rn, a.* FROM (
-							SELECT	  unq, code, title, filename, rtime, pay
+							SELECT	  unq, code, title, filename, rtime
 							FROM 
 									opt
 									
@@ -473,7 +507,6 @@
 				UPDATE opt SET
 					title = '$title$',
 					rtime = '$rtime$',
-					pay = '$pay$',
 					expl = '$expl$',
 					filename = filename || '$filename$'
 				WHERE
@@ -482,18 +515,7 @@
 		</isNotNull>
 	</update>
 	
-	<insert id="goodsDAO.insertComm">
-		INSERT INTO comm (unq, gubun, ctitle, gtitle, author, content, rdate, pid)
-			VALUES (SEQ_comm_unq.nextval,
-					'$gubun$',
-					'$ctitle$',
-					'$gtitle$',
-					'$author$',
-					'$content$',
-					sysdate,
-					'26'
-					)
-	</insert>
+	
 	
 	<select id="goodsDAO.selectCommList" resultClass="egovMap">
 		SELECT b.* FROM (
@@ -536,6 +558,23 @@
 			WHERE unq = '$unq$'
 	</select>
 	
+	 
+	<!-- 상품평 등록  -->
+	<insert id="goodsDAO.insertComm">
+		INSERT INTO comm (unq, gubun, ctitle, gtitle, author, content, rdate, pid)
+			VALUES (SEQ_comm_unq.nextval,
+					'$gubun$',
+					'$ctitle$',
+					'$gtitle$',
+					'$author$',
+					'$content$',
+					sysdate,
+					'26'
+					)
+	</insert>
+	
+	<!-- 
+	어드민 상품평 등록:서치 (필요 없음)
 	<select id="goodsDAO.selectGoodsSearchList" resultClass="egovMap">
 		SELECT title 
 			FROM goods 
@@ -544,9 +583,10 @@
 				<isNotEmpty property="searchCondition">
 					AND $searchCondition$ LIKE '%' || '$searchKeyword$' || '%' 	
 				</isNotEmpty>
-			</isNotNull>		
+			</isNotNull>
 							
-	</select>
+	</select> 
+	-->
 </sqlMap>
 
 

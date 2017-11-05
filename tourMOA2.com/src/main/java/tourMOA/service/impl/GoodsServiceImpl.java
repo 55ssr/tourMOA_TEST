@@ -162,5 +162,11 @@ public class GoodsServiceImpl extends EgovAbstractServiceImpl implements GoodsSe
 		return goodsDAO.selectGoodsSearchList(searchVO);
 	}
 
+	@Override
+	public List<?> selectUnitList(GoodsVO vo) throws Exception {
+		// TODO Auto-generated method stub
+		return goodsDAO.selectUnitList(vo);
+	}
+
 
 }

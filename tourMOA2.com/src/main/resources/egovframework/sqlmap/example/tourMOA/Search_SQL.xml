@@ -32,8 +32,10 @@
 					<!--SEARCHCONDITION, SEARCHKEYWORD,출발일월을 다 SEARCH 할 때 -->
 					<isNotNull property="searchCondition">
 						<isNotEmpty property="searchCondition">
+						
 					<isNotNull property="searchKeyword">
 						<isNotEmpty property="searchKeyword">
+						
 					<isNotNull property="departDate">
 						<isNotEmpty property="departDate">
 						WHERE
@@ -54,33 +56,39 @@
 											]]> 		
 						</isNotEmpty>
 					</isNotNull>
+					
 						</isNotEmpty>
 					</isNotNull>
+					
 						</isNotEmpty>
 					</isNotNull>
 					
 					<!-- SELECT OPTION 만으로  SEARCH 할 때 -->
 					<isNotNull property="searchCondition">
 						<isNotEmpty property="searchCondition">
-					<isNull property="searchKeyword">
-						<isEmpty property="searchKeyword">
+						
+					<isEqual property="searchKeyword" compareProperty="searchKeyword"  compareValue="">
+					
 					<isNull property="departDate">
 						<isEmpty property="departDate">
 					
 						WHERE
 							gubun ='$searchCondition$'
+							
 						</isEmpty>
 					</isNull>
-						</isEmpty>
-					</isNull>
+					
+					</isEqual>
+					
 						</isNotEmpty>
 					</isNotNull>
 					
 					<!-- INPUT KEYWORD 만으로  SEARCH 할 때 -->
 					<isNotNull property="searchKeyword">
 						<isNotEmpty property="searchKeyword">
-					<isNull property="searchCondition">
-						<isEmpty property="searchCondition">
+						
+					<isEqual property="searchCondition" compareProperty="searchCondition"  compareValue="">
+					
 					<isNull property="departDate">
 						<isEmpty property="departDate">
 					
@@ -97,14 +105,16 @@
 
 						</isEmpty>
 					</isNull>	
-						</isEmpty>
-					</isNull>
+					
+					</isEqual>
+					
 						</isNotEmpty>
 					</isNotNull>
 					
 					<!-- INPUT departDate 만으로  SEARCH 할 때 -->
 					<isNotNull property="departDate">
 				<isNotEmpty property="departDate">
+				
 			<isEqual property="searchKeyword" compareProperty="searchKeyword"  compareValue="">
 			<isEqual property="searchCondition" compareProperty="searchCondition"  compareValue="">
 					
@@ -118,8 +128,9 @@
 			
 			</isEqual>
 			</isEqual>
-						</isNotEmpty>
-					</isNotNull>
+			
+					</isNotEmpty>
+				</isNotNull>
 							ORDER BY sdate ASC
 											) a
 							) b
@@ -137,8 +148,10 @@
 		
 		<isNotNull property="searchCondition">
 			<isNotEmpty property="searchCondition">
+			
 		<isNotNull property="searchKeyword">
 			<isNotEmpty property="searchKeyword">
+			
 		<isNotNull property="departDate">
 			<isNotEmpty property="departDate">
 		
@@ -161,16 +174,19 @@
 							'$departDate$' <=	 sdate 
 											]]> 
 			</isNotEmpty>
-		</isNotNull>				
+		</isNotNull>		
+				
 			</isNotEmpty>
 		</isNotNull>
+		
 			</isNotEmpty>
 		</isNotNull>
 		
 		<isNotNull property="searchCondition">
 			<isNotEmpty property="searchCondition">
-		<isNull property="searchKeyword">
-			<isEmpty property="searchKeyword">
+			
+		<isEqual property="searchKeyword" compareProperty="searchKeyword"  compareValue="">
+		
 		<isNull property="departDate">
 			<isEmpty property="departDate">
 		
@@ -179,16 +195,18 @@
 		
 			</isEmpty>
 		</isNull>
-			</isEmpty>
-		</isNull>
+		
+		</isEqual>
+		
 			</isNotEmpty>
 		</isNotNull>
 		
 		
 		<isNotNull property="searchKeyword">
 			<isNotEmpty property="searchKeyword">
-		<isNull property="searchCondition">
-			<isEmpty property="searchCondition">
+			
+		<isEqual property="searchCondition" compareProperty="searchCondition"  compareValue="">
+		
 		<isNull property="departDate">
 			<isEmpty property="departDate">
 		
@@ -200,14 +218,16 @@
 		
 			</isEmpty>
 		</isNull>
-			</isEmpty>
-		</isNull>
+		
+		</isEqual>
+		
 			</isNotEmpty>
 		</isNotNull>
 		
 			<!-- INPUT departDate 만으로  SEARCH 할 때 -->
 			<isNotNull property="departDate">
 				<isNotEmpty property="departDate">
+				
 			<isEqual property="searchKeyword" compareProperty="searchKeyword"  compareValue="">
 			<isEqual property="searchCondition" compareProperty="searchCondition"  compareValue="">
 					
@@ -218,8 +238,9 @@
 							'$departDate$' <=	 sdate 
 															]]> 	
 
-					</isEqual>
-					</isEqual>
+			</isEqual>
+			</isEqual>
+					
 				</isNotEmpty>
 			</isNotNull>
 			

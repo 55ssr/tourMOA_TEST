@@ -7,17 +7,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
-	<h1>상품 등록</h1>
-	<div class="row justify-content-between mb-3">
-		<div class="col-lg-3">
-		</div>
-		<div class="col-lg-1">
-		<button type="button" class="w-100 btn btn-primary" onclick="location.href='/adminGoodsList.do'">목록</button>
-		</div>
-	</div>
-	
-	<script> //도시 추가 인풋창 누적 하기	
+<script> //도시 추가 인풋창 누적 하기	
 	$(document).ready(function(){
 	    $("input#addCity").keydown(function (key) {
 	        if(key.keyCode == 13){//키가 13이면 실행 (엔터는 13)
@@ -42,9 +32,9 @@
 		if (document.frm.vias.value != "") document.frm.vias.value += ",";  
 		document.frm.vias.value += viaSelect;
 	}
-	</script>
-	
-	<script type="text/javascript">
+</script>
+
+<script type="text/javascript">
 	$(function(){
 		
 		$("#saveBtn").click(function(){
@@ -135,9 +125,9 @@
 				param+="&ref="+$("#ref").val()
 				param+="&opt="+$("#opt").val()
 				param+="&daily="+$("#daily").val();
-
+	
 			
-			alert(param);
+			/* alert(param); */
 			
 			/* var form = new FormData(document.getElementById("frm")); */
 						
@@ -162,22 +152,78 @@
 			});
 		});
 	});
-	</script>
+</script>
+
+<script> /* 카테고리 : 중분류 추가 */
+	$(document).ready(function(){
+		$("#gubun").change(function(){
+			fn_category("location",(this.value));
+		});
+		$("#location").change(function(){
+			fn_category("nation",(this.value));
+		});
+	});
+</script>
+
+<script>
+function fn_category(selName, thisValue) {
+	var optName = "";
+	if (selName == "location") optName = "지역";
+	if (selName == "nation") optName = "국가";
+	//var param = "srchKeywd="+(this.value);
+	//var param = '{ "srchKeywd" : ' + (this.value) + ' }';
+	//alert(param);
+	
+	$.ajax({
+		type: "POST",
+		data: { "srchKeywd" : thisValue , "srchContn" : "hctgcd" },
+		url: "<c:url value='/adminGoodsWriteCategory.do' />",
+		dataType: "json",
+		
+		/* processData: false,
+		contentType: false, */
+		
+		success: function (data) {
+			var len = data.list.length;
+			
+			/* 옵션 초기화 */
+			$("#"+selName+" option").remove();
+			$("#"+selName+"").append("<option>-"+optName+"-</option>");
+			for (i=0; i<len; i++) {
+				$("#"+selName+"").append(
+					"<option value="+data.list[i].ctgcd+">"+data.list[i].ctgnm+"</option>"
+				);
+			}
+			$("#"+selName+"").removeAttr("disabled");
+			/* <c:forEach var="rs2" items="${result}">
+			alert({rs2.ctgnm});
+			</c:forEach> */
+		},
+		error: function (error) {
+			alert("error");
+		}
+	});
+}
+</script>
+
+<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
+	<h1>상품 등록</h1>
+	<div class="row justify-content-between mb-3">
+		<div class="col-lg-3">
+		</div>
+		<div class="col-lg-1">
+		<button type="button" class="w-100 btn btn-primary" onclick="location.href='/adminGoodsList.do'">목록</button>
+		</div>
+	</div>
+	
 	<form name="frm" id="frm">
 	<%-- <form name="frm" id="frm" method="post" enctype="multipart/form-data"> --%>
 		<input type="hidden" name="unq" value="" />
+		
 		<div class="form-group row">
-			<label for="inputGoodsType" class="col-sm-2 col-form-label">상품구분</label>
-			<div class="col-sm-2">
-				<select class="form-control" name="gubun" id="gubun">
-					<option value="">-선택-</option>
-					<option value="pkg">해외패키지</option>
-					<option value="fit">자유여행</option>
-				</select>
-			</div>
-			<div class="btn-group col-sm-2" role="group" aria-label="First group">
-				<input type="text" class="form-control rounded-0 rounded-left" placeholder="구분 추가" aria-label="Input group example" aria-describedby="btnGroupAddon2">
-				<button type="button" class="btn btn-primary">+</button>
+			<label for="inputTitle" class="col-sm-2 col-form-label">상품명</label>
+			<div class="col-sm-10">
+				<input type="text" name="title" id="title" class="form-control form-control-lg" placeholder="상품명">
 			</div>
 		</div>
 		
@@ -187,52 +233,53 @@
 				<input type="text" name="code" id="code" class="form-control" placeholder="상품번호">
 			</div>
 		</div>
-	
-		<div class="form-group row">
-			<label for="inputTitle" class="col-sm-2 col-form-label">상품명</label>
-			<div class="col-sm-10">
-				<input type="text" name="title" id="title" class="form-control form-control-lg" placeholder="상품명">
-			</div>
-		</div>
 		
 		<div class="form-group row">
-			<label for="inputLocation" class="col-sm-2 col-form-label">지역</label>
+			<label for="inputGoodsType" class="col-sm-2 col-form-label">상품구분</label>
 			<div class="col-sm-2">
-				<select class="form-control" name="location" id="location">
-					<option value="">-선택-</option>
-					<option value="weurope">서유럽</option>
-					<option value="eeurope">동유럽</option>
-					<option value="enasia">동남아</option>
-					<option value="easia">동아시아</option>
-					<option value="namerica">북미</option>
+				<select class="form-control" name="gubun" id="gubun">
+						<option value="">-상품 구분-</option>
+					<c:forEach var="rs" items="${resultList}">
+						<option value="${rs.ctgcd}">${rs.ctgnm}</option>
+					</c:forEach>
 				</select>
 			</div>
+			
+			<div class="col-sm-2">
+				<select class="form-control" name="location" id="location" disabled>
+					<option value="">-지역-</option>
+				</select>
+			</div>
+			
+			<div class="col-sm-2">
+				<select class="form-control" name="nation" id="nation" disabled>
+					<option value="">-국가-</option>
+				</select>
+			</div>
+			<!-- 
 			<div class="btn-group col-sm-2" role="group" aria-label="First group">
-				<input type="text" class="form-control rounded-0 rounded-left" placeholder="지역 추가" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+				<input type="text" class="form-control rounded-0 rounded-left" placeholder="구분 추가" aria-label="Input group example" aria-describedby="btnGroupAddon2">
 				<button type="button" class="btn btn-primary">+</button>
+			</div> -->
+		</div>
+		
+		<!-- <div class="form-group row">
+			<label for="inputLocation" class="col-sm-2 col-form-label">지역</label>
+			<div class="col-sm-2">
+				<select class="form-control" name="location" id="location" disabled>
+					<option value="">-선택-</option>
+				</select>
 			</div>
 		</div>
 		
 		<div class="form-group row">
 			<label for="inputLocation" class="col-sm-2 col-form-label">국가</label>
 			<div class="col-sm-2">
-				<select class="form-control" name="nation" id="nation">
+				<select class="form-control" name="nation" id="nation" disabled>
 					<option value="">-선택-</option>
-					<option value="uk">영국</option>
-					<option value="france">프랑스</option>
-					<option value="italy">이탈리아</option>
-					<option value="germany">독일</option>
-					<option value="spain">스페인</option>
-					<option value="japan">일본</option>
-					<option value="china">중국</option>
-					<option value="usa">미국</option>
 				</select>
 			</div>
-			<div class="btn-group col-sm-2" role="group" aria-label="First group">
-				<input type="text" class="form-control rounded-0 rounded-left" placeholder="국가 추가" aria-label="Input group example" aria-describedby="btnGroupAddon2">
-				<button type="button" class="btn btn-primary">+</button>
-			</div>
-		</div>
+		</div> -->
 		
 		<div class="form-group row">
 			<label for="inputCity" class="col-sm-2 col-form-label">도시</label>

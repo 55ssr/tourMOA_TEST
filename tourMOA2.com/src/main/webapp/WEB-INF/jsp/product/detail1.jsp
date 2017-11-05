@@ -2,6 +2,12 @@
 <script src="/js/jquery-2.2.2.js"></script>
 <script src="/js/jquery-ui.js"></script>
 <script src="/js/product/jquery.bxslider.js"></script>
+<script src="/js/jquery.film_roll.min.js"></script>
+<link rel="stylesheet" href="/css/sliderkit/sliderkit.css" />
+<script type="text/javascript" src="/js/jquery.easing.1.3.min.js"></script>
+<script type="text/javascript" src="/js/jquery.sliderkit.1.9.2.pack.js"></script>
+ 
+<link rel="stylesheet" href="/css/main-sub.css" />
 <script>
 	$(document).ready(function(){
 		$(".cont03 > ul > li > div").each(function(){
@@ -18,11 +24,114 @@
 				});
 			});
 		});
+		
+		$(document).ready(function(){
+		    /* ############################################################################################ */
+		    /* 서브메인 비쥬얼 슬라이드 Start */ 
+		    /* ############################################################################################ */
+		    var film_roll = new FilmRoll({
+		        configure_load : true ,
+		        container      : '#film_roll' ,
+		        height         : 500 ,
+		        interval       : 5000 ,
+		        pager          : false,
+		        prev           : '.slide_prev',
+		        next           : '.slide_next'
+		    });
+		    //sliderBtnArrowReset();
+		    //$(window).resize(function(){ sliderBtnArrowReset(); });
+		
+			$(".controlbox > .control > ul > li:eq(1)").addClass("bgNone");
+		
+		    $('#film_roll').on('film_roll:moving', function(event) {
+		        $(".controlbox > .control > ul > li").removeClass("on");
+		        $(".controlbox > .control > ul > li:eq("+film_roll.index+")").addClass("on");
+		        //$('#some_counter_div').html( (film_roll.index+1)+' / '+film_roll.children.length );
+		
+				// 인근 배경 컨트롤
+				$(".controlbox > .control > ul > li").removeClass("bgNone");
+				$(".controlbox > .control > ul > li").eq( film_roll.index + 1 ).addClass("bgNone");
+		    });
+		
+		    $(".controlbox > .control > ul > li").each(function(){
+		        var tab_index = $(this).index();
+		
+		        $(this).click(function() {
+		            $(".controlbox > .control > ul > li").removeClass("on");
+		            $(this).addClass("on");
+		            film_roll.moveToIndex(tab_index);
+		
+		            // 인근 배경 컨트롤
+		            $(".controlbox > .control > ul > li").removeClass("bgNone");
+		            $(".controlbox > .control > ul > li").eq( tab_index + 1 ).addClass("bgNone");
+		
+		            return false;
+		        })
+		    });
+		    $(".controlbox > .control > ul > li:first-child").addClass("on"); //버튼 on 초기화
+		    /* 서브메인 비쥬얼 슬라이드 End */
+		    });
+
 	});
 	
 </script>
 
-<div id="main">
+<div id="slide">
+	<!--[[ 슬라이드 Start ]]-->
+	<div id="film_roll" class="slidebox">
+		<!--[[ slidebox Start ]]-->
+		
+			<div class="txtbox " data-film-roll-child-id="3" >
+				<div class="film_dark_curtain"></div>
+				<a href="/promotion/Overseas/2017/0804_as_withasiana/" target="_self">
+					<img src="http://cimg.cdn.ybtour.co.kr/attachHome/EP/EM/201708/201708031448093951501011001096.jpg" class="slidephoto" alt="너랑, 나랑, 아시아나 WITH 동남아">
+				</a>
+			</div>
+			<div class="txtbox  active" data-film-roll-child-id="0" >
+				<div class="film_dark_curtain"></div>
+				<a href="/promotion/overseas/2017/1027_eu_ybasiana/" target="_self">
+					<img src="http://cimg.cdn.ybtour.co.kr/attachHome/EP/EM/201710/201710251123218921102001001038.jpg" class="slidephoto" alt="11~12월 유럽, 노랑다운 가격전">
+				</a>
+			</div>
+			<div class="txtbox  " data-film-roll-child-id="1" >
+				<div class="film_dark_curtain"></div>
+				<a href="/promotion/Overseas/2017/1013_jp_osaka_NS/" target="_self">
+					<img src="http://cimg.cdn.ybtour.co.kr/attachHome/EP/EM/201710/201710131106109461412002001057.jpg" class="slidephoto" alt="오사카 여행">
+				</a>
+			</div>
+			<div class="txtbox " data-film-roll-child-id="2" >
+				<div class="film_dark_curtain"></div>
+				<a href="/promotion/Overseas/2017/0918_au_newzeland/" target="_self">
+					<img src="http://cimg.cdn.ybtour.co.kr/attachHome/EP/EM/201710/201710111840398451412002001098.jpg" class="slidephoto" alt="뉴질랜드">
+				</a>
+			</div>
+			</div>
+			
+		
+		
+		
+		
+	<!--[[ slidebox End ]]-->
+
+	<div class="controlbox">
+		<!--[[ controlbox Start ]]-->
+		<div class="control ctrl01">
+			<ul>
+			<li class="first on"><a href="너랑 나랑 노랑,&lt;br&gt;그리고 아시아나랑">서유럽 아시아나</a></li>
+			<li class="first bgNone"><a href="오사카 여행">일본 오사카</a></li>
+			<li class="first"><a href="뉴질랜드 남북섬&lt;br&gt;대한항공 전세기 직항">뉴질랜드</a></li>
+			<li class="first"><a href="너랑, 나랑, 아시아나&lt;br&gt; WITH 동남아">동남아</a></li>
+			</ul>
+		</div>
+	</div>
+	<!--[[ controlbox End ]]-->
+
+	<div class="btnWrap">
+		<div class="btnBox">
+			<a href="" class="slide_prev"></a>
+			<a href="" class="slide_next"></a>
+		</div>
+	</div>
 </div>
 <div id="content">
 <div id="theme_block">
