@@ -40,7 +40,7 @@ CREATE TABLE estimate
 	ptime varchar2(50) NOT NULL, -- 통화가능시간
 	rdate date, -- 등록일자
 	result char(1), -- 처리결과
-	reply varchar2(2000) NOT NULL -- 처리내용
+	reply varchar2(2000) NOT NULL, -- 처리내용
 	manager varchar2(50), -- 처리 담당자
 	PRIMARY KEY (unq)
 );
@@ -54,7 +54,7 @@ ALTER TABLE SCOTT.ESTIMATE MODIFY(SCHANGE NULL); -- 출발일 변경가능여부
 ALTER TABLE SCOTT.ESTIMATE ADD (PASSAGE CHAR(1)); -- 경유지 가능여부
 ALTER TABLE SCOTT.ESTIMATE MODIFY(STAY VARCHAR2(100) NOT NULL); -- 숙박시설 종류 선택 type변경 및 text형식으로 받음.
 ALTER TABLE SCOTT.ESTIMATE MODIFY(RDATE NULL); -- date타입은 NULL처리
-ALTER TABLE SCOTT.ESTIMATE MODIFY(REPLY  NULL); -- 관리자가 답변을 달아야 함으로 NULL 처리
+ALTER TABLE SCOTT.ESTIMATE MODIFY(REPLY NULL); -- 관리자가 답변을 달아야 함으로 NULL 처리
 ALTER TABLE SCOTT.ESTIMATE ADD (inEstimateAgree  CHAR(1) NOT NULL); -- 개인정보 확용동의란 채크
 ALTER TABLE SCOTT.ESTIMATE MODIFY(MONEY NUMBER); -- 여행가격 type 변경 varchar2 -> number
 ALTER TABLE SCOTT.ESTIMATE ADD (redate  DATE); -- 견적처리 등록일자 추가 (고객이 처음 등록했을 때는 처리일자가 필요없으므로 NULL처리

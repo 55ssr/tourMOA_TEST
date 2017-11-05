@@ -433,7 +433,7 @@ $(document).ready(function(){
 										.removeClass("on");
 							}
 						});
-		$(".photoslider-bullets").sliderkit({
+		$(".banner.photoslider-bullets").sliderkit({
 			auto : true,
 			autospeed : 3000,
 			circular : true,
@@ -1324,11 +1324,8 @@ $(document).ready(function(){
 					</span>
 				</a></li>
 			</ul>
-			<div class="theme03 sliderkit photoslider-bullets"
-				style="display: block;">
+			<div class="theme03 sliderkit photoslider-bullets">
 				<div class="slider sliderkit-panels">
-					<div class="sliderkit-panels-wrapper"
-						style="position: relative; top: -540px;">
 						<div class="panel sliderkit-panel" >
 							<ul>
 								<li><a
@@ -1501,7 +1498,6 @@ $(document).ready(function(){
 
 							</ul>
 						</div>
-					</div>
 
 
 
@@ -1532,7 +1528,7 @@ $(document).ready(function(){
 							<img src="/images/tp-main/story${storyList.unq}.png"
 							alt=" ★호주,뉴질랜드여행이 아니면 알 수 없는 것들 ★">
 							<h3 class="tit">${storyList.title}</h3>
-							<p>${storyList.storycontent}</p>
+							<p style="height:130px;overflow:hidden">${storyList.storycontent}</p>
 						</a>
 					</li>
 				</c:forEach>
