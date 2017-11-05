@@ -24,3 +24,5 @@ ALTER TABLE reserv ADD(period varchar2(50)); -- add
 ALTER TABLE reserv ADD(gender char(1)); -- add
 -- reserv 테이블 code추가
 ALTER TABLE reserv ADD(code varchar2(50)); -- add
+-- reserv 테이블 id추가(member랑동일id)
+ALTER TABLE reserv ADD(id varchar2(20)); -- add

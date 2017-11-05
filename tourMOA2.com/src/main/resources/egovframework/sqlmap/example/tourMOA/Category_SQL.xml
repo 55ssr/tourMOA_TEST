@@ -56,6 +56,25 @@
 			START WITH hctgcd = '0'
  			CONNECT BY PRIOR ctgcd=hctgcd
 	</select>
+	
+	<select id="categoryDAO.selectCategoryList1" resultClass="egovMap">
+		SELECT hctgcd, ctgcd, ctgnm FROM category
+			WHERE 1=1
+			<isNotNull property="srchContn">
+    			<isNotNull property="srchKeywd">
+	    			<isEqual property="srchContn" compareValue="hctgcd">
+	    				AND hctgcd = '$srchKeywd$'
+	    			</isEqual>
+	    			<isEqual property="srchContn" compareValue="ctgnm">
+	    				AND ctgnm LIKE '%' || #srchKeywd# || '%' 
+	    			</isEqual>
+	    			<isEqual property="srchContn" compareValue="use">
+	    				AND use = #use#
+	    			</isEqual>
+	    		</isNotNull>
+			</isNotNull> 
+	</select>
+	
 	<!-- 카테고리테이블의 전체 코드 갯수를 구함 -->
 	<select id="categoryDAO.selectCategoryCdCnt" resultClass="java.lang.Integer">
 		SELECT  
