@@ -61,6 +61,7 @@
 			</li>
 		</ul>
 	</div>
+	<div class="alert alert-success mb-0 mr-1" style="width: 400px; padding: 0.9em; font-size: 0.7em; text-align: right;">이 사이트는 Chrome에 최적화 되어 제작되었습니다.</div>
 	<a class="btn btn-primary mb-md-0" href="/main.do">
 		<i class="fa fa-home" aria-hidden="true"></i>
 		투어모아

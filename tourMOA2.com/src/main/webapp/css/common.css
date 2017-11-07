@@ -878,7 +878,7 @@ td.expandOne a {display:inline-block !important; float:none !important ; width:5
 
 /* 사이드메뉴 */
 #sidemenu { position: absolute; top: 250px; right:0; display: inline-block; height: auto; z-index: 10; }
-#sidemenu.sideMain{top: 211px; right:0 !important}
+#sidemenu.sideMain{top: 223px; right:0 !important}
 #sidemenu .sidemenuBtn { position:absolute; top:0; left:-18px; background:url(/images/customer/btn_quick_arrow2.gif) no-repeat; width:19px; height:42px; cursor: pointer; }
 #sidemenu .sidemenuBtn.on { position:absolute; top:0; left:-18px; background:url(/images/customer/btn_quick_arrow.gif) no-repeat; width:18px; height:42px; cursor: pointer;}
 #sidemenu ul.after {border:1px solid #999;}
@@ -890,7 +890,7 @@ td.expandOne a {display:inline-block !important; float:none !important ; width:5
 
 #sidemenu ul.before {width:128px; height:auto; border:1px solid #acacac; background-color:#fff}
 #sidemenu ul.before li {height:43px;  border-top:1px solid #d7d7d7;}
-/* #sidemenu ul.before li:first-child {border-top:none}  */
+#sidemenu ul.before li:first-child {border-top:none}
 #sidemenu ul.before li.mini {height:28px}
 #sidemenu ul.before li.today_goods {height:100px; text-align:center; padding:11px 0 6px; background-color: #eee;}
 #sidemenu ul.before li.today_goods span.stit { font-size:13px; color:#666; letter-spacing:-0.02em}
@@ -1086,7 +1086,8 @@ div.local_tel_info div.num_block .num_device dd {font-size:14px; color:#707070; 
 
 /* 여행상품 검색 및 항공권 찾기 */
 #travel_search_box{position:absolute; width:280px; height:40px; left:50%; top:0; margin-left:-550px; background:url("/images/common/bg_ts_all.jpg") repeat left top; z-index:20}
-#travel_search_box .input_txt{margin-bottom:15px; line-height:24px}
+/* #travel_search_box .input_txt{margin-bottom:15px; line-height:24px} */
+.input_ph .input_txt{width:100%; line-height:24px}
 #travel_search_box.on{height:402px}
 #travel_search_box.on .ts_wrap{display:block}
 #travel_search_box.st01{background-color:#f0f0f0; background-image:none}
@@ -1111,23 +1112,23 @@ div.local_tel_info div.num_block .num_device dd {font-size:14px; color:#707070; 
 .ts_tit.st05{background-position:-110px -70px}
 .ts_tit.st06{background-position:-110px -140px}
 .txt_ts{display:block; height:31px; margin-bottom:15px; background:url("/images/common/txt_ts.jpg") no-repeat left top}
-.select_bx_st{position:relative; width:240px; height:35px; margin-bottom:15px; background:#0d0d0d url("/images/find_icon01arr_sub.jpg") no-repeat 213px center;}
+.select_bx_st{position:relative; width:240px; height:35px; background:#0d0d0d url("/images/find_icon01arr_sub.png") no-repeat 262px center;}
 .select_bx_st label{position:absolute; font-size:13px; color:#999; top:11px; left:14px; letter-spacing:-1px; z-index:0}
 .select_bx_st select{position:absolute; top:0; left:0; width:100%; height:35px; min-height:35px; padding:0 10px; opacity:0; filter:alpha(opacity=0); z-index:1}
-.select_bx_st.st01{width:117px; background-position:90px center}
+.select_bx_st.st01{background-position:110px center}
 .select_bx_st.st01 label, .select_bx_st.st02 label{left:10px}
 .btn_type{width:240px; height:35px; background-color:#ffb902; color:#fff; font-size:16px; border:0 none; cursor:pointer; font-weight:bold; line-height:16px}
 .ts_search{background-image: url("/images/find_icon05wh.jpg"); background-repeat: no-repeat; background-position: 30% 10px}
 .ts_wrap_cont{position:relative}
 
 /* main input */
-.input_txt{height:25px; padding:5px 0 5px 15px; background-color:#000; font-size:13px; color:#999; border:0 none; line-height:18px}
+.input_txt{height:25px; padding:5px 0; background-color:#0d0d0d; font-size:13px; color:#999; border:0 none; line-height:18px}
 input::-webkit-input-placeholder {color:#999}
 input::-moz-placeholder {color:#999; opacity:1}
 input:-ms-input-placeholder{color:#999}
 .input_ph{position:relative}
 .ui_placeholder{position:absolute !important;;left:15px;top:10px; font-size:13px; color:#999; border-left:0 !important;}
-.input_reset{position:absolute; width:40px; height:35px; top:0; right:0; padding:0; color:#999; font-size:13px; border:0 none; background:#000 url("/images/find_icon04.jpg") center center no-repeat; z-index:0; text-indent:-9999px; cursor:pointer}
+.input_reset{position:absolute; width:40px; height:35px; top:0; right:0; padding:0; color:#999; font-size:13px; border:0 none; background:#0d0d0d url("/images/find_icon04.png") center center no-repeat; z-index:0; text-indent:-9999px; cursor:pointer}
 
 /* 항공권찾기 */
 .air_cont{display:none}
@@ -1141,17 +1142,22 @@ input:-ms-input-placeholder{color:#999}
 .air_radios label{float:left; margin:0 20px 0 3px; margin-top:4px; color:#fff; font-size:13px}
 .air_radios input{float:left}
 .air_cont{padding:78px 0 0 0}
-.air_cont .clearfix .select_bx_st{float:left}
-.air_cont .clearfix .input_ph{float:left; margin-left:6px}
+/* .air_cont .clearfix .select_bx_st{float:left} */
+.select_bx_st{float:left}
+/* .air_cont .clearfix .input_ph{float:left; margin-left:6px} */
+.input_ph{float:left;}
 .air_cont .clearfix.st01{position:relative; margin-left:-6px}
 .air_cont .clearfix .air_date_sel{float:right; margin-top:-25px; font-size:12px; color:#eee; text-align:right}
 .air_cont .clearfix .air_date_sel input{margin-right:5px; vertical-align:middle}
-.sel_boxs{margin-left:-6px}
-.sel_boxs .select_bx_st{float:left; width:76px; margin-left:6px}
-.air_date_list{display:none; position:absolute; right:0; top:0; z-index:10}
-.air_date_list .select_bx_st{height:33px; border:1px solid #999}
+.sel_boxs{/* margin-left:-6px */}
+.sel_boxs .select_bx_st{float:left; width:76px;/*  margin-left:6px */}
+.air_date_list{display:none; float:left; z-index:10}
+.air_date_list .select_bx_st{width: 100%; /* height:33px; border:1px solid #999 */}
 .air_date_list .select_bx_st label{top:10px; left:15px}
-.btn_m_pop_close{display:none; position:absolute; right:-40px; top:0; width:40px; height:28px; padding-top:12px; background:url("/images/common/bg_ts_all.jpg") repeat left top; text-align:center}
+.btn_m_pop_close{display:none; position:absolute; right:-40px; top:0; width:40px; height:28px; padding-top:12px; 
+background-image: url(/images/tp-main/find.png);
+text-align:center}
+
 
 /* sub 검색 style */
 #travel_search_box.st01 .ts_tit{background-image:url("/images/common/bg_ts_title02.jpg")}
@@ -1435,7 +1441,7 @@ a:visited.color_blue  {color:inherit}
 .free_tbl_tab>li.on:first-child a{border-left:1px solid #ffa800; border-right:1px solid #ffa800}
 
 /* 탑배너 */
-.top_main_banner { width:100%; height:70px}
+.top_main_banner { width:100%; height:70px;background-color:#d6eade}
 .top_main_banner .banner_md {width:1100px; height:70px; margin:auto;  position:relative}
 ul.banner_top_list {display:table; table-layout:fixed; width:100%}
 ul.banner_top_list li {display:table-cell;  empty-cells: show;}
@@ -1459,3 +1465,34 @@ ul.banner_top_list li a {display:block; width:100%; height:70px}
 
 /*********************** 프로젝트 커스텀 스타일 ***********************/
 .dev_comm {display:none; font-weight:600;/* display:table; */background-color:#a12aa1;padding: 6px;color: white!important;}
+.preparing {
+    position: absolute;
+    bottom: 100%;
+    left: 60%;
+    background: #40d4a0;
+    padding: 6px;
+    border-radius: 4px;
+    color: #0d0d0d;
+}
+.preparing:after {
+    content: '';
+    position: absolute;
+    border-top: 10px solid #40d4a0;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    top: 90%;
+    left: 40%;
+}
+#forChrome {
+	background: rgba(64, 212, 160, 0.2) url(/images/chrome64.png) no-repeat -10% 43%;
+    top: 33%;
+    padding: 6px;
+    width: 190px;
+    height: 32px;
+    border: 1px solid;
+    border-radius: 7px;
+    color: #155724;
+    border-color: #dedede;
+    font-size: 0.8em;
+    line-height: 1.3em;
+}

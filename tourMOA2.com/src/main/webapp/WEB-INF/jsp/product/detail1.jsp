@@ -10,17 +10,19 @@
 <link rel="stylesheet" href="/css/main-sub.css" />
 <script>
 	$(document).ready(function(){
+		$(".cont03 > ul > li > div .noti").show();
+		$(".cont03 > ul > li > div .info").hide();
 		$(".cont03 > ul > li > div").each(function(){
 			var tab_index = $(this).index();
 
 			$(this).on('mouseover',function(){
 				$(".cont03 > ul > li > div:eq("+tab_index+") .noti").css("display","none");
-				$(".cont03 > ul > li > div:eq("+tab_index+") .info").stop(false, false).show(0).animate({"top":110},300);
+				$(".cont03 > ul > li > div:eq("+tab_index+") .info").stop(false, false).show(0).animate({"top":110, "opacity":1},300);
 			});
 
 			$(this).on('mouseleave',function(){
-				$(".cont03 > ul > li > div:eq("+tab_index+") .info").stop(true, false).animate({"top":210},200, function(){
-					$(".cont03 > ul > li > div:eq("+tab_index+") .noti").stop(false, false).fadeIn(400).hide(0);
+				$(".cont03 > ul > li > div:eq("+tab_index+") .info").stop(true, false).hide(0).animate({"top":210},300, function(){
+					$(".cont03 > ul > li > div:eq("+tab_index+") .noti").stop(false, false).fadeIn(400).show(0);
 				});
 			});
 		});
@@ -83,25 +85,25 @@
 		
 			<div class="txtbox " data-film-roll-child-id="3" >
 				<div class="film_dark_curtain"></div>
-				<a href="/promotion/Overseas/2017/0804_as_withasiana/" target="_self">
+				<a href="#" target="_self">
 					<img src="http://cimg.cdn.ybtour.co.kr/attachHome/EP/EM/201708/201708031448093951501011001096.jpg" class="slidephoto" alt="너랑, 나랑, 아시아나 WITH 동남아">
 				</a>
 			</div>
 			<div class="txtbox  active" data-film-roll-child-id="0" >
 				<div class="film_dark_curtain"></div>
-				<a href="/promotion/overseas/2017/1027_eu_ybasiana/" target="_self">
+				<a href="#" target="_self">
 					<img src="http://cimg.cdn.ybtour.co.kr/attachHome/EP/EM/201710/201710251123218921102001001038.jpg" class="slidephoto" alt="11~12월 유럽, 노랑다운 가격전">
 				</a>
 			</div>
 			<div class="txtbox  " data-film-roll-child-id="1" >
 				<div class="film_dark_curtain"></div>
-				<a href="/promotion/Overseas/2017/1013_jp_osaka_NS/" target="_self">
+				<a href="#" target="_self">
 					<img src="http://cimg.cdn.ybtour.co.kr/attachHome/EP/EM/201710/201710131106109461412002001057.jpg" class="slidephoto" alt="오사카 여행">
 				</a>
 			</div>
 			<div class="txtbox " data-film-roll-child-id="2" >
 				<div class="film_dark_curtain"></div>
-				<a href="/promotion/Overseas/2017/0918_au_newzeland/" target="_self">
+				<a href="#" target="_self">
 					<img src="http://cimg.cdn.ybtour.co.kr/attachHome/EP/EM/201710/201710111840398451412002001098.jpg" class="slidephoto" alt="뉴질랜드">
 				</a>
 			</div>

@@ -111,26 +111,32 @@
 						</isNotEmpty>
 					</isNotNull>
 					
-					<!-- INPUT departDate 만으로  SEARCH 할 때 -->
-					<isNotNull property="departDate">
+				<!-- 	
+					
+			INPUT departDate 만으로  SEARCH 할 때
+			<isNotNull property="departDate">
 				<isNotEmpty property="departDate">
 				
-			<isEqual property="searchKeyword" compareProperty="searchKeyword"  compareValue="">
-			<isEqual property="searchCondition" compareProperty="searchCondition"  compareValue="">
-					
-						
-						WHERE
+					<isEqual property="searchKeyword" compareProperty="searchKeyword"  compareValue="">
+					<isEqual property="searchCondition" compareProperty="searchCondition"  compareValue="">
 							
-				<![CDATA[ 
-							'$departDate$' <=	 sdate 
-															]]> 	
-
+								
+								WHERE
+									
+						<![CDATA[ 
+									'$departDate$' <=	 sdate 
+																	]]> 	
+		
+					
+					</isEqual>
+					</isEqual>
 			
-			</isEqual>
-			</isEqual>
+				</isNotEmpty>
+			</isNotNull>
 			
-					</isNotEmpty>
-				</isNotNull>
+			 -->
+			
+			
 							ORDER BY sdate ASC
 											) a
 							) b
@@ -223,8 +229,8 @@
 		
 			</isNotEmpty>
 		</isNotNull>
-		
-			<!-- INPUT departDate 만으로  SEARCH 할 때 -->
+		<!-- 
+			INPUT departDate 만으로  SEARCH 할 때
 			<isNotNull property="departDate">
 				<isNotEmpty property="departDate">
 				
@@ -243,7 +249,7 @@
 					
 				</isNotEmpty>
 			</isNotNull>
-			
+			 -->
 		
 	</select>
 </sqlMap>

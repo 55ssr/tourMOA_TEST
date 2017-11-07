@@ -43,7 +43,7 @@ function loginConfirm(){
 }
 
 </script>
-<section id="content"><!--[[ content Start ]]-->
+<section id="content" style="width: 1100px; display:block"><!--[[ content Start ]]-->
 	<div class="survey_tit">
 		<span class="blind">고객만족도조사</span>
 		<span class="sub_tit">고객 여러분들의 소리에 항상 귀 기울이는 투어모아가 될 것을 약속 드립니다.</span>

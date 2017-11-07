@@ -38,10 +38,12 @@
         
         #header{width: 100%; height: auto; margin: 0 auto;}
         
-        #topmenu{width:100%; height: 40px; background-color: #eaeaea;}
+        #topmenu{width:100%; height: 40px; background-color: #f5f5f5;}
         #topmenu ul{float: right;}
-        #topmenu ul li{display: inline-block; margin: 10px; font-size: 13px;}
+        #topmenu ul li{display: inline-block; margin: 13px 8px; font-size: 13px;}
         /*#topmenu ul li:last-child{margin-right: 250px;}*/
+        #topmenu ul li i { position: relative; top: 1px; right: 2px;}
+        #topmenu ul li a {color: #5d5d5d}
         
         #header_logo{width: 100%; height: 130px;}
         #header_logo h1{float: left;/*  margin : 0 auto; */}
@@ -68,19 +70,19 @@
           font-size: 1em;
        	 }
        	         
-		#searchBox #searchBtnMain {float:left;position:absolute;margin-top: 11px;height:auto;}
+		#searchBox #searchBtnMain {/* float:left;position:absolute; */margin-top: 11px; margin-left: 10px; height:auto;}
 		
 		form[name="searchFrmMain"] #searchBox span.dvide {
 			float: left;
 			display: block;
 			height: 28px;
-			margin: 6px 10px;
+			margin: 6px;
 			border-left: 1px solid #d1d1d1;
 		}
 		
 		
         #navi{
-        	width: 100%; height: 53px;float: left;
+        	width: 100%; height: 53px;
         	background-color: #2B4D73;
         }
         #navi ul{width: 1100px; height: 100%; margin: 0 auto}
@@ -99,17 +101,51 @@
 	        color: white;
         }
         
+        .sliderkit.carousel {width:1920px; height: 540px; z-index: 0}
         
-          
-        #main{width: auto; height:auto;
-        	min-width : 1920px;
-        	min-height : 760px;
-        	background-image: url('/images/tp-main/mainbg1.jpg');
-        	background-size: 100% 100%;        	
-	    	-webkit-animation-name: banner; Safari 4.0 - 8.0;
-	  	 	-webkit-animation-duration: 10s; Safari 4.0 - 8.0;
-	  		animation-name: banner;
-	 		animation-duration: 7s; animation-iteration-count: infinite;}
+		/* 메인 네비바 & 카로셀 */
+		#main{ width: auto; min-width : 1920px; 
+			background-image: url('/images/tp-main/newslider01.jpg');
+			background-size: 100% 100%;}
+		
+		div.mainb .sliderkit-go-btn { position: absolute; bottom: 20px; z-index: 15;}
+		div.mainb .sliderkit-go-prev {left: 410px}
+		div.mainb .sliderkit-go-next {right: 410px}
+		div.mainb .sliderkit-go-btn a {display: block; width: 41px; height: 40px; cursor: pointer;}
+		
+		div.mainb .sliderkit-nav {
+			position: absolute; left: 50%; 
+			margin-left: -510px; bottom: 20px; 
+			width: 1020px; height: 40px; text-align: left;}
+		
+		div.mainb .sliderkit-nav-clip ul.tabs  li:first-child { background-image: none; }
+		div.mainb .sliderkit-nav-clip ul.tabs li {
+		    background: #373737 url(/images/main/blr/ico_blockline.gif) no-repeat 0 0;
+		    height: 40px; width: 204px;
+		    text-align: center; padding: 0; margin: 0; }
+		div.mainb .sliderkit-nav-clip ul.tabs  li a {
+			line-height: 40px; color: #cdcdcd;
+    		font-size: 14px; display: block; width: 100%;}
+    	div.mainb .sliderkit-nav-clip ul.tabs  li.sliderkit-selected {
+			font-family: 'NanumBold';}
+			
+		div.mainb .sliderkit-nav-clip ul.tabs li.sliderkit-selected a {
+    		color: #fff; font-weight: normal;
+    		font-size: 14px; width: 100%;
+    		background: #00b6ad; display: block;}
+		
+	 	/* 	#main 백업용
+		#main{
+			width: auto; height:auto;
+			min-width : 1920px;
+			min-height : 760px;
+			background-image: url('/images/tp-main/mainbg1.jpg');
+			background-size: 100% 100%;        	
+			-webkit-animation-name: banner; Safari 4.0 - 8.0;
+			-webkit-animation-duration: 10s; Safari 4.0 - 8.0;
+			animation-name: banner;
+			animation-duration: 7s; animation-iteration-count: infinite;
+		} */
 	 		
   	      
         #rightmenu{ width: 180px; height: 300px; float: right; display: inline-block; }
@@ -128,30 +164,27 @@
         #rightmenu ul li i{color: gray; margin-right: 10px;}
         a#moveTopBtn{text-decoration: none; color: black;}
         
-        #quickmenu{width: 320px; height: 30px; float: left; }
-        #quickmenu ul{width: 320px; height: 30px;
-            background-image: url('/images/tp-main/find.png'); font-weight: 900;}
-        #quickmenu ul li{color: #fff; font-size: 14px; float: left; }
-        #quickmenu ul li:nth-child(1){width: 150px;}
+        #quickmenu{position: absolute; z-index: 6; width: 320px; height: 30px; float: left; }
+        #quickmenu ul{width: 320px; height: 40px;
+            background-image: url('/images/tp-main/find.png');}
+        #quickmenu ul li{width: 160px; color: #fff; font-size: 14px; float: left; font-size:1em }
+        #quickmenu ul li i {margin-right: 6px}
+        /* #quickmenu ul li:nth-child(1){width: 150px;}
         #quickmenu ul li:nth-child(2){width: 150px;}
-        #quickmenu ul li:nth-child(3){width: 20px;}
-        #quickmenu a{margin: 3px;
+        #quickmenu ul li:nth-child(3){width: 20px;} */
+        /* #quickmenu a{margin: 3px;
         				text-align:center;
         				text-decoration: none; 
         				font-weight: 800;
         				color: white;
-        				}
+        				} */
         #searchBtn { 
-        		 text-align :center;
-				 font-size : 16px;
-				 margin-left : 20px;
-				 width: 270px; 
-				 height: 50px;
-				 background-color: #6b8eb4;
-				 color : #fff;
-				 border : 0px;
-				 font-weight: bolder;
-				 margin-bottom: 20px; }
+        		padding: 0;
+				font-size : 1.4em;
+				width: 100%; 
+				height: 50px;
+				background-color: #40d4a0;
+				font-family: nanumbold}
       
    .find{
    		
@@ -162,7 +195,6 @@
    .find-content {
     background-image: url('/images/tp-main/find.png');
     background-repeat: repeat;
-    top: 5px;
     position: relative;
     color: #fff;
     min-width: 310px;
@@ -171,78 +203,55 @@
 /*     display: none;*/
     color: #fff;
     font-size: 14px;
-    height: 400px; }
+    height: 350px; }
   
-    .find-content-inside1{
-    		margin-left: 20px; 
-    		background-color: black; 
-    		width: 270px; 
-    		height: 30px; 
-    		color: #fff; 
-    		margin-bottom: 10px;
-    		margin-top: 10px;
-    		border : 0} 
-    .find-content-inside2{
-    		margin-left: 20px; 
-    		background-color: black; 
-    		width: 270px; 
-    		height: 30px; 
-    		color: #fff; 
-    		margin-bottom: 25px;
-    		margin-top: 10px;
-    		border : 0} 
+    .find-content-inside {
+    	width: 100%;
+    	height: 35px;
+    	border: 0;
+    }
+    .find-content-inside1{} 
+    .find-content-inside2{} 
     		
-    		
-	.finder{cursor: pointer; text-align: center; line-height: 25px; color: pink;}
-	.finder:hover{color: pink;}
-        
+    		    
+	.finder{position: relative; cursor: pointer; text-align: center; line-height: 25px; color: #7daaf9; line-height:2.5em}
+	.finder:hover{color: #7daaf9;}
+	.finder #dvide {
+		width: 1px;
+	    height: 14px;
+	    background-color: #5f5f5f;
+	    position: absolute;
+	    right: 0;
+	    top: 12px;
+		} 
 	.find-content p{margin-left: 20px; width: 300px;}
         
  	.airportfind-content {
 		    background-image: url('/images/tp-main/find.png');
-		    right: 150px;
-		    top : 5px; 
+		    right: 160px;
 		    position: relative;
 		    color: #fff;
 		    display: none;
 		    min-width: 310px;
-		    height: 400px;
 		    padding: 5px 5px;
 		    text-decoration: none;
 		    color: #fff;
 		    font-size: 14px;
 	}
-	.airportfind-content p {margin-left: 20px; }
+	.airportfind-content p {padding: 10px; letter-spacing: -1px;}
 	.airportfind-content span:last-child {float:right;margin-right: 10px;}
+	.airportfind-content-inside {width: 49%; height: 35px; border: 0; padding: 0}
 	
-	
-	.airportfind-content-inside1{
-			float:left;
-    		margin-left: 20px; 
-    		background-color: black; 
-    		width:120px; 
-    		height: 30px; 
-    		color: #fff; 
-    		margin-bottom: 10px;
-    		margin-top: 10px;
-    		border : 0;} 
-    .airportfind-content-inside2{
-    		margin-left: 15px;
-    		text-align:center; 
-    		background-color: black; 
-    		width:120px; 
-    		height: 30px; 
-    		color: #fff; 
-    		margin-bottom: 10px;
-    		margin-top: 10px;
-    		border : 0;}
+	.airportfind-content-inside1{} 
+    .airportfind-content-inside2{}
+    
     .airportfind-content-inside2.whenyoucome{float:left;}
-	.dontknowWhen{
-	display: none;
+    
+	.dontknowWhen{display: none;}
+	#dontknow {vertical-align: middle;
 	}
 	.kind_of_people{display:inline-block; width:100%}
 	.kind_of_people select{
-			margin-left: 13px; 
     		background-color: black; 
     		width: 25%; 
     		height: 30px; 
@@ -263,8 +272,7 @@
     		
  	.domesticfind-content {
 		    background-image: url('/images/tp-main/find.png');
-		    right: 150px;
-		    top : 5px; 
+		    right: 160px;
 		    position: relative;
 		    color: #fff;
 		    display: none;
@@ -318,29 +326,14 @@
     		border : 0;}	
     	
 			
+	.quickDiv {padding:6px 10px;}
+	.quickDiv:first-child {padding-top: 20px}
+	.quickDiv input[type="button"] {float: left; width:50%; font-size: 1em; height:30px; border:0; color:white; cursor:pointer}
+	.quickDiv.clearfix div {width: 50%;}
+	.quickDiv .input_txt {text-indent: 14px; letter-spacing: -1px}
 	
-	.airportfind_airlineBtn {text-align :center;
-				 font-size : 16px;
-				 margin-left : 20px;
-				 width: 40%; 
-				 height: 50px;
-				 background-color: green;
-				 color : #fff; 
-				 border : 0px;
-				 font-weight: bolder;
-				 margin-bottom: 20px; }
-				 
-				 
-	.airportfind_domesticBtn {text-align :center;
-				 font-size : 16px;
-				 margin-left : 10px;
-				 width: 40%; 
-				 height: 50px;
-				 background-color: gray;
-				 color : #fff;
-				 border : 0px;
-				 font-weight: bolder;
-				 margin-bottom: 20px; }
+	.airportfind_airlineBtn { background-color: #40d4a0;}
+	.airportfind_domesticBtn { background-color: #a1a1a1;}
 				 
 	.domestic_airlineBtn {text-align :center;
 				 font-size : 16px;
@@ -350,8 +343,7 @@
 				 background-color: gray;
 				 color : #fff;
 				 border : 0px;
-				 font-weight: bolder;
-				 margin-bottom: 20px; }
+				 font-weight: bolder;}
 				 
 				 
 	.domestic_domesticBtn{text-align :center;
@@ -362,13 +354,23 @@
 							 background-color: green;
 							 color : #fff; 
 							 border : 0px;
-							 font-weight: bolder;
-							 margin-bottom: 20px; }
+							 font-weight: bolder;}
         
-	.airportfinder{cursor: pointer; text-align: center;  line-height: 25px;}
-    .airportfinder:hover{color: pink;}
+	.airportfinder{cursor: pointer; text-align: center;  line-height: 2.5em;}
+    .airportfinder:hover{color: #7daaf9;}
         
 #quickCloseBtn{cursor: pointer;}
+
+
+
+
+
+
+
+
+
+
+
 
 #content_main{width: 1100px; height: auto; margin: 0 auto;}
 
@@ -473,8 +475,9 @@ div.yb_tv{float: left; width: 540px;}
 .ty_list{position: absolute; left: 0; top: 0; width: 540px;}
 .ty_list{overflow: hidden; width: 100%}
 .tv_list_clfix .sliderkit .sliderkit-panel, .yellow_tv_new .sliderkit .sliderkit-panel {z-index: 1;}
-.tv_list_clfix .sliderkit .sliderkit-panel, .yellow_tv_new .sliderkit .sliderkit-panel-active { z-index: 5;}
-.tv_list_clfix .sliderkit .sliderkit-panel, .yellow_tv_new .sliderkit .sliderkit-panel-old { z-index: 5;}
+.tv_list_clfix .sliderkit .sliderkit-panel-active, .yellow_tv_new .sliderkit .sliderkit-panel-active { z-index: 5;}
+.tv_list_clfix .sliderkit .sliderkit-panel-old, .yellow_tv_new .sliderkit .sliderkit-panel-old { z-index: 4;}
+.ty_list>ul {overflow: hidden; width: 100%;}
 .ty_list>ul>li{position: absolute; left: 0; top: 0; width: 540px!important; height: 295px !important; background: #f7f7f7;}
 .ty_list>ul>li .list:FIRST-CHILD {margin-top:0; }
 .ty_list>ul>li .list{position: relative; overflow: hidden; height: 120px; padding: 25px 29px 0 218px; border: 1px solid #e4e4e4; background-color: #fff; margin-top: 1px;}

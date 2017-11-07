@@ -184,7 +184,7 @@ $(document).ready(function(){
                     <div class="cont01 mgt20">
                         <ul>
                         	<li>
-	                                <a href="/product/unitList.do?code=102">
+	                                <a href="/product/unitList.do?code=2017IT">
 	                                <span class="pic">
 	                                <img src="https://dimgcdn.ybtour.co.kr/TN/5f/5fed74d174520acd1a1d274f98a7610d.tn.410x280.jpg" alt="이미지설명">
 	                                	</span>	                                
@@ -198,7 +198,7 @@ $(document).ready(function(){
 	                                </a>
 	                            </li>
                         	<li>
-	                                <a href="/product/unitList.do?menu=pkg&amp;did=60&amp;goodsCd=EEP2012">
+	                                <a href="/product/unitList.do?code=2017IT">
 	                                <span class="pic">
 	                                <img src="https://dimgcdn.ybtour.co.kr/TN/a4/a4744a5361ce6e47d8cdbace0344ff2e.tn.410x280.jpg" alt="이미지설명">
 	                                	</span>	                                
@@ -212,7 +212,7 @@ $(document).ready(function(){
 	                                </a>
 	                            </li>
                         	<li>
-	                                <a href="/product/unitList.do?menu=pkg&amp;did=60&amp;goodsCd=EKP2006">
+	                                <a href="/product/unitList.do?code=2017IT">
 	                                <span class="pic">
 	                                <img src="https://dimgcdn.ybtour.co.kr/TN/86/860dbe441d336172361e5bc4f15c76df.tn.410x280.jpg" alt="이미지설명">
 	                                	</span>	                                
@@ -406,7 +406,7 @@ $(document).ready(function(){
 	                            </li>
 	                            <li class="t02">
 	                                <span class="pic">
-	                                <a href="/product/unitList.do?menu=pkg&amp;did=60&amp;goodsCd=EKP2006">
+	                                <a href="/product/unitList.do?code=2017IT">
 	                                	<img src="https://dimgcdn.ybtour.co.kr/TN/86/860dbe441d336172361e5bc4f15c76df.tn.410x280.jpg" alt="이미지설명">
 		                                	</a>
 	                                </span>
@@ -414,7 +414,7 @@ $(document).ready(function(){
 	                            <li class="t03">
 	                                <div class="productTop">
 	                                
-	                                    <a href="/product/unitList.do?menu=pkg&amp;did=60&amp;goodsCd=EKP2006">
+	                                    <a href="/product/unitList.do?code=2017IT">
 											<!-- 												<span class="mark"><span class="pie redReal">집중</span></span> -->
 <span class="product">
 		                                    	[초록빛 잔디,꽃들의 속삭임]동유럽(체/오/헝)+발칸(크/슬)5국9일-플리트비체국립공원</span>
@@ -456,7 +456,7 @@ $(document).ready(function(){
 	                            </li>
 	                            <li class="t02">
 	                                <span class="pic">
-	                                <a href="/product/unitList.do?menu=pkg&amp;did=60&amp;goodsCd=EEP2018">
+	                                <a href="/product/unitList.do?code=2017IT">
 	                                	<img src="https://dimgcdn.ybtour.co.kr/TN/5f/5fed74d174520acd1a1d274f98a7610d.tn.410x280.jpg" alt="이미지설명">
 		                                	</a>
 	                                </span>
@@ -464,7 +464,7 @@ $(document).ready(function(){
 	                            <li class="t03">
 	                                <div class="productTop">
 	                                
-	                                    <a href="/product/unitList.do?menu=pkg&amp;did=60&amp;goodsCd=EEP2018">
+	                                    <a href="/product/unitList.do?code=2017IT">
 											<!-- 												<span class="mark"><span class="pie redReal">집중</span></span> -->
 <span class="product">
 		                                    	[콩닥콩닥,동유럽 불빛 아래 콩닥]동유럽5국12일OZ[체,폴,헝,오,독]</span>
@@ -507,7 +507,7 @@ $(document).ready(function(){
 	                            </li>
 	                            <li class="t02">
 	                                <span class="pic">
-	                                <a href="/product/unitList.do?menu=pkg&amp;did=60&amp;goodsCd=EEP2011">
+	                                <a href="/product/unitList.do?code=2017IT">
 	                                	<img src="https://dimgcdn.ybtour.co.kr/TN/cd/cd24fa42cf6fe9c7eeb56ea15ef4e5f6.tn.410x280.jpg" alt="이미지설명">
 		                                	</a>
 	                                </span>
@@ -515,7 +515,7 @@ $(document).ready(function(){
 	                            <li class="t03">
 	                                <div class="productTop">
 	                                
-	                                    <a href="/product/unitList.do?menu=pkg&amp;did=60&amp;goodsCd=EEP2011">
+	                                    <a href="/product/unitList.do?code=2017IT">
 											<!-- 												<span class="mark"><span class="pie redReal">집중</span></span> -->
 <span class="product">
 		                                    	[그냥 막 찍어도 엽서같구나!]동유럽[독/오/체/헝/폴]5국10일TK</span>
@@ -559,7 +559,7 @@ $(document).ready(function(){
 	                            </li>
 	                            <li class="t02">
 	                                <span class="pic">
-	                                <a href="/product/unitList.do?menu=pkg&amp;did=60&amp;goodsCd=EEP2003">
+	                                <a href="/product/unitList.do?code=2017IT">
 	                                	<img src="https://dimgcdn.ybtour.co.kr/TN/7d/7d369cbc548f051f4943332e7a23c92e.tn.410x280.jpg" alt="이미지설명">
 		                                	</a>
 	                                </span>
@@ -567,7 +567,7 @@ $(document).ready(function(){
 	                            <li class="t03">
 	                                <div class="productTop">
 	                                
-	                                    <a href="/product/unitList.do?menu=pkg&amp;did=60&amp;goodsCd=EEP2003">
+	                                    <a href="/product/unitList.do?code=2017IT">
 											<!-- 												<span class="mark"><span class="pie redReal">집중</span></span> -->
 <span class="product">
 		                                    	[국적기 직항] 백조의성+마리엔다리/베를린+드레스덴관광+동유럽6국12일 *2대야경관광</span>
@@ -610,7 +610,7 @@ $(document).ready(function(){
 	                            </li>
 	                            <li class="t02">
 	                                <span class="pic">
-	                                <a href="/product/unitList.do?menu=pkg&amp;did=60&amp;goodsCd=EEP2021">
+	                                <a href="/product/unitList.do?code=2017IT">
 	                                	<img src="https://dimgcdn.ybtour.co.kr/TN/a9/a906804869340971962aa41d0e09619d.tn.410x280.jpg" alt="이미지설명">
 		                                	</a>
 	                                </span>
@@ -618,7 +618,7 @@ $(document).ready(function(){
 	                            <li class="t03">
 	                                <div class="productTop">
 	                                
-	                                    <a href="/product/unitList.do?menu=pkg&amp;did=60&amp;goodsCd=EEP2021">
+	                                    <a href="/product/unitList.do?code=2017IT">
 											<!-- 												<span class="mark"><span class="pie redReal">집중</span></span> -->
 <span class="product">
 		                                    	[동유럽 중심에 내가 있다] 판도로프아울렛방문+백조의성/동유럽일주 6국10일</span>
@@ -660,7 +660,7 @@ $(document).ready(function(){
 	                            </li>
 	                            <li class="t02">
 	                                <span class="pic">
-	                                <a href="/product/unitList.do?menu=pkg&amp;did=60&amp;goodsCd=EEP2012">
+	                                <a href="/product/unitList.do?code=2017IT">
 	                                	<img src="https://dimgcdn.ybtour.co.kr/TN/a4/a4744a5361ce6e47d8cdbace0344ff2e.tn.410x280.jpg" alt="이미지설명">
 		                                	</a>
 	                                </span>
@@ -668,7 +668,7 @@ $(document).ready(function(){
 	                            <li class="t03">
 	                                <div class="productTop">
 	                                
-	                                    <a href="/product/unitList.do?menu=pkg&amp;did=60&amp;goodsCd=EEP2012">
+	                                    <a href="/product/unitList.do?code=2017IT">
 											<!-- 												<span class="mark"><span class="pie redReal">집중</span></span> -->
 <span class="product">
 		                                    	[예술문화의 도시] 베를린+드레스덴 동유럽5국(독/오/체/헝/폴) 11일 (체스키크룸로프)</span>

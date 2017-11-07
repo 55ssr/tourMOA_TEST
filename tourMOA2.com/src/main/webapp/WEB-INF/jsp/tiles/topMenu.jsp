@@ -37,8 +37,41 @@ function fn_detail(a) {
 	f.submit();
 }
 </script>
+
+<script> /* 탑배너 숨기기 */
+
+$(document).ready(function(){
+	
+	if($.cookie('popup') == 'hidden'){
+		$('.top_main_banner').hide();
+	}else{
+		$('.top_main_banner').show();
+	}
+});
+
+$(document).ready(function(){
+	$(".top_banner_close").click(function(){
+		$.cookie('popup','hidden', {expires : 1, path: '/' });
+		$('.top_main_banner').hide();
+	});
+});
+</script>
+
+<div class="top_main_banner" style="display:none">
+	<div class="banner_md" style="background:url(http://cimg.cdn.ybtour.co.kr/attachHome/MN/WT/201711/201711011119303801410002001007.jpg) no-repeat 0 0;">
+		<ul class="banner_top_list">
+			<li><a href="#" target="_self"><span class="blind_ir">치앙마이</span></a></li>
+			<li><a href="#" target="_self"><span class="blind_ir">마카오 나만의 여행스타일</span></a></li>
+			<li><a href="#" target="_self"><span class="blind_ir">롯데카드</span></a></li>
+			</ul>
+		<a href="#" class="top_banner_close"><img src="https://cimgcdn.ybtour.co.kr/promotion/banner/top_banner_close.png" alt="닫기"></a>
+	</div>
+</div>
+
 <div id="wrap">
     <div id="header">
+		
+		    	
         <div id="topmenu">
           <div id="tt">
           <c:choose>
@@ -52,9 +85,18 @@ function fn_detail(a) {
          	</c:when>
 	        <c:otherwise>
 	        	<ul>
-					<li><a href="/admin.do">어드민</a></li>
-					<li><a href="/mypage/login.do">로그인</a></li>
-					<li><a href="/mypage/join.do">회원가입</a></li>
+					<li>
+						<i class="fa fa-lock" aria-hidden="true"></i>
+						<a href="/admin.do">어드민</a>
+					</li>
+					<li>
+						<i class="fa fa-sign-in" aria-hidden="true"></i>
+						<a href="/mypage/login.do">로그인</a>
+					</li>
+					<li>
+						<i class="fa fa-user-plus" aria-hidden="true"></i>
+						<a href="/mypage/join.do">회원가입</a>
+					</li>
 	           </ul>
 	        </c:otherwise>
           </c:choose>
@@ -63,7 +105,7 @@ function fn_detail(a) {
         
         
 		<div id="header_logo">
-			<div id="tt">
+			<div id="tt" class="relative">
 				<a href="/main.do">
 					<img src="/images/common/TourMOA_Logo220.png" alt="로고">
 				</a>
@@ -86,6 +128,10 @@ function fn_detail(a) {
 						<a href="#" id="searchBtnMain"><img alt="검색" src="/images/customer/top_search.png"></a>
 					</div>
 				</form>
+				<div id="forChrome" class="floatR absolute align-r right0">
+					<p>이 사이트는 Chrome에 </p>
+					<p>최적화 되어 제작되었습니다.</p>
+				</div>
 			</div>
 		</div>
 <form name="hiddenFrm2" method="post" action="<c:url value='mypage/accountPwReaffirm.do'/>">

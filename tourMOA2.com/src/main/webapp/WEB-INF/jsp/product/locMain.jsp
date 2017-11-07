@@ -31,22 +31,22 @@
 					<div class="sliderkit-nav">
 						<div class="sliderkit-nav-clip" style="width: 860px; height: 45px;">
 							<ul class="tab" style="width: 860px;">
-								<li class="" style="width: 215px; height: 45px;"><a href="#">이탈리아</a></li> 
-										<li style="width: 215px; height: 45px;" class=""><a href="#">스페인</a></li> 
-										<li style="width: 215px; height: 45px;" class=""><a href="#">발칸</a></li> 
-										<li style="width: 215px; height: 45px;" class="sliderkit-selected"><a href="#">이탈리아</a></li> 
+								<li class="" style="width: 215px; height: 45px;"><a>이탈리아</a></li> 
+										<li style="width: 215px; height: 45px;" class=""><a>스페인</a></li> 
+										<li style="width: 215px; height: 45px;" class=""><a>발칸</a></li> 
+										<li style="width: 215px; height: 45px;" class="sliderkit-selected"><a>이탈리아</a></li> 
 										</ul>
 						</div>
 					</div>
 					<div class="sliderkit-panels">
 						<div class="sliderkit-panels-wrapper" style="position: relative; left: -860px;"><div class="sliderkit-panel" style="display: none; left: 0px;">
-									<a href="/promotion/Overseas/2017/0913_eu_italy/" target="_self"><img src="http://cimg.cdn.ybtour.co.kr/attachHome/EP/EM/201709/201709280955195661608003001028.jpg" alt="이탈리아"></a>
+									<a href=""><img src="http://cimg.cdn.ybtour.co.kr/attachHome/EP/EM/201709/201709280955195661608003001028.jpg" alt="이탈리아"></a>
 								</div><div class="sliderkit-panel" style="display: none; left: 0px;">
-									<a href="/promotion/Overseas/2017/0620_eu_spain/" target="_self"><img src="http://cimg.cdn.ybtour.co.kr/attachHome/EP/EM/201707/201707101202034861501011001012.jpg" alt="푸른 하늘색은 내 눈가에 그림자로"></a>
+									<a href="" target="_self"><img src="http://cimg.cdn.ybtour.co.kr/attachHome/EP/EM/201707/201707101202034861501011001012.jpg" alt="푸른 하늘색은 내 눈가에 그림자로"></a>
 								</div><div class="sliderkit-panel sliderkit-panel-old" style="display: block; left: 0px;">
-									<a href="http://www.ybtour.co.kr/promotion/Overseas/2017/0426_eu_balkan/" target="_self"><img src="http://cimg.cdn.ybtour.co.kr/attachHome/EP/EM/201704/201704271409000751608003001016.jpg" alt="발칸"></a>
+									<a href="" target="_self"><img src="http://cimg.cdn.ybtour.co.kr/attachHome/EP/EM/201704/201704271409000751608003001016.jpg" alt="발칸"></a>
 								</div><div class="sliderkit-panel sliderkit-panel-active" style="display: block; left: 860px;">
-									<a href="/promotion/overseas/2017/0828_eu_ybitalytour" target="_self"><img src="http://cimg.cdn.ybtour.co.kr/attachHome/EP/EM/201708/201708251819009221104009001078.jpg" alt="내가 푹 빠진 이탈리아 구석구석 알면 알수록 더 가고 싶은 그곳"></a>
+									<a href="" target="_self"><img src="http://cimg.cdn.ybtour.co.kr/attachHome/EP/EM/201708/201708251819009221104009001078.jpg" alt="내가 푹 빠진 이탈리아 구석구석 알면 알수록 더 가고 싶은 그곳"></a>
 								</div></div>
 	                    	
 	                    	
@@ -77,34 +77,34 @@
 				<div class="hot_keyword">
 					<ol>
 						<li class="num_1">
-							<a href="http://www.ybtour.co.kr/promotion/Overseas/2017/0522_eu_asianavenice/ " target="new">아시아나 베니스 전세기 </a>
+							<a href="" target="new">아시아나 베니스 전세기 </a>
 								</li>
 						<li class="num_2">
-							<a href="http://www.ybtour.co.kr/product/unitList.do?menu=pkg&amp;did=61&amp;goodsCd=EKP1030" target="new">크로아티아 발칸여행</a>
+							<a href="" target="new">크로아티아 발칸여행</a>
 								</li>
 						<li class="num_3">
-							<a href="http://www.ybtour.co.kr/product/unitList.do?menu=pkg&amp;did=731&amp;goodsCd=EWP1098" target="new">주말출발 이태리일주</a>
+							<a href="" target="new">주말출발 이태리일주</a>
 								</li>
 						<li class="num_4">
-							<a href="http://www.ybtour.co.kr/product/unitList.do?menu=pkg&amp;did=3283&amp;goodsCd=ERP5220" target="new">블라디보스톡</a>
+							<a href="" target="new">블라디보스톡</a>
 								</li>
 						<li class="num_5">
-							<a href="http://www.ybtour.co.kr/product/unitList.do?menu=pkg&amp;did=57&amp;goodsCd=EWP2119" target="new">스위스+이태리</a>
+							<a href="" target="new">스위스+이태리</a>
 								</li>
 						<li class="num_6">
-							<a href=" http://www.ybtour.co.kr/product/unitList.do?menu=pkg&amp;did=67&amp;goodsCd=EMP1025&amp;year=2017&amp;month=8" target="new">스페인 + 두바이</a>
+							<a href="" target="new">스페인 + 두바이</a>
 								</li>
 						<li class="num_7">
-							<a href="http://www.ybtour.co.kr/product/unitList.do?menu=pkg&amp;did=58&amp;goodsCd=EWP3058" target="new">우수여행상품-서유럽</a>
+							<a href="" target="new">우수여행상품-서유럽</a>
 								</li>
 						<li class="num_8">
-							<a href="http://www.ybtour.co.kr/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=336&amp;did=59&amp;goodsCd=EEP1030" target="new">동유럽 일주</a>
+							<a href="" target="new">동유럽 일주</a>
 								</li>
 						<li class="num_9">
-							<a href="http://www.ybtour.co.kr/product/unitList.do?menu=pkg&amp;did=731&amp;goodsCd=EWP1007" target="new">한폭의그림 이태리</a>
+							<a href="" target="new">한폭의그림 이태리</a>
 								</li>
 						<li class="num_10">
-							<a href="http://www.ybtour.co.kr/product/unitList.do?menu=pkg&amp;did=65&amp;goodsCd=ETP1035" target="new">터키</a>
+							<a href="" target="new">터키</a>
 								</li>
 						</ol>
 				</div>
@@ -122,7 +122,7 @@
 			            <div class="cont02 sliderkit-nav-clip" style="width: 1100px; height: 366px;">
 			                <ul style="width: 2800px; left: -1680px;">
 			                	<li style="width: 260px; height: 366px;">
-			                        <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=86&amp;did=61&amp;goodsCd=EKP1030&amp;year=2017&amp;month=10">
+			                        <a href="">
 			                        <span class="pic">
 			                           	<img src="https://dimgcdn.ybtour.co.kr/TN/27/27b4ace06939f1ad3ea36b9ad1f27104.tn.410x280.jpg" alt="">
 										</span>
@@ -142,7 +142,7 @@
 			                        </a>
 			                    </li>
 			                    <li style="width: 260px; height: 366px;">
-			                        <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=336&amp;did=59&amp;goodsCd=EEP1076&amp;year=2017&amp;month=11">
+			                        <a href="">
 			                        <span class="pic">
 			                           	<img src="https://dimgcdn.ybtour.co.kr/TN/6e/6ee5ec6350171cbf2c654464398ebe1d.tn.410x280.jpg" alt="">
 										</span>
@@ -162,7 +162,7 @@
 			                        </a>
 			                    </li>
 			                    <li class="" style="width: 260px; height: 366px;">
-			                        <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=86&amp;did=62&amp;goodsCd=EKP2002&amp;year=2017&amp;month=10">
+			                        <a href="">
 			                        <span class="pic">
 			                           	<img src="https://dimgcdn.ybtour.co.kr/TN/46/46fa16b8c43630bf37ecd1f652cbe494.tn.410x280.jpg" alt="">
 										</span>
@@ -180,7 +180,7 @@
 			                        </a>
 			                    </li>
 			                    <li style="width: 260px; height: 366px;" class="">
-			                        <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=456&amp;did=731&amp;goodsCd=EWP1013&amp;year=2017&amp;month=10">
+			                        <a href="">
 			                        <span class="pic">
 			                           	<img src="https://dimgcdn.ybtour.co.kr/TN/4f/4fd7712278fbb959b06124d4bdd56451.tn.410x280.jpg" alt="">
 										</span>
@@ -200,7 +200,7 @@
 			                        </a>
 			                    </li>
 			                    <li style="width: 260px; height: 366px;" class="">
-			                        <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=336&amp;did=59&amp;goodsCd=EKP2067&amp;year=2017&amp;month=10">
+			                        <a href="">
 			                        <span class="pic">
 			                           	<img src="https://dimgcdn.ybtour.co.kr/TN/ae/ae47e5d2a995879e0040ac0b20966712.tn.410x280.jpg" alt="">
 										</span>
@@ -220,7 +220,7 @@
 			                        </a>
 			                    </li>
 			                    <li style="width: 260px; height: 366px;" class="">
-			                        <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=456&amp;did=57&amp;goodsCd=EWP2160&amp;year=2017&amp;month=10">
+			                        <a href="">
 			                        <span class="pic">
 			                           	<img src="https://dimgcdn.ybtour.co.kr/TN/8e/8e59ac9fd9f7cbed5f74c11d6c340ece.tn.410x280.jpg" alt="">
 										</span>
@@ -240,7 +240,7 @@
 			                        </a>
 			                    </li>
 			                    <li style="width: 260px; height: 366px;" class="sliderkit-selected">
-			                        <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=86&amp;did=61&amp;goodsCd=EKP1047&amp;year=2017&amp;month=10">
+			                        <a href="">
 			                        <span class="pic">
 			                           	<img src="https://dimgcdn.ybtour.co.kr/TN/c0/c0e7722555fc3111f129c57d2536fb06.tn.410x280.jpg" alt="">
 										</span>
@@ -258,7 +258,7 @@
 			                        </a>
 			                    </li>
 			                    <li style="width: 260px; height: 366px;">
-			                        <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=86&amp;did=61&amp;goodsCd=EKP1001&amp;year=2017&amp;month=10">
+			                        <a href="">
 			                        <span class="pic">
 			                           	<img src="https://dimgcdn.ybtour.co.kr/TN/99/991a03b00bb8abb68b462bb9f0a50652.tn.410x280.jpg" alt="">
 										</span>
@@ -276,7 +276,7 @@
 			                        </a>
 			                    </li>
 			                    <li style="width: 260px; height: 366px;">
-			                        <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=4152&amp;did=4157&amp;goodsCd=EWP3000&amp;year=2017&amp;month=11">
+			                        <a href="">
 			                        <span class="pic">
 			                           	<img src="https://dimgcdn.ybtour.co.kr/TN/03/03c9d12cdc5445d037a0efca36e1f86e.tn.410x280.jpg" alt="">
 										</span>
@@ -296,7 +296,7 @@
 			                        </a>
 			                    </li>
 			                    <li style="width: 260px; height: 366px;">
-			                        <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=336&amp;did=60&amp;goodsCd=EEP2021&amp;year=2017&amp;month=10">
+			                        <a href="">
 			                        <span class="pic">
 			                           	<img src="https://dimgcdn.ybtour.co.kr/TN/a9/a906804869340971962aa41d0e09619d.tn.410x280.jpg" alt="">
 										</span>
@@ -354,12 +354,12 @@
      
    	<ul class="theme01">
 			    <li>
-			    	<a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=336&amp;did=59&amp;goodsCd=EEP1068">
+			    	<a href="">
 			    		<img src="https://dimgcdn.ybtour.co.kr/TN/20/20b09f0b66db627049b31ac40783fbd9.tn.410x280.jpg" alt="이미지설명">
 		               	</a>
 			    </li>
 			    <li>
-			        <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=336&amp;did=59&amp;goodsCd=EEP1068">
+			        <a href="">
 			        <span class="tit">
 <!-- 			        	Blue Lavande -->
 [자세히 보아야 이쁘다] 동YOU LOVE (체코/오스트리아) 2국 9일</span>
@@ -376,12 +376,12 @@
 			</ul>
 		<ul class="theme02">
 			    <li>
-			    	<a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=3701&amp;did=4413&amp;goodsCd=EWP4001">
+			    	<a href="">
 			    		<img src="https://dimgcdn.ybtour.co.kr/TN/66/66dc3e09421ab3d9c37f3db6e84d48c3.tn.410x280.jpg" alt="이미지설명">
 		               	</a>
 			    </li>
 			    <li>
-			        <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=3701&amp;did=4413&amp;goodsCd=EWP4001">
+			        <a href="">
 			        <span class="tit">
 <!-- 			        	Blue Lavande -->
 풀향 싱그런 영국의 시골길_영국과 아일랜드,스코틀랜드_10일[맨체스터/리버풀]</span>
@@ -400,7 +400,7 @@
 		    			<div class="sliderkit-panels-wrapper" style="position: relative; top: -540px;"><div class="panel sliderkit-panel sliderkit-panel-active" style="display: block; top: 540px;">
 		    				<ul>
 			<li>
-	            <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=3701&amp;did=4203&amp;goodsCd=EWP4013">
+	            <a href="">
 	            <span class="pic">
 	            	<img src="https://dimgcdn.ybtour.co.kr/TN/69/692730f3ede71fbad7d28aea80fa95fa.tn.410x280.jpg" alt="이미지설명">
 	               	</span>
@@ -415,7 +415,7 @@
 	        </li>
 			
 			<li>
-	            <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=336&amp;did=59&amp;goodsCd=EEP1069">
+	            <a href="">
 	            <span class="pic">
 	            	<img src="https://dimgcdn.ybtour.co.kr/TN/92/92c8c80e1283c607c355ea5b7678ee6d.tn.410x280.jpg" alt="이미지설명">
 	               	</span>
@@ -430,7 +430,7 @@
 	        </li>
 			
 			<li>
-	            <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=3701&amp;did=4203&amp;goodsCd=EWP4012">
+	            <a href="">
 	            <span class="pic">
 	            	<img src="https://dimgcdn.ybtour.co.kr/TN/74/748e7b648f7fc9378793f86b2b79ce8d.tn.410x280.jpg" alt="이미지설명">
 	               	</span>
@@ -448,7 +448,7 @@
 	                    </div><div class="panel sliderkit-panel" style="display: none; top: 0px;">
 	                        <ul>
 			<li>
-	            <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=4153&amp;did=4159&amp;goodsCd=EWP4007">
+	            <a href="">
 	            <span class="pic">
 	            	<img src="https://dimgcdn.ybtour.co.kr/TN/66/66cf1fc001244b571f5085a0f6333ee5.tn.410x280.JPG" alt="이미지설명">
 	               	</span>
@@ -463,7 +463,7 @@
 	        </li>
 			
 			<li>
-	            <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=3701&amp;did=4413&amp;goodsCd=EWP4011">
+	            <a href="">
 	            <span class="pic">
 	            	<img src="https://dimgcdn.ybtour.co.kr/TN/11/1123d96ba6aa1039fef9bb2b35688644.tn.410x280.jpg" alt="이미지설명">
 	               	</span>
@@ -478,7 +478,7 @@
 	        </li>
 			
 			<li>
-	            <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=3701&amp;did=4413&amp;goodsCd=EWP4010">
+	            <a href="">
 	            <span class="pic">
 	            	<img src="https://dimgcdn.ybtour.co.kr/TN/f6/f62619bbd01ff75302c6cbbc651aa354.tn.410x280.jpg" alt="이미지설명">
 	               	</span>
@@ -496,7 +496,7 @@
 	                    </div><div class="panel sliderkit-panel sliderkit-panel-old" style="display: block; top: 0px;">
 	                        <ul>
 			<li>
-	            <a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=3701&amp;did=4413&amp;goodsCd=EWP4008">
+	            <a href="">
 	            <span class="pic">
 	            	<img src="https://dimgcdn.ybtour.co.kr/TN/27/27b94c5b5fe9b68f09e972e164f1bb98.tn.410x280.jpg" alt="이미지설명">
 	               	</span>
@@ -535,7 +535,7 @@
 					<div class="sliderkit-nav-clip" style="width: 1100px; height: 319px;">
 						<ul style="width: 3920px; left: -1960px;">
 							<li style="width: 260px; height: 319px;" class="">
-								<a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=86&amp;did=62&amp;goodsCd=EKP2073">
+								<a href="">
 									<div class="pic">
 					               		<img src="https://dimgcdn.ybtour.co.kr/TN/53/53c7ca57506003a55c5699dc937c7b19.tn.410x280.jpg" alt="이미지설명">
 										</div>
@@ -553,7 +553,7 @@
 								</a> 
 							</li>
 							<li style="width: 260px; height: 319px;" class="">
-								<a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=456&amp;did=57&amp;goodsCd=EWP2127">
+								<a href="">
 									<div class="pic">
 					               		<img src="https://dimgcdn.ybtour.co.kr/TN/23/2321f39c2bcdb24f55be110b9d55c05f.tn.410x280.jpg" alt="이미지설명">
 										</div>
@@ -571,7 +571,7 @@
 								</a> 
 							</li>
 							<li class="" style="width: 260px; height: 319px;">
-								<a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=36&amp;did=68&amp;goodsCd=EMP5000">
+								<a href="">
 									<div class="pic">
 					               		<img src="https://dimgcdn.ybtour.co.kr/TN/7a/7ae9211ebf244b2a64d09a70ca99daf1.tn.410x280.jpg" alt="이미지설명">
 										</div>
@@ -589,7 +589,7 @@
 								</a> 
 							</li>
 							<li style="width: 260px; height: 319px;" class="">
-								<a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=336&amp;did=59&amp;goodsCd=EEP1030">
+								<a href="">
 									<div class="pic">
 					               		<img src="https://dimgcdn.ybtour.co.kr/TN/3d/3d238e1317ddf3d618e9009659f75a3c.tn.410x280.jpg" alt="이미지설명">
 										</div>
@@ -607,7 +607,7 @@
 								</a> 
 							</li>
 							<li style="width: 260px; height: 319px;" class="">
-								<a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=36&amp;did=68&amp;goodsCd=EMP5023">
+								<a href="">
 									<div class="pic">
 					               		<img src="https://dimgcdn.ybtour.co.kr/TN/ac/acf12210b08604abbffee653d372ace3.tn.410x280.jpg" alt="이미지설명">
 										</div>
@@ -625,7 +625,7 @@
 								</a> 
 							</li>
 							<li style="width: 260px; height: 319px;" class="">
-								<a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=4152&amp;did=4157&amp;goodsCd=EWP3058">
+								<a href="">
 									<div class="pic">
 					               		<img src="https://dimgcdn.ybtour.co.kr/TN/4f/4fb7a3ca767f257abdb8863297efe726.tn.410x280.jpg" alt="이미지설명">
 										</div>
@@ -643,7 +643,7 @@
 								</a> 
 							</li>
 							<li style="width: 260px; height: 319px;" class="">
-								<a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=950&amp;did=65&amp;goodsCd=ETP1003">
+								<a href="">
 									<div class="pic">
 					               		<img src="https://dimgcdn.ybtour.co.kr/TN/1f/1f2cafd7a0622d1da8ed7d068db8c846.tn.410x280.jpg" alt="이미지설명">
 										</div>
@@ -661,7 +661,7 @@
 								</a> 
 							</li>
 							<li style="width: 260px; height: 319px;" class="sliderkit-selected">
-								<a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=3701&amp;did=4414&amp;goodsCd=EWP1078">
+								<a href="">
 									<div class="pic">
 					               		<img src="https://dimgcdn.ybtour.co.kr/TN/d1/d1029331b0c91ca5b4298d4798e6dcbd.tn.410x280.jpg" alt="이미지설명">
 										</div>
@@ -679,7 +679,7 @@
 								</a> 
 							</li>
 							<li style="width: 260px; height: 319px;" class="">
-								<a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=36&amp;did=67&amp;goodsCd=EMP1001">
+								<a href="">
 									<div class="pic">
 					               		<img src="https://dimgcdn.ybtour.co.kr/TN/d8/d80f7fcf4e37d395ae1d200c32065d12.tn.410x280.jpg" alt="이미지설명">
 										</div>
@@ -697,7 +697,7 @@
 								</a> 
 							</li>
 							<li style="width: 260px; height: 319px;" class="">
-								<a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=456&amp;did=58&amp;goodsCd=EWP3010">
+								<a href="">
 									<div class="pic">
 					               		<img src="https://dimgcdn.ybtour.co.kr/TN/cd/cd9f86896d8577744a8be5eef0ae9de1.tn.410x280.jpg" alt="이미지설명">
 										</div>
@@ -715,7 +715,7 @@
 								</a> 
 							</li>
 							<li style="width: 260px; height: 319px;" class="">
-								<a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=336&amp;did=3884&amp;goodsCd=EKP2067">
+								<a href="">
 									<div class="pic">
 					               		<img src="https://dimgcdn.ybtour.co.kr/TN/ae/ae47e5d2a995879e0040ac0b20966712.tn.410x280.jpg" alt="이미지설명">
 										</div>
@@ -733,7 +733,7 @@
 								</a> 
 							</li>
 							<li style="width: 260px; height: 319px;">
-								<a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=297&amp;did=70&amp;goodsCd=EMP1004">
+								<a href="">
 									<div class="pic">
 					               		<img src="https://dimgcdn.ybtour.co.kr/TN/70/70deb6757ba85244ddcd96520f621ce8.tn.410x280.jpg" alt="이미지설명">
 										</div>
@@ -751,7 +751,7 @@
 								</a> 
 							</li>
 							<li style="width: 260px; height: 319px;">
-								<a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=456&amp;did=57&amp;goodsCd=EWP2031">
+								<a href="">
 									<div class="pic">
 					               		<img src="https://dimgcdn.ybtour.co.kr/TN/03/03c9d12cdc5445d037a0efca36e1f86e.tn.410x280.jpg" alt="스페인계단">
 										</div>
@@ -769,7 +769,7 @@ Y.E.S.서유럽4국9일(영국/프랑스/스위스/이탈리아)3대박...
 								</a> 
 							</li>
 							<li style="width: 260px; height: 319px;">
-								<a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=456&amp;did=57&amp;goodsCd=EWP2026">
+								<a href="">
 									<div class="pic">
 					               		<img src="https://dimgcdn.ybtour.co.kr/TN/f4/f41b155fac9abf7be81ce0cf1f47a671.tn.410x280.jpg" alt="이미지설명">
 										</div>
@@ -815,7 +815,7 @@ Y.E.S.서유럽4국9일(영국/프랑스/스위스/이탈리아)3대박...
 			<div class="loc_review">
 				<h2 class="tit"><img src="/images/content/tit/tit_loc_review.gif" alt="고객후기"></h2>
 				<div class="loc_best_review">
-				<a href="/customer/episodeView.do?travrvNo=20000003488">
+				<a href="">
 						<img src="http://cimg.cdn.ybtour.co.kr/attachHome/YT/TR/201702/201702281104061731301004001032.JPG" alt=" ">
 						<div class="tit">
 						<span>여행 에피소드</span>
@@ -834,7 +834,7 @@ Y.E.S.서유럽4국9일(영국/프랑스/스위스/이탈리아)3대박...
                         <div class="sliderkit-panels-wrapper" style="position: relative; top: -540px;"><div class="panel sliderkit-panel goods_list sliderkit-panel-active" style="display: block; top: 540px;">
                         		<ul>
                         	<li>
-								<a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=4153&amp;did=4158&amp;goodsCd=EWP1051">
+								<a href="">
 									<img src="https://dimgcdn.ybtour.co.kr/TN/7b/7bfeb9f1404464ef376fd092ee8c8fa9.tn.900x657.jpg" alt=" ">
 									<h3>
 									[하늘아래 내마음의 유럽] 서유럽3국8일 (프랑스/스위스/이태리)</h3>
@@ -845,7 +845,7 @@ Y.E.S.서유럽4국9일(영국/프랑스/스위스/이탈리아)3대박...
 								</a>
 							</li>
 						<li>
-								<a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=456&amp;did=57&amp;goodsCd=EWP2026">
+								<a href="">
 									<img src="https://dimgcdn.ybtour.co.kr/TN/71/71a502f94b5eb93114a10fbddc881f70.tn.900x657.jpg" alt=" ">
 									<h3>
 									[뮈렌은 그런곳이다]서유럽4국9일_합리적인 단기_뮈렌+세계3대박물관+나폴리/폼페이...
@@ -860,7 +860,7 @@ Y.E.S.서유럽4국9일(영국/프랑스/스위스/이탈리아)3대박...
                         	</div><div class="panel sliderkit-panel goods_list sliderkit-panel-old" style="display: block; top: 0px;">
                         		<ul>
                         	<li>
-								<a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=456&amp;did=731&amp;goodsCd=EWP1001">
+								<a href="">
 									<img src="https://dimgcdn.ybtour.co.kr/TN/71/71a502f94b5eb93114a10fbddc881f70.tn.900x657.jpg" alt=" ">
 									<h3>
 									[3색매력]알찬일정,동화같은 서유럽3국8일(프랑스/스위스/이탈리아)</h3>
@@ -871,7 +871,7 @@ Y.E.S.서유럽4국9일(영국/프랑스/스위스/이탈리아)3대박...
 								</a>
 							</li>
 						<li>
-								<a href="/product/unitList.do?menu=pkg&amp;loc=90&amp;pid=4152&amp;did=4157&amp;goodsCd=EWP3058">
+								<a href="">
 									<img src="https://dimgcdn.ybtour.co.kr/TN/ca/ca6f01f7c177a264bb66501166202e65.tn.900x657.jpg" alt=" ">
 									<h3>
 									[영국과 스위스를 더하다] 서유럽4국12일[1급호텔3박]옥스퍼드+융프라우+베른/루...
